@@ -16,6 +16,16 @@ namespace Comercial
 
         private FrmPrinc _princ = null;
 
+
+        private void FrmCadPed_Load(object sender, EventArgs e)
+        {
+            var query = from ped in db.PEDIDO
+                        select ped;
+
+            pEDIDOBindingSource.DataSource = query;
+
+        }
+
         public FrmCadPed(FrmPrinc parent)
         {
             InitializeComponent();
@@ -28,7 +38,9 @@ namespace Comercial
             parent.setdb(db);
         }
 
-        private void textButton1_ButtonClick_1(object sender, EventArgs e)
+
+        #region Generico
+           private void textButton1_ButtonClick_1(object sender, EventArgs e)
         {
             FrmVisGeral x = new FrmVisGeral(this);
             x.ShowDialog();
@@ -58,9 +70,10 @@ namespace Comercial
             FrmVisGeral x = new FrmVisGeral(this);
             x.ShowDialog();
         }
+        #endregion
 
-
-        public void salvarPedido()
+        #region Salvar
+        public void salvar()
         {
             PEDIDO ped = (PEDIDO)pEDIDOBindingSource.Current;
             {
@@ -86,6 +99,8 @@ namespace Comercial
 
             }
         }
+        #endregion
+       
 
         private void grpBxPedVenda_Enter(object sender, EventArgs e)
         {
@@ -118,15 +133,8 @@ namespace Comercial
             {
                 rdbcanc.Checked = true;
             }
+            
         }
 
-        private void FrmCadPed_Load(object sender, EventArgs e)
-        {
-            var query = from ped in db.PEDIDO
-                        select ped;
-
-            pEDIDOBindingSource.DataSource = query;
-
-        }
     }
 }

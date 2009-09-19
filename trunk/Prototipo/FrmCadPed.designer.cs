@@ -35,15 +35,11 @@
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.grpBxPedVenda = new System.Windows.Forms.GroupBox();
-            this.txtBtnCodVend = new Comercial.TextButton();
-            this.txtBtnCondPgto = new Comercial.TextButton();
-            this.txtBtnTransp = new Comercial.TextButton();
             this.grpBxSitPed = new System.Windows.Forms.GroupBox();
             this.rdbcanc = new System.Windows.Forms.RadioButton();
             this.rdbpend = new System.Windows.Forms.RadioButton();
             this.rdbefet = new System.Windows.Forms.RadioButton();
             this.pEDIDOBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.txtBtnCodCli = new Comercial.TextButton();
             this.lbltpfre = new System.Windows.Forms.Label();
             this.lblcondp = new System.Windows.Forms.Label();
             this.txtNomeVend = new System.Windows.Forms.TextBox();
@@ -52,14 +48,13 @@
             this.lbldtemi = new System.Windows.Forms.Label();
             this.dtmPckrDtEmissao = new System.Windows.Forms.DateTimePicker();
             this.lbltipped = new System.Windows.Forms.Label();
-            this.txtTpped = new System.Windows.Forms.ComboBox();
+            this.cmbtpPed = new System.Windows.Forms.ComboBox();
             this.txtNomecli = new System.Windows.Forms.TextBox();
             this.lblnomecli = new System.Windows.Forms.Label();
             this.lblcodcli = new System.Windows.Forms.Label();
             this.txtNumped = new System.Windows.Forms.TextBox();
             this.lblnumPed = new System.Windows.Forms.Label();
             this.grpBxItPedVen = new System.Windows.Forms.GroupBox();
-            this.txtBtnCpdProd = new Comercial.TextButton();
             this.pnlItenped = new System.Windows.Forms.Panel();
             this.dtgrdvItenspven = new System.Windows.Forms.DataGridView();
             this.ClmItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -93,6 +88,11 @@
             this.LbDescProd = new System.Windows.Forms.Label();
             this.lblCodProd = new System.Windows.Forms.Label();
             this.tbCntrlPedVend = new System.Windows.Forms.TabControl();
+            this.txtBtnCodVend = new Comercial.TextButton();
+            this.txtBtnCondPgto = new Comercial.TextButton();
+            this.txtBtnTransp = new Comercial.TextButton();
+            this.txtBtnCodCli = new Comercial.TextButton();
+            this.txtBtnCpdProd = new Comercial.TextButton();
             this.tabPage1.SuspendLayout();
             this.grpBxPedVenda.SuspendLayout();
             this.grpBxSitPed.SuspendLayout();
@@ -157,7 +157,7 @@
             this.grpBxPedVenda.Controls.Add(this.lbldtemi);
             this.grpBxPedVenda.Controls.Add(this.dtmPckrDtEmissao);
             this.grpBxPedVenda.Controls.Add(this.lbltipped);
-            this.grpBxPedVenda.Controls.Add(this.txtTpped);
+            this.grpBxPedVenda.Controls.Add(this.cmbtpPed);
             this.grpBxPedVenda.Controls.Add(this.txtNomecli);
             this.grpBxPedVenda.Controls.Add(this.lblnomecli);
             this.grpBxPedVenda.Controls.Add(this.lblcodcli);
@@ -172,39 +172,6 @@
             this.grpBxPedVenda.TabStop = false;
             this.grpBxPedVenda.Text = "Pedido Venda";
             this.grpBxPedVenda.Enter += new System.EventHandler(this.grpBxPedVenda_Enter);
-            // 
-            // txtBtnCodVend
-            // 
-            this.txtBtnCodVend.getText = "";
-            this.txtBtnCodVend.Image = ((System.Drawing.Image)(resources.GetObject("txtBtnCodVend.Image")));
-            this.txtBtnCodVend.Location = new System.Drawing.Point(12, 79);
-            this.txtBtnCodVend.Name = "txtBtnCodVend";
-            this.txtBtnCodVend.ShowButton = false;
-            this.txtBtnCodVend.Size = new System.Drawing.Size(106, 25);
-            this.txtBtnCodVend.TabIndex = 80;
-            this.txtBtnCodVend.ButtonClick += new System.EventHandler(this.textButton4_ButtonClick);
-            // 
-            // txtBtnCondPgto
-            // 
-            this.txtBtnCondPgto.getText = "";
-            this.txtBtnCondPgto.Image = ((System.Drawing.Image)(resources.GetObject("txtBtnCondPgto.Image")));
-            this.txtBtnCondPgto.Location = new System.Drawing.Point(311, 81);
-            this.txtBtnCondPgto.Name = "txtBtnCondPgto";
-            this.txtBtnCondPgto.ShowButton = false;
-            this.txtBtnCondPgto.Size = new System.Drawing.Size(103, 25);
-            this.txtBtnCondPgto.TabIndex = 79;
-            this.txtBtnCondPgto.ButtonClick += new System.EventHandler(this.textButton3_ButtonClick);
-            // 
-            // txtBtnTransp
-            // 
-            this.txtBtnTransp.getText = "";
-            this.txtBtnTransp.Image = ((System.Drawing.Image)(resources.GetObject("txtBtnTransp.Image")));
-            this.txtBtnTransp.Location = new System.Drawing.Point(420, 80);
-            this.txtBtnTransp.Name = "txtBtnTransp";
-            this.txtBtnTransp.ShowButton = false;
-            this.txtBtnTransp.Size = new System.Drawing.Size(107, 25);
-            this.txtBtnTransp.TabIndex = 78;
-            this.txtBtnTransp.ButtonClick += new System.EventHandler(this.textButton2_ButtonClick);
             // 
             // grpBxSitPed
             // 
@@ -263,17 +230,6 @@
             // 
             this.pEDIDOBindingSource.DataSource = typeof(Comercial.PEDIDO);
             this.pEDIDOBindingSource.PositionChanged += new System.EventHandler(this.pEDIDOBindingSource_PositionChanged);
-            // 
-            // txtBtnCodCli
-            // 
-            this.txtBtnCodCli.getText = "";
-            this.txtBtnCodCli.Image = ((System.Drawing.Image)(resources.GetObject("txtBtnCodCli.Image")));
-            this.txtBtnCodCli.Location = new System.Drawing.Point(120, 37);
-            this.txtBtnCodCli.Name = "txtBtnCodCli";
-            this.txtBtnCodCli.ShowButton = false;
-            this.txtBtnCodCli.Size = new System.Drawing.Size(107, 25);
-            this.txtBtnCodCli.TabIndex = 2;
-            this.txtBtnCodCli.ButtonClick += new System.EventHandler(this.textButton1_ButtonClick_1);
             // 
             // lbltpfre
             // 
@@ -362,17 +318,17 @@
             this.lbltipped.TabIndex = 60;
             this.lbltipped.Text = "Tipo do Pedido:";
             // 
-            // txtTpped
+            // cmbtpPed
             // 
-            this.txtTpped.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pEDIDOBindingSource, "TIPO", true));
-            this.txtTpped.FormattingEnabled = true;
-            this.txtTpped.Items.AddRange(new object[] {
-            "N = Normal",
-            "C = Complemento Preço"});
-            this.txtTpped.Location = new System.Drawing.Point(539, 35);
-            this.txtTpped.Name = "txtTpped";
-            this.txtTpped.Size = new System.Drawing.Size(127, 21);
-            this.txtTpped.TabIndex = 4;
+            this.cmbtpPed.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.pEDIDOBindingSource, "TIPO", true));
+            this.cmbtpPed.FormattingEnabled = true;
+            this.cmbtpPed.Items.AddRange(new object[] {
+            "Normal",
+            "Complemento Preço"});
+            this.cmbtpPed.Location = new System.Drawing.Point(539, 35);
+            this.cmbtpPed.Name = "cmbtpPed";
+            this.cmbtpPed.Size = new System.Drawing.Size(127, 21);
+            this.cmbtpPed.TabIndex = 4;
             // 
             // txtNomecli
             // 
@@ -453,17 +409,6 @@
             this.grpBxItPedVen.TabStop = false;
             this.grpBxItPedVen.Text = "Itens Pedido Venda";
             this.grpBxItPedVen.Enter += new System.EventHandler(this.grpBxItPedVen_Enter);
-            // 
-            // txtBtnCpdProd
-            // 
-            this.txtBtnCpdProd.getText = "";
-            this.txtBtnCpdProd.Image = global::Comercial.Properties.Resources.search1;
-            this.txtBtnCpdProd.Location = new System.Drawing.Point(10, 296);
-            this.txtBtnCpdProd.Name = "txtBtnCpdProd";
-            this.txtBtnCpdProd.ShowButton = false;
-            this.txtBtnCpdProd.Size = new System.Drawing.Size(107, 25);
-            this.txtBtnCpdProd.TabIndex = 24;
-            this.txtBtnCpdProd.ButtonClick += new System.EventHandler(this.textButton5_ButtonClick);
             // 
             // pnlItenped
             // 
@@ -751,6 +696,61 @@
             this.tbCntrlPedVend.Size = new System.Drawing.Size(889, 557);
             this.tbCntrlPedVend.TabIndex = 2000;
             // 
+            // txtBtnCodVend
+            // 
+            this.txtBtnCodVend.getText = "";
+            this.txtBtnCodVend.Image = ((System.Drawing.Image)(resources.GetObject("txtBtnCodVend.Image")));
+            this.txtBtnCodVend.Location = new System.Drawing.Point(12, 79);
+            this.txtBtnCodVend.Name = "txtBtnCodVend";
+            this.txtBtnCodVend.ShowButton = false;
+            this.txtBtnCodVend.Size = new System.Drawing.Size(106, 25);
+            this.txtBtnCodVend.TabIndex = 80;
+            this.txtBtnCodVend.ButtonClick += new System.EventHandler(this.textButton4_ButtonClick);
+            // 
+            // txtBtnCondPgto
+            // 
+            this.txtBtnCondPgto.getText = "";
+            this.txtBtnCondPgto.Image = ((System.Drawing.Image)(resources.GetObject("txtBtnCondPgto.Image")));
+            this.txtBtnCondPgto.Location = new System.Drawing.Point(311, 81);
+            this.txtBtnCondPgto.Name = "txtBtnCondPgto";
+            this.txtBtnCondPgto.ShowButton = false;
+            this.txtBtnCondPgto.Size = new System.Drawing.Size(103, 25);
+            this.txtBtnCondPgto.TabIndex = 79;
+            this.txtBtnCondPgto.ButtonClick += new System.EventHandler(this.textButton3_ButtonClick);
+            // 
+            // txtBtnTransp
+            // 
+            this.txtBtnTransp.getText = "";
+            this.txtBtnTransp.Image = ((System.Drawing.Image)(resources.GetObject("txtBtnTransp.Image")));
+            this.txtBtnTransp.Location = new System.Drawing.Point(420, 80);
+            this.txtBtnTransp.Name = "txtBtnTransp";
+            this.txtBtnTransp.ShowButton = false;
+            this.txtBtnTransp.Size = new System.Drawing.Size(107, 25);
+            this.txtBtnTransp.TabIndex = 78;
+            this.txtBtnTransp.ButtonClick += new System.EventHandler(this.textButton2_ButtonClick);
+            // 
+            // txtBtnCodCli
+            // 
+            this.txtBtnCodCli.getText = "";
+            this.txtBtnCodCli.Image = ((System.Drawing.Image)(resources.GetObject("txtBtnCodCli.Image")));
+            this.txtBtnCodCli.Location = new System.Drawing.Point(120, 37);
+            this.txtBtnCodCli.Name = "txtBtnCodCli";
+            this.txtBtnCodCli.ShowButton = false;
+            this.txtBtnCodCli.Size = new System.Drawing.Size(107, 25);
+            this.txtBtnCodCli.TabIndex = 2;
+            this.txtBtnCodCli.ButtonClick += new System.EventHandler(this.textButton1_ButtonClick_1);
+            // 
+            // txtBtnCpdProd
+            // 
+            this.txtBtnCpdProd.getText = "";
+            this.txtBtnCpdProd.Image = global::Comercial.Properties.Resources.search1;
+            this.txtBtnCpdProd.Location = new System.Drawing.Point(10, 296);
+            this.txtBtnCpdProd.Name = "txtBtnCpdProd";
+            this.txtBtnCpdProd.ShowButton = false;
+            this.txtBtnCpdProd.Size = new System.Drawing.Size(107, 25);
+            this.txtBtnCpdProd.TabIndex = 24;
+            this.txtBtnCpdProd.ButtonClick += new System.EventHandler(this.textButton5_ButtonClick);
+            // 
             // FrmCadPed
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -804,7 +804,7 @@
         private System.Windows.Forms.Label lbldtemi;
         private System.Windows.Forms.DateTimePicker dtmPckrDtEmissao;
         private System.Windows.Forms.Label lbltipped;
-        private System.Windows.Forms.ComboBox txtTpped;
+        private System.Windows.Forms.ComboBox cmbtpPed;
         private System.Windows.Forms.TextBox txtNomecli;
         private System.Windows.Forms.Label lblnomecli;
         private System.Windows.Forms.Label lblcodcli;

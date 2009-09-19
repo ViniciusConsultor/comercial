@@ -1052,6 +1052,12 @@ namespace Comercial
                     retorno = frmVen.salvar();
                 }
 
+                if (frm is FrmCadPed)
+                {
+                    FrmCadPed frmPed = (FrmCadPed)frm;
+                    frmPed.salvar();
+                }
+
                 if (retorno == 0)
                 {
                     source.EndEdit();

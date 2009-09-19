@@ -121,8 +121,8 @@
   <data name="txtBtnCodVend.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAlwSFlzAAALDgAA
-        Cw4BQL7hQQAAAnBJREFUOE+Vkt9LU2EYx9+CrmLud8ZMaC3vAo0k3CTwLgyz2y667A8owbU2LC1zU0ud
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAlwSFlzAAALDAAA
+        CwwBP0AiyAAAAnBJREFUOE+Vkt9LU2EYx9+CrmLud8ZMaC3vAo0k3CTwLgyz2y667A8owbU2LC1zU0ud
         m1FTJKdgxTCybGhOXampDIca/kg3ZaNNTaa5NvfTp/c50Gw5wQ58z3sO57yf9/t8n4fcrW4kpVX15KHW
         kGfset/eax2d+zg87jD19Pc+NhhvyOk3hUZL8L9UYjbXtXTc/DI5HfZtbUM8HofdXYDATghmF5fhhanb
         eEfdcOxAQKXOcPHThD22/SsIeNG9FIB3gDhd7bPf4Gn7axUelNJBx5uezgWnG0LhCESi0YTwPRyJgsPl
@@ -138,8 +138,8 @@
   <data name="txtBtnCondPgto.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAlwSFlzAAALDgAA
-        Cw4BQL7hQQAAAnBJREFUOE+Vkt9LU2EYx9+CrmLud8ZMaC3vAo0k3CTwLgyz2y667A8owbU2LC1zU0ud
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAlwSFlzAAALDAAA
+        CwwBP0AiyAAAAnBJREFUOE+Vkt9LU2EYx9+CrmLud8ZMaC3vAo0k3CTwLgyz2y667A8owbU2LC1zU0ud
         m1FTJKdgxTCybGhOXampDIca/kg3ZaNNTaa5NvfTp/c50Gw5wQ58z3sO57yf9/t8n4fcrW4kpVX15KHW
         kGfset/eax2d+zg87jD19Pc+NhhvyOk3hUZL8L9UYjbXtXTc/DI5HfZtbUM8HofdXYDATghmF5fhhanb
         eEfdcOxAQKXOcPHThD22/SsIeNG9FIB3gDhd7bPf4Gn7axUelNJBx5uezgWnG0LhCESi0YTwPRyJgsPl
@@ -155,8 +155,8 @@
   <data name="txtBtnTransp.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAlwSFlzAAALDgAA
-        Cw4BQL7hQQAAAnBJREFUOE+Vkt9LU2EYx9+CrmLud8ZMaC3vAo0k3CTwLgyz2y667A8owbU2LC1zU0ud
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAlwSFlzAAALDAAA
+        CwwBP0AiyAAAAnBJREFUOE+Vkt9LU2EYx9+CrmLud8ZMaC3vAo0k3CTwLgyz2y667A8owbU2LC1zU0ud
         m1FTJKdgxTCybGhOXampDIca/kg3ZaNNTaa5NvfTp/c50Gw5wQ58z3sO57yf9/t8n4fcrW4kpVX15KHW
         kGfset/eax2d+zg87jD19Pc+NhhvyOk3hUZL8L9UYjbXtXTc/DI5HfZtbUM8HofdXYDATghmF5fhhanb
         eEfdcOxAQKXOcPHThD22/SsIeNG9FIB3gDhd7bPf4Gn7axUelNJBx5uezgWnG0LhCESi0YTwPRyJgsPl
@@ -169,17 +169,14 @@
         EwGfd2gA1rsHyR8qLCqGM+LTlv8C/IFQR5wLubl9ErFY8xtEigdfnU07igAAAABJRU5ErkJggg==
 </value>
   </data>
-  <metadata name="pEDIDOBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <metadata name="pEDIDOBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
   <data name="txtBtnCodCli.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAlwSFlzAAALDgAA
-        Cw4BQL7hQQAAAnBJREFUOE+Vkt9LU2EYx9+CrmLud8ZMaC3vAo0k3CTwLgyz2y667A8owbU2LC1zU0ud
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAlwSFlzAAALDAAA
+        CwwBP0AiyAAAAnBJREFUOE+Vkt9LU2EYx9+CrmLud8ZMaC3vAo0k3CTwLgyz2y667A8owbU2LC1zU0ud
         m1FTJKdgxTCybGhOXampDIca/kg3ZaNNTaa5NvfTp/c50Gw5wQ58z3sO57yf9/t8n4fcrW4kpVX15KHW
         kGfset/eax2d+zg87jD19Pc+NhhvyOk3hUZL8L9UYjbXtXTc/DI5HfZtbUM8HofdXYDATghmF5fhhanb
         eEfdcOxAQKXOcPHThD22/SsIeNG9FIB3gDhd7bPf4Gn7axUelNJBx5uezgWnG0LhCESi0YTwPRyJgsPl
@@ -192,6 +189,9 @@
         EwGfd2gA1rsHyR8qLCqGM+LTlv8C/IFQR5wLubl9ErFY8xtEigdfnU07igAAAABJRU5ErkJggg==
 </value>
   </data>
+  <metadata name="pEDIDOBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <metadata name="ClmItem.UserAddedColumn" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
