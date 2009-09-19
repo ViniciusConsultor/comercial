@@ -1055,7 +1055,17 @@ namespace Comercial
                 if (frm is FrmCadPed)
                 {
                     FrmCadPed frmPed = (FrmCadPed)frm;
-                    frmPed.salvar();
+
+                    if (frmPed.grpBxPedVenda.Focused)
+                    {
+                        frmPed.salvar();
+                    }
+                    else if (frmPed.grpBxItPedVen.Focused)
+                    {
+                        frmPed.salvaritem();
+                    }
+                   
+                    
                 }
 
               

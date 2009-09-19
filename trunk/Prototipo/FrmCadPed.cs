@@ -40,7 +40,7 @@ namespace Comercial
 
 
         #region Generico
-           private void textButton1_ButtonClick_1(object sender, EventArgs e)
+        private void textButton1_ButtonClick_1(object sender, EventArgs e)
         {
             FrmVisGeral x = new FrmVisGeral(this);
             x.ShowDialog();
@@ -100,7 +100,7 @@ namespace Comercial
             }
         }
         #endregion
-       
+
 
         private void grpBxPedVenda_Enter(object sender, EventArgs e)
         {
@@ -133,8 +133,17 @@ namespace Comercial
             {
                 rdbcanc.Checked = true;
             }
-            
+
         }
 
+        public void salvaritem()
+        {
+            PEDIDO ped = (PEDIDO)pEDIDOBindingSource.Current;
+            {
+                ITEMPEDIDO objItemPedido = new ITEMPEDIDO();
+                objItemPedido.CODPRODUTO = Convert.ToInt32(txtBtnCpdProd.getText);
+                objItemPedido.PRODUTO.UNIDADEMEDIDA.CODUNIDADEMEDIDA = txtUM.Text;
+            }
+        }
     }
 }

@@ -47,8 +47,6 @@
             this.lclcodven = new System.Windows.Forms.Label();
             this.lbldtemi = new System.Windows.Forms.Label();
             this.dtmPckrDtEmissao = new System.Windows.Forms.DateTimePicker();
-            this.lbltipped = new System.Windows.Forms.Label();
-            this.cmbtpPed = new System.Windows.Forms.ComboBox();
             this.txtNomecli = new System.Windows.Forms.TextBox();
             this.lblnomecli = new System.Windows.Forms.Label();
             this.lblcodcli = new System.Windows.Forms.Label();
@@ -156,8 +154,6 @@
             this.grpBxPedVenda.Controls.Add(this.lclcodven);
             this.grpBxPedVenda.Controls.Add(this.lbldtemi);
             this.grpBxPedVenda.Controls.Add(this.dtmPckrDtEmissao);
-            this.grpBxPedVenda.Controls.Add(this.lbltipped);
-            this.grpBxPedVenda.Controls.Add(this.cmbtpPed);
             this.grpBxPedVenda.Controls.Add(this.txtNomecli);
             this.grpBxPedVenda.Controls.Add(this.lblnomecli);
             this.grpBxPedVenda.Controls.Add(this.lblcodcli);
@@ -307,29 +303,6 @@
             this.dtmPckrDtEmissao.TabIndex = 5;
             this.dtmPckrDtEmissao.Value = new System.DateTime(2009, 2, 18, 12, 52, 18, 0);
             // 
-            // lbltipped
-            // 
-            this.lbltipped.AutoSize = true;
-            this.lbltipped.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbltipped.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lbltipped.Location = new System.Drawing.Point(536, 19);
-            this.lbltipped.Name = "lbltipped";
-            this.lbltipped.Size = new System.Drawing.Size(82, 13);
-            this.lbltipped.TabIndex = 60;
-            this.lbltipped.Text = "Tipo do Pedido:";
-            // 
-            // cmbtpPed
-            // 
-            this.cmbtpPed.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.pEDIDOBindingSource, "TIPO", true));
-            this.cmbtpPed.FormattingEnabled = true;
-            this.cmbtpPed.Items.AddRange(new object[] {
-            "Normal",
-            "Complemento Preço"});
-            this.cmbtpPed.Location = new System.Drawing.Point(539, 35);
-            this.cmbtpPed.Name = "cmbtpPed";
-            this.cmbtpPed.Size = new System.Drawing.Size(127, 21);
-            this.cmbtpPed.TabIndex = 4;
-            // 
             // txtNomecli
             // 
             this.txtNomecli.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pEDIDOBindingSource, "CLIENTE.RAZAOSOCIAL", true));
@@ -408,6 +381,7 @@
             this.grpBxItPedVen.TabIndex = 16;
             this.grpBxItPedVen.TabStop = false;
             this.grpBxItPedVen.Text = "Itens Pedido Venda";
+            this.grpBxItPedVen.Visible = false;
             this.grpBxItPedVen.Enter += new System.EventHandler(this.grpBxItPedVen_Enter);
             // 
             // pnlItenped
@@ -787,7 +761,6 @@
         private System.Windows.Forms.ToolStripPanel TopToolStripPanel;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.GroupBox grpBxPedVenda;
         private TextButton txtBtnCodVend;
         private TextButton txtBtnCondPgto;
         private TextButton txtBtnTransp;
@@ -803,14 +776,11 @@
         private System.Windows.Forms.Label lclcodven;
         private System.Windows.Forms.Label lbldtemi;
         private System.Windows.Forms.DateTimePicker dtmPckrDtEmissao;
-        private System.Windows.Forms.Label lbltipped;
-        private System.Windows.Forms.ComboBox cmbtpPed;
         private System.Windows.Forms.TextBox txtNomecli;
         private System.Windows.Forms.Label lblnomecli;
         private System.Windows.Forms.Label lblcodcli;
         private System.Windows.Forms.TextBox txtNumped;
         private System.Windows.Forms.Label lblnumPed;
-        private System.Windows.Forms.GroupBox grpBxItPedVen;
         private TextButton txtBtnCpdProd;
         private System.Windows.Forms.Panel pnlItenped;
         private System.Windows.Forms.DataGridView dtgrdvItenspven;
@@ -846,6 +816,8 @@
         private System.Windows.Forms.BindingSource pEDIDOBindingSource;
         private System.Windows.Forms.BindingSource iTEMPEDIDOBindingSource;
         private System.Windows.Forms.BindingSource uNIDADEMEDIDABindingSource;
+        public System.Windows.Forms.GroupBox grpBxPedVenda;
+        public System.Windows.Forms.GroupBox grpBxItPedVen;
 
     }
 }

@@ -31,12 +31,12 @@
                 this.components = new System.ComponentModel.Container();
                 this.TbCntCadBan = new System.Windows.Forms.TabControl();
                 this.TbPgCadBancos = new System.Windows.Forms.TabPage();
-                this.lblCodigo = new System.Windows.Forms.Label();
+                this.dESCRICAOTextBox = new System.Windows.Forms.TextBox();
                 this.gRUPOPRODUTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
+                this.lblCodigo = new System.Windows.Forms.Label();
                 this.textBox1 = new System.Windows.Forms.TextBox();
                 this.label1 = new System.Windows.Forms.Label();
                 this.LblNumCon = new System.Windows.Forms.Label();
-                this.dESCRICAOTextBox = new System.Windows.Forms.TextBox();
                 this.TbCntCadBan.SuspendLayout();
                 this.TbPgCadBancos.SuspendLayout();
                 ((System.ComponentModel.ISupportInitialize)(this.gRUPOPRODUTOBindingSource)).BeginInit();
@@ -68,6 +68,18 @@
                 this.TbPgCadBancos.Text = "Cadastro de grupo de produto";
                 this.TbPgCadBancos.UseVisualStyleBackColor = true;
                 // 
+                // dESCRICAOTextBox
+                // 
+                this.dESCRICAOTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.gRUPOPRODUTOBindingSource, "DESCRICAO", true));
+                this.dESCRICAOTextBox.Location = new System.Drawing.Point(65, 34);
+                this.dESCRICAOTextBox.Name = "dESCRICAOTextBox";
+                this.dESCRICAOTextBox.Size = new System.Drawing.Size(225, 20);
+                this.dESCRICAOTextBox.TabIndex = 72;
+                // 
+                // gRUPOPRODUTOBindingSource
+                // 
+                this.gRUPOPRODUTOBindingSource.DataSource = typeof(Comercial.GRUPOPRODUTO);
+                // 
                 // lblCodigo
                 // 
                 this.lblCodigo.AutoSize = true;
@@ -78,10 +90,6 @@
                 this.lblCodigo.Size = new System.Drawing.Size(50, 13);
                 this.lblCodigo.TabIndex = 71;
                 this.lblCodigo.Text = "Código:";
-                // 
-                // gRUPOPRODUTOBindingSource
-                // 
-                this.gRUPOPRODUTOBindingSource.DataSource = typeof(Comercial.GRUPOPRODUTO);
                 // 
                 // textBox1
                 // 
@@ -113,14 +121,6 @@
                 this.LblNumCon.Size = new System.Drawing.Size(58, 13);
                 this.LblNumCon.TabIndex = 67;
                 this.LblNumCon.Text = "Decrição";
-                // 
-                // dESCRICAOTextBox
-                // 
-                this.dESCRICAOTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.gRUPOPRODUTOBindingSource, "DESCRICAO", true));
-                this.dESCRICAOTextBox.Location = new System.Drawing.Point(65, 34);
-                this.dESCRICAOTextBox.Name = "dESCRICAOTextBox";
-                this.dESCRICAOTextBox.Size = new System.Drawing.Size(225, 20);
-                this.dESCRICAOTextBox.TabIndex = 72;
                 // 
                 // FrmCadGrpProd
                 // 

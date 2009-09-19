@@ -18,12 +18,13 @@ namespace Comercial
             InitializeComponent();
             this.MdiParent = parent;
             princ = parent;
+
             parent.bindingNavigator1.BindingSource = gRUPOPRODUTOBindingSource;
             parent.setsource(gRUPOPRODUTOBindingSource);
 
 
             ComercialDAO DAO = new ComercialDAO();
-            db = DAO.getComercialEntities();
+            db = new COMERCIALEntities();//DAO.getComercialEntities();
 
             parent.setdb(db);
         }
