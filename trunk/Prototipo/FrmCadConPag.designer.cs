@@ -28,16 +28,19 @@
         /// </summary>
         private void InitializeComponent()
             {
+                this.components = new System.ComponentModel.Container();
                 this.tabPage2 = new System.Windows.Forms.TabPage();
-                this.TbCntConPag = new System.Windows.Forms.TabControl();
                 this.lblCodigo = new System.Windows.Forms.Label();
                 this.chckBxEntrada = new System.Windows.Forms.CheckBox();
                 this.TxtDiaDes = new System.Windows.Forms.TextBox();
                 this.TxtDes = new System.Windows.Forms.TextBox();
                 this.LblDiaPCo = new System.Windows.Forms.Label();
                 this.LblDes = new System.Windows.Forms.Label();
+                this.TbCntConPag = new System.Windows.Forms.TabControl();
+                this.cONDICAOPAGAMENTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
                 this.tabPage2.SuspendLayout();
                 this.TbCntConPag.SuspendLayout();
+                ((System.ComponentModel.ISupportInitialize)(this.cONDICAOPAGAMENTOBindingSource)).BeginInit();
                 this.SuspendLayout();
                 // 
                 // tabPage2
@@ -56,19 +59,10 @@
                 this.tabPage2.Text = "Cadastro Condições de Pagamento";
                 this.tabPage2.UseVisualStyleBackColor = true;
                 // 
-                // TbCntConPag
-                // 
-                this.TbCntConPag.Controls.Add(this.tabPage2);
-                this.TbCntConPag.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                this.TbCntConPag.Location = new System.Drawing.Point(12, 12);
-                this.TbCntConPag.Name = "TbCntConPag";
-                this.TbCntConPag.SelectedIndex = 0;
-                this.TbCntConPag.Size = new System.Drawing.Size(516, 76);
-                this.TbCntConPag.TabIndex = 0;
-                // 
                 // lblCodigo
                 // 
                 this.lblCodigo.AutoSize = true;
+                this.lblCodigo.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cONDICAOPAGAMENTOBindingSource, "CODCONDICAOPAGAMENTO", true));
                 this.lblCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
                 this.lblCodigo.ForeColor = System.Drawing.Color.CadetBlue;
                 this.lblCodigo.Location = new System.Drawing.Point(6, 23);
@@ -90,6 +84,7 @@
                 // 
                 // TxtDiaDes
                 // 
+                this.TxtDiaDes.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cONDICAOPAGAMENTOBindingSource, "QTDEVEZES", true));
                 this.TxtDiaDes.Location = new System.Drawing.Point(313, 19);
                 this.TxtDiaDes.Name = "TxtDiaDes";
                 this.TxtDiaDes.Size = new System.Drawing.Size(106, 20);
@@ -97,6 +92,7 @@
                 // 
                 // TxtDes
                 // 
+                this.TxtDes.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cONDICAOPAGAMENTOBindingSource, "DESCRICAO", true));
                 this.TxtDes.Location = new System.Drawing.Point(65, 19);
                 this.TxtDes.Name = "TxtDes";
                 this.TxtDes.Size = new System.Drawing.Size(239, 20);
@@ -124,6 +120,20 @@
                 this.LblDes.TabIndex = 42;
                 this.LblDes.Text = "Descrição:";
                 // 
+                // TbCntConPag
+                // 
+                this.TbCntConPag.Controls.Add(this.tabPage2);
+                this.TbCntConPag.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                this.TbCntConPag.Location = new System.Drawing.Point(12, 12);
+                this.TbCntConPag.Name = "TbCntConPag";
+                this.TbCntConPag.SelectedIndex = 0;
+                this.TbCntConPag.Size = new System.Drawing.Size(516, 76);
+                this.TbCntConPag.TabIndex = 0;
+                // 
+                // cONDICAOPAGAMENTOBindingSource
+                // 
+                this.cONDICAOPAGAMENTOBindingSource.DataSource = typeof(Comercial.CONDICAOPAGAMENTO);
+                // 
                 // FrmCadConPag
                 // 
                 this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -139,9 +149,11 @@
                 this.ShowIcon = false;
                 this.ShowInTaskbar = false;
                 this.Text = "Cadastro Condições de Pagamento";
+                this.Load += new System.EventHandler(this.FrmCadConPag_Load);
                 this.tabPage2.ResumeLayout(false);
                 this.tabPage2.PerformLayout();
                 this.TbCntConPag.ResumeLayout(false);
+                ((System.ComponentModel.ISupportInitialize)(this.cONDICAOPAGAMENTOBindingSource)).EndInit();
                 this.ResumeLayout(false);
 
             }
@@ -156,6 +168,7 @@
         private System.Windows.Forms.TextBox TxtDes;
         private System.Windows.Forms.Label LblDiaPCo;
         private System.Windows.Forms.Label LblDes;
+        private System.Windows.Forms.BindingSource cONDICAOPAGAMENTOBindingSource;
 
 
         }

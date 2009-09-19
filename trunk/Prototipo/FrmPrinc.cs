@@ -1091,7 +1091,7 @@ namespace Comercial
 
         private void FrmPrinc_Load(object sender, EventArgs e)
         {
-
+         
         }
     }
 }
