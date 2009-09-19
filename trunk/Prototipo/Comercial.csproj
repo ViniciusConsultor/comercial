@@ -466,6 +466,7 @@
     </EntityDeploy>
     <None Include="App.Config" />
     <None Include="Properties\DataSources\CONDICAOPAGAMENTO.datasource" />
+    <None Include="Properties\DataSources\GRUPOPRODUTO.datasource" />
     <None Include="Properties\DataSources\ICMS.datasource" />
     <None Include="Properties\DataSources\ITEMPEDIDO.datasource" />
     <None Include="Properties\DataSources\PEDIDO.datasource" />
