@@ -26,7 +26,7 @@
 [assembly: global::System.Data.Objects.DataClasses.EdmRelationshipAttribute("COMERCIALModel", "TRANSPORTADORAVIA", "TRANSPORTADORA", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Comercial.TRANSPORTADORA), "VIATRANSPORTE", global::System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Comercial.VIATRANSPORTE))]
 
 // Original file name:
-// Generation date: 18/09/2009 19:34:02
+// Generation date: 20/09/2009 17:19:10
 namespace Comercial
 {
     
@@ -910,14 +910,12 @@ namespace Comercial
         /// <param name="cODCONDICAOPAGAMENTO">Initial value of CODCONDICAOPAGAMENTO.</param>
         /// <param name="dESCRICAO">Initial value of DESCRICAO.</param>
         /// <param name="qTDEVEZES">Initial value of QTDEVEZES.</param>
-        /// <param name="eNTRADA">Initial value of ENTRADA.</param>
-        public static CONDICAOPAGAMENTO CreateCONDICAOPAGAMENTO(int cODCONDICAOPAGAMENTO, string dESCRICAO, int qTDEVEZES, string eNTRADA)
+        public static CONDICAOPAGAMENTO CreateCONDICAOPAGAMENTO(int cODCONDICAOPAGAMENTO, string dESCRICAO, int qTDEVEZES)
         {
             CONDICAOPAGAMENTO cONDICAOPAGAMENTO = new CONDICAOPAGAMENTO();
             cONDICAOPAGAMENTO.CODCONDICAOPAGAMENTO = cODCONDICAOPAGAMENTO;
             cONDICAOPAGAMENTO.DESCRICAO = dESCRICAO;
             cONDICAOPAGAMENTO.QTDEVEZES = qTDEVEZES;
-            cONDICAOPAGAMENTO.ENTRADA = eNTRADA;
             return cONDICAOPAGAMENTO;
         }
         /// <summary>
@@ -992,7 +990,7 @@ namespace Comercial
         /// <summary>
         /// There are no comments for Property ENTRADA in the schema.
         /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         public string ENTRADA
         {
@@ -1004,7 +1002,7 @@ namespace Comercial
             {
                 this.OnENTRADAChanging(value);
                 this.ReportPropertyChanging("ENTRADA");
-                this._ENTRADA = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this._ENTRADA = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
                 this.ReportPropertyChanged("ENTRADA");
                 this.OnENTRADAChanged();
             }
@@ -3029,10 +3027,7 @@ namespace Comercial
         /// <param name="uF">Initial value of UF.</param>
         /// <param name="mUNICIPIO">Initial value of MUNICIPIO.</param>
         /// <param name="cEP">Initial value of CEP.</param>
-        /// <param name="tELEFONE">Initial value of TELEFONE.</param>
-        /// <param name="iE">Initial value of IE.</param>
-        /// <param name="eMAIL">Initial value of EMAIL.</param>
-        public static TRANSPORTADORA CreateTRANSPORTADORA(string cNPJ, string nOME, string nOMEREDUZIDO, string eNDERECO, string bAIRRO, string uF, string mUNICIPIO, string cEP, string tELEFONE, string iE, string eMAIL)
+        public static TRANSPORTADORA CreateTRANSPORTADORA(string cNPJ, string nOME, string nOMEREDUZIDO, string eNDERECO, string bAIRRO, string uF, string mUNICIPIO, string cEP)
         {
             TRANSPORTADORA tRANSPORTADORA = new TRANSPORTADORA();
             tRANSPORTADORA.CNPJ = cNPJ;
@@ -3043,9 +3038,6 @@ namespace Comercial
             tRANSPORTADORA.UF = uF;
             tRANSPORTADORA.MUNICIPIO = mUNICIPIO;
             tRANSPORTADORA.CEP = cEP;
-            tRANSPORTADORA.TELEFONE = tELEFONE;
-            tRANSPORTADORA.IE = iE;
-            tRANSPORTADORA.EMAIL = eMAIL;
             return tRANSPORTADORA;
         }
         /// <summary>
@@ -3235,7 +3227,7 @@ namespace Comercial
         /// <summary>
         /// There are no comments for Property TELEFONE in the schema.
         /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         public string TELEFONE
         {
@@ -3247,7 +3239,7 @@ namespace Comercial
             {
                 this.OnTELEFONEChanging(value);
                 this.ReportPropertyChanging("TELEFONE");
-                this._TELEFONE = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this._TELEFONE = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
                 this.ReportPropertyChanged("TELEFONE");
                 this.OnTELEFONEChanged();
             }
@@ -3258,7 +3250,7 @@ namespace Comercial
         /// <summary>
         /// There are no comments for Property IE in the schema.
         /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         public string IE
         {
@@ -3270,7 +3262,7 @@ namespace Comercial
             {
                 this.OnIEChanging(value);
                 this.ReportPropertyChanging("IE");
-                this._IE = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this._IE = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
                 this.ReportPropertyChanged("IE");
                 this.OnIEChanged();
             }
@@ -3281,7 +3273,7 @@ namespace Comercial
         /// <summary>
         /// There are no comments for Property EMAIL in the schema.
         /// </summary>
-        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute(IsNullable=false)]
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
         [global::System.Runtime.Serialization.DataMemberAttribute()]
         public string EMAIL
         {
@@ -3293,7 +3285,7 @@ namespace Comercial
             {
                 this.OnEMAILChanging(value);
                 this.ReportPropertyChanging("EMAIL");
-                this._EMAIL = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, false);
+                this._EMAIL = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
                 this.ReportPropertyChanged("EMAIL");
                 this.OnEMAILChanged();
             }
@@ -3301,6 +3293,29 @@ namespace Comercial
         private string _EMAIL;
         partial void OnEMAILChanging(string value);
         partial void OnEMAILChanged();
+        /// <summary>
+        /// There are no comments for Property FAX in the schema.
+        /// </summary>
+        [global::System.Data.Objects.DataClasses.EdmScalarPropertyAttribute()]
+        [global::System.Runtime.Serialization.DataMemberAttribute()]
+        public string FAX
+        {
+            get
+            {
+                return this._FAX;
+            }
+            set
+            {
+                this.OnFAXChanging(value);
+                this.ReportPropertyChanging("FAX");
+                this._FAX = global::System.Data.Objects.DataClasses.StructuralObject.SetValidValue(value, true);
+                this.ReportPropertyChanged("FAX");
+                this.OnFAXChanged();
+            }
+        }
+        private string _FAX;
+        partial void OnFAXChanging(string value);
+        partial void OnFAXChanged();
         /// <summary>
         /// There are no comments for PEDIDO in the schema.
         /// </summary>

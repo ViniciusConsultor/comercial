@@ -11,53 +11,32 @@ namespace Comercial
     {
     public partial class FrmCadTra : Form
         {
-         private FrmPrinc princ = null;
+            private COMERCIALEntities db;
+            private FrmPrinc princ = null;
+
 
         public FrmCadTra(FrmPrinc parent)
         {
             InitializeComponent();
             this.MdiParent = parent;
             princ = parent;
+
+            parent.bindingNavigator1.BindingSource = tRANSPORTADORABindingSource;
+            parent.setsource(tRANSPORTADORABindingSource);
+
+            ComercialDAO DAO = new ComercialDAO();
+            db = DAO.getComercialEntities();
+            parent.setdb(db);
         }
 
-        private void label4_Click(object sender, EventArgs e)
-            {
 
-            }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-            {
-
-            }
-
-        private void LblIer_Click(object sender, EventArgs e)
-            {
-
-            }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
+        private void FrmCadTra_Load(object sender, EventArgs e)
         {
+            var query = from trans in db.TRANSPORTADORA
+                        select trans;
 
+            tRANSPORTADORABindingSource.DataSource = query;
         }
 
-        private void LblCnp_Click(object sender, EventArgs e)
-            {
-
-            }
-
-        private void TbPgCadTra_Click(object sender, EventArgs e)
-            {
-
-            }
-
-        private void textButton1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblEmailCliente_Click(object sender, EventArgs e)
-        {
-
-        }
         }
     }

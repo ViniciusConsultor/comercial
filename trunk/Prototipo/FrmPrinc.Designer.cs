@@ -200,7 +200,7 @@
             this.cadastroToolStripMenuItem.Name = "cadastroToolStripMenuItem";
             this.cadastroToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
             this.cadastroToolStripMenuItem.Text = "Cadastro";
-            this.cadastroToolStripMenuItem.Click += new System.EventHandler(this.cadastroToolStripMenuItem_Click);
+            
             // 
             // clientesToolStripMenuItem
             // 
@@ -410,7 +410,7 @@
             this.menuStrip1.Size = new System.Drawing.Size(694, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
-            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
+            
             // 
             // tlStrpConsulta
             // 
@@ -522,7 +522,7 @@
             this.tlStrpBtnConMin.Size = new System.Drawing.Size(23, 22);
             this.tlStrpBtnConMin.Text = "Consultar";
             this.tlStrpBtnConMin.Visible = false;
-            this.tlStrpBtnConMin.Click += new System.EventHandler(this.tlStrpBtnConMin_Click);
+            
             // 
             // bindingNavigator1
             // 
@@ -596,7 +596,7 @@
             this.btnPesquisar.Name = "btnPesquisar";
             this.btnPesquisar.Size = new System.Drawing.Size(23, 22);
             this.btnPesquisar.Text = "Pesquisar";
-            this.btnPesquisar.Click += new System.EventHandler(this.toolStripButton1_Click);
+            
             // 
             // toolStripSeparator5
             // 
@@ -723,7 +723,7 @@
             this.Name = "FrmPrinc";
             this.Text = "Sistema comercial e Data Mining";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.FrmPrinc_Load);
+            
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmPrinc_FormClosed);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

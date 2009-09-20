@@ -24,6 +24,13 @@ namespace Comercial
 
             pEDIDOBindingSource.DataSource = query;
 
+
+            var queryitem = from item in db.ITEMPEDIDO
+                            select item;
+
+            iTEMPEDIDOBindingSource.DataSource = query;
+
+
         }
 
         public FrmCadPed(FrmPrinc parent)
@@ -101,6 +108,19 @@ namespace Comercial
         }
         #endregion
 
+        #region SalvarItenPedido
+
+        public void salvaritem()
+        {
+            PEDIDO ped = (PEDIDO)pEDIDOBindingSource.Current;
+            {
+                ITEMPEDIDO objItemPedido = new ITEMPEDIDO();
+                objItemPedido.CODPRODUTO = Convert.ToInt32(txtBtnCpdProd.getText);
+                objItemPedido.PRODUTO.UNIDADEMEDIDA.CODUNIDADEMEDIDA = txtUM.Text;
+            }
+        }
+        #endregion
+
 
         private void grpBxPedVenda_Enter(object sender, EventArgs e)
         {
@@ -136,14 +156,6 @@ namespace Comercial
 
         }
 
-        public void salvaritem()
-        {
-            PEDIDO ped = (PEDIDO)pEDIDOBindingSource.Current;
-            {
-                ITEMPEDIDO objItemPedido = new ITEMPEDIDO();
-                objItemPedido.CODPRODUTO = Convert.ToInt32(txtBtnCpdProd.getText);
-                objItemPedido.PRODUTO.UNIDADEMEDIDA.CODUNIDADEMEDIDA = txtUM.Text;
-            }
-        }
+        
     }
 }

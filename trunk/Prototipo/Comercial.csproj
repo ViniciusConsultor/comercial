@@ -460,17 +460,18 @@
     <None Include="Resources\correios.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.Config" />
     <EntityDeploy Include="Comercial.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Comercial.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="App.Config" />
     <None Include="Properties\DataSources\CONDICAOPAGAMENTO.datasource" />
     <None Include="Properties\DataSources\GRUPOPRODUTO.datasource" />
     <None Include="Properties\DataSources\ICMS.datasource" />
     <None Include="Properties\DataSources\ITEMPEDIDO.datasource" />
     <None Include="Properties\DataSources\PEDIDO.datasource" />
     <None Include="Properties\DataSources\REGIAO.datasource" />
+    <None Include="Properties\DataSources\TRANSPORTADORA.datasource" />
     <None Include="Properties\DataSources\UNIDADEMEDIDA.datasource" />
     <None Include="Properties\DataSources\USUARIO.datasource" />
     <None Include="Properties\DataSources\VENDEDOR.datasource" />

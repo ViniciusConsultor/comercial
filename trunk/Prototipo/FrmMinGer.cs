@@ -11,7 +11,7 @@ namespace Comercial
 {
     public partial class FrmMinGer : Form
     {
-          private FrmPrinc _princ = null;
+        private FrmPrinc _princ = null;
 
         public FrmMinGer(FrmPrinc parent)
         {
@@ -25,61 +25,7 @@ namespace Comercial
             return _princ;
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
 
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void btnExecutar_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void dtGrdVwCampos_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void lstBxTabelas_SelectedIndexChanged(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void btnExecutar_Click_1(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void rdBtnCliente_CheckedChanged(object sender, EventArgs e)
-        {
-          
-        }
-
-        private void rdBtnDia_CheckedChanged(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void chckBxDia_CheckedChanged(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void FrmMinGer_Load(object sender, EventArgs e)
-        {
-
-            
-        }
-
-        private void lstBxProduto_SelectedIndexChanged(object sender, EventArgs e)
-        {
-           
-        }
 
         private void FrmMinGer_Leave(object sender, EventArgs e)
         {
@@ -98,16 +44,11 @@ namespace Comercial
             }
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void cmbBxTipoDataMining_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbBxTipoDataMining.SelectedIndex == 0)
             {
-               rchTxtBxTexto.Text ="O algoritmo Árvores de Decisã é um algoritmo de decisão adequado para modelos de previsão. O algoritmo oferece suporte à previsão de atributos discretos e contínuos.";
+                rchTxtBxTexto.Text = "O algoritmo Árvores de Decisã é um algoritmo de decisão adequado para modelos de previsão. O algoritmo oferece suporte à previsão de atributos discretos e contínuos.";
             }
 
             if (cmbBxTipoDataMining.SelectedIndex == 1)
@@ -123,7 +64,7 @@ namespace Comercial
 
         private void checkBox32_CheckedChanged(object sender, EventArgs e)
         {
-            
+
             //Pedido...
 
             if (checkBox32.Checked)
@@ -148,10 +89,7 @@ namespace Comercial
                 dataGridView1.Rows.Clear();
 
             }
-           
 
-        
-            
         }
 
         private void checkBox31_CheckedChanged(object sender, EventArgs e)
@@ -316,10 +254,10 @@ namespace Comercial
             }
             else
             {
-              dataGridView1.Rows.Clear();
+                dataGridView1.Rows.Clear();
             }
 
-            
+
         }
 
         private void checkBox26_CheckedChanged(object sender, EventArgs e)

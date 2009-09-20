@@ -103,6 +103,7 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Cadastro de vendedor";
             this.tabPage2.UseVisualStyleBackColor = true;
+            
             // 
             // cmBxRegiao
             // 

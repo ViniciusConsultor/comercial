@@ -172,7 +172,7 @@
             this.label1.Size = new System.Drawing.Size(105, 13);
             this.label1.TabIndex = 3;
             this.label1.Text = "Tipo do algoritmo";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            
             // 
             // lblTexto
             // 
@@ -189,7 +189,7 @@
             // 
             // tmrTempo
             // 
-            this.tmrTempo.Tick += new System.EventHandler(this.timer1_Tick);
+            
             // 
             // tabPage2
             // 
@@ -886,7 +886,7 @@
             this.Name = "FrmMinGer";
             this.ShowIcon = false;
             this.Text = "Gerar Modelo de Data Mining";
-            this.Load += new System.EventHandler(this.FrmMinGer_Load);
+            
             this.Leave += new System.EventHandler(this.FrmMinGer_Leave);
             this.tbCntrlMining.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);

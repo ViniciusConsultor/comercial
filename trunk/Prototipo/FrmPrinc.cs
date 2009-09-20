@@ -42,11 +42,6 @@ namespace Comercial
             Application.Exit();
         }
 
-        private void cadastroToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void devoluçãoDeNFToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int x = 0, y = 0;
@@ -158,16 +153,6 @@ namespace Comercial
 
                 filho.WindowState = FormWindowState.Maximized;
             }
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
 
         }
 
@@ -493,10 +478,10 @@ namespace Comercial
                 FrmCadUniMed filho = new FrmCadUniMed(this);
                 filho.Show();
 
-               // Util.Interface.ResetControls(filho);
+                // Util.Interface.ResetControls(filho);
                 Util.Interface.ChangeControlStatus(filho, false);
 
-                
+
                 filho.WindowState = FormWindowState.Maximized;
             }
         }
@@ -524,7 +509,7 @@ namespace Comercial
                 FrmCadConPag filho = new FrmCadConPag(this);
                 filho.Show();
 
-               // Util.Interface.ResetControls(filho);
+                // Util.Interface.ResetControls(filho);
                 Util.Interface.ChangeControlStatus(filho, false);
 
                 filho.WindowState = FormWindowState.Maximized;
@@ -554,7 +539,7 @@ namespace Comercial
                 FrmCadTra filho = new FrmCadTra(this);
                 filho.Show();
 
-              //  Util.Interface.ResetControls(filho);
+                //  Util.Interface.ResetControls(filho);
                 Util.Interface.ChangeControlStatus(filho, false);
 
                 filho.WindowState = FormWindowState.Maximized;
@@ -584,7 +569,7 @@ namespace Comercial
                 FrmCadTes filho = new FrmCadTes(this);
                 filho.Show();
 
-            //    Util.Interface.ResetControls(filho);
+                //    Util.Interface.ResetControls(filho);
                 Util.Interface.ChangeControlStatus(filho, false);
 
                 filho.WindowState = FormWindowState.Maximized;
@@ -627,19 +612,9 @@ namespace Comercial
 
         }
 
-        private void BtnPesquisar_Click(object sender, EventArgs e)
-        {
-          
-        }
-
-        private void BtnNovo_Click(object sender, EventArgs e)
-        {
-          
-        }
-
         private void BtnCancelar_Click(object sender, EventArgs e)
         {
-          
+
 
         }
 
@@ -663,17 +638,7 @@ namespace Comercial
             }
         }
 
-        private void BtnFechar_Click(object sender, EventArgs e)
-        {
-          
-        }
-
         private void Btnvoltar_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void BtnAvancar_Click(object sender, EventArgs e)
         {
 
         }
@@ -784,11 +749,6 @@ namespace Comercial
             }
         }
 
-        private void tlStrpPrinc_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
         private void sobreToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int x = 0, y = 0;
@@ -874,7 +834,7 @@ namespace Comercial
 
             pr.Value = 0;
             pr.Visible = true;
-          //  t.Enabled = true;
+            //  t.Enabled = true;
         }
 
         private void criarUsuárioToolStripMenuItem_Click(object sender, EventArgs e)
@@ -910,29 +870,6 @@ namespace Comercial
             }
         }
 
-        private void tlStrpBtnConMin_Click(object sender, EventArgs e)
-        {
-            //FrmConMin x = new FrmConMin();
-           // x.ShowDialog();
-/* LE EXCEL
-            Microsoft.Office.Interop.Excel.Application AppExcel = new Microsoft.Office.Interop.Excel.Application(); 
-            Microsoft.Office.Interop.Excel.Workbook Excelwb; 
-            Microsoft.Office.Interop.Excel.Sheets Excelss; 
-            Microsoft.Office.Interop.Excel.Worksheet Excelws;Excelwb = 
-            AppExcel.Workbooks.Open("c:\\exemplo.xls", 0, true, 5, "", "", true, 
-            Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "\t", false, false, 0, 
-            true, null, null); 
-            Excelss = Excelwb.Worksheets; 
-            Excelws = (Microsoft.Office.Interop.Excel.Worksheet)Excelss.get_Item(1); 
-            string str; 
-            str = (string)Excelws.get_Range("A1", "A1").Text;
-
-            MessageBox.Show(str);
- * 
- * */
-
-        }
-
         private void tmrTempo_Tick(object sender, EventArgs e)
         {
 
@@ -944,22 +881,22 @@ namespace Comercial
             {
                 if (form is frmConCli)
                 {
-                    FrmRelGeral filho = new FrmRelGeral("FrmConCli",null);
+                    FrmRelGeral filho = new FrmRelGeral("FrmConCli", null);
                     filho.Show();
                 }
                 if (form is FrmConPDV)
                 {
-                    FrmRelGeral filho = new FrmRelGeral("FrmConPDV",((FrmConPDV) form));
+                    FrmRelGeral filho = new FrmRelGeral("FrmConPDV", ((FrmConPDV)form));
                     filho.Show();
                 }
                 if (form is FrmConProd)
                 {
-                    FrmRelGeral filho = new FrmRelGeral("FrmConProd",null);
+                    FrmRelGeral filho = new FrmRelGeral("FrmConProd", null);
                     filho.Show();
                 }
                 if (form is FrmConVen)
                 {
-                    FrmRelGeral filho = new FrmRelGeral("FrmConVen",null);
+                    FrmRelGeral filho = new FrmRelGeral("FrmConVen", null);
                     filho.Show();
                 }
 
@@ -981,11 +918,6 @@ namespace Comercial
             }
         }
 
-        private void toolStripButton1_Click(object sender, EventArgs e)
-        {
-           
-        }
-
         private void BtnPrincipal_Click(object sender, EventArgs e)
         {
             Form frm = this.ActiveMdiChild;
@@ -993,7 +925,7 @@ namespace Comercial
                 return;
             source.CancelEdit();
             db.Dispose();
-            bindingNavigator1.BindingSource = null;            
+            bindingNavigator1.BindingSource = null;
 
             frm.Close();
         }
@@ -1018,7 +950,7 @@ namespace Comercial
              Util.Interface.ChangeControlStatus(frm, false); */
 
             source.CancelEdit();
-            Util.Interface.ChangeControlStatus(frm, false); 
+            Util.Interface.ChangeControlStatus(frm, false);
         }
 
         private void BtnEditar_Click_1(object sender, EventArgs e)
@@ -1064,11 +996,12 @@ namespace Comercial
                     {
                         frmPed.salvaritem();
                     }
-                   
-                    
+
+
                 }
 
-              
+               
+
                 if (retorno == 0)
                 {
                     source.EndEdit();
@@ -1078,19 +1011,19 @@ namespace Comercial
                     source.ResumeBinding();
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-               // if(e.)
+                // if(e.)
                 MessageBox.Show("Campo(s) Obrigatório(s) não preenchido(s).", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-          
+
         }
 
         private void BtnDeletar_Click(object sender, EventArgs e)
         {
             Form frm = this.ActiveMdiChild;
             if (frm == null)
-                return; 
+                return;
             //COLOCAR MENSAGEM DE CONFIRMAÇAO...
             if (MessageBox.Show("Deseja excluir o registro selecionado?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
@@ -1106,9 +1039,6 @@ namespace Comercial
             }
         }
 
-        private void FrmPrinc_Load(object sender, EventArgs e)
-        {
-         
-        }
+
     }
 }

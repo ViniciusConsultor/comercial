@@ -30,12 +30,6 @@ namespace Comercial
             parent.setdb(db);
                  }
 
-
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void FrmCadConPag_Load(object sender, EventArgs e)
         {
             var v = from ven in db.CONDICAOPAGAMENTO
@@ -45,5 +39,7 @@ namespace Comercial
 
 
         }
+
+       
     }
 }

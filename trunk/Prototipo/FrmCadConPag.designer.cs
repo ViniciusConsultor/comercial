@@ -31,16 +31,16 @@
                 this.components = new System.ComponentModel.Container();
                 this.tabPage2 = new System.Windows.Forms.TabPage();
                 this.lblCodigo = new System.Windows.Forms.Label();
+                this.cONDICAOPAGAMENTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
                 this.chckBxEntrada = new System.Windows.Forms.CheckBox();
                 this.TxtDiaDes = new System.Windows.Forms.TextBox();
                 this.TxtDes = new System.Windows.Forms.TextBox();
                 this.LblDiaPCo = new System.Windows.Forms.Label();
                 this.LblDes = new System.Windows.Forms.Label();
                 this.TbCntConPag = new System.Windows.Forms.TabControl();
-                this.cONDICAOPAGAMENTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
                 this.tabPage2.SuspendLayout();
-                this.TbCntConPag.SuspendLayout();
                 ((System.ComponentModel.ISupportInitialize)(this.cONDICAOPAGAMENTOBindingSource)).BeginInit();
+                this.TbCntConPag.SuspendLayout();
                 this.SuspendLayout();
                 // 
                 // tabPage2
@@ -58,6 +58,7 @@
                 this.tabPage2.TabIndex = 1;
                 this.tabPage2.Text = "Cadastro Condições de Pagamento";
                 this.tabPage2.UseVisualStyleBackColor = true;
+                
                 // 
                 // lblCodigo
                 // 
@@ -70,6 +71,10 @@
                 this.lblCodigo.Size = new System.Drawing.Size(43, 13);
                 this.lblCodigo.TabIndex = 47;
                 this.lblCodigo.Text = "Código:";
+                // 
+                // cONDICAOPAGAMENTOBindingSource
+                // 
+                this.cONDICAOPAGAMENTOBindingSource.DataSource = typeof(Comercial.CONDICAOPAGAMENTO);
                 // 
                 // chckBxEntrada
                 // 
@@ -130,10 +135,6 @@
                 this.TbCntConPag.Size = new System.Drawing.Size(516, 76);
                 this.TbCntConPag.TabIndex = 0;
                 // 
-                // cONDICAOPAGAMENTOBindingSource
-                // 
-                this.cONDICAOPAGAMENTOBindingSource.DataSource = typeof(Comercial.CONDICAOPAGAMENTO);
-                // 
                 // FrmCadConPag
                 // 
                 this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -152,8 +153,8 @@
                 this.Load += new System.EventHandler(this.FrmCadConPag_Load);
                 this.tabPage2.ResumeLayout(false);
                 this.tabPage2.PerformLayout();
-                this.TbCntConPag.ResumeLayout(false);
                 ((System.ComponentModel.ISupportInitialize)(this.cONDICAOPAGAMENTOBindingSource)).EndInit();
+                this.TbCntConPag.ResumeLayout(false);
                 this.ResumeLayout(false);
 
             }
