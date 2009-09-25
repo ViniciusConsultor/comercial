@@ -13,13 +13,15 @@ namespace Comercial
     
     public partial class FrmCadCli : Form
     {
-       private FrmPrinc princ = null;
+       private FrmPrinc _princ = null;
 
         public FrmCadCli(FrmPrinc parent)
         {
             InitializeComponent();
             this.MdiParent = parent;
-            princ = parent;
+            _princ = parent;
+            _princ.bindingNavigator1.BindingSource = cLIENTEBindingSource;
+            _princ.setdataSet(cOMERCIALDataSet); 
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -35,6 +37,36 @@ namespace Comercial
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void cLIENTEBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.cLIENTEBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.cOMERCIALDataSet);
+
+        }
+
+        private void FrmCadCli_Load(object sender, EventArgs e)
+        {
+            /*// TODO: This line of code loads data into the 'cOMERCIALDataSet.USUARIO' table. You can move, or remove it, as needed.
+            this.uSUARIOTableAdapter.Fill(this.cOMERCIALDataSet.USUARIO);
+            // TODO: This line of code loads data into the 'cOMERCIALDataSet.CLIENTE' table. You can move, or remove it, as needed.
+            this.cLIENTETableAdapter.Fill(this.cOMERCIALDataSet.CLIENTE);*/
+
+        }
+
+        private void FrmCadCli_Shown(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'cOMERCIALDataSet.USUARIO' table. You can move, or remove it, as needed.
+            this.uSUARIOTableAdapter.Fill(this.cOMERCIALDataSet.USUARIO);
+            // TODO: This line of code loads data into the 'cOMERCIALDataSet.CLIENTE' table. You can move, or remove it, as needed.
+            this.cLIENTETableAdapter.Fill(this.cOMERCIALDataSet.CLIENTE);
+        }
+
+        public int salvar()
+        {
+            return 0;
         }
     }
 }

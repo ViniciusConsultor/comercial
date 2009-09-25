@@ -593,6 +593,13 @@ namespace Comercial
                     FrmCadVen frmVen = (FrmCadVen)frm;
                     retorno = frmVen.salvar();
                 }
+                #region Form's Claudio
+                if (frm is FrmCadCli && edit == false)
+                {
+                    FrmCadCli frmCli = (FrmCadCli)frm;
+                    retorno = frmCli.salvar();
+                }
+                #endregion
 
                 if (retorno == 0)
                 {
@@ -606,7 +613,14 @@ namespace Comercial
                         COMERCIALDataSetTableAdapters.GRUPOPRODUTOTableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.GRUPOPRODUTOTableAdapter();
                         table.Update(_dataset);
                     }
-                    
+                    #region Form's Claudio
+                    if (frm is FrmCadCli)
+                    {
+                        COMERCIALDataSetTableAdapters.CLIENTETableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.CLIENTETableAdapter();
+                        table.Update(_dataset);
+                    }
+                    #endregion
+
                     if (frm is FrmCadUniMed)
                     {
                         COMERCIALDataSetTableAdapters.UNIDADEMEDIDATableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.UNIDADEMEDIDATableAdapter();
