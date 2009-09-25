@@ -30,18 +30,6 @@ namespace Comercial
             }
         }
 
-        public string getText
-        {
-            get
-            {
-                return textBox1.Text;
-            }
-            set
-            {
-                textBox1.Text = value;
-            }
-        }
-
         public bool ShowButton
         {
             get
@@ -53,8 +41,20 @@ namespace Comercial
                 button1.Visible = value;
                 TextButton_Resize(null, null);
             }
-        }
 
+        }
+        public string getText
+        {
+            get
+            {
+                return textBox1.Text;
+            }
+            set
+            {
+                textBox1.Text = value;
+            }
+        }
+       
         public TextButton()
         {
             InitializeComponent();
@@ -97,6 +97,11 @@ namespace Comercial
         }
 
         private void TextButton_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }

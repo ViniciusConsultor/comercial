@@ -29,10 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.Label cEPLabel;
+            System.Windows.Forms.Label sEXOLabel;
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCadVen));
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.txtCPF = new System.Windows.Forms.MaskedTextBox();
+            this.sEXOTextBox = new System.Windows.Forms.TextBox();
             this.vENDEDORBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
+            this.cEPTextBox = new System.Windows.Forms.TextBox();
+            this.txtCPF = new System.Windows.Forms.MaskedTextBox();
             this.cmBxRegiao = new System.Windows.Forms.ComboBox();
             this.rEGIAOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -75,7 +80,9 @@
             this.consultaCPFToolStrip = new System.Windows.Forms.ToolStrip();
             this.cpfToolStripLabel = new System.Windows.Forms.ToolStripLabel();
             this.cpfToolStripTextBox = new System.Windows.Forms.ToolStripTextBox();
-            this.consultaCPFToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            cEPLabel = new System.Windows.Forms.Label();
+            sEXOLabel = new System.Windows.Forms.Label();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vENDEDORBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).BeginInit();
@@ -87,9 +94,31 @@
             this.consultaCPFToolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
+            // cEPLabel
+            // 
+            cEPLabel.AutoSize = true;
+            cEPLabel.Location = new System.Drawing.Point(75, 255);
+            cEPLabel.Name = "cEPLabel";
+            cEPLabel.Size = new System.Drawing.Size(31, 13);
+            cEPLabel.TabIndex = 54;
+            cEPLabel.Text = "CEP:";
+            // 
+            // sEXOLabel
+            // 
+            sEXOLabel.AutoSize = true;
+            sEXOLabel.Location = new System.Drawing.Point(67, 295);
+            sEXOLabel.Name = "sEXOLabel";
+            sEXOLabel.Size = new System.Drawing.Size(39, 13);
+            sEXOLabel.TabIndex = 55;
+            sEXOLabel.Text = "SEXO:";
+            // 
             // tabPage2
             // 
             this.tabPage2.AutoScroll = true;
+            this.tabPage2.Controls.Add(sEXOLabel);
+            this.tabPage2.Controls.Add(this.sEXOTextBox);
+            this.tabPage2.Controls.Add(cEPLabel);
+            this.tabPage2.Controls.Add(this.cEPTextBox);
             this.tabPage2.Controls.Add(this.txtCPF);
             this.tabPage2.Controls.Add(this.cmBxRegiao);
             this.tabPage2.Controls.Add(this.groupBox1);
@@ -112,15 +141,13 @@
             this.tabPage2.Text = "Cadastro de vendedor";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // txtCPF
+            // sEXOTextBox
             // 
-            this.txtCPF.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vENDEDORBindingSource, "CPF", true));
-            this.txtCPF.Location = new System.Drawing.Point(376, 19);
-            this.txtCPF.Mask = "999,999,999-99";
-            this.txtCPF.Name = "txtCPF";
-            this.txtCPF.Size = new System.Drawing.Size(123, 20);
-            this.txtCPF.TabIndex = 54;
-            this.txtCPF.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            this.sEXOTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vENDEDORBindingSource, "SEXO", true));
+            this.sEXOTextBox.Location = new System.Drawing.Point(112, 292);
+            this.sEXOTextBox.Name = "sEXOTextBox";
+            this.sEXOTextBox.Size = new System.Drawing.Size(100, 20);
+            this.sEXOTextBox.TabIndex = 56;
             // 
             // vENDEDORBindingSource
             // 
@@ -132,6 +159,24 @@
             // 
             this.cOMERCIALDataSet.DataSetName = "COMERCIALDataSet";
             this.cOMERCIALDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // cEPTextBox
+            // 
+            this.cEPTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vENDEDORBindingSource, "CEP", true));
+            this.cEPTextBox.Location = new System.Drawing.Point(112, 252);
+            this.cEPTextBox.Name = "cEPTextBox";
+            this.cEPTextBox.Size = new System.Drawing.Size(100, 20);
+            this.cEPTextBox.TabIndex = 55;
+            // 
+            // txtCPF
+            // 
+            this.txtCPF.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vENDEDORBindingSource, "CPF", true));
+            this.txtCPF.Location = new System.Drawing.Point(376, 19);
+            this.txtCPF.Mask = "999,999,999-99";
+            this.txtCPF.Name = "txtCPF";
+            this.txtCPF.Size = new System.Drawing.Size(123, 20);
+            this.txtCPF.TabIndex = 54;
+            this.txtCPF.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // cmBxRegiao
             // 
@@ -481,7 +526,7 @@
             // 
             this.txtRg.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vENDEDORBindingSource, "RG", true));
             this.txtRg.Location = new System.Drawing.Point(9, 59);
-            this.txtRg.Mask = "99.999.999-9";
+            this.txtRg.Mask = "99,999,999-9";
             this.txtRg.Name = "txtRg";
             this.txtRg.Size = new System.Drawing.Size(100, 20);
             this.txtRg.TabIndex = 44;
@@ -586,7 +631,7 @@
             this.consultaCPFToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cpfToolStripLabel,
             this.cpfToolStripTextBox,
-            this.consultaCPFToolStripButton});
+            this.toolStripButton1});
             this.consultaCPFToolStrip.Location = new System.Drawing.Point(0, 0);
             this.consultaCPFToolStrip.Name = "consultaCPFToolStrip";
             this.consultaCPFToolStrip.Size = new System.Drawing.Size(548, 25);
@@ -596,21 +641,23 @@
             // cpfToolStripLabel
             // 
             this.cpfToolStripLabel.Name = "cpfToolStripLabel";
-            this.cpfToolStripLabel.Size = new System.Drawing.Size(26, 22);
-            this.cpfToolStripLabel.Text = "cpf:";
+            this.cpfToolStripLabel.Size = new System.Drawing.Size(30, 22);
+            this.cpfToolStripLabel.Text = "CPF:";
             // 
             // cpfToolStripTextBox
             // 
             this.cpfToolStripTextBox.Name = "cpfToolStripTextBox";
-            this.cpfToolStripTextBox.Size = new System.Drawing.Size(100, 21);
+            this.cpfToolStripTextBox.Size = new System.Drawing.Size(100, 25);
             // 
-            // consultaCPFToolStripButton
+            // toolStripButton1
             // 
-            this.consultaCPFToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.consultaCPFToolStripButton.Name = "consultaCPFToolStripButton";
-            this.consultaCPFToolStripButton.Size = new System.Drawing.Size(70, 17);
-            this.consultaCPFToolStripButton.Text = "consultaCPF";
-            this.consultaCPFToolStripButton.Click += new System.EventHandler(this.consultaCPFToolStripButton_Click);
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton1.Text = "toolStripButton1";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // FrmCadVen
             // 
@@ -696,6 +743,8 @@
         private System.Windows.Forms.ToolStrip consultaCPFToolStrip;
         private System.Windows.Forms.ToolStripLabel cpfToolStripLabel;
         private System.Windows.Forms.ToolStripTextBox cpfToolStripTextBox;
-        private System.Windows.Forms.ToolStripButton consultaCPFToolStripButton;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.TextBox cEPTextBox;
+        private System.Windows.Forms.TextBox sEXOTextBox;
     }
 }
