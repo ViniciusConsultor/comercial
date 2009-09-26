@@ -62,6 +62,8 @@ namespace Comercial
         {
             
 
+
+
         }
 
         private void FrmCadConPag_Shown(object sender, EventArgs e)

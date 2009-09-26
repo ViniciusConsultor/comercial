@@ -607,6 +607,8 @@ namespace Comercial
                     retorno = frmCadProd.salvar();
                 }
 
+               
+
                 if (retorno == 0)
                 {
                     bindingNavigator1.BindingSource.EndEdit();
