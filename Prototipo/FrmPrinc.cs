@@ -601,6 +601,12 @@ namespace Comercial
                 }
                 #endregion
 
+                if (frm is FrmCadProd && edit == false)
+                {
+                    FrmCadProd frmCadProd = (FrmCadProd)frm;
+                    retorno = frmCadProd.salvar();
+                }
+
                 if (retorno == 0)
                 {
                     bindingNavigator1.BindingSource.EndEdit();
@@ -645,6 +651,13 @@ namespace Comercial
                         table.Update(_dataset);
                     }
 
+                    if (frm is FrmCadProd)
+                    {
+
+                        COMERCIALDataSetTableAdapters.PRODUTOTableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.PRODUTOTableAdapter();
+                        table.Update(_dataset);
+                    }
+
                     // ================================
 
                     Util.Interface.ChangeControlStatus(frm, false);
@@ -675,6 +688,13 @@ namespace Comercial
             Form frm = this.ActiveMdiChild;
             if (frm == null)
                 return;
+
+            if (frm is FrmCadProd && edit == false)
+            {
+                FrmCadProd frmCadProd = (FrmCadProd)frm;
+                frmCadProd.novo();
+            }
+
             Util.Interface.ChangeControlStatus(frm, true);
         }
 
@@ -1071,6 +1091,13 @@ namespace Comercial
                     {
                         bindingNavigator1.BindingSource.RemoveCurrent();
                         COMERCIALDataSetTableAdapters.GRUPOPRODUTOTableAdapter teste = new Comercial.COMERCIALDataSetTableAdapters.GRUPOPRODUTOTableAdapter();
+                        teste.Update(_dataset);
+                    }
+
+                    if (frm is FrmCadProd)
+                    {
+                        bindingNavigator1.BindingSource.RemoveCurrent();
+                        COMERCIALDataSetTableAdapters.PRODUTOTableAdapter teste = new Comercial.COMERCIALDataSetTableAdapters.PRODUTOTableAdapter();
                         teste.Update(_dataset);
                     }
                    
