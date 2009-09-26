@@ -24,6 +24,8 @@ namespace Comercial.Util
                     ((ComboBox)ctrl).Enabled = status;
                 else if (ctrl is MaskedTextBox)
                     ((MaskedTextBox)ctrl).Enabled = status;
+                else if (ctrl is DateTimePicker)
+                    ((DateTimePicker)ctrl).Enabled = status;
                 if (ctrl.HasChildren)
                     ChangeControlStatus(ctrl, status);
 

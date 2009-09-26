@@ -28,32 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tbCntrlCadProd = new System.Windows.Forms.TabControl();
             this.tbPgCadProd = new System.Windows.Forms.TabPage();
+            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.pRODUTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
             this.maskedTextBox9 = new System.Windows.Forms.MaskedTextBox();
             this.label27 = new System.Windows.Forms.Label();
             this.maskedTextBox8 = new System.Windows.Forms.MaskedTextBox();
             this.label26 = new System.Windows.Forms.Label();
             this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtGrupo = new Comercial.TextButton();
             this.mskedTxtBxPrecoUnitario = new System.Windows.Forms.MaskedTextBox();
             this.mskedTxtBxPrecoCusto = new System.Windows.Forms.MaskedTextBox();
             this.cmbBxUnidMedida = new System.Windows.Forms.ComboBox();
+            this.uNIDADEMEDIDABindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dtmPckrCadastro = new System.Windows.Forms.DateTimePicker();
             this.lblPrecoCusto = new System.Windows.Forms.Label();
             this.lblPesoLiquido = new System.Windows.Forms.Label();
             this.txtPesoLiquido = new System.Windows.Forms.TextBox();
             this.lblUnidMedida = new System.Windows.Forms.Label();
-            this.lblPrecoUnitario = new System.Windows.Forms.Label();
+            this.lblPrecoVenda = new System.Windows.Forms.Label();
             this.lblGrupo = new System.Windows.Forms.Label();
             this.lblDtCadastro = new System.Windows.Forms.Label();
             this.lblDescricao = new System.Windows.Forms.Label();
             this.txtDescricao = new System.Windows.Forms.TextBox();
+            this.lblCodigo = new System.Windows.Forms.Label();
             this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textButton1 = new Comercial.TextButton();
-            this.textButton2 = new Comercial.TextButton();
             this.maskedTextBox3 = new System.Windows.Forms.MaskedTextBox();
             this.maskedTextBox4 = new System.Windows.Forms.MaskedTextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -76,8 +79,6 @@
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.maskedTextBox5 = new System.Windows.Forms.MaskedTextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.textButton3 = new Comercial.TextButton();
-            this.textButton4 = new Comercial.TextButton();
             this.maskedTextBox6 = new System.Windows.Forms.MaskedTextBox();
             this.maskedTextBox7 = new System.Windows.Forms.MaskedTextBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
@@ -98,9 +99,18 @@
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
             this.textBox8 = new System.Windows.Forms.TextBox();
-            this.lblCodigo = new System.Windows.Forms.Label();
+            this.pRODUTOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.PRODUTOTableAdapter();
+            this.tableAdapterManager = new Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager();
+            this.uNIDADEMEDIDATableAdapter = new Comercial.COMERCIALDataSetTableAdapters.UNIDADEMEDIDATableAdapter();
+            this.textButton1 = new Comercial.TextButton();
+            this.textButton2 = new Comercial.TextButton();
+            this.textButton3 = new Comercial.TextButton();
+            this.textButton4 = new Comercial.TextButton();
             this.tbCntrlCadProd.SuspendLayout();
             this.tbPgCadProd.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pRODUTOBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uNIDADEMEDIDABindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tbCntrlCadProd
@@ -115,13 +125,14 @@
             // 
             // tbPgCadProd
             // 
+            this.tbPgCadProd.AutoScroll = true;
+            this.tbPgCadProd.Controls.Add(this.textBox9);
             this.tbPgCadProd.Controls.Add(this.maskedTextBox9);
             this.tbPgCadProd.Controls.Add(this.label27);
             this.tbPgCadProd.Controls.Add(this.maskedTextBox8);
             this.tbPgCadProd.Controls.Add(this.label26);
             this.tbPgCadProd.Controls.Add(this.maskedTextBox1);
             this.tbPgCadProd.Controls.Add(this.label1);
-            this.tbPgCadProd.Controls.Add(this.txtGrupo);
             this.tbPgCadProd.Controls.Add(this.mskedTxtBxPrecoUnitario);
             this.tbPgCadProd.Controls.Add(this.mskedTxtBxPrecoCusto);
             this.tbPgCadProd.Controls.Add(this.cmbBxUnidMedida);
@@ -130,7 +141,7 @@
             this.tbPgCadProd.Controls.Add(this.lblPesoLiquido);
             this.tbPgCadProd.Controls.Add(this.txtPesoLiquido);
             this.tbPgCadProd.Controls.Add(this.lblUnidMedida);
-            this.tbPgCadProd.Controls.Add(this.lblPrecoUnitario);
+            this.tbPgCadProd.Controls.Add(this.lblPrecoVenda);
             this.tbPgCadProd.Controls.Add(this.lblGrupo);
             this.tbPgCadProd.Controls.Add(this.lblDtCadastro);
             this.tbPgCadProd.Controls.Add(this.lblDescricao);
@@ -144,13 +155,33 @@
             this.tbPgCadProd.Text = "Cadastro de Produtos";
             this.tbPgCadProd.UseVisualStyleBackColor = true;
             // 
+            // textBox9
+            // 
+            this.textBox9.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pRODUTOBindingSource, "CODGRUPOPRODUTO", true));
+            this.textBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox9.Location = new System.Drawing.Point(30, 86);
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new System.Drawing.Size(70, 20);
+            this.textBox9.TabIndex = 3;
+            // 
+            // pRODUTOBindingSource
+            // 
+            this.pRODUTOBindingSource.DataMember = "PRODUTO";
+            this.pRODUTOBindingSource.DataSource = this.cOMERCIALDataSet;
+            // 
+            // cOMERCIALDataSet
+            // 
+            this.cOMERCIALDataSet.DataSetName = "COMERCIALDataSet";
+            this.cOMERCIALDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // maskedTextBox9
             // 
+            this.maskedTextBox9.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pRODUTOBindingSource, "ESTOQUEATUAL", true));
             this.maskedTextBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.maskedTextBox9.Location = new System.Drawing.Point(411, 85);
             this.maskedTextBox9.Name = "maskedTextBox9";
             this.maskedTextBox9.Size = new System.Drawing.Size(55, 20);
-            this.maskedTextBox9.TabIndex = 43;
+            this.maskedTextBox9.TabIndex = 6;
             // 
             // label27
             // 
@@ -165,11 +196,12 @@
             // 
             // maskedTextBox8
             // 
+            this.maskedTextBox8.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pRODUTOBindingSource, "ESTOQUEMIN", true));
             this.maskedTextBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.maskedTextBox8.Location = new System.Drawing.Point(503, 85);
             this.maskedTextBox8.Name = "maskedTextBox8";
             this.maskedTextBox8.Size = new System.Drawing.Size(55, 20);
-            this.maskedTextBox8.TabIndex = 41;
+            this.maskedTextBox8.TabIndex = 7;
             // 
             // label26
             // 
@@ -184,11 +216,12 @@
             // 
             // maskedTextBox1
             // 
+            this.maskedTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pRODUTOBindingSource, "IPI", true));
             this.maskedTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.maskedTextBox1.Location = new System.Drawing.Point(334, 139);
             this.maskedTextBox1.Name = "maskedTextBox1";
             this.maskedTextBox1.Size = new System.Drawing.Size(55, 20);
-            this.maskedTextBox1.TabIndex = 39;
+            this.maskedTextBox1.TabIndex = 10;
             // 
             // label1
             // 
@@ -201,50 +234,52 @@
             this.label1.TabIndex = 38;
             this.label1.Text = "% IPI:";
             // 
-            // txtGrupo
-            // 
-            this.txtGrupo.Image = global::Comercial.Properties.Resources.search1;
-            this.txtGrupo.Location = new System.Drawing.Point(30, 86);
-            this.txtGrupo.Name = "txtGrupo";
-            this.txtGrupo.ShowButton = false;
-            this.txtGrupo.Size = new System.Drawing.Size(143, 25);
-            this.txtGrupo.TabIndex = 37;
-            this.txtGrupo.ButtonClick += new System.EventHandler(this.txtGrupo_ButtonClick);
-            // 
             // mskedTxtBxPrecoUnitario
             // 
+            this.mskedTxtBxPrecoUnitario.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pRODUTOBindingSource, "PRECOVENDA", true));
             this.mskedTxtBxPrecoUnitario.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mskedTxtBxPrecoUnitario.Location = new System.Drawing.Point(30, 139);
             this.mskedTxtBxPrecoUnitario.Name = "mskedTxtBxPrecoUnitario";
             this.mskedTxtBxPrecoUnitario.Size = new System.Drawing.Size(100, 20);
-            this.mskedTxtBxPrecoUnitario.TabIndex = 35;
+            this.mskedTxtBxPrecoUnitario.TabIndex = 8;
             this.mskedTxtBxPrecoUnitario.Leave += new System.EventHandler(this.mskedTxtBxPrecoUnitario_Leave);
             // 
             // mskedTxtBxPrecoCusto
             // 
+            this.mskedTxtBxPrecoCusto.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pRODUTOBindingSource, "PRECOCUSTO", true));
             this.mskedTxtBxPrecoCusto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mskedTxtBxPrecoCusto.Location = new System.Drawing.Point(196, 139);
             this.mskedTxtBxPrecoCusto.Name = "mskedTxtBxPrecoCusto";
             this.mskedTxtBxPrecoCusto.Size = new System.Drawing.Size(116, 20);
-            this.mskedTxtBxPrecoCusto.TabIndex = 34;
+            this.mskedTxtBxPrecoCusto.TabIndex = 9;
             // 
             // cmbBxUnidMedida
             // 
+            this.cmbBxUnidMedida.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.pRODUTOBindingSource, "CODUNIDADEMEDIDA", true));
+            this.cmbBxUnidMedida.DataSource = this.uNIDADEMEDIDABindingSource;
+            this.cmbBxUnidMedida.DisplayMember = "DESCRICAO";
             this.cmbBxUnidMedida.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbBxUnidMedida.FormattingEnabled = true;
             this.cmbBxUnidMedida.Location = new System.Drawing.Point(196, 85);
             this.cmbBxUnidMedida.Name = "cmbBxUnidMedida";
             this.cmbBxUnidMedida.Size = new System.Drawing.Size(100, 21);
-            this.cmbBxUnidMedida.TabIndex = 32;
+            this.cmbBxUnidMedida.TabIndex = 4;
+            this.cmbBxUnidMedida.ValueMember = "CODUNIDADEMEDIDA";
+            // 
+            // uNIDADEMEDIDABindingSource
+            // 
+            this.uNIDADEMEDIDABindingSource.DataMember = "UNIDADEMEDIDA";
+            this.uNIDADEMEDIDABindingSource.DataSource = this.cOMERCIALDataSet;
             // 
             // dtmPckrCadastro
             // 
+            this.dtmPckrCadastro.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.pRODUTOBindingSource, "DATACADASTRO", true));
             this.dtmPckrCadastro.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtmPckrCadastro.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtmPckrCadastro.Location = new System.Drawing.Point(493, 33);
             this.dtmPckrCadastro.Name = "dtmPckrCadastro";
             this.dtmPckrCadastro.Size = new System.Drawing.Size(107, 20);
-            this.dtmPckrCadastro.TabIndex = 28;
+            this.dtmPckrCadastro.TabIndex = 2;
             // 
             // lblPrecoCusto
             // 
@@ -270,11 +305,12 @@
             // 
             // txtPesoLiquido
             // 
+            this.txtPesoLiquido.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pRODUTOBindingSource, "PESOLIQUIDO", true));
             this.txtPesoLiquido.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPesoLiquido.Location = new System.Drawing.Point(319, 86);
             this.txtPesoLiquido.Name = "txtPesoLiquido";
             this.txtPesoLiquido.Size = new System.Drawing.Size(70, 20);
-            this.txtPesoLiquido.TabIndex = 16;
+            this.txtPesoLiquido.TabIndex = 5;
             // 
             // lblUnidMedida
             // 
@@ -287,16 +323,16 @@
             this.lblUnidMedida.TabIndex = 11;
             this.lblUnidMedida.Text = "Unidade Medida:";
             // 
-            // lblPrecoUnitario
+            // lblPrecoVenda
             // 
-            this.lblPrecoUnitario.AutoSize = true;
-            this.lblPrecoUnitario.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPrecoUnitario.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblPrecoUnitario.Location = new System.Drawing.Point(27, 123);
-            this.lblPrecoUnitario.Name = "lblPrecoUnitario";
-            this.lblPrecoUnitario.Size = new System.Drawing.Size(92, 13);
-            this.lblPrecoUnitario.TabIndex = 9;
-            this.lblPrecoUnitario.Text = "Preço Unitário:";
+            this.lblPrecoVenda.AutoSize = true;
+            this.lblPrecoVenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPrecoVenda.ForeColor = System.Drawing.Color.CadetBlue;
+            this.lblPrecoVenda.Location = new System.Drawing.Point(27, 123);
+            this.lblPrecoVenda.Name = "lblPrecoVenda";
+            this.lblPrecoVenda.Size = new System.Drawing.Size(102, 13);
+            this.lblPrecoVenda.TabIndex = 9;
+            this.lblPrecoVenda.Text = "Preço de Venda:";
             // 
             // lblGrupo
             // 
@@ -333,11 +369,24 @@
             // 
             // txtDescricao
             // 
+            this.txtDescricao.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pRODUTOBindingSource, "DESCRICAO", true));
             this.txtDescricao.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDescricao.Location = new System.Drawing.Point(103, 33);
             this.txtDescricao.Name = "txtDescricao";
             this.txtDescricao.Size = new System.Drawing.Size(375, 20);
-            this.txtDescricao.TabIndex = 2;
+            this.txtDescricao.TabIndex = 1;
+            // 
+            // lblCodigo
+            // 
+            this.lblCodigo.AutoSize = true;
+            this.lblCodigo.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pRODUTOBindingSource, "CODPRODUTO", true));
+            this.lblCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCodigo.ForeColor = System.Drawing.Color.CadetBlue;
+            this.lblCodigo.Location = new System.Drawing.Point(27, 36);
+            this.lblCodigo.Name = "lblCodigo";
+            this.lblCodigo.Size = new System.Drawing.Size(50, 13);
+            this.lblCodigo.TabIndex = 1;
+            this.lblCodigo.Text = "Código:";
             // 
             // maskedTextBox2
             // 
@@ -357,24 +406,6 @@
             this.label2.Size = new System.Drawing.Size(40, 13);
             this.label2.TabIndex = 38;
             this.label2.Text = "% IPI:";
-            // 
-            // textButton1
-            // 
-            this.textButton1.Image = global::Comercial.Properties.Resources.search1;
-            this.textButton1.Location = new System.Drawing.Point(30, 137);
-            this.textButton1.Name = "textButton1";
-            this.textButton1.ShowButton = false;
-            this.textButton1.Size = new System.Drawing.Size(144, 25);
-            this.textButton1.TabIndex = 37;
-            // 
-            // textButton2
-            // 
-            this.textButton2.Image = global::Comercial.Properties.Resources.search1;
-            this.textButton2.Location = new System.Drawing.Point(30, 86);
-            this.textButton2.Name = "textButton2";
-            this.textButton2.ShowButton = false;
-            this.textButton2.Size = new System.Drawing.Size(146, 25);
-            this.textButton2.TabIndex = 36;
             // 
             // maskedTextBox3
             // 
@@ -591,24 +622,6 @@
             this.label14.TabIndex = 38;
             this.label14.Text = "% IPI:";
             // 
-            // textButton3
-            // 
-            this.textButton3.Image = global::Comercial.Properties.Resources.search1;
-            this.textButton3.Location = new System.Drawing.Point(30, 137);
-            this.textButton3.Name = "textButton3";
-            this.textButton3.ShowButton = false;
-            this.textButton3.Size = new System.Drawing.Size(144, 25);
-            this.textButton3.TabIndex = 37;
-            // 
-            // textButton4
-            // 
-            this.textButton4.Image = global::Comercial.Properties.Resources.search1;
-            this.textButton4.Location = new System.Drawing.Point(30, 86);
-            this.textButton4.Name = "textButton4";
-            this.textButton4.ShowButton = false;
-            this.textButton4.Size = new System.Drawing.Size(146, 25);
-            this.textButton4.TabIndex = 36;
-            // 
             // maskedTextBox6
             // 
             this.maskedTextBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -805,16 +818,76 @@
             this.textBox8.Size = new System.Drawing.Size(57, 20);
             this.textBox8.TabIndex = 0;
             // 
-            // lblCodigo
+            // pRODUTOTableAdapter
             // 
-            this.lblCodigo.AutoSize = true;
-            this.lblCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCodigo.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblCodigo.Location = new System.Drawing.Point(29, 36);
-            this.lblCodigo.Name = "lblCodigo";
-            this.lblCodigo.Size = new System.Drawing.Size(50, 13);
-            this.lblCodigo.TabIndex = 1;
-            this.lblCodigo.Text = "Código:";
+            this.pRODUTOTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.ACESSOTableAdapter = null;
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.CLIENTETableAdapter = null;
+            this.tableAdapterManager.CONDICAOPAGAMENTOTableAdapter = null;
+            this.tableAdapterManager.GRUPOPRODUTOTableAdapter = null;
+            this.tableAdapterManager.ICMSTableAdapter = null;
+            this.tableAdapterManager.ItemNotaFiscalTableAdapter = null;
+            this.tableAdapterManager.ITEMPEDIDOTableAdapter = null;
+            this.tableAdapterManager.MODULOTableAdapter = null;
+            this.tableAdapterManager.NOTAFISCALTableAdapter = null;
+            this.tableAdapterManager.PEDIDOTableAdapter = null;
+            this.tableAdapterManager.PRODUTOTableAdapter = this.pRODUTOTableAdapter;
+            this.tableAdapterManager.REGIAOTableAdapter = null;
+            this.tableAdapterManager.TRANSPORTADORATableAdapter = null;
+            this.tableAdapterManager.TRANSPORTADORAVIATableAdapter = null;
+            this.tableAdapterManager.UNIDADEMEDIDATableAdapter = this.uNIDADEMEDIDATableAdapter;
+            this.tableAdapterManager.UpdateOrder = Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.USUARIOTableAdapter = null;
+            this.tableAdapterManager.VENDEDORTableAdapter = null;
+            this.tableAdapterManager.VIATRANSPORTETableAdapter = null;
+            // 
+            // uNIDADEMEDIDATableAdapter
+            // 
+            this.uNIDADEMEDIDATableAdapter.ClearBeforeFill = true;
+            // 
+            // textButton1
+            // 
+            this.textButton1.getText = "";
+            this.textButton1.Image = global::Comercial.Properties.Resources.search1;
+            this.textButton1.Location = new System.Drawing.Point(30, 137);
+            this.textButton1.Name = "textButton1";
+            this.textButton1.ShowButton = false;
+            this.textButton1.Size = new System.Drawing.Size(144, 25);
+            this.textButton1.TabIndex = 37;
+            // 
+            // textButton2
+            // 
+            this.textButton2.getText = "";
+            this.textButton2.Image = global::Comercial.Properties.Resources.search1;
+            this.textButton2.Location = new System.Drawing.Point(30, 86);
+            this.textButton2.Name = "textButton2";
+            this.textButton2.ShowButton = false;
+            this.textButton2.Size = new System.Drawing.Size(146, 25);
+            this.textButton2.TabIndex = 36;
+            // 
+            // textButton3
+            // 
+            this.textButton3.getText = "";
+            this.textButton3.Image = global::Comercial.Properties.Resources.search1;
+            this.textButton3.Location = new System.Drawing.Point(30, 137);
+            this.textButton3.Name = "textButton3";
+            this.textButton3.ShowButton = false;
+            this.textButton3.Size = new System.Drawing.Size(144, 25);
+            this.textButton3.TabIndex = 37;
+            // 
+            // textButton4
+            // 
+            this.textButton4.getText = "";
+            this.textButton4.Image = global::Comercial.Properties.Resources.search1;
+            this.textButton4.Location = new System.Drawing.Point(30, 86);
+            this.textButton4.Name = "textButton4";
+            this.textButton4.ShowButton = false;
+            this.textButton4.Size = new System.Drawing.Size(146, 25);
+            this.textButton4.TabIndex = 36;
             // 
             // FrmCadProd
             // 
@@ -829,9 +902,14 @@
             this.Name = "FrmCadProd";
             this.ShowIcon = false;
             this.Text = "Cadastro de Produtos";
+            this.Load += new System.EventHandler(this.FrmCadProd_Load);
+            this.Shown += new System.EventHandler(this.FrmCadProd_Shown);
             this.tbCntrlCadProd.ResumeLayout(false);
             this.tbPgCadProd.ResumeLayout(false);
             this.tbPgCadProd.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pRODUTOBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uNIDADEMEDIDABindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -840,7 +918,6 @@
 
         private System.Windows.Forms.TabControl tbCntrlCadProd;
         private System.Windows.Forms.TabPage tbPgCadProd;
-        private TextButton txtGrupo;
         private System.Windows.Forms.MaskedTextBox mskedTxtBxPrecoUnitario;
         private System.Windows.Forms.MaskedTextBox mskedTxtBxPrecoCusto;
         private System.Windows.Forms.ComboBox cmbBxUnidMedida;
@@ -849,7 +926,7 @@
         private System.Windows.Forms.Label lblPesoLiquido;
         private System.Windows.Forms.TextBox txtPesoLiquido;
         private System.Windows.Forms.Label lblUnidMedida;
-        private System.Windows.Forms.Label lblPrecoUnitario;
+        private System.Windows.Forms.Label lblPrecoVenda;
         private System.Windows.Forms.Label lblGrupo;
         private System.Windows.Forms.Label lblDtCadastro;
         private System.Windows.Forms.Label lblDescricao;
@@ -909,5 +986,12 @@
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.Label lblCodigo;
+        private COMERCIALDataSet cOMERCIALDataSet;
+        private System.Windows.Forms.BindingSource pRODUTOBindingSource;
+        private Comercial.COMERCIALDataSetTableAdapters.PRODUTOTableAdapter pRODUTOTableAdapter;
+        private Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager tableAdapterManager;
+        private System.Windows.Forms.TextBox textBox9;
+        private Comercial.COMERCIALDataSetTableAdapters.UNIDADEMEDIDATableAdapter uNIDADEMEDIDATableAdapter;
+        private System.Windows.Forms.BindingSource uNIDADEMEDIDABindingSource;
     }
 }

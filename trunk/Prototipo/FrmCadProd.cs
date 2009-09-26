@@ -11,38 +11,26 @@ namespace Comercial
 {
     public partial class FrmCadProd : Form
     {
-       private FrmPrinc _princ = null;
+        private FrmPrinc _princ = null;
 
-       public FrmCadProd(FrmPrinc parent)
+        public FrmCadProd(FrmPrinc parent)
         {
             InitializeComponent();
             this.MdiParent = parent;
             _princ = parent;
+
+            _princ.bindingNavigator1.BindingSource = pRODUTOBindingSource;
+            _princ.setdataSet(cOMERCIALDataSet);
         }
 
-       /* private MaskUtil atribuiMascara(char caractere, string texto)
-        {   //preenche atributos mascara
-
-            MaskUtil objetoMascara = new MaskUtil();
-            objetoMascara.recebeTecla(caractere);
-            objetoMascara.recebePalavra(texto);
-
-            return objetoMascara;
-        }
-        */
         private void mskedTxtBxImpostos_KeyPress(object sender, KeyPressEventArgs e)
         {
-           /* MaskUtil mascara = atribuiMascara((char)e.KeyChar, mskedTxtBxImpostos.Text);
 
-            if (!(e.Handled = mascara.mascaraNumero(6))) //este numero é a quantidade de caracteres maximo do campo
-                mskedTxtBxImpostos.Text = mascara.mascaraMoeda();
-
-            mskedTxtBxImpostos.SelectionStart = mskedTxtBxImpostos.Text.Length + 1;*/
         }
 
         private void mskedTxtBxPrecoUnitario_Leave(object sender, EventArgs e)
         {
-            //mskedTxtBxPrecoUnitario.Text = String.Format("{0:c}", mskedTxtBxPrecoUnitario.Text);
+
         }
 
         private void txtFabricante_ButtonClick(object sender, EventArgs e)
@@ -57,6 +45,35 @@ namespace Comercial
             x.ShowDialog();
         }
 
-       
+        private void pRODUTOBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.pRODUTOBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.cOMERCIALDataSet);
+        }
+
+        private void FrmCadProd_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'cOMERCIALDataSet.UNIDADEMEDIDA' table. You can move, or remove it, as needed.
+            this.uNIDADEMEDIDATableAdapter.Fill(this.cOMERCIALDataSet.UNIDADEMEDIDA);
+            // TODO: This line of code loads data into the 'cOMERCIALDataSet.PRODUTO' table. You can move, or remove it, as needed.
+        }
+
+        private void FrmCadProd_Shown(object sender, EventArgs e)
+        {
+            this.pRODUTOTableAdapter.Fill(this.cOMERCIALDataSet.PRODUTO);
+        }
+
+        public int salvar()
+        {
+            String g = dtmPckrCadastro.Text;
+            return 0;
+        }
+
+        public void novo()
+        {
+            dtmPckrCadastro.Value = DateTime.Now;
+
+        }
     }
 }
