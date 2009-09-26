@@ -607,6 +607,17 @@ namespace Comercial
 
                     // ===================================
                     // CADA UM COLOCA O BLOCO DO SEU FORM...
+                    if (frm is FrmCadConPag)
+                    {
+                        COMERCIALDataSetTableAdapters.CONDICAOPAGAMENTOTableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.CONDICAOPAGAMENTOTableAdapter();
+                        table.Update(_dataset);
+                    }
+
+                    if (frm is FrmCadTra)
+                    {
+                        COMERCIALDataSetTableAdapters.TRANSPORTADORATableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.TRANSPORTADORATableAdapter();
+                        table.Update(_dataset);
+                    }
 
                     if (frm is FrmCadGrpProd)
                     {
@@ -1033,6 +1044,22 @@ namespace Comercial
                     // ========================================
                     // CADA UM INFORME O CODIGO ABAIXO...
                     // ========================================
+
+                    if (frm is FrmCadConPag)
+                    {
+                        bindingNavigator1.BindingSource.RemoveCurrent();
+                        COMERCIALDataSetTableAdapters.CONDICAOPAGAMENTOTableAdapter teste = new Comercial.COMERCIALDataSetTableAdapters.CONDICAOPAGAMENTOTableAdapter();
+                        teste.Update(_dataset);
+                    }
+
+                    if (frm is FrmCadTra)
+                    {
+                        bindingNavigator1.BindingSource.RemoveCurrent();
+                        COMERCIALDataSetTableAdapters.TRANSPORTADORATableAdapter teste = new Comercial.COMERCIALDataSetTableAdapters.TRANSPORTADORATableAdapter();
+                        teste.Update(_dataset);
+                    }
+
+
                     if (frm is FrmCadUniMed)
                     {
                         bindingNavigator1.BindingSource.RemoveCurrent();
