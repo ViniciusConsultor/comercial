@@ -71,7 +71,6 @@
                 this.TbPgCadBancos.TabIndex = 1;
                 this.TbPgCadBancos.Text = "Cadastro de grupo de produto";
                 this.TbPgCadBancos.UseVisualStyleBackColor = true;
-                this.TbPgCadBancos.Click += new System.EventHandler(this.TbPgCadBancos_Click);
                 // 
                 // lblCodigo
                 // 
@@ -171,7 +170,6 @@
                 this.Name = "FrmCadGrpProd";
                 this.ShowIcon = false;
                 this.Text = "Cadastro Bancos";
-                this.Load += new System.EventHandler(this.FrmCadBan_Load);
                 this.Shown += new System.EventHandler(this.FrmCadGrpProd_Shown);
                 this.TbCntCadBan.ResumeLayout(false);
                 this.TbPgCadBancos.ResumeLayout(false);

@@ -31,27 +31,27 @@
                 this.components = new System.ComponentModel.Container();
                 this.tabPage2 = new System.Windows.Forms.TabPage();
                 this.lblCodigo = new System.Windows.Forms.Label();
-                this.chckBxEntrada = new System.Windows.Forms.CheckBox();
+                this.cONDICAOPAGAMENTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
+                this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
                 this.TxtDiaDes = new System.Windows.Forms.TextBox();
                 this.TxtDes = new System.Windows.Forms.TextBox();
                 this.LblDiaPCo = new System.Windows.Forms.Label();
                 this.LblDes = new System.Windows.Forms.Label();
                 this.TbCntConPag = new System.Windows.Forms.TabControl();
-                this.cONDICAOPAGAMENTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
-                this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
                 this.cONDICAOPAGAMENTOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.CONDICAOPAGAMENTOTableAdapter();
                 this.tableAdapterManager = new Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager();
+                this.eNTRADACheckBox = new System.Windows.Forms.CheckBox();
                 this.tabPage2.SuspendLayout();
-                this.TbCntConPag.SuspendLayout();
                 ((System.ComponentModel.ISupportInitialize)(this.cONDICAOPAGAMENTOBindingSource)).BeginInit();
                 ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).BeginInit();
+                this.TbCntConPag.SuspendLayout();
                 this.SuspendLayout();
                 // 
                 // tabPage2
                 // 
                 this.tabPage2.AutoScroll = true;
+                this.tabPage2.Controls.Add(this.eNTRADACheckBox);
                 this.tabPage2.Controls.Add(this.lblCodigo);
-                this.tabPage2.Controls.Add(this.chckBxEntrada);
                 this.tabPage2.Controls.Add(this.TxtDiaDes);
                 this.tabPage2.Controls.Add(this.TxtDes);
                 this.tabPage2.Controls.Add(this.LblDiaPCo);
@@ -59,7 +59,7 @@
                 this.tabPage2.Location = new System.Drawing.Point(4, 22);
                 this.tabPage2.Name = "tabPage2";
                 this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-                this.tabPage2.Size = new System.Drawing.Size(522, 55);
+                this.tabPage2.Size = new System.Drawing.Size(541, 74);
                 this.tabPage2.TabIndex = 1;
                 this.tabPage2.Text = "Cadastro Condições de Pagamento";
                 this.tabPage2.UseVisualStyleBackColor = true;
@@ -76,16 +76,15 @@
                 this.lblCodigo.TabIndex = 47;
                 this.lblCodigo.Text = "Código:";
                 // 
-                // chckBxEntrada
+                // cONDICAOPAGAMENTOBindingSource
                 // 
-                this.chckBxEntrada.AutoSize = true;
-                this.chckBxEntrada.ForeColor = System.Drawing.Color.CadetBlue;
-                this.chckBxEntrada.Location = new System.Drawing.Point(425, 22);
-                this.chckBxEntrada.Name = "chckBxEntrada";
-                this.chckBxEntrada.Size = new System.Drawing.Size(70, 17);
-                this.chckBxEntrada.TabIndex = 46;
-                this.chckBxEntrada.Text = "Entrada";
-                this.chckBxEntrada.UseVisualStyleBackColor = true;
+                this.cONDICAOPAGAMENTOBindingSource.DataMember = "CONDICAOPAGAMENTO";
+                this.cONDICAOPAGAMENTOBindingSource.DataSource = this.cOMERCIALDataSet;
+                // 
+                // cOMERCIALDataSet
+                // 
+                this.cOMERCIALDataSet.DataSetName = "COMERCIALDataSet";
+                this.cOMERCIALDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
                 // 
                 // TxtDiaDes
                 // 
@@ -132,18 +131,8 @@
                 this.TbCntConPag.Location = new System.Drawing.Point(12, 12);
                 this.TbCntConPag.Name = "TbCntConPag";
                 this.TbCntConPag.SelectedIndex = 0;
-                this.TbCntConPag.Size = new System.Drawing.Size(530, 81);
+                this.TbCntConPag.Size = new System.Drawing.Size(549, 100);
                 this.TbCntConPag.TabIndex = 0;
-                // 
-                // cONDICAOPAGAMENTOBindingSource
-                // 
-                this.cONDICAOPAGAMENTOBindingSource.DataMember = "CONDICAOPAGAMENTO";
-                this.cONDICAOPAGAMENTOBindingSource.DataSource = this.cOMERCIALDataSet;
-                // 
-                // cOMERCIALDataSet
-                // 
-                this.cOMERCIALDataSet.DataSetName = "COMERCIALDataSet";
-                this.cOMERCIALDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
                 // 
                 // cONDICAOPAGAMENTOTableAdapter
                 // 
@@ -165,17 +154,29 @@
                 this.tableAdapterManager.PRODUTOTableAdapter = null;
                 this.tableAdapterManager.REGIAOTableAdapter = null;
                 this.tableAdapterManager.TRANSPORTADORATableAdapter = null;
+                this.tableAdapterManager.TRANSPORTADORAVIATableAdapter = null;
                 this.tableAdapterManager.UNIDADEMEDIDATableAdapter = null;
                 this.tableAdapterManager.UpdateOrder = Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
                 this.tableAdapterManager.USUARIOTableAdapter = null;
                 this.tableAdapterManager.VENDEDORTableAdapter = null;
+                this.tableAdapterManager.VIATRANSPORTETableAdapter = null;
+                // 
+                // eNTRADACheckBox
+                // 
+                this.eNTRADACheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.cONDICAOPAGAMENTOBindingSource, "ENTRADA", true));
+                this.eNTRADACheckBox.Location = new System.Drawing.Point(425, 19);
+                this.eNTRADACheckBox.Name = "eNTRADACheckBox";
+                this.eNTRADACheckBox.Size = new System.Drawing.Size(104, 24);
+                this.eNTRADACheckBox.TabIndex = 48;
+                this.eNTRADACheckBox.Text = "Entrada";
+                this.eNTRADACheckBox.UseVisualStyleBackColor = true;
                 // 
                 // FrmCadConPag
                 // 
                 this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
                 this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
                 this.BackColor = System.Drawing.Color.WhiteSmoke;
-                this.ClientSize = new System.Drawing.Size(550, 101);
+                this.ClientSize = new System.Drawing.Size(573, 124);
                 this.Controls.Add(this.TbCntConPag);
                 this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
                 this.ForeColor = System.Drawing.Color.CadetBlue;
@@ -189,9 +190,9 @@
                 this.Shown += new System.EventHandler(this.FrmCadConPag_Shown);
                 this.tabPage2.ResumeLayout(false);
                 this.tabPage2.PerformLayout();
-                this.TbCntConPag.ResumeLayout(false);
                 ((System.ComponentModel.ISupportInitialize)(this.cONDICAOPAGAMENTOBindingSource)).EndInit();
                 ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).EndInit();
+                this.TbCntConPag.ResumeLayout(false);
                 this.ResumeLayout(false);
 
             }
@@ -201,7 +202,6 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabControl TbCntConPag;
         private System.Windows.Forms.Label lblCodigo;
-        private System.Windows.Forms.CheckBox chckBxEntrada;
         private System.Windows.Forms.TextBox TxtDiaDes;
         private System.Windows.Forms.TextBox TxtDes;
         private System.Windows.Forms.Label LblDiaPCo;
@@ -210,6 +210,7 @@
         private System.Windows.Forms.BindingSource cONDICAOPAGAMENTOBindingSource;
         private Comercial.COMERCIALDataSetTableAdapters.CONDICAOPAGAMENTOTableAdapter cONDICAOPAGAMENTOTableAdapter;
         private Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager tableAdapterManager;
+        private System.Windows.Forms.CheckBox eNTRADACheckBox;
 
 
         }
