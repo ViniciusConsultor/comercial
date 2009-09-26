@@ -456,9 +456,9 @@
       <DependentUpon>COMERCIALDataSet.xsd</DependentUpon>
     </None>
     <None Include="COMERCIALDataSet.xsd">
+      <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>COMERCIALDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
     </None>
     <None Include="COMERCIALDataSet.xss">
       <DependentUpon>COMERCIALDataSet.xsd</DependentUpon>

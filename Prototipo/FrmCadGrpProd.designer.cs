@@ -154,12 +154,10 @@
                 this.tableAdapterManager.PRODUTOTableAdapter = null;
                 this.tableAdapterManager.REGIAOTableAdapter = null;
                 this.tableAdapterManager.TRANSPORTADORATableAdapter = null;
-                this.tableAdapterManager.TRANSPORTADORAVIATableAdapter = null;
                 this.tableAdapterManager.UNIDADEMEDIDATableAdapter = null;
                 this.tableAdapterManager.UpdateOrder = Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
                 this.tableAdapterManager.USUARIOTableAdapter = null;
                 this.tableAdapterManager.VENDEDORTableAdapter = null;
-                this.tableAdapterManager.VIATRANSPORTETableAdapter = null;
                 // 
                 // FrmCadGrpProd
                 // 

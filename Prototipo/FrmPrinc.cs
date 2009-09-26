@@ -1127,5 +1127,10 @@ namespace Comercial
 
             frm.Close();
         }
+
+        private void arquivoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

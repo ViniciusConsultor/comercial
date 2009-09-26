@@ -70,17 +70,6 @@ namespace Comercial
             this.cONDICAOPAGAMENTOTableAdapter.Fill(this.cOMERCIALDataSet.CONDICAOPAGAMENTO);
         }
 
-        private void consultaCondicaoToolStripButton_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                this.cONDICAOPAGAMENTOTableAdapter.ConsultaCondicao(this.cOMERCIALDataSet.CONDICAOPAGAMENTO);
-            }
-            catch (System.Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-            }
-
-        }
+       
         }
     }

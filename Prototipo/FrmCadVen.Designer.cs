@@ -615,12 +615,10 @@
             this.tableAdapterManager.PRODUTOTableAdapter = null;
             this.tableAdapterManager.REGIAOTableAdapter = this.rEGIAOTableAdapter;
             this.tableAdapterManager.TRANSPORTADORATableAdapter = null;
-            this.tableAdapterManager.TRANSPORTADORAVIATableAdapter = null;
             this.tableAdapterManager.UNIDADEMEDIDATableAdapter = null;
             this.tableAdapterManager.UpdateOrder = Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             this.tableAdapterManager.USUARIOTableAdapter = null;
             this.tableAdapterManager.VENDEDORTableAdapter = this.vENDEDORTableAdapter;
-            this.tableAdapterManager.VIATRANSPORTETableAdapter = null;
             // 
             // rEGIAOTableAdapter
             // 
