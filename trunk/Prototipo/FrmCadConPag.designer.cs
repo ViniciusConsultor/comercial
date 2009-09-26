@@ -28,20 +28,28 @@
         /// </summary>
         private void InitializeComponent()
             {
+                this.components = new System.ComponentModel.Container();
                 this.tabPage2 = new System.Windows.Forms.TabPage();
-                this.TbCntConPag = new System.Windows.Forms.TabControl();
                 this.lblCodigo = new System.Windows.Forms.Label();
                 this.chckBxEntrada = new System.Windows.Forms.CheckBox();
                 this.TxtDiaDes = new System.Windows.Forms.TextBox();
                 this.TxtDes = new System.Windows.Forms.TextBox();
                 this.LblDiaPCo = new System.Windows.Forms.Label();
                 this.LblDes = new System.Windows.Forms.Label();
+                this.TbCntConPag = new System.Windows.Forms.TabControl();
+                this.cONDICAOPAGAMENTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
+                this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
+                this.cONDICAOPAGAMENTOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.CONDICAOPAGAMENTOTableAdapter();
+                this.tableAdapterManager = new Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager();
                 this.tabPage2.SuspendLayout();
                 this.TbCntConPag.SuspendLayout();
+                ((System.ComponentModel.ISupportInitialize)(this.cONDICAOPAGAMENTOBindingSource)).BeginInit();
+                ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).BeginInit();
                 this.SuspendLayout();
                 // 
                 // tabPage2
                 // 
+                this.tabPage2.AutoScroll = true;
                 this.tabPage2.Controls.Add(this.lblCodigo);
                 this.tabPage2.Controls.Add(this.chckBxEntrada);
                 this.tabPage2.Controls.Add(this.TxtDiaDes);
@@ -51,24 +59,15 @@
                 this.tabPage2.Location = new System.Drawing.Point(4, 22);
                 this.tabPage2.Name = "tabPage2";
                 this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-                this.tabPage2.Size = new System.Drawing.Size(508, 50);
+                this.tabPage2.Size = new System.Drawing.Size(522, 55);
                 this.tabPage2.TabIndex = 1;
                 this.tabPage2.Text = "Cadastro Condições de Pagamento";
                 this.tabPage2.UseVisualStyleBackColor = true;
                 // 
-                // TbCntConPag
-                // 
-                this.TbCntConPag.Controls.Add(this.tabPage2);
-                this.TbCntConPag.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                this.TbCntConPag.Location = new System.Drawing.Point(12, 12);
-                this.TbCntConPag.Name = "TbCntConPag";
-                this.TbCntConPag.SelectedIndex = 0;
-                this.TbCntConPag.Size = new System.Drawing.Size(516, 76);
-                this.TbCntConPag.TabIndex = 0;
-                // 
                 // lblCodigo
                 // 
                 this.lblCodigo.AutoSize = true;
+                this.lblCodigo.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cONDICAOPAGAMENTOBindingSource, "CODCONDICAOPAGAMENTO", true));
                 this.lblCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
                 this.lblCodigo.ForeColor = System.Drawing.Color.CadetBlue;
                 this.lblCodigo.Location = new System.Drawing.Point(6, 23);
@@ -90,6 +89,7 @@
                 // 
                 // TxtDiaDes
                 // 
+                this.TxtDiaDes.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cONDICAOPAGAMENTOBindingSource, "QTDEVEZES", true));
                 this.TxtDiaDes.Location = new System.Drawing.Point(313, 19);
                 this.TxtDiaDes.Name = "TxtDiaDes";
                 this.TxtDiaDes.Size = new System.Drawing.Size(106, 20);
@@ -97,6 +97,7 @@
                 // 
                 // TxtDes
                 // 
+                this.TxtDes.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cONDICAOPAGAMENTOBindingSource, "DESCRICAO", true));
                 this.TxtDes.Location = new System.Drawing.Point(65, 19);
                 this.TxtDes.Name = "TxtDes";
                 this.TxtDes.Size = new System.Drawing.Size(239, 20);
@@ -124,12 +125,59 @@
                 this.LblDes.TabIndex = 42;
                 this.LblDes.Text = "Descrição:";
                 // 
+                // TbCntConPag
+                // 
+                this.TbCntConPag.Controls.Add(this.tabPage2);
+                this.TbCntConPag.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                this.TbCntConPag.Location = new System.Drawing.Point(12, 12);
+                this.TbCntConPag.Name = "TbCntConPag";
+                this.TbCntConPag.SelectedIndex = 0;
+                this.TbCntConPag.Size = new System.Drawing.Size(530, 81);
+                this.TbCntConPag.TabIndex = 0;
+                // 
+                // cONDICAOPAGAMENTOBindingSource
+                // 
+                this.cONDICAOPAGAMENTOBindingSource.DataMember = "CONDICAOPAGAMENTO";
+                this.cONDICAOPAGAMENTOBindingSource.DataSource = this.cOMERCIALDataSet;
+                // 
+                // cOMERCIALDataSet
+                // 
+                this.cOMERCIALDataSet.DataSetName = "COMERCIALDataSet";
+                this.cOMERCIALDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+                // 
+                // cONDICAOPAGAMENTOTableAdapter
+                // 
+                this.cONDICAOPAGAMENTOTableAdapter.ClearBeforeFill = true;
+                // 
+                // tableAdapterManager
+                // 
+                this.tableAdapterManager.ACESSOTableAdapter = null;
+                this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+                this.tableAdapterManager.CLIENTETableAdapter = null;
+                this.tableAdapterManager.CONDICAOPAGAMENTOTableAdapter = this.cONDICAOPAGAMENTOTableAdapter;
+                this.tableAdapterManager.GRUPOPRODUTOTableAdapter = null;
+                this.tableAdapterManager.ICMSTableAdapter = null;
+                this.tableAdapterManager.ItemNotaFiscalTableAdapter = null;
+                this.tableAdapterManager.ITEMPEDIDOTableAdapter = null;
+                this.tableAdapterManager.MODULOTableAdapter = null;
+                this.tableAdapterManager.NOTAFISCALTableAdapter = null;
+                this.tableAdapterManager.PEDIDOTableAdapter = null;
+                this.tableAdapterManager.PRODUTOTableAdapter = null;
+                this.tableAdapterManager.REGIAOTableAdapter = null;
+                this.tableAdapterManager.TRANSPORTADORATableAdapter = null;
+                this.tableAdapterManager.TRANSPORTADORAVIATableAdapter = null;
+                this.tableAdapterManager.UNIDADEMEDIDATableAdapter = null;
+                this.tableAdapterManager.UpdateOrder = Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+                this.tableAdapterManager.USUARIOTableAdapter = null;
+                this.tableAdapterManager.VENDEDORTableAdapter = null;
+                this.tableAdapterManager.VIATRANSPORTETableAdapter = null;
+                // 
                 // FrmCadConPag
                 // 
                 this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
                 this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
                 this.BackColor = System.Drawing.Color.WhiteSmoke;
-                this.ClientSize = new System.Drawing.Size(537, 95);
+                this.ClientSize = new System.Drawing.Size(550, 101);
                 this.Controls.Add(this.TbCntConPag);
                 this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
                 this.ForeColor = System.Drawing.Color.CadetBlue;
@@ -139,9 +187,13 @@
                 this.ShowIcon = false;
                 this.ShowInTaskbar = false;
                 this.Text = "Cadastro Condições de Pagamento";
+                this.Load += new System.EventHandler(this.FrmCadConPag_Load);
+                this.Shown += new System.EventHandler(this.FrmCadConPag_Shown);
                 this.tabPage2.ResumeLayout(false);
                 this.tabPage2.PerformLayout();
                 this.TbCntConPag.ResumeLayout(false);
+                ((System.ComponentModel.ISupportInitialize)(this.cONDICAOPAGAMENTOBindingSource)).EndInit();
+                ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).EndInit();
                 this.ResumeLayout(false);
 
             }
@@ -156,6 +208,10 @@
         private System.Windows.Forms.TextBox TxtDes;
         private System.Windows.Forms.Label LblDiaPCo;
         private System.Windows.Forms.Label LblDes;
+        private COMERCIALDataSet cOMERCIALDataSet;
+        private System.Windows.Forms.BindingSource cONDICAOPAGAMENTOBindingSource;
+        private Comercial.COMERCIALDataSetTableAdapters.CONDICAOPAGAMENTOTableAdapter cONDICAOPAGAMENTOTableAdapter;
+        private Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager tableAdapterManager;
 
 
         }

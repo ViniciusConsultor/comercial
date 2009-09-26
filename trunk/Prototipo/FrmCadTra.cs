@@ -11,13 +11,21 @@ namespace Comercial
     {
     public partial class FrmCadTra : Form
         {
-         private FrmPrinc princ = null;
+         private FrmPrinc _princ = null;
 
         public FrmCadTra(FrmPrinc parent)
         {
             InitializeComponent();
             this.MdiParent = parent;
-            princ = parent;
+            _princ = parent;
+
+            // =================================================
+            // COLOCAR ESSA PARTE EM TODOS OS FORMS
+
+            _princ.bindingNavigator1.BindingSource = tRANSPORTADORABindingSource;
+            _princ.setdataSet(cOMERCIALDataSet);
+
+            //==================================================
         }
 
         private void label4_Click(object sender, EventArgs e)
@@ -58,6 +66,20 @@ namespace Comercial
         private void lblEmailCliente_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void tRANSPORTADORABindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.tRANSPORTADORABindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.cOMERCIALDataSet);
+
+        }
+
+               private void FrmCadTra_Shown(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'cOMERCIALDataSet.TRANSPORTADORA' table. You can move, or remove it, as needed.
+            this.tRANSPORTADORATableAdapter.Fill(this.cOMERCIALDataSet.TRANSPORTADORA);
         }
         }
     }
