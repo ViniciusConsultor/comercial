@@ -1142,6 +1142,7 @@ namespace Comercial
 
             bindingNavigator1.BindingSource.CancelEdit();
             Util.Interface.ChangeControlStatus(frm, false);
+            edit = false;
         }
 
         private void BtnPrincipal_Click(object sender, EventArgs e)

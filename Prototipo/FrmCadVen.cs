@@ -38,22 +38,27 @@ namespace Comercial
                 MessageBox.Show("CPF Inválido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return 1;
             }
-/*
-            if (!string.IsNullOrEmpty(txtUsu.Text) && !string.IsNullOrEmpty(txtSenha.Text))
+
+          /*  if (!string.IsNullOrEmpty(txtUsu.Text) && !string.IsNullOrEmpty(txtSenha.Text))
             {
                 COMERCIALDataSetTableAdapters.USUARIOTableAdapter usu = new Comercial.COMERCIALDataSetTableAdapters.USUARIOTableAdapter();
                 usu.Insert(txtUsu.Text, txtSenha.Text, "N", "S");
-            }
+            } 
 
-            COMERCIALDataSet c = new COMERCIALDataSet();
+
+           var x = vENDEDORBindingSource.Current;
+
+
+           COMERCIALDataSetTableAdapters v = (COMERCIALDataSet.)x;
 
             if (radioButton1.Checked)
             {
-                x.SEXO = "M";
+
+                v.SEXO = "M";
             }
             else
             {
-                x.SEXO = "F";
+                vENDEDORTableAdapter.GetData().SEXOColumn.DefaultValue = "F";
             } */
             return 0;
         }
