@@ -12,7 +12,7 @@ namespace Comercial
 {
     public partial class FrmPrinc : Form
     {
-     
+
         private COMERCIALDataSet _dataset;
         private bool edit;
 
@@ -30,12 +30,494 @@ namespace Comercial
             Application.Exit();
         }
 
-        private void cadastroToolStripMenuItem_Click(object sender, EventArgs e)
+        #region Utilitarios
+        private void calculadoraToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            System.Diagnostics.Process.Start("calc");
+        }
+
+        private void notePadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("Notepad");
+        }
+
+        private void excellToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("Excel");
+        }
+        #endregion
+
+        #region Botão Salvar
+        private void BtnSalvar_Click(object sender, EventArgs e)
+        {
+            int retorno = 0;
+            Form frm = this.ActiveMdiChild;
+            if (frm == null)
+                return;
+
+            try
+            {
+                // METODOS QUE NECESSITAM DE LOGICA ANTES DE SALVAR
+                if (frm is FrmCadVen && edit == false)
+                {
+                    FrmCadVen frmVen = (FrmCadVen)frm;
+                    retorno = frmVen.salvar();
+                }
+                #region Form's Claudio
+                if (frm is FrmCadCli && edit == false)
+                {
+                    FrmCadCli frmCli = (FrmCadCli)frm;
+                    retorno = frmCli.salvar();
+                }
+                #endregion
+
+                if (frm is FrmCadProd && edit == false)
+                {
+                    FrmCadProd frmCadProd = (FrmCadProd)frm;
+                    retorno = frmCadProd.salvar();
+                }
+
+
+
+                if (retorno == 0)
+                {
+                    bindingNavigator1.BindingSource.EndEdit();
+
+                    // ===================================
+                    // CADA UM COLOCA O BLOCO DO SEU FORM...
+                    if (frm is FrmCadConPag)
+                    {
+                        COMERCIALDataSetTableAdapters.CONDICAOPAGAMENTOTableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.CONDICAOPAGAMENTOTableAdapter();
+                        table.Update(_dataset);
+                    }
+
+                    if (frm is FrmCadTra)
+                    {
+                        COMERCIALDataSetTableAdapters.TRANSPORTADORATableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.TRANSPORTADORATableAdapter();
+                        table.Update(_dataset);
+                    }
+
+                    if (frm is FrmCadGrpProd)
+                    {
+                        COMERCIALDataSetTableAdapters.GRUPOPRODUTOTableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.GRUPOPRODUTOTableAdapter();
+                        table.Update(_dataset);
+                    }
+                    #region Form's Claudio
+                    if (frm is FrmCadCli)
+                    {
+                        COMERCIALDataSetTableAdapters.CLIENTETableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.CLIENTETableAdapter();
+                        table.Update(_dataset);
+                    }
+                    #endregion
+
+                    if (frm is FrmCadUniMed)
+                    {
+                        COMERCIALDataSetTableAdapters.UNIDADEMEDIDATableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.UNIDADEMEDIDATableAdapter();
+                        table.Update(_dataset);
+                    }
+
+                    if (frm is FrmCadVen)
+                    {
+
+                        COMERCIALDataSetTableAdapters.VENDEDORTableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.VENDEDORTableAdapter();
+                        table.Update(_dataset);
+                    }
+
+                    if (frm is FrmCadProd)
+                    {
+
+                        COMERCIALDataSetTableAdapters.PRODUTOTableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.PRODUTOTableAdapter();
+                        table.Update(_dataset);
+                    }
+
+                    // ================================
+
+                    Util.Interface.ChangeControlStatus(frm, false);
+                    bindingNavigator1.Refresh();
+
+                    edit = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                // if(e.)
+                MessageBox.Show("Campo(s) Obrigatório(s) não preenchido(s).", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+        #endregion
+
+        #region Botão Pesquisar
+        private void BtnPesquisar_Click(object sender, EventArgs e)
+        {
+            if (this.ActiveMdiChild != null)
+            {
+                FrmVisGeral x = new FrmVisGeral(this);
+                x.ShowDialog();
+            }
+        }
+        #endregion
+
+        #region Botão Novo
+        private void BtnNovo_Click(object sender, EventArgs e)
+        {
+            Form frm = this.ActiveMdiChild;
+            if (frm == null)
+                return;
+
+            if (frm is FrmCadProd && edit == false)
+            {
+                FrmCadProd frmCadProd = (FrmCadProd)frm;
+                frmCadProd.novo();
+            }
+
+            Util.Interface.ChangeControlStatus(frm, true);
+        }
+        #endregion
+
+        #region Botão Cancelar
+        private void BtnCancelar_Click(object sender, EventArgs e)
+        {
+            Form frm = this.ActiveMdiChild;
+            if (frm == null)
+                return;
+            /*  Util.Interface.ResetControls(frm);
+             Util.Interface.ChangeControlStatus(frm, false); */
+
+            frm.ResetText();
+
+        }
+        #endregion
+
+        #region Botão Editar
+        private void BtnEditar_Click(object sender, EventArgs e)
+        {
+            Form frm = this.ActiveMdiChild;
+            if (frm == null)
+                return;
+            Util.Interface.ChangeControlStatus(frm, true);
+        }
+        #endregion
+
+        #region Botão Excluir
+        private void BtnExcluir_Click(object sender, EventArgs e)
+        {
+            Form frm = this.ActiveMdiChild;
+            if (frm == null)
+                return;
+            if (MessageBox.Show("Tem certeza que deseja excluir o registro selecionado?", frm.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                MessageBox.Show("Registro excluido com sucesso!", frm.Text,
+                MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            }
+        }
+
+        #endregion
+
+        #region Botão Fechar
+        private void BtnFechar_Click(object sender, EventArgs e)
+        {
+            Form frm = this.ActiveMdiChild;
+            if (frm == null)
+                return;
+            frm.Close();
+        }
+        #endregion
+
+        #region Chamar as telas de acessos
+        private void pedidoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int x = 0, y = 0;
+
+            // Localiza o formulario
+            foreach (Form form in this.MdiChildren)
+            {
+                if (form is FrmConPDV)
+                {
+                    form.WindowState = FormWindowState.Maximized;
+                    form.Activate();
+                    x++;
+                }
+                y++;
+
+            }
+
+            // Para criar o formulario 
+            if (x == 0 && y == 0)
+            {
+                FrmConPDV filho = new FrmConPDV(this);
+                filho.Show();
+
+                tlStrpConsulta.Visible = true;
+                bindingNavigator1.Visible = false;
+
+                // Util.Interface.ResetControls(filho);
+                //Util.Interface.ChangeControlStatus(filho, false);
+
+                filho.WindowState = FormWindowState.Maximized;
+            }
+        }
+
+        private void faturamentoDoPedidoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int x = 0, y = 0;
+
+            // Localiza o formulario
+            foreach (Form form in this.MdiChildren)
+            {
+                if (form is FrmLibPDV)
+                {
+                    form.WindowState = FormWindowState.Maximized;
+                    form.Activate();
+                    x++;
+                }
+                y++;
+
+            }
+
+            // Para criar o formulario 
+            if (x == 0 && y == 0)
+            {
+                FrmLibPDV filho = new FrmLibPDV(this);
+                filho.Show();
+
+                tlStrpProcesso.Visible = true;
+                tlStrpBtnLibPed.Visible = true;
+                bindingNavigator1.Visible = false;
+
+                // Util.Interface.ResetControls(filho);
+                //Util.Interface.ChangeControlStatus(filho, false);
+
+
+
+                filho.WindowState = FormWindowState.Maximized;
+            }
+        }
+
+        private void consultarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int x = 0, y = 0;
+
+            // Localiza o formulario
+            foreach (Form form in this.MdiChildren)
+            {
+                if (form is FrmMinCon)
+                {
+                    form.WindowState = FormWindowState.Maximized;
+                    form.Activate();
+                    x++;
+                }
+                y++;
+
+            }
+
+            // Para criar o formulario 
+            if (x == 0 && y == 0)
+            {
+                FrmMinCon filho = new FrmMinCon(this);
+                filho.Show();
+
+                tlStrpProcesso.Visible = true;
+                tlStrpBtnConMin.Visible = true;
+                tlStrpBtnPesquisar.Visible = false;
+                bindingNavigator1.Visible = false;
+
+                // Util.Interface.ResetControls(filho);
+                //Util.Interface.ChangeControlStatus(filho, false);
+
+
+
+                filho.WindowState = FormWindowState.Maximized;
+            }
+        }
+
+        private void sobreToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int x = 0, y = 0;
+
+            // Localiza o formulario
+            foreach (Form form in this.MdiChildren)
+            {
+                if (form is frmSobre)
+                {
+                    form.WindowState = FormWindowState.Normal;
+                    form.Activate();
+                    x++;
+                }
+                y++;
+
+            }
+
+            // Para criar o formulario 
+            if (x == 0 && y == 0)
+            {
+                frmSobre filho = new frmSobre(this);
+                filho.Show();
+
+                //Util.Interface.ResetControls(filho);
+                //Util.Interface.ChangeControlStatus(filho, false);
+
+                filho.WindowState = FormWindowState.Normal;
+            }
+        }
+
+        private void tlStrpBtnConsultar_Click(object sender, EventArgs e)
+        {
+            if (this.ActiveMdiChild != null)
+            {
+                FrmVisGeral x = new FrmVisGeral(this);
+                x.ShowDialog();
+            }
+        }
+
+        private void gerarNotaFiscalToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            int x = 0, y = 0;
+
+            // Localiza o formulario
+            foreach (Form form in this.MdiChildren)
+            {
+                if (form is FrmEmiNotFis)
+                {
+                    form.WindowState = FormWindowState.Maximized;
+                    form.Activate();
+                    x++;
+                }
+                y++;
+
+            }
+
+            // Para criar o formulario 
+            if (x == 0 && y == 0)
+            {
+                FrmEmiNotFis filho = new FrmEmiNotFis(this);
+                filho.Show();
+
+                tlStrpProcesso.Visible = true;
+                tlStrpBtnGeraNt.Visible = true;
+                bindingNavigator1.Visible = false;
+
+                // Util.Interface.ResetControls(filho);
+                //Util.Interface.ChangeControlStatus(filho, false);
+
+
+
+                filho.WindowState = FormWindowState.Maximized;
+            }
+        }
+
+        private void tlStrpBtnMinGer_Click(object sender, EventArgs e)
+        {
+            FrmMinGer x = (FrmMinGer)this.MdiChildren[0];
+            Control[] c1 = x.Controls.Find("prgrsBrCarrega", true);
+            Control[] c2 = x.Controls.Find("tmrTempo", true);
+            ProgressBar pr = (ProgressBar)c1[0];
+
+
+            pr.Value = 0;
+            pr.Visible = true;
+            //  t.Enabled = true;
+        }
+
+        private void criarUsuárioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int x = 0, y = 0;
+
+            // Localiza o formulario
+            foreach (Form form in this.MdiChildren)
+            {
+                if (form is FrmCadUsu)
+                {
+                    form.WindowState = FormWindowState.Maximized;
+                    form.Activate();
+                    x++;
+                }
+                y++;
+
+            }
+
+            // Para criar o formulario 
+            if (x == 0 && y == 0)
+            {
+                FrmCadUsu filho = new FrmCadUsu(this);
+                filho.Show();
+
+
+                // Util.Interface.ResetControls(filho);
+                //Util.Interface.ChangeControlStatus(filho, false);
+
+
+
+                filho.WindowState = FormWindowState.Maximized;
+            }
+        }
+
+        private void tlStrpBtnConMin_Click(object sender, EventArgs e)
+        {
+            //FrmConMin x = new FrmConMin();
+            // x.ShowDialog();
+            /* LE EXCEL
+                        Microsoft.Office.Interop.Excel.Application AppExcel = new Microsoft.Office.Interop.Excel.Application(); 
+                        Microsoft.Office.Interop.Excel.Workbook Excelwb; 
+                        Microsoft.Office.Interop.Excel.Sheets Excelss; 
+                        Microsoft.Office.Interop.Excel.Worksheet Excelws;Excelwb = 
+                        AppExcel.Workbooks.Open("c:\\exemplo.xls", 0, true, 5, "", "", true, 
+                        Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "\t", false, false, 0, 
+                        true, null, null); 
+                        Excelss = Excelwb.Worksheets; 
+                        Excelws = (Microsoft.Office.Interop.Excel.Worksheet)Excelss.get_Item(1); 
+                        string str; 
+                        str = (string)Excelws.get_Range("A1", "A1").Text;
+
+                        MessageBox.Show(str);
+             * 
+             * */
 
         }
 
-       
+        private void tlStrpBtnImprimir_Click(object sender, EventArgs e)
+        {
+            foreach (Form form in this.MdiChildren)
+            {
+                if (form is frmConCli)
+                {
+                    FrmRelGeral filho = new FrmRelGeral("FrmConCli", null);
+                    filho.Show();
+                }
+                if (form is FrmConPDV)
+                {
+                    FrmRelGeral filho = new FrmRelGeral("FrmConPDV", ((FrmConPDV)form));
+                    filho.Show();
+                }
+                if (form is FrmConProd)
+                {
+                    FrmRelGeral filho = new FrmRelGeral("FrmConProd", null);
+                    filho.Show();
+                }
+                if (form is FrmConVen)
+                {
+                    FrmRelGeral filho = new FrmRelGeral("FrmConVen", null);
+                    filho.Show();
+                }
+
+            }
+        }
+
+        private void tlStrpBtnGeraNt_Click(object sender, EventArgs e)
+        {
+            FrmRelGeral filho = new FrmRelGeral("FrmEmiNF", null);
+            filho.Show();
+        }
+
+        private void tlStrpBtnPesquisar_Click(object sender, EventArgs e)
+        {
+            if (this.ActiveMdiChild != null)
+            {
+                FrmVisGeral x = new FrmVisGeral(this);
+                x.ShowDialog();
+            }
+        }
+
         private void devoluçãoDeNFToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int x = 0, y = 0;
@@ -114,11 +596,6 @@ namespace Comercial
             }
         }
 
-        private void sairToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
         private void vendedoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int x = 0, y = 0;
@@ -147,16 +624,6 @@ namespace Comercial
 
                 filho.WindowState = FormWindowState.Maximized;
             }
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
 
         }
 
@@ -349,21 +816,6 @@ namespace Comercial
 
                 filho.WindowState = FormWindowState.Maximized;
             }
-        }
-
-        private void calculadoraToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            System.Diagnostics.Process.Start("calc");
-        }
-
-        private void notePadToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            System.Diagnostics.Process.Start("Notepad");
-        }
-
-        private void excellToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            System.Diagnostics.Process.Start("Excel");
         }
 
         private void alterarSenhaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -578,481 +1030,9 @@ namespace Comercial
             }
         }
 
-        private void BtnSalvar_Click(object sender, EventArgs e)
-        {
-            int retorno = 0;
-            Form frm = this.ActiveMdiChild;
-            if (frm == null)
-                return;
+        #endregion
 
-            try
-            {
-                // METODOS QUE NECESSITAM DE LOGICA ANTES DE SALVAR
-                if (frm is FrmCadVen && edit == false)
-                {
-                    FrmCadVen frmVen = (FrmCadVen)frm;
-                    retorno = frmVen.salvar();
-                }
-                #region Form's Claudio
-                if (frm is FrmCadCli && edit == false)
-                {
-                    FrmCadCli frmCli = (FrmCadCli)frm;
-                    retorno = frmCli.salvar();
-                }
-                #endregion
-
-                if (frm is FrmCadProd && edit == false)
-                {
-                    FrmCadProd frmCadProd = (FrmCadProd)frm;
-                    retorno = frmCadProd.salvar();
-                }
-
-               
-
-                if (retorno == 0)
-                {
-                    bindingNavigator1.BindingSource.EndEdit();
-
-                    // ===================================
-                    // CADA UM COLOCA O BLOCO DO SEU FORM...
-                    if (frm is FrmCadConPag)
-                    {
-                        COMERCIALDataSetTableAdapters.CONDICAOPAGAMENTOTableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.CONDICAOPAGAMENTOTableAdapter();
-                        table.Update(_dataset);
-                    }
-
-                    if (frm is FrmCadTra)
-                    {
-                        COMERCIALDataSetTableAdapters.TRANSPORTADORATableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.TRANSPORTADORATableAdapter();
-                        table.Update(_dataset);
-                    }
-
-                    if (frm is FrmCadGrpProd)
-                    {
-                        COMERCIALDataSetTableAdapters.GRUPOPRODUTOTableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.GRUPOPRODUTOTableAdapter();
-                        table.Update(_dataset);
-                    }
-                    #region Form's Claudio
-                    if (frm is FrmCadCli)
-                    {
-                        COMERCIALDataSetTableAdapters.CLIENTETableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.CLIENTETableAdapter();
-                        table.Update(_dataset);
-                    }
-                    #endregion
-
-                    if (frm is FrmCadUniMed)
-                    {
-                        COMERCIALDataSetTableAdapters.UNIDADEMEDIDATableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.UNIDADEMEDIDATableAdapter();
-                        table.Update(_dataset);
-                    }
-
-                    if (frm is FrmCadVen)
-                    {
-
-                        COMERCIALDataSetTableAdapters.VENDEDORTableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.VENDEDORTableAdapter();
-                        table.Update(_dataset);
-                    }
-
-                    if (frm is FrmCadProd)
-                    {
-
-                        COMERCIALDataSetTableAdapters.PRODUTOTableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.PRODUTOTableAdapter();
-                        table.Update(_dataset);
-                    }
-
-                    // ================================
-
-                    Util.Interface.ChangeControlStatus(frm, false);
-                    bindingNavigator1.Refresh();
-
-                    edit = false;
-                }
-            }
-            catch (Exception ex)
-            {
-                // if(e.)
-                MessageBox.Show("Campo(s) Obrigatório(s) não preenchido(s).", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
-
-        private void BtnPesquisar_Click(object sender, EventArgs e)
-        {
-            if (this.ActiveMdiChild != null)
-            {
-                FrmVisGeral x = new FrmVisGeral(this);
-                x.ShowDialog();
-            }
-        }
-
-        private void BtnNovo_Click(object sender, EventArgs e)
-        {
-            Form frm = this.ActiveMdiChild;
-            if (frm == null)
-                return;
-
-            if (frm is FrmCadProd && edit == false)
-            {
-                FrmCadProd frmCadProd = (FrmCadProd)frm;
-                frmCadProd.novo();
-            }
-
-            Util.Interface.ChangeControlStatus(frm, true);
-        }
-
-        private void BtnCancelar_Click(object sender, EventArgs e)
-        {
-           Form frm = this.ActiveMdiChild;
-            if (frm == null)
-                return;
-           /*  Util.Interface.ResetControls(frm);
-            Util.Interface.ChangeControlStatus(frm, false); */
-
-            frm.ResetText();
-
-        }
-
-        private void BtnEditar_Click(object sender, EventArgs e)
-        {
-            Form frm = this.ActiveMdiChild;
-            if (frm == null)
-                return;
-            Util.Interface.ChangeControlStatus(frm, true);
-        }
-
-        private void BtnExcluir_Click(object sender, EventArgs e)
-        {
-            Form frm = this.ActiveMdiChild;
-            if (frm == null)
-                return;
-            if (MessageBox.Show("Tem certeza que deseja excluir o registro selecionado?", frm.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-            {
-                MessageBox.Show("Registro excluido com sucesso!", frm.Text,
-                MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-            }
-        }
-
-        private void BtnFechar_Click(object sender, EventArgs e)
-        {
-            Form frm = this.ActiveMdiChild;
-            if (frm == null)
-                return;
-            frm.Close();
-        }
-
-        private void Btnvoltar_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void BtnAvancar_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pedidoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            int x = 0, y = 0;
-
-            // Localiza o formulario
-            foreach (Form form in this.MdiChildren)
-            {
-                if (form is FrmConPDV)
-                {
-                    form.WindowState = FormWindowState.Maximized;
-                    form.Activate();
-                    x++;
-                }
-                y++;
-
-            }
-
-            // Para criar o formulario 
-            if (x == 0 && y == 0)
-            {
-                FrmConPDV filho = new FrmConPDV(this);
-                filho.Show();
-
-                tlStrpConsulta.Visible = true;
-                bindingNavigator1.Visible = false;
-
-                // Util.Interface.ResetControls(filho);
-                //Util.Interface.ChangeControlStatus(filho, false);
-
-                filho.WindowState = FormWindowState.Maximized;
-            }
-        }
-
-        private void faturamentoDoPedidoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            int x = 0, y = 0;
-
-            // Localiza o formulario
-            foreach (Form form in this.MdiChildren)
-            {
-                if (form is FrmLibPDV)
-                {
-                    form.WindowState = FormWindowState.Maximized;
-                    form.Activate();
-                    x++;
-                }
-                y++;
-
-            }
-
-            // Para criar o formulario 
-            if (x == 0 && y == 0)
-            {
-                FrmLibPDV filho = new FrmLibPDV(this);
-                filho.Show();
-
-                tlStrpProcesso.Visible = true;
-                tlStrpBtnLibPed.Visible = true;
-                bindingNavigator1.Visible = false;
-
-                // Util.Interface.ResetControls(filho);
-                //Util.Interface.ChangeControlStatus(filho, false);
-
-
-
-                filho.WindowState = FormWindowState.Maximized;
-            }
-        }
-
-        private void consultarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            int x = 0, y = 0;
-
-            // Localiza o formulario
-            foreach (Form form in this.MdiChildren)
-            {
-                if (form is FrmMinCon)
-                {
-                    form.WindowState = FormWindowState.Maximized;
-                    form.Activate();
-                    x++;
-                }
-                y++;
-
-            }
-
-            // Para criar o formulario 
-            if (x == 0 && y == 0)
-            {
-                FrmMinCon filho = new FrmMinCon(this);
-                filho.Show();
-
-                tlStrpProcesso.Visible = true;
-                tlStrpBtnConMin.Visible = true;
-                tlStrpBtnPesquisar.Visible = false;
-                bindingNavigator1.Visible = false;
-
-                // Util.Interface.ResetControls(filho);
-                //Util.Interface.ChangeControlStatus(filho, false);
-
-
-
-                filho.WindowState = FormWindowState.Maximized;
-            }
-        }
-
-        private void bindingNavigator1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
-        private void sobreToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            int x = 0, y = 0;
-
-            // Localiza o formulario
-            foreach (Form form in this.MdiChildren)
-            {
-                if (form is frmSobre)
-                {
-                    form.WindowState = FormWindowState.Normal;
-                    form.Activate();
-                    x++;
-                }
-                y++;
-
-            }
-
-            // Para criar o formulario 
-            if (x == 0 && y == 0)
-            {
-                frmSobre filho = new frmSobre(this);
-                filho.Show();
-
-                //Util.Interface.ResetControls(filho);
-                //Util.Interface.ChangeControlStatus(filho, false);
-
-                filho.WindowState = FormWindowState.Normal;
-            }
-        }
-
-        private void tlStrpBtnConsultar_Click(object sender, EventArgs e)
-        {
-            if (this.ActiveMdiChild != null)
-            {
-                FrmVisGeral x = new FrmVisGeral(this);
-                x.ShowDialog();
-            }
-        }
-
-        private void gerarNotaFiscalToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            int x = 0, y = 0;
-
-            // Localiza o formulario
-            foreach (Form form in this.MdiChildren)
-            {
-                if (form is FrmEmiNotFis)
-                {
-                    form.WindowState = FormWindowState.Maximized;
-                    form.Activate();
-                    x++;
-                }
-                y++;
-
-            }
-
-            // Para criar o formulario 
-            if (x == 0 && y == 0)
-            {
-                FrmEmiNotFis filho = new FrmEmiNotFis(this);
-                filho.Show();
-
-                tlStrpProcesso.Visible = true;
-                tlStrpBtnGeraNt.Visible = true;
-                bindingNavigator1.Visible = false;
-
-                // Util.Interface.ResetControls(filho);
-                //Util.Interface.ChangeControlStatus(filho, false);
-
-
-
-                filho.WindowState = FormWindowState.Maximized;
-            }
-        }
-
-        private void tlStrpBtnMinGer_Click(object sender, EventArgs e)
-        {
-            FrmMinGer x = (FrmMinGer)this.MdiChildren[0];
-            Control[] c1 = x.Controls.Find("prgrsBrCarrega", true);
-            Control[] c2 = x.Controls.Find("tmrTempo", true);
-            ProgressBar pr = (ProgressBar)c1[0];
-
-
-            pr.Value = 0;
-            pr.Visible = true;
-          //  t.Enabled = true;
-        }
-
-        private void criarUsuárioToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            int x = 0, y = 0;
-
-            // Localiza o formulario
-            foreach (Form form in this.MdiChildren)
-            {
-                if (form is FrmCadUsu)
-                {
-                    form.WindowState = FormWindowState.Maximized;
-                    form.Activate();
-                    x++;
-                }
-                y++;
-
-            }
-
-            // Para criar o formulario 
-            if (x == 0 && y == 0)
-            {
-                FrmCadUsu filho = new FrmCadUsu(this);
-                filho.Show();
-
-
-                // Util.Interface.ResetControls(filho);
-                //Util.Interface.ChangeControlStatus(filho, false);
-
-
-
-                filho.WindowState = FormWindowState.Maximized;
-            }
-        }
-
-        private void tlStrpBtnConMin_Click(object sender, EventArgs e)
-        {
-            //FrmConMin x = new FrmConMin();
-           // x.ShowDialog();
-/* LE EXCEL
-            Microsoft.Office.Interop.Excel.Application AppExcel = new Microsoft.Office.Interop.Excel.Application(); 
-            Microsoft.Office.Interop.Excel.Workbook Excelwb; 
-            Microsoft.Office.Interop.Excel.Sheets Excelss; 
-            Microsoft.Office.Interop.Excel.Worksheet Excelws;Excelwb = 
-            AppExcel.Workbooks.Open("c:\\exemplo.xls", 0, true, 5, "", "", true, 
-            Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "\t", false, false, 0, 
-            true, null, null); 
-            Excelss = Excelwb.Worksheets; 
-            Excelws = (Microsoft.Office.Interop.Excel.Worksheet)Excelss.get_Item(1); 
-            string str; 
-            str = (string)Excelws.get_Range("A1", "A1").Text;
-
-            MessageBox.Show(str);
- * 
- * */
-
-        }
-
-        private void tmrTempo_Tick(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tlStrpBtnImprimir_Click(object sender, EventArgs e)
-        {
-            foreach (Form form in this.MdiChildren)
-            {
-                if (form is frmConCli)
-                {
-                    FrmRelGeral filho = new FrmRelGeral("FrmConCli",null);
-                    filho.Show();
-                }
-                if (form is FrmConPDV)
-                {
-                    FrmRelGeral filho = new FrmRelGeral("FrmConPDV",((FrmConPDV) form));
-                    filho.Show();
-                }
-                if (form is FrmConProd)
-                {
-                    FrmRelGeral filho = new FrmRelGeral("FrmConProd",null);
-                    filho.Show();
-                }
-                if (form is FrmConVen)
-                {
-                    FrmRelGeral filho = new FrmRelGeral("FrmConVen",null);
-                    filho.Show();
-                }
-
-            }
-        }
-
-        private void tlStrpBtnGeraNt_Click(object sender, EventArgs e)
-        {
-            FrmRelGeral filho = new FrmRelGeral("FrmEmiNF", null);
-            filho.Show();
-        }
-
-        private void tlStrpBtnPesquisar_Click(object sender, EventArgs e)
-        {
-            if (this.ActiveMdiChild != null)
-            {
-                FrmVisGeral x = new FrmVisGeral(this);
-                x.ShowDialog();
-            }
-        }
-
+        #region Botão Deletar
         private void BtnDeletar_Click(object sender, EventArgs e)
         {
             Form frm = this.ActiveMdiChild;
@@ -1102,7 +1082,7 @@ namespace Comercial
                         COMERCIALDataSetTableAdapters.PRODUTOTableAdapter teste = new Comercial.COMERCIALDataSetTableAdapters.PRODUTOTableAdapter();
                         teste.Update(_dataset);
                     }
-                   
+
 
 
                 }
@@ -1113,9 +1093,24 @@ namespace Comercial
             }
             else
             {
-               
+
             }
         }
+
+        #endregion
+
+        #region Botão Principal
+        private void BtnPrincipal_Click(object sender, EventArgs e)
+        {
+            Form frm = this.ActiveMdiChild;
+            if (frm == null)
+                return;
+            bindingNavigator1.BindingSource.CancelEdit();
+            bindingNavigator1.BindingSource = null;
+
+            frm.Close();
+        }
+        #endregion
 
         private void toolStripButton5_Click(object sender, EventArgs e)
         {
@@ -1147,20 +1142,8 @@ namespace Comercial
             edit = false;
         }
 
-        private void BtnPrincipal_Click(object sender, EventArgs e)
-        {
-            Form frm = this.ActiveMdiChild;
-            if (frm == null)
-                return;
-            bindingNavigator1.BindingSource.CancelEdit();
-            bindingNavigator1.BindingSource = null;
+        
 
-            frm.Close();
-        }
-
-        private void arquivoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
+       
     }
 }
