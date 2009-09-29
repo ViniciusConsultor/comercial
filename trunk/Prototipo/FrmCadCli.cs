@@ -66,6 +66,30 @@ namespace Comercial
 
         public int salvar()
         {
+            //Valida CPF
+
+            DataRowView x;
+            x= (DataRowView) cLIENTEBindingSource.Current;
+            Validacoes valida = new Validacoes();
+            int cnpj = valida.ValidaCNPJ(txtCnpjCli.Text);
+
+            if (cnpj == 1)
+            {
+                MessageBox.Show("CNPJ Inválido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 1;
+            }
+
+             if (chckBxCred.Checked)
+            {
+                 
+               x["APROVADOCRED"] = "S";
+            }
+            else
+            {
+                x["APROVADOCRED"] = "N";
+            }
+            x["CEP"] = txtCepCli.getText;
+             
             return 0;
         }
     }
