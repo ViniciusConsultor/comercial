@@ -1047,6 +1047,13 @@ namespace Comercial
                     // CADA UM INFORME O CODIGO ABAIXO...
                     // ========================================
 
+                    if (frm is FrmCadVen)
+                    {
+                        bindingNavigator1.BindingSource.RemoveCurrent();
+                        COMERCIALDataSetTableAdapters.VENDEDORTableAdapter teste = new Comercial.COMERCIALDataSetTableAdapters.VENDEDORTableAdapter();
+                        teste.Update(_dataset);
+                    }
+
                     if (frm is FrmCadConPag)
                     {
                         bindingNavigator1.BindingSource.RemoveCurrent();
@@ -1140,6 +1147,11 @@ namespace Comercial
             bindingNavigator1.BindingSource.CancelEdit();
             Util.Interface.ChangeControlStatus(frm, false);
             edit = false;
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
         }
 
         

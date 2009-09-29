@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Configuration;
+using System.Data.SqlClient;
 
 namespace Comercial
 {
@@ -39,14 +41,51 @@ namespace Comercial
                 return 1;
             }
 
-          /*  if (!string.IsNullOrEmpty(txtUsu.Text) && !string.IsNullOrEmpty(txtSenha.Text))
+            if (!string.IsNullOrEmpty(txtUsu.Text) && !string.IsNullOrEmpty(txtSenha.Text))
             {
                 COMERCIALDataSetTableAdapters.USUARIOTableAdapter usu = new Comercial.COMERCIALDataSetTableAdapters.USUARIOTableAdapter();
                 usu.Insert(txtUsu.Text, txtSenha.Text, "N", "S");
+            }
+
+            string c = ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString;
+
+
+             SqlConnection conn = new SqlConnection(c);
+                conn.Open();
+               
+                SqlCommand cmd = new SqlCommand("select * from usuario where usuario = @usu", conn);
+                SqlParameter param = new SqlParameter();
+                param.ParameterName = "@usu";
+                param.Value = txtUsu.Text;
+                cmd.Parameters.Add(param);
+                SqlDataReader reader = cmd.ExecuteReader();
+                
+                reader.Read();
+
+            DataRowView x;
+
+            x = (DataRowView) vENDEDORBindingSource.Current;
+
+            x["CEP"] = txtcep.getText;
+            x["ATIVO"] = "S";
+            x["CodUSUARIO"] = reader["codusuario"];
+
+            reader.Dispose();
+            reader.Close();
+
+            if (radioButton1.Checked)
+            {
+
+                x["SEXO"] = "M";
+            }
+            else
+            {
+                x["SEXO"] = "F";
             } 
 
 
-           var x = vENDEDORBindingSource.Current;
+
+         /*  var x = vENDEDORBindingSource.Current;
 
 
            COMERCIALDataSetTableAdapters v = (COMERCIALDataSet.)x;
@@ -59,7 +98,8 @@ namespace Comercial
             else
             {
                 vENDEDORTableAdapter.GetData().SEXOColumn.DefaultValue = "F";
-            } */
+            } 
+          * */
             return 0;
         }
 
