@@ -1046,7 +1046,14 @@ namespace Comercial
                     // ========================================
                     // CADA UM INFORME O CODIGO ABAIXO...
                     // ========================================
-
+                    #region Form's Claudio
+                    if (frm is FrmCadCli)
+                    {
+                        bindingNavigator1.BindingSource.RemoveCurrent();
+                        COMERCIALDataSetTableAdapters.CLIENTETableAdapter teste = new Comercial.COMERCIALDataSetTableAdapters.CLIENTETableAdapter();
+                        teste.Update(_dataset);
+                    }
+                    #endregion
                     if (frm is FrmCadVen)
                     {
                         bindingNavigator1.BindingSource.RemoveCurrent();
@@ -1136,6 +1143,17 @@ namespace Comercial
                 ven.txtUsu.Enabled = false;
                 ven.txtSenha.Enabled = false;
             }
+            #region Form's Claudio
+            if (frm is FrmCadCli)
+            {
+                FrmCadCli cli = (FrmCadCli)frm;
+
+                cli.txtUsuarioCli.Enabled = false;
+                cli.txtSenhaCli.Enabled = false;
+                cli.txtCnpjCli.Enabled = false;
+            }
+
+            #endregion
         }
 
         private void toolStripButton4_Click(object sender, EventArgs e)

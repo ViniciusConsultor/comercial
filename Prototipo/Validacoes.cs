@@ -49,6 +49,79 @@ namespace Comercial
         }
 
 
+
+        public int ValidaCNPJ(string cnpj)
+        {
+            /*int result;
+            int d1;
+            int d2;
+            int soma = 0;
+            for (int i = 0; i < cnpj.Length - 2; i++)
+            {
+                switch (i)
+                {
+                    case 0: soma += Convert.ToInt32(Convert.ToString(cnpj[i])) * 5;break;
+                    case 1: soma += Convert.ToInt32(Convert.ToString(cnpj[i])) * 4;break;
+                    case 2: soma += Convert.ToInt32(Convert.ToString(cnpj[i])) * 3;break;
+                    case 3: soma += Convert.ToInt32(Convert.ToString(cnpj[i])) * 2;break;
+                    case 4: soma += Convert.ToInt32(Convert.ToString(cnpj[i])) * 9;break;
+                    case 5: soma += Convert.ToInt32(Convert.ToString(cnpj[i])) * 8;break;
+                    case 6: soma += Convert.ToInt32(Convert.ToString(cnpj[i])) * 7;break;
+                    case 7: soma += Convert.ToInt32(Convert.ToString(cnpj[i])) * 6;break;
+                    case 8: soma += Convert.ToInt32(Convert.ToString(cnpj[i])) * 5;break;
+                    case 9: soma += Convert.ToInt32(Convert.ToString(cnpj[i])) * 4;break;
+                    case 10: soma += Convert.ToInt32(Convert.ToString(cnpj[i])) * 3;break;
+                    case 11: soma += Convert.ToInt32(Convert.ToString(cnpj[i])) * 2;break;
+                }
+            }
+            int resto = (soma % 11);
+
+            if (resto == 1 || resto == 0)
+                d1 = 0;
+            else
+            {
+                resto = 11 - resto;
+                d1 = resto;
+            }
+            
+            soma = 0;
+            for (int i = 0; i < cnpj.Length - 2; i++)
+            {
+                switch (i)
+                {
+                    case 0: soma += Convert.ToInt32(Convert.ToString(cnpj[i])) * 6;break;
+                    case 1: soma += Convert.ToInt32(Convert.ToString(cnpj[i])) * 5; break;
+                    case 2: soma += Convert.ToInt32(Convert.ToString(cnpj[i])) * 4; break;
+                    case 3: soma += Convert.ToInt32(Convert.ToString(cnpj[i])) * 3; break;
+                    case 4: soma += Convert.ToInt32(Convert.ToString(cnpj[i])) * 2; break;
+                    case 5: soma += Convert.ToInt32(Convert.ToString(cnpj[i])) * 9; break;
+                    case 6: soma += Convert.ToInt32(Convert.ToString(cnpj[i])) * 8; break;
+                    case 7: soma += Convert.ToInt32(Convert.ToString(cnpj[i])) * 7; break;
+                    case 8: soma += Convert.ToInt32(Convert.ToString(cnpj[i])) * 6; break;
+                    case 9: soma += Convert.ToInt32(Convert.ToString(cnpj[i])) * 5; break;
+                    case 10: soma += Convert.ToInt32(Convert.ToString(cnpj[i])) * 4; break;
+                    case 11: soma += Convert.ToInt32(Convert.ToString(cnpj[i])) * 3; break;
+                }
+            }
+            soma += d1 * 2;
+            resto = (soma % 11);
+            if (resto == 1 || resto == 0)
+                d2 = 0;
+            else
+            {
+                resto = 11 - resto;
+                d2 = resto;
+            }
+
+            if (d1 == Convert.ToInt32(Convert.ToString(cnpj[12])) && d2 == Convert.ToInt32(Convert.ToString(cnpj[13])))
+                result = 0;
+            else result = 1;
+            
+            return result;
+        
+            */
+            return 0;
+        }
     }
 
 
