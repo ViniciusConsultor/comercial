@@ -28,17 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tbPgConVen = new System.Windows.Forms.TabPage();
             this.dtGrdVwConVen = new System.Windows.Forms.DataGridView();
-            this.ClmnCodPed = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClmnDtPed = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClmnVlVendido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClmnComissao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClmnTotalCom = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grpBxFiltro = new System.Windows.Forms.GroupBox();
             this.grpBxVendedor = new System.Windows.Forms.GroupBox();
             this.txtComissao = new System.Windows.Forms.TextBox();
@@ -53,12 +47,17 @@
             this.lblOperador = new System.Windows.Forms.Label();
             this.lblQuantVendas = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.rdBtnCancelado = new System.Windows.Forms.RadioButton();
+            this.rdBtnPendente = new System.Windows.Forms.RadioButton();
+            this.rdBtnEfetivo = new System.Windows.Forms.RadioButton();
             this.cmBxTipoPed = new System.Windows.Forms.ComboBox();
             this.lblTipoPed = new System.Windows.Forms.Label();
             this.tbCntrlConVen = new System.Windows.Forms.TabControl();
+            this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
+            this.vENDEDORBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.vENDEDORTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.VENDEDORTableAdapter();
+            this.NomeVem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CPF = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbPgConVen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGrdVwConVen)).BeginInit();
             this.grpBxFiltro.SuspendLayout();
@@ -66,6 +65,8 @@
             this.grpBxPedido.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tbCntrlConVen.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vENDEDORBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tbPgConVen
@@ -85,65 +86,32 @@
             this.dtGrdVwConVen.AllowUserToAddRows = false;
             this.dtGrdVwConVen.AllowUserToDeleteRows = false;
             this.dtGrdVwConVen.AllowUserToOrderColumns = true;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtGrdVwConVen.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dtGrdVwConVen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGrdVwConVen.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ClmnCodPed,
-            this.ClmnDtPed,
-            this.ClmnVlVendido,
-            this.ClmnComissao,
-            this.ClmnTotalCom});
+            this.NomeVem,
+            this.CPF});
             this.dtGrdVwConVen.Location = new System.Drawing.Point(6, 164);
             this.dtGrdVwConVen.Name = "dtGrdVwConVen";
             this.dtGrdVwConVen.ReadOnly = true;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtGrdVwConVen.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dtGrdVwConVen.Size = new System.Drawing.Size(593, 233);
             this.dtGrdVwConVen.TabIndex = 1;
             this.dtGrdVwConVen.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // ClmnCodPed
-            // 
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ClmnCodPed.DefaultCellStyle = dataGridViewCellStyle1;
-            this.ClmnCodPed.HeaderText = "Cód. Pedido";
-            this.ClmnCodPed.Name = "ClmnCodPed";
-            this.ClmnCodPed.ReadOnly = true;
-            this.ClmnCodPed.Width = 102;
-            // 
-            // ClmnDtPed
-            // 
-            dataGridViewCellStyle2.Format = "d";
-            dataGridViewCellStyle2.NullValue = null;
-            this.ClmnDtPed.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ClmnDtPed.HeaderText = "Data do Pedido";
-            this.ClmnDtPed.Name = "ClmnDtPed";
-            this.ClmnDtPed.ReadOnly = true;
-            this.ClmnDtPed.Width = 120;
-            // 
-            // ClmnVlVendido
-            // 
-            dataGridViewCellStyle3.Format = "C2";
-            dataGridViewCellStyle3.NullValue = null;
-            this.ClmnVlVendido.DefaultCellStyle = dataGridViewCellStyle3;
-            this.ClmnVlVendido.HeaderText = "Valor Pedido";
-            this.ClmnVlVendido.Name = "ClmnVlVendido";
-            this.ClmnVlVendido.ReadOnly = true;
-            this.ClmnVlVendido.Width = 108;
-            // 
-            // ClmnComissao
-            // 
-            this.ClmnComissao.HeaderText = "% Comissão";
-            this.ClmnComissao.Name = "ClmnComissao";
-            this.ClmnComissao.ReadOnly = true;
-            this.ClmnComissao.Width = 98;
-            // 
-            // ClmnTotalCom
-            // 
-            dataGridViewCellStyle4.Format = "C2";
-            dataGridViewCellStyle4.NullValue = null;
-            this.ClmnTotalCom.DefaultCellStyle = dataGridViewCellStyle4;
-            this.ClmnTotalCom.HeaderText = "Total Comissão";
-            this.ClmnTotalCom.Name = "ClmnTotalCom";
-            this.ClmnTotalCom.ReadOnly = true;
-            this.ClmnTotalCom.Width = 117;
             // 
             // grpBxFiltro
             // 
@@ -295,9 +263,9 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.radioButton3);
-            this.groupBox2.Controls.Add(this.radioButton2);
-            this.groupBox2.Controls.Add(this.radioButton1);
+            this.groupBox2.Controls.Add(this.rdBtnCancelado);
+            this.groupBox2.Controls.Add(this.rdBtnPendente);
+            this.groupBox2.Controls.Add(this.rdBtnEfetivo);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.Color.CadetBlue;
             this.groupBox2.Location = new System.Drawing.Point(9, 63);
@@ -307,39 +275,39 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Situação do Pedido:";
             // 
-            // radioButton3
+            // rdBtnCancelado
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(190, 19);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(76, 17);
-            this.radioButton3.TabIndex = 2;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Cancelado";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
+            this.rdBtnCancelado.AutoSize = true;
+            this.rdBtnCancelado.Location = new System.Drawing.Point(190, 19);
+            this.rdBtnCancelado.Name = "rdBtnCancelado";
+            this.rdBtnCancelado.Size = new System.Drawing.Size(76, 17);
+            this.rdBtnCancelado.TabIndex = 2;
+            this.rdBtnCancelado.TabStop = true;
+            this.rdBtnCancelado.Text = "Cancelado";
+            this.rdBtnCancelado.UseVisualStyleBackColor = true;
+            this.rdBtnCancelado.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
             // 
-            // radioButton2
+            // rdBtnPendente
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(96, 19);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(71, 17);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Pendente";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.rdBtnPendente.AutoSize = true;
+            this.rdBtnPendente.Location = new System.Drawing.Point(96, 19);
+            this.rdBtnPendente.Name = "rdBtnPendente";
+            this.rdBtnPendente.Size = new System.Drawing.Size(71, 17);
+            this.rdBtnPendente.TabIndex = 1;
+            this.rdBtnPendente.TabStop = true;
+            this.rdBtnPendente.Text = "Pendente";
+            this.rdBtnPendente.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // rdBtnEfetivo
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(7, 19);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(70, 17);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Efetivado";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.rdBtnEfetivo.AutoSize = true;
+            this.rdBtnEfetivo.Location = new System.Drawing.Point(7, 19);
+            this.rdBtnEfetivo.Name = "rdBtnEfetivo";
+            this.rdBtnEfetivo.Size = new System.Drawing.Size(70, 17);
+            this.rdBtnEfetivo.TabIndex = 0;
+            this.rdBtnEfetivo.TabStop = true;
+            this.rdBtnEfetivo.Text = "Efetivado";
+            this.rdBtnEfetivo.UseVisualStyleBackColor = true;
             // 
             // cmBxTipoPed
             // 
@@ -374,6 +342,35 @@
             this.tbCntrlConVen.Size = new System.Drawing.Size(622, 441);
             this.tbCntrlConVen.TabIndex = 0;
             // 
+            // cOMERCIALDataSet
+            // 
+            this.cOMERCIALDataSet.DataSetName = "COMERCIALDataSet";
+            this.cOMERCIALDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // vENDEDORBindingSource
+            // 
+            this.vENDEDORBindingSource.DataMember = "VENDEDOR";
+            this.vENDEDORBindingSource.DataSource = this.cOMERCIALDataSet;
+            // 
+            // vENDEDORTableAdapter
+            // 
+            this.vENDEDORTableAdapter.ClearBeforeFill = true;
+            // 
+            // NomeVem
+            // 
+            this.NomeVem.DataPropertyName = "nome";
+            this.NomeVem.HeaderText = "Nome";
+            this.NomeVem.Name = "NomeVem";
+            this.NomeVem.ReadOnly = true;
+            this.NomeVem.Width = 200;
+            // 
+            // CPF
+            // 
+            this.CPF.DataPropertyName = "cpf";
+            this.CPF.HeaderText = "CPF";
+            this.CPF.Name = "CPF";
+            this.CPF.ReadOnly = true;
+            // 
             // FrmConVen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -386,6 +383,7 @@
             this.Name = "FrmConVen";
             this.ShowIcon = false;
             this.Text = "Consulta de Vendedor";
+            this.Load += new System.EventHandler(this.FrmConVen_Load);
             this.Leave += new System.EventHandler(this.FrmConVen_Leave);
             this.tbPgConVen.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtGrdVwConVen)).EndInit();
@@ -397,6 +395,8 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.tbCntrlConVen.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vENDEDORBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -418,17 +418,17 @@
         private System.Windows.Forms.TextBox txtCPF;
         private System.Windows.Forms.ComboBox cmBxTipoPed;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.RadioButton radioButton3;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton rdBtnCancelado;
+        private System.Windows.Forms.RadioButton rdBtnPendente;
+        private System.Windows.Forms.RadioButton rdBtnEfetivo;
         private System.Windows.Forms.TextBox txtQuant;
         private System.Windows.Forms.ComboBox cmBxOperador;
         private System.Windows.Forms.Label lblOperador;
         private System.Windows.Forms.Label lblQuantVendas;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ClmnCodPed;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ClmnDtPed;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ClmnVlVendido;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ClmnComissao;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ClmnTotalCom;
+        private COMERCIALDataSet cOMERCIALDataSet;
+        private System.Windows.Forms.BindingSource vENDEDORBindingSource;
+        private Comercial.COMERCIALDataSetTableAdapters.VENDEDORTableAdapter vENDEDORTableAdapter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NomeVem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CPF;
     }
 }

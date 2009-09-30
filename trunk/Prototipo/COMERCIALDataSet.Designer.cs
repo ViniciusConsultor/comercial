@@ -17498,9 +17498,10 @@ SELECT CPF, NOME, ENDERECO, BAIRRO, MUNICIPIO, UF, CEP, TELEFONE, FAX, RG, CODUS
             this._commandCollection[1].Connection = this.Connection;
             this._commandCollection[1].CommandText = "SELECT CPF, NOME, ENDERECO, BAIRRO, MUNICIPIO, UF, CEP, TELEFONE, FAX, RG, CODUSU" +
                 "ARIO, EMAIL, COMISSAO, ATIVO, SEXO, CODREGIAO \r\nFROM dbo.VENDEDOR\r\nwhere cpf = @" +
-                "cpf";
+                "cpf \r\nor nome like @nome+\'%\'";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@cpf", global::System.Data.SqlDbType.VarChar, 11, global::System.Data.ParameterDirection.Input, 0, 0, "CPF", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nome", global::System.Data.SqlDbType.VarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "NOME", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -17528,13 +17529,19 @@ SELECT CPF, NOME, ENDERECO, BAIRRO, MUNICIPIO, UF, CEP, TELEFONE, FAX, RG, CODUS
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int consultaCPF(COMERCIALDataSet.VENDEDORDataTable dataTable, string cpf) {
+        public virtual int Consulta(COMERCIALDataSet.VENDEDORDataTable dataTable, string cpf, string nome) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
             if ((cpf == null)) {
                 throw new global::System.ArgumentNullException("cpf");
             }
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((string)(cpf));
+            }
+            if ((nome == null)) {
+                throw new global::System.ArgumentNullException("nome");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(nome));
             }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();

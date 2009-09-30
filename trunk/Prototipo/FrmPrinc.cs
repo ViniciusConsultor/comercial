@@ -363,10 +363,14 @@ namespace Comercial
 
         private void tlStrpBtnConsultar_Click(object sender, EventArgs e)
         {
-            if (this.ActiveMdiChild != null)
+            Form frm = this.ActiveMdiChild;
+            if (frm == null)
+                return;
+
+            if (frm is FrmConVen)
             {
-                FrmVisGeral x = new FrmVisGeral(this);
-                x.ShowDialog();
+                FrmConVen ven = (FrmConVen)frm;
+                ven.pesquisar();
             }
         }
 
@@ -1170,6 +1174,24 @@ namespace Comercial
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            Form frm = this.ActiveMdiChild;
+            if (frm == null)
+                return;
+
+            if (frm is FrmCadVen)
+            {
+                FrmCadVen ven = (FrmCadVen) frm;
+                ven.cnsltTlStrpConsulta.Visible = true;
+                ven.cpfToolStripTextBox.Enabled = true;
+                ven.nomeToolStripTextBox.Enabled = true;
+                ven.toolStripButton1.Enabled = true;
+                ven.toolStripButton2.Enabled = true;
+                ven.cnsltTlStrpConsulta.Enabled = true;
+            }
         }
 
         
