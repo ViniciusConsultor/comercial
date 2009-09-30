@@ -6,18 +6,82 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Configuration;
+using System.Data.SqlClient;
 
 namespace Comercial
 {
     public partial class FrmConVen : Form
     {
-       private FrmPrinc _princ = null;
+        private FrmPrinc _princ = null;
 
         public FrmConVen(FrmPrinc parent)
         {
             InitializeComponent();
             this.MdiParent = parent;
             _princ = parent;
+        }
+
+        public void pesquisar()
+        {
+            string sql = "select v.nome, cpf from vendedor as v ";//, pedido as p where p.codvendedor = v.cpf ";
+
+            // pesquisa por nome
+            if (!string.IsNullOrEmpty(txtNome.Text))
+            {
+                sql += "and v.nome like '" + txtNome.Text + "%' ";
+            }
+
+            // pesquisa por cpf
+            if (!string.IsNullOrEmpty(txtCPF.Text))
+            {
+                sql += "and v.cpf = '" + txtCPF.Text + "' ";
+            }
+
+            // pesquisa por comissao
+            if (!string.IsNullOrEmpty(txtComissao.Text))
+            {
+                sql += "and v.comissao = '" + txtComissao.Text + "' ";
+            }
+
+            // pesquisa por situacao pedido
+            if (rdBtnEfetivo.Checked)
+            {
+                sql += "and p.situacao = 'E' ";
+            }
+
+            if (rdBtnPendente.Checked)
+            {
+                sql += "and p.situacao = 'P' ";
+            }
+
+            if (rdBtnCancelado.Checked)
+            {
+                sql += "and p.situacao = 'C' ";
+            }
+
+
+            //Pesquisa por quant.
+            if (!string.IsNullOrEmpty(txtQuant.Text))
+            {
+                sql += "and v.cpf in (select CODVENDEDOR, COUNT(*) from PEDIDO " +
+                                        "group by CODVENDEDOR having COUNT(NRPEDIDO) " + cmBxOperador.Text + " " + txtQuant.Text + ") ";
+            }
+
+             string c = ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString;
+
+             SqlConnection conn = new SqlConnection(c);
+             conn.Open();
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                DataTable table = new DataTable();
+                table.Load(reader);
+
+
+                dtGrdVwConVen.DataSource = table;
+
+
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -41,6 +105,13 @@ namespace Comercial
             ToolStrip strip2 = (ToolStrip)y[0];
 
             strip2.Visible = false;
+        }
+
+        private void FrmConVen_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'cOMERCIALDataSet.VENDEDOR' table. You can move, or remove it, as needed.
+         //   this.vENDEDORTableAdapter.Fill(this.cOMERCIALDataSet.VENDEDOR);
+
         }
     }
 }

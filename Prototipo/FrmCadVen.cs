@@ -81,25 +81,11 @@ namespace Comercial
             else
             {
                 x["SEXO"] = "F";
-            } 
-
-
-
-         /*  var x = vENDEDORBindingSource.Current;
-
-
-           COMERCIALDataSetTableAdapters v = (COMERCIALDataSet.)x;
-
-            if (radioButton1.Checked)
-            {
-
-                v.SEXO = "M";
             }
-            else
-            {
-                vENDEDORTableAdapter.GetData().SEXOColumn.DefaultValue = "F";
-            } 
-          * */
+
+            conn.Close();
+            conn.Dispose();
+
             return 0;
         }
 
@@ -151,25 +137,33 @@ namespace Comercial
 
         private void vENDEDORBindingSource_PositionChanged(object sender, EventArgs e)
         {
-            // COMERCIALDataSet dt = (COMERCIALDataSet) vENDEDORBindingSource.Current;
+            if (vENDEDORBindingSource.Current != null)
+            {
 
-            /*  txtcep.getText = vENDEDORTableAdapter.GetData().Columns["CEP"];
+                DataRowView v = (DataRowView)vENDEDORBindingSource.Current;
 
+                txtcep.getText = v["CEP"].ToString();
 
-
-              if (vENDEDORTableAdapter.Container.Components["SEXO"].ToString() == "M")
-              {
-                  radioButton1.Checked = true;
-              }
-              else
-              {
-                  radioButton2.Checked = true;
-              }
-              if (!string.IsNullOrEmpty(vENDEDORTableAdapter.Container.Components["codregiao"].ToString()))
-                  cmBxRegiao.SelectedValue = vENDEDORTableAdapter.Container.Components["codregiao"].ToString();
-              else
-                  cmBxRegiao.SelectedValue = -1;
-              */
+                if (v["SEXO"].ToString() == "M")
+                {
+                    radioButton1.Checked = true;
+                }
+                else
+                {
+                    radioButton2.Checked = true;
+                }
+               /* if (!string.IsNullOrEmpty(v["codregiao"].ToString()))
+                    cmBxRegiao.SelectedValue = v["codregiao"].ToString();
+                else
+                    cmBxRegiao.SelectedValue = -1; */
+            }
+            else
+            {
+                txtcep.getText = "";
+                radioButton1.Checked = false;
+                radioButton2.Checked = false;
+                cmBxRegiao.SelectedValue = -1;
+            }
         }
 
         private void cpfToolStripButton_Click(object sender, EventArgs e)
@@ -186,7 +180,10 @@ namespace Comercial
             this.vENDEDORTableAdapter.Fill(this.cOMERCIALDataSet.VENDEDOR);
 
             cpfToolStripTextBox.Enabled = true;
-            consultaCPFToolStrip.Enabled = true;
+            nomeToolStripTextBox.Enabled = true;
+            toolStripButton1.Enabled = true;
+            toolStripButton2.Enabled = true;
+            cnsltTlStrpConsulta.Enabled = true;
         }
 
         private void consultaCPFToolStripButton_Click(object sender, EventArgs e)
@@ -197,9 +194,26 @@ namespace Comercial
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            try
+          
+        }
+
+        private void consultaNomeToolStripButton_Click(object sender, EventArgs e)
+        {
+
+
+        }
+
+        private void consultaToolStripButton_Click(object sender, EventArgs e)
+        {
+           
+
+        }
+
+        private void toolStripButton1_Click_1(object sender, EventArgs e)
+        {
+           try
             {
-                this.vENDEDORTableAdapter.consultaCPF(this.cOMERCIALDataSet.VENDEDOR, cpfToolStripTextBox.Text);
+                this.vENDEDORTableAdapter.Consulta(this.cOMERCIALDataSet.VENDEDOR, cpfToolStripTextBox.Text, nomeToolStripTextBox.Text);
             }
             catch (System.Exception ex)
             {
@@ -207,10 +221,25 @@ namespace Comercial
             }
         }
 
-        private void consultaNomeToolStripButton_Click(object sender, EventArgs e)
+        private void toolStripButton2_Click(object sender, EventArgs e)
         {
+            try
+            {
+                this.vENDEDORTableAdapter.Fill(this.cOMERCIALDataSet.VENDEDOR);
 
+                cnsltTlStrpConsulta.Visible = false;
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+                
+            }
+        }
 
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            cpfToolStripTextBox.Clear();
+            nomeToolStripTextBox.Clear();
         }
 
     }
