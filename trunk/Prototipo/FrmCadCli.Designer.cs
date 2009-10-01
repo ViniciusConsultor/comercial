@@ -29,14 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.Label aPROVADOCREDLabel;
-            System.Windows.Forms.Label aTIVOLabel;
-            System.Windows.Forms.Label cEPLabel;
             this.tbCntrlCadCli = new System.Windows.Forms.TabControl();
             this.tbpCadCli = new System.Windows.Forms.TabPage();
             this.cmBxRegiaoCli = new System.Windows.Forms.ComboBox();
             this.cLIENTEBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
+            this.rEGIAOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lblRegiaoCli = new System.Windows.Forms.Label();
             this.txtRazaoSocialCli = new System.Windows.Forms.TextBox();
             this.lblRazaoSocialCliente = new System.Windows.Forms.Label();
@@ -55,6 +53,7 @@
             this.lblIECliente = new System.Windows.Forms.Label();
             this.gpbContatoCli = new System.Windows.Forms.GroupBox();
             this.lblCep = new System.Windows.Forms.Label();
+            this.txtCepCli = new Comercial.TextButton();
             this.txtFaxCli = new System.Windows.Forms.MaskedTextBox();
             this.txtTelCli = new System.Windows.Forms.MaskedTextBox();
             this.lblFaxCli = new System.Windows.Forms.Label();
@@ -76,17 +75,12 @@
             this.cLIENTETableAdapter = new Comercial.COMERCIALDataSetTableAdapters.CLIENTETableAdapter();
             this.tableAdapterManager = new Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager();
             this.uSUARIOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.USUARIOTableAdapter();
-            this.aPROVADOCREDTextBox = new System.Windows.Forms.TextBox();
-            this.aTIVOTextBox = new System.Windows.Forms.TextBox();
-            this.cEPTextBox = new System.Windows.Forms.TextBox();
-            this.txtCepCli = new Comercial.TextButton();
-            aPROVADOCREDLabel = new System.Windows.Forms.Label();
-            aTIVOLabel = new System.Windows.Forms.Label();
-            cEPLabel = new System.Windows.Forms.Label();
+            this.rEGIAOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.REGIAOTableAdapter();
             this.tbCntrlCadCli.SuspendLayout();
             this.tbpCadCli.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cLIENTEBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rEGIAOBindingSource)).BeginInit();
             this.grpBxUsuario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uSUARIOBindingSource)).BeginInit();
             this.gpbContatoCli.SuspendLayout();
@@ -105,12 +99,6 @@
             // tbpCadCli
             // 
             this.tbpCadCli.AutoScroll = true;
-            this.tbpCadCli.Controls.Add(cEPLabel);
-            this.tbpCadCli.Controls.Add(this.cEPTextBox);
-            this.tbpCadCli.Controls.Add(aTIVOLabel);
-            this.tbpCadCli.Controls.Add(this.aTIVOTextBox);
-            this.tbpCadCli.Controls.Add(aPROVADOCREDLabel);
-            this.tbpCadCli.Controls.Add(this.aPROVADOCREDTextBox);
             this.tbpCadCli.Controls.Add(this.cmBxRegiaoCli);
             this.tbpCadCli.Controls.Add(this.lblRegiaoCli);
             this.tbpCadCli.Controls.Add(this.txtRazaoSocialCli);
@@ -136,11 +124,11 @@
             this.tbpCadCli.TabIndex = 0;
             this.tbpCadCli.Text = "Cadastro de Clientes";
             this.tbpCadCli.UseVisualStyleBackColor = true;
-            this.tbpCadCli.Click += new System.EventHandler(this.tbpCadCli_Click);
             // 
             // cmBxRegiaoCli
             // 
             this.cmBxRegiaoCli.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.cLIENTEBindingSource, "CODREGIAO", true));
+            this.cmBxRegiaoCli.DataSource = this.rEGIAOBindingSource;
             this.cmBxRegiaoCli.DisplayMember = "DESCRICAO";
             this.cmBxRegiaoCli.FormattingEnabled = true;
             this.cmBxRegiaoCli.Location = new System.Drawing.Point(325, 18);
@@ -153,11 +141,17 @@
             // 
             this.cLIENTEBindingSource.DataMember = "CLIENTE";
             this.cLIENTEBindingSource.DataSource = this.cOMERCIALDataSet;
+            this.cLIENTEBindingSource.PositionChanged += new System.EventHandler(this.cLIENTEBindingSource_PositionChanged);
             // 
             // cOMERCIALDataSet
             // 
             this.cOMERCIALDataSet.DataSetName = "COMERCIALDataSet";
             this.cOMERCIALDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // rEGIAOBindingSource
+            // 
+            this.rEGIAOBindingSource.DataMember = "REGIAO";
+            this.rEGIAOBindingSource.DataSource = this.cOMERCIALDataSet;
             // 
             // lblRegiaoCli
             // 
@@ -172,7 +166,6 @@
             // 
             // txtRazaoSocialCli
             // 
-            this.txtRazaoSocialCli.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtRazaoSocialCli.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cLIENTEBindingSource, "RAZAOSOCIAL", true));
             this.txtRazaoSocialCli.Location = new System.Drawing.Point(232, 58);
             this.txtRazaoSocialCli.Name = "txtRazaoSocialCli";
@@ -228,6 +221,8 @@
             // cmbAreaAtuCli
             // 
             this.cmbAreaAtuCli.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.cLIENTEBindingSource, "AREAATUACAO", true));
+            this.cmbAreaAtuCli.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.cLIENTEBindingSource, "AREAATUACAO", true));
+            this.cmbAreaAtuCli.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cLIENTEBindingSource, "AREAATUACAO", true));
             this.cmbAreaAtuCli.FormattingEnabled = true;
             this.cmbAreaAtuCli.Items.AddRange(new object[] {
             "AEROESPACIAL",
@@ -241,6 +236,7 @@
             "GERAL - MÓVEIS",
             "GERAL - OUTROS",
             "GERAL - PEQUENOS COMPONENTES",
+            "GERAL - PRODUTOS AGRICOLAS",
             "GERAL - PRODUTOS MADEIRA",
             "GERAL - PRODUTOS METAL",
             "GERAL - PRODUTOS METAL/MADEIRA",
@@ -285,7 +281,6 @@
             // 
             // txtSenhaCli
             // 
-            this.txtSenhaCli.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtSenhaCli.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.uSUARIOBindingSource, "SENHA", true));
             this.txtSenhaCli.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSenhaCli.Location = new System.Drawing.Point(17, 86);
@@ -301,7 +296,6 @@
             // 
             // txtUsuarioCli
             // 
-            this.txtUsuarioCli.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtUsuarioCli.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.uSUARIOBindingSource, "USUARIO", true));
             this.txtUsuarioCli.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsuarioCli.Location = new System.Drawing.Point(17, 42);
@@ -391,6 +385,16 @@
             this.lblCep.TabIndex = 44;
             this.lblCep.Text = "Cep";
             // 
+            // txtCepCli
+            // 
+            this.txtCepCli.getText = "";
+            this.txtCepCli.Image = global::Comercial.Properties.Resources.btn_correios;
+            this.txtCepCli.Location = new System.Drawing.Point(6, 42);
+            this.txtCepCli.Name = "txtCepCli";
+            this.txtCepCli.ShowButton = false;
+            this.txtCepCli.Size = new System.Drawing.Size(121, 25);
+            this.txtCepCli.TabIndex = 5;
+            // 
             // txtFaxCli
             // 
             this.txtFaxCli.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -430,7 +434,6 @@
             // 
             // txtEmailCli
             // 
-            this.txtEmailCli.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtEmailCli.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cLIENTEBindingSource, "EMAIL", true));
             this.txtEmailCli.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmailCli.Location = new System.Drawing.Point(188, 121);
@@ -514,7 +517,6 @@
             // 
             // txtMunicipioCli
             // 
-            this.txtMunicipioCli.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtMunicipioCli.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cLIENTEBindingSource, "MUNICIPIO", true));
             this.txtMunicipioCli.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMunicipioCli.Location = new System.Drawing.Point(170, 82);
@@ -535,7 +537,6 @@
             // 
             // txtBairroCli
             // 
-            this.txtBairroCli.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtBairroCli.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cLIENTEBindingSource, "BAIRRO", true));
             this.txtBairroCli.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBairroCli.Location = new System.Drawing.Point(6, 81);
@@ -545,7 +546,6 @@
             // 
             // txtEndCli
             // 
-            this.txtEndCli.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtEndCli.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cLIENTEBindingSource, "ENDERECO", true));
             this.txtEndCli.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEndCli.Location = new System.Drawing.Point(133, 42);
@@ -577,7 +577,6 @@
             // 
             // txtNomeFantCli
             // 
-            this.txtNomeFantCli.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtNomeFantCli.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cLIENTEBindingSource, "NOMEFANTASIA", true));
             this.txtNomeFantCli.Location = new System.Drawing.Point(9, 58);
             this.txtNomeFantCli.Name = "txtNomeFantCli";
@@ -648,66 +647,9 @@
             // 
             this.uSUARIOTableAdapter.ClearBeforeFill = true;
             // 
-            // aPROVADOCREDLabel
+            // rEGIAOTableAdapter
             // 
-            aPROVADOCREDLabel.AutoSize = true;
-            aPROVADOCREDLabel.Location = new System.Drawing.Point(9, 313);
-            aPROVADOCREDLabel.Name = "aPROVADOCREDLabel";
-            aPROVADOCREDLabel.Size = new System.Drawing.Size(100, 13);
-            aPROVADOCREDLabel.TabIndex = 54;
-            aPROVADOCREDLabel.Text = "APROVADOCRED:";
-            // 
-            // aPROVADOCREDTextBox
-            // 
-            this.aPROVADOCREDTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cLIENTEBindingSource, "APROVADOCRED", true));
-            this.aPROVADOCREDTextBox.Location = new System.Drawing.Point(115, 310);
-            this.aPROVADOCREDTextBox.Name = "aPROVADOCREDTextBox";
-            this.aPROVADOCREDTextBox.Size = new System.Drawing.Size(27, 20);
-            this.aPROVADOCREDTextBox.TabIndex = 55;
-            // 
-            // aTIVOLabel
-            // 
-            aTIVOLabel.AutoSize = true;
-            aTIVOLabel.Location = new System.Drawing.Point(9, 340);
-            aTIVOLabel.Name = "aTIVOLabel";
-            aTIVOLabel.Size = new System.Drawing.Size(42, 13);
-            aTIVOLabel.TabIndex = 55;
-            aTIVOLabel.Text = "ATIVO:";
-            // 
-            // aTIVOTextBox
-            // 
-            this.aTIVOTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cLIENTEBindingSource, "ATIVO", true));
-            this.aTIVOTextBox.Location = new System.Drawing.Point(57, 337);
-            this.aTIVOTextBox.Name = "aTIVOTextBox";
-            this.aTIVOTextBox.Size = new System.Drawing.Size(24, 20);
-            this.aTIVOTextBox.TabIndex = 56;
-            // 
-            // cEPLabel
-            // 
-            cEPLabel.AutoSize = true;
-            cEPLabel.Location = new System.Drawing.Point(23, 371);
-            cEPLabel.Name = "cEPLabel";
-            cEPLabel.Size = new System.Drawing.Size(31, 13);
-            cEPLabel.TabIndex = 56;
-            cEPLabel.Text = "CEP:";
-            // 
-            // cEPTextBox
-            // 
-            this.cEPTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cLIENTEBindingSource, "CEP", true));
-            this.cEPTextBox.Location = new System.Drawing.Point(60, 368);
-            this.cEPTextBox.Name = "cEPTextBox";
-            this.cEPTextBox.Size = new System.Drawing.Size(41, 20);
-            this.cEPTextBox.TabIndex = 57;
-            // 
-            // txtCepCli
-            // 
-            this.txtCepCli.getText = "";
-            this.txtCepCli.Image = global::Comercial.Properties.Resources.btn_correios;
-            this.txtCepCli.Location = new System.Drawing.Point(6, 42);
-            this.txtCepCli.Name = "txtCepCli";
-            this.txtCepCli.ShowButton = false;
-            this.txtCepCli.Size = new System.Drawing.Size(121, 25);
-            this.txtCepCli.TabIndex = 5;
+            this.rEGIAOTableAdapter.ClearBeforeFill = true;
             // 
             // FrmCadCli
             // 
@@ -727,6 +669,7 @@
             this.tbpCadCli.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cLIENTEBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rEGIAOBindingSource)).EndInit();
             this.grpBxUsuario.ResumeLayout(false);
             this.grpBxUsuario.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uSUARIOBindingSource)).EndInit();
@@ -783,8 +726,7 @@
         private Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private Comercial.COMERCIALDataSetTableAdapters.USUARIOTableAdapter uSUARIOTableAdapter;
         private System.Windows.Forms.BindingSource uSUARIOBindingSource;
-        private System.Windows.Forms.TextBox cEPTextBox;
-        private System.Windows.Forms.TextBox aTIVOTextBox;
-        private System.Windows.Forms.TextBox aPROVADOCREDTextBox;
+        private System.Windows.Forms.BindingSource rEGIAOBindingSource;
+        private Comercial.COMERCIALDataSetTableAdapters.REGIAOTableAdapter rEGIAOTableAdapter;
     }
 }

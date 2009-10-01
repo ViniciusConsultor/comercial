@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Configuration;
+using System.Data.SqlClient;
 
 namespace Comercial
 {
@@ -19,6 +21,9 @@ namespace Comercial
             this.MdiParent = parent;
             _princ = parent;
         }
+        #region inutil
+
+       
 
         private void groupBox1_Enter(object sender, EventArgs e)
         {
@@ -125,7 +130,7 @@ namespace Comercial
         {
 
         }
-
+ #endregion
         private void txtCodPed_ButtonClick(object sender, EventArgs e)
         {
             FrmVisGeral x = new FrmVisGeral(this);
@@ -163,5 +168,82 @@ namespace Comercial
             strip2.Visible = false;
 
         }
+
+        public void pesquisar()
+        {
+            string sql = "select p.NRPEDIDO,p.DATAEMISSAO,SUM(VALOR) valor from PEDIDO p, ITEMPEDIDO ip where p.NRPEDIDO=ip.NRPEDIDO ";
+            string groupBy = " group by p.NRPEDIDO,  p.DATAEMISSAO";
+            // pesquisa por nrPedido
+            if (!string.IsNullOrEmpty(txtNumPed.getText))
+            {
+                sql += "and p.nrPedido = " + txtNumPed.getText;
+            }
+
+            // pesquisa por tipo pedido
+            if (!string.IsNullOrEmpty(cmBxTipoPed.Text))
+            {
+                if (cmBxTipoPed.Text=="N = Normal")
+                {
+                    sql += "and p.tipo = 'N'";
+                }
+                else sql += "and p.tipo = 'C'";
+                
+            }
+
+            
+            // pesquisa por situacao pedido
+            if (rdbtnEfetivado.Checked)
+            {
+                sql += "and p.situacao =2";
+            }
+
+            if (rdbtnPendente.Checked)
+            {
+                sql += "and p.situacao =1";
+            }
+
+            if (rdbtnCancelado.Checked)
+            {
+                sql += "and p.situacao = 3";
+            }
+
+
+            //Pesquisa por data
+            if (dttmDataPedido.Checked)
+            {
+                sql += "and p.dataEmissao= "+dttmDataPedido.Text;
+            }
+            sql += groupBy;
+            
+
+             string c = ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString;
+
+             SqlConnection conn = new SqlConnection(c);
+             conn.Open();
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                DataTable table = new DataTable();
+                table.Load(reader);
+
+
+                dtgrdConCli.DataSource = table;
+
+            
         }
+
+        private void checkBox1_CheckStateChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked == false)
+            {
+                rdbtnCancelado.Checked = false;
+                rdbtnEfetivado.Checked = false;
+                rdbtnPendente.Checked = false;
+                groupBox2.Enabled = false;
+            }
+            else groupBox2.Enabled=true;
+        }
+
+      }
     }
+    

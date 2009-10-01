@@ -372,6 +372,14 @@ namespace Comercial
                 FrmConVen ven = (FrmConVen)frm;
                 ven.pesquisar();
             }
+            #region Form's Claudio
+            if (frm is frmConCli)
+            {
+                frmConCli cli = (frmConCli)frm;
+                cli.pesquisar();
+            }
+
+            #endregion
         }
 
         private void gerarNotaFiscalToolStripMenuItem1_Click(object sender, EventArgs e)
