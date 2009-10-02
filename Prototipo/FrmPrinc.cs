@@ -91,12 +91,7 @@ namespace Comercial
                         table.Update(_dataset);
                     }
 
-                    if (frm is FrmCadTra)
-                    {
-                        COMERCIALDataSetTableAdapters.TRANSPORTADORATableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.TRANSPORTADORATableAdapter();
-                        table.Update(_dataset);
-                    }
-
+                
                     if (frm is FrmCadGrpProd)
                     {
                         COMERCIALDataSetTableAdapters.GRUPOPRODUTOTableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.GRUPOPRODUTOTableAdapter();
@@ -134,6 +129,12 @@ namespace Comercial
 
                     Util.Interface.ChangeControlStatus(frm, false);
                     bindingNavigator1.Refresh();
+
+                    if (frm is FrmCadTra)
+                    {
+                        FrmCadTra frmTrans = (FrmCadTra)frm;
+                        retorno = frmTrans.salvar();
+                    }
 
                     edit = false;
                 }

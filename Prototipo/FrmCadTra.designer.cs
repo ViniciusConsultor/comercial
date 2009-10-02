@@ -32,7 +32,10 @@
             this.TbCntCadTra = new System.Windows.Forms.TabControl();
             this.TbPgCadTra = new System.Windows.Forms.TabPage();
             this.grpBxViaTrans = new System.Windows.Forms.GroupBox();
-            this.chkltViatrans = new System.Windows.Forms.CheckedListBox();
+            this.chkTerrestre = new System.Windows.Forms.CheckBox();
+            this.chkMaritimo = new System.Windows.Forms.CheckBox();
+            this.chkFerroviario = new System.Windows.Forms.CheckBox();
+            this.chkAereo = new System.Windows.Forms.CheckBox();
             this.txtIeCli = new System.Windows.Forms.MaskedTextBox();
             this.tRANSPORTADORABindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
@@ -43,7 +46,6 @@
             this.txtEmailtrans = new System.Windows.Forms.TextBox();
             this.lblEmailtrans = new System.Windows.Forms.Label();
             this.lblTelefonetrans = new System.Windows.Forms.Label();
-            this.cmbUftrans = new System.Windows.Forms.ComboBox();
             this.lblUftrans = new System.Windows.Forms.Label();
             this.txtMunicipiotrans = new System.Windows.Forms.TextBox();
             this.lblMunicipiotrans = new System.Windows.Forms.Label();
@@ -52,7 +54,7 @@
             this.lblBairrotrans = new System.Windows.Forms.Label();
             this.lblEnderecotrans = new System.Windows.Forms.Label();
             this.lblIECliente = new System.Windows.Forms.Label();
-            this.txtCnpjCli = new System.Windows.Forms.MaskedTextBox();
+            this.txtCnpjTrans = new System.Windows.Forms.MaskedTextBox();
             this.lblCnpjCliente = new System.Windows.Forms.Label();
             this.TxtNomRed = new System.Windows.Forms.TextBox();
             this.TxtNom = new System.Windows.Forms.TextBox();
@@ -60,6 +62,10 @@
             this.LblNom = new System.Windows.Forms.Label();
             this.tRANSPORTADORATableAdapter = new Comercial.COMERCIALDataSetTableAdapters.TRANSPORTADORATableAdapter();
             this.tableAdapterManager = new Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager();
+<<<<<<< .mine
+            this.uFComboBox = new System.Windows.Forms.ComboBox();
+=======
+>>>>>>> .r26
             this.txtceptrans = new Comercial.TextButton();
             this.TbCntCadTra.SuspendLayout();
             this.TbPgCadTra.SuspendLayout();
@@ -85,7 +91,7 @@
             this.TbPgCadTra.Controls.Add(this.txtIeCli);
             this.TbPgCadTra.Controls.Add(this.gpbContatotrans);
             this.TbPgCadTra.Controls.Add(this.lblIECliente);
-            this.TbPgCadTra.Controls.Add(this.txtCnpjCli);
+            this.TbPgCadTra.Controls.Add(this.txtCnpjTrans);
             this.TbPgCadTra.Controls.Add(this.lblCnpjCliente);
             this.TbPgCadTra.Controls.Add(this.TxtNomRed);
             this.TbPgCadTra.Controls.Add(this.TxtNom);
@@ -98,11 +104,13 @@
             this.TbPgCadTra.TabIndex = 0;
             this.TbPgCadTra.Text = "Cadastro Transportadora";
             this.TbPgCadTra.UseVisualStyleBackColor = true;
-            this.TbPgCadTra.Click += new System.EventHandler(this.TbPgCadTra_Click);
             // 
             // grpBxViaTrans
             // 
-            this.grpBxViaTrans.Controls.Add(this.chkltViatrans);
+            this.grpBxViaTrans.Controls.Add(this.chkTerrestre);
+            this.grpBxViaTrans.Controls.Add(this.chkMaritimo);
+            this.grpBxViaTrans.Controls.Add(this.chkFerroviario);
+            this.grpBxViaTrans.Controls.Add(this.chkAereo);
             this.grpBxViaTrans.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.grpBxViaTrans.Location = new System.Drawing.Point(392, 6);
             this.grpBxViaTrans.Name = "grpBxViaTrans";
@@ -111,25 +119,51 @@
             this.grpBxViaTrans.TabStop = false;
             this.grpBxViaTrans.Text = "Via Transporte";
             // 
-            // chkltViatrans
+            // chkTerrestre
             // 
-            this.chkltViatrans.ForeColor = System.Drawing.Color.CadetBlue;
-            this.chkltViatrans.FormattingEnabled = true;
-            this.chkltViatrans.Items.AddRange(new object[] {
-            "Aéreo",
-            "Ferroviário",
-            "Maritimo",
-            "Terrestre"});
-            this.chkltViatrans.Location = new System.Drawing.Point(8, 19);
-            this.chkltViatrans.Name = "chkltViatrans";
-            this.chkltViatrans.Size = new System.Drawing.Size(120, 64);
-            this.chkltViatrans.TabIndex = 77;
+            this.chkTerrestre.AutoSize = true;
+            this.chkTerrestre.Location = new System.Drawing.Point(7, 70);
+            this.chkTerrestre.Name = "chkTerrestre";
+            this.chkTerrestre.Size = new System.Drawing.Size(77, 17);
+            this.chkTerrestre.TabIndex = 3;
+            this.chkTerrestre.Text = "Terrestre";
+            this.chkTerrestre.UseVisualStyleBackColor = true;
+            // 
+            // chkMaritimo
+            // 
+            this.chkMaritimo.AutoSize = true;
+            this.chkMaritimo.Location = new System.Drawing.Point(7, 52);
+            this.chkMaritimo.Name = "chkMaritimo";
+            this.chkMaritimo.Size = new System.Drawing.Size(73, 17);
+            this.chkMaritimo.TabIndex = 2;
+            this.chkMaritimo.Text = "Maritimo";
+            this.chkMaritimo.UseVisualStyleBackColor = true;
+            // 
+            // chkFerroviario
+            // 
+            this.chkFerroviario.AutoSize = true;
+            this.chkFerroviario.Location = new System.Drawing.Point(7, 36);
+            this.chkFerroviario.Name = "chkFerroviario";
+            this.chkFerroviario.Size = new System.Drawing.Size(86, 17);
+            this.chkFerroviario.TabIndex = 1;
+            this.chkFerroviario.Text = "Ferroviário";
+            this.chkFerroviario.UseVisualStyleBackColor = true;
+            // 
+            // chkAereo
+            // 
+            this.chkAereo.AutoSize = true;
+            this.chkAereo.Location = new System.Drawing.Point(7, 20);
+            this.chkAereo.Name = "chkAereo";
+            this.chkAereo.Size = new System.Drawing.Size(59, 17);
+            this.chkAereo.TabIndex = 0;
+            this.chkAereo.Text = "Aéreo";
+            this.chkAereo.UseVisualStyleBackColor = true;
             // 
             // txtIeCli
             // 
             this.txtIeCli.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tRANSPORTADORABindingSource, "IE", true));
             this.txtIeCli.Location = new System.Drawing.Point(255, 58);
-            this.txtIeCli.Mask = "999,999,999,999";
+            this.txtIeCli.Mask = "999,999,999,99";
             this.txtIeCli.Name = "txtIeCli";
             this.txtIeCli.PromptChar = ' ';
             this.txtIeCli.Size = new System.Drawing.Size(131, 20);
@@ -148,6 +182,7 @@
             // 
             // gpbContatotrans
             // 
+            this.gpbContatotrans.Controls.Add(this.uFComboBox);
             this.gpbContatotrans.Controls.Add(this.cEPTextBox);
             this.gpbContatotrans.Controls.Add(this.lblCeptrans);
             this.gpbContatotrans.Controls.Add(this.txtceptrans);
@@ -155,7 +190,6 @@
             this.gpbContatotrans.Controls.Add(this.txtEmailtrans);
             this.gpbContatotrans.Controls.Add(this.lblEmailtrans);
             this.gpbContatotrans.Controls.Add(this.lblTelefonetrans);
-            this.gpbContatotrans.Controls.Add(this.cmbUftrans);
             this.gpbContatotrans.Controls.Add(this.lblUftrans);
             this.gpbContatotrans.Controls.Add(this.txtMunicipiotrans);
             this.gpbContatotrans.Controls.Add(this.lblMunicipiotrans);
@@ -167,7 +201,7 @@
             this.gpbContatotrans.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.gpbContatotrans.Location = new System.Drawing.Point(6, 106);
             this.gpbContatotrans.Name = "gpbContatotrans";
-            this.gpbContatotrans.Size = new System.Drawing.Size(520, 163);
+            this.gpbContatotrans.Size = new System.Drawing.Size(551, 163);
             this.gpbContatotrans.TabIndex = 73;
             this.gpbContatotrans.TabStop = false;
             this.gpbContatotrans.Text = "Contato";
@@ -222,7 +256,6 @@
             this.lblEmailtrans.Size = new System.Drawing.Size(42, 13);
             this.lblEmailtrans.TabIndex = 38;
             this.lblEmailtrans.Text = "E-Mail";
-            this.lblEmailtrans.Click += new System.EventHandler(this.lblEmailCliente_Click);
             // 
             // lblTelefonetrans
             // 
@@ -234,45 +267,6 @@
             this.lblTelefonetrans.Size = new System.Drawing.Size(57, 13);
             this.lblTelefonetrans.TabIndex = 37;
             this.lblTelefonetrans.Text = "Telefone";
-            // 
-            // cmbUftrans
-            // 
-            this.cmbUftrans.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.tRANSPORTADORABindingSource, "UF", true));
-            this.cmbUftrans.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbUftrans.FormattingEnabled = true;
-            this.cmbUftrans.Items.AddRange(new object[] {
-            "AC",
-            "AL",
-            "AM",
-            "AP",
-            "BA",
-            "CE",
-            "DF",
-            "ES",
-            "GO",
-            "MA",
-            "MG",
-            "MS",
-            "MT",
-            "PA",
-            "PB",
-            "PE",
-            "PI",
-            "PR",
-            "RJ",
-            "RN",
-            "RO",
-            "RR",
-            "RS",
-            "SC",
-            "SE",
-            "SP",
-            "TO"});
-            this.cmbUftrans.Location = new System.Drawing.Point(375, 82);
-            this.cmbUftrans.Name = "cmbUftrans";
-            this.cmbUftrans.Size = new System.Drawing.Size(121, 21);
-            this.cmbUftrans.TabIndex = 27;
-            this.cmbUftrans.Text = "Selecione...";
             // 
             // lblUftrans
             // 
@@ -359,16 +353,16 @@
             this.lblIECliente.TabIndex = 74;
             this.lblIECliente.Text = "I.E";
             // 
-            // txtCnpjCli
+            // txtCnpjTrans
             // 
-            this.txtCnpjCli.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tRANSPORTADORABindingSource, "CNPJ", true));
-            this.txtCnpjCli.Location = new System.Drawing.Point(126, 58);
-            this.txtCnpjCli.Mask = "99,999,999/9999-99";
-            this.txtCnpjCli.Name = "txtCnpjCli";
-            this.txtCnpjCli.PromptChar = ' ';
-            this.txtCnpjCli.Size = new System.Drawing.Size(123, 20);
-            this.txtCnpjCli.TabIndex = 75;
-            this.txtCnpjCli.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            this.txtCnpjTrans.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tRANSPORTADORABindingSource, "CNPJ", true));
+            this.txtCnpjTrans.Location = new System.Drawing.Point(126, 58);
+            this.txtCnpjTrans.Mask = "99,999,999/9999-99";
+            this.txtCnpjTrans.Name = "txtCnpjTrans";
+            this.txtCnpjTrans.PromptChar = ' ';
+            this.txtCnpjTrans.Size = new System.Drawing.Size(123, 20);
+            this.txtCnpjTrans.TabIndex = 75;
+            this.txtCnpjTrans.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // lblCnpjCliente
             // 
@@ -446,6 +440,48 @@
             this.tableAdapterManager.VENDEDORTableAdapter = null;
             this.tableAdapterManager.VIATRANSPORTETableAdapter = null;
             // 
+<<<<<<< .mine
+            // uFComboBox
+            // 
+            this.uFComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tRANSPORTADORABindingSource, "UF", true));
+            this.uFComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.tRANSPORTADORABindingSource, "UF", true));
+            this.uFComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.tRANSPORTADORABindingSource, "UF", true));
+            this.uFComboBox.FormattingEnabled = true;
+            this.uFComboBox.Items.AddRange(new object[] {
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"});
+            this.uFComboBox.Location = new System.Drawing.Point(373, 82);
+            this.uFComboBox.Name = "uFComboBox";
+            this.uFComboBox.Size = new System.Drawing.Size(121, 21);
+            this.uFComboBox.TabIndex = 46;
+            // 
+=======
+>>>>>>> .r26
             // txtceptrans
             // 
             this.txtceptrans.getText = "";
@@ -456,7 +492,6 @@
             this.txtceptrans.Size = new System.Drawing.Size(135, 25);
             this.txtceptrans.TabIndex = 43;
             this.txtceptrans.Visible = false;
-            this.txtceptrans.Load += new System.EventHandler(this.textButton1_Load);
             // 
             // FrmCadTra
             // 
@@ -471,13 +506,20 @@
             this.Name = "FrmCadTra";
             this.ShowIcon = false;
             this.Text = "Cadastro Transportadora";
+            this.Load += new System.EventHandler(this.FrmCadTra_Load);
             this.Shown += new System.EventHandler(this.FrmCadTra_Shown);
             this.TbCntCadTra.ResumeLayout(false);
             this.TbPgCadTra.ResumeLayout(false);
             this.TbPgCadTra.PerformLayout();
             this.grpBxViaTrans.ResumeLayout(false);
+<<<<<<< .mine
+            this.grpBxViaTrans.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tRANSPORTADORABindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).EndInit();
+=======
+            ((System.ComponentModel.ISupportInitialize)(this.tRANSPORTADORABindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).EndInit();
+>>>>>>> .r26
             this.gpbContatotrans.ResumeLayout(false);
             this.gpbContatotrans.PerformLayout();
             this.ResumeLayout(false);
@@ -498,7 +540,6 @@
         private System.Windows.Forms.TextBox txtEmailtrans;
         private System.Windows.Forms.Label lblEmailtrans;
         private System.Windows.Forms.Label lblTelefonetrans;
-        private System.Windows.Forms.ComboBox cmbUftrans;
         private System.Windows.Forms.Label lblUftrans;
         private System.Windows.Forms.TextBox txtMunicipiotrans;
         private System.Windows.Forms.Label lblMunicipiotrans;
@@ -508,16 +549,20 @@
         private System.Windows.Forms.Label lblEnderecotrans;
         private System.Windows.Forms.MaskedTextBox txtIeCli;
         private System.Windows.Forms.Label lblIECliente;
-        private System.Windows.Forms.MaskedTextBox txtCnpjCli;
+        private System.Windows.Forms.MaskedTextBox txtCnpjTrans;
         private System.Windows.Forms.Label lblCnpjCliente;
         private System.Windows.Forms.GroupBox grpBxViaTrans;
-        private System.Windows.Forms.CheckedListBox chkltViatrans;
         private COMERCIALDataSet cOMERCIALDataSet;
         private System.Windows.Forms.BindingSource tRANSPORTADORABindingSource;
         private Comercial.COMERCIALDataSetTableAdapters.TRANSPORTADORATableAdapter tRANSPORTADORATableAdapter;
         private Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.TextBox cEPTextBox;
         private TextButton txtceptrans;
+        private System.Windows.Forms.CheckBox chkTerrestre;
+        private System.Windows.Forms.CheckBox chkMaritimo;
+        private System.Windows.Forms.CheckBox chkFerroviario;
+        private System.Windows.Forms.CheckBox chkAereo;
+        private System.Windows.Forms.ComboBox uFComboBox;
 
     }
 }
