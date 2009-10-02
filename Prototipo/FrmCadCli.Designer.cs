@@ -281,7 +281,6 @@
             // 
             // txtSenhaCli
             // 
-            this.txtSenhaCli.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.uSUARIOBindingSource, "SENHA", true));
             this.txtSenhaCli.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSenhaCli.Location = new System.Drawing.Point(17, 86);
             this.txtSenhaCli.Name = "txtSenhaCli";
@@ -296,7 +295,6 @@
             // 
             // txtUsuarioCli
             // 
-            this.txtUsuarioCli.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.uSUARIOBindingSource, "USUARIO", true));
             this.txtUsuarioCli.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsuarioCli.Location = new System.Drawing.Point(17, 42);
             this.txtUsuarioCli.Name = "txtUsuarioCli";
@@ -373,7 +371,7 @@
             this.gpbContatoCli.TabIndex = 4;
             this.gpbContatoCli.TabStop = false;
             this.gpbContatoCli.Text = "Contato";
-            this.gpbContatoCli.Enter += new System.EventHandler(this.groupBox1_Enter);
+            
             // 
             // lblCep
             // 

@@ -28,17 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tbCntrlConCli = new System.Windows.Forms.TabControl();
             this.tbPgConCli = new System.Windows.Forms.TabPage();
             this.grpBxFiltro = new System.Windows.Forms.GroupBox();
             this.grpBxPedido = new System.Windows.Forms.GroupBox();
             this.dttmDataPedido = new System.Windows.Forms.DateTimePicker();
             this.lblDataPed = new System.Windows.Forms.Label();
+            this.txtNumPed = new Comercial.TextButton();
             this.lblNumPed = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.rdbtnCancelado = new System.Windows.Forms.RadioButton();
             this.rdbtnPendente = new System.Windows.Forms.RadioButton();
             this.rdbtnEfetivado = new System.Windows.Forms.RadioButton();
@@ -49,16 +51,14 @@
             this.txtCnpjCli = new System.Windows.Forms.MaskedTextBox();
             this.lblCNPJ = new System.Windows.Forms.Label();
             this.lblArea = new System.Windows.Forms.Label();
-            this.txtAreaAtuCli = new System.Windows.Forms.TextBox();
+            this.txtRazaoSocialCli = new System.Windows.Forms.TextBox();
             this.lblRazao = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtNomeFantasiaCli = new System.Windows.Forms.TextBox();
             this.lblNome = new System.Windows.Forms.Label();
             this.dtgrdConCli = new System.Windows.Forms.DataGridView();
             this.ClmnCodPed = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClmnDtPed = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClmnValPed = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtNumPed = new Comercial.TextButton();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.tbCntrlConCli.SuspendLayout();
             this.tbPgConCli.SuspendLayout();
             this.grpBxFiltro.SuspendLayout();
@@ -75,7 +75,7 @@
             this.tbCntrlConCli.Location = new System.Drawing.Point(12, 12);
             this.tbCntrlConCli.Name = "tbCntrlConCli";
             this.tbCntrlConCli.SelectedIndex = 0;
-            this.tbCntrlConCli.Size = new System.Drawing.Size(772, 488);
+            this.tbCntrlConCli.Size = new System.Drawing.Size(833, 488);
             this.tbCntrlConCli.TabIndex = 0;
             // 
             // tbPgConCli
@@ -87,7 +87,7 @@
             this.tbPgConCli.Location = new System.Drawing.Point(4, 22);
             this.tbPgConCli.Name = "tbPgConCli";
             this.tbPgConCli.Padding = new System.Windows.Forms.Padding(3);
-            this.tbPgConCli.Size = new System.Drawing.Size(764, 462);
+            this.tbPgConCli.Size = new System.Drawing.Size(825, 462);
             this.tbPgConCli.TabIndex = 0;
             this.tbPgConCli.Text = "Consulta de Clientes - Cliente/Pedido";
             this.tbPgConCli.UseVisualStyleBackColor = true;
@@ -100,7 +100,7 @@
             this.grpBxFiltro.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.grpBxFiltro.Location = new System.Drawing.Point(6, 6);
             this.grpBxFiltro.Name = "grpBxFiltro";
-            this.grpBxFiltro.Size = new System.Drawing.Size(722, 197);
+            this.grpBxFiltro.Size = new System.Drawing.Size(813, 197);
             this.grpBxFiltro.TabIndex = 1;
             this.grpBxFiltro.TabStop = false;
             this.grpBxFiltro.Text = "Filtros:";
@@ -143,6 +143,17 @@
             this.lblDataPed.TabIndex = 20;
             this.lblDataPed.Text = "Data do pedido:";
             // 
+            // txtNumPed
+            // 
+            this.txtNumPed.getText = "";
+            this.txtNumPed.Image = global::Comercial.Properties.Resources.search1;
+            this.txtNumPed.Location = new System.Drawing.Point(12, 36);
+            this.txtNumPed.Name = "txtNumPed";
+            this.txtNumPed.ShowButton = false;
+            this.txtNumPed.Size = new System.Drawing.Size(74, 25);
+            this.txtNumPed.TabIndex = 19;
+            this.txtNumPed.ButtonClick += new System.EventHandler(this.txtCodPed_ButtonClick);
+            // 
             // lblNumPed
             // 
             this.lblNumPed.AutoSize = true;
@@ -169,6 +180,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Situação do Pedido:";
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(111, 1);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(15, 14);
+            this.checkBox1.TabIndex = 3;
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckStateChanged += new System.EventHandler(this.checkBox1_CheckStateChanged);
+            // 
             // rdbtnCancelado
             // 
             this.rdbtnCancelado.AutoSize = true;
@@ -179,6 +200,7 @@
             this.rdbtnCancelado.TabStop = true;
             this.rdbtnCancelado.Text = "Cancelado";
             this.rdbtnCancelado.UseVisualStyleBackColor = true;
+            this.rdbtnCancelado.CheckedChanged += new System.EventHandler(this.rdbtnCancelado_CheckedChanged);
             // 
             // rdbtnPendente
             // 
@@ -190,6 +212,7 @@
             this.rdbtnPendente.TabStop = true;
             this.rdbtnPendente.Text = "Pendente";
             this.rdbtnPendente.UseVisualStyleBackColor = true;
+            this.rdbtnPendente.CheckedChanged += new System.EventHandler(this.rdbtnPendente_CheckedChanged);
             // 
             // rdbtnEfetivado
             // 
@@ -201,6 +224,7 @@
             this.rdbtnEfetivado.TabStop = true;
             this.rdbtnEfetivado.Text = "Efetivado";
             this.rdbtnEfetivado.UseVisualStyleBackColor = true;
+            this.rdbtnEfetivado.CheckedChanged += new System.EventHandler(this.rdbtnEfetivado_CheckedChanged);
             // 
             // cmBxTipoPed
             // 
@@ -232,15 +256,15 @@
             this.grpBxCli.Controls.Add(this.txtCnpjCli);
             this.grpBxCli.Controls.Add(this.lblCNPJ);
             this.grpBxCli.Controls.Add(this.lblArea);
-            this.grpBxCli.Controls.Add(this.txtAreaAtuCli);
+            this.grpBxCli.Controls.Add(this.txtRazaoSocialCli);
             this.grpBxCli.Controls.Add(this.lblRazao);
-            this.grpBxCli.Controls.Add(this.textBox1);
+            this.grpBxCli.Controls.Add(this.txtNomeFantasiaCli);
             this.grpBxCli.Controls.Add(this.lblNome);
             this.grpBxCli.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpBxCli.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.grpBxCli.Location = new System.Drawing.Point(364, 19);
             this.grpBxCli.Name = "grpBxCli";
-            this.grpBxCli.Size = new System.Drawing.Size(352, 162);
+            this.grpBxCli.Size = new System.Drawing.Size(443, 162);
             this.grpBxCli.TabIndex = 3;
             this.grpBxCli.TabStop = false;
             this.grpBxCli.Text = "Dados Cliente:";
@@ -260,6 +284,7 @@
             "GERAL - MÓVEIS",
             "GERAL - OUTROS",
             "GERAL - PEQUENOS COMPONENTES",
+            "GERAL - PRODUTOS AGRICOLAS",
             "GERAL - PRODUTOS MADEIRA",
             "GERAL - PRODUTOS METAL",
             "GERAL - PRODUTOS METAL/MADEIRA",
@@ -270,11 +295,10 @@
             "MOLDE - FERRAMENTARIA",
             "MOLDE - JANELAS",
             "MOLDE - PLÁSTICO",
-            "VÁLVULAS - PETRÓLEO",
-            "GERAL -"});
+            "VÁLVULAS - PETRÓLEO"});
             this.cmbAreaAtuCli.Location = new System.Drawing.Point(151, 34);
             this.cmbAreaAtuCli.Name = "cmbAreaAtuCli";
-            this.cmbAreaAtuCli.Size = new System.Drawing.Size(182, 21);
+            this.cmbAreaAtuCli.Size = new System.Drawing.Size(286, 21);
             this.cmbAreaAtuCli.TabIndex = 29;
             // 
             // txtCnpjCli
@@ -309,12 +333,12 @@
             this.lblArea.TabIndex = 26;
             this.lblArea.Text = "Área de atuação:";
             // 
-            // txtAreaAtuCli
+            // txtRazaoSocialCli
             // 
-            this.txtAreaAtuCli.Location = new System.Drawing.Point(17, 82);
-            this.txtAreaAtuCli.Name = "txtAreaAtuCli";
-            this.txtAreaAtuCli.Size = new System.Drawing.Size(316, 20);
-            this.txtAreaAtuCli.TabIndex = 25;
+            this.txtRazaoSocialCli.Location = new System.Drawing.Point(17, 82);
+            this.txtRazaoSocialCli.Name = "txtRazaoSocialCli";
+            this.txtRazaoSocialCli.Size = new System.Drawing.Size(420, 20);
+            this.txtRazaoSocialCli.TabIndex = 25;
             // 
             // lblRazao
             // 
@@ -327,12 +351,12 @@
             this.lblRazao.TabIndex = 24;
             this.lblRazao.Text = "Razão Social:";
             // 
-            // textBox1
+            // txtNomeFantasiaCli
             // 
-            this.textBox1.Location = new System.Drawing.Point(20, 133);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(313, 20);
-            this.textBox1.TabIndex = 23;
+            this.txtNomeFantasiaCli.Location = new System.Drawing.Point(20, 133);
+            this.txtNomeFantasiaCli.Name = "txtNomeFantasiaCli";
+            this.txtNomeFantasiaCli.Size = new System.Drawing.Size(417, 20);
+            this.txtNomeFantasiaCli.TabIndex = 23;
             // 
             // lblNome
             // 
@@ -351,39 +375,39 @@
             this.dtgrdConCli.AllowUserToAddRows = false;
             this.dtgrdConCli.AllowUserToDeleteRows = false;
             this.dtgrdConCli.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgrdConCli.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgrdConCli.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgrdConCli.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgrdConCli.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ClmnCodPed,
             this.ClmnDtPed,
             this.ClmnValPed});
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.CadetBlue;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgrdConCli.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.CadetBlue;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgrdConCli.DefaultCellStyle = dataGridViewCellStyle2;
             this.dtgrdConCli.Location = new System.Drawing.Point(6, 209);
             this.dtgrdConCli.Name = "dtgrdConCli";
             this.dtgrdConCli.ReadOnly = true;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgrdConCli.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
-            this.dtgrdConCli.Size = new System.Drawing.Size(722, 243);
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgrdConCli.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dtgrdConCli.Size = new System.Drawing.Size(813, 243);
             this.dtgrdConCli.TabIndex = 0;
             // 
             // ClmnCodPed
@@ -408,27 +432,6 @@
             this.ClmnValPed.Name = "ClmnValPed";
             this.ClmnValPed.ReadOnly = true;
             this.ClmnValPed.Width = 160;
-            // 
-            // txtNumPed
-            // 
-            this.txtNumPed.getText = "";
-            this.txtNumPed.Image = global::Comercial.Properties.Resources.search1;
-            this.txtNumPed.Location = new System.Drawing.Point(12, 36);
-            this.txtNumPed.Name = "txtNumPed";
-            this.txtNumPed.ShowButton = false;
-            this.txtNumPed.Size = new System.Drawing.Size(74, 25);
-            this.txtNumPed.TabIndex = 19;
-            this.txtNumPed.ButtonClick += new System.EventHandler(this.txtCodPed_ButtonClick);
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(106, 0);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(15, 14);
-            this.checkBox1.TabIndex = 3;
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckStateChanged += new System.EventHandler(this.checkBox1_CheckStateChanged);
             // 
             // frmConCli
             // 
@@ -475,8 +478,8 @@
         private System.Windows.Forms.Label lblTipoPed;
         private System.Windows.Forms.DateTimePicker dttmDataPedido;
         private System.Windows.Forms.Label lblNome;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox txtAreaAtuCli;
+        private System.Windows.Forms.TextBox txtNomeFantasiaCli;
+        private System.Windows.Forms.TextBox txtRazaoSocialCli;
         private System.Windows.Forms.Label lblRazao;
         private System.Windows.Forms.Label lblArea;
         public System.Windows.Forms.MaskedTextBox txtCnpjCli;

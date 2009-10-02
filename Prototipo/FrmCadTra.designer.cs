@@ -34,7 +34,10 @@
             this.grpBxViaTrans = new System.Windows.Forms.GroupBox();
             this.chkltViatrans = new System.Windows.Forms.CheckedListBox();
             this.txtIeCli = new System.Windows.Forms.MaskedTextBox();
+            this.tRANSPORTADORABindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
             this.gpbContatotrans = new System.Windows.Forms.GroupBox();
+            this.cEPTextBox = new System.Windows.Forms.TextBox();
             this.lblCeptrans = new System.Windows.Forms.Label();
             this.txtTeltrans = new System.Windows.Forms.MaskedTextBox();
             this.txtEmailtrans = new System.Windows.Forms.TextBox();
@@ -55,18 +58,15 @@
             this.TxtNom = new System.Windows.Forms.TextBox();
             this.LblNomRed = new System.Windows.Forms.Label();
             this.LblNom = new System.Windows.Forms.Label();
-            this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
-            this.tRANSPORTADORABindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tRANSPORTADORATableAdapter = new Comercial.COMERCIALDataSetTableAdapters.TRANSPORTADORATableAdapter();
             this.tableAdapterManager = new Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager();
-            this.cEPTextBox = new System.Windows.Forms.TextBox();
             this.txtceptrans = new Comercial.TextButton();
             this.TbCntCadTra.SuspendLayout();
             this.TbPgCadTra.SuspendLayout();
             this.grpBxViaTrans.SuspendLayout();
-            this.gpbContatotrans.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tRANSPORTADORABindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).BeginInit();
+            this.gpbContatotrans.SuspendLayout();
             this.SuspendLayout();
             // 
             // TbCntCadTra
@@ -136,6 +136,16 @@
             this.txtIeCli.TabIndex = 76;
             this.txtIeCli.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
+            // tRANSPORTADORABindingSource
+            // 
+            this.tRANSPORTADORABindingSource.DataMember = "TRANSPORTADORA";
+            this.tRANSPORTADORABindingSource.DataSource = this.cOMERCIALDataSet;
+            // 
+            // cOMERCIALDataSet
+            // 
+            this.cOMERCIALDataSet.DataSetName = "COMERCIALDataSet";
+            this.cOMERCIALDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // gpbContatotrans
             // 
             this.gpbContatotrans.Controls.Add(this.cEPTextBox);
@@ -161,6 +171,14 @@
             this.gpbContatotrans.TabIndex = 73;
             this.gpbContatotrans.TabStop = false;
             this.gpbContatotrans.Text = "Contato";
+            // 
+            // cEPTextBox
+            // 
+            this.cEPTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tRANSPORTADORABindingSource, "CEP", true));
+            this.cEPTextBox.Location = new System.Drawing.Point(6, 42);
+            this.cEPTextBox.Name = "cEPTextBox";
+            this.cEPTextBox.Size = new System.Drawing.Size(119, 20);
+            this.cEPTextBox.TabIndex = 45;
             // 
             // lblCeptrans
             // 
@@ -401,16 +419,6 @@
             this.LblNom.TabIndex = 49;
             this.LblNom.Text = "Nome:";
             // 
-            // cOMERCIALDataSet
-            // 
-            this.cOMERCIALDataSet.DataSetName = "COMERCIALDataSet";
-            this.cOMERCIALDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // tRANSPORTADORABindingSource
-            // 
-            this.tRANSPORTADORABindingSource.DataMember = "TRANSPORTADORA";
-            this.tRANSPORTADORABindingSource.DataSource = this.cOMERCIALDataSet;
-            // 
             // tRANSPORTADORATableAdapter
             // 
             this.tRANSPORTADORATableAdapter.ClearBeforeFill = true;
@@ -437,14 +445,6 @@
             this.tableAdapterManager.USUARIOTableAdapter = null;
             this.tableAdapterManager.VENDEDORTableAdapter = null;
             this.tableAdapterManager.VIATRANSPORTETableAdapter = null;
-            // 
-            // cEPTextBox
-            // 
-            this.cEPTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tRANSPORTADORABindingSource, "CEP", true));
-            this.cEPTextBox.Location = new System.Drawing.Point(6, 42);
-            this.cEPTextBox.Name = "cEPTextBox";
-            this.cEPTextBox.Size = new System.Drawing.Size(119, 20);
-            this.cEPTextBox.TabIndex = 45;
             // 
             // txtceptrans
             // 
@@ -476,10 +476,10 @@
             this.TbPgCadTra.ResumeLayout(false);
             this.TbPgCadTra.PerformLayout();
             this.grpBxViaTrans.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.tRANSPORTADORABindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).EndInit();
             this.gpbContatotrans.ResumeLayout(false);
             this.gpbContatotrans.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tRANSPORTADORABindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
