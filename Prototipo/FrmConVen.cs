@@ -24,7 +24,11 @@ namespace Comercial
 
         public void pesquisar()
         {
-            string sql = "select v.nome, cpf from vendedor as v ";//, pedido as p where p.codvendedor = v.cpf ";
+            string sql = "select v.nome, v.cpf ,p.nrpedido, p.dataemissao, "+ 
+                 "( select SUM(i.VALOR) from ITEMPEDIDO i where i.NRPEDIDO = p.NRPEDIDO "+
+                 ") valor_pedido,comissao, (COMISSAO/100 * (select SUM(i.VALOR) from ITEMPEDIDO i "+
+                 "where i.NRPEDIDO = p.NRPEDIDO)) valor_comissao "+
+                            "from vendedor as v, pedido as p where p.codvendedor = v.cpf ";
 
             // pesquisa por nome
             if (!string.IsNullOrEmpty(txtNome.Text))
