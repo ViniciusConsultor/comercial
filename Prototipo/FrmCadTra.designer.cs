@@ -62,10 +62,10 @@
             this.LblNom = new System.Windows.Forms.Label();
             this.tRANSPORTADORATableAdapter = new Comercial.COMERCIALDataSetTableAdapters.TRANSPORTADORATableAdapter();
             this.tableAdapterManager = new Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager();
-<<<<<<< .mine
+
             this.uFComboBox = new System.Windows.Forms.ComboBox();
-=======
->>>>>>> .r26
+
+
             this.txtceptrans = new Comercial.TextButton();
             this.TbCntCadTra.SuspendLayout();
             this.TbPgCadTra.SuspendLayout();
@@ -440,7 +440,7 @@
             this.tableAdapterManager.VENDEDORTableAdapter = null;
             this.tableAdapterManager.VIATRANSPORTETableAdapter = null;
             // 
-<<<<<<< .mine
+
             // uFComboBox
             // 
             this.uFComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tRANSPORTADORABindingSource, "UF", true));
@@ -480,8 +480,8 @@
             this.uFComboBox.Size = new System.Drawing.Size(121, 21);
             this.uFComboBox.TabIndex = 46;
             // 
-=======
->>>>>>> .r26
+
+
             // txtceptrans
             // 
             this.txtceptrans.getText = "";
@@ -512,14 +512,14 @@
             this.TbPgCadTra.ResumeLayout(false);
             this.TbPgCadTra.PerformLayout();
             this.grpBxViaTrans.ResumeLayout(false);
-<<<<<<< .mine
+
             this.grpBxViaTrans.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tRANSPORTADORABindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).EndInit();
-=======
+
             ((System.ComponentModel.ISupportInitialize)(this.tRANSPORTADORABindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).EndInit();
->>>>>>> .r26
+
             this.gpbContatotrans.ResumeLayout(false);
             this.gpbContatotrans.PerformLayout();
             this.ResumeLayout(false);

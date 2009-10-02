@@ -673,7 +673,6 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro de vendedor";
-            this.Load += new System.EventHandler(this.FrmCadVen_Load);
             this.Shown += new System.EventHandler(this.FrmCadVen_Shown);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
