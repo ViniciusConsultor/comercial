@@ -78,11 +78,10 @@ namespace Comercial
             return 0;
 
         }
-<<<<<<< .mine
-=======
+
 
               
         }
->>>>>>> .r26
+
     }
-}
+
