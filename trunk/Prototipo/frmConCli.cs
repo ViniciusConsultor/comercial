@@ -171,8 +171,9 @@ namespace Comercial
 
         public void pesquisar()
         {
-            string sql = "select p.NRPEDIDO,p.DATAEMISSAO,SUM(VALOR) valor from PEDIDO p, ITEMPEDIDO ip where p.NRPEDIDO=ip.NRPEDIDO ";
+            string sql = "select p.NRPEDIDO,p.DATAEMISSAO,SUM(VALOR) valor from PEDIDO p, ITEMPEDIDO ip , CLIENTE c where p.NRPEDIDO=ip.NRPEDIDO ";
             string groupBy = " group by p.NRPEDIDO,  p.DATAEMISSAO";
+            
             // pesquisa por nrPedido
             if (!string.IsNullOrEmpty(txtNumPed.getText))
             {
@@ -194,25 +195,51 @@ namespace Comercial
             // pesquisa por situacao pedido
             if (rdbtnEfetivado.Checked)
             {
-                sql += "and p.situacao =2";
+                sql += "and p.situacao ='E'";
             }
 
             if (rdbtnPendente.Checked)
             {
-                sql += "and p.situacao =1";
+                sql += "and p.situacao ='P'";
             }
 
             if (rdbtnCancelado.Checked)
             {
-                sql += "and p.situacao = 3";
+                sql += "and p.situacao = 'C'";
             }
 
 
             //Pesquisa por data
             if (dttmDataPedido.Checked)
             {
-                sql += "and p.dataEmissao= "+dttmDataPedido.Text;
+                string x = dttmDataPedido.Value.Year + "-" + dttmDataPedido.Value.Month + "-" + dttmDataPedido.Value.Day;
+
+                sql += "and p.dataEmissao= '"+x+"'";
             }
+            // Pesquisa por CNPJ Cliente
+            if (!string.IsNullOrEmpty(txtCnpjCli.Text))
+            {
+
+                sql += "and p.CODCLIENTE=c.CNPJ and c.cnpj =" + txtCnpjCli.Text;
+               
+            }
+            //Pesquisa por área de atuação do cliente
+            if (!string.IsNullOrEmpty(cmbAreaAtuCli.Text))
+            {
+                sql += "and p.CODCLIENTE=c.CNPJ and c.areaAtuacao ='" + cmbAreaAtuCli.Text + "'";
+
+            }
+            //Pesquisa por razão social do cliente
+            if (!string.IsNullOrEmpty(txtRazaoSocialCli.Text))
+            {
+                sql += "and p.CODCLIENTE=c.CNPJ and c.RazaoSocial like '" + txtRazaoSocialCli.Text + "%' ";
+            }
+            if (!string.IsNullOrEmpty(txtNomeFantasiaCli.Text))
+            {
+                sql += "and p.CODCLIENTE=c.CNPJ and c.NomeFantasia like '" + txtNomeFantasiaCli.Text + "%' ";
+            }
+
+
             sql += groupBy;
             
 
@@ -239,10 +266,30 @@ namespace Comercial
                 rdbtnCancelado.Checked = false;
                 rdbtnEfetivado.Checked = false;
                 rdbtnPendente.Checked = false;
-                groupBox2.Enabled = false;
+                //groupBox2.Enabled = false;
             }
-            else groupBox2.Enabled=true;
+            //else groupBox2.Enabled=true;
         }
+
+        private void rdbtnEfetivado_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdbtnEfetivado.Checked == true)
+                checkBox1.Checked = true;
+
+        }
+
+        private void rdbtnPendente_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdbtnPendente.Checked == true)
+                checkBox1.Checked = true;
+        }
+
+        private void rdbtnCancelado_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdbtnCancelado.Checked == true)
+                checkBox1.Checked = true;
+        }
+
 
       }
     }
