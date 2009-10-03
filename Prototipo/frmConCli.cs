@@ -20,6 +20,7 @@ namespace Comercial
             InitializeComponent();
             this.MdiParent = parent;
             _princ = parent;
+            
         }
         #region inutil
 

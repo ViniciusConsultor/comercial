@@ -23,7 +23,8 @@ namespace Comercial
             this.MdiParent = parent;
             _princ = parent;
             _princ.bindingNavigator1.BindingSource = cLIENTEBindingSource;
-            _princ.setdataSet(cOMERCIALDataSet); 
+            _princ.setdataSet(cOMERCIALDataSet);
+            _princ.novo();
         }
 
        
@@ -74,6 +75,19 @@ namespace Comercial
                 MessageBox.Show("CNPJ Inválido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return 1;
             }
+            Boolean emailOk = false;
+            string email=txtEmailCli.Text;
+
+            for (int i = 0; i < email.Length; i++)
+            {
+                if (email[i] == '@')
+                    emailOk = true;
+            }
+            if (emailOk == false)
+            {
+               MessageBox.Show("Email Inválido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+               return 1;
+            }
             if (!string.IsNullOrEmpty(txtUsuarioCli.Text) && !string.IsNullOrEmpty(txtSenhaCli.Text))
             {
                 COMERCIALDataSetTableAdapters.USUARIOTableAdapter usu = new Comercial.COMERCIALDataSetTableAdapters.USUARIOTableAdapter();
@@ -122,7 +136,7 @@ namespace Comercial
 
                 txtCepCli.getText = c["CEP"].ToString();
 
-                if (c["APROVADOCRED"].ToString() == "s")
+                if (c["APROVADOCRED"].ToString() == "S")
                 {
                     chckBxCred.Checked = true;
                 }
@@ -147,6 +161,16 @@ namespace Comercial
                        
 
 
+        }
+
+        private void chckBxCred_CheckedChanged(object sender, EventArgs e)
+        {
+            /*if (chckBxCred.Checked)
+            {
+                
+                txtLimCredCli.Enabled = true;
+            }
+            else txtLimCredCli.Enabled = false;*/
         }
     }
 }
