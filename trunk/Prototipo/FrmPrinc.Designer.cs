@@ -82,12 +82,12 @@
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             this.btnNovo = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.btnPesquisar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.btnSalvar = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
+            this.btnCancelEdicao = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
+            this.btnEditar = new System.Windows.Forms.ToolStripButton();
             this.BtnDeletar = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMoveFirstItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorMovePreviousItem = new System.Windows.Forms.ToolStripButton();
@@ -529,13 +529,13 @@
             this.bindingNavigator1.CountItemFormat = "de {0}";
             this.bindingNavigator1.DeleteItem = null;
             this.bindingNavigator1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton2,
+            this.btnPesquisar,
             this.btnNovo,
             this.toolStripSeparator5,
             this.btnSalvar,
-            this.toolStripButton4,
+            this.btnCancelEdicao,
             this.toolStripSeparator6,
-            this.toolStripButton5,
+            this.btnEditar,
             this.BtnDeletar,
             this.bindingNavigatorMoveFirstItem,
             this.bindingNavigatorMovePreviousItem,
@@ -576,15 +576,15 @@
             this.bindingNavigatorCountItem.Text = "de {0}";
             this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
             // 
-            // toolStripButton2
+            // btnPesquisar
             // 
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton2.Text = "Pesquisar";
-            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
+            this.btnPesquisar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnPesquisar.Image = ((System.Drawing.Image)(resources.GetObject("btnPesquisar.Image")));
+            this.btnPesquisar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnPesquisar.Name = "btnPesquisar";
+            this.btnPesquisar.Size = new System.Drawing.Size(23, 22);
+            this.btnPesquisar.Text = "Pesquisar";
+            this.btnPesquisar.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
             // toolStripSeparator5
             // 
@@ -601,30 +601,30 @@
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.Click += new System.EventHandler(this.BtnSalvar_Click);
             // 
-            // toolStripButton4
+            // btnCancelEdicao
             // 
-            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton4.Image")));
-            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton4.Text = "Cancelar";
-            this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
+            this.btnCancelEdicao.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnCancelEdicao.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelEdicao.Image")));
+            this.btnCancelEdicao.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnCancelEdicao.Name = "btnCancelEdicao";
+            this.btnCancelEdicao.Size = new System.Drawing.Size(23, 22);
+            this.btnCancelEdicao.Text = "Cancelar";
+            this.btnCancelEdicao.Click += new System.EventHandler(this.toolStripButton4_Click);
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
             this.toolStripSeparator6.Size = new System.Drawing.Size(6, 25);
             // 
-            // toolStripButton5
+            // btnEditar
             // 
-            this.toolStripButton5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton5.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton5.Image")));
-            this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton5.Name = "toolStripButton5";
-            this.toolStripButton5.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton5.Text = "Editar";
-            this.toolStripButton5.Click += new System.EventHandler(this.toolStripButton5_Click);
+            this.btnEditar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btnEditar.Image = ((System.Drawing.Image)(resources.GetObject("btnEditar.Image")));
+            this.btnEditar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(23, 22);
+            this.btnEditar.Text = "Editar";
+            this.btnEditar.Click += new System.EventHandler(this.toolStripButton5_Click);
             // 
             // BtnDeletar
             // 
@@ -788,23 +788,23 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
         private System.Windows.Forms.ToolStripButton tlStrpBtnPesquisar;
         public System.Windows.Forms.BindingNavigator bindingNavigator1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator1;
+        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
+        private System.Windows.Forms.ToolStripButton btnPesquisar;
         private System.Windows.Forms.ToolStripButton btnNovo;
         private System.Windows.Forms.ToolStripLabel bindingNavigatorCountItem;
-        private System.Windows.Forms.ToolStripButton toolStripButton2;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripButton btnSalvar;
-        private System.Windows.Forms.ToolStripButton toolStripButton4;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
-        private System.Windows.Forms.ToolStripButton toolStripButton5;
+        private System.Windows.Forms.ToolStripButton btnCancelEdicao;
+        private System.Windows.Forms.ToolStripButton btnEditar;
         private System.Windows.Forms.ToolStripButton BtnDeletar;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveFirstItem;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMovePreviousItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator;
         private System.Windows.Forms.ToolStripTextBox bindingNavigatorPositionItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator1;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveNextItem;
         private System.Windows.Forms.ToolStripButton bindingNavigatorMoveLastItem;
-        private System.Windows.Forms.ToolStripSeparator bindingNavigatorSeparator2;
         private System.Windows.Forms.ToolStripButton BtnPrincipal;
 
 

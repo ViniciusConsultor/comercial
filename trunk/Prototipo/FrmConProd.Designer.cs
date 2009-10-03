@@ -31,6 +31,8 @@
             this.tbCntrlConProd = new System.Windows.Forms.TabControl();
             this.tbPgConProd = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.ClmnCodGrupo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClmnDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grpBxFiltro = new System.Windows.Forms.GroupBox();
             this.grpBxProd = new System.Windows.Forms.GroupBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
@@ -50,8 +52,6 @@
             this.lblDe = new System.Windows.Forms.Label();
             this.lblDtCadastro = new System.Windows.Forms.Label();
             this.lblGrupo = new System.Windows.Forms.Label();
-            this.ClmnCodGrupo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClmnDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbCntrlConProd.SuspendLayout();
             this.tbPgConProd.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -79,7 +79,7 @@
             this.tbPgConProd.Padding = new System.Windows.Forms.Padding(3);
             this.tbPgConProd.Size = new System.Drawing.Size(729, 439);
             this.tbPgConProd.TabIndex = 0;
-            this.tbPgConProd.Text = "Consulta de Produto - Grupos e produtos";
+            this.tbPgConProd.Text = "Consulta de Desconto permitido por Grupo de Produto - Grupos e produtos";
             this.tbPgConProd.UseVisualStyleBackColor = true;
             // 
             // dataGridView1
@@ -92,6 +92,18 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(717, 252);
             this.dataGridView1.TabIndex = 2;
+            // 
+            // ClmnCodGrupo
+            // 
+            this.ClmnCodGrupo.HeaderText = "Cód. Grupo";
+            this.ClmnCodGrupo.Name = "ClmnCodGrupo";
+            this.ClmnCodGrupo.Width = 150;
+            // 
+            // ClmnDesc
+            // 
+            this.ClmnDesc.HeaderText = "Descrição";
+            this.ClmnDesc.Name = "ClmnDesc";
+            this.ClmnDesc.Width = 400;
             // 
             // grpBxFiltro
             // 
@@ -196,6 +208,7 @@
             // 
             // txtCodProd
             // 
+            this.txtCodProd.getText = "";
             this.txtCodProd.Image = global::Comercial.Properties.Resources.search1;
             this.txtCodProd.Location = new System.Drawing.Point(20, 38);
             this.txtCodProd.Name = "txtCodProd";
@@ -211,7 +224,7 @@
             this.LblCodProd.ForeColor = System.Drawing.Color.CadetBlue;
             this.LblCodProd.Location = new System.Drawing.Point(15, 21);
             this.LblCodProd.Name = "LblCodProd";
-            this.LblCodProd.Size = new System.Drawing.Size(72, 13);
+            this.LblCodProd.Size = new System.Drawing.Size(171, 13);
             this.LblCodProd.TabIndex = 11;
             this.LblCodProd.Text = "CodCondicaoPagamento. Produto:";
             // 
@@ -234,6 +247,7 @@
             // 
             // txtFabricante
             // 
+            this.txtFabricante.getText = "";
             this.txtFabricante.Image = global::Comercial.Properties.Resources.search1;
             this.txtFabricante.Location = new System.Drawing.Point(20, 38);
             this.txtFabricante.Name = "txtFabricante";
@@ -303,18 +317,6 @@
             this.lblGrupo.Size = new System.Drawing.Size(39, 13);
             this.lblGrupo.TabIndex = 4;
             this.lblGrupo.Text = "Grupo:";
-            // 
-            // ClmnCodGrupo
-            // 
-            this.ClmnCodGrupo.HeaderText = "Cód. Grupo";
-            this.ClmnCodGrupo.Name = "ClmnCodGrupo";
-            this.ClmnCodGrupo.Width = 150;
-            // 
-            // ClmnDesc
-            // 
-            this.ClmnDesc.HeaderText = "Descrição";
-            this.ClmnDesc.Name = "ClmnDesc";
-            this.ClmnDesc.Width = 400;
             // 
             // FrmConProd
             // 

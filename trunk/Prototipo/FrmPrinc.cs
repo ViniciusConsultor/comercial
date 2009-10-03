@@ -12,7 +12,6 @@ namespace Comercial
 {
     public partial class FrmPrinc : Form
     {
-
         private COMERCIALDataSet _dataset;
         private bool edit;
 
@@ -23,6 +22,7 @@ namespace Comercial
         public FrmPrinc()
         {
             InitializeComponent();
+            bindingNavigator1.Enabled = false;
         }
 
         private void FrmPrinc_FormClosed(object sender, FormClosedEventArgs e)
@@ -76,8 +76,6 @@ namespace Comercial
                     FrmCadProd frmCadProd = (FrmCadProd)frm;
                     retorno = frmCadProd.salvar();
                 }
-
-
 
                 if (retorno == 0)
                 {
@@ -137,6 +135,7 @@ namespace Comercial
                     }
 
                     edit = false;
+                    cancelEdicao();
                 }
             }
             catch (Exception ex)
@@ -148,6 +147,28 @@ namespace Comercial
         }
         #endregion
 
+        private void cancelEdicao()
+        {
+            btnPesquisar.Enabled = true;
+            BtnDeletar.Enabled = true;
+            btnNovo.Enabled = true;
+            BtnPrincipal.Enabled = true;
+            btnSalvar.Enabled = false;
+            btnEditar.Enabled = true;
+            btnCancelEdicao.Enabled = false;
+        }
+
+        public void novo()
+        {
+            btnPesquisar.Enabled = true;
+            BtnDeletar.Enabled = true;
+            btnNovo.Enabled = true;
+            BtnPrincipal.Enabled = true;
+            btnSalvar.Enabled = false;
+            btnEditar.Enabled = true;
+            btnCancelEdicao.Enabled = false;
+        }
+        
         #region Botão Pesquisar
         private void BtnPesquisar_Click(object sender, EventArgs e)
         {
@@ -173,6 +194,14 @@ namespace Comercial
             }
 
             Util.Interface.ChangeControlStatus(frm, true);
+
+            btnPesquisar.Enabled = false;
+            BtnDeletar.Enabled = false;
+            btnNovo.Enabled = false;
+            BtnPrincipal.Enabled = false;
+            btnEditar.Enabled = false;
+            btnSalvar.Enabled = true;
+            btnCancelEdicao.Enabled = true;
         }
         #endregion
 
@@ -1136,6 +1165,7 @@ namespace Comercial
             bindingNavigator1.BindingSource = null;
 
             frm.Close();
+            bindingNavigator1.Enabled = false;
         }
         #endregion
 
@@ -1166,6 +1196,14 @@ namespace Comercial
                 cli.txtCnpjCli.Enabled = false;
             }
 
+            btnPesquisar.Enabled = false;
+            BtnDeletar.Enabled = false;
+            btnNovo.Enabled = false;
+            BtnPrincipal.Enabled = false;
+            btnEditar.Enabled = false;
+            btnSalvar.Enabled = true;            
+            btnCancelEdicao.Enabled = true;
+
             #endregion
         }
 
@@ -1178,6 +1216,8 @@ namespace Comercial
             bindingNavigator1.BindingSource.CancelEdit();
             Util.Interface.ChangeControlStatus(frm, false);
             edit = false;
+
+            cancelEdicao();
         }
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -1202,9 +1242,5 @@ namespace Comercial
                 ven.cnsltTlStrpConsulta.Enabled = true;
             }
         }
-
-        
-
-       
     }
 }
