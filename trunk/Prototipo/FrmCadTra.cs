@@ -6,7 +6,12 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using System.Web.UI.WebControls;
+using System.Configuration;
+using System.Data.SqlClient;
+using Microsoft.Practices.EnterpriseLibrary.Data;
+using Microsoft.Practices.ObjectBuilder;
+using System.Data.Common;
+using System.Data.OleDb;
 
 namespace Comercial
 {
@@ -45,10 +50,38 @@ namespace Comercial
             this.tRANSPORTADORATableAdapter.Fill(this.cOMERCIALDataSet.TRANSPORTADORA);
         }
 
-        private void FrmCadTra_Load(object sender, EventArgs e)
+        public void limparcampos()
+        {
+            chkAereo.Checked = false;
+            chkFerroviario.Checked = false;
+            chkMaritimo.Checked = false;
+            chkTerrestre.Checked = false;
+        }
+
+
+
+        public DataTable Listar(String CodTrans)
         {
 
+            Database db = DatabaseFactory.CreateDatabase();
+
+            DataSet dtsDados = new DataSet();
+
+            StringBuilder sqlcommand = new StringBuilder();
+
+            sqlcommand.Append("select * from TRANSPORTADORAVIA where CODTRANSPORTADORA = @CODTRANSPORTADORA");
+
+            DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
+
+            db.AddInParameter(dbComd, "@CODTRANSPORTADORA", DbType.String, CodTrans);
+
+            dtsDados = db.ExecuteDataSet(dbComd);
+
+            return dtsDados.Tables[0];
+
+
         }
+
 
         public int salvar()
         {
@@ -58,7 +91,7 @@ namespace Comercial
             if (chkAereo.Checked)
             {
                 COMERCIALDataSetTableAdapters.TRANSPORTADORAVIATableAdapter VTrans = new Comercial.COMERCIALDataSetTableAdapters.TRANSPORTADORAVIATableAdapter();
-                VTrans.Insert("1",CnpjTrans);
+                VTrans.Insert("1", CnpjTrans);
             }
             if (chkFerroviario.Checked)
             {
@@ -75,13 +108,71 @@ namespace Comercial
                 COMERCIALDataSetTableAdapters.TRANSPORTADORAVIATableAdapter VTrans = new Comercial.COMERCIALDataSetTableAdapters.TRANSPORTADORAVIATableAdapter();
                 VTrans.Insert("4", CnpjTrans);
             }
+
+            this.limparcampos();
             return 0;
 
+
+
+        }
+
+        private void tRANSPORTADORABindingSource_PositionChanged(object sender, EventArgs e)
+        {
+            if (tRANSPORTADORAVIABindingSource.Current != null)
+            {
+                DataRowView Trans = (DataRowView)tRANSPORTADORABindingSource.Current;
+
+                DataTable table = new DataTable();
+
+                //txtCepCli.getText = c["CEP"].ToString();
+
+                String Codtrans = Trans["CNPJ"].ToString();
+
+                table = Listar(Codtrans);
+
+                this.limparcampos();
+
+
+                foreach (DataRow item in table.Rows)
+                {
+
+                    int i = Convert.ToInt32(item.ItemArray[0]);
+
+
+                    switch (i)
+                    {
+                        case 1: chkAereo.Checked = true;
+                            continue;
+
+                        case 2: chkFerroviario.Checked = true;
+                            continue;
+
+                        case 3: chkMaritimo.Checked = true;
+                            continue;
+
+                        case 4: chkTerrestre.Checked = true;
+                            continue;
+
+                    }
+
+                }
+
+
+
+            }
+         
+        }
+
+        private void FrmCadTra_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'cOMERCIALDataSet.TRANSPORTADORAVIA' table. You can move, or remove it, as needed.
+            this.tRANSPORTADORAVIATableAdapter.Fill(this.cOMERCIALDataSet.TRANSPORTADORAVIA);
+
         }
 
 
-              
-        }
 
     }
+
+}
 

@@ -123,6 +123,14 @@ namespace Comercial
                         table.Update(_dataset);
                     }
 
+                    if (frm is FrmCadTra)
+                    {
+
+                        COMERCIALDataSetTableAdapters.TRANSPORTADORATableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.TRANSPORTADORATableAdapter();
+                        table.Update(_dataset);
+                    }
+
+
                     // ================================
 
                     Util.Interface.ChangeControlStatus(frm, false);

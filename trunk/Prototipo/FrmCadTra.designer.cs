@@ -40,8 +40,10 @@
             this.tRANSPORTADORABindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
             this.gpbContatotrans = new System.Windows.Forms.GroupBox();
+            this.uFComboBox = new System.Windows.Forms.ComboBox();
             this.cEPTextBox = new System.Windows.Forms.TextBox();
             this.lblCeptrans = new System.Windows.Forms.Label();
+            this.txtceptrans = new Comercial.TextButton();
             this.txtTeltrans = new System.Windows.Forms.MaskedTextBox();
             this.txtEmailtrans = new System.Windows.Forms.TextBox();
             this.lblEmailtrans = new System.Windows.Forms.Label();
@@ -62,17 +64,15 @@
             this.LblNom = new System.Windows.Forms.Label();
             this.tRANSPORTADORATableAdapter = new Comercial.COMERCIALDataSetTableAdapters.TRANSPORTADORATableAdapter();
             this.tableAdapterManager = new Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager();
-
-            this.uFComboBox = new System.Windows.Forms.ComboBox();
-
-
-            this.txtceptrans = new Comercial.TextButton();
+            this.tRANSPORTADORAVIABindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tRANSPORTADORAVIATableAdapter = new Comercial.COMERCIALDataSetTableAdapters.TRANSPORTADORAVIATableAdapter();
             this.TbCntCadTra.SuspendLayout();
             this.TbPgCadTra.SuspendLayout();
             this.grpBxViaTrans.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tRANSPORTADORABindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).BeginInit();
             this.gpbContatotrans.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tRANSPORTADORAVIABindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // TbCntCadTra
@@ -81,7 +81,7 @@
             this.TbCntCadTra.Location = new System.Drawing.Point(12, 12);
             this.TbCntCadTra.Name = "TbCntCadTra";
             this.TbCntCadTra.SelectedIndex = 0;
-            this.TbCntCadTra.Size = new System.Drawing.Size(544, 304);
+            this.TbCntCadTra.Size = new System.Drawing.Size(542, 302);
             this.TbCntCadTra.TabIndex = 0;
             // 
             // TbPgCadTra
@@ -100,7 +100,7 @@
             this.TbPgCadTra.Location = new System.Drawing.Point(4, 22);
             this.TbPgCadTra.Name = "TbPgCadTra";
             this.TbPgCadTra.Padding = new System.Windows.Forms.Padding(3);
-            this.TbPgCadTra.Size = new System.Drawing.Size(536, 278);
+            this.TbPgCadTra.Size = new System.Drawing.Size(534, 276);
             this.TbPgCadTra.TabIndex = 0;
             this.TbPgCadTra.Text = "Cadastro Transportadora";
             this.TbPgCadTra.UseVisualStyleBackColor = true;
@@ -174,6 +174,7 @@
             // 
             this.tRANSPORTADORABindingSource.DataMember = "TRANSPORTADORA";
             this.tRANSPORTADORABindingSource.DataSource = this.cOMERCIALDataSet;
+            this.tRANSPORTADORABindingSource.PositionChanged += new System.EventHandler(this.tRANSPORTADORABindingSource_PositionChanged);
             // 
             // cOMERCIALDataSet
             // 
@@ -201,10 +202,49 @@
             this.gpbContatotrans.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.gpbContatotrans.Location = new System.Drawing.Point(6, 106);
             this.gpbContatotrans.Name = "gpbContatotrans";
-            this.gpbContatotrans.Size = new System.Drawing.Size(551, 163);
+            this.gpbContatotrans.Size = new System.Drawing.Size(520, 163);
             this.gpbContatotrans.TabIndex = 73;
             this.gpbContatotrans.TabStop = false;
             this.gpbContatotrans.Text = "Contato";
+            // 
+            // uFComboBox
+            // 
+            this.uFComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tRANSPORTADORABindingSource, "UF", true));
+            this.uFComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.tRANSPORTADORABindingSource, "UF", true));
+            this.uFComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.tRANSPORTADORABindingSource, "UF", true));
+            this.uFComboBox.FormattingEnabled = true;
+            this.uFComboBox.Items.AddRange(new object[] {
+            "AC",
+            "AL",
+            "AM",
+            "AP",
+            "BA",
+            "CE",
+            "DF",
+            "ES",
+            "GO",
+            "MA",
+            "MG",
+            "MS",
+            "MT",
+            "PA",
+            "PB",
+            "PE",
+            "PI",
+            "PR",
+            "RJ",
+            "RN",
+            "RO",
+            "RR",
+            "RS",
+            "SC",
+            "SE",
+            "SP",
+            "TO"});
+            this.uFComboBox.Location = new System.Drawing.Point(373, 82);
+            this.uFComboBox.Name = "uFComboBox";
+            this.uFComboBox.Size = new System.Drawing.Size(121, 21);
+            this.uFComboBox.TabIndex = 46;
             // 
             // cEPTextBox
             // 
@@ -223,6 +263,17 @@
             this.lblCeptrans.Size = new System.Drawing.Size(29, 13);
             this.lblCeptrans.TabIndex = 44;
             this.lblCeptrans.Text = "Cep";
+            // 
+            // txtceptrans
+            // 
+            this.txtceptrans.getText = "";
+            this.txtceptrans.Image = global::Comercial.Properties.Resources.btn_correios;
+            this.txtceptrans.Location = new System.Drawing.Point(5, 42);
+            this.txtceptrans.Name = "txtceptrans";
+            this.txtceptrans.ShowButton = false;
+            this.txtceptrans.Size = new System.Drawing.Size(135, 25);
+            this.txtceptrans.TabIndex = 43;
+            this.txtceptrans.Visible = false;
             // 
             // txtTeltrans
             // 
@@ -440,65 +491,21 @@
             this.tableAdapterManager.VENDEDORTableAdapter = null;
             this.tableAdapterManager.VIATRANSPORTETableAdapter = null;
             // 
-
-            // uFComboBox
+            // tRANSPORTADORAVIABindingSource
             // 
-            this.uFComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tRANSPORTADORABindingSource, "UF", true));
-            this.uFComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.tRANSPORTADORABindingSource, "UF", true));
-            this.uFComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.tRANSPORTADORABindingSource, "UF", true));
-            this.uFComboBox.FormattingEnabled = true;
-            this.uFComboBox.Items.AddRange(new object[] {
-            "AC",
-            "AL",
-            "AM",
-            "AP",
-            "BA",
-            "CE",
-            "DF",
-            "ES",
-            "GO",
-            "MA",
-            "MG",
-            "MS",
-            "MT",
-            "PA",
-            "PB",
-            "PE",
-            "PI",
-            "PR",
-            "RJ",
-            "RN",
-            "RO",
-            "RR",
-            "RS",
-            "SC",
-            "SE",
-            "SP",
-            "TO"});
-            this.uFComboBox.Location = new System.Drawing.Point(373, 82);
-            this.uFComboBox.Name = "uFComboBox";
-            this.uFComboBox.Size = new System.Drawing.Size(121, 21);
-            this.uFComboBox.TabIndex = 46;
+            this.tRANSPORTADORAVIABindingSource.DataMember = "TRANSPORTADORAVIA";
+            this.tRANSPORTADORAVIABindingSource.DataSource = this.cOMERCIALDataSet;
             // 
-
-
-            // txtceptrans
+            // tRANSPORTADORAVIATableAdapter
             // 
-            this.txtceptrans.getText = "";
-            this.txtceptrans.Image = global::Comercial.Properties.Resources.btn_correios;
-            this.txtceptrans.Location = new System.Drawing.Point(5, 42);
-            this.txtceptrans.Name = "txtceptrans";
-            this.txtceptrans.ShowButton = false;
-            this.txtceptrans.Size = new System.Drawing.Size(135, 25);
-            this.txtceptrans.TabIndex = 43;
-            this.txtceptrans.Visible = false;
+            this.tRANSPORTADORAVIATableAdapter.ClearBeforeFill = true;
             // 
             // FrmCadTra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(565, 324);
+            this.ClientSize = new System.Drawing.Size(564, 322);
             this.Controls.Add(this.TbCntCadTra);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MaximizeBox = false;
@@ -512,16 +519,12 @@
             this.TbPgCadTra.ResumeLayout(false);
             this.TbPgCadTra.PerformLayout();
             this.grpBxViaTrans.ResumeLayout(false);
-
             this.grpBxViaTrans.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tRANSPORTADORABindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).EndInit();
-
-            ((System.ComponentModel.ISupportInitialize)(this.tRANSPORTADORABindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).EndInit();
-
             this.gpbContatotrans.ResumeLayout(false);
             this.gpbContatotrans.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tRANSPORTADORAVIABindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -563,6 +566,8 @@
         private System.Windows.Forms.CheckBox chkFerroviario;
         private System.Windows.Forms.CheckBox chkAereo;
         private System.Windows.Forms.ComboBox uFComboBox;
+        private System.Windows.Forms.BindingSource tRANSPORTADORAVIABindingSource;
+        private Comercial.COMERCIALDataSetTableAdapters.TRANSPORTADORAVIATableAdapter tRANSPORTADORAVIATableAdapter;
 
     }
 }
