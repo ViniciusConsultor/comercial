@@ -128,7 +128,7 @@ namespace Comercial
             {
                 FrmCadUsu usu = (FrmCadUsu)_parent;
 
-                usu.txtUsu.getText = dtGrdVwVis.CurrentRow.Cells[0].Value.ToString();
+                usu.txtUsu.getText = dtGrdVwVis.SelectedRows[0].Cells[0].Value.ToString();
             }
         }
     }
