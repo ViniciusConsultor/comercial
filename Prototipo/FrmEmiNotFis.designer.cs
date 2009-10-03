@@ -559,6 +559,7 @@
                 this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
                 this.BackColor = System.Drawing.Color.WhiteSmoke;
                 this.ClientSize = new System.Drawing.Size(803, 495);
+                this.ControlBox = false;
                 this.Controls.Add(this.TbCntEmiNF);
                 this.MaximizeBox = false;
                 this.MinimizeBox = false;
