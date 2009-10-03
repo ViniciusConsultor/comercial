@@ -23,6 +23,7 @@ namespace Comercial
         {
             InitializeComponent();
             bindingNavigator1.Enabled = false;
+            
         }
 
         private void FrmPrinc_FormClosed(object sender, FormClosedEventArgs e)
@@ -148,8 +149,10 @@ namespace Comercial
             }
             catch (Exception ex)
             {
-                // if(e.)
-                MessageBox.Show("Campo(s) Obrigatório(s) não preenchido(s).", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (ex.GetType().FullName=="System.Data.NoNullAllowedException")
+                    MessageBox.Show("Campo(s) Obrigatório(s) não preenchido(s).", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (ex.GetType().FullName=="System.Data.ConstraintException")
+                    MessageBox.Show("Registro já cadastrado (Violação de chave primária)", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }

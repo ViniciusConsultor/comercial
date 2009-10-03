@@ -18,6 +18,7 @@ namespace Comercial
             InitializeComponent();
             this.MdiParent = parent;
             _princ = parent;
+            _princ.novo();
             // =================================================
             // COLOCAR ESSA PARTE EM TODOS OS FORMS
 

@@ -22,6 +22,7 @@ namespace Comercial
             _princ = parent;
             _princ.bindingNavigator1.BindingSource = vENDEDORBindingSource;
             _princ.setdataSet(cOMERCIALDataSet);
+            _princ.novo();
         }
         /*
          * SALVAR RETORNA:
