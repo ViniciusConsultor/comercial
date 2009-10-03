@@ -126,9 +126,26 @@ namespace Comercial
 
                     if (frm is FrmCadTra)
                     {
+                        FrmCadTra frmTrans = (FrmCadTra)frm;
+                        retorno = frmTrans.ValidaCNPJ();
+                        if (retorno == 1)
+                        {
+                            MessageBox.Show("CNPJ Inválido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            
+                        }
+                        else
+                        {
+                            COMERCIALDataSetTableAdapters.TRANSPORTADORATableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.TRANSPORTADORATableAdapter();
+                            table.Update(_dataset);
+                            if (frm is FrmCadTra)
+                            {
+                                
+                                retorno = frmTrans.salvar();
+                            }
 
-                        COMERCIALDataSetTableAdapters.TRANSPORTADORATableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.TRANSPORTADORATableAdapter();
-                        table.Update(_dataset);
+
+                        }
+                       
                     }
 
 
@@ -137,12 +154,7 @@ namespace Comercial
                     Util.Interface.ChangeControlStatus(frm, false);
                     bindingNavigator1.Refresh();
 
-                    if (frm is FrmCadTra)
-                    {
-                        FrmCadTra frmTrans = (FrmCadTra)frm;
-                        retorno = frmTrans.salvar();
-                    }
-
+                   
                     edit = false;
                     cancelEdicao();
                 }

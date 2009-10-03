@@ -52,7 +52,7 @@ namespace Comercial
 
         public int ValidaCNPJ(string cnpj)
         {
-            /*int result;
+            int result;
             int d1;
             int d2;
             int soma = 0;
@@ -119,8 +119,7 @@ namespace Comercial
             
             return result;
         
-            */
-            return 0;
+            
         }
     }
 
