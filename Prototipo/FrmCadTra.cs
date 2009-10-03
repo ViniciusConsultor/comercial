@@ -87,6 +87,7 @@ namespace Comercial
         public int salvar()
         {
 
+
             String CnpjTrans = (String)txtCnpjTrans.Text.Replace(".", "").Replace("/", "").Replace("-", "");
 
             if (chkAereo.Checked)
@@ -161,7 +162,7 @@ namespace Comercial
 
 
             }
-         
+
         }
 
         private void FrmCadTra_Load(object sender, EventArgs e)
@@ -173,6 +174,20 @@ namespace Comercial
 
 
 
+
+        public int ValidaCNPJ()
+        {
+            String CnpjTrans = (String)txtCnpjTrans.Text.Replace(".", "").Replace("/", "").Replace("-", "");
+
+            //Valida CPF
+
+            DataRowView x;
+            x = (DataRowView)tRANSPORTADORABindingSource.Current;
+            Validacoes valida = new Validacoes();
+            int cnpj = valida.ValidaCNPJ(CnpjTrans);
+
+            return cnpj;
+        }
     }
 
 }
