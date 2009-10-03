@@ -22,8 +22,6 @@ namespace Comercial
             _princ.bindingNavigator1.BindingSource = pRODUTOBindingSource;
             _princ.setdataSet(cOMERCIALDataSet);
 
-            _princ.bindingNavigator1.Enabled = true;
-
             // novo
 
             _princ.novo();
