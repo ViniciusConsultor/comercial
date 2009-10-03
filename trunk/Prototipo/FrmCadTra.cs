@@ -31,6 +31,7 @@ namespace Comercial
             _princ.bindingNavigator1.BindingSource = tRANSPORTADORABindingSource;
             _princ.setdataSet(cOMERCIALDataSet);
 
+            _princ.novo();
             //==================================================
         }
 
