@@ -168,6 +168,7 @@ namespace Comercial
 
         public void novo()
         {
+            bindingNavigator1.Enabled = true;
             btnPesquisar.Enabled = true;
             BtnDeletar.Enabled = true;
             btnNovo.Enabled = true;
