@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnPesquisar = new System.Windows.Forms.Button();
             this.grpBxFiltro = new System.Windows.Forms.GroupBox();
             this.rdBtnNome = new System.Windows.Forms.RadioButton();
             this.rdBtnCod = new System.Windows.Forms.RadioButton();
             this.txtPesquisar = new System.Windows.Forms.TextBox();
             this.lblPes = new System.Windows.Forms.Label();
             this.dtGrdVwVis = new System.Windows.Forms.DataGridView();
-            this.btnPesquisar = new System.Windows.Forms.Button();
-            this.ClmUm = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClmDois = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.grpBxFiltro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGrdVwVis)).BeginInit();
@@ -50,6 +50,7 @@
             this.groupBox1.Controls.Add(this.txtPesquisar);
             this.groupBox1.Controls.Add(this.lblPes);
             this.groupBox1.Controls.Add(this.dtGrdVwVis);
+            this.groupBox1.Cursor = System.Windows.Forms.Cursors.WaitCursor;
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
@@ -59,6 +60,23 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Pesquisar:";
             this.groupBox1.UseWaitCursor = true;
+            // 
+            // btnPesquisar
+            // 
+            this.btnPesquisar.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+            this.btnPesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPesquisar.ForeColor = System.Drawing.Color.Black;
+            this.btnPesquisar.Image = global::Comercial.Properties.Resources.search1;
+            this.btnPesquisar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPesquisar.Location = new System.Drawing.Point(347, 276);
+            this.btnPesquisar.Name = "btnPesquisar";
+            this.btnPesquisar.Size = new System.Drawing.Size(86, 33);
+            this.btnPesquisar.TabIndex = 14;
+            this.btnPesquisar.Text = "Pesquisar";
+            this.btnPesquisar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnPesquisar.UseVisualStyleBackColor = true;
+            this.btnPesquisar.UseWaitCursor = true;
+            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
             // 
             // grpBxFiltro
             // 
@@ -77,9 +95,10 @@
             // rdBtnNome
             // 
             this.rdBtnNome.AutoSize = true;
+            this.rdBtnNome.Checked = true;
             this.rdBtnNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdBtnNome.ForeColor = System.Drawing.Color.CadetBlue;
-            this.rdBtnNome.Location = new System.Drawing.Point(81, 21);
+            this.rdBtnNome.Location = new System.Drawing.Point(18, 19);
             this.rdBtnNome.Name = "rdBtnNome";
             this.rdBtnNome.Size = new System.Drawing.Size(53, 17);
             this.rdBtnNome.TabIndex = 1;
@@ -93,7 +112,7 @@
             this.rdBtnCod.AutoSize = true;
             this.rdBtnCod.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdBtnCod.ForeColor = System.Drawing.Color.CadetBlue;
-            this.rdBtnCod.Location = new System.Drawing.Point(13, 21);
+            this.rdBtnCod.Location = new System.Drawing.Point(91, 19);
             this.rdBtnCod.Name = "rdBtnCod";
             this.rdBtnCod.Size = new System.Drawing.Size(58, 17);
             this.rdBtnCod.TabIndex = 0;
@@ -104,6 +123,7 @@
             // 
             // txtPesquisar
             // 
+            this.txtPesquisar.Cursor = System.Windows.Forms.Cursors.WaitCursor;
             this.txtPesquisar.Location = new System.Drawing.Point(11, 44);
             this.txtPesquisar.Name = "txtPesquisar";
             this.txtPesquisar.Size = new System.Drawing.Size(251, 20);
@@ -124,42 +144,39 @@
             // 
             // dtGrdVwVis
             // 
+            this.dtGrdVwVis.AllowUserToAddRows = false;
+            this.dtGrdVwVis.AllowUserToDeleteRows = false;
+            this.dtGrdVwVis.AllowUserToOrderColumns = true;
             this.dtGrdVwVis.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dtGrdVwVis.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGrdVwVis.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ClmUm,
-            this.ClmDois});
+            this.col1,
+            this.col2});
+            this.dtGrdVwVis.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+            this.dtGrdVwVis.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dtGrdVwVis.Location = new System.Drawing.Point(11, 83);
+            this.dtGrdVwVis.MultiSelect = false;
             this.dtGrdVwVis.Name = "dtGrdVwVis";
+            this.dtGrdVwVis.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dtGrdVwVis.ShowCellErrors = false;
+            this.dtGrdVwVis.ShowCellToolTips = false;
+            this.dtGrdVwVis.ShowEditingIcon = false;
+            this.dtGrdVwVis.ShowRowErrors = false;
             this.dtGrdVwVis.Size = new System.Drawing.Size(422, 187);
             this.dtGrdVwVis.TabIndex = 11;
             this.dtGrdVwVis.UseWaitCursor = true;
+            this.dtGrdVwVis.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGrdVwVis_CellDoubleClick);
             // 
-            // btnPesquisar
+            // col1
             // 
-            this.btnPesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPesquisar.ForeColor = System.Drawing.Color.Black;
-            this.btnPesquisar.Image = global::Comercial.Properties.Resources.search1;
-            this.btnPesquisar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPesquisar.Location = new System.Drawing.Point(347, 276);
-            this.btnPesquisar.Name = "btnPesquisar";
-            this.btnPesquisar.Size = new System.Drawing.Size(86, 33);
-            this.btnPesquisar.TabIndex = 14;
-            this.btnPesquisar.Text = "Pesquisar";
-            this.btnPesquisar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnPesquisar.UseVisualStyleBackColor = true;
-            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
+            this.col1.HeaderText = "col1";
+            this.col1.Name = "col1";
             // 
-            // ClmUm
+            // col2
             // 
-            this.ClmUm.HeaderText = "Código";
-            this.ClmUm.Name = "ClmUm";
-            // 
-            // ClmDois
-            // 
-            this.ClmDois.HeaderText = "Nome";
-            this.ClmDois.Name = "ClmDois";
-            this.ClmDois.Width = 260;
+            this.col2.HeaderText = "col2";
+            this.col2.Name = "col2";
+            this.col2.Width = 260;
             // 
             // FrmVisGeral
             // 
@@ -191,9 +208,9 @@
         private System.Windows.Forms.RadioButton rdBtnCod;
         private System.Windows.Forms.TextBox txtPesquisar;
         private System.Windows.Forms.Label lblPes;
-        private System.Windows.Forms.DataGridView dtGrdVwVis;
         private System.Windows.Forms.Button btnPesquisar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ClmUm;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ClmDois;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col2;
+        public System.Windows.Forms.DataGridView dtGrdVwVis;
     }
 }

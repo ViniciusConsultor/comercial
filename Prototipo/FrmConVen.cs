@@ -68,8 +68,20 @@ namespace Comercial
             //Pesquisa por quant.
             if (!string.IsNullOrEmpty(txtQuant.Text))
             {
-                sql += "and v.cpf in (select CODVENDEDOR, COUNT(*) from PEDIDO " +
+                sql += "and v.cpf in (select CODVENDEDOR from PEDIDO " +
                                         "group by CODVENDEDOR having COUNT(NRPEDIDO) " + cmBxOperador.Text + " " + txtQuant.Text + ") ";
+            }
+
+            if (cmBxTipoPed.Text == "N = Normal")
+            {
+               
+                sql += "and p.tipo = 'N' ";
+            }
+
+            if (cmBxTipoPed.Text == "C = Complemento de preço")
+            {
+
+                sql += "and p.tipo = 'C' ";
             }
 
              string c = ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString;

@@ -110,8 +110,9 @@
             this.lblUsua = new System.Windows.Forms.Label();
             this.lblSenha = new System.Windows.Forms.Label();
             this.tbCntrlCtrUsu = new System.Windows.Forms.TabControl();
-            this.lblCodigotrans = new System.Windows.Forms.Label();
-            this.txtBtnUsu = new Comercial.TextButton();
+            this.txtBxSenhaAntiga = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtUsu = new Comercial.TextButton();
             this.tabPage1.SuspendLayout();
             this.grpBxMenu.SuspendLayout();
             this.grpBxInfor.SuspendLayout();
@@ -246,9 +247,10 @@
             // 
             // grpBxInfor
             // 
-            this.grpBxInfor.Controls.Add(this.lblCodigotrans);
+            this.grpBxInfor.Controls.Add(this.txtBxSenhaAntiga);
+            this.grpBxInfor.Controls.Add(this.label1);
             this.grpBxInfor.Controls.Add(this.checkBox1);
-            this.grpBxInfor.Controls.Add(this.txtBtnUsu);
+            this.grpBxInfor.Controls.Add(this.txtUsu);
             this.grpBxInfor.Controls.Add(this.chckBxUsublq);
             this.grpBxInfor.Controls.Add(this.txtConSenha);
             this.grpBxInfor.Controls.Add(this.lblConSenha);
@@ -295,10 +297,11 @@
             // lblConSenha
             // 
             this.lblConSenha.AutoSize = true;
+            this.lblConSenha.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblConSenha.ForeColor = System.Drawing.Color.CadetBlue;
             this.lblConSenha.Location = new System.Drawing.Point(11, 136);
             this.lblConSenha.Name = "lblConSenha";
-            this.lblConSenha.Size = new System.Drawing.Size(91, 13);
+            this.lblConSenha.Size = new System.Drawing.Size(108, 13);
             this.lblConSenha.TabIndex = 41;
             this.lblConSenha.Text = "Confirmar Senha :";
             // 
@@ -314,7 +317,7 @@
             this.lblUsua.AutoSize = true;
             this.lblUsua.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsua.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblUsua.Location = new System.Drawing.Point(6, 42);
+            this.lblUsua.Location = new System.Drawing.Point(11, 19);
             this.lblUsua.Name = "lblUsua";
             this.lblUsua.Size = new System.Drawing.Size(58, 13);
             this.lblUsua.TabIndex = 36;
@@ -341,25 +344,35 @@
             this.tbCntrlCtrUsu.Size = new System.Drawing.Size(537, 281);
             this.tbCntrlCtrUsu.TabIndex = 0;
             // 
-            // lblCodigotrans
+            // txtBxSenhaAntiga
             // 
-            this.lblCodigotrans.AutoSize = true;
-            this.lblCodigotrans.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblCodigotrans.Location = new System.Drawing.Point(11, 16);
-            this.lblCodigotrans.Name = "lblCodigotrans";
-            this.lblCodigotrans.Size = new System.Drawing.Size(43, 13);
-            this.lblCodigotrans.TabIndex = 46;
-            this.lblCodigotrans.Text = "Código:";
+            this.txtBxSenhaAntiga.Location = new System.Drawing.Point(11, 74);
+            this.txtBxSenhaAntiga.Name = "txtBxSenhaAntiga";
+            this.txtBxSenhaAntiga.Size = new System.Drawing.Size(100, 20);
+            this.txtBxSenhaAntiga.TabIndex = 47;
             // 
-            // txtBtnUsu
+            // label1
             // 
-            this.txtBtnUsu.Image = ((System.Drawing.Image)(resources.GetObject("txtBtnUsu.Image")));
-            this.txtBtnUsu.Location = new System.Drawing.Point(11, 58);
-            this.txtBtnUsu.Name = "txtBtnUsu";
-            this.txtBtnUsu.ShowButton = false;
-            this.txtBtnUsu.Size = new System.Drawing.Size(181, 25);
-            this.txtBtnUsu.TabIndex = 44;
-            this.txtBtnUsu.ButtonClick += new System.EventHandler(this.txtBtnUsu_ButtonClick);
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.CadetBlue;
+            this.label1.Location = new System.Drawing.Point(11, 58);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(90, 13);
+            this.label1.TabIndex = 46;
+            this.label1.Text = "Senha antiga: ";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // txtUsu
+            // 
+            this.txtUsu.getText = "";
+            this.txtUsu.Image = ((System.Drawing.Image)(resources.GetObject("txtUsu.Image")));
+            this.txtUsu.Location = new System.Drawing.Point(11, 35);
+            this.txtUsu.Name = "txtUsu";
+            this.txtUsu.ShowButton = false;
+            this.txtUsu.Size = new System.Drawing.Size(181, 25);
+            this.txtUsu.TabIndex = 44;
+            this.txtUsu.ButtonClick += new System.EventHandler(this.txtBtnUsu_ButtonClick);
             // 
             // FrmCadUsu
             // 
@@ -387,7 +400,6 @@
         private System.Windows.Forms.Button btnMarAll;
         private System.Windows.Forms.GroupBox grpBxInfor;
         private System.Windows.Forms.CheckBox checkBox1;
-        private TextButton txtBtnUsu;
         private System.Windows.Forms.CheckBox chckBxUsublq;
         private System.Windows.Forms.TextBox txtConSenha;
         private System.Windows.Forms.Label lblConSenha;
@@ -395,7 +407,9 @@
         private System.Windows.Forms.Label lblUsua;
         private System.Windows.Forms.Label lblSenha;
         private System.Windows.Forms.TabControl tbCntrlCtrUsu;
-        private System.Windows.Forms.Label lblCodigotrans;
+        private System.Windows.Forms.TextBox txtBxSenhaAntiga;
+        private System.Windows.Forms.Label label1;
+        public TextButton txtUsu;
 
     }
 }

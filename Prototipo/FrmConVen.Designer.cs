@@ -31,6 +31,13 @@
             this.components = new System.ComponentModel.Container();
             this.tbPgConVen = new System.Windows.Forms.TabPage();
             this.dtGrdVwConVen = new System.Windows.Forms.DataGridView();
+            this.CPF = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NomeVem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NRPEDIDO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataEmissao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Valor_Pedido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Comissao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Valor_Comissao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grpBxFiltro = new System.Windows.Forms.GroupBox();
             this.grpBxVendedor = new System.Windows.Forms.GroupBox();
             this.txtComissao = new System.Windows.Forms.TextBox();
@@ -54,13 +61,6 @@
             this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
             this.vENDEDORBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.vENDEDORTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.VENDEDORTableAdapter();
-            this.Valor_Comissao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Comissao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Valor_Pedido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataEmissao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NRPEDIDO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NomeVem = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CPF = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbPgConVen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGrdVwConVen)).BeginInit();
             this.grpBxFiltro.SuspendLayout();
@@ -105,6 +105,56 @@
             this.dtGrdVwConVen.TabIndex = 1;
             this.dtGrdVwConVen.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
+            // CPF
+            // 
+            this.CPF.DataPropertyName = "cpf";
+            this.CPF.HeaderText = "CPF";
+            this.CPF.Name = "CPF";
+            this.CPF.ReadOnly = true;
+            // 
+            // NomeVem
+            // 
+            this.NomeVem.DataPropertyName = "nome";
+            this.NomeVem.HeaderText = "Nome";
+            this.NomeVem.Name = "NomeVem";
+            this.NomeVem.ReadOnly = true;
+            this.NomeVem.Width = 200;
+            // 
+            // NRPEDIDO
+            // 
+            this.NRPEDIDO.DataPropertyName = "nrpedido";
+            this.NRPEDIDO.HeaderText = "Num. Pedido";
+            this.NRPEDIDO.Name = "NRPEDIDO";
+            this.NRPEDIDO.ReadOnly = true;
+            // 
+            // DataEmissao
+            // 
+            this.DataEmissao.DataPropertyName = "dataemissao";
+            this.DataEmissao.HeaderText = "Data Emissão";
+            this.DataEmissao.Name = "DataEmissao";
+            this.DataEmissao.ReadOnly = true;
+            // 
+            // Valor_Pedido
+            // 
+            this.Valor_Pedido.DataPropertyName = "valor_pedido";
+            this.Valor_Pedido.HeaderText = "Valor Pedido";
+            this.Valor_Pedido.Name = "Valor_Pedido";
+            this.Valor_Pedido.ReadOnly = true;
+            // 
+            // Comissao
+            // 
+            this.Comissao.DataPropertyName = "comissao";
+            this.Comissao.HeaderText = "Comissão";
+            this.Comissao.Name = "Comissao";
+            this.Comissao.ReadOnly = true;
+            // 
+            // Valor_Comissao
+            // 
+            this.Valor_Comissao.DataPropertyName = "valor_comissao";
+            this.Valor_Comissao.HeaderText = "Valor da Comissão";
+            this.Valor_Comissao.Name = "Valor_Comissao";
+            this.Valor_Comissao.ReadOnly = true;
+            // 
             // grpBxFiltro
             // 
             this.grpBxFiltro.Controls.Add(this.grpBxVendedor);
@@ -146,6 +196,7 @@
             // 
             this.txtCPF.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCPF.Location = new System.Drawing.Point(9, 79);
+            this.txtCPF.MaxLength = 11;
             this.txtCPF.Name = "txtCPF";
             this.txtCPF.Size = new System.Drawing.Size(134, 20);
             this.txtCPF.TabIndex = 7;
@@ -221,6 +272,7 @@
             this.cmBxOperador.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmBxOperador.FormattingEnabled = true;
             this.cmBxOperador.Items.AddRange(new object[] {
+            "",
             ">",
             "<",
             "=",
@@ -306,6 +358,7 @@
             this.cmBxTipoPed.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmBxTipoPed.FormattingEnabled = true;
             this.cmBxTipoPed.Items.AddRange(new object[] {
+            "",
             "N = Normal",
             "C = Complemento de preço"});
             this.cmBxTipoPed.Location = new System.Drawing.Point(169, 31);
@@ -347,56 +400,6 @@
             // vENDEDORTableAdapter
             // 
             this.vENDEDORTableAdapter.ClearBeforeFill = true;
-            // 
-            // Valor_Comissao
-            // 
-            this.Valor_Comissao.DataPropertyName = "valor_comissao";
-            this.Valor_Comissao.HeaderText = "Valor da Comissão";
-            this.Valor_Comissao.Name = "Valor_Comissao";
-            this.Valor_Comissao.ReadOnly = true;
-            // 
-            // Comissao
-            // 
-            this.Comissao.DataPropertyName = "comissao";
-            this.Comissao.HeaderText = "Comissão";
-            this.Comissao.Name = "Comissao";
-            this.Comissao.ReadOnly = true;
-            // 
-            // Valor_Pedido
-            // 
-            this.Valor_Pedido.DataPropertyName = "valor_pedido";
-            this.Valor_Pedido.HeaderText = "Valor Pedido";
-            this.Valor_Pedido.Name = "Valor_Pedido";
-            this.Valor_Pedido.ReadOnly = true;
-            // 
-            // DataEmissao
-            // 
-            this.DataEmissao.DataPropertyName = "dataemissao";
-            this.DataEmissao.HeaderText = "Data Emissão";
-            this.DataEmissao.Name = "DataEmissao";
-            this.DataEmissao.ReadOnly = true;
-            // 
-            // NRPEDIDO
-            // 
-            this.NRPEDIDO.DataPropertyName = "nrpedido";
-            this.NRPEDIDO.HeaderText = "Num. Pedido";
-            this.NRPEDIDO.Name = "NRPEDIDO";
-            this.NRPEDIDO.ReadOnly = true;
-            // 
-            // NomeVem
-            // 
-            this.NomeVem.DataPropertyName = "nome";
-            this.NomeVem.HeaderText = "Nome";
-            this.NomeVem.Name = "NomeVem";
-            this.NomeVem.ReadOnly = true;
-            this.NomeVem.Width = 200;
-            // 
-            // CPF
-            // 
-            this.CPF.DataPropertyName = "cpf";
-            this.CPF.HeaderText = "CPF";
-            this.CPF.Name = "CPF";
-            this.CPF.ReadOnly = true;
             // 
             // FrmConVen
             // 
