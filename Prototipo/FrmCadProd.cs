@@ -21,6 +21,12 @@ namespace Comercial
 
             _princ.bindingNavigator1.BindingSource = pRODUTOBindingSource;
             _princ.setdataSet(cOMERCIALDataSet);
+
+            _princ.bindingNavigator1.Enabled = true;
+
+            // novo
+
+            _princ.novo();
         }
 
         private void mskedTxtBxImpostos_KeyPress(object sender, KeyPressEventArgs e)
@@ -73,7 +79,6 @@ namespace Comercial
         public void novo()
         {
             dtmPckrCadastro.Value = DateTime.Now;
-
         }
     }
 }
