@@ -43,7 +43,6 @@
             this.uFComboBox = new System.Windows.Forms.ComboBox();
             this.cEPTextBox = new System.Windows.Forms.TextBox();
             this.lblCeptrans = new System.Windows.Forms.Label();
-            this.txtceptrans = new Comercial.TextButton();
             this.txtTeltrans = new System.Windows.Forms.MaskedTextBox();
             this.txtEmailtrans = new System.Windows.Forms.TextBox();
             this.lblEmailtrans = new System.Windows.Forms.Label();
@@ -66,6 +65,7 @@
             this.tableAdapterManager = new Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager();
             this.tRANSPORTADORAVIABindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tRANSPORTADORAVIATableAdapter = new Comercial.COMERCIALDataSetTableAdapters.TRANSPORTADORAVIATableAdapter();
+            this.txtceptrans = new Comercial.TextButton();
             this.TbCntCadTra.SuspendLayout();
             this.TbPgCadTra.SuspendLayout();
             this.grpBxViaTrans.SuspendLayout();
@@ -263,17 +263,6 @@
             this.lblCeptrans.Size = new System.Drawing.Size(29, 13);
             this.lblCeptrans.TabIndex = 44;
             this.lblCeptrans.Text = "Cep";
-            // 
-            // txtceptrans
-            // 
-            this.txtceptrans.getText = "";
-            this.txtceptrans.Image = global::Comercial.Properties.Resources.btn_correios;
-            this.txtceptrans.Location = new System.Drawing.Point(5, 42);
-            this.txtceptrans.Name = "txtceptrans";
-            this.txtceptrans.ShowButton = false;
-            this.txtceptrans.Size = new System.Drawing.Size(135, 25);
-            this.txtceptrans.TabIndex = 43;
-            this.txtceptrans.Visible = false;
             // 
             // txtTeltrans
             // 
@@ -500,12 +489,24 @@
             // 
             this.tRANSPORTADORAVIATableAdapter.ClearBeforeFill = true;
             // 
+            // txtceptrans
+            // 
+            this.txtceptrans.getText = "";
+            this.txtceptrans.Image = global::Comercial.Properties.Resources.btn_correios;
+            this.txtceptrans.Location = new System.Drawing.Point(5, 42);
+            this.txtceptrans.Name = "txtceptrans";
+            this.txtceptrans.ShowButton = false;
+            this.txtceptrans.Size = new System.Drawing.Size(135, 25);
+            this.txtceptrans.TabIndex = 43;
+            this.txtceptrans.Visible = false;
+            // 
             // FrmCadTra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(564, 322);
+            this.ControlBox = false;
             this.Controls.Add(this.TbCntCadTra);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MaximizeBox = false;
