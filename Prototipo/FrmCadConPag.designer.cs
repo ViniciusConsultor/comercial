@@ -30,9 +30,10 @@
             {
                 this.components = new System.ComponentModel.Container();
                 this.tabPage2 = new System.Windows.Forms.TabPage();
-                this.lblCodigo = new System.Windows.Forms.Label();
+                this.chkEntrada = new System.Windows.Forms.CheckBox();
                 this.cONDICAOPAGAMENTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
                 this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
+                this.lblCodigo = new System.Windows.Forms.Label();
                 this.TxtDiaDes = new System.Windows.Forms.TextBox();
                 this.TxtDes = new System.Windows.Forms.TextBox();
                 this.LblDiaPCo = new System.Windows.Forms.Label();
@@ -40,7 +41,6 @@
                 this.TbCntConPag = new System.Windows.Forms.TabControl();
                 this.cONDICAOPAGAMENTOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.CONDICAOPAGAMENTOTableAdapter();
                 this.tableAdapterManager = new Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager();
-                this.eNTRADACheckBox = new System.Windows.Forms.CheckBox();
                 this.tabPage2.SuspendLayout();
                 ((System.ComponentModel.ISupportInitialize)(this.cONDICAOPAGAMENTOBindingSource)).BeginInit();
                 ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).BeginInit();
@@ -50,7 +50,7 @@
                 // tabPage2
                 // 
                 this.tabPage2.AutoScroll = true;
-                this.tabPage2.Controls.Add(this.eNTRADACheckBox);
+                this.tabPage2.Controls.Add(this.chkEntrada);
                 this.tabPage2.Controls.Add(this.lblCodigo);
                 this.tabPage2.Controls.Add(this.TxtDiaDes);
                 this.tabPage2.Controls.Add(this.TxtDes);
@@ -64,6 +64,26 @@
                 this.tabPage2.Text = "Cadastro Condições de Pagamento";
                 this.tabPage2.UseVisualStyleBackColor = true;
                 // 
+                // chkEntrada
+                // 
+                this.chkEntrada.Location = new System.Drawing.Point(425, 19);
+                this.chkEntrada.Name = "chkEntrada";
+                this.chkEntrada.Size = new System.Drawing.Size(104, 24);
+                this.chkEntrada.TabIndex = 48;
+                this.chkEntrada.Text = "Entrada";
+                this.chkEntrada.UseVisualStyleBackColor = true;
+                // 
+                // cONDICAOPAGAMENTOBindingSource
+                // 
+                this.cONDICAOPAGAMENTOBindingSource.DataMember = "CONDICAOPAGAMENTO";
+                this.cONDICAOPAGAMENTOBindingSource.DataSource = this.cOMERCIALDataSet;
+                this.cONDICAOPAGAMENTOBindingSource.PositionChanged += new System.EventHandler(this.cONDICAOPAGAMENTOBindingSource_PositionChanged);
+                // 
+                // cOMERCIALDataSet
+                // 
+                this.cOMERCIALDataSet.DataSetName = "COMERCIALDataSet";
+                this.cOMERCIALDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+                // 
                 // lblCodigo
                 // 
                 this.lblCodigo.AutoSize = true;
@@ -75,16 +95,6 @@
                 this.lblCodigo.Size = new System.Drawing.Size(43, 13);
                 this.lblCodigo.TabIndex = 47;
                 this.lblCodigo.Text = "Código:";
-                // 
-                // cONDICAOPAGAMENTOBindingSource
-                // 
-                this.cONDICAOPAGAMENTOBindingSource.DataMember = "CONDICAOPAGAMENTO";
-                this.cONDICAOPAGAMENTOBindingSource.DataSource = this.cOMERCIALDataSet;
-                // 
-                // cOMERCIALDataSet
-                // 
-                this.cOMERCIALDataSet.DataSetName = "COMERCIALDataSet";
-                this.cOMERCIALDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
                 // 
                 // TxtDiaDes
                 // 
@@ -161,16 +171,6 @@
                 this.tableAdapterManager.VENDEDORTableAdapter = null;
                 this.tableAdapterManager.VIATRANSPORTETableAdapter = null;
                 // 
-                // eNTRADACheckBox
-                // 
-                this.eNTRADACheckBox.DataBindings.Add(new System.Windows.Forms.Binding("CheckState", this.cONDICAOPAGAMENTOBindingSource, "ENTRADA", true));
-                this.eNTRADACheckBox.Location = new System.Drawing.Point(425, 19);
-                this.eNTRADACheckBox.Name = "eNTRADACheckBox";
-                this.eNTRADACheckBox.Size = new System.Drawing.Size(104, 24);
-                this.eNTRADACheckBox.TabIndex = 48;
-                this.eNTRADACheckBox.Text = "Entrada";
-                this.eNTRADACheckBox.UseVisualStyleBackColor = true;
-                // 
                 // FrmCadConPag
                 // 
                 this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -186,7 +186,6 @@
                 this.ShowIcon = false;
                 this.ShowInTaskbar = false;
                 this.Text = "Cadastro Condições de Pagamento";
-                this.Load += new System.EventHandler(this.FrmCadConPag_Load);
                 this.Shown += new System.EventHandler(this.FrmCadConPag_Shown);
                 this.tabPage2.ResumeLayout(false);
                 this.tabPage2.PerformLayout();
@@ -210,7 +209,7 @@
         private System.Windows.Forms.BindingSource cONDICAOPAGAMENTOBindingSource;
         private Comercial.COMERCIALDataSetTableAdapters.CONDICAOPAGAMENTOTableAdapter cONDICAOPAGAMENTOTableAdapter;
         private Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager tableAdapterManager;
-        private System.Windows.Forms.CheckBox eNTRADACheckBox;
+        private System.Windows.Forms.CheckBox chkEntrada;
 
 
         }

@@ -291,6 +291,11 @@ namespace Comercial
                 checkBox1.Checked = true;
         }
 
+        private void frmConCli_Load(object sender, EventArgs e)
+        {
+
+        }
+
 
       }
     }

@@ -733,6 +733,7 @@
             this.Name = "FrmPrinc";
             this.Text = "Sistema comercial e Data Mining";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.FrmPrinc_Load);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FrmPrinc_FormClosed);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

@@ -28,37 +28,41 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCadPed));
+            this.components = new System.ComponentModel.Container();
             this.BtmTlStrpnlPedVenda = new System.Windows.Forms.ToolStripPanel();
             this.TopToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.tbCntrlPedVend = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.grpBxPedVenda = new System.Windows.Forms.GroupBox();
-            this.txtBtnCodVend = new Comercial.TextButton();
-            this.txtBtnCondPgto = new Comercial.TextButton();
-            this.txtBtnTransp = new Comercial.TextButton();
-            this.lblTpFrete = new System.Windows.Forms.Label();
+            this.grpTipoPedido = new System.Windows.Forms.GroupBox();
+            this.chkComplemento = new System.Windows.Forms.CheckBox();
+            this.chkNormal = new System.Windows.Forms.CheckBox();
+            this.cmbCondicao = new System.Windows.Forms.ComboBox();
+            this.pEDIDOBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
+            this.cONDICAOPAGAMENTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dATAEMISSAODateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.cODTRANSPORTADORAComboBox = new System.Windows.Forms.ComboBox();
+            this.tRANSPORTADORABindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.nOMETextBox = new System.Windows.Forms.TextBox();
+            this.vENDEDORBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cODVENDEDORTextBox = new System.Windows.Forms.TextBox();
+            this.rAZAOSOCIALTextBox = new System.Windows.Forms.TextBox();
+            this.cLIENTEBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cODCLIENTETextBox = new System.Windows.Forms.TextBox();
+            this.nRPEDIDOTextBox = new System.Windows.Forms.TextBox();
             this.grpBxSitPed = new System.Windows.Forms.GroupBox();
-            this.rdbcanc = new System.Windows.Forms.RadioButton();
-            this.rdbpend = new System.Windows.Forms.RadioButton();
-            this.rdbefet = new System.Windows.Forms.RadioButton();
-            this.cmbBxTpFrete = new System.Windows.Forms.ComboBox();
-            this.txtBtnCodCli = new Comercial.TextButton();
+            this.chkCancelado = new System.Windows.Forms.CheckBox();
+            this.chkPendente = new System.Windows.Forms.CheckBox();
+            this.chkEfetivado = new System.Windows.Forms.CheckBox();
             this.lbltpfre = new System.Windows.Forms.Label();
             this.lblcondp = new System.Windows.Forms.Label();
-            this.txtNomeVend = new System.Windows.Forms.TextBox();
             this.lblnomven = new System.Windows.Forms.Label();
             this.lclcodven = new System.Windows.Forms.Label();
-            this.lbltpcli = new System.Windows.Forms.Label();
-            this.cmbTpCli = new System.Windows.Forms.ComboBox();
             this.lbldtemi = new System.Windows.Forms.Label();
-            this.dtmPckrDtEmissao = new System.Windows.Forms.DateTimePicker();
-            this.lbltipped = new System.Windows.Forms.Label();
-            this.txtTpped = new System.Windows.Forms.ComboBox();
-            this.txtNomecli = new System.Windows.Forms.TextBox();
             this.lblnomecli = new System.Windows.Forms.Label();
             this.lblcodcli = new System.Windows.Forms.Label();
-            this.txtNumped = new System.Windows.Forms.TextBox();
             this.lblnumPed = new System.Windows.Forms.Label();
             this.grpBxItPedVen = new System.Windows.Forms.GroupBox();
             this.txtBtnCpdProd = new Comercial.TextButton();
@@ -96,14 +100,26 @@
             this.txtDescprod = new System.Windows.Forms.TextBox();
             this.LbDescProd = new System.Windows.Forms.Label();
             this.lblCodProd = new System.Windows.Forms.Label();
-            this.tbCntrlPedVend = new System.Windows.Forms.TabControl();
+            this.pEDIDOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.PEDIDOTableAdapter();
+            this.tableAdapterManager = new Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager();
+            this.tRANSPORTADORATableAdapter = new Comercial.COMERCIALDataSetTableAdapters.TRANSPORTADORATableAdapter();
+            this.vENDEDORTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.VENDEDORTableAdapter();
+            this.cLIENTETableAdapter = new Comercial.COMERCIALDataSetTableAdapters.CLIENTETableAdapter();
+            this.cONDICAOPAGAMENTOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.CONDICAOPAGAMENTOTableAdapter();
+            this.tbCntrlPedVend.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.grpBxPedVenda.SuspendLayout();
+            this.grpTipoPedido.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pEDIDOBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cONDICAOPAGAMENTOBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tRANSPORTADORABindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vENDEDORBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cLIENTEBindingSource)).BeginInit();
             this.grpBxSitPed.SuspendLayout();
             this.grpBxItPedVen.SuspendLayout();
             this.pnlItenped.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgrdvItenspven)).BeginInit();
-            this.tbCntrlPedVend.SuspendLayout();
             this.SuspendLayout();
             // 
             // BtmTlStrpnlPedVenda
@@ -128,8 +144,19 @@
             this.dataGridViewImageColumn1.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Stretch;
             this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
             // 
+            // tbCntrlPedVend
+            // 
+            this.tbCntrlPedVend.Controls.Add(this.tabPage1);
+            this.tbCntrlPedVend.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbCntrlPedVend.Location = new System.Drawing.Point(-7, 1);
+            this.tbCntrlPedVend.Name = "tbCntrlPedVend";
+            this.tbCntrlPedVend.SelectedIndex = 0;
+            this.tbCntrlPedVend.Size = new System.Drawing.Size(924, 579);
+            this.tbCntrlPedVend.TabIndex = 2001;
+            // 
             // tabPage1
             // 
+            this.tabPage1.AutoScroll = true;
             this.tabPage1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.tabPage1.Controls.Add(this.grpBxPedVenda);
             this.tabPage1.Controls.Add(this.grpBxItPedVen);
@@ -138,165 +165,232 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(881, 531);
+            this.tabPage1.Size = new System.Drawing.Size(916, 553);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Pedidos de Vendas";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // grpBxPedVenda
             // 
-            this.grpBxPedVenda.Controls.Add(this.txtBtnCodVend);
-            this.grpBxPedVenda.Controls.Add(this.txtBtnCondPgto);
-            this.grpBxPedVenda.Controls.Add(this.txtBtnTransp);
-            this.grpBxPedVenda.Controls.Add(this.lblTpFrete);
+            this.grpBxPedVenda.Controls.Add(this.grpTipoPedido);
+            this.grpBxPedVenda.Controls.Add(this.cmbCondicao);
+            this.grpBxPedVenda.Controls.Add(this.dATAEMISSAODateTimePicker);
+            this.grpBxPedVenda.Controls.Add(this.cODTRANSPORTADORAComboBox);
+            this.grpBxPedVenda.Controls.Add(this.nOMETextBox);
+            this.grpBxPedVenda.Controls.Add(this.cODVENDEDORTextBox);
+            this.grpBxPedVenda.Controls.Add(this.rAZAOSOCIALTextBox);
+            this.grpBxPedVenda.Controls.Add(this.cODCLIENTETextBox);
+            this.grpBxPedVenda.Controls.Add(this.nRPEDIDOTextBox);
             this.grpBxPedVenda.Controls.Add(this.grpBxSitPed);
-            this.grpBxPedVenda.Controls.Add(this.cmbBxTpFrete);
-            this.grpBxPedVenda.Controls.Add(this.txtBtnCodCli);
             this.grpBxPedVenda.Controls.Add(this.lbltpfre);
             this.grpBxPedVenda.Controls.Add(this.lblcondp);
-            this.grpBxPedVenda.Controls.Add(this.txtNomeVend);
             this.grpBxPedVenda.Controls.Add(this.lblnomven);
             this.grpBxPedVenda.Controls.Add(this.lclcodven);
-            this.grpBxPedVenda.Controls.Add(this.lbltpcli);
-            this.grpBxPedVenda.Controls.Add(this.cmbTpCli);
             this.grpBxPedVenda.Controls.Add(this.lbldtemi);
-            this.grpBxPedVenda.Controls.Add(this.dtmPckrDtEmissao);
-            this.grpBxPedVenda.Controls.Add(this.lbltipped);
-            this.grpBxPedVenda.Controls.Add(this.txtTpped);
-            this.grpBxPedVenda.Controls.Add(this.txtNomecli);
             this.grpBxPedVenda.Controls.Add(this.lblnomecli);
             this.grpBxPedVenda.Controls.Add(this.lblcodcli);
-            this.grpBxPedVenda.Controls.Add(this.txtNumped);
             this.grpBxPedVenda.Controls.Add(this.lblnumPed);
             this.grpBxPedVenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpBxPedVenda.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.grpBxPedVenda.Location = new System.Drawing.Point(11, 13);
             this.grpBxPedVenda.Name = "grpBxPedVenda";
-            this.grpBxPedVenda.Size = new System.Drawing.Size(858, 110);
+            this.grpBxPedVenda.Size = new System.Drawing.Size(893, 110);
             this.grpBxPedVenda.TabIndex = 17;
             this.grpBxPedVenda.TabStop = false;
             this.grpBxPedVenda.Text = "Pedido Venda";
             // 
-            // txtBtnCodVend
+            // grpTipoPedido
             // 
-            this.txtBtnCodVend.Image = ((System.Drawing.Image)(resources.GetObject("txtBtnCodVend.Image")));
-            this.txtBtnCodVend.Location = new System.Drawing.Point(95, 79);
-            this.txtBtnCodVend.Name = "txtBtnCodVend";
-            this.txtBtnCodVend.ShowButton = false;
-            this.txtBtnCodVend.Size = new System.Drawing.Size(106, 25);
-            this.txtBtnCodVend.TabIndex = 80;
-            this.txtBtnCodVend.ButtonClick += new System.EventHandler(this.textButton4_ButtonClick);
+            this.grpTipoPedido.Controls.Add(this.chkComplemento);
+            this.grpTipoPedido.Controls.Add(this.chkNormal);
+            this.grpTipoPedido.ForeColor = System.Drawing.Color.CadetBlue;
+            this.grpTipoPedido.Location = new System.Drawing.Point(458, 16);
+            this.grpTipoPedido.Name = "grpTipoPedido";
+            this.grpTipoPedido.Size = new System.Drawing.Size(198, 41);
+            this.grpTipoPedido.TabIndex = 51;
+            this.grpTipoPedido.TabStop = false;
+            this.grpTipoPedido.Text = "Tipo Pedido";
             // 
-            // txtBtnCondPgto
+            // chkComplemento
             // 
-            this.txtBtnCondPgto.Image = ((System.Drawing.Image)(resources.GetObject("txtBtnCondPgto.Image")));
-            this.txtBtnCondPgto.Location = new System.Drawing.Point(394, 81);
-            this.txtBtnCondPgto.Name = "txtBtnCondPgto";
-            this.txtBtnCondPgto.ShowButton = false;
-            this.txtBtnCondPgto.Size = new System.Drawing.Size(103, 25);
-            this.txtBtnCondPgto.TabIndex = 79;
-            this.txtBtnCondPgto.ButtonClick += new System.EventHandler(this.textButton3_ButtonClick);
+            this.chkComplemento.AutoSize = true;
+            this.chkComplemento.Location = new System.Drawing.Point(69, 16);
+            this.chkComplemento.Name = "chkComplemento";
+            this.chkComplemento.Size = new System.Drawing.Size(131, 17);
+            this.chkComplemento.TabIndex = 1;
+            this.chkComplemento.Text = "Complemeto Preço";
+            this.chkComplemento.UseVisualStyleBackColor = true;
             // 
-            // txtBtnTransp
+            // chkNormal
             // 
-            this.txtBtnTransp.Image = ((System.Drawing.Image)(resources.GetObject("txtBtnTransp.Image")));
-            this.txtBtnTransp.Location = new System.Drawing.Point(503, 80);
-            this.txtBtnTransp.Name = "txtBtnTransp";
-            this.txtBtnTransp.ShowButton = false;
-            this.txtBtnTransp.Size = new System.Drawing.Size(107, 25);
-            this.txtBtnTransp.TabIndex = 78;
-            this.txtBtnTransp.ButtonClick += new System.EventHandler(this.textButton2_ButtonClick);
+            this.chkNormal.AutoSize = true;
+            this.chkNormal.Location = new System.Drawing.Point(7, 16);
+            this.chkNormal.Name = "chkNormal";
+            this.chkNormal.Size = new System.Drawing.Size(65, 17);
+            this.chkNormal.TabIndex = 0;
+            this.chkNormal.Text = "Normal";
+            this.chkNormal.UseVisualStyleBackColor = true;
             // 
-            // lblTpFrete
+            // cmbCondicao
             // 
-            this.lblTpFrete.AutoSize = true;
-            this.lblTpFrete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTpFrete.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblTpFrete.Location = new System.Drawing.Point(13, 65);
-            this.lblTpFrete.Name = "lblTpFrete";
-            this.lblTpFrete.Size = new System.Drawing.Size(58, 13);
-            this.lblTpFrete.TabIndex = 77;
-            this.lblTpFrete.Text = "Tipo Frete:";
+            this.cmbCondicao.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.pEDIDOBindingSource, "CODCONDICAOPAGAMENTO", true));
+            this.cmbCondicao.DataSource = this.cONDICAOPAGAMENTOBindingSource;
+            this.cmbCondicao.DisplayMember = "DESCRICAO";
+            this.cmbCondicao.FormattingEnabled = true;
+            this.cmbCondicao.Location = new System.Drawing.Point(391, 80);
+            this.cmbCondicao.Name = "cmbCondicao";
+            this.cmbCondicao.Size = new System.Drawing.Size(143, 21);
+            this.cmbCondicao.TabIndex = 89;
+            this.cmbCondicao.ValueMember = "CODCONDICAOPAGAMENTO";
+            // 
+            // pEDIDOBindingSource
+            // 
+            this.pEDIDOBindingSource.DataMember = "PEDIDO";
+            this.pEDIDOBindingSource.DataSource = this.cOMERCIALDataSet;
+            this.pEDIDOBindingSource.PositionChanged += new System.EventHandler(this.pEDIDOBindingSource_PositionChanged);
+            // 
+            // cOMERCIALDataSet
+            // 
+            this.cOMERCIALDataSet.DataSetName = "COMERCIALDataSet";
+            this.cOMERCIALDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // cONDICAOPAGAMENTOBindingSource
+            // 
+            this.cONDICAOPAGAMENTOBindingSource.DataMember = "CONDICAOPAGAMENTO";
+            this.cONDICAOPAGAMENTOBindingSource.DataSource = this.cOMERCIALDataSet;
+            // 
+            // dATAEMISSAODateTimePicker
+            // 
+            this.dATAEMISSAODateTimePicker.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pEDIDOBindingSource, "DATAEMISSAO", true));
+            this.dATAEMISSAODateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dATAEMISSAODateTimePicker.Location = new System.Drawing.Point(665, 35);
+            this.dATAEMISSAODateTimePicker.Name = "dATAEMISSAODateTimePicker";
+            this.dATAEMISSAODateTimePicker.Size = new System.Drawing.Size(98, 20);
+            this.dATAEMISSAODateTimePicker.TabIndex = 88;
+            // 
+            // cODTRANSPORTADORAComboBox
+            // 
+            this.cODTRANSPORTADORAComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.pEDIDOBindingSource, "CODTRANSPORTADORA", true));
+            this.cODTRANSPORTADORAComboBox.DataSource = this.tRANSPORTADORABindingSource;
+            this.cODTRANSPORTADORAComboBox.DisplayMember = "NOME";
+            this.cODTRANSPORTADORAComboBox.FormattingEnabled = true;
+            this.cODTRANSPORTADORAComboBox.Location = new System.Drawing.Point(546, 81);
+            this.cODTRANSPORTADORAComboBox.Name = "cODTRANSPORTADORAComboBox";
+            this.cODTRANSPORTADORAComboBox.Size = new System.Drawing.Size(217, 21);
+            this.cODTRANSPORTADORAComboBox.TabIndex = 86;
+            this.cODTRANSPORTADORAComboBox.ValueMember = "CNPJ";
+            // 
+            // tRANSPORTADORABindingSource
+            // 
+            this.tRANSPORTADORABindingSource.DataMember = "TRANSPORTADORA";
+            this.tRANSPORTADORABindingSource.DataSource = this.cOMERCIALDataSet;
+            // 
+            // nOMETextBox
+            // 
+            this.nOMETextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vENDEDORBindingSource, "NOME", true));
+            this.nOMETextBox.Location = new System.Drawing.Point(124, 81);
+            this.nOMETextBox.Name = "nOMETextBox";
+            this.nOMETextBox.Size = new System.Drawing.Size(253, 20);
+            this.nOMETextBox.TabIndex = 84;
+            // 
+            // vENDEDORBindingSource
+            // 
+            this.vENDEDORBindingSource.DataMember = "VENDEDOR";
+            this.vENDEDORBindingSource.DataSource = this.cOMERCIALDataSet;
+            // 
+            // cODVENDEDORTextBox
+            // 
+            this.cODVENDEDORTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pEDIDOBindingSource, "CODVENDEDOR", true));
+            this.cODVENDEDORTextBox.Location = new System.Drawing.Point(14, 81);
+            this.cODVENDEDORTextBox.Name = "cODVENDEDORTextBox";
+            this.cODVENDEDORTextBox.Size = new System.Drawing.Size(100, 20);
+            this.cODVENDEDORTextBox.TabIndex = 83;
+            // 
+            // rAZAOSOCIALTextBox
+            // 
+            this.rAZAOSOCIALTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cLIENTEBindingSource, "RAZAOSOCIAL", true));
+            this.rAZAOSOCIALTextBox.Location = new System.Drawing.Point(233, 36);
+            this.rAZAOSOCIALTextBox.Name = "rAZAOSOCIALTextBox";
+            this.rAZAOSOCIALTextBox.Size = new System.Drawing.Size(219, 20);
+            this.rAZAOSOCIALTextBox.TabIndex = 82;
+            // 
+            // cLIENTEBindingSource
+            // 
+            this.cLIENTEBindingSource.DataMember = "CLIENTE";
+            this.cLIENTEBindingSource.DataSource = this.cOMERCIALDataSet;
+            // 
+            // cODCLIENTETextBox
+            // 
+            this.cODCLIENTETextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pEDIDOBindingSource, "CODCLIENTE", true));
+            this.cODCLIENTETextBox.Location = new System.Drawing.Point(120, 36);
+            this.cODCLIENTETextBox.Name = "cODCLIENTETextBox";
+            this.cODCLIENTETextBox.Size = new System.Drawing.Size(100, 20);
+            this.cODCLIENTETextBox.TabIndex = 81;
+            // 
+            // nRPEDIDOTextBox
+            // 
+            this.nRPEDIDOTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pEDIDOBindingSource, "NRPEDIDO", true));
+            this.nRPEDIDOTextBox.Location = new System.Drawing.Point(14, 37);
+            this.nRPEDIDOTextBox.Name = "nRPEDIDOTextBox";
+            this.nRPEDIDOTextBox.Size = new System.Drawing.Size(100, 20);
+            this.nRPEDIDOTextBox.TabIndex = 18;
+            this.nRPEDIDOTextBox.TextChanged += new System.EventHandler(this.nRPEDIDOTextBox_TextChanged);
             // 
             // grpBxSitPed
             // 
-            this.grpBxSitPed.Controls.Add(this.rdbcanc);
-            this.grpBxSitPed.Controls.Add(this.rdbpend);
-            this.grpBxSitPed.Controls.Add(this.rdbefet);
+            this.grpBxSitPed.Controls.Add(this.chkCancelado);
+            this.grpBxSitPed.Controls.Add(this.chkPendente);
+            this.grpBxSitPed.Controls.Add(this.chkEfetivado);
             this.grpBxSitPed.ForeColor = System.Drawing.Color.CadetBlue;
-            this.grpBxSitPed.Location = new System.Drawing.Point(616, 65);
+            this.grpBxSitPed.Location = new System.Drawing.Point(769, 11);
             this.grpBxSitPed.Name = "grpBxSitPed";
-            this.grpBxSitPed.Size = new System.Drawing.Size(236, 37);
+            this.grpBxSitPed.Size = new System.Drawing.Size(118, 93);
             this.grpBxSitPed.TabIndex = 9;
             this.grpBxSitPed.TabStop = false;
             this.grpBxSitPed.Text = "Situação Pedido";
             // 
-            // rdbcanc
+            // chkCancelado
             // 
-            this.rdbcanc.AutoSize = true;
-            this.rdbcanc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdbcanc.ForeColor = System.Drawing.Color.CadetBlue;
-            this.rdbcanc.Location = new System.Drawing.Point(159, 14);
-            this.rdbcanc.Name = "rdbcanc";
-            this.rdbcanc.Size = new System.Drawing.Size(76, 17);
-            this.rdbcanc.TabIndex = 47;
-            this.rdbcanc.Text = "Cancelado";
-            this.rdbcanc.UseVisualStyleBackColor = true;
+            this.chkCancelado.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkCancelado.Location = new System.Drawing.Point(6, 64);
+            this.chkCancelado.Name = "chkCancelado";
+            this.chkCancelado.Size = new System.Drawing.Size(86, 27);
+            this.chkCancelado.TabIndex = 50;
+            this.chkCancelado.Text = "Cancelado";
+            this.chkCancelado.UseVisualStyleBackColor = true;
             // 
-            // rdbpend
+            // chkPendente
             // 
-            this.rdbpend.AutoSize = true;
-            this.rdbpend.Checked = true;
-            this.rdbpend.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdbpend.ForeColor = System.Drawing.Color.CadetBlue;
-            this.rdbpend.Location = new System.Drawing.Point(82, 13);
-            this.rdbpend.Name = "rdbpend";
-            this.rdbpend.Size = new System.Drawing.Size(71, 17);
-            this.rdbpend.TabIndex = 46;
-            this.rdbpend.TabStop = true;
-            this.rdbpend.Text = "Pendente";
-            this.rdbpend.UseVisualStyleBackColor = true;
+            this.chkPendente.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkPendente.Location = new System.Drawing.Point(6, 40);
+            this.chkPendente.Name = "chkPendente";
+            this.chkPendente.Size = new System.Drawing.Size(86, 27);
+            this.chkPendente.TabIndex = 49;
+            this.chkPendente.Text = "Pendente";
+            this.chkPendente.UseVisualStyleBackColor = true;
             // 
-            // rdbefet
+            // chkEfetivado
             // 
-            this.rdbefet.AutoSize = true;
-            this.rdbefet.CheckAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.rdbefet.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdbefet.ForeColor = System.Drawing.Color.CadetBlue;
-            this.rdbefet.Location = new System.Drawing.Point(6, 13);
-            this.rdbefet.Name = "rdbefet";
-            this.rdbefet.Size = new System.Drawing.Size(70, 17);
-            this.rdbefet.TabIndex = 45;
-            this.rdbefet.Text = "Efetivado";
-            this.rdbefet.UseVisualStyleBackColor = true;
-            // 
-            // cmbBxTpFrete
-            // 
-            this.cmbBxTpFrete.FormattingEnabled = true;
-            this.cmbBxTpFrete.Items.AddRange(new object[] {
-            "C = CIF",
-            "F = FOB"});
-            this.cmbBxTpFrete.Location = new System.Drawing.Point(14, 80);
-            this.cmbBxTpFrete.Name = "cmbBxTpFrete";
-            this.cmbBxTpFrete.Size = new System.Drawing.Size(74, 21);
-            this.cmbBxTpFrete.TabIndex = 76;
-            // 
-            // txtBtnCodCli
-            // 
-            this.txtBtnCodCli.Image = ((System.Drawing.Image)(resources.GetObject("txtBtnCodCli.Image")));
-            this.txtBtnCodCli.Location = new System.Drawing.Point(120, 37);
-            this.txtBtnCodCli.Name = "txtBtnCodCli";
-            this.txtBtnCodCli.ShowButton = false;
-            this.txtBtnCodCli.Size = new System.Drawing.Size(107, 25);
-            this.txtBtnCodCli.TabIndex = 2;
-            this.txtBtnCodCli.ButtonClick += new System.EventHandler(this.textButton1_ButtonClick_1);
+            this.chkEfetivado.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkEfetivado.Location = new System.Drawing.Point(6, 15);
+            this.chkEfetivado.Name = "chkEfetivado";
+            this.chkEfetivado.Size = new System.Drawing.Size(106, 27);
+            this.chkEfetivado.TabIndex = 48;
+            this.chkEfetivado.Text = "Efetivado";
+            this.chkEfetivado.UseVisualStyleBackColor = true;
             // 
             // lbltpfre
             // 
             this.lbltpfre.AutoSize = true;
             this.lbltpfre.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbltpfre.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lbltpfre.Location = new System.Drawing.Point(500, 65);
+            this.lbltpfre.Location = new System.Drawing.Point(543, 63);
             this.lbltpfre.Name = "lbltpfre";
             this.lbltpfre.Size = new System.Drawing.Size(97, 13);
             this.lbltpfre.TabIndex = 73;
@@ -307,25 +401,18 @@
             this.lblcondp.AutoSize = true;
             this.lblcondp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblcondp.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblcondp.Location = new System.Drawing.Point(391, 65);
+            this.lblcondp.Location = new System.Drawing.Point(381, 65);
             this.lblcondp.Name = "lblcondp";
             this.lblcondp.Size = new System.Drawing.Size(74, 13);
             this.lblcondp.TabIndex = 70;
             this.lblcondp.Text = "Cond. Pgto:";
-            // 
-            // txtNomeVend
-            // 
-            this.txtNomeVend.Location = new System.Drawing.Point(207, 80);
-            this.txtNomeVend.Name = "txtNomeVend";
-            this.txtNomeVend.Size = new System.Drawing.Size(180, 20);
-            this.txtNomeVend.TabIndex = 8;
             // 
             // lblnomven
             // 
             this.lblnomven.AutoSize = true;
             this.lblnomven.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblnomven.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblnomven.Location = new System.Drawing.Point(204, 65);
+            this.lblnomven.Location = new System.Drawing.Point(121, 65);
             this.lblnomven.Name = "lblnomven";
             this.lblnomven.Size = new System.Drawing.Size(161, 13);
             this.lblnomven.TabIndex = 68;
@@ -336,87 +423,22 @@
             this.lclcodven.AutoSize = true;
             this.lclcodven.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lclcodven.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lclcodven.Location = new System.Drawing.Point(94, 65);
+            this.lclcodven.Location = new System.Drawing.Point(11, 65);
             this.lclcodven.Name = "lclcodven";
             this.lclcodven.Size = new System.Drawing.Size(108, 13);
             this.lclcodven.TabIndex = 65;
             this.lclcodven.Text = "Código Vendedor:";
-            // 
-            // lbltpcli
-            // 
-            this.lbltpcli.AutoSize = true;
-            this.lbltpcli.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbltpcli.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lbltpcli.Location = new System.Drawing.Point(690, 19);
-            this.lbltpcli.Name = "lbltpcli";
-            this.lbltpcli.Size = new System.Drawing.Size(79, 13);
-            this.lbltpcli.TabIndex = 64;
-            this.lbltpcli.Text = "Tipo Cliente:";
-            // 
-            // cmbTpCli
-            // 
-            this.cmbTpCli.FormattingEnabled = true;
-            this.cmbTpCli.Items.AddRange(new object[] {
-            "F = Consumidor Final",
-            "L = Produtor Rual",
-            "R = Revendedor",
-            "X = Exportação / Importação"});
-            this.cmbTpCli.Location = new System.Drawing.Point(695, 36);
-            this.cmbTpCli.Name = "cmbTpCli";
-            this.cmbTpCli.Size = new System.Drawing.Size(157, 21);
-            this.cmbTpCli.TabIndex = 6;
             // 
             // lbldtemi
             // 
             this.lbldtemi.AutoSize = true;
             this.lbldtemi.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbldtemi.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lbldtemi.Location = new System.Drawing.Point(588, 20);
+            this.lbldtemi.Location = new System.Drawing.Point(662, 20);
             this.lbldtemi.Name = "lbldtemi";
             this.lbldtemi.Size = new System.Drawing.Size(75, 13);
             this.lbldtemi.TabIndex = 62;
             this.lbldtemi.Text = "Data Emissão:";
-            // 
-            // dtmPckrDtEmissao
-            // 
-            this.dtmPckrDtEmissao.CustomFormat = "";
-            this.dtmPckrDtEmissao.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtmPckrDtEmissao.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtmPckrDtEmissao.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.dtmPckrDtEmissao.Location = new System.Drawing.Point(591, 36);
-            this.dtmPckrDtEmissao.Name = "dtmPckrDtEmissao";
-            this.dtmPckrDtEmissao.Size = new System.Drawing.Size(96, 20);
-            this.dtmPckrDtEmissao.TabIndex = 5;
-            this.dtmPckrDtEmissao.Value = new System.DateTime(2009, 2, 18, 12, 52, 18, 0);
-            // 
-            // lbltipped
-            // 
-            this.lbltipped.AutoSize = true;
-            this.lbltipped.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbltipped.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lbltipped.Location = new System.Drawing.Point(455, 20);
-            this.lbltipped.Name = "lbltipped";
-            this.lbltipped.Size = new System.Drawing.Size(82, 13);
-            this.lbltipped.TabIndex = 60;
-            this.lbltipped.Text = "Tipo do Pedido:";
-            // 
-            // txtTpped
-            // 
-            this.txtTpped.FormattingEnabled = true;
-            this.txtTpped.Items.AddRange(new object[] {
-            "N = Normal",
-            "C = Complemento Preço"});
-            this.txtTpped.Location = new System.Drawing.Point(458, 36);
-            this.txtTpped.Name = "txtTpped";
-            this.txtTpped.Size = new System.Drawing.Size(127, 21);
-            this.txtTpped.TabIndex = 4;
-            // 
-            // txtNomecli
-            // 
-            this.txtNomecli.Location = new System.Drawing.Point(233, 37);
-            this.txtNomecli.Name = "txtNomecli";
-            this.txtNomecli.Size = new System.Drawing.Size(219, 20);
-            this.txtNomecli.TabIndex = 3;
             // 
             // lblnomecli
             // 
@@ -439,13 +461,6 @@
             this.lblcodcli.Size = new System.Drawing.Size(93, 13);
             this.lblcodcli.TabIndex = 54;
             this.lblcodcli.Text = "Código Cliente:";
-            // 
-            // txtNumped
-            // 
-            this.txtNumped.Location = new System.Drawing.Point(14, 36);
-            this.txtNumped.Name = "txtNumped";
-            this.txtNumped.Size = new System.Drawing.Size(100, 20);
-            this.txtNumped.TabIndex = 0;
             // 
             // lblnumPed
             // 
@@ -487,20 +502,20 @@
             this.grpBxItPedVen.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.grpBxItPedVen.Location = new System.Drawing.Point(11, 129);
             this.grpBxItPedVen.Name = "grpBxItPedVen";
-            this.grpBxItPedVen.Size = new System.Drawing.Size(858, 394);
+            this.grpBxItPedVen.Size = new System.Drawing.Size(893, 394);
             this.grpBxItPedVen.TabIndex = 16;
             this.grpBxItPedVen.TabStop = false;
             this.grpBxItPedVen.Text = "Itens Pedido Venda";
             // 
             // txtBtnCpdProd
             // 
+            this.txtBtnCpdProd.getText = "";
             this.txtBtnCpdProd.Image = global::Comercial.Properties.Resources.search1;
             this.txtBtnCpdProd.Location = new System.Drawing.Point(11, 296);
             this.txtBtnCpdProd.Name = "txtBtnCpdProd";
             this.txtBtnCpdProd.ShowButton = false;
             this.txtBtnCpdProd.Size = new System.Drawing.Size(107, 25);
             this.txtBtnCpdProd.TabIndex = 24;
-            this.txtBtnCpdProd.ButtonClick += new System.EventHandler(this.textButton5_ButtonClick);
             // 
             // pnlItenped
             // 
@@ -798,38 +813,80 @@
             this.lblCodProd.TabIndex = 75;
             this.lblCodProd.Text = "Código Produto";
             // 
-            // tbCntrlPedVend
+            // pEDIDOTableAdapter
             // 
-            this.tbCntrlPedVend.Controls.Add(this.tabPage1);
-            this.tbCntrlPedVend.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbCntrlPedVend.Location = new System.Drawing.Point(12, 12);
-            this.tbCntrlPedVend.Name = "tbCntrlPedVend";
-            this.tbCntrlPedVend.SelectedIndex = 0;
-            this.tbCntrlPedVend.Size = new System.Drawing.Size(889, 557);
-            this.tbCntrlPedVend.TabIndex = 2000;
+            this.pEDIDOTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.ACESSOTableAdapter = null;
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.CLIENTETableAdapter = null;
+            this.tableAdapterManager.CONDICAOPAGAMENTOTableAdapter = null;
+            this.tableAdapterManager.GRUPOPRODUTOTableAdapter = null;
+            this.tableAdapterManager.ICMSTableAdapter = null;
+            this.tableAdapterManager.ItemNotaFiscalTableAdapter = null;
+            this.tableAdapterManager.ITEMPEDIDOTableAdapter = null;
+            this.tableAdapterManager.MODULOTableAdapter = null;
+            this.tableAdapterManager.NOTAFISCALTableAdapter = null;
+            this.tableAdapterManager.PEDIDOTableAdapter = this.pEDIDOTableAdapter;
+            this.tableAdapterManager.PRODUTOTableAdapter = null;
+            this.tableAdapterManager.REGIAOTableAdapter = null;
+            this.tableAdapterManager.TRANSPORTADORATableAdapter = this.tRANSPORTADORATableAdapter;
+            this.tableAdapterManager.TRANSPORTADORAVIATableAdapter = null;
+            this.tableAdapterManager.UNIDADEMEDIDATableAdapter = null;
+            this.tableAdapterManager.UpdateOrder = Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.USUARIOTableAdapter = null;
+            this.tableAdapterManager.VENDEDORTableAdapter = this.vENDEDORTableAdapter;
+            this.tableAdapterManager.VIATRANSPORTETableAdapter = null;
+            // 
+            // tRANSPORTADORATableAdapter
+            // 
+            this.tRANSPORTADORATableAdapter.ClearBeforeFill = true;
+            // 
+            // vENDEDORTableAdapter
+            // 
+            this.vENDEDORTableAdapter.ClearBeforeFill = true;
+            // 
+            // cLIENTETableAdapter
+            // 
+            this.cLIENTETableAdapter.ClearBeforeFill = true;
+            // 
+            // cONDICAOPAGAMENTOTableAdapter
+            // 
+            this.cONDICAOPAGAMENTOTableAdapter.ClearBeforeFill = true;
             // 
             // FrmCadPed
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(910, 580);
+            this.ClientSize = new System.Drawing.Size(917, 580);
             this.Controls.Add(this.tbCntrlPedVend);
             this.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmCadPed";
             this.Text = "FrmCadPed";
+            this.Load += new System.EventHandler(this.FrmCadPed_Load);
+            this.Shown += new System.EventHandler(this.FrmCadPed_Shown);
+            this.tbCntrlPedVend.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.grpBxPedVenda.ResumeLayout(false);
             this.grpBxPedVenda.PerformLayout();
+            this.grpTipoPedido.ResumeLayout(false);
+            this.grpTipoPedido.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pEDIDOBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cONDICAOPAGAMENTOBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tRANSPORTADORABindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.vENDEDORBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cLIENTEBindingSource)).EndInit();
             this.grpBxSitPed.ResumeLayout(false);
-            this.grpBxSitPed.PerformLayout();
             this.grpBxItPedVen.ResumeLayout(false);
             this.grpBxItPedVen.PerformLayout();
             this.pnlItenped.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgrdvItenspven)).EndInit();
-            this.tbCntrlPedVend.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -839,33 +896,26 @@
         private System.Windows.Forms.ToolStripPanel BtmTlStrpnlPedVenda;
         private System.Windows.Forms.ToolStripPanel TopToolStripPanel;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
+        private System.Windows.Forms.TabControl tbCntrlPedVend;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.GroupBox grpBxPedVenda;
-        private TextButton txtBtnCodVend;
-        private TextButton txtBtnCondPgto;
-        private TextButton txtBtnTransp;
-        private System.Windows.Forms.Label lblTpFrete;
+        private System.Windows.Forms.DateTimePicker dATAEMISSAODateTimePicker;
+        private System.Windows.Forms.ComboBox cODTRANSPORTADORAComboBox;
+        private System.Windows.Forms.TextBox nOMETextBox;
+        private System.Windows.Forms.TextBox cODVENDEDORTextBox;
+        private System.Windows.Forms.TextBox rAZAOSOCIALTextBox;
+        private System.Windows.Forms.TextBox cODCLIENTETextBox;
+        private System.Windows.Forms.TextBox nRPEDIDOTextBox;
         private System.Windows.Forms.GroupBox grpBxSitPed;
-        private System.Windows.Forms.RadioButton rdbcanc;
-        private System.Windows.Forms.RadioButton rdbpend;
-        private System.Windows.Forms.RadioButton rdbefet;
-        private System.Windows.Forms.ComboBox cmbBxTpFrete;
-        private TextButton txtBtnCodCli;
+        private System.Windows.Forms.CheckBox chkCancelado;
+        private System.Windows.Forms.CheckBox chkPendente;
+        private System.Windows.Forms.CheckBox chkEfetivado;
         private System.Windows.Forms.Label lbltpfre;
         private System.Windows.Forms.Label lblcondp;
-        private System.Windows.Forms.TextBox txtNomeVend;
         private System.Windows.Forms.Label lblnomven;
         private System.Windows.Forms.Label lclcodven;
-        private System.Windows.Forms.Label lbltpcli;
-        private System.Windows.Forms.ComboBox cmbTpCli;
         private System.Windows.Forms.Label lbldtemi;
-        private System.Windows.Forms.DateTimePicker dtmPckrDtEmissao;
-        private System.Windows.Forms.Label lbltipped;
-        private System.Windows.Forms.ComboBox txtTpped;
-        private System.Windows.Forms.TextBox txtNomecli;
         private System.Windows.Forms.Label lblnomecli;
         private System.Windows.Forms.Label lblcodcli;
-        private System.Windows.Forms.TextBox txtNumped;
         private System.Windows.Forms.Label lblnumPed;
         private System.Windows.Forms.GroupBox grpBxItPedVen;
         private TextButton txtBtnCpdProd;
@@ -903,7 +953,23 @@
         private System.Windows.Forms.TextBox txtDescprod;
         private System.Windows.Forms.Label LbDescProd;
         private System.Windows.Forms.Label lblCodProd;
-        private System.Windows.Forms.TabControl tbCntrlPedVend;
+        private COMERCIALDataSet cOMERCIALDataSet;
+        private System.Windows.Forms.BindingSource pEDIDOBindingSource;
+        private Comercial.COMERCIALDataSetTableAdapters.PEDIDOTableAdapter pEDIDOTableAdapter;
+        private Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager tableAdapterManager;
+        private Comercial.COMERCIALDataSetTableAdapters.TRANSPORTADORATableAdapter tRANSPORTADORATableAdapter;
+        private System.Windows.Forms.BindingSource tRANSPORTADORABindingSource;
+        private Comercial.COMERCIALDataSetTableAdapters.VENDEDORTableAdapter vENDEDORTableAdapter;
+        private System.Windows.Forms.BindingSource vENDEDORBindingSource;
+        private System.Windows.Forms.BindingSource cLIENTEBindingSource;
+        private Comercial.COMERCIALDataSetTableAdapters.CLIENTETableAdapter cLIENTETableAdapter;
+        private System.Windows.Forms.BindingSource cONDICAOPAGAMENTOBindingSource;
+        private Comercial.COMERCIALDataSetTableAdapters.CONDICAOPAGAMENTOTableAdapter cONDICAOPAGAMENTOTableAdapter;
+        private System.Windows.Forms.ComboBox cmbCondicao;
+        private System.Windows.Forms.GroupBox grpTipoPedido;
+        private System.Windows.Forms.CheckBox chkComplemento;
+        private System.Windows.Forms.CheckBox chkNormal;
+        public System.Windows.Forms.GroupBox grpBxPedVenda;
 
     }
 }
