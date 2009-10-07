@@ -63,7 +63,7 @@ namespace Comercial
 
         public int salvar()
         {
-            //Valida CPF
+            //Valida CNPJ
 
             DataRowView x;
             x= (DataRowView) cLIENTEBindingSource.Current;
@@ -75,14 +75,9 @@ namespace Comercial
                 MessageBox.Show("CNPJ Inválido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return 1;
             }
-            Boolean emailOk = false;
-            string email=txtEmailCli.Text;
+            // Valida email
 
-            for (int i = 0; i < email.Length; i++)
-            {
-                if (email[i] == '@')
-                    emailOk = true;
-            }
+            Boolean emailOk = valida.ValidaEmail(txtEmailCli.Text);
             if (emailOk == false)
             {
                MessageBox.Show("Email Inválido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -171,6 +166,20 @@ namespace Comercial
                 txtLimCredCli.Enabled = true;
             }
             else txtLimCredCli.Enabled = false;*/
+        }
+
+        
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.cLIENTETableAdapter.Consulta(this.cOMERCIALDataSet.CLIENTE, cnpjToolStripTextBox.Text, nomeFantasiaToolStripTextBox.Text);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
         }
     }
 }
