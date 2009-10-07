@@ -73,11 +73,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="COMERCIALDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>COMERCIALDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="FrmAltSen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -470,7 +465,6 @@
     <None Include="COMERCIALDataSet.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>COMERCIALDataSet.Designer.cs</LastGenOutput>
     </None>
     <None Include="COMERCIALDataSet.xss">
       <DependentUpon>COMERCIALDataSet.xsd</DependentUpon>

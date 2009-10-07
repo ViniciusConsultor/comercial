@@ -467,6 +467,7 @@
             this.MinimizeBox = false;
             this.Name = "frmConCli";
             this.Text = "Consulta de Clientes";
+            this.Load += new System.EventHandler(this.frmConCli_Load);
             this.Leave += new System.EventHandler(this.frmConCli_Leave);
             this.tbCntrlConCli.ResumeLayout(false);
             this.tbPgConCli.ResumeLayout(false);

@@ -64,6 +64,7 @@ namespace Comercial
                     FrmCadVen frmVen = (FrmCadVen)frm;
                     retorno = frmVen.salvar();
                 }
+
                 #region Form's Claudio
                 if (frm is FrmCadCli && edit == false)
                 {
@@ -88,12 +89,14 @@ namespace Comercial
                 {
                     bindingNavigator1.BindingSource.EndEdit();
 
-                    // ===================================
+                    // 
                     // CADA UM COLOCA O BLOCO DO SEU FORM...
                     if (frm is FrmCadConPag)
                     {
                         COMERCIALDataSetTableAdapters.CONDICAOPAGAMENTOTableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.CONDICAOPAGAMENTOTableAdapter();
                         table.Update(_dataset);
+                        FrmCadConPag frmCond = (FrmCadConPag)frm;
+                        retorno = frmCond.Salvar();
                     }
 
                 
@@ -102,6 +105,7 @@ namespace Comercial
                         COMERCIALDataSetTableAdapters.GRUPOPRODUTOTableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.GRUPOPRODUTOTableAdapter();
                         table.Update(_dataset);
                     }
+
                     #region Form's Claudio
                     if (frm is FrmCadCli)
                     {
@@ -130,12 +134,32 @@ namespace Comercial
                         table.Update(_dataset);
                     }
 
+
+                    if (frm is FrmCadPed)
+                    {
+                        FrmCadPed frmPed = (FrmCadPed)frm;
+
+                            retorno = frmPed.SalvarPedidoCab();
+                            COMERCIALDataSetTableAdapters.PEDIDOTableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.PEDIDOTableAdapter();
+                            table.Update(_dataset);
+                       
+                        
+                    }
+
+                    Util.Interface.ChangeControlStatus(frm, false);
+                    bindingNavigator1.Refresh();
+
+                    edit = false;
+                    cancelEdicao();
+
+
                     if (frm is FrmCadUsu)
                     {
                        
                         COMERCIALDataSetTableAdapters.USUARIOTableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.USUARIOTableAdapter();
                         table.Update(_dataset);
                     }
+
 
                     if (frm is FrmCadTra)
                     {
@@ -144,32 +168,33 @@ namespace Comercial
                         if (retorno == 1)
                         {
                             MessageBox.Show("CNPJ Inválido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            
+                            Util.Interface.ChangeControlStatus(frm, true);
+                            bindingNavigator1.Refresh();
+
+                            btnPesquisar.Enabled = false;
+                            BtnDeletar.Enabled = false;
+                            btnNovo.Enabled = false;
+                            BtnPrincipal.Enabled = false;
+                            btnEditar.Enabled = false;
+                            btnSalvar.Enabled = true;
+                            btnCancelEdicao.Enabled = true;
                         }
                         else
                         {
                             COMERCIALDataSetTableAdapters.TRANSPORTADORATableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.TRANSPORTADORATableAdapter();
                             table.Update(_dataset);
-                            if (frm is FrmCadTra)
-                            {
-                                
-                                retorno = frmTrans.salvar();
-                            }
-
-
+                            retorno = frmTrans.salvar();
+                            
                         }
                        
                     }
 
 
-                    // ================================
+                    // ====
 
-                    Util.Interface.ChangeControlStatus(frm, false);
-                    bindingNavigator1.Refresh();
+                  
 
                    
-                    edit = false;
-                    cancelEdicao();
                 }
             }
             catch (Exception ex)
@@ -1123,9 +1148,9 @@ namespace Comercial
             {
                 try
                 {
-                    // ========================================
+                    // =====
                     // CADA UM INFORME O CODIGO ABAIXO...
-                    // ========================================
+                    // =====
                     #region Form's Claudio
                     if (frm is FrmCadCli)
                     {
@@ -1281,6 +1306,13 @@ namespace Comercial
             }
         }
 
+
+        private void FrmPrinc_Load(object sender, EventArgs e)
+        {
+
+        }
+
+
         private void BtnPrincipalCons_Click(object sender, EventArgs e)
         {
             Form frm = this.ActiveMdiChild;
@@ -1289,5 +1321,6 @@ namespace Comercial
             frm.Close();
             bindingNavigator1.Enabled = false;
         }
+
     }
 }
