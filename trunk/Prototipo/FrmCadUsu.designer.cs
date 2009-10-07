@@ -28,73 +28,70 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Criar Usúario");
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Alterar Senha");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Menu");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Controle Usúario", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Controle Usúario", new System.Windows.Forms.TreeNode[] {
             treeNode1,
-            treeNode2,
-            treeNode3});
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Backup");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Calculadora");
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Notepad");
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Excel");
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Utilitários", new System.Windows.Forms.TreeNode[] {
-            treeNode6,
-            treeNode7,
-            treeNode8});
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Arquivo", new System.Windows.Forms.TreeNode[] {
-            treeNode4,
+            treeNode2});
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Backup");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Calculadora");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Notepad");
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Excel");
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Utilitários", new System.Windows.Forms.TreeNode[] {
             treeNode5,
-            treeNode9});
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Cliente");
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Produto");
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Pedido");
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Vendedor");
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Bancos");
-            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("Unidade Medida");
-            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("Condição Pagamento");
-            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("Transportadora");
-            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("TES");
-            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("Ajustes", new System.Windows.Forms.TreeNode[] {
+            treeNode6,
+            treeNode7});
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Arquivo", new System.Windows.Forms.TreeNode[] {
+            treeNode3,
+            treeNode4,
+            treeNode8});
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Cliente");
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Produto");
+            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Pedido");
+            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Vendedor");
+            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Unidade Medida");
+            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Condição Pagamento");
+            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("Transportadora");
+            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("Grupo de produto");
+            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("Ajustes", new System.Windows.Forms.TreeNode[] {
+            treeNode14,
             treeNode15,
             treeNode16,
-            treeNode17,
-            treeNode18,
-            treeNode19});
-            System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("Cadastros", new System.Windows.Forms.TreeNode[] {
+            treeNode17});
+            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("Cadastros", new System.Windows.Forms.TreeNode[] {
+            treeNode10,
             treeNode11,
             treeNode12,
             treeNode13,
-            treeNode14,
-            treeNode20});
-            System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("Cliente");
-            System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("Produto");
-            System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("Pedido");
-            System.Windows.Forms.TreeNode treeNode25 = new System.Windows.Forms.TreeNode("Vendedor");
-            System.Windows.Forms.TreeNode treeNode26 = new System.Windows.Forms.TreeNode("Consulta", new System.Windows.Forms.TreeNode[] {
-            treeNode22,
-            treeNode23,
-            treeNode24,
-            treeNode25});
-            System.Windows.Forms.TreeNode treeNode27 = new System.Windows.Forms.TreeNode("Gerar NF");
-            System.Windows.Forms.TreeNode treeNode28 = new System.Windows.Forms.TreeNode("Devolução NF");
-            System.Windows.Forms.TreeNode treeNode29 = new System.Windows.Forms.TreeNode("Liberação Pedido");
-            System.Windows.Forms.TreeNode treeNode30 = new System.Windows.Forms.TreeNode("Gerar Modelo");
-            System.Windows.Forms.TreeNode treeNode31 = new System.Windows.Forms.TreeNode("Consultar");
-            System.Windows.Forms.TreeNode treeNode32 = new System.Windows.Forms.TreeNode("Mineração Dados", new System.Windows.Forms.TreeNode[] {
-            treeNode30,
-            treeNode31});
-            System.Windows.Forms.TreeNode treeNode33 = new System.Windows.Forms.TreeNode("Processos", new System.Windows.Forms.TreeNode[] {
-            treeNode27,
-            treeNode28,
-            treeNode29,
-            treeNode32});
-            System.Windows.Forms.TreeNode treeNode34 = new System.Windows.Forms.TreeNode("Sistema Comercial", new System.Windows.Forms.TreeNode[] {
-            treeNode10,
+            treeNode18});
+            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("Cliente");
+            System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("Produto");
+            System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("Pedido");
+            System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("Vendedor");
+            System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("Consulta", new System.Windows.Forms.TreeNode[] {
+            treeNode20,
             treeNode21,
+            treeNode22,
+            treeNode23});
+            System.Windows.Forms.TreeNode treeNode25 = new System.Windows.Forms.TreeNode("Gerar NF");
+            System.Windows.Forms.TreeNode treeNode26 = new System.Windows.Forms.TreeNode("Devolução NF");
+            System.Windows.Forms.TreeNode treeNode27 = new System.Windows.Forms.TreeNode("Liberação Pedido");
+            System.Windows.Forms.TreeNode treeNode28 = new System.Windows.Forms.TreeNode("Gerar Modelo");
+            System.Windows.Forms.TreeNode treeNode29 = new System.Windows.Forms.TreeNode("Consultar");
+            System.Windows.Forms.TreeNode treeNode30 = new System.Windows.Forms.TreeNode("Mineração Dados", new System.Windows.Forms.TreeNode[] {
+            treeNode28,
+            treeNode29});
+            System.Windows.Forms.TreeNode treeNode31 = new System.Windows.Forms.TreeNode("Processos", new System.Windows.Forms.TreeNode[] {
+            treeNode25,
             treeNode26,
-            treeNode33});
+            treeNode27,
+            treeNode30});
+            System.Windows.Forms.TreeNode treeNode32 = new System.Windows.Forms.TreeNode("Sistema Comercial", new System.Windows.Forms.TreeNode[] {
+            treeNode9,
+            treeNode19,
+            treeNode24,
+            treeNode31});
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCadUsu));
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.grpBxMenu = new System.Windows.Forms.GroupBox();
@@ -102,7 +99,9 @@
             this.btnDesAll = new System.Windows.Forms.Button();
             this.btnMarAll = new System.Windows.Forms.Button();
             this.grpBxInfor = new System.Windows.Forms.GroupBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.txtBxSenhaAntiga = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.chckBxPriv = new System.Windows.Forms.CheckBox();
             this.chckBxUsublq = new System.Windows.Forms.CheckBox();
             this.txtConSenha = new System.Windows.Forms.TextBox();
             this.lblConSenha = new System.Windows.Forms.Label();
@@ -110,23 +109,28 @@
             this.lblUsua = new System.Windows.Forms.Label();
             this.lblSenha = new System.Windows.Forms.Label();
             this.tbCntrlCtrUsu = new System.Windows.Forms.TabControl();
-            this.txtBxSenhaAntiga = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.txtUsu = new Comercial.TextButton();
+            this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
+            this.uSUARIOBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.uSUARIOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.USUARIOTableAdapter();
+            this.tableAdapterManager = new Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager();
             this.tabPage1.SuspendLayout();
             this.grpBxMenu.SuspendLayout();
             this.grpBxInfor.SuspendLayout();
             this.tbCntrlCtrUsu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uSUARIOBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPage1
             // 
+            this.tabPage1.AutoScroll = true;
             this.tabPage1.Controls.Add(this.grpBxMenu);
             this.tabPage1.Controls.Add(this.grpBxInfor);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(529, 255);
+            this.tabPage1.Size = new System.Drawing.Size(529, 277);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Identificação";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -154,72 +158,68 @@
             treeNode1.Text = "Criar Usúario";
             treeNode2.Name = "Nó6";
             treeNode2.Text = "Alterar Senha";
-            treeNode3.Name = "Nó7";
-            treeNode3.Text = "Menu";
-            treeNode4.Name = "Nó4";
-            treeNode4.Text = "Controle Usúario";
-            treeNode5.Name = "Nó10";
-            treeNode5.Text = "Backup";
-            treeNode6.Name = "Nó14";
-            treeNode6.Text = "Calculadora";
-            treeNode7.Name = "Nó15";
-            treeNode7.Text = "Notepad";
-            treeNode8.Name = "Nó16";
-            treeNode8.Text = "Excel";
-            treeNode9.Name = "Nó13";
-            treeNode9.Text = "Utilitários";
-            treeNode10.Name = "Nó1";
-            treeNode10.Text = "Arquivo";
-            treeNode11.Name = "Nó18";
-            treeNode11.Text = "Cliente";
-            treeNode12.Name = "Nó19";
-            treeNode12.Text = "Produto";
-            treeNode13.Name = "Nó20";
-            treeNode13.Text = "Pedido";
-            treeNode14.Name = "Nó21";
-            treeNode14.Text = "Vendedor";
-            treeNode15.Name = "Nó23";
-            treeNode15.Text = "Bancos";
-            treeNode16.Name = "Nó24";
-            treeNode16.Text = "Unidade Medida";
-            treeNode17.Name = "Nó25";
-            treeNode17.Text = "Condição Pagamento";
-            treeNode18.Name = "Nó26";
-            treeNode18.Text = "Transportadora";
-            treeNode19.Name = "Nó27";
-            treeNode19.Text = "TES";
-            treeNode20.Name = "Nó22";
-            treeNode20.Text = "Ajustes";
-            treeNode21.Name = "Nó17";
-            treeNode21.Text = "Cadastros";
-            treeNode22.Name = "Nó29";
-            treeNode22.Text = "Cliente";
-            treeNode23.Name = "Nó30";
-            treeNode23.Text = "Produto";
-            treeNode24.Name = "Nó31";
-            treeNode24.Text = "Pedido";
-            treeNode25.Name = "Nó32";
-            treeNode25.Text = "Vendedor";
-            treeNode26.Name = "Nó28";
-            treeNode26.Text = "Consulta";
-            treeNode27.Name = "Nó34";
-            treeNode27.Text = "Gerar NF";
-            treeNode28.Name = "Nó35";
-            treeNode28.Text = "Devolução NF";
-            treeNode29.Name = "Nó36";
-            treeNode29.Text = "Liberação Pedido";
-            treeNode30.Name = "Nó38";
-            treeNode30.Text = "Gerar Modelo";
-            treeNode31.Name = "Nó39";
-            treeNode31.Text = "Consultar";
-            treeNode32.Name = "Nó37";
-            treeNode32.Text = "Mineração Dados";
-            treeNode33.Name = "Nó33";
-            treeNode33.Text = "Processos";
-            treeNode34.Name = "Nó0";
-            treeNode34.Text = "Sistema Comercial";
+            treeNode3.Name = "Nó4";
+            treeNode3.Text = "Controle Usúario";
+            treeNode4.Name = "Nó10";
+            treeNode4.Text = "Backup";
+            treeNode5.Name = "Nó14";
+            treeNode5.Text = "Calculadora";
+            treeNode6.Name = "Nó15";
+            treeNode6.Text = "Notepad";
+            treeNode7.Name = "Nó16";
+            treeNode7.Text = "Excel";
+            treeNode8.Name = "Nó13";
+            treeNode8.Text = "Utilitários";
+            treeNode9.Name = "Nó1";
+            treeNode9.Text = "Arquivo";
+            treeNode10.Name = "Nó18";
+            treeNode10.Text = "Cliente";
+            treeNode11.Name = "Nó19";
+            treeNode11.Text = "Produto";
+            treeNode12.Name = "Nó20";
+            treeNode12.Text = "Pedido";
+            treeNode13.Name = "Nó21";
+            treeNode13.Text = "Vendedor";
+            treeNode14.Name = "Nó24";
+            treeNode14.Text = "Unidade Medida";
+            treeNode15.Name = "Nó25";
+            treeNode15.Text = "Condição Pagamento";
+            treeNode16.Name = "Nó26";
+            treeNode16.Text = "Transportadora";
+            treeNode17.Name = "Node0";
+            treeNode17.Text = "Grupo de produto";
+            treeNode18.Name = "Nó22";
+            treeNode18.Text = "Ajustes";
+            treeNode19.Name = "Nó17";
+            treeNode19.Text = "Cadastros";
+            treeNode20.Name = "Nó29";
+            treeNode20.Text = "Cliente";
+            treeNode21.Name = "Nó30";
+            treeNode21.Text = "Produto";
+            treeNode22.Name = "Nó31";
+            treeNode22.Text = "Pedido";
+            treeNode23.Name = "Nó32";
+            treeNode23.Text = "Vendedor";
+            treeNode24.Name = "Nó28";
+            treeNode24.Text = "Consulta";
+            treeNode25.Name = "Nó34";
+            treeNode25.Text = "Gerar NF";
+            treeNode26.Name = "Nó35";
+            treeNode26.Text = "Devolução NF";
+            treeNode27.Name = "Nó36";
+            treeNode27.Text = "Liberação Pedido";
+            treeNode28.Name = "Nó38";
+            treeNode28.Text = "Gerar Modelo";
+            treeNode29.Name = "Nó39";
+            treeNode29.Text = "Consultar";
+            treeNode30.Name = "Nó37";
+            treeNode30.Text = "Mineração Dados";
+            treeNode31.Name = "Nó33";
+            treeNode31.Text = "Processos";
+            treeNode32.Name = "Nó0";
+            treeNode32.Text = "Sistema Comercial";
             this.trVwMenu.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode34});
+            treeNode32});
             this.trVwMenu.Size = new System.Drawing.Size(238, 159);
             this.trVwMenu.TabIndex = 3;
             // 
@@ -233,6 +233,7 @@
             this.btnDesAll.TabIndex = 2;
             this.btnDesAll.Text = "Desmarcar Todos";
             this.btnDesAll.UseVisualStyleBackColor = true;
+            this.btnDesAll.Click += new System.EventHandler(this.btnDesAll_Click);
             // 
             // btnMarAll
             // 
@@ -244,12 +245,13 @@
             this.btnMarAll.TabIndex = 1;
             this.btnMarAll.Text = "Marcar Todos";
             this.btnMarAll.UseVisualStyleBackColor = true;
+            this.btnMarAll.Click += new System.EventHandler(this.btnMarAll_Click);
             // 
             // grpBxInfor
             // 
             this.grpBxInfor.Controls.Add(this.txtBxSenhaAntiga);
             this.grpBxInfor.Controls.Add(this.label1);
-            this.grpBxInfor.Controls.Add(this.checkBox1);
+            this.grpBxInfor.Controls.Add(this.chckBxPriv);
             this.grpBxInfor.Controls.Add(this.txtUsu);
             this.grpBxInfor.Controls.Add(this.chckBxUsublq);
             this.grpBxInfor.Controls.Add(this.txtConSenha);
@@ -260,21 +262,41 @@
             this.grpBxInfor.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.grpBxInfor.Location = new System.Drawing.Point(6, 6);
             this.grpBxInfor.Name = "grpBxInfor";
-            this.grpBxInfor.Size = new System.Drawing.Size(245, 238);
+            this.grpBxInfor.Size = new System.Drawing.Size(261, 250);
             this.grpBxInfor.TabIndex = 0;
             this.grpBxInfor.TabStop = false;
             this.grpBxInfor.Text = "Informação";
             // 
-            // checkBox1
+            // txtBxSenhaAntiga
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.ForeColor = System.Drawing.Color.CadetBlue;
-            this.checkBox1.Location = new System.Drawing.Point(11, 213);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(80, 17);
-            this.checkBox1.TabIndex = 45;
-            this.checkBox1.Text = "Privilegiado";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.txtBxSenhaAntiga.Location = new System.Drawing.Point(11, 74);
+            this.txtBxSenhaAntiga.Name = "txtBxSenhaAntiga";
+            this.txtBxSenhaAntiga.PasswordChar = '*';
+            this.txtBxSenhaAntiga.Size = new System.Drawing.Size(100, 20);
+            this.txtBxSenhaAntiga.TabIndex = 47;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.CadetBlue;
+            this.label1.Location = new System.Drawing.Point(11, 58);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(90, 13);
+            this.label1.TabIndex = 46;
+            this.label1.Text = "Senha antiga: ";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // chckBxPriv
+            // 
+            this.chckBxPriv.AutoSize = true;
+            this.chckBxPriv.ForeColor = System.Drawing.Color.CadetBlue;
+            this.chckBxPriv.Location = new System.Drawing.Point(11, 213);
+            this.chckBxPriv.Name = "chckBxPriv";
+            this.chckBxPriv.Size = new System.Drawing.Size(80, 17);
+            this.chckBxPriv.TabIndex = 45;
+            this.chckBxPriv.Text = "Privilegiado";
+            this.chckBxPriv.UseVisualStyleBackColor = true;
             // 
             // chckBxUsublq
             // 
@@ -291,6 +313,7 @@
             // 
             this.txtConSenha.Location = new System.Drawing.Point(11, 152);
             this.txtConSenha.Name = "txtConSenha";
+            this.txtConSenha.PasswordChar = '*';
             this.txtConSenha.Size = new System.Drawing.Size(100, 20);
             this.txtConSenha.TabIndex = 42;
             // 
@@ -309,6 +332,7 @@
             // 
             this.txtSenha.Location = new System.Drawing.Point(11, 113);
             this.txtSenha.Name = "txtSenha";
+            this.txtSenha.PasswordChar = '*';
             this.txtSenha.Size = new System.Drawing.Size(100, 20);
             this.txtSenha.TabIndex = 40;
             // 
@@ -341,27 +365,8 @@
             this.tbCntrlCtrUsu.Location = new System.Drawing.Point(12, 12);
             this.tbCntrlCtrUsu.Name = "tbCntrlCtrUsu";
             this.tbCntrlCtrUsu.SelectedIndex = 0;
-            this.tbCntrlCtrUsu.Size = new System.Drawing.Size(537, 281);
+            this.tbCntrlCtrUsu.Size = new System.Drawing.Size(537, 303);
             this.tbCntrlCtrUsu.TabIndex = 0;
-            // 
-            // txtBxSenhaAntiga
-            // 
-            this.txtBxSenhaAntiga.Location = new System.Drawing.Point(11, 74);
-            this.txtBxSenhaAntiga.Name = "txtBxSenhaAntiga";
-            this.txtBxSenhaAntiga.Size = new System.Drawing.Size(100, 20);
-            this.txtBxSenhaAntiga.TabIndex = 47;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.CadetBlue;
-            this.label1.Location = new System.Drawing.Point(11, 58);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(90, 13);
-            this.label1.TabIndex = 46;
-            this.label1.Text = "Senha antiga: ";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // txtUsu
             // 
@@ -374,19 +379,60 @@
             this.txtUsu.TabIndex = 44;
             this.txtUsu.ButtonClick += new System.EventHandler(this.txtBtnUsu_ButtonClick);
             // 
+            // cOMERCIALDataSet
+            // 
+            this.cOMERCIALDataSet.DataSetName = "COMERCIALDataSet";
+            this.cOMERCIALDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // uSUARIOBindingSource
+            // 
+            this.uSUARIOBindingSource.DataMember = "USUARIO";
+            this.uSUARIOBindingSource.DataSource = this.cOMERCIALDataSet;
+            // 
+            // uSUARIOTableAdapter
+            // 
+            this.uSUARIOTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.ACESSOTableAdapter = null;
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.CLIENTETableAdapter = null;
+            this.tableAdapterManager.CONDICAOPAGAMENTOTableAdapter = null;
+            this.tableAdapterManager.GRUPOPRODUTOTableAdapter = null;
+            this.tableAdapterManager.ICMSTableAdapter = null;
+            this.tableAdapterManager.ItemNotaFiscalTableAdapter = null;
+            this.tableAdapterManager.ITEMPEDIDOTableAdapter = null;
+            this.tableAdapterManager.MODULOTableAdapter = null;
+            this.tableAdapterManager.NOTAFISCALTableAdapter = null;
+            this.tableAdapterManager.PEDIDOTableAdapter = null;
+            this.tableAdapterManager.PRODUTOTableAdapter = null;
+            this.tableAdapterManager.REGIAOTableAdapter = null;
+            this.tableAdapterManager.TRANSPORTADORATableAdapter = null;
+            this.tableAdapterManager.TRANSPORTADORAVIATableAdapter = null;
+            this.tableAdapterManager.UNIDADEMEDIDATableAdapter = null;
+            this.tableAdapterManager.UpdateOrder = Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.USUARIOTableAdapter = this.uSUARIOTableAdapter;
+            this.tableAdapterManager.VENDEDORTableAdapter = null;
+            this.tableAdapterManager.VIATRANSPORTETableAdapter = null;
+            // 
             // FrmCadUsu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(558, 302);
+            this.ClientSize = new System.Drawing.Size(589, 348);
             this.Controls.Add(this.tbCntrlCtrUsu);
             this.Name = "FrmCadUsu";
             this.Text = "Controle de usuários";
+            this.Load += new System.EventHandler(this.FrmCadUsu_Load);
+            this.Shown += new System.EventHandler(this.FrmCadUsu_Shown);
             this.tabPage1.ResumeLayout(false);
             this.grpBxMenu.ResumeLayout(false);
             this.grpBxInfor.ResumeLayout(false);
             this.grpBxInfor.PerformLayout();
             this.tbCntrlCtrUsu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uSUARIOBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -399,7 +445,7 @@
         private System.Windows.Forms.Button btnDesAll;
         private System.Windows.Forms.Button btnMarAll;
         private System.Windows.Forms.GroupBox grpBxInfor;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox chckBxPriv;
         private System.Windows.Forms.CheckBox chckBxUsublq;
         private System.Windows.Forms.TextBox txtConSenha;
         private System.Windows.Forms.Label lblConSenha;
@@ -410,6 +456,10 @@
         private System.Windows.Forms.TextBox txtBxSenhaAntiga;
         private System.Windows.Forms.Label label1;
         public TextButton txtUsu;
+        private COMERCIALDataSet cOMERCIALDataSet;
+        private System.Windows.Forms.BindingSource uSUARIOBindingSource;
+        private Comercial.COMERCIALDataSetTableAdapters.USUARIOTableAdapter uSUARIOTableAdapter;
+        private Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager tableAdapterManager;
 
     }
 }

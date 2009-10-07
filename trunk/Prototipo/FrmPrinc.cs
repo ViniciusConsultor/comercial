@@ -78,6 +78,12 @@ namespace Comercial
                     retorno = frmCadProd.salvar();
                 }
 
+                if (frm is FrmCadUsu && edit == false)
+                {
+                    FrmCadUsu frmCadven= (FrmCadUsu)frm;
+                    retorno = frmCadven.salvar();
+                }
+
                 if (retorno == 0)
                 {
                     bindingNavigator1.BindingSource.EndEdit();
@@ -121,6 +127,13 @@ namespace Comercial
                     {
 
                         COMERCIALDataSetTableAdapters.PRODUTOTableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.PRODUTOTableAdapter();
+                        table.Update(_dataset);
+                    }
+
+                    if (frm is FrmCadUsu)
+                    {
+                       
+                        COMERCIALDataSetTableAdapters.USUARIOTableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.USUARIOTableAdapter();
                         table.Update(_dataset);
                     }
 

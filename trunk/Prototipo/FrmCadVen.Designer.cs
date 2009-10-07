@@ -209,7 +209,6 @@
             // 
             // txtSenha
             // 
-            this.txtSenha.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtSenha.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSenha.Location = new System.Drawing.Point(13, 86);
             this.txtSenha.Name = "txtSenha";
@@ -219,7 +218,6 @@
             // 
             // txtUsu
             // 
-            this.txtUsu.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtUsu.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsu.Location = new System.Drawing.Point(13, 42);
             this.txtUsu.Name = "txtUsu";

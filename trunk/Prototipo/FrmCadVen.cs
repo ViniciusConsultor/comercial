@@ -33,6 +33,10 @@ namespace Comercial
         {
             //Valida CPF
 
+            string c = ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString;
+
+
+
             Validacoes valida = new Validacoes();
             int cpf = valida.ValidaCPF(txtCPF.Text);
 
@@ -44,35 +48,58 @@ namespace Comercial
 
             if (!string.IsNullOrEmpty(txtUsu.Text) && !string.IsNullOrEmpty(txtSenha.Text))
             {
-                COMERCIALDataSetTableAdapters.USUARIOTableAdapter usu = new Comercial.COMERCIALDataSetTableAdapters.USUARIOTableAdapter();
-                usu.Insert(txtUsu.Text, txtSenha.Text, "N", "S");
-            }
 
-            string c = ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString;
-
-
-             SqlConnection conn = new SqlConnection(c);
+                SqlConnection conn = new SqlConnection(c);
                 conn.Open();
-               
+
                 SqlCommand cmd = new SqlCommand("select * from usuario where usuario = @usu", conn);
                 SqlParameter param = new SqlParameter();
                 param.ParameterName = "@usu";
                 param.Value = txtUsu.Text;
                 cmd.Parameters.Add(param);
                 SqlDataReader reader = cmd.ExecuteReader();
-                
                 reader.Read();
+
+                if (reader.HasRows)
+                {
+                    MessageBox.Show("Usuário ja cadastrado.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return 1;
+                }
+                else
+                {
+                    COMERCIALDataSetTableAdapters.USUARIOTableAdapter usu = new Comercial.COMERCIALDataSetTableAdapters.USUARIOTableAdapter();
+                    usu.Insert(txtUsu.Text, txtSenha.Text, "N", "S");
+                }
+
+                reader.Dispose();
+                reader.Close();
+                conn.Close();
+                conn.Dispose();
+            }
+
+
+            SqlConnection conn1 = new SqlConnection(c);
+            conn1.Open();
+
+            SqlCommand cmd1 = new SqlCommand("select * from usuario where usuario = @usu", conn1);
+            SqlParameter param1 = new SqlParameter();
+            param1.ParameterName = "@usu";
+            param1.Value = txtUsu.Text;
+            cmd1.Parameters.Add(param1);
+            SqlDataReader reader1 = cmd1.ExecuteReader();
+
+            reader1.Read();
 
             DataRowView x;
 
-            x = (DataRowView) vENDEDORBindingSource.Current;
+            x = (DataRowView)vENDEDORBindingSource.Current;
 
             x["CEP"] = txtcep.getText;
             x["ATIVO"] = "S";
-            x["CodUSUARIO"] = reader["codusuario"];
+            x["CodUSUARIO"] = reader1["codusuario"];
 
-            reader.Dispose();
-            reader.Close();
+            reader1.Dispose();
+            reader1.Close();
 
             if (radioButton1.Checked)
             {
@@ -84,13 +111,13 @@ namespace Comercial
                 x["SEXO"] = "F";
             }
 
-            conn.Close();
-            conn.Dispose();
+            conn1.Close();
+            conn1.Dispose();
 
             return 0;
         }
 
-     
+
         private void textButton1_ButtonClick(object sender, EventArgs e)
         {
             FrmVisGeral x = new FrmVisGeral(this);
@@ -122,10 +149,10 @@ namespace Comercial
                 {
                     radioButton2.Checked = true;
                 }
-               /* if (!string.IsNullOrEmpty(v["codregiao"].ToString()))
-                    cmBxRegiao.SelectedValue = v["codregiao"].ToString();
-                else
-                    cmBxRegiao.SelectedValue = -1; */
+                /* if (!string.IsNullOrEmpty(v["codregiao"].ToString()))
+                     cmBxRegiao.SelectedValue = v["codregiao"].ToString();
+                 else
+                     cmBxRegiao.SelectedValue = -1; */
             }
             else
             {
@@ -136,7 +163,7 @@ namespace Comercial
             }
         }
 
-        
+
         private void FrmCadVen_Shown(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'cOMERCIALDataSet.REGIAO' table. You can move, or remove it, as needed.
@@ -151,10 +178,10 @@ namespace Comercial
             cnsltTlStrpConsulta.Enabled = true;
         }
 
-     
+
         private void toolStripButton1_Click_1(object sender, EventArgs e)
         {
-           try
+            try
             {
                 this.vENDEDORTableAdapter.Consulta(this.cOMERCIALDataSet.VENDEDOR, cpfToolStripTextBox.Text, nomeToolStripTextBox.Text);
             }
@@ -175,7 +202,7 @@ namespace Comercial
             catch (System.Exception ex)
             {
                 System.Windows.Forms.MessageBox.Show(ex.Message);
-                
+
             }
         }
 
