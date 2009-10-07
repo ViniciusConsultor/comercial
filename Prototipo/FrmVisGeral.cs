@@ -128,7 +128,18 @@ namespace Comercial
             {
                 FrmCadUsu usu = (FrmCadUsu)_parent;
 
-                usu.txtUsu.getText = dtGrdVwVis.SelectedRows[0].Cells[0].Value.ToString();
+                // vamos obter as células selecionadas no DataGridView
+                DataGridViewSelectedCellCollection selecionadas = dtGrdVwVis.SelectedCells;
+
+                DataGridViewCell celula = selecionadas[1];
+                int linha = celula.RowIndex;
+                int coluna = celula.ColumnIndex;
+
+                
+                usu.txtUsu.getText = celula.Value.ToString();
+
+                this.Close();
+                this.Dispose();
             }
         }
     }
