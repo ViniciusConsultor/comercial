@@ -56,6 +56,8 @@
             this.txtNomeFantasiaCli = new System.Windows.Forms.TextBox();
             this.lblNome = new System.Windows.Forms.Label();
             this.dtgrdConCli = new System.Windows.Forms.DataGridView();
+            this.CNPJCli = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NomeFantasiaCli = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClmnCodPed = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClmnDtPed = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClmnValPed = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -75,7 +77,7 @@
             this.tbCntrlConCli.Location = new System.Drawing.Point(12, 12);
             this.tbCntrlConCli.Name = "tbCntrlConCli";
             this.tbCntrlConCli.SelectedIndex = 0;
-            this.tbCntrlConCli.Size = new System.Drawing.Size(833, 488);
+            this.tbCntrlConCli.Size = new System.Drawing.Size(906, 488);
             this.tbCntrlConCli.TabIndex = 0;
             // 
             // tbPgConCli
@@ -87,7 +89,7 @@
             this.tbPgConCli.Location = new System.Drawing.Point(4, 22);
             this.tbPgConCli.Name = "tbPgConCli";
             this.tbPgConCli.Padding = new System.Windows.Forms.Padding(3);
-            this.tbPgConCli.Size = new System.Drawing.Size(825, 462);
+            this.tbPgConCli.Size = new System.Drawing.Size(898, 462);
             this.tbPgConCli.TabIndex = 0;
             this.tbPgConCli.Text = "Consulta de Clientes - Cliente/Pedido";
             this.tbPgConCli.UseVisualStyleBackColor = true;
@@ -100,7 +102,7 @@
             this.grpBxFiltro.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.grpBxFiltro.Location = new System.Drawing.Point(6, 6);
             this.grpBxFiltro.Name = "grpBxFiltro";
-            this.grpBxFiltro.Size = new System.Drawing.Size(813, 197);
+            this.grpBxFiltro.Size = new System.Drawing.Size(886, 197);
             this.grpBxFiltro.TabIndex = 1;
             this.grpBxFiltro.TabStop = false;
             this.grpBxFiltro.Text = "Filtros:";
@@ -236,7 +238,7 @@
             "C = Complemento de preço"});
             this.cmBxTipoPed.Location = new System.Drawing.Point(105, 36);
             this.cmBxTipoPed.Name = "cmBxTipoPed";
-            this.cmBxTipoPed.Size = new System.Drawing.Size(121, 21);
+            this.cmBxTipoPed.Size = new System.Drawing.Size(173, 21);
             this.cmBxTipoPed.TabIndex = 12;
             // 
             // lblTipoPed
@@ -264,15 +266,18 @@
             this.grpBxCli.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.grpBxCli.Location = new System.Drawing.Point(364, 19);
             this.grpBxCli.Name = "grpBxCli";
-            this.grpBxCli.Size = new System.Drawing.Size(443, 162);
+            this.grpBxCli.Size = new System.Drawing.Size(516, 162);
             this.grpBxCli.TabIndex = 3;
             this.grpBxCli.TabStop = false;
             this.grpBxCli.Text = "Dados Cliente:";
             // 
             // cmbAreaAtuCli
             // 
+            this.cmbAreaAtuCli.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cmbAreaAtuCli.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbAreaAtuCli.FormattingEnabled = true;
             this.cmbAreaAtuCli.Items.AddRange(new object[] {
+            "",
             "AEROESPACIAL",
             "AUTO - AUTOMOBILÍSTICO",
             "AUTO - RODA/DIREÇÃO",
@@ -296,7 +301,7 @@
             "MOLDE - JANELAS",
             "MOLDE - PLÁSTICO",
             "VÁLVULAS - PETRÓLEO"});
-            this.cmbAreaAtuCli.Location = new System.Drawing.Point(151, 34);
+            this.cmbAreaAtuCli.Location = new System.Drawing.Point(224, 34);
             this.cmbAreaAtuCli.Name = "cmbAreaAtuCli";
             this.cmbAreaAtuCli.Size = new System.Drawing.Size(286, 21);
             this.cmbAreaAtuCli.TabIndex = 29;
@@ -307,7 +312,7 @@
             this.txtCnpjCli.Mask = "99,999,999/9999-99";
             this.txtCnpjCli.Name = "txtCnpjCli";
             this.txtCnpjCli.PromptChar = ' ';
-            this.txtCnpjCli.Size = new System.Drawing.Size(113, 20);
+            this.txtCnpjCli.Size = new System.Drawing.Size(144, 20);
             this.txtCnpjCli.TabIndex = 28;
             this.txtCnpjCli.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
@@ -327,7 +332,7 @@
             this.lblArea.AutoSize = true;
             this.lblArea.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblArea.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblArea.Location = new System.Drawing.Point(148, 19);
+            this.lblArea.Location = new System.Drawing.Point(221, 16);
             this.lblArea.Name = "lblArea";
             this.lblArea.Size = new System.Drawing.Size(89, 13);
             this.lblArea.TabIndex = 26;
@@ -337,7 +342,7 @@
             // 
             this.txtRazaoSocialCli.Location = new System.Drawing.Point(17, 82);
             this.txtRazaoSocialCli.Name = "txtRazaoSocialCli";
-            this.txtRazaoSocialCli.Size = new System.Drawing.Size(420, 20);
+            this.txtRazaoSocialCli.Size = new System.Drawing.Size(493, 20);
             this.txtRazaoSocialCli.TabIndex = 25;
             // 
             // lblRazao
@@ -355,7 +360,7 @@
             // 
             this.txtNomeFantasiaCli.Location = new System.Drawing.Point(20, 133);
             this.txtNomeFantasiaCli.Name = "txtNomeFantasiaCli";
-            this.txtNomeFantasiaCli.Size = new System.Drawing.Size(417, 20);
+            this.txtNomeFantasiaCli.Size = new System.Drawing.Size(490, 20);
             this.txtNomeFantasiaCli.TabIndex = 23;
             // 
             // lblNome
@@ -385,13 +390,15 @@
             this.dtgrdConCli.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgrdConCli.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgrdConCli.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CNPJCli,
+            this.NomeFantasiaCli,
             this.ClmnCodPed,
             this.ClmnDtPed,
             this.ClmnValPed});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.CadetBlue;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
@@ -409,6 +416,21 @@
             this.dtgrdConCli.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dtgrdConCli.Size = new System.Drawing.Size(813, 243);
             this.dtgrdConCli.TabIndex = 0;
+            // 
+            // CNPJCli
+            // 
+            this.CNPJCli.DataPropertyName = "CodCliente";
+            this.CNPJCli.HeaderText = "Cód. Cliente";
+            this.CNPJCli.Name = "CNPJCli";
+            this.CNPJCli.ReadOnly = true;
+            // 
+            // NomeFantasiaCli
+            // 
+            this.NomeFantasiaCli.DataPropertyName = "NomeFantasia";
+            this.NomeFantasiaCli.HeaderText = "Nome Fantasia Cliente";
+            this.NomeFantasiaCli.Name = "NomeFantasiaCli";
+            this.NomeFantasiaCli.ReadOnly = true;
+            this.NomeFantasiaCli.Width = 200;
             // 
             // ClmnCodPed
             // 
@@ -486,9 +508,11 @@
         public System.Windows.Forms.MaskedTextBox txtCnpjCli;
         private System.Windows.Forms.Label lblCNPJ;
         private System.Windows.Forms.ComboBox cmbAreaAtuCli;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CNPJCli;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NomeFantasiaCli;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmnCodPed;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmnDtPed;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmnValPed;
-        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

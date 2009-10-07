@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCadCli));
             this.tbCntrlCadCli = new System.Windows.Forms.TabControl();
             this.tbpCadCli = new System.Windows.Forms.TabPage();
             this.cmBxRegiaoCli = new System.Windows.Forms.ComboBox();
@@ -51,6 +52,10 @@
             this.txtIeCli = new System.Windows.Forms.MaskedTextBox();
             this.lblIECliente = new System.Windows.Forms.Label();
             this.gpbContatoCli = new System.Windows.Forms.GroupBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.lblBairroCli = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.lblNum = new System.Windows.Forms.Label();
             this.lblCep = new System.Windows.Forms.Label();
             this.txtCepCli = new Comercial.TextButton();
             this.txtFaxCli = new System.Windows.Forms.MaskedTextBox();
@@ -65,7 +70,7 @@
             this.lblMunicipioCliente = new System.Windows.Forms.Label();
             this.txtBairroCli = new System.Windows.Forms.TextBox();
             this.txtEndCli = new System.Windows.Forms.TextBox();
-            this.lblBairroCliente = new System.Windows.Forms.Label();
+            this.lblComplemento = new System.Windows.Forms.Label();
             this.lblEnderecoCliente = new System.Windows.Forms.Label();
             this.txtNomeFantCli = new System.Windows.Forms.TextBox();
             this.txtCnpjCli = new System.Windows.Forms.MaskedTextBox();
@@ -76,6 +81,14 @@
             this.tableAdapterManager = new Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager();
             this.uSUARIOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.USUARIOTableAdapter();
             this.rEGIAOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.REGIAOTableAdapter();
+            this.cnsltTlStrpConsultaCli = new System.Windows.Forms.ToolStrip();
+            this.cnpjCliToolStripLabel = new System.Windows.Forms.ToolStripButton();
+            this.cnpjToolStripTextBox = new System.Windows.Forms.ToolStripTextBox();
+            this.nomeFantasiaCliToolStripLabel = new System.Windows.Forms.ToolStripLabel();
+            this.nomeFantasiaToolStripTextBox = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.tbCntrlCadCli.SuspendLayout();
             this.tbpCadCli.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cLIENTEBindingSource)).BeginInit();
@@ -84,16 +97,17 @@
             this.grpBxUsuario.SuspendLayout();
             this.gpbContatoCli.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uSUARIOBindingSource)).BeginInit();
+            this.cnsltTlStrpConsultaCli.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbCntrlCadCli
             // 
             this.tbCntrlCadCli.Controls.Add(this.tbpCadCli);
             this.tbCntrlCadCli.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbCntrlCadCli.Location = new System.Drawing.Point(12, 12);
+            this.tbCntrlCadCli.Location = new System.Drawing.Point(12, 28);
             this.tbCntrlCadCli.Name = "tbCntrlCadCli";
             this.tbCntrlCadCli.SelectedIndex = 0;
-            this.tbCntrlCadCli.Size = new System.Drawing.Size(541, 423);
+            this.tbCntrlCadCli.Size = new System.Drawing.Size(541, 448);
             this.tbCntrlCadCli.TabIndex = 0;
             // 
             // tbpCadCli
@@ -120,13 +134,15 @@
             this.tbpCadCli.Location = new System.Drawing.Point(4, 22);
             this.tbpCadCli.Name = "tbpCadCli";
             this.tbpCadCli.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpCadCli.Size = new System.Drawing.Size(533, 397);
+            this.tbpCadCli.Size = new System.Drawing.Size(533, 422);
             this.tbpCadCli.TabIndex = 0;
             this.tbpCadCli.Text = "Cadastro de Clientes";
             this.tbpCadCli.UseVisualStyleBackColor = true;
             // 
             // cmBxRegiaoCli
             // 
+            this.cmBxRegiaoCli.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmBxRegiaoCli.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmBxRegiaoCli.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.cLIENTEBindingSource, "CODREGIAO", true));
             this.cmBxRegiaoCli.DataSource = this.rEGIAOBindingSource;
             this.cmBxRegiaoCli.DisplayMember = "DESCRICAO";
@@ -187,7 +203,7 @@
             // 
             this.chckBxCred.AutoSize = true;
             this.chckBxCred.ForeColor = System.Drawing.Color.CadetBlue;
-            this.chckBxCred.Location = new System.Drawing.Point(6, 335);
+            this.chckBxCred.Location = new System.Drawing.Point(6, 352);
             this.chckBxCred.Name = "chckBxCred";
             this.chckBxCred.Size = new System.Drawing.Size(108, 17);
             this.chckBxCred.TabIndex = 15;
@@ -201,7 +217,7 @@
             this.txtLimCredCli.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cLIENTEBindingSource, "LIMITECRED", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C2"));
             this.txtLimCredCli.Enabled = false;
             this.txtLimCredCli.InsertKeyMode = System.Windows.Forms.InsertKeyMode.Insert;
-            this.txtLimCredCli.Location = new System.Drawing.Point(125, 335);
+            this.txtLimCredCli.Location = new System.Drawing.Point(125, 352);
             this.txtLimCredCli.Name = "txtLimCredCli";
             this.txtLimCredCli.PromptChar = ' ';
             this.txtLimCredCli.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -214,7 +230,7 @@
             // 
             this.lblPotencialCli.AutoSize = true;
             this.lblPotencialCli.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblPotencialCli.Location = new System.Drawing.Point(123, 319);
+            this.lblPotencialCli.Location = new System.Drawing.Point(123, 336);
             this.lblPotencialCli.Name = "lblPotencialCli";
             this.lblPotencialCli.Size = new System.Drawing.Size(87, 13);
             this.lblPotencialCli.TabIndex = 42;
@@ -222,6 +238,7 @@
             // 
             // cmbAreaAtuCli
             // 
+            this.cmbAreaAtuCli.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cmbAreaAtuCli.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.cLIENTEBindingSource, "AREAATUACAO", true));
             this.cmbAreaAtuCli.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.cLIENTEBindingSource, "AREAATUACAO", true));
             this.cmbAreaAtuCli.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cLIENTEBindingSource, "AREAATUACAO", true));
@@ -250,7 +267,7 @@
             "MOLDE - JANELAS",
             "MOLDE - PLÁSTICO",
             "VÁLVULAS - PETRÓLEO"});
-            this.cmbAreaAtuCli.Location = new System.Drawing.Point(9, 283);
+            this.cmbAreaAtuCli.Location = new System.Drawing.Point(9, 300);
             this.cmbAreaAtuCli.Name = "cmbAreaAtuCli";
             this.cmbAreaAtuCli.Size = new System.Drawing.Size(285, 21);
             this.cmbAreaAtuCli.TabIndex = 13;
@@ -260,7 +277,7 @@
             this.lblAreaAtuCli.AutoSize = true;
             this.lblAreaAtuCli.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAreaAtuCli.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblAreaAtuCli.Location = new System.Drawing.Point(6, 267);
+            this.lblAreaAtuCli.Location = new System.Drawing.Point(6, 284);
             this.lblAreaAtuCli.Name = "lblAreaAtuCli";
             this.lblAreaAtuCli.Size = new System.Drawing.Size(89, 13);
             this.lblAreaAtuCli.TabIndex = 41;
@@ -274,7 +291,7 @@
             this.grpBxUsuario.Controls.Add(this.lblUsuario);
             this.grpBxUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpBxUsuario.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.grpBxUsuario.Location = new System.Drawing.Point(325, 270);
+            this.grpBxUsuario.Location = new System.Drawing.Point(325, 287);
             this.grpBxUsuario.Name = "grpBxUsuario";
             this.grpBxUsuario.Size = new System.Drawing.Size(197, 126);
             this.grpBxUsuario.TabIndex = 34;
@@ -344,6 +361,10 @@
             // 
             // gpbContatoCli
             // 
+            this.gpbContatoCli.Controls.Add(this.textBox2);
+            this.gpbContatoCli.Controls.Add(this.lblBairroCli);
+            this.gpbContatoCli.Controls.Add(this.textBox1);
+            this.gpbContatoCli.Controls.Add(this.lblNum);
             this.gpbContatoCli.Controls.Add(this.lblCep);
             this.gpbContatoCli.Controls.Add(this.txtCepCli);
             this.gpbContatoCli.Controls.Add(this.txtFaxCli);
@@ -358,16 +379,55 @@
             this.gpbContatoCli.Controls.Add(this.lblMunicipioCliente);
             this.gpbContatoCli.Controls.Add(this.txtBairroCli);
             this.gpbContatoCli.Controls.Add(this.txtEndCli);
-            this.gpbContatoCli.Controls.Add(this.lblBairroCliente);
+            this.gpbContatoCli.Controls.Add(this.lblComplemento);
             this.gpbContatoCli.Controls.Add(this.lblEnderecoCliente);
             this.gpbContatoCli.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gpbContatoCli.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.gpbContatoCli.Location = new System.Drawing.Point(6, 84);
             this.gpbContatoCli.Name = "gpbContatoCli";
-            this.gpbContatoCli.Size = new System.Drawing.Size(510, 180);
+            this.gpbContatoCli.Size = new System.Drawing.Size(510, 197);
             this.gpbContatoCli.TabIndex = 4;
             this.gpbContatoCli.TabStop = false;
             this.gpbContatoCli.Text = "Contato";
+            // 
+            // textBox2
+            // 
+            this.textBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cLIENTEBindingSource, "BAIRRO", true));
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.Location = new System.Drawing.Point(286, 81);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(205, 20);
+            this.textBox2.TabIndex = 47;
+            // 
+            // lblBairroCli
+            // 
+            this.lblBairroCli.AutoSize = true;
+            this.lblBairroCli.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBairroCli.ForeColor = System.Drawing.Color.CadetBlue;
+            this.lblBairroCli.Location = new System.Drawing.Point(283, 65);
+            this.lblBairroCli.Name = "lblBairroCli";
+            this.lblBairroCli.Size = new System.Drawing.Size(40, 13);
+            this.lblBairroCli.TabIndex = 48;
+            this.lblBairroCli.Text = "Bairro";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(442, 42);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(49, 20);
+            this.textBox1.TabIndex = 46;
+            // 
+            // lblNum
+            // 
+            this.lblNum.AutoSize = true;
+            this.lblNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNum.ForeColor = System.Drawing.Color.CadetBlue;
+            this.lblNum.Location = new System.Drawing.Point(443, 26);
+            this.lblNum.Name = "lblNum";
+            this.lblNum.Size = new System.Drawing.Size(21, 13);
+            this.lblNum.TabIndex = 45;
+            this.lblNum.Text = "N°";
             // 
             // lblCep
             // 
@@ -392,7 +452,7 @@
             // txtFaxCli
             // 
             this.txtFaxCli.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFaxCli.Location = new System.Drawing.Point(101, 121);
+            this.txtFaxCli.Location = new System.Drawing.Point(104, 167);
             this.txtFaxCli.Mask = "(99) 9999-9999";
             this.txtFaxCli.Name = "txtFaxCli";
             this.txtFaxCli.PromptChar = ' ';
@@ -405,7 +465,7 @@
             // 
             this.txtTelCli.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cLIENTEBindingSource, "TELEFONE", true));
             this.txtTelCli.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTelCli.Location = new System.Drawing.Point(6, 121);
+            this.txtTelCli.Location = new System.Drawing.Point(9, 167);
             this.txtTelCli.Mask = "(99) 9999-9999";
             this.txtTelCli.Name = "txtTelCli";
             this.txtTelCli.PromptChar = ' ';
@@ -420,7 +480,7 @@
             this.lblFaxCli.AutoSize = true;
             this.lblFaxCli.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFaxCli.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblFaxCli.Location = new System.Drawing.Point(98, 105);
+            this.lblFaxCli.Location = new System.Drawing.Point(101, 151);
             this.lblFaxCli.Name = "lblFaxCli";
             this.lblFaxCli.Size = new System.Drawing.Size(27, 13);
             this.lblFaxCli.TabIndex = 42;
@@ -430,9 +490,9 @@
             // 
             this.txtEmailCli.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cLIENTEBindingSource, "EMAIL", true));
             this.txtEmailCli.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmailCli.Location = new System.Drawing.Point(188, 121);
+            this.txtEmailCli.Location = new System.Drawing.Point(191, 167);
             this.txtEmailCli.Name = "txtEmailCli";
-            this.txtEmailCli.Size = new System.Drawing.Size(308, 20);
+            this.txtEmailCli.Size = new System.Drawing.Size(300, 20);
             this.txtEmailCli.TabIndex = 12;
             // 
             // lblEmailCliente
@@ -440,7 +500,7 @@
             this.lblEmailCliente.AutoSize = true;
             this.lblEmailCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEmailCliente.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblEmailCliente.Location = new System.Drawing.Point(185, 105);
+            this.lblEmailCliente.Location = new System.Drawing.Point(188, 151);
             this.lblEmailCliente.Name = "lblEmailCliente";
             this.lblEmailCliente.Size = new System.Drawing.Size(42, 13);
             this.lblEmailCliente.TabIndex = 38;
@@ -451,7 +511,7 @@
             this.lblTelefoneCliente.AutoSize = true;
             this.lblTelefoneCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTelefoneCliente.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblTelefoneCliente.Location = new System.Drawing.Point(0, 103);
+            this.lblTelefoneCliente.Location = new System.Drawing.Point(3, 149);
             this.lblTelefoneCliente.Name = "lblTelefoneCliente";
             this.lblTelefoneCliente.Size = new System.Drawing.Size(57, 13);
             this.lblTelefoneCliente.TabIndex = 37;
@@ -459,7 +519,7 @@
             // 
             // cmbUfCli
             // 
-            this.cmbUfCli.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cmbUfCli.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cmbUfCli.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbUfCli.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.cLIENTEBindingSource, "UF", true));
             this.cmbUfCli.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.cLIENTEBindingSource, "UF", true));
@@ -494,9 +554,9 @@
             "SE",
             "SP",
             "TO"});
-            this.cmbUfCli.Location = new System.Drawing.Point(375, 82);
+            this.cmbUfCli.Location = new System.Drawing.Point(402, 120);
             this.cmbUfCli.Name = "cmbUfCli";
-            this.cmbUfCli.Size = new System.Drawing.Size(121, 21);
+            this.cmbUfCli.Size = new System.Drawing.Size(89, 21);
             this.cmbUfCli.TabIndex = 9;
             this.cmbUfCli.Text = "Selecione...";
             // 
@@ -505,7 +565,7 @@
             this.lblUfCliente.AutoSize = true;
             this.lblUfCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUfCliente.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblUfCliente.Location = new System.Drawing.Point(372, 66);
+            this.lblUfCliente.Location = new System.Drawing.Point(407, 105);
             this.lblUfCliente.Name = "lblUfCliente";
             this.lblUfCliente.Size = new System.Drawing.Size(23, 13);
             this.lblUfCliente.TabIndex = 34;
@@ -515,9 +575,9 @@
             // 
             this.txtMunicipioCli.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cLIENTEBindingSource, "MUNICIPIO", true));
             this.txtMunicipioCli.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMunicipioCli.Location = new System.Drawing.Point(170, 82);
+            this.txtMunicipioCli.Location = new System.Drawing.Point(9, 121);
             this.txtMunicipioCli.Name = "txtMunicipioCli";
-            this.txtMunicipioCli.Size = new System.Drawing.Size(197, 20);
+            this.txtMunicipioCli.Size = new System.Drawing.Size(387, 20);
             this.txtMunicipioCli.TabIndex = 8;
             // 
             // lblMunicipioCliente
@@ -525,7 +585,7 @@
             this.lblMunicipioCliente.AutoSize = true;
             this.lblMunicipioCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMunicipioCliente.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblMunicipioCliente.Location = new System.Drawing.Point(167, 65);
+            this.lblMunicipioCliente.Location = new System.Drawing.Point(6, 104);
             this.lblMunicipioCliente.Name = "lblMunicipioCliente";
             this.lblMunicipioCliente.Size = new System.Drawing.Size(60, 13);
             this.lblMunicipioCliente.TabIndex = 30;
@@ -533,11 +593,10 @@
             // 
             // txtBairroCli
             // 
-            this.txtBairroCli.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cLIENTEBindingSource, "BAIRRO", true));
             this.txtBairroCli.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBairroCli.Location = new System.Drawing.Point(6, 81);
             this.txtBairroCli.Name = "txtBairroCli";
-            this.txtBairroCli.Size = new System.Drawing.Size(155, 20);
+            this.txtBairroCli.Size = new System.Drawing.Size(274, 20);
             this.txtBairroCli.TabIndex = 7;
             // 
             // txtEndCli
@@ -546,19 +605,19 @@
             this.txtEndCli.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEndCli.Location = new System.Drawing.Point(133, 42);
             this.txtEndCli.Name = "txtEndCli";
-            this.txtEndCli.Size = new System.Drawing.Size(363, 20);
+            this.txtEndCli.Size = new System.Drawing.Size(303, 20);
             this.txtEndCli.TabIndex = 6;
             // 
-            // lblBairroCliente
+            // lblComplemento
             // 
-            this.lblBairroCliente.AutoSize = true;
-            this.lblBairroCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBairroCliente.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblBairroCliente.Location = new System.Drawing.Point(3, 65);
-            this.lblBairroCliente.Name = "lblBairroCliente";
-            this.lblBairroCliente.Size = new System.Drawing.Size(34, 13);
-            this.lblBairroCliente.TabIndex = 27;
-            this.lblBairroCliente.Text = "Bairro";
+            this.lblComplemento.AutoSize = true;
+            this.lblComplemento.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblComplemento.ForeColor = System.Drawing.Color.CadetBlue;
+            this.lblComplemento.Location = new System.Drawing.Point(3, 65);
+            this.lblComplemento.Name = "lblComplemento";
+            this.lblComplemento.Size = new System.Drawing.Size(71, 13);
+            this.lblComplemento.TabIndex = 27;
+            this.lblComplemento.Text = "Complemento";
             // 
             // lblEnderecoCliente
             // 
@@ -652,13 +711,84 @@
             // 
             this.rEGIAOTableAdapter.ClearBeforeFill = true;
             // 
+            // cnsltTlStrpConsultaCli
+            // 
+            this.cnsltTlStrpConsultaCli.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cnpjCliToolStripLabel,
+            this.cnpjToolStripTextBox,
+            this.nomeFantasiaCliToolStripLabel,
+            this.nomeFantasiaToolStripTextBox,
+            this.toolStripButton1,
+            this.toolStripButton3,
+            this.toolStripButton2});
+            this.cnsltTlStrpConsultaCli.Location = new System.Drawing.Point(0, 0);
+            this.cnsltTlStrpConsultaCli.Name = "cnsltTlStrpConsultaCli";
+            this.cnsltTlStrpConsultaCli.Size = new System.Drawing.Size(573, 25);
+            this.cnsltTlStrpConsultaCli.TabIndex = 1;
+            this.cnsltTlStrpConsultaCli.Text = "fillBy1ToolStrip";
+            // 
+            // cnpjCliToolStripLabel
+            // 
+            this.cnpjCliToolStripLabel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.cnpjCliToolStripLabel.Name = "cnpjCliToolStripLabel";
+            this.cnpjCliToolStripLabel.Size = new System.Drawing.Size(39, 22);
+            this.cnpjCliToolStripLabel.Text = "CNPJ:";
+            
+            // 
+            // cnpjToolStripTextBox
+            // 
+            this.cnpjToolStripTextBox.Name = "cnpjToolStripTextBox";
+            this.cnpjToolStripTextBox.Size = new System.Drawing.Size(100, 25);
+            // 
+            // nomeFantasiaCliToolStripLabel
+            // 
+            this.nomeFantasiaCliToolStripLabel.Name = "nomeFantasiaCliToolStripLabel";
+            this.nomeFantasiaCliToolStripLabel.Size = new System.Drawing.Size(83, 22);
+            this.nomeFantasiaCliToolStripLabel.Text = "Nome Fantasia";
+            // 
+            // nomeFantasiaToolStripTextBox
+            // 
+            this.nomeFantasiaToolStripTextBox.Name = "nomeFantasiaToolStripTextBox";
+            this.nomeFantasiaToolStripTextBox.Size = new System.Drawing.Size(100, 25);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton1.Text = "toolStripButton1";
+            this.toolStripButton1.ToolTipText = "Pesquisar";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            // 
+            // toolStripButton3
+            // 
+            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
+            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton3.Name = "toolStripButton3";
+            this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton3.Text = "Limpar";
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton2.Text = "Cancelar";
+            this.toolStripButton2.ToolTipText = "Cancelar";
+            // 
             // FrmCadCli
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(580, 439);
+            this.ClientSize = new System.Drawing.Size(573, 512);
             this.ControlBox = false;
+            this.Controls.Add(this.cnsltTlStrpConsultaCli);
             this.Controls.Add(this.tbCntrlCadCli);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -677,7 +807,10 @@
             this.gpbContatoCli.ResumeLayout(false);
             this.gpbContatoCli.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uSUARIOBindingSource)).EndInit();
+            this.cnsltTlStrpConsultaCli.ResumeLayout(false);
+            this.cnsltTlStrpConsultaCli.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -700,7 +833,7 @@
         private System.Windows.Forms.Label lblMunicipioCliente;
         private System.Windows.Forms.TextBox txtBairroCli;
         private System.Windows.Forms.TextBox txtEndCli;
-        private System.Windows.Forms.Label lblBairroCliente;
+        private System.Windows.Forms.Label lblComplemento;
         private System.Windows.Forms.Label lblEnderecoCliente;
         private System.Windows.Forms.MaskedTextBox txtFaxCli;
         private System.Windows.Forms.MaskedTextBox txtTelCli;
@@ -730,5 +863,17 @@
         private System.Windows.Forms.BindingSource rEGIAOBindingSource;
         private Comercial.COMERCIALDataSetTableAdapters.REGIAOTableAdapter rEGIAOTableAdapter;
         public System.Windows.Forms.MaskedTextBox txtLimCredCli;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label lblNum;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label lblBairroCli;
+        private System.Windows.Forms.ToolStrip cnsltTlStrpConsultaCli;
+        private System.Windows.Forms.ToolStripButton cnpjCliToolStripLabel;
+        private System.Windows.Forms.ToolStripTextBox cnpjToolStripTextBox;
+        private System.Windows.Forms.ToolStripLabel nomeFantasiaCliToolStripLabel;
+        private System.Windows.Forms.ToolStripTextBox nomeFantasiaToolStripTextBox;
+        public System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton toolStripButton3;
+        public System.Windows.Forms.ToolStripButton toolStripButton2;
     }
 }

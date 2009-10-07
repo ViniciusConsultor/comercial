@@ -174,10 +174,11 @@ namespace Comercial
             }
             catch (Exception ex)
             {
-                if (ex.GetType().FullName=="System.Data.NoNullAllowedException")
-                    MessageBox.Show("Campo(s) Obrigatório(s) não preenchido(s).", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                if (ex.GetType().FullName=="System.Data.ConstraintException")
+                if (ex.GetType().FullName == "System.Data.ConstraintException")
                     MessageBox.Show("Registro já cadastrado (Violação de chave primária)", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else if (ex.GetType().FullName == "System.Data.NoNullAllowedException" || ex.GetType().FullName == "System.InvalidOperationException")
+                        MessageBox.Show("Campo(s) Obrigatório(s) não preenchido(s).", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else MessageBox.Show("Erro desconhecido.\nContate o administrador do sistema", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);  
             }
 
         }
@@ -1278,6 +1279,15 @@ namespace Comercial
                 ven.toolStripButton2.Enabled = true;
                 ven.cnsltTlStrpConsulta.Enabled = true;
             }
+        }
+
+        private void BtnPrincipalCons_Click(object sender, EventArgs e)
+        {
+            Form frm = this.ActiveMdiChild;
+            if (frm == null)
+                return;
+            frm.Close();
+            bindingNavigator1.Enabled = false;
         }
     }
 }

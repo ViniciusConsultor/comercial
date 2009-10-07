@@ -2,11 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Comercial
 {
     class Validacoes
     {
+        #region Validação de CPF
+        
+        
         public int ValidaCPF(string cpf)
         {
             int soma = 0;
@@ -47,9 +51,11 @@ namespace Comercial
 
             return resultado;
         }
+#endregion
 
-
-
+        #region Validação de CNPJ
+        
+        
         public int ValidaCNPJ(string cnpj)
         {
             int result;
@@ -117,10 +123,32 @@ namespace Comercial
                 result = 0;
             else result = 1;
             
-            return result;
-        
-            
+            return result;    
+
         }
+        #endregion
+
+        #region Validação de email
+        public bool ValidaEmail(string email)
+        {
+
+            // Expressão regular que vai validar os e-mails
+            string emailRegex = @"^(([^<>()[\]\\.,;áàãâäéèêëíìîïóòõôöúùûüç:\s@\""]+"
+            + @"(\.[^<>()[\]\\.,;áàãâäéèêëíìîïóòõôöúùûüç:\s@\""]+)*)|(\"".+\""))@"
+            + @"((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|"
+            + @"(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$";
+
+            // Instância da classe Regex, passando como 
+            // argumento sua Expressão Regular 
+            Regex rx = new Regex(emailRegex);
+
+            // Método IsMatch da classe Regex que retorna
+            // verdadeiro caso o e-mail passado estiver
+            // dentro das regras da sua regex.
+            return rx.IsMatch(email);
+        }
+
+        #endregion
     }
 
 
