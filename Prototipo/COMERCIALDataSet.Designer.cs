@@ -1217,6 +1217,8 @@ namespace Comercial {
             
             private global::System.Data.DataColumn columnCOMPLEMENTO;
             
+            private global::System.Data.DataColumn columnFAX;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public CLIENTEDataTable() {
                 this.TableName = "CLIENTE";
@@ -1381,6 +1383,13 @@ namespace Comercial {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn FAXColumn {
+                get {
+                    return this.columnFAX;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1428,7 +1437,8 @@ namespace Comercial {
                         string APROVADOCRED, 
                         string ATIVO, 
                         string NUM, 
-                        string COMPLEMENTO) {
+                        string COMPLEMENTO, 
+                        string FAX) {
                 CLIENTERow rowCLIENTERow = ((CLIENTERow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         CNPJ,
@@ -1449,7 +1459,8 @@ namespace Comercial {
                         APROVADOCRED,
                         ATIVO,
                         NUM,
-                        COMPLEMENTO};
+                        COMPLEMENTO,
+                        FAX};
                 if ((parentREGIAORowByFK_CLIENTE_REGIAO != null)) {
                     columnValuesArray[11] = parentREGIAORowByFK_CLIENTE_REGIAO[0];
                 }
@@ -1500,6 +1511,7 @@ namespace Comercial {
                 this.columnATIVO = base.Columns["ATIVO"];
                 this.columnNUM = base.Columns["NUM"];
                 this.columnCOMPLEMENTO = base.Columns["COMPLEMENTO"];
+                this.columnFAX = base.Columns["FAX"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1542,6 +1554,8 @@ namespace Comercial {
                 base.Columns.Add(this.columnNUM);
                 this.columnCOMPLEMENTO = new global::System.Data.DataColumn("COMPLEMENTO", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCOMPLEMENTO);
+                this.columnFAX = new global::System.Data.DataColumn("FAX", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFAX);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnCNPJ}, true));
                 this.columnCNPJ.AllowDBNull = false;
@@ -1551,7 +1565,6 @@ namespace Comercial {
                 this.columnRAZAOSOCIAL.MaxLength = 100;
                 this.columnNOMEFANTASIA.AllowDBNull = false;
                 this.columnNOMEFANTASIA.MaxLength = 100;
-                this.columnTELEFONE.AllowDBNull = false;
                 this.columnTELEFONE.MaxLength = 10;
                 this.columnEMAIL.MaxLength = 100;
                 this.columnIE.AllowDBNull = false;
@@ -1572,6 +1585,7 @@ namespace Comercial {
                 this.columnNUM.AllowDBNull = false;
                 this.columnNUM.MaxLength = 4;
                 this.columnCOMPLEMENTO.MaxLength = 40;
+                this.columnFAX.MaxLength = 10;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6905,7 +6919,12 @@ namespace Comercial {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public string TELEFONE {
                 get {
-                    return ((string)(this[this.tableCLIENTE.TELEFONEColumn]));
+                    try {
+                        return ((string)(this[this.tableCLIENTE.TELEFONEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TELEFONE\' in table \'CLIENTE\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableCLIENTE.TELEFONEColumn] = value;
@@ -7103,6 +7122,21 @@ namespace Comercial {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string FAX {
+                get {
+                    try {
+                        return ((string)(this[this.tableCLIENTE.FAXColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'FAX\' in table \'CLIENTE\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableCLIENTE.FAXColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public REGIAORow REGIAORow {
                 get {
                     return ((REGIAORow)(this.GetParentRow(this.Table.ParentRelations["FK_CLIENTE_REGIAO"])));
@@ -7120,6 +7154,16 @@ namespace Comercial {
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_CLIENTE_USUARIO"]);
                 }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsTELEFONENull() {
+                return this.IsNull(this.tableCLIENTE.TELEFONEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetTELEFONENull() {
+                this[this.tableCLIENTE.TELEFONEColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7200,6 +7244,16 @@ namespace Comercial {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void SetCOMPLEMENTONull() {
                 this[this.tableCLIENTE.COMPLEMENTOColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsFAXNull() {
+                return this.IsNull(this.tableCLIENTE.FAXColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetFAXNull() {
+                this[this.tableCLIENTE.FAXColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10456,14 +10510,16 @@ SELECT CODMODULO, CODUSUARIO FROM ACESSO WHERE (CODMODULO = @CODMODULO) AND (COD
             tableMapping.ColumnMappings.Add("ATIVO", "ATIVO");
             tableMapping.ColumnMappings.Add("NUM", "NUM");
             tableMapping.ColumnMappings.Add("COMPLEMENTO", "COMPLEMENTO");
+            tableMapping.ColumnMappings.Add("FAX", "FAX");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[CLIENTE] WHERE (([CNPJ] = @Original_CNPJ) AND ([RAZAOSOCIAL] = @Original_RAZAOSOCIAL) AND ([NOMEFANTASIA] = @Original_NOMEFANTASIA) AND ([TELEFONE] = @Original_TELEFONE) AND ((@IsNull_EMAIL = 1 AND [EMAIL] IS NULL) OR ([EMAIL] = @Original_EMAIL)) AND ([IE] = @Original_IE) AND ([ENDERECO] = @Original_ENDERECO) AND ([BAIRRO] = @Original_BAIRRO) AND ([MUNICIPIO] = @Original_MUNICIPIO) AND ([UF] = @Original_UF) AND ([CEP] = @Original_CEP) AND ((@IsNull_CODREGIAO = 1 AND [CODREGIAO] IS NULL) OR ([CODREGIAO] = @Original_CODREGIAO)) AND ((@IsNull_CODUSUARIO = 1 AND [CODUSUARIO] IS NULL) OR ([CODUSUARIO] = @Original_CODUSUARIO)) AND ((@IsNull_AREAATUACAO = 1 AND [AREAATUACAO] IS NULL) OR ([AREAATUACAO] = @Original_AREAATUACAO)) AND ((@IsNull_LIMITECRED = 1 AND [LIMITECRED] IS NULL) OR ([LIMITECRED] = @Original_LIMITECRED)) AND ((@IsNull_APROVADOCRED = 1 AND [APROVADOCRED] IS NULL) OR ([APROVADOCRED] = @Original_APROVADOCRED)) AND ((@IsNull_ATIVO = 1 AND [ATIVO] IS NULL) OR ([ATIVO] = @Original_ATIVO)) AND ([NUM] = @Original_NUM) AND ((@IsNull_COMPLEMENTO = 1 AND [COMPLEMENTO] IS NULL) OR ([COMPLEMENTO] = @Original_COMPLEMENTO)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [CLIENTE] WHERE (([CNPJ] = @Original_CNPJ) AND ([RAZAOSOCIAL] = @Original_RAZAOSOCIAL) AND ([NOMEFANTASIA] = @Original_NOMEFANTASIA) AND ((@IsNull_TELEFONE = 1 AND [TELEFONE] IS NULL) OR ([TELEFONE] = @Original_TELEFONE)) AND ((@IsNull_EMAIL = 1 AND [EMAIL] IS NULL) OR ([EMAIL] = @Original_EMAIL)) AND ([IE] = @Original_IE) AND ([ENDERECO] = @Original_ENDERECO) AND ([BAIRRO] = @Original_BAIRRO) AND ([MUNICIPIO] = @Original_MUNICIPIO) AND ([UF] = @Original_UF) AND ([CEP] = @Original_CEP) AND ((@IsNull_CODREGIAO = 1 AND [CODREGIAO] IS NULL) OR ([CODREGIAO] = @Original_CODREGIAO)) AND ((@IsNull_CODUSUARIO = 1 AND [CODUSUARIO] IS NULL) OR ([CODUSUARIO] = @Original_CODUSUARIO)) AND ((@IsNull_AREAATUACAO = 1 AND [AREAATUACAO] IS NULL) OR ([AREAATUACAO] = @Original_AREAATUACAO)) AND ((@IsNull_LIMITECRED = 1 AND [LIMITECRED] IS NULL) OR ([LIMITECRED] = @Original_LIMITECRED)) AND ((@IsNull_APROVADOCRED = 1 AND [APROVADOCRED] IS NULL) OR ([APROVADOCRED] = @Original_APROVADOCRED)) AND ((@IsNull_ATIVO = 1 AND [ATIVO] IS NULL) OR ([ATIVO] = @Original_ATIVO)) AND ([NUM] = @Original_NUM) AND ((@IsNull_COMPLEMENTO = 1 AND [COMPLEMENTO] IS NULL) OR ([COMPLEMENTO] = @Original_COMPLEMENTO)) AND ((@IsNull_FAX = 1 AND [FAX] IS NULL) OR ([FAX] = @Original_FAX)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CNPJ", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CNPJ", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_RAZAOSOCIAL", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RAZAOSOCIAL", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NOMEFANTASIA", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NOMEFANTASIA", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_TELEFONE", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TELEFONE", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TELEFONE", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TELEFONE", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_EMAIL", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EMAIL", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_EMAIL", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EMAIL", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -10488,10 +10544,12 @@ SELECT CODMODULO, CODUSUARIO FROM ACESSO WHERE (CODMODULO = @CODMODULO) AND (COD
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NUM", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NUM", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_COMPLEMENTO", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "COMPLEMENTO", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_COMPLEMENTO", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "COMPLEMENTO", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_FAX", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FAX", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FAX", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FAX", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[CLIENTE] ([CNPJ], [RAZAOSOCIAL], [NOMEFANTASIA], [TELEFONE], [EMAIL], [IE], [ENDERECO], [BAIRRO], [MUNICIPIO], [UF], [CEP], [CODREGIAO], [CODUSUARIO], [AREAATUACAO], [LIMITECRED], [APROVADOCRED], [ATIVO], [NUM], [COMPLEMENTO]) VALUES (@CNPJ, @RAZAOSOCIAL, @NOMEFANTASIA, @TELEFONE, @EMAIL, @IE, @ENDERECO, @BAIRRO, @MUNICIPIO, @UF, @CEP, @CODREGIAO, @CODUSUARIO, @AREAATUACAO, @LIMITECRED, @APROVADOCRED, @ATIVO, @NUM, @COMPLEMENTO);
-SELECT CNPJ, RAZAOSOCIAL, NOMEFANTASIA, TELEFONE, EMAIL, IE, ENDERECO, BAIRRO, MUNICIPIO, UF, CEP, CODREGIAO, CODUSUARIO, AREAATUACAO, LIMITECRED, APROVADOCRED, ATIVO, NUM, COMPLEMENTO FROM CLIENTE WHERE (CNPJ = @CNPJ)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [CLIENTE] ([CNPJ], [RAZAOSOCIAL], [NOMEFANTASIA], [TELEFONE], [EMAIL], [IE], [ENDERECO], [BAIRRO], [MUNICIPIO], [UF], [CEP], [CODREGIAO], [CODUSUARIO], [AREAATUACAO], [LIMITECRED], [APROVADOCRED], [ATIVO], [NUM], [COMPLEMENTO], [FAX]) VALUES (@CNPJ, @RAZAOSOCIAL, @NOMEFANTASIA, @TELEFONE, @EMAIL, @IE, @ENDERECO, @BAIRRO, @MUNICIPIO, @UF, @CEP, @CODREGIAO, @CODUSUARIO, @AREAATUACAO, @LIMITECRED, @APROVADOCRED, @ATIVO, @NUM, @COMPLEMENTO, @FAX);
+SELECT CNPJ, RAZAOSOCIAL, NOMEFANTASIA, TELEFONE, EMAIL, IE, ENDERECO, BAIRRO, MUNICIPIO, UF, CEP, CODREGIAO, CODUSUARIO, AREAATUACAO, LIMITECRED, APROVADOCRED, ATIVO, NUM, COMPLEMENTO, FAX FROM CLIENTE WHERE (CNPJ = @CNPJ)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CNPJ", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CNPJ", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RAZAOSOCIAL", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RAZAOSOCIAL", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -10512,31 +10570,34 @@ SELECT CNPJ, RAZAOSOCIAL, NOMEFANTASIA, TELEFONE, EMAIL, IE, ENDERECO, BAIRRO, M
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ATIVO", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ATIVO", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NUM", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NUM", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@COMPLEMENTO", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "COMPLEMENTO", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FAX", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FAX", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[CLIENTE] SET [CNPJ] = @CNPJ, [RAZAOSOCIAL] = @RAZAOSOCIAL, [NOMEFAN" +
-                "TASIA] = @NOMEFANTASIA, [TELEFONE] = @TELEFONE, [EMAIL] = @EMAIL, [IE] = @IE, [E" +
-                "NDERECO] = @ENDERECO, [BAIRRO] = @BAIRRO, [MUNICIPIO] = @MUNICIPIO, [UF] = @UF, " +
-                "[CEP] = @CEP, [CODREGIAO] = @CODREGIAO, [CODUSUARIO] = @CODUSUARIO, [AREAATUACAO" +
-                "] = @AREAATUACAO, [LIMITECRED] = @LIMITECRED, [APROVADOCRED] = @APROVADOCRED, [A" +
-                "TIVO] = @ATIVO, [NUM] = @NUM, [COMPLEMENTO] = @COMPLEMENTO WHERE (([CNPJ] = @Ori" +
-                "ginal_CNPJ) AND ([RAZAOSOCIAL] = @Original_RAZAOSOCIAL) AND ([NOMEFANTASIA] = @O" +
-                "riginal_NOMEFANTASIA) AND ([TELEFONE] = @Original_TELEFONE) AND ((@IsNull_EMAIL " +
-                "= 1 AND [EMAIL] IS NULL) OR ([EMAIL] = @Original_EMAIL)) AND ([IE] = @Original_I" +
-                "E) AND ([ENDERECO] = @Original_ENDERECO) AND ([BAIRRO] = @Original_BAIRRO) AND (" +
-                "[MUNICIPIO] = @Original_MUNICIPIO) AND ([UF] = @Original_UF) AND ([CEP] = @Origi" +
-                "nal_CEP) AND ((@IsNull_CODREGIAO = 1 AND [CODREGIAO] IS NULL) OR ([CODREGIAO] = " +
-                "@Original_CODREGIAO)) AND ((@IsNull_CODUSUARIO = 1 AND [CODUSUARIO] IS NULL) OR " +
-                "([CODUSUARIO] = @Original_CODUSUARIO)) AND ((@IsNull_AREAATUACAO = 1 AND [AREAAT" +
-                "UACAO] IS NULL) OR ([AREAATUACAO] = @Original_AREAATUACAO)) AND ((@IsNull_LIMITE" +
-                "CRED = 1 AND [LIMITECRED] IS NULL) OR ([LIMITECRED] = @Original_LIMITECRED)) AND" +
-                " ((@IsNull_APROVADOCRED = 1 AND [APROVADOCRED] IS NULL) OR ([APROVADOCRED] = @Or" +
-                "iginal_APROVADOCRED)) AND ((@IsNull_ATIVO = 1 AND [ATIVO] IS NULL) OR ([ATIVO] =" +
-                " @Original_ATIVO)) AND ([NUM] = @Original_NUM) AND ((@IsNull_COMPLEMENTO = 1 AND" +
-                " [COMPLEMENTO] IS NULL) OR ([COMPLEMENTO] = @Original_COMPLEMENTO)));\r\nSELECT CN" +
-                "PJ, RAZAOSOCIAL, NOMEFANTASIA, TELEFONE, EMAIL, IE, ENDERECO, BAIRRO, MUNICIPIO," +
-                " UF, CEP, CODREGIAO, CODUSUARIO, AREAATUACAO, LIMITECRED, APROVADOCRED, ATIVO, N" +
-                "UM, COMPLEMENTO FROM CLIENTE WHERE (CNPJ = @CNPJ)";
+            this._adapter.UpdateCommand.CommandText = "UPDATE [CLIENTE] SET [CNPJ] = @CNPJ, [RAZAOSOCIAL] = @RAZAOSOCIAL, [NOMEFANTASIA]" +
+                " = @NOMEFANTASIA, [TELEFONE] = @TELEFONE, [EMAIL] = @EMAIL, [IE] = @IE, [ENDEREC" +
+                "O] = @ENDERECO, [BAIRRO] = @BAIRRO, [MUNICIPIO] = @MUNICIPIO, [UF] = @UF, [CEP] " +
+                "= @CEP, [CODREGIAO] = @CODREGIAO, [CODUSUARIO] = @CODUSUARIO, [AREAATUACAO] = @A" +
+                "REAATUACAO, [LIMITECRED] = @LIMITECRED, [APROVADOCRED] = @APROVADOCRED, [ATIVO] " +
+                "= @ATIVO, [NUM] = @NUM, [COMPLEMENTO] = @COMPLEMENTO, [FAX] = @FAX WHERE (([CNPJ" +
+                "] = @Original_CNPJ) AND ([RAZAOSOCIAL] = @Original_RAZAOSOCIAL) AND ([NOMEFANTAS" +
+                "IA] = @Original_NOMEFANTASIA) AND ((@IsNull_TELEFONE = 1 AND [TELEFONE] IS NULL)" +
+                " OR ([TELEFONE] = @Original_TELEFONE)) AND ((@IsNull_EMAIL = 1 AND [EMAIL] IS NU" +
+                "LL) OR ([EMAIL] = @Original_EMAIL)) AND ([IE] = @Original_IE) AND ([ENDERECO] = " +
+                "@Original_ENDERECO) AND ([BAIRRO] = @Original_BAIRRO) AND ([MUNICIPIO] = @Origin" +
+                "al_MUNICIPIO) AND ([UF] = @Original_UF) AND ([CEP] = @Original_CEP) AND ((@IsNul" +
+                "l_CODREGIAO = 1 AND [CODREGIAO] IS NULL) OR ([CODREGIAO] = @Original_CODREGIAO))" +
+                " AND ((@IsNull_CODUSUARIO = 1 AND [CODUSUARIO] IS NULL) OR ([CODUSUARIO] = @Orig" +
+                "inal_CODUSUARIO)) AND ((@IsNull_AREAATUACAO = 1 AND [AREAATUACAO] IS NULL) OR ([" +
+                "AREAATUACAO] = @Original_AREAATUACAO)) AND ((@IsNull_LIMITECRED = 1 AND [LIMITEC" +
+                "RED] IS NULL) OR ([LIMITECRED] = @Original_LIMITECRED)) AND ((@IsNull_APROVADOCR" +
+                "ED = 1 AND [APROVADOCRED] IS NULL) OR ([APROVADOCRED] = @Original_APROVADOCRED))" +
+                " AND ((@IsNull_ATIVO = 1 AND [ATIVO] IS NULL) OR ([ATIVO] = @Original_ATIVO)) AN" +
+                "D ([NUM] = @Original_NUM) AND ((@IsNull_COMPLEMENTO = 1 AND [COMPLEMENTO] IS NUL" +
+                "L) OR ([COMPLEMENTO] = @Original_COMPLEMENTO)) AND ((@IsNull_FAX = 1 AND [FAX] I" +
+                "S NULL) OR ([FAX] = @Original_FAX)));\r\nSELECT CNPJ, RAZAOSOCIAL, NOMEFANTASIA, T" +
+                "ELEFONE, EMAIL, IE, ENDERECO, BAIRRO, MUNICIPIO, UF, CEP, CODREGIAO, CODUSUARIO," +
+                " AREAATUACAO, LIMITECRED, APROVADOCRED, ATIVO, NUM, COMPLEMENTO, FAX FROM CLIENT" +
+                "E WHERE (CNPJ = @CNPJ)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CNPJ", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CNPJ", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RAZAOSOCIAL", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RAZAOSOCIAL", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -10557,9 +10618,11 @@ SELECT CNPJ, RAZAOSOCIAL, NOMEFANTASIA, TELEFONE, EMAIL, IE, ENDERECO, BAIRRO, M
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ATIVO", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ATIVO", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NUM", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NUM", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@COMPLEMENTO", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "COMPLEMENTO", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FAX", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FAX", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CNPJ", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CNPJ", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_RAZAOSOCIAL", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RAZAOSOCIAL", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NOMEFANTASIA", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NOMEFANTASIA", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_TELEFONE", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TELEFONE", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_TELEFONE", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "TELEFONE", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_EMAIL", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EMAIL", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_EMAIL", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "EMAIL", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -10584,6 +10647,8 @@ SELECT CNPJ, RAZAOSOCIAL, NOMEFANTASIA, TELEFONE, EMAIL, IE, ENDERECO, BAIRRO, M
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NUM", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NUM", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_COMPLEMENTO", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "COMPLEMENTO", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_COMPLEMENTO", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "COMPLEMENTO", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_FAX", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FAX", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FAX", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FAX", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10597,18 +10662,17 @@ SELECT CNPJ, RAZAOSOCIAL, NOMEFANTASIA, TELEFONE, EMAIL, IE, ENDERECO, BAIRRO, M
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT CNPJ, RAZAOSOCIAL, NOMEFANTASIA, TELEFONE, EMAIL, IE, ENDERECO, BAIRRO, MU" +
-                "NICIPIO, UF, CEP, CODREGIAO, CODUSUARIO, AREAATUACAO, LIMITECRED, APROVADOCRED, " +
-                "ATIVO, NUM, COMPLEMENTO FROM dbo.CLIENTE";
+            this._commandCollection[0].CommandText = "SELECT      CNPJ, RAZAOSOCIAL, NOMEFANTASIA, TELEFONE, EMAIL, IE, ENDERECO, BAIRR" +
+                "O, MUNICIPIO, UF, CEP, CODREGIAO, CODUSUARIO, AREAATUACAO, \r\n                   " +
+                "     LIMITECRED, APROVADOCRED, ATIVO, NUM, COMPLEMENTO, FAX\r\nFROM          CLIEN" +
+                "TE";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT CNPJ, RAZAOSOCIAL, NOMEFANTASIA, TELEFONE, EMAIL, IE, ENDERECO, BAIRRO, MU" +
-                "NICIPIO, UF, CEP, CODREGIAO, CODUSUARIO, AREAATUACAO, LIMITECRED, APROVADOCRED, " +
-                "ATIVO FROM dbo.CLIENTE";
+            this._commandCollection[1].CommandText = @"SELECT APROVADOCRED, AREAATUACAO, ATIVO, BAIRRO, CEP, CNPJ, CODREGIAO, CODUSUARIO, COMPLEMENTO, EMAIL, ENDERECO, FAX, IE, LIMITECRED, MUNICIPIO, NOMEFANTASIA, NUM, RAZAOSOCIAL, TELEFONE, UF FROM CLIENTE WHERE (CNPJ = @cnpj) OR (NOMEFANTASIA LIKE + '%' + @nomefantasia + '%')";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@cnpj", global::System.Data.SqlDbType.VarChar, 14, global::System.Data.ParameterDirection.Input, 0, 0, "CNPJ", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nomeFantasia", global::System.Data.SqlDbType.VarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "NOMEFANTASIA", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nomefantasia", global::System.Data.SqlDbType.VarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "NOMEFANTASIA", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10636,7 +10700,7 @@ SELECT CNPJ, RAZAOSOCIAL, NOMEFANTASIA, TELEFONE, EMAIL, IE, ENDERECO, BAIRRO, M
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int Consulta(COMERCIALDataSet.CLIENTEDataTable dataTable, string cnpj, string nomeFantasia) {
+        public virtual int Consulta(COMERCIALDataSet.CLIENTEDataTable dataTable, string cnpj, string nomefantasia) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
             if ((cnpj == null)) {
                 throw new global::System.ArgumentNullException("cnpj");
@@ -10644,11 +10708,11 @@ SELECT CNPJ, RAZAOSOCIAL, NOMEFANTASIA, TELEFONE, EMAIL, IE, ENDERECO, BAIRRO, M
             else {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((string)(cnpj));
             }
-            if ((nomeFantasia == null)) {
-                throw new global::System.ArgumentNullException("nomeFantasia");
+            if ((nomefantasia == null)) {
+                throw new global::System.ArgumentNullException("nomefantasia");
             }
             else {
-                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(nomeFantasia));
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(nomefantasia));
             }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -10704,7 +10768,8 @@ SELECT CNPJ, RAZAOSOCIAL, NOMEFANTASIA, TELEFONE, EMAIL, IE, ENDERECO, BAIRRO, M
                     string Original_APROVADOCRED, 
                     string Original_ATIVO, 
                     string Original_NUM, 
-                    string Original_COMPLEMENTO) {
+                    string Original_COMPLEMENTO, 
+                    string Original_FAX) {
             if ((Original_CNPJ == null)) {
                 throw new global::System.ArgumentNullException("Original_CNPJ");
             }
@@ -10724,116 +10789,126 @@ SELECT CNPJ, RAZAOSOCIAL, NOMEFANTASIA, TELEFONE, EMAIL, IE, ENDERECO, BAIRRO, M
                 this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_NOMEFANTASIA));
             }
             if ((Original_TELEFONE == null)) {
-                throw new global::System.ArgumentNullException("Original_TELEFONE");
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Original_TELEFONE));
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_TELEFONE));
             }
             if ((Original_EMAIL == null)) {
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[5].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((string)(Original_EMAIL));
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Original_EMAIL));
             }
             if ((Original_IE == null)) {
                 throw new global::System.ArgumentNullException("Original_IE");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Original_IE));
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((string)(Original_IE));
             }
             if ((Original_ENDERECO == null)) {
                 throw new global::System.ArgumentNullException("Original_ENDERECO");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((string)(Original_ENDERECO));
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((string)(Original_ENDERECO));
             }
             if ((Original_BAIRRO == null)) {
                 throw new global::System.ArgumentNullException("Original_BAIRRO");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[8].Value = ((string)(Original_BAIRRO));
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((string)(Original_BAIRRO));
             }
             if ((Original_MUNICIPIO == null)) {
                 throw new global::System.ArgumentNullException("Original_MUNICIPIO");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[9].Value = ((string)(Original_MUNICIPIO));
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((string)(Original_MUNICIPIO));
             }
             if ((Original_UF == null)) {
                 throw new global::System.ArgumentNullException("Original_UF");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[10].Value = ((string)(Original_UF));
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((string)(Original_UF));
             }
             if ((Original_CEP == null)) {
                 throw new global::System.ArgumentNullException("Original_CEP");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[11].Value = ((string)(Original_CEP));
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((string)(Original_CEP));
             }
             if ((Original_CODREGIAO.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[12].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[13].Value = ((int)(Original_CODREGIAO.Value));
+                this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[14].Value = ((int)(Original_CODREGIAO.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[12].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[13].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
             if ((Original_CODUSUARIO.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[14].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[15].Value = ((int)(Original_CODUSUARIO.Value));
+                this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[16].Value = ((int)(Original_CODUSUARIO.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[14].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[15].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[15].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[16].Value = global::System.DBNull.Value;
             }
             if ((Original_AREAATUACAO == null)) {
-                this.Adapter.DeleteCommand.Parameters[16].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[17].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[17].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[18].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[16].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[17].Value = ((string)(Original_AREAATUACAO));
+                this.Adapter.DeleteCommand.Parameters[17].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[18].Value = ((string)(Original_AREAATUACAO));
             }
             if ((Original_LIMITECRED.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[18].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[19].Value = ((double)(Original_LIMITECRED.Value));
+                this.Adapter.DeleteCommand.Parameters[19].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[20].Value = ((double)(Original_LIMITECRED.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[18].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[19].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[19].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[20].Value = global::System.DBNull.Value;
             }
             if ((Original_APROVADOCRED == null)) {
-                this.Adapter.DeleteCommand.Parameters[20].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[21].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[21].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[22].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[20].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[21].Value = ((string)(Original_APROVADOCRED));
+                this.Adapter.DeleteCommand.Parameters[21].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[22].Value = ((string)(Original_APROVADOCRED));
             }
             if ((Original_ATIVO == null)) {
-                this.Adapter.DeleteCommand.Parameters[22].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[23].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[23].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[24].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[22].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[23].Value = ((string)(Original_ATIVO));
+                this.Adapter.DeleteCommand.Parameters[23].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[24].Value = ((string)(Original_ATIVO));
             }
             if ((Original_NUM == null)) {
                 throw new global::System.ArgumentNullException("Original_NUM");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[24].Value = ((string)(Original_NUM));
+                this.Adapter.DeleteCommand.Parameters[25].Value = ((string)(Original_NUM));
             }
             if ((Original_COMPLEMENTO == null)) {
-                this.Adapter.DeleteCommand.Parameters[25].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[26].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[26].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[27].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[25].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[26].Value = ((string)(Original_COMPLEMENTO));
+                this.Adapter.DeleteCommand.Parameters[26].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[27].Value = ((string)(Original_COMPLEMENTO));
+            }
+            if ((Original_FAX == null)) {
+                this.Adapter.DeleteCommand.Parameters[28].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[29].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[28].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[29].Value = ((string)(Original_FAX));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -10873,7 +10948,8 @@ SELECT CNPJ, RAZAOSOCIAL, NOMEFANTASIA, TELEFONE, EMAIL, IE, ENDERECO, BAIRRO, M
                     string APROVADOCRED, 
                     string ATIVO, 
                     string NUM, 
-                    string COMPLEMENTO) {
+                    string COMPLEMENTO, 
+                    string FAX) {
             if ((CNPJ == null)) {
                 throw new global::System.ArgumentNullException("CNPJ");
             }
@@ -10893,7 +10969,7 @@ SELECT CNPJ, RAZAOSOCIAL, NOMEFANTASIA, TELEFONE, EMAIL, IE, ENDERECO, BAIRRO, M
                 this.Adapter.InsertCommand.Parameters[2].Value = ((string)(NOMEFANTASIA));
             }
             if ((TELEFONE == null)) {
-                throw new global::System.ArgumentNullException("TELEFONE");
+                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.InsertCommand.Parameters[3].Value = ((string)(TELEFONE));
@@ -10988,6 +11064,12 @@ SELECT CNPJ, RAZAOSOCIAL, NOMEFANTASIA, TELEFONE, EMAIL, IE, ENDERECO, BAIRRO, M
             else {
                 this.Adapter.InsertCommand.Parameters[18].Value = ((string)(COMPLEMENTO));
             }
+            if ((FAX == null)) {
+                this.Adapter.InsertCommand.Parameters[19].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[19].Value = ((string)(FAX));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -11027,6 +11109,7 @@ SELECT CNPJ, RAZAOSOCIAL, NOMEFANTASIA, TELEFONE, EMAIL, IE, ENDERECO, BAIRRO, M
                     string ATIVO, 
                     string NUM, 
                     string COMPLEMENTO, 
+                    string FAX, 
                     string Original_CNPJ, 
                     string Original_RAZAOSOCIAL, 
                     string Original_NOMEFANTASIA, 
@@ -11045,7 +11128,8 @@ SELECT CNPJ, RAZAOSOCIAL, NOMEFANTASIA, TELEFONE, EMAIL, IE, ENDERECO, BAIRRO, M
                     string Original_APROVADOCRED, 
                     string Original_ATIVO, 
                     string Original_NUM, 
-                    string Original_COMPLEMENTO) {
+                    string Original_COMPLEMENTO, 
+                    string Original_FAX) {
             if ((CNPJ == null)) {
                 throw new global::System.ArgumentNullException("CNPJ");
             }
@@ -11065,7 +11149,7 @@ SELECT CNPJ, RAZAOSOCIAL, NOMEFANTASIA, TELEFONE, EMAIL, IE, ENDERECO, BAIRRO, M
                 this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(NOMEFANTASIA));
             }
             if ((TELEFONE == null)) {
-                throw new global::System.ArgumentNullException("TELEFONE");
+                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(TELEFONE));
@@ -11160,135 +11244,151 @@ SELECT CNPJ, RAZAOSOCIAL, NOMEFANTASIA, TELEFONE, EMAIL, IE, ENDERECO, BAIRRO, M
             else {
                 this.Adapter.UpdateCommand.Parameters[18].Value = ((string)(COMPLEMENTO));
             }
+            if ((FAX == null)) {
+                this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((string)(FAX));
+            }
             if ((Original_CNPJ == null)) {
                 throw new global::System.ArgumentNullException("Original_CNPJ");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((string)(Original_CNPJ));
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((string)(Original_CNPJ));
             }
             if ((Original_RAZAOSOCIAL == null)) {
                 throw new global::System.ArgumentNullException("Original_RAZAOSOCIAL");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((string)(Original_RAZAOSOCIAL));
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((string)(Original_RAZAOSOCIAL));
             }
             if ((Original_NOMEFANTASIA == null)) {
                 throw new global::System.ArgumentNullException("Original_NOMEFANTASIA");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((string)(Original_NOMEFANTASIA));
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((string)(Original_NOMEFANTASIA));
             }
             if ((Original_TELEFONE == null)) {
-                throw new global::System.ArgumentNullException("Original_TELEFONE");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((string)(Original_TELEFONE));
-            }
-            if ((Original_EMAIL == null)) {
                 this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[24].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[24].Value = ((string)(Original_EMAIL));
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((string)(Original_TELEFONE));
+            }
+            if ((Original_EMAIL == null)) {
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[26].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((string)(Original_EMAIL));
             }
             if ((Original_IE == null)) {
                 throw new global::System.ArgumentNullException("Original_IE");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[25].Value = ((string)(Original_IE));
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((string)(Original_IE));
             }
             if ((Original_ENDERECO == null)) {
                 throw new global::System.ArgumentNullException("Original_ENDERECO");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[26].Value = ((string)(Original_ENDERECO));
+                this.Adapter.UpdateCommand.Parameters[28].Value = ((string)(Original_ENDERECO));
             }
             if ((Original_BAIRRO == null)) {
                 throw new global::System.ArgumentNullException("Original_BAIRRO");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[27].Value = ((string)(Original_BAIRRO));
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((string)(Original_BAIRRO));
             }
             if ((Original_MUNICIPIO == null)) {
                 throw new global::System.ArgumentNullException("Original_MUNICIPIO");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[28].Value = ((string)(Original_MUNICIPIO));
+                this.Adapter.UpdateCommand.Parameters[30].Value = ((string)(Original_MUNICIPIO));
             }
             if ((Original_UF == null)) {
                 throw new global::System.ArgumentNullException("Original_UF");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[29].Value = ((string)(Original_UF));
+                this.Adapter.UpdateCommand.Parameters[31].Value = ((string)(Original_UF));
             }
             if ((Original_CEP == null)) {
                 throw new global::System.ArgumentNullException("Original_CEP");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[30].Value = ((string)(Original_CEP));
+                this.Adapter.UpdateCommand.Parameters[32].Value = ((string)(Original_CEP));
             }
             if ((Original_CODREGIAO.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[31].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[32].Value = ((int)(Original_CODREGIAO.Value));
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[31].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[32].Value = global::System.DBNull.Value;
-            }
-            if ((Original_CODUSUARIO.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[33].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[34].Value = ((int)(Original_CODUSUARIO.Value));
+                this.Adapter.UpdateCommand.Parameters[34].Value = ((int)(Original_CODREGIAO.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[33].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[34].Value = global::System.DBNull.Value;
             }
-            if ((Original_AREAATUACAO == null)) {
+            if ((Original_CODUSUARIO.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[35].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[36].Value = ((int)(Original_CODUSUARIO.Value));
+            }
+            else {
                 this.Adapter.UpdateCommand.Parameters[35].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[36].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.UpdateCommand.Parameters[35].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[36].Value = ((string)(Original_AREAATUACAO));
-            }
-            if ((Original_LIMITECRED.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[37].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[38].Value = ((double)(Original_LIMITECRED.Value));
-            }
-            else {
+            if ((Original_AREAATUACAO == null)) {
                 this.Adapter.UpdateCommand.Parameters[37].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[38].Value = global::System.DBNull.Value;
             }
-            if ((Original_APROVADOCRED == null)) {
+            else {
+                this.Adapter.UpdateCommand.Parameters[37].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[38].Value = ((string)(Original_AREAATUACAO));
+            }
+            if ((Original_LIMITECRED.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[39].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[40].Value = ((double)(Original_LIMITECRED.Value));
+            }
+            else {
                 this.Adapter.UpdateCommand.Parameters[39].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[40].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.UpdateCommand.Parameters[39].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[40].Value = ((string)(Original_APROVADOCRED));
-            }
-            if ((Original_ATIVO == null)) {
+            if ((Original_APROVADOCRED == null)) {
                 this.Adapter.UpdateCommand.Parameters[41].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[42].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[41].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[42].Value = ((string)(Original_ATIVO));
+                this.Adapter.UpdateCommand.Parameters[42].Value = ((string)(Original_APROVADOCRED));
+            }
+            if ((Original_ATIVO == null)) {
+                this.Adapter.UpdateCommand.Parameters[43].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[44].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[43].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[44].Value = ((string)(Original_ATIVO));
             }
             if ((Original_NUM == null)) {
                 throw new global::System.ArgumentNullException("Original_NUM");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[43].Value = ((string)(Original_NUM));
+                this.Adapter.UpdateCommand.Parameters[45].Value = ((string)(Original_NUM));
             }
             if ((Original_COMPLEMENTO == null)) {
-                this.Adapter.UpdateCommand.Parameters[44].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[45].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[46].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[47].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[44].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[45].Value = ((string)(Original_COMPLEMENTO));
+                this.Adapter.UpdateCommand.Parameters[46].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[47].Value = ((string)(Original_COMPLEMENTO));
+            }
+            if ((Original_FAX == null)) {
+                this.Adapter.UpdateCommand.Parameters[48].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[49].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[48].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[49].Value = ((string)(Original_FAX));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -11328,6 +11428,7 @@ SELECT CNPJ, RAZAOSOCIAL, NOMEFANTASIA, TELEFONE, EMAIL, IE, ENDERECO, BAIRRO, M
                     string ATIVO, 
                     string NUM, 
                     string COMPLEMENTO, 
+                    string FAX, 
                     string Original_CNPJ, 
                     string Original_RAZAOSOCIAL, 
                     string Original_NOMEFANTASIA, 
@@ -11346,8 +11447,9 @@ SELECT CNPJ, RAZAOSOCIAL, NOMEFANTASIA, TELEFONE, EMAIL, IE, ENDERECO, BAIRRO, M
                     string Original_APROVADOCRED, 
                     string Original_ATIVO, 
                     string Original_NUM, 
-                    string Original_COMPLEMENTO) {
-            return this.Update(Original_CNPJ, RAZAOSOCIAL, NOMEFANTASIA, TELEFONE, EMAIL, IE, ENDERECO, BAIRRO, MUNICIPIO, UF, CEP, CODREGIAO, CODUSUARIO, AREAATUACAO, LIMITECRED, APROVADOCRED, ATIVO, NUM, COMPLEMENTO, Original_CNPJ, Original_RAZAOSOCIAL, Original_NOMEFANTASIA, Original_TELEFONE, Original_EMAIL, Original_IE, Original_ENDERECO, Original_BAIRRO, Original_MUNICIPIO, Original_UF, Original_CEP, Original_CODREGIAO, Original_CODUSUARIO, Original_AREAATUACAO, Original_LIMITECRED, Original_APROVADOCRED, Original_ATIVO, Original_NUM, Original_COMPLEMENTO);
+                    string Original_COMPLEMENTO, 
+                    string Original_FAX) {
+            return this.Update(Original_CNPJ, RAZAOSOCIAL, NOMEFANTASIA, TELEFONE, EMAIL, IE, ENDERECO, BAIRRO, MUNICIPIO, UF, CEP, CODREGIAO, CODUSUARIO, AREAATUACAO, LIMITECRED, APROVADOCRED, ATIVO, NUM, COMPLEMENTO, FAX, Original_CNPJ, Original_RAZAOSOCIAL, Original_NOMEFANTASIA, Original_TELEFONE, Original_EMAIL, Original_IE, Original_ENDERECO, Original_BAIRRO, Original_MUNICIPIO, Original_UF, Original_CEP, Original_CODREGIAO, Original_CODUSUARIO, Original_AREAATUACAO, Original_LIMITECRED, Original_APROVADOCRED, Original_ATIVO, Original_NUM, Original_COMPLEMENTO, Original_FAX);
         }
     }
     
