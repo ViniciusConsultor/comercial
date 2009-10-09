@@ -6,12 +6,18 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Configuration;
+using System.Data.SqlClient;
 
 namespace Comercial
 {
     public partial class FrmMinGer : Form
     {
-          private FrmPrinc _princ = null;
+        private FrmPrinc _princ = null;
+
+        private string _algoritmo;
+
+
 
         public FrmMinGer(FrmPrinc parent)
         {
@@ -32,12 +38,12 @@ namespace Comercial
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-           
+
         }
 
         private void btnExecutar_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void dtGrdVwCampos_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -47,38 +53,38 @@ namespace Comercial
 
         private void lstBxTabelas_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
+
         }
 
         private void btnExecutar_Click_1(object sender, EventArgs e)
         {
-            
+
         }
 
         private void rdBtnCliente_CheckedChanged(object sender, EventArgs e)
         {
-          
+
         }
 
         private void rdBtnDia_CheckedChanged(object sender, EventArgs e)
         {
-           
+
         }
 
         private void chckBxDia_CheckedChanged(object sender, EventArgs e)
         {
-           
+
         }
 
         private void FrmMinGer_Load(object sender, EventArgs e)
         {
 
-            
+
         }
 
         private void lstBxProduto_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
+
         }
 
         private void FrmMinGer_Leave(object sender, EventArgs e)
@@ -107,7 +113,7 @@ namespace Comercial
         {
             if (cmbBxTipoDataMining.SelectedIndex == 0)
             {
-               rchTxtBxTexto.Text ="O algoritmo Árvores de Decisã é um algoritmo de decisão adequado para modelos de previsão. O algoritmo oferece suporte à previsão de atributos discretos e contínuos.";
+                rchTxtBxTexto.Text = "O algoritmo Árvores de Decisão é um algoritmo de decisão adequado para modelos de previsão. O algoritmo oferece suporte à previsão de atributos discretos e contínuos.";
             }
 
             if (cmbBxTipoDataMining.SelectedIndex == 1)
@@ -117,13 +123,13 @@ namespace Comercial
 
             if (cmbBxTipoDataMining.SelectedIndex == 2)
             {
-                rchTxtBxTexto.Text = "O algoritmo Regressão Linear é um algoritmo de regressão adequado para modelagem de regressão. Ele é uma configuração particular do algoritmo Árvores de Decisão, obtido com a desabilitação de divisões (toda a fórmula de regressão é embutida em um único nó raiz). O algoritmo oferece suporte à previsão de atributos contínuos.";
+                rchTxtBxTexto.Text = "O algoritmo MTS usa uma combinação de análise ARIMA e de regressão linear com base em árvores de decisão para analisar os dados relacionados a tempo, por exemplo, dados de vendas mensais ou lucros anuais. Os padrões descobertos podem ser usados para prever valores para futuros períodos. O algoritmo pode ser personalizado para usar ou método de árvore de decisão ou ARIMA, ou mesmo ambos.";
             }
         }
 
         private void checkBox32_CheckedChanged(object sender, EventArgs e)
         {
-            
+
             //Pedido...
 
             if (checkBox32.Checked)
@@ -148,10 +154,10 @@ namespace Comercial
                 dataGridView1.Rows.Clear();
 
             }
-           
 
-        
-            
+
+
+
         }
 
         private void checkBox31_CheckedChanged(object sender, EventArgs e)
@@ -316,10 +322,10 @@ namespace Comercial
             }
             else
             {
-              dataGridView1.Rows.Clear();
+                dataGridView1.Rows.Clear();
             }
 
-            
+
         }
 
         private void checkBox26_CheckedChanged(object sender, EventArgs e)
@@ -369,6 +375,45 @@ namespace Comercial
             {
                 dataGridView1.Rows.Clear();
             }
+        }
+
+        private void tabPage2_Enter(object sender, EventArgs e)
+        {
+            string c = ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString;
+            SqlConnection conn = new SqlConnection(c);
+            conn.Open();
+
+            SqlCommand cmd = new SqlCommand("select * from sys.all_objects where type in ('U','V') "+
+                                                "and schema_id = '1'and name not like 'sysdiagrams'", conn);
+            SqlDataReader reader = cmd.ExecuteReader();
+            reader.Read();
+
+            if (reader.HasRows)
+            {
+                foreach (var r in reader)
+                {
+                    treeView1.Nodes.Add(reader["name"].ToString());
+                }
+            }
+
+        }
+
+        private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+
+
+        }
+
+        private void treeView1_BeforeCheck(object sender, TreeViewCancelEventArgs e)
+        {
+            string node = treeView1.SelectedNode.Name;
+
+            foreach (TreeNode item in treeView1.Nodes)
+            {
+                item.Checked = false;
+            }
+
+        //    node.Checked = true;
         }
 
     }
