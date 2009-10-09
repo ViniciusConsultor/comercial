@@ -208,7 +208,7 @@ namespace Comercial
 
         private void FrmCadUsu_Shown(object sender, EventArgs e)
         {
-            princ.btnSalvar.Enabled = true;
+            //princ.btnSalvar.Enabled = true;
         }
 
         private void uSUARIOBindingNavigatorSaveItem_Click(object sender, EventArgs e)

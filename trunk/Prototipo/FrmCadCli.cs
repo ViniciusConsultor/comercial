@@ -77,12 +77,36 @@ namespace Comercial
             }
             // Valida email
 
-            Boolean emailOk = valida.ValidaEmail(txtEmailCli.Text);
-            if (emailOk == false)
+            if(!string.IsNullOrEmpty(txtEmailCli.Text))
             {
-               MessageBox.Show("Email Inválido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-               return 1;
+                Boolean emailOk = valida.ValidaEmail(txtEmailCli.Text);
+                if (emailOk == false)
+                {
+                   MessageBox.Show("Email Inválido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                   return 1;
+                }
             }
+            #region Validação de campos vazios ou nulos
+            
+            
+            if (string.IsNullOrEmpty(txtRazaoSocialCli.Text))
+            {
+                MessageBox.Show("Campo(s) obrigatório(s) não preenchido(s).", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 1;
+            }
+            if (string.IsNullOrEmpty(txtNomeFantCli.Text))
+            {
+                MessageBox.Show("Campo(s) obrigatório(s) não preenchido(s).", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 1;
+            }
+            if (string.IsNullOrEmpty(txtIeCli.Text))
+            {
+                MessageBox.Show("Campo(s) obrigatório(s) não preenchido(s).", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 1;
+            }
+
+            #endregion
+
             if (!string.IsNullOrEmpty(txtUsuarioCli.Text) && !string.IsNullOrEmpty(txtSenhaCli.Text))
             {
                 COMERCIALDataSetTableAdapters.USUARIOTableAdapter usu = new Comercial.COMERCIALDataSetTableAdapters.USUARIOTableAdapter();
@@ -180,6 +204,46 @@ namespace Comercial
             {
                 System.Windows.Forms.MessageBox.Show(ex.Message);
             }
+        }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            cnpjToolStripTextBox.Clear();
+            nomeFantasiaToolStripTextBox.Clear();
+
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+           try
+            {
+                this.cLIENTETableAdapter.Fill(this.cOMERCIALDataSet.CLIENTE);
+
+                cnsltTlStrpConsultaCli.Visible = false;
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+
+            }
+        }
+
+        private void consultaToolStripButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.cLIENTETableAdapter.Consulta(this.cOMERCIALDataSet.CLIENTE, cnpjToolStripTextBox.Text, nomeFantasiaToolStripTextBox.Text);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void txtRazaoSocialCli_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

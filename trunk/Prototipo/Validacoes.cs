@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace Comercial
 {
@@ -149,9 +150,26 @@ namespace Comercial
         }
 
         #endregion
+
+        #region Tratar Exceções
+        public void tratarExceções(Exception ex)
+        {
+            if (ex.GetType().FullName == "System.Data.ConstraintException")
+                MessageBox.Show("Registro já cadastrado (Violação de chave primária)", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else if (ex.GetType().FullName == "System.Data.NoNullAllowedException" || ex.GetType().FullName == "System.InvalidOperationException")
+                MessageBox.Show("Campo(s) Obrigatório(s) não preenchido(s).", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else if (ex.GetType().FullName =="System.Data.SqlClient.SqlException")
+            {
+                MessageBox.Show("Erro ao conectar ao banco\nVerifique a conexão", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else MessageBox.Show("Erro desconhecido.\nContate o administrador do sistema", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);  
+        }
+
+        #endregion
     }
 
 
 }
 
 
+ 

@@ -1583,7 +1583,7 @@ namespace Comercial {
                 this.columnAPROVADOCRED.MaxLength = 1;
                 this.columnATIVO.MaxLength = 1;
                 this.columnNUM.AllowDBNull = false;
-                this.columnNUM.MaxLength = 4;
+                this.columnNUM.MaxLength = 40;
                 this.columnCOMPLEMENTO.MaxLength = 40;
                 this.columnFAX.MaxLength = 10;
             }
@@ -6448,7 +6448,7 @@ namespace Comercial {
                 this.columnATIVO.MaxLength = 1;
                 this.columnSEXO.MaxLength = 1;
                 this.columnNUM.AllowDBNull = false;
-                this.columnNUM.MaxLength = 4;
+                this.columnNUM.MaxLength = 40;
                 this.columnCOMPLEMENTO.MaxLength = 40;
                 this.columnCELULAR.MaxLength = 10;
             }
