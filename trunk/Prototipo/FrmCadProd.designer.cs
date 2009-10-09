@@ -152,12 +152,13 @@
             this.groupBox2.Controls.Add(this.maskedTextBox1);
             this.groupBox2.Controls.Add(this.mskedTxtBxPrecoUnitario);
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Location = new System.Drawing.Point(7, 163);
+            this.groupBox2.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.groupBox2.Location = new System.Drawing.Point(7, 76);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(618, 68);
             this.groupBox2.TabIndex = 44;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "groupBox2";
+            this.groupBox2.Text = "Preços";
             // 
             // lblPrecoCusto
             // 
@@ -187,7 +188,7 @@
             this.mskedTxtBxPrecoCusto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mskedTxtBxPrecoCusto.Location = new System.Drawing.Point(128, 32);
             this.mskedTxtBxPrecoCusto.Name = "mskedTxtBxPrecoCusto";
-            this.mskedTxtBxPrecoCusto.Size = new System.Drawing.Size(116, 20);
+            this.mskedTxtBxPrecoCusto.Size = new System.Drawing.Size(100, 20);
             this.mskedTxtBxPrecoCusto.TabIndex = 9;
             // 
             // pRODUTOBindingSource
@@ -204,7 +205,7 @@
             // 
             this.maskedTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pRODUTOBindingSource, "IPI", true));
             this.maskedTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.maskedTextBox1.Location = new System.Drawing.Point(266, 32);
+            this.maskedTextBox1.Location = new System.Drawing.Point(250, 32);
             this.maskedTextBox1.Name = "maskedTextBox1";
             this.maskedTextBox1.Size = new System.Drawing.Size(55, 20);
             this.maskedTextBox1.TabIndex = 10;
@@ -224,7 +225,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.CadetBlue;
-            this.label1.Location = new System.Drawing.Point(263, 16);
+            this.label1.Location = new System.Drawing.Point(247, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(40, 13);
             this.label1.TabIndex = 38;
@@ -240,19 +241,20 @@
             this.groupBox1.Controls.Add(this.lblUnidMedida);
             this.groupBox1.Controls.Add(this.cmbBxUnidMedida);
             this.groupBox1.Controls.Add(this.txtPesoLiquido);
-            this.groupBox1.Location = new System.Drawing.Point(7, 73);
+            this.groupBox1.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.groupBox1.Location = new System.Drawing.Point(7, 163);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(618, 69);
             this.groupBox1.TabIndex = 43;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.groupBox1.Text = "Estoque";
             // 
             // label26
             // 
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label26.ForeColor = System.Drawing.Color.CadetBlue;
-            this.label26.Location = new System.Drawing.Point(114, 26);
+            this.label26.Location = new System.Drawing.Point(126, 22);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(97, 13);
             this.label26.TabIndex = 40;
@@ -262,18 +264,18 @@
             // 
             this.maskedTextBox8.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pRODUTOBindingSource, "ESTOQUEMIN", true));
             this.maskedTextBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.maskedTextBox8.Location = new System.Drawing.Point(117, 42);
+            this.maskedTextBox8.Location = new System.Drawing.Point(129, 38);
             this.maskedTextBox8.Name = "maskedTextBox8";
-            this.maskedTextBox8.Size = new System.Drawing.Size(90, 20);
+            this.maskedTextBox8.Size = new System.Drawing.Size(99, 20);
             this.maskedTextBox8.TabIndex = 7;
             // 
             // maskedTextBox9
             // 
             this.maskedTextBox9.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pRODUTOBindingSource, "ESTOQUEATUAL", true));
             this.maskedTextBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.maskedTextBox9.Location = new System.Drawing.Point(12, 42);
+            this.maskedTextBox9.Location = new System.Drawing.Point(14, 38);
             this.maskedTextBox9.Name = "maskedTextBox9";
-            this.maskedTextBox9.Size = new System.Drawing.Size(86, 20);
+            this.maskedTextBox9.Size = new System.Drawing.Size(96, 20);
             this.maskedTextBox9.TabIndex = 6;
             // 
             // label27
@@ -281,7 +283,7 @@
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label27.ForeColor = System.Drawing.Color.CadetBlue;
-            this.label27.Location = new System.Drawing.Point(9, 26);
+            this.label27.Location = new System.Drawing.Point(9, 22);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(86, 13);
             this.label27.TabIndex = 42;
@@ -292,7 +294,7 @@
             this.lblPesoLiquido.AutoSize = true;
             this.lblPesoLiquido.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPesoLiquido.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblPesoLiquido.Location = new System.Drawing.Point(351, 26);
+            this.lblPesoLiquido.Location = new System.Drawing.Point(370, 22);
             this.lblPesoLiquido.Name = "lblPesoLiquido";
             this.lblPesoLiquido.Size = new System.Drawing.Size(73, 13);
             this.lblPesoLiquido.TabIndex = 17;
@@ -303,7 +305,7 @@
             this.lblUnidMedida.AutoSize = true;
             this.lblUnidMedida.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUnidMedida.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblUnidMedida.Location = new System.Drawing.Point(228, 26);
+            this.lblUnidMedida.Location = new System.Drawing.Point(247, 22);
             this.lblUnidMedida.Name = "lblUnidMedida";
             this.lblUnidMedida.Size = new System.Drawing.Size(103, 13);
             this.lblUnidMedida.TabIndex = 11;
@@ -316,7 +318,7 @@
             this.cmbBxUnidMedida.DisplayMember = "DESCRICAO";
             this.cmbBxUnidMedida.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbBxUnidMedida.FormattingEnabled = true;
-            this.cmbBxUnidMedida.Location = new System.Drawing.Point(231, 42);
+            this.cmbBxUnidMedida.Location = new System.Drawing.Point(250, 38);
             this.cmbBxUnidMedida.Name = "cmbBxUnidMedida";
             this.cmbBxUnidMedida.Size = new System.Drawing.Size(100, 21);
             this.cmbBxUnidMedida.TabIndex = 4;
@@ -331,7 +333,7 @@
             // 
             this.txtPesoLiquido.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pRODUTOBindingSource, "PESOLIQUIDO", true));
             this.txtPesoLiquido.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPesoLiquido.Location = new System.Drawing.Point(354, 43);
+            this.txtPesoLiquido.Location = new System.Drawing.Point(373, 39);
             this.txtPesoLiquido.Name = "txtPesoLiquido";
             this.txtPesoLiquido.Size = new System.Drawing.Size(70, 20);
             this.txtPesoLiquido.TabIndex = 5;
@@ -342,7 +344,7 @@
             this.textBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox9.Location = new System.Drawing.Point(7, 33);
             this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(117, 20);
+            this.textBox9.Size = new System.Drawing.Size(110, 20);
             this.textBox9.TabIndex = 3;
             // 
             // dtmPckrCadastro
