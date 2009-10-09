@@ -82,6 +82,11 @@
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.label2 = new System.Windows.Forms.Label();
+            this.nUMTextBox = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cOMPLEMENTOTextBox = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vENDEDORBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).BeginInit();
@@ -113,7 +118,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(508, 372);
+            this.tabPage2.Size = new System.Drawing.Size(563, 384);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Cadastro de vendedor";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -145,7 +150,7 @@
             this.cmBxRegiao.DataSource = this.rEGIAOBindingSource;
             this.cmBxRegiao.DisplayMember = "DESCRICAO";
             this.cmBxRegiao.FormattingEnabled = true;
-            this.cmBxRegiao.Location = new System.Drawing.Point(118, 59);
+            this.cmBxRegiao.Location = new System.Drawing.Point(130, 57);
             this.cmBxRegiao.Name = "cmBxRegiao";
             this.cmBxRegiao.Size = new System.Drawing.Size(115, 21);
             this.cmBxRegiao.TabIndex = 53;
@@ -162,7 +167,7 @@
             this.groupBox1.Controls.Add(this.radioButton1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.groupBox1.Location = new System.Drawing.Point(327, 43);
+            this.groupBox1.Location = new System.Drawing.Point(379, 45);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(172, 38);
             this.groupBox1.TabIndex = 52;
@@ -201,7 +206,7 @@
             this.grpBxUsuario.Controls.Add(this.lblUsuario);
             this.grpBxUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpBxUsuario.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.grpBxUsuario.Location = new System.Drawing.Point(315, 241);
+            this.grpBxUsuario.Location = new System.Drawing.Point(374, 249);
             this.grpBxUsuario.Name = "grpBxUsuario";
             this.grpBxUsuario.Size = new System.Drawing.Size(183, 121);
             this.grpBxUsuario.TabIndex = 48;
@@ -249,6 +254,11 @@
             // 
             // grpBxContato
             // 
+            this.grpBxContato.Controls.Add(this.maskedTextBox1);
+            this.grpBxContato.Controls.Add(this.label4);
+            this.grpBxContato.Controls.Add(this.cOMPLEMENTOTextBox);
+            this.grpBxContato.Controls.Add(this.label3);
+            this.grpBxContato.Controls.Add(this.nUMTextBox);
             this.grpBxContato.Controls.Add(this.label2);
             this.grpBxContato.Controls.Add(this.cmbUfCli);
             this.grpBxContato.Controls.Add(this.lblUfCliente);
@@ -270,7 +280,7 @@
             this.grpBxContato.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.grpBxContato.Location = new System.Drawing.Point(6, 85);
             this.grpBxContato.Name = "grpBxContato";
-            this.grpBxContato.Size = new System.Drawing.Size(492, 150);
+            this.grpBxContato.Size = new System.Drawing.Size(551, 158);
             this.grpBxContato.TabIndex = 47;
             this.grpBxContato.TabStop = false;
             this.grpBxContato.Text = "Contato";
@@ -308,9 +318,9 @@
             "SE",
             "SP",
             "TO"});
-            this.cmbUfCli.Location = new System.Drawing.Point(356, 75);
+            this.cmbUfCli.Location = new System.Drawing.Point(138, 76);
             this.cmbUfCli.Name = "cmbUfCli";
-            this.cmbUfCli.Size = new System.Drawing.Size(121, 21);
+            this.cmbUfCli.Size = new System.Drawing.Size(89, 21);
             this.cmbUfCli.TabIndex = 66;
             this.cmbUfCli.Text = "Selecione...";
             // 
@@ -319,7 +329,7 @@
             this.lblUfCliente.AutoSize = true;
             this.lblUfCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUfCliente.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblUfCliente.Location = new System.Drawing.Point(353, 59);
+            this.lblUfCliente.Location = new System.Drawing.Point(135, 60);
             this.lblUfCliente.Name = "lblUfCliente";
             this.lblUfCliente.Size = new System.Drawing.Size(23, 13);
             this.lblUfCliente.TabIndex = 67;
@@ -342,15 +352,15 @@
             this.txtcep.Location = new System.Drawing.Point(10, 32);
             this.txtcep.Name = "txtcep";
             this.txtcep.ShowButton = false;
-            this.txtcep.Size = new System.Drawing.Size(109, 25);
+            this.txtcep.Size = new System.Drawing.Size(108, 25);
             this.txtcep.TabIndex = 64;
             // 
             // textBox10
             // 
             this.textBox10.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vENDEDORBindingSource, "EMAIL", true));
-            this.textBox10.Location = new System.Drawing.Point(222, 118);
+            this.textBox10.Location = new System.Drawing.Point(322, 118);
             this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(255, 20);
+            this.textBox10.Size = new System.Drawing.Size(223, 20);
             this.textBox10.TabIndex = 63;
             // 
             // lblemail
@@ -358,7 +368,7 @@
             this.lblemail.AutoSize = true;
             this.lblemail.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblemail.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblemail.Location = new System.Drawing.Point(220, 102);
+            this.lblemail.Location = new System.Drawing.Point(319, 102);
             this.lblemail.Name = "lblemail";
             this.lblemail.Size = new System.Drawing.Size(38, 13);
             this.lblemail.TabIndex = 62;
@@ -367,9 +377,9 @@
             // txtEndereco
             // 
             this.txtEndereco.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vENDEDORBindingSource, "ENDERECO", true));
-            this.txtEndereco.Location = new System.Drawing.Point(125, 32);
+            this.txtEndereco.Location = new System.Drawing.Point(138, 32);
             this.txtEndereco.Name = "txtEndereco";
-            this.txtEndereco.Size = new System.Drawing.Size(268, 20);
+            this.txtEndereco.Size = new System.Drawing.Size(323, 20);
             this.txtEndereco.TabIndex = 61;
             // 
             // lblEndereco
@@ -377,7 +387,7 @@
             this.lblEndereco.AutoSize = true;
             this.lblEndereco.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEndereco.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblEndereco.Location = new System.Drawing.Point(122, 16);
+            this.lblEndereco.Location = new System.Drawing.Point(135, 16);
             this.lblEndereco.Name = "lblEndereco";
             this.lblEndereco.Size = new System.Drawing.Size(65, 13);
             this.lblEndereco.TabIndex = 60;
@@ -386,7 +396,7 @@
             // txtFax
             // 
             this.txtFax.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vENDEDORBindingSource, "FAX", true));
-            this.txtFax.Location = new System.Drawing.Point(116, 118);
+            this.txtFax.Location = new System.Drawing.Point(109, 118);
             this.txtFax.Mask = "(99)9999-9999";
             this.txtFax.Name = "txtFax";
             this.txtFax.Size = new System.Drawing.Size(100, 20);
@@ -399,16 +409,16 @@
             this.txtTelefone.Location = new System.Drawing.Point(10, 118);
             this.txtTelefone.Mask = "(99)9999-9999";
             this.txtTelefone.Name = "txtTelefone";
-            this.txtTelefone.Size = new System.Drawing.Size(100, 20);
+            this.txtTelefone.Size = new System.Drawing.Size(93, 20);
             this.txtTelefone.TabIndex = 57;
             this.txtTelefone.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // txtMunicipio
             // 
             this.txtMunicipio.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vENDEDORBindingSource, "MUNICIPIO", true));
-            this.txtMunicipio.Location = new System.Drawing.Point(170, 75);
+            this.txtMunicipio.Location = new System.Drawing.Point(233, 76);
             this.txtMunicipio.Name = "txtMunicipio";
-            this.txtMunicipio.Size = new System.Drawing.Size(180, 20);
+            this.txtMunicipio.Size = new System.Drawing.Size(143, 20);
             this.txtMunicipio.TabIndex = 55;
             // 
             // txtBairro
@@ -416,7 +426,7 @@
             this.txtBairro.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vENDEDORBindingSource, "BAIRRO", true));
             this.txtBairro.Location = new System.Drawing.Point(9, 76);
             this.txtBairro.Name = "txtBairro";
-            this.txtBairro.Size = new System.Drawing.Size(155, 20);
+            this.txtBairro.Size = new System.Drawing.Size(121, 20);
             this.txtBairro.TabIndex = 54;
             // 
             // lblFax
@@ -424,7 +434,7 @@
             this.lblFax.AutoSize = true;
             this.lblFax.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFax.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblFax.Location = new System.Drawing.Point(116, 102);
+            this.lblFax.Location = new System.Drawing.Point(109, 102);
             this.lblFax.Name = "lblFax";
             this.lblFax.Size = new System.Drawing.Size(27, 13);
             this.lblFax.TabIndex = 53;
@@ -446,7 +456,7 @@
             this.LblMunicipio.AutoSize = true;
             this.LblMunicipio.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblMunicipio.ForeColor = System.Drawing.Color.CadetBlue;
-            this.LblMunicipio.Location = new System.Drawing.Point(167, 60);
+            this.LblMunicipio.Location = new System.Drawing.Point(231, 60);
             this.LblMunicipio.Name = "LblMunicipio";
             this.LblMunicipio.Size = new System.Drawing.Size(67, 13);
             this.LblMunicipio.TabIndex = 49;
@@ -468,7 +478,7 @@
             this.lblRegiao.AutoSize = true;
             this.lblRegiao.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRegiao.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblRegiao.Location = new System.Drawing.Point(115, 43);
+            this.lblRegiao.Location = new System.Drawing.Point(127, 41);
             this.lblRegiao.Name = "lblRegiao";
             this.lblRegiao.Size = new System.Drawing.Size(51, 13);
             this.lblRegiao.TabIndex = 49;
@@ -477,7 +487,7 @@
             // txtComissao
             // 
             this.txtComissao.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vENDEDORBindingSource, "COMISSAO", true));
-            this.txtComissao.Location = new System.Drawing.Point(239, 59);
+            this.txtComissao.Location = new System.Drawing.Point(269, 58);
             this.txtComissao.Name = "txtComissao";
             this.txtComissao.Size = new System.Drawing.Size(82, 20);
             this.txtComissao.TabIndex = 45;
@@ -505,7 +515,7 @@
             this.lblcomissao.AutoSize = true;
             this.lblcomissao.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblcomissao.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblcomissao.Location = new System.Drawing.Point(236, 43);
+            this.lblcomissao.Location = new System.Drawing.Point(266, 42);
             this.lblcomissao.Name = "lblcomissao";
             this.lblcomissao.Size = new System.Drawing.Size(85, 13);
             this.lblcomissao.TabIndex = 27;
@@ -552,7 +562,7 @@
             this.tbCntrlVendedor.Multiline = true;
             this.tbCntrlVendedor.Name = "tbCntrlVendedor";
             this.tbCntrlVendedor.SelectedIndex = 0;
-            this.tbCntrlVendedor.Size = new System.Drawing.Size(516, 398);
+            this.tbCntrlVendedor.Size = new System.Drawing.Size(571, 410);
             this.tbCntrlVendedor.TabIndex = 0;
             // 
             // vENDEDORTableAdapter
@@ -663,18 +673,66 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.CadetBlue;
-            this.label2.Location = new System.Drawing.Point(399, 16);
+            this.label2.Location = new System.Drawing.Point(467, 16);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(36, 13);
+            this.label2.Size = new System.Drawing.Size(40, 13);
             this.label2.TabIndex = 68;
-            this.label2.Text = "Num.";
+            this.label2.Text = "Num.:";
+            // 
+            // nUMTextBox
+            // 
+            this.nUMTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vENDEDORBindingSource, "NUM", true));
+            this.nUMTextBox.Location = new System.Drawing.Point(467, 32);
+            this.nUMTextBox.Name = "nUMTextBox";
+            this.nUMTextBox.Size = new System.Drawing.Size(78, 20);
+            this.nUMTextBox.TabIndex = 69;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.CadetBlue;
+            this.label3.Location = new System.Drawing.Point(379, 60);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(86, 13);
+            this.label3.TabIndex = 70;
+            this.label3.Text = "Complemento:";
+            // 
+            // cOMPLEMENTOTextBox
+            // 
+            this.cOMPLEMENTOTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vENDEDORBindingSource, "COMPLEMENTO", true));
+            this.cOMPLEMENTOTextBox.Location = new System.Drawing.Point(382, 76);
+            this.cOMPLEMENTOTextBox.Name = "cOMPLEMENTOTextBox";
+            this.cOMPLEMENTOTextBox.Size = new System.Drawing.Size(163, 20);
+            this.cOMPLEMENTOTextBox.TabIndex = 71;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.CadetBlue;
+            this.label4.Location = new System.Drawing.Point(212, 102);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(42, 13);
+            this.label4.TabIndex = 72;
+            this.label4.Text = "Celular:";
+            // 
+            // maskedTextBox1
+            // 
+            this.maskedTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vENDEDORBindingSource, "CELULAR", true));
+            this.maskedTextBox1.Location = new System.Drawing.Point(215, 118);
+            this.maskedTextBox1.Mask = "(99)9999-9999";
+            this.maskedTextBox1.Name = "maskedTextBox1";
+            this.maskedTextBox1.Size = new System.Drawing.Size(100, 20);
+            this.maskedTextBox1.TabIndex = 73;
+            this.maskedTextBox1.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // FrmCadVen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(548, 463);
+            this.ClientSize = new System.Drawing.Size(595, 463);
             this.ControlBox = false;
             this.Controls.Add(this.cnsltTlStrpConsulta);
             this.Controls.Add(this.tbCntrlVendedor);
@@ -759,5 +817,10 @@
         public System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox nUMTextBox;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox cOMPLEMENTOTextBox;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
     }
 }
