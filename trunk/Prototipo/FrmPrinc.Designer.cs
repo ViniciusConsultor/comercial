@@ -447,6 +447,7 @@
             // BtnPrincipalCons
             // 
             this.BtnPrincipalCons.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.BtnPrincipalCons.Image = ((System.Drawing.Image)(resources.GetObject("BtnPrincipalCons.Image")));
             this.BtnPrincipalCons.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.BtnPrincipalCons.Name = "BtnPrincipalCons";
             this.BtnPrincipalCons.Size = new System.Drawing.Size(23, 22);
