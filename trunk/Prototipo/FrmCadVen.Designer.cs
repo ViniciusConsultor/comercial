@@ -81,6 +81,7 @@
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.label2 = new System.Windows.Forms.Label();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vENDEDORBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).BeginInit();
@@ -248,6 +249,7 @@
             // 
             // grpBxContato
             // 
+            this.grpBxContato.Controls.Add(this.label2);
             this.grpBxContato.Controls.Add(this.cmbUfCli);
             this.grpBxContato.Controls.Add(this.lblUfCliente);
             this.grpBxContato.Controls.Add(this.label1);
@@ -340,7 +342,7 @@
             this.txtcep.Location = new System.Drawing.Point(10, 32);
             this.txtcep.Name = "txtcep";
             this.txtcep.ShowButton = false;
-            this.txtcep.Size = new System.Drawing.Size(127, 25);
+            this.txtcep.Size = new System.Drawing.Size(109, 25);
             this.txtcep.TabIndex = 64;
             // 
             // textBox10
@@ -365,9 +367,9 @@
             // txtEndereco
             // 
             this.txtEndereco.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vENDEDORBindingSource, "ENDERECO", true));
-            this.txtEndereco.Location = new System.Drawing.Point(143, 32);
+            this.txtEndereco.Location = new System.Drawing.Point(125, 32);
             this.txtEndereco.Name = "txtEndereco";
-            this.txtEndereco.Size = new System.Drawing.Size(334, 20);
+            this.txtEndereco.Size = new System.Drawing.Size(268, 20);
             this.txtEndereco.TabIndex = 61;
             // 
             // lblEndereco
@@ -375,7 +377,7 @@
             this.lblEndereco.AutoSize = true;
             this.lblEndereco.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEndereco.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblEndereco.Location = new System.Drawing.Point(140, 16);
+            this.lblEndereco.Location = new System.Drawing.Point(122, 16);
             this.lblEndereco.Name = "lblEndereco";
             this.lblEndereco.Size = new System.Drawing.Size(65, 13);
             this.lblEndereco.TabIndex = 60;
@@ -604,7 +606,7 @@
             // cpfToolStripLabel
             // 
             this.cpfToolStripLabel.Name = "cpfToolStripLabel";
-            this.cpfToolStripLabel.Size = new System.Drawing.Size(29, 22);
+            this.cpfToolStripLabel.Size = new System.Drawing.Size(30, 22);
             this.cpfToolStripLabel.Text = "CPF:";
             // 
             // cpfToolStripTextBox
@@ -616,7 +618,7 @@
             // nomeToolStripLabel
             // 
             this.nomeToolStripLabel.Name = "nomeToolStripLabel";
-            this.nomeToolStripLabel.Size = new System.Drawing.Size(40, 22);
+            this.nomeToolStripLabel.Size = new System.Drawing.Size(38, 22);
             this.nomeToolStripLabel.Text = "Nome:";
             // 
             // nomeToolStripTextBox
@@ -655,6 +657,17 @@
             this.toolStripButton2.Text = "Cancelar";
             this.toolStripButton2.ToolTipText = "Cancelar";
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.CadetBlue;
+            this.label2.Location = new System.Drawing.Point(399, 16);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(36, 13);
+            this.label2.TabIndex = 68;
+            this.label2.Text = "Num.";
             // 
             // FrmCadVen
             // 
@@ -745,5 +758,6 @@
         public System.Windows.Forms.ToolStripButton toolStripButton1;
         public System.Windows.Forms.ToolStripButton toolStripButton2;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
+        private System.Windows.Forms.Label label2;
     }
 }
