@@ -32,7 +32,9 @@ namespace Comercial
              * VERIFICA SE USUARIO É PRIVILEGIADO, SENAO VERIFICA PERMISSOES.
              */
 
-            string c = ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString;
+            try
+            {
+             string c = ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString;
 
 
             SqlConnection conn = new SqlConnection(c);
@@ -77,7 +79,19 @@ namespace Comercial
             else
             {
                 MessageBox.Show("Usuário ou senha inválido", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
+            }
+            catch (Exception ex)
+            {
+                Validacoes valida = new Validacoes();
+                valida.tratarExceções(ex);
+                
+            }
+
+                   
+               
+            
         }
     }
 }

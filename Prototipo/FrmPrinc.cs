@@ -199,11 +199,8 @@ namespace Comercial
             }
             catch (Exception ex)
             {
-                if (ex.GetType().FullName == "System.Data.ConstraintException")
-                    MessageBox.Show("Registro já cadastrado (Violação de chave primária)", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                else if (ex.GetType().FullName == "System.Data.NoNullAllowedException" || ex.GetType().FullName == "System.InvalidOperationException")
-                        MessageBox.Show("Campo(s) Obrigatório(s) não preenchido(s).", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                else MessageBox.Show("Erro desconhecido.\nContate o administrador do sistema", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);  
+                Validacoes valida = new Validacoes();
+                valida.tratarExceções(ex);
             }
 
         }
@@ -1157,6 +1154,7 @@ namespace Comercial
                         bindingNavigator1.BindingSource.RemoveCurrent();
                         COMERCIALDataSetTableAdapters.CLIENTETableAdapter teste = new Comercial.COMERCIALDataSetTableAdapters.CLIENTETableAdapter();
                         teste.Update(_dataset);
+                        
                     }
                     #endregion
                     if (frm is FrmCadVen)
@@ -1208,6 +1206,7 @@ namespace Comercial
                 catch
                 {
                     MessageBox.Show("Registro(s) filho(s) encontrado(s).", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    bindingNavigator1.Refresh();
                 }
             }
             else
@@ -1304,6 +1303,19 @@ namespace Comercial
                 ven.toolStripButton2.Enabled = true;
                 ven.cnsltTlStrpConsulta.Enabled = true;
             }
+            #region Form's Claudio
+            if (frm is FrmCadCli)
+            {
+                FrmCadCli cli = (FrmCadCli)frm;
+                cli.cnsltTlStrpConsultaCli.Visible = true;
+                cli.cnpjToolStripTextBox.Enabled = true;
+                cli.nomeFantasiaToolStripTextBox.Enabled = true;
+                cli.consultaToolStripButton.Enabled = true;
+                cli.toolStripButton2.Enabled = true;
+                cli.cnsltTlStrpConsultaCli.Enabled = true;
+            }
+
+            #endregion
         }
 
 

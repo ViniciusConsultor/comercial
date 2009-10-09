@@ -52,9 +52,9 @@
             this.txtIeCli = new System.Windows.Forms.MaskedTextBox();
             this.lblIECliente = new System.Windows.Forms.Label();
             this.gpbContatoCli = new System.Windows.Forms.GroupBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtBairroCli = new System.Windows.Forms.TextBox();
             this.lblBairroCli = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtNumCli = new System.Windows.Forms.TextBox();
             this.lblNum = new System.Windows.Forms.Label();
             this.lblCep = new System.Windows.Forms.Label();
             this.txtCepCli = new Comercial.TextButton();
@@ -68,7 +68,7 @@
             this.lblUfCliente = new System.Windows.Forms.Label();
             this.txtMunicipioCli = new System.Windows.Forms.TextBox();
             this.lblMunicipioCliente = new System.Windows.Forms.Label();
-            this.txtBairroCli = new System.Windows.Forms.TextBox();
+            this.txtComplementoCli = new System.Windows.Forms.TextBox();
             this.txtEndCli = new System.Windows.Forms.TextBox();
             this.lblComplemento = new System.Windows.Forms.Label();
             this.lblEnderecoCliente = new System.Windows.Forms.Label();
@@ -86,7 +86,7 @@
             this.cnpjToolStripTextBox = new System.Windows.Forms.ToolStripTextBox();
             this.nomeFantasiaCliToolStripLabel = new System.Windows.Forms.ToolStripLabel();
             this.nomeFantasiaToolStripTextBox = new System.Windows.Forms.ToolStripTextBox();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.consultaToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.tbCntrlCadCli.SuspendLayout();
@@ -187,6 +187,7 @@
             this.txtRazaoSocialCli.Name = "txtRazaoSocialCli";
             this.txtRazaoSocialCli.Size = new System.Drawing.Size(265, 20);
             this.txtRazaoSocialCli.TabIndex = 4;
+            this.txtRazaoSocialCli.TextChanged += new System.EventHandler(this.txtRazaoSocialCli_TextChanged);
             // 
             // lblRazaoSocialCliente
             // 
@@ -341,7 +342,7 @@
             // 
             this.txtIeCli.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cLIENTEBindingSource, "IE", true));
             this.txtIeCli.Location = new System.Drawing.Point(232, 19);
-            this.txtIeCli.Mask = "99,999,999,999";
+            this.txtIeCli.Mask = "999,999,999,999";
             this.txtIeCli.Name = "txtIeCli";
             this.txtIeCli.PromptChar = ' ';
             this.txtIeCli.Size = new System.Drawing.Size(87, 20);
@@ -361,9 +362,9 @@
             // 
             // gpbContatoCli
             // 
-            this.gpbContatoCli.Controls.Add(this.textBox2);
+            this.gpbContatoCli.Controls.Add(this.txtBairroCli);
             this.gpbContatoCli.Controls.Add(this.lblBairroCli);
-            this.gpbContatoCli.Controls.Add(this.textBox1);
+            this.gpbContatoCli.Controls.Add(this.txtNumCli);
             this.gpbContatoCli.Controls.Add(this.lblNum);
             this.gpbContatoCli.Controls.Add(this.lblCep);
             this.gpbContatoCli.Controls.Add(this.txtCepCli);
@@ -377,7 +378,7 @@
             this.gpbContatoCli.Controls.Add(this.lblUfCliente);
             this.gpbContatoCli.Controls.Add(this.txtMunicipioCli);
             this.gpbContatoCli.Controls.Add(this.lblMunicipioCliente);
-            this.gpbContatoCli.Controls.Add(this.txtBairroCli);
+            this.gpbContatoCli.Controls.Add(this.txtComplementoCli);
             this.gpbContatoCli.Controls.Add(this.txtEndCli);
             this.gpbContatoCli.Controls.Add(this.lblComplemento);
             this.gpbContatoCli.Controls.Add(this.lblEnderecoCliente);
@@ -390,14 +391,14 @@
             this.gpbContatoCli.TabStop = false;
             this.gpbContatoCli.Text = "Contato";
             // 
-            // textBox2
+            // txtBairroCli
             // 
-            this.textBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cLIENTEBindingSource, "BAIRRO", true));
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(286, 81);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(205, 20);
-            this.textBox2.TabIndex = 47;
+            this.txtBairroCli.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cLIENTEBindingSource, "BAIRRO", true));
+            this.txtBairroCli.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBairroCli.Location = new System.Drawing.Point(286, 81);
+            this.txtBairroCli.Name = "txtBairroCli";
+            this.txtBairroCli.Size = new System.Drawing.Size(205, 20);
+            this.txtBairroCli.TabIndex = 7;
             // 
             // lblBairroCli
             // 
@@ -410,20 +411,21 @@
             this.lblBairroCli.TabIndex = 48;
             this.lblBairroCli.Text = "Bairro";
             // 
-            // textBox1
+            // txtNumCli
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(442, 42);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(49, 20);
-            this.textBox1.TabIndex = 46;
+            this.txtNumCli.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cLIENTEBindingSource, "NUM", true));
+            this.txtNumCli.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNumCli.Location = new System.Drawing.Point(436, 42);
+            this.txtNumCli.Name = "txtNumCli";
+            this.txtNumCli.Size = new System.Drawing.Size(55, 20);
+            this.txtNumCli.TabIndex = 6;
             // 
             // lblNum
             // 
             this.lblNum.AutoSize = true;
             this.lblNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNum.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblNum.Location = new System.Drawing.Point(443, 26);
+            this.lblNum.Location = new System.Drawing.Point(433, 26);
             this.lblNum.Name = "lblNum";
             this.lblNum.Size = new System.Drawing.Size(21, 13);
             this.lblNum.TabIndex = 45;
@@ -451,6 +453,7 @@
             // 
             // txtFaxCli
             // 
+            this.txtFaxCli.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cLIENTEBindingSource, "FAX", true));
             this.txtFaxCli.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFaxCli.Location = new System.Drawing.Point(104, 167);
             this.txtFaxCli.Mask = "(99) 9999-9999";
@@ -498,22 +501,22 @@
             // lblEmailCliente
             // 
             this.lblEmailCliente.AutoSize = true;
-            this.lblEmailCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmailCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEmailCliente.ForeColor = System.Drawing.Color.CadetBlue;
             this.lblEmailCliente.Location = new System.Drawing.Point(188, 151);
             this.lblEmailCliente.Name = "lblEmailCliente";
-            this.lblEmailCliente.Size = new System.Drawing.Size(42, 13);
+            this.lblEmailCliente.Size = new System.Drawing.Size(36, 13);
             this.lblEmailCliente.TabIndex = 38;
             this.lblEmailCliente.Text = "E-Mail";
             // 
             // lblTelefoneCliente
             // 
             this.lblTelefoneCliente.AutoSize = true;
-            this.lblTelefoneCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTelefoneCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTelefoneCliente.ForeColor = System.Drawing.Color.CadetBlue;
             this.lblTelefoneCliente.Location = new System.Drawing.Point(3, 149);
             this.lblTelefoneCliente.Name = "lblTelefoneCliente";
-            this.lblTelefoneCliente.Size = new System.Drawing.Size(57, 13);
+            this.lblTelefoneCliente.Size = new System.Drawing.Size(49, 13);
             this.lblTelefoneCliente.TabIndex = 37;
             this.lblTelefoneCliente.Text = "Telefone";
             // 
@@ -591,13 +594,14 @@
             this.lblMunicipioCliente.TabIndex = 30;
             this.lblMunicipioCliente.Text = "Municípo";
             // 
-            // txtBairroCli
+            // txtComplementoCli
             // 
-            this.txtBairroCli.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBairroCli.Location = new System.Drawing.Point(6, 81);
-            this.txtBairroCli.Name = "txtBairroCli";
-            this.txtBairroCli.Size = new System.Drawing.Size(274, 20);
-            this.txtBairroCli.TabIndex = 7;
+            this.txtComplementoCli.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cLIENTEBindingSource, "COMPLEMENTO", true));
+            this.txtComplementoCli.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtComplementoCli.Location = new System.Drawing.Point(6, 81);
+            this.txtComplementoCli.Name = "txtComplementoCli";
+            this.txtComplementoCli.Size = new System.Drawing.Size(274, 20);
+            this.txtComplementoCli.TabIndex = 7;
             // 
             // txtEndCli
             // 
@@ -605,7 +609,7 @@
             this.txtEndCli.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEndCli.Location = new System.Drawing.Point(133, 42);
             this.txtEndCli.Name = "txtEndCli";
-            this.txtEndCli.Size = new System.Drawing.Size(303, 20);
+            this.txtEndCli.Size = new System.Drawing.Size(297, 20);
             this.txtEndCli.TabIndex = 6;
             // 
             // lblComplemento
@@ -718,7 +722,7 @@
             this.cnpjToolStripTextBox,
             this.nomeFantasiaCliToolStripLabel,
             this.nomeFantasiaToolStripTextBox,
-            this.toolStripButton1,
+            this.consultaToolStripButton,
             this.toolStripButton3,
             this.toolStripButton2});
             this.cnsltTlStrpConsultaCli.Location = new System.Drawing.Point(0, 0);
@@ -726,14 +730,14 @@
             this.cnsltTlStrpConsultaCli.Size = new System.Drawing.Size(573, 25);
             this.cnsltTlStrpConsultaCli.TabIndex = 1;
             this.cnsltTlStrpConsultaCli.Text = "fillBy1ToolStrip";
+            this.cnsltTlStrpConsultaCli.Visible = false;
             // 
             // cnpjCliToolStripLabel
             // 
             this.cnpjCliToolStripLabel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.cnpjCliToolStripLabel.Name = "cnpjCliToolStripLabel";
-            this.cnpjCliToolStripLabel.Size = new System.Drawing.Size(39, 22);
+            this.cnpjCliToolStripLabel.Size = new System.Drawing.Size(40, 22);
             this.cnpjCliToolStripLabel.Text = "CNPJ:";
-            
             // 
             // cnpjToolStripTextBox
             // 
@@ -743,7 +747,7 @@
             // nomeFantasiaCliToolStripLabel
             // 
             this.nomeFantasiaCliToolStripLabel.Name = "nomeFantasiaCliToolStripLabel";
-            this.nomeFantasiaCliToolStripLabel.Size = new System.Drawing.Size(83, 22);
+            this.nomeFantasiaCliToolStripLabel.Size = new System.Drawing.Size(78, 22);
             this.nomeFantasiaCliToolStripLabel.Text = "Nome Fantasia";
             // 
             // nomeFantasiaToolStripTextBox
@@ -751,16 +755,16 @@
             this.nomeFantasiaToolStripTextBox.Name = "nomeFantasiaToolStripTextBox";
             this.nomeFantasiaToolStripTextBox.Size = new System.Drawing.Size(100, 25);
             // 
-            // toolStripButton1
+            // consultaToolStripButton
             // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton1.Text = "toolStripButton1";
-            this.toolStripButton1.ToolTipText = "Pesquisar";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            this.consultaToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.consultaToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("consultaToolStripButton.Image")));
+            this.consultaToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.consultaToolStripButton.Name = "consultaToolStripButton";
+            this.consultaToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.consultaToolStripButton.Text = "toolStripButton1";
+            this.consultaToolStripButton.ToolTipText = "Pesquisar";
+            this.consultaToolStripButton.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // toolStripButton3
             // 
@@ -770,6 +774,7 @@
             this.toolStripButton3.Name = "toolStripButton3";
             this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton3.Text = "Limpar";
+            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
             // toolStripButton2
             // 
@@ -780,6 +785,7 @@
             this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton2.Text = "Cancelar";
             this.toolStripButton2.ToolTipText = "Cancelar";
+            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
             // FrmCadCli
             // 
@@ -831,7 +837,7 @@
         private System.Windows.Forms.Label lblUfCliente;
         private System.Windows.Forms.TextBox txtMunicipioCli;
         private System.Windows.Forms.Label lblMunicipioCliente;
-        private System.Windows.Forms.TextBox txtBairroCli;
+        private System.Windows.Forms.TextBox txtComplementoCli;
         private System.Windows.Forms.TextBox txtEndCli;
         private System.Windows.Forms.Label lblComplemento;
         private System.Windows.Forms.Label lblEnderecoCliente;
@@ -863,17 +869,17 @@
         private System.Windows.Forms.BindingSource rEGIAOBindingSource;
         private Comercial.COMERCIALDataSetTableAdapters.REGIAOTableAdapter rEGIAOTableAdapter;
         public System.Windows.Forms.MaskedTextBox txtLimCredCli;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtNumCli;
         private System.Windows.Forms.Label lblNum;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtBairroCli;
         private System.Windows.Forms.Label lblBairroCli;
-        private System.Windows.Forms.ToolStrip cnsltTlStrpConsultaCli;
         private System.Windows.Forms.ToolStripButton cnpjCliToolStripLabel;
-        private System.Windows.Forms.ToolStripTextBox cnpjToolStripTextBox;
         private System.Windows.Forms.ToolStripLabel nomeFantasiaCliToolStripLabel;
-        private System.Windows.Forms.ToolStripTextBox nomeFantasiaToolStripTextBox;
-        public System.Windows.Forms.ToolStripButton toolStripButton1;
-        private System.Windows.Forms.ToolStripButton toolStripButton3;
+        public System.Windows.Forms.ToolStripButton consultaToolStripButton;
         public System.Windows.Forms.ToolStripButton toolStripButton2;
+        public System.Windows.Forms.ToolStrip cnsltTlStrpConsultaCli;
+        public System.Windows.Forms.ToolStripTextBox cnpjToolStripTextBox;
+        public System.Windows.Forms.ToolStripTextBox nomeFantasiaToolStripTextBox;
+        public System.Windows.Forms.ToolStripButton toolStripButton3;
     }
 }
