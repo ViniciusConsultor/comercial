@@ -93,22 +93,22 @@ namespace Comercial
             if (chkAereo.Checked)
             {
                 COMERCIALDataSetTableAdapters.TRANSPORTADORAVIATableAdapter VTrans = new Comercial.COMERCIALDataSetTableAdapters.TRANSPORTADORAVIATableAdapter();
-                VTrans.Insert("1", CnpjTrans);
+                VTrans.Insert("aer", CnpjTrans);
             }
             if (chkFerroviario.Checked)
             {
                 COMERCIALDataSetTableAdapters.TRANSPORTADORAVIATableAdapter VTrans = new Comercial.COMERCIALDataSetTableAdapters.TRANSPORTADORAVIATableAdapter();
-                VTrans.Insert("2", CnpjTrans);
+                VTrans.Insert("fer", CnpjTrans);
             }
             if (chkMaritimo.Checked)
             {
                 COMERCIALDataSetTableAdapters.TRANSPORTADORAVIATableAdapter VTrans = new Comercial.COMERCIALDataSetTableAdapters.TRANSPORTADORAVIATableAdapter();
-                VTrans.Insert("3", CnpjTrans);
+                VTrans.Insert("mar", CnpjTrans);
             }
             if (chkTerrestre.Checked)
             {
                 COMERCIALDataSetTableAdapters.TRANSPORTADORAVIATableAdapter VTrans = new Comercial.COMERCIALDataSetTableAdapters.TRANSPORTADORAVIATableAdapter();
-                VTrans.Insert("4", CnpjTrans);
+                VTrans.Insert("ter", CnpjTrans);
             }
 
             this.limparcampos();
@@ -138,21 +138,21 @@ namespace Comercial
                 foreach (DataRow item in table.Rows)
                 {
 
-                    int i = Convert.ToInt32(item.ItemArray[0]);
+                    string i = Convert.ToString(item.ItemArray[0]);
 
 
                     switch (i)
                     {
-                        case 1: chkAereo.Checked = true;
+                        case "1": chkAereo.Checked = true;
                             continue;
 
-                        case 2: chkFerroviario.Checked = true;
+                        case "2": chkFerroviario.Checked = true;
                             continue;
 
-                        case 3: chkMaritimo.Checked = true;
+                        case "3": chkMaritimo.Checked = true;
                             continue;
 
-                        case 4: chkTerrestre.Checked = true;
+                        case "4": chkTerrestre.Checked = true;
                             continue;
 
                     }
