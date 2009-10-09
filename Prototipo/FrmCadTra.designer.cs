@@ -65,7 +65,10 @@
             this.tableAdapterManager = new Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager();
             this.tRANSPORTADORAVIABindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tRANSPORTADORAVIATableAdapter = new Comercial.COMERCIALDataSetTableAdapters.TRANSPORTADORAVIATableAdapter();
-            this.txtceptrans = new Comercial.TextButton();
+            this.nUMTextBox = new System.Windows.Forms.TextBox();
+            this.lblNumero = new System.Windows.Forms.Label();
+            this.cOMPLEMENTOTextBox = new System.Windows.Forms.TextBox();
+            this.lblComplemento = new System.Windows.Forms.Label();
             this.TbCntCadTra.SuspendLayout();
             this.TbPgCadTra.SuspendLayout();
             this.grpBxViaTrans.SuspendLayout();
@@ -81,7 +84,7 @@
             this.TbCntCadTra.Location = new System.Drawing.Point(12, 12);
             this.TbCntCadTra.Name = "TbCntCadTra";
             this.TbCntCadTra.SelectedIndex = 0;
-            this.TbCntCadTra.Size = new System.Drawing.Size(542, 302);
+            this.TbCntCadTra.Size = new System.Drawing.Size(565, 322);
             this.TbCntCadTra.TabIndex = 0;
             // 
             // TbPgCadTra
@@ -100,7 +103,7 @@
             this.TbPgCadTra.Location = new System.Drawing.Point(4, 22);
             this.TbPgCadTra.Name = "TbPgCadTra";
             this.TbPgCadTra.Padding = new System.Windows.Forms.Padding(3);
-            this.TbPgCadTra.Size = new System.Drawing.Size(534, 276);
+            this.TbPgCadTra.Size = new System.Drawing.Size(557, 296);
             this.TbPgCadTra.TabIndex = 0;
             this.TbPgCadTra.Text = "Cadastro Transportadora";
             this.TbPgCadTra.UseVisualStyleBackColor = true;
@@ -112,7 +115,7 @@
             this.grpBxViaTrans.Controls.Add(this.chkFerroviario);
             this.grpBxViaTrans.Controls.Add(this.chkAereo);
             this.grpBxViaTrans.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.grpBxViaTrans.Location = new System.Drawing.Point(392, 6);
+            this.grpBxViaTrans.Location = new System.Drawing.Point(414, 6);
             this.grpBxViaTrans.Name = "grpBxViaTrans";
             this.grpBxViaTrans.Size = new System.Drawing.Size(134, 94);
             this.grpBxViaTrans.TabIndex = 78;
@@ -162,7 +165,7 @@
             // txtIeCli
             // 
             this.txtIeCli.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tRANSPORTADORABindingSource, "IE", true));
-            this.txtIeCli.Location = new System.Drawing.Point(255, 58);
+            this.txtIeCli.Location = new System.Drawing.Point(277, 58);
             this.txtIeCli.Mask = "999,999,999,99";
             this.txtIeCli.Name = "txtIeCli";
             this.txtIeCli.PromptChar = ' ';
@@ -183,10 +186,13 @@
             // 
             // gpbContatotrans
             // 
+            this.gpbContatotrans.Controls.Add(this.lblComplemento);
+            this.gpbContatotrans.Controls.Add(this.cOMPLEMENTOTextBox);
+            this.gpbContatotrans.Controls.Add(this.lblNumero);
+            this.gpbContatotrans.Controls.Add(this.nUMTextBox);
             this.gpbContatotrans.Controls.Add(this.uFComboBox);
             this.gpbContatotrans.Controls.Add(this.cEPTextBox);
             this.gpbContatotrans.Controls.Add(this.lblCeptrans);
-            this.gpbContatotrans.Controls.Add(this.txtceptrans);
             this.gpbContatotrans.Controls.Add(this.txtTeltrans);
             this.gpbContatotrans.Controls.Add(this.txtEmailtrans);
             this.gpbContatotrans.Controls.Add(this.lblEmailtrans);
@@ -202,7 +208,7 @@
             this.gpbContatotrans.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.gpbContatotrans.Location = new System.Drawing.Point(6, 106);
             this.gpbContatotrans.Name = "gpbContatotrans";
-            this.gpbContatotrans.Size = new System.Drawing.Size(520, 163);
+            this.gpbContatotrans.Size = new System.Drawing.Size(542, 163);
             this.gpbContatotrans.TabIndex = 73;
             this.gpbContatotrans.TabStop = false;
             this.gpbContatotrans.Text = "Contato";
@@ -241,7 +247,7 @@
             "SE",
             "SP",
             "TO"});
-            this.uFComboBox.Location = new System.Drawing.Point(373, 82);
+            this.uFComboBox.Location = new System.Drawing.Point(411, 83);
             this.uFComboBox.Name = "uFComboBox";
             this.uFComboBox.Size = new System.Drawing.Size(121, 21);
             this.uFComboBox.TabIndex = 46;
@@ -251,7 +257,7 @@
             this.cEPTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tRANSPORTADORABindingSource, "CEP", true));
             this.cEPTextBox.Location = new System.Drawing.Point(6, 42);
             this.cEPTextBox.Name = "cEPTextBox";
-            this.cEPTextBox.Size = new System.Drawing.Size(119, 20);
+            this.cEPTextBox.Size = new System.Drawing.Size(114, 20);
             this.cEPTextBox.TabIndex = 45;
             // 
             // lblCeptrans
@@ -268,7 +274,7 @@
             // 
             this.txtTeltrans.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tRANSPORTADORABindingSource, "TELEFONE", true));
             this.txtTeltrans.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTeltrans.Location = new System.Drawing.Point(6, 121);
+            this.txtTeltrans.Location = new System.Drawing.Point(9, 120);
             this.txtTeltrans.Mask = "(99) 9999-9999";
             this.txtTeltrans.Name = "txtTeltrans";
             this.txtTeltrans.Size = new System.Drawing.Size(89, 20);
@@ -281,9 +287,9 @@
             this.txtEmailtrans.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtEmailtrans.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tRANSPORTADORABindingSource, "EMAIL", true));
             this.txtEmailtrans.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmailtrans.Location = new System.Drawing.Point(101, 121);
+            this.txtEmailtrans.Location = new System.Drawing.Point(104, 122);
             this.txtEmailtrans.Name = "txtEmailtrans";
-            this.txtEmailtrans.Size = new System.Drawing.Size(395, 20);
+            this.txtEmailtrans.Size = new System.Drawing.Size(430, 20);
             this.txtEmailtrans.TabIndex = 30;
             // 
             // lblEmailtrans
@@ -291,7 +297,7 @@
             this.lblEmailtrans.AutoSize = true;
             this.lblEmailtrans.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEmailtrans.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblEmailtrans.Location = new System.Drawing.Point(98, 104);
+            this.lblEmailtrans.Location = new System.Drawing.Point(104, 106);
             this.lblEmailtrans.Name = "lblEmailtrans";
             this.lblEmailtrans.Size = new System.Drawing.Size(42, 13);
             this.lblEmailtrans.TabIndex = 38;
@@ -302,7 +308,7 @@
             this.lblTelefonetrans.AutoSize = true;
             this.lblTelefonetrans.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTelefonetrans.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblTelefonetrans.Location = new System.Drawing.Point(0, 103);
+            this.lblTelefonetrans.Location = new System.Drawing.Point(6, 104);
             this.lblTelefonetrans.Name = "lblTelefonetrans";
             this.lblTelefonetrans.Size = new System.Drawing.Size(57, 13);
             this.lblTelefonetrans.TabIndex = 37;
@@ -313,7 +319,7 @@
             this.lblUftrans.AutoSize = true;
             this.lblUftrans.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUftrans.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblUftrans.Location = new System.Drawing.Point(372, 66);
+            this.lblUftrans.Location = new System.Drawing.Point(410, 67);
             this.lblUftrans.Name = "lblUftrans";
             this.lblUftrans.Size = new System.Drawing.Size(23, 13);
             this.lblUftrans.TabIndex = 34;
@@ -324,9 +330,9 @@
             this.txtMunicipiotrans.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtMunicipiotrans.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tRANSPORTADORABindingSource, "MUNICIPIO", true));
             this.txtMunicipiotrans.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMunicipiotrans.Location = new System.Drawing.Point(170, 82);
+            this.txtMunicipiotrans.Location = new System.Drawing.Point(254, 83);
             this.txtMunicipiotrans.Name = "txtMunicipiotrans";
-            this.txtMunicipiotrans.Size = new System.Drawing.Size(197, 20);
+            this.txtMunicipiotrans.Size = new System.Drawing.Size(151, 20);
             this.txtMunicipiotrans.TabIndex = 25;
             // 
             // lblMunicipiotrans
@@ -334,7 +340,7 @@
             this.lblMunicipiotrans.AutoSize = true;
             this.lblMunicipiotrans.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMunicipiotrans.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblMunicipiotrans.Location = new System.Drawing.Point(167, 65);
+            this.lblMunicipiotrans.Location = new System.Drawing.Point(251, 67);
             this.lblMunicipiotrans.Name = "lblMunicipiotrans";
             this.lblMunicipiotrans.Size = new System.Drawing.Size(60, 13);
             this.lblMunicipiotrans.TabIndex = 30;
@@ -345,9 +351,9 @@
             this.txtBairrotrans.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtBairrotrans.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tRANSPORTADORABindingSource, "BAIRRO", true));
             this.txtBairrotrans.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBairrotrans.Location = new System.Drawing.Point(6, 81);
+            this.txtBairrotrans.Location = new System.Drawing.Point(127, 82);
             this.txtBairrotrans.Name = "txtBairrotrans";
-            this.txtBairrotrans.Size = new System.Drawing.Size(155, 20);
+            this.txtBairrotrans.Size = new System.Drawing.Size(121, 20);
             this.txtBairrotrans.TabIndex = 24;
             // 
             // txtEndtrans
@@ -355,9 +361,9 @@
             this.txtEndtrans.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtEndtrans.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tRANSPORTADORABindingSource, "ENDERECO", true));
             this.txtEndtrans.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEndtrans.Location = new System.Drawing.Point(131, 42);
+            this.txtEndtrans.Location = new System.Drawing.Point(126, 42);
             this.txtEndtrans.Name = "txtEndtrans";
-            this.txtEndtrans.Size = new System.Drawing.Size(365, 20);
+            this.txtEndtrans.Size = new System.Drawing.Size(348, 20);
             this.txtEndtrans.TabIndex = 23;
             // 
             // lblBairrotrans
@@ -365,7 +371,7 @@
             this.lblBairrotrans.AutoSize = true;
             this.lblBairrotrans.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBairrotrans.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblBairrotrans.Location = new System.Drawing.Point(3, 65);
+            this.lblBairrotrans.Location = new System.Drawing.Point(124, 66);
             this.lblBairrotrans.Name = "lblBairrotrans";
             this.lblBairrotrans.Size = new System.Drawing.Size(34, 13);
             this.lblBairrotrans.TabIndex = 27;
@@ -376,7 +382,7 @@
             this.lblEnderecotrans.AutoSize = true;
             this.lblEnderecotrans.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEnderecotrans.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblEnderecotrans.Location = new System.Drawing.Point(128, 26);
+            this.lblEnderecotrans.Location = new System.Drawing.Point(123, 26);
             this.lblEnderecotrans.Name = "lblEnderecotrans";
             this.lblEnderecotrans.Size = new System.Drawing.Size(61, 13);
             this.lblEnderecotrans.TabIndex = 26;
@@ -387,7 +393,7 @@
             this.lblIECliente.AutoSize = true;
             this.lblIECliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIECliente.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblIECliente.Location = new System.Drawing.Point(252, 42);
+            this.lblIECliente.Location = new System.Drawing.Point(274, 42);
             this.lblIECliente.Name = "lblIECliente";
             this.lblIECliente.Size = new System.Drawing.Size(23, 13);
             this.lblIECliente.TabIndex = 74;
@@ -396,7 +402,7 @@
             // txtCnpjTrans
             // 
             this.txtCnpjTrans.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tRANSPORTADORABindingSource, "CNPJ", true));
-            this.txtCnpjTrans.Location = new System.Drawing.Point(126, 58);
+            this.txtCnpjTrans.Location = new System.Drawing.Point(148, 58);
             this.txtCnpjTrans.Mask = "99,999,999/9999-99";
             this.txtCnpjTrans.Name = "txtCnpjTrans";
             this.txtCnpjTrans.PromptChar = ' ';
@@ -409,7 +415,7 @@
             this.lblCnpjCliente.AutoSize = true;
             this.lblCnpjCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCnpjCliente.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblCnpjCliente.Location = new System.Drawing.Point(129, 42);
+            this.lblCnpjCliente.Location = new System.Drawing.Point(151, 42);
             this.lblCnpjCliente.Name = "lblCnpjCliente";
             this.lblCnpjCliente.Size = new System.Drawing.Size(38, 13);
             this.lblCnpjCliente.TabIndex = 73;
@@ -420,7 +426,7 @@
             this.TxtNomRed.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tRANSPORTADORABindingSource, "NOMEREDUZIDO", true));
             this.TxtNomRed.Location = new System.Drawing.Point(6, 58);
             this.TxtNomRed.Name = "TxtNomRed";
-            this.TxtNomRed.Size = new System.Drawing.Size(114, 20);
+            this.TxtNomRed.Size = new System.Drawing.Size(136, 20);
             this.TxtNomRed.TabIndex = 62;
             // 
             // TxtNom
@@ -428,7 +434,7 @@
             this.TxtNom.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tRANSPORTADORABindingSource, "NOME", true));
             this.TxtNom.Location = new System.Drawing.Point(6, 19);
             this.TxtNom.Name = "TxtNom";
-            this.TxtNom.Size = new System.Drawing.Size(380, 20);
+            this.TxtNom.Size = new System.Drawing.Size(402, 20);
             this.TxtNom.TabIndex = 61;
             // 
             // LblNomRed
@@ -436,7 +442,7 @@
             this.LblNomRed.AutoSize = true;
             this.LblNomRed.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblNomRed.ForeColor = System.Drawing.Color.CadetBlue;
-            this.LblNomRed.Location = new System.Drawing.Point(3, 42);
+            this.LblNomRed.Location = new System.Drawing.Point(7, 42);
             this.LblNomRed.Name = "LblNomRed";
             this.LblNomRed.Size = new System.Drawing.Size(81, 13);
             this.LblNomRed.TabIndex = 50;
@@ -489,23 +495,50 @@
             // 
             this.tRANSPORTADORAVIATableAdapter.ClearBeforeFill = true;
             // 
-            // txtceptrans
+            // nUMTextBox
             // 
-            this.txtceptrans.getText = "";
-            this.txtceptrans.Image = global::Comercial.Properties.Resources.btn_correios;
-            this.txtceptrans.Location = new System.Drawing.Point(5, 42);
-            this.txtceptrans.Name = "txtceptrans";
-            this.txtceptrans.ShowButton = false;
-            this.txtceptrans.Size = new System.Drawing.Size(135, 25);
-            this.txtceptrans.TabIndex = 43;
-            this.txtceptrans.Visible = false;
+            this.nUMTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tRANSPORTADORABindingSource, "NUM", true));
+            this.nUMTextBox.Location = new System.Drawing.Point(480, 42);
+            this.nUMTextBox.Name = "nUMTextBox";
+            this.nUMTextBox.Size = new System.Drawing.Size(56, 20);
+            this.nUMTextBox.TabIndex = 47;
+            // 
+            // lblNumero
+            // 
+            this.lblNumero.AutoSize = true;
+            this.lblNumero.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumero.ForeColor = System.Drawing.Color.CadetBlue;
+            this.lblNumero.Location = new System.Drawing.Point(477, 26);
+            this.lblNumero.Name = "lblNumero";
+            this.lblNumero.Size = new System.Drawing.Size(50, 13);
+            this.lblNumero.TabIndex = 48;
+            this.lblNumero.Text = "Numero";
+            // 
+            // cOMPLEMENTOTextBox
+            // 
+            this.cOMPLEMENTOTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tRANSPORTADORABindingSource, "COMPLEMENTO", true));
+            this.cOMPLEMENTOTextBox.Location = new System.Drawing.Point(6, 81);
+            this.cOMPLEMENTOTextBox.Name = "cOMPLEMENTOTextBox";
+            this.cOMPLEMENTOTextBox.Size = new System.Drawing.Size(115, 20);
+            this.cOMPLEMENTOTextBox.TabIndex = 49;
+            // 
+            // lblComplemento
+            // 
+            this.lblComplemento.AutoSize = true;
+            this.lblComplemento.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblComplemento.ForeColor = System.Drawing.Color.CadetBlue;
+            this.lblComplemento.Location = new System.Drawing.Point(6, 65);
+            this.lblComplemento.Name = "lblComplemento";
+            this.lblComplemento.Size = new System.Drawing.Size(82, 13);
+            this.lblComplemento.TabIndex = 50;
+            this.lblComplemento.Text = "Complemento";
             // 
             // FrmCadTra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(564, 322);
+            this.ClientSize = new System.Drawing.Size(582, 342);
             this.ControlBox = false;
             this.Controls.Add(this.TbCntCadTra);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -561,7 +594,6 @@
         private Comercial.COMERCIALDataSetTableAdapters.TRANSPORTADORATableAdapter tRANSPORTADORATableAdapter;
         private Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.TextBox cEPTextBox;
-        private TextButton txtceptrans;
         private System.Windows.Forms.CheckBox chkTerrestre;
         private System.Windows.Forms.CheckBox chkMaritimo;
         private System.Windows.Forms.CheckBox chkFerroviario;
@@ -569,6 +601,10 @@
         private System.Windows.Forms.ComboBox uFComboBox;
         private System.Windows.Forms.BindingSource tRANSPORTADORAVIABindingSource;
         private Comercial.COMERCIALDataSetTableAdapters.TRANSPORTADORAVIATableAdapter tRANSPORTADORAVIATableAdapter;
+        private System.Windows.Forms.Label lblComplemento;
+        private System.Windows.Forms.TextBox cOMPLEMENTOTextBox;
+        private System.Windows.Forms.Label lblNumero;
+        private System.Windows.Forms.TextBox nUMTextBox;
 
     }
 }

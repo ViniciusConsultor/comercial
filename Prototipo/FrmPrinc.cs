@@ -136,7 +136,10 @@ namespace Comercial
 
 
                     if (frm is FrmCadPed)
+
                     {
+
+                        
                         FrmCadPed frmPed = (FrmCadPed)frm;
 
                             retorno = frmPed.SalvarPedidoCab();
