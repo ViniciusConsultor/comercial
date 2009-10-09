@@ -23,7 +23,7 @@ namespace Comercial
         {
             InitializeComponent();
             bindingNavigator1.Enabled = false;
-            
+
         }
 
         private void FrmPrinc_FormClosed(object sender, FormClosedEventArgs e)
@@ -81,8 +81,16 @@ namespace Comercial
 
                 if (frm is FrmCadUsu && edit == false)
                 {
-                    FrmCadUsu frmCadven= (FrmCadUsu)frm;
+                    FrmCadUsu frmCadven = (FrmCadUsu)frm;
                     retorno = frmCadven.salvar();
+                }
+
+
+                if (frm is FrmCadPed && edit == false)
+                {
+                    FrmCadPed frmPed = (FrmCadPed)frm;
+                    retorno = frmPed.SalvarPedidoCab();
+                    
                 }
 
                 if (retorno == 0)
@@ -99,7 +107,7 @@ namespace Comercial
                         retorno = frmCond.Salvar();
                     }
 
-                
+
                     if (frm is FrmCadGrpProd)
                     {
                         COMERCIALDataSetTableAdapters.GRUPOPRODUTOTableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.GRUPOPRODUTOTableAdapter();
@@ -136,17 +144,14 @@ namespace Comercial
 
 
                     if (frm is FrmCadPed)
-
                     {
-
-                        
                         FrmCadPed frmPed = (FrmCadPed)frm;
+                        COMERCIALDataSetTableAdapters.PEDIDOTableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.PEDIDOTableAdapter();
+                        table.Update(_dataset);
+                        frmPed.SalvarPedidoDeta();
 
-                            retorno = frmPed.SalvarPedidoCab();
-                            COMERCIALDataSetTableAdapters.PEDIDOTableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.PEDIDOTableAdapter();
-                            table.Update(_dataset);
-                       
-                        
+                        Util.Interface.ChangeControlStatus(frm, false);
+                        bindingNavigator1.Refresh();
                     }
 
                     Util.Interface.ChangeControlStatus(frm, false);
@@ -158,7 +163,7 @@ namespace Comercial
 
                     if (frm is FrmCadUsu)
                     {
-                       
+
                         COMERCIALDataSetTableAdapters.USUARIOTableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.USUARIOTableAdapter();
                         table.Update(_dataset);
                     }
@@ -187,17 +192,17 @@ namespace Comercial
                             COMERCIALDataSetTableAdapters.TRANSPORTADORATableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.TRANSPORTADORATableAdapter();
                             table.Update(_dataset);
                             retorno = frmTrans.salvar();
-                            
+
                         }
-                       
+
                     }
 
 
                     // ====
 
-                  
 
-                   
+
+
                 }
             }
             catch (Exception ex)
@@ -231,7 +236,7 @@ namespace Comercial
             btnEditar.Enabled = true;
             btnCancelEdicao.Enabled = false;
         }
-        
+
         #region Botão Pesquisar
         private void BtnPesquisar_Click(object sender, EventArgs e)
         {
@@ -1157,7 +1162,7 @@ namespace Comercial
                         bindingNavigator1.BindingSource.RemoveCurrent();
                         COMERCIALDataSetTableAdapters.CLIENTETableAdapter teste = new Comercial.COMERCIALDataSetTableAdapters.CLIENTETableAdapter();
                         teste.Update(_dataset);
-                        
+
                     }
                     #endregion
                     if (frm is FrmCadVen)
@@ -1266,7 +1271,7 @@ namespace Comercial
             btnNovo.Enabled = false;
             BtnPrincipal.Enabled = false;
             btnEditar.Enabled = false;
-            btnSalvar.Enabled = true;            
+            btnSalvar.Enabled = true;
             btnCancelEdicao.Enabled = true;
 
             #endregion
@@ -1298,7 +1303,7 @@ namespace Comercial
 
             if (frm is FrmCadVen)
             {
-                FrmCadVen ven = (FrmCadVen) frm;
+                FrmCadVen ven = (FrmCadVen)frm;
                 ven.cnsltTlStrpConsulta.Visible = true;
                 ven.cpfToolStripTextBox.Enabled = true;
                 ven.nomeToolStripTextBox.Enabled = true;

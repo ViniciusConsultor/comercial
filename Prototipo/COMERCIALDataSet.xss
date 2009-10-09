@@ -12,7 +12,7 @@
     <Shape ID="DesignTable:GRUPOPRODUTO" ZOrder="33" X="882" Y="70" Height="122" Width="240" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="75" />
     <Shape ID="DesignTable:ICMS" ZOrder="32" X="1371" Y="70" Height="105" Width="172" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="58" />
     <Shape ID="DesignTable:ItemNotaFiscal" ZOrder="31" X="1613" Y="70" Height="207" Width="228" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="160" />
-    <Shape ID="DesignTable:ITEMPEDIDO" ZOrder="30" X="327" Y="70" Height="173" Width="217" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="126" />
+    <Shape ID="DesignTable:ITEMPEDIDO" ZOrder="30" X="327" Y="70" Height="210" Width="220" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="140" />
     <Shape ID="DesignTable:MODULO" ZOrder="29" X="1109" Y="612" Height="105" Width="192" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="58" />
     <Shape ID="DesignTable:NOTAFISCAL" ZOrder="28" X="1911" Y="70" Height="275" Width="215" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="228" />
     <Shape ID="DesignTable:PEDIDO" ZOrder="27" X="70" Y="70" Height="224" Width="187" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="177" />
@@ -109,7 +109,7 @@
           <Y>156</Y>
         </Point>
         <Point>
-          <X>544</X>
+          <X>547</X>
           <Y>156</Y>
         </Point>
       </RoutePoints>
