@@ -73,7 +73,6 @@
             this.lblComplemento = new System.Windows.Forms.Label();
             this.lblEnderecoCliente = new System.Windows.Forms.Label();
             this.txtNomeFantCli = new System.Windows.Forms.TextBox();
-            this.txtCnpjCli = new System.Windows.Forms.MaskedTextBox();
             this.lblNomeFantasiaCliente = new System.Windows.Forms.Label();
             this.lblCnpjCliente = new System.Windows.Forms.Label();
             this.uSUARIOBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -83,12 +82,14 @@
             this.rEGIAOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.REGIAOTableAdapter();
             this.cnsltTlStrpConsultaCli = new System.Windows.Forms.ToolStrip();
             this.cnpjCliToolStripLabel = new System.Windows.Forms.ToolStripButton();
-            this.cnpjToolStripTextBox = new System.Windows.Forms.ToolStripTextBox();
             this.nomeFantasiaCliToolStripLabel = new System.Windows.Forms.ToolStripLabel();
             this.nomeFantasiaToolStripTextBox = new System.Windows.Forms.ToolStripTextBox();
             this.consultaToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.txtCnpjCli = new System.Windows.Forms.MaskedTextBox();
+            this.cnpjToolStripTextBox = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tbCntrlCadCli.SuspendLayout();
             this.tbpCadCli.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cLIENTEBindingSource)).BeginInit();
@@ -642,17 +643,6 @@
             this.txtNomeFantCli.Size = new System.Drawing.Size(217, 20);
             this.txtNomeFantCli.TabIndex = 3;
             // 
-            // txtCnpjCli
-            // 
-            this.txtCnpjCli.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cLIENTEBindingSource, "CNPJ", true));
-            this.txtCnpjCli.Location = new System.Drawing.Point(9, 19);
-            this.txtCnpjCli.Mask = "99,999,999/9999-99";
-            this.txtCnpjCli.Name = "txtCnpjCli";
-            this.txtCnpjCli.PromptChar = ' ';
-            this.txtCnpjCli.Size = new System.Drawing.Size(124, 20);
-            this.txtCnpjCli.TabIndex = 0;
-            this.txtCnpjCli.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
-            // 
             // lblNomeFantasiaCliente
             // 
             this.lblNomeFantasiaCliente.AutoSize = true;
@@ -722,6 +712,7 @@
             this.cnpjToolStripTextBox,
             this.nomeFantasiaCliToolStripLabel,
             this.nomeFantasiaToolStripTextBox,
+            this.toolStripSeparator1,
             this.consultaToolStripButton,
             this.toolStripButton3,
             this.toolStripButton2});
@@ -736,18 +727,13 @@
             // 
             this.cnpjCliToolStripLabel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.cnpjCliToolStripLabel.Name = "cnpjCliToolStripLabel";
-            this.cnpjCliToolStripLabel.Size = new System.Drawing.Size(40, 22);
+            this.cnpjCliToolStripLabel.Size = new System.Drawing.Size(39, 22);
             this.cnpjCliToolStripLabel.Text = "CNPJ:";
-            // 
-            // cnpjToolStripTextBox
-            // 
-            this.cnpjToolStripTextBox.Name = "cnpjToolStripTextBox";
-            this.cnpjToolStripTextBox.Size = new System.Drawing.Size(100, 25);
             // 
             // nomeFantasiaCliToolStripLabel
             // 
             this.nomeFantasiaCliToolStripLabel.Name = "nomeFantasiaCliToolStripLabel";
-            this.nomeFantasiaCliToolStripLabel.Size = new System.Drawing.Size(78, 22);
+            this.nomeFantasiaCliToolStripLabel.Size = new System.Drawing.Size(83, 22);
             this.nomeFantasiaCliToolStripLabel.Text = "Nome Fantasia";
             // 
             // nomeFantasiaToolStripTextBox
@@ -786,6 +772,27 @@
             this.toolStripButton2.Text = "Cancelar";
             this.toolStripButton2.ToolTipText = "Cancelar";
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
+            // 
+            // txtCnpjCli
+            // 
+            this.txtCnpjCli.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cLIENTEBindingSource, "CNPJ", true));
+            this.txtCnpjCli.Location = new System.Drawing.Point(9, 19);
+            this.txtCnpjCli.Mask = "99,999,999/9999-99";
+            this.txtCnpjCli.Name = "txtCnpjCli";
+            this.txtCnpjCli.PromptChar = ' ';
+            this.txtCnpjCli.Size = new System.Drawing.Size(124, 20);
+            this.txtCnpjCli.TabIndex = 0;
+            this.txtCnpjCli.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            // 
+            // cnpjToolStripTextBox
+            // 
+            this.cnpjToolStripTextBox.Name = "cnpjToolStripTextBox";
+            this.cnpjToolStripTextBox.Size = new System.Drawing.Size(100, 25);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // FrmCadCli
             // 
@@ -843,7 +850,6 @@
         private System.Windows.Forms.Label lblEnderecoCliente;
         private System.Windows.Forms.MaskedTextBox txtFaxCli;
         private System.Windows.Forms.MaskedTextBox txtTelCli;
-        public System.Windows.Forms.MaskedTextBox txtCnpjCli;
         private System.Windows.Forms.MaskedTextBox txtIeCli;
         private System.Windows.Forms.GroupBox grpBxUsuario;
         public System.Windows.Forms.TextBox txtSenhaCli;
@@ -878,8 +884,10 @@
         public System.Windows.Forms.ToolStripButton consultaToolStripButton;
         public System.Windows.Forms.ToolStripButton toolStripButton2;
         public System.Windows.Forms.ToolStrip cnsltTlStrpConsultaCli;
-        public System.Windows.Forms.ToolStripTextBox cnpjToolStripTextBox;
         public System.Windows.Forms.ToolStripTextBox nomeFantasiaToolStripTextBox;
         public System.Windows.Forms.ToolStripButton toolStripButton3;
+        public System.Windows.Forms.MaskedTextBox txtCnpjCli;
+        public System.Windows.Forms.ToolStripTextBox cnpjToolStripTextBox;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     }
 }

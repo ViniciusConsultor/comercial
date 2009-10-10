@@ -7,6 +7,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace Comercial
 {
@@ -90,7 +91,7 @@ namespace Comercial
                 {
                     FrmCadPed frmPed = (FrmCadPed)frm;
                     retorno = frmPed.SalvarPedidoCab();
-                    
+
                 }
 
                 if (retorno == 0)
@@ -205,10 +206,15 @@ namespace Comercial
 
                 }
             }
+            catch (SqlException sqlex)
+            {
+                Validacoes valida = new Validacoes();
+                valida.tratarSqlExceções(sqlex);
+            }
             catch (Exception ex)
             {
                 Validacoes valida = new Validacoes();
-                valida.tratarExceções(ex);
+                valida.tratarSystemExceções(ex);
             }
 
         }

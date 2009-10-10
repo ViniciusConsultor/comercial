@@ -45,6 +45,12 @@
             this.lblSenha = new System.Windows.Forms.Label();
             this.lblUsuario = new System.Windows.Forms.Label();
             this.grpBxContato = new System.Windows.Forms.GroupBox();
+            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cOMPLEMENTOTextBox = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.nUMTextBox = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.cmbUfCli = new System.Windows.Forms.ComboBox();
             this.lblUfCliente = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -81,12 +87,6 @@
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.label2 = new System.Windows.Forms.Label();
-            this.nUMTextBox = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.cOMPLEMENTOTextBox = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.vENDEDORBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).BeginInit();
@@ -284,6 +284,65 @@
             this.grpBxContato.TabIndex = 47;
             this.grpBxContato.TabStop = false;
             this.grpBxContato.Text = "Contato";
+            // 
+            // maskedTextBox1
+            // 
+            this.maskedTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vENDEDORBindingSource, "CELULAR", true));
+            this.maskedTextBox1.Location = new System.Drawing.Point(215, 118);
+            this.maskedTextBox1.Mask = "(99)9999-9999";
+            this.maskedTextBox1.Name = "maskedTextBox1";
+            this.maskedTextBox1.Size = new System.Drawing.Size(100, 20);
+            this.maskedTextBox1.TabIndex = 73;
+            this.maskedTextBox1.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.CadetBlue;
+            this.label4.Location = new System.Drawing.Point(212, 102);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(42, 13);
+            this.label4.TabIndex = 72;
+            this.label4.Text = "Celular:";
+            // 
+            // cOMPLEMENTOTextBox
+            // 
+            this.cOMPLEMENTOTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vENDEDORBindingSource, "COMPLEMENTO", true));
+            this.cOMPLEMENTOTextBox.Location = new System.Drawing.Point(382, 76);
+            this.cOMPLEMENTOTextBox.Name = "cOMPLEMENTOTextBox";
+            this.cOMPLEMENTOTextBox.Size = new System.Drawing.Size(163, 20);
+            this.cOMPLEMENTOTextBox.TabIndex = 71;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.CadetBlue;
+            this.label3.Location = new System.Drawing.Point(379, 60);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(86, 13);
+            this.label3.TabIndex = 70;
+            this.label3.Text = "Complemento:";
+            // 
+            // nUMTextBox
+            // 
+            this.nUMTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vENDEDORBindingSource, "NUM", true));
+            this.nUMTextBox.Location = new System.Drawing.Point(467, 32);
+            this.nUMTextBox.Name = "nUMTextBox";
+            this.nUMTextBox.Size = new System.Drawing.Size(78, 20);
+            this.nUMTextBox.TabIndex = 69;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.CadetBlue;
+            this.label2.Location = new System.Drawing.Point(467, 16);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(40, 13);
+            this.label2.TabIndex = 68;
+            this.label2.Text = "Num.:";
             // 
             // cmbUfCli
             // 
@@ -608,7 +667,7 @@
             this.toolStripButton2});
             this.cnsltTlStrpConsulta.Location = new System.Drawing.Point(0, 0);
             this.cnsltTlStrpConsulta.Name = "cnsltTlStrpConsulta";
-            this.cnsltTlStrpConsulta.Size = new System.Drawing.Size(548, 25);
+            this.cnsltTlStrpConsulta.Size = new System.Drawing.Size(595, 25);
             this.cnsltTlStrpConsulta.TabIndex = 1;
             this.cnsltTlStrpConsulta.Text = "consultaToolStrip";
             this.cnsltTlStrpConsulta.Visible = false;
@@ -616,7 +675,7 @@
             // cpfToolStripLabel
             // 
             this.cpfToolStripLabel.Name = "cpfToolStripLabel";
-            this.cpfToolStripLabel.Size = new System.Drawing.Size(30, 22);
+            this.cpfToolStripLabel.Size = new System.Drawing.Size(29, 22);
             this.cpfToolStripLabel.Text = "CPF:";
             // 
             // cpfToolStripTextBox
@@ -628,7 +687,7 @@
             // nomeToolStripLabel
             // 
             this.nomeToolStripLabel.Name = "nomeToolStripLabel";
-            this.nomeToolStripLabel.Size = new System.Drawing.Size(38, 22);
+            this.nomeToolStripLabel.Size = new System.Drawing.Size(40, 22);
             this.nomeToolStripLabel.Text = "Nome:";
             // 
             // nomeToolStripTextBox
@@ -667,65 +726,6 @@
             this.toolStripButton2.Text = "Cancelar";
             this.toolStripButton2.ToolTipText = "Cancelar";
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.CadetBlue;
-            this.label2.Location = new System.Drawing.Point(467, 16);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(40, 13);
-            this.label2.TabIndex = 68;
-            this.label2.Text = "Num.:";
-            // 
-            // nUMTextBox
-            // 
-            this.nUMTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vENDEDORBindingSource, "NUM", true));
-            this.nUMTextBox.Location = new System.Drawing.Point(467, 32);
-            this.nUMTextBox.Name = "nUMTextBox";
-            this.nUMTextBox.Size = new System.Drawing.Size(78, 20);
-            this.nUMTextBox.TabIndex = 69;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.CadetBlue;
-            this.label3.Location = new System.Drawing.Point(379, 60);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(86, 13);
-            this.label3.TabIndex = 70;
-            this.label3.Text = "Complemento:";
-            // 
-            // cOMPLEMENTOTextBox
-            // 
-            this.cOMPLEMENTOTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vENDEDORBindingSource, "COMPLEMENTO", true));
-            this.cOMPLEMENTOTextBox.Location = new System.Drawing.Point(382, 76);
-            this.cOMPLEMENTOTextBox.Name = "cOMPLEMENTOTextBox";
-            this.cOMPLEMENTOTextBox.Size = new System.Drawing.Size(163, 20);
-            this.cOMPLEMENTOTextBox.TabIndex = 71;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.CadetBlue;
-            this.label4.Location = new System.Drawing.Point(212, 102);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(42, 13);
-            this.label4.TabIndex = 72;
-            this.label4.Text = "Celular:";
-            // 
-            // maskedTextBox1
-            // 
-            this.maskedTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vENDEDORBindingSource, "CELULAR", true));
-            this.maskedTextBox1.Location = new System.Drawing.Point(215, 118);
-            this.maskedTextBox1.Mask = "(99)9999-9999";
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(100, 20);
-            this.maskedTextBox1.TabIndex = 73;
-            this.maskedTextBox1.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // FrmCadVen
             // 
