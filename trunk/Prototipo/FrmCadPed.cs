@@ -19,8 +19,8 @@ namespace Comercial
     {
         private FrmPrinc _princ = null;
         DataTable dttRetorno = new DataTable();
-    
-       
+
+
 
         public FrmCadPed(FrmPrinc parent)
         {
@@ -231,7 +231,7 @@ namespace Comercial
 
         #region Adicionar LinhasDatatable
 
-        private void rdbAddITem_Click(object sender, EventArgs e)
+        private void btnAdditen_Click(object sender, EventArgs e)
         {
 
             DataRow dtRow;
@@ -357,9 +357,9 @@ namespace Comercial
 
             return dtsDados.Tables[0];
 
-            
 
-        
+
+
         }
         #endregion
 
@@ -383,9 +383,8 @@ namespace Comercial
                 throw;
             }
         }
-        
-       #endregion
 
+        #endregion
 
         private void FrmCadPed_Load(object sender, EventArgs e)
         {
@@ -408,8 +407,5 @@ namespace Comercial
 
         }
 
-
-
-       
     }
 }
