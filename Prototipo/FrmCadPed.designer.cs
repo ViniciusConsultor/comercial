@@ -66,11 +66,11 @@
             this.lblcodcli = new System.Windows.Forms.Label();
             this.lblnumPed = new System.Windows.Forms.Label();
             this.grpBxItPedVen = new System.Windows.Forms.GroupBox();
+            this.btnAdditen = new System.Windows.Forms.Button();
             this.cmbProduto = new System.Windows.Forms.ComboBox();
             this.pRODUTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lblDesconto = new System.Windows.Forms.Label();
             this.txtDesconto = new System.Windows.Forms.TextBox();
-            this.rdbAddITem = new Telerik.WinControls.UI.RadButton();
             this.pnlItenped = new System.Windows.Forms.Panel();
             this.dtgrdvItenspven = new System.Windows.Forms.DataGridView();
             this.ClmItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -119,7 +119,6 @@
             this.grpBxSitPed.SuspendLayout();
             this.grpBxItPedVen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pRODUTOBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rdbAddITem)).BeginInit();
             this.pnlItenped.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgrdvItenspven)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iTEMPEDIDOBindingSource)).BeginInit();
@@ -479,10 +478,10 @@
             // 
             // grpBxItPedVen
             // 
+            this.grpBxItPedVen.Controls.Add(this.btnAdditen);
             this.grpBxItPedVen.Controls.Add(this.cmbProduto);
             this.grpBxItPedVen.Controls.Add(this.lblDesconto);
             this.grpBxItPedVen.Controls.Add(this.txtDesconto);
-            this.grpBxItPedVen.Controls.Add(this.rdbAddITem);
             this.grpBxItPedVen.Controls.Add(this.pnlItenped);
             this.grpBxItPedVen.Controls.Add(this.txtipi);
             this.grpBxItPedVen.Controls.Add(this.LblIPI);
@@ -509,6 +508,16 @@
             this.grpBxItPedVen.TabIndex = 16;
             this.grpBxItPedVen.TabStop = false;
             this.grpBxItPedVen.Text = "Itens Pedido Venda";
+            // 
+            // btnAdditen
+            // 
+            this.btnAdditen.Image = ((System.Drawing.Image)(resources.GetObject("btnAdditen.Image")));
+            this.btnAdditen.Location = new System.Drawing.Point(203, 334);
+            this.btnAdditen.Name = "btnAdditen";
+            this.btnAdditen.Size = new System.Drawing.Size(37, 23);
+            this.btnAdditen.TabIndex = 107;
+            this.btnAdditen.UseVisualStyleBackColor = true;
+            this.btnAdditen.Click += new System.EventHandler(this.btnAdditen_Click);
             // 
             // cmbProduto
             // 
@@ -544,22 +553,6 @@
             this.txtDesconto.Name = "txtDesconto";
             this.txtDesconto.Size = new System.Drawing.Size(100, 20);
             this.txtDesconto.TabIndex = 104;
-            // 
-            // rdbAddITem
-            // 
-            this.rdbAddITem.AllowShowFocusCues = true;
-            this.rdbAddITem.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.rdbAddITem.Image = ((System.Drawing.Image)(resources.GetObject("rdbAddITem.Image")));
-            this.rdbAddITem.ImageAlignment = System.Drawing.ContentAlignment.MiddleCenter;
-            this.rdbAddITem.Location = new System.Drawing.Point(200, 336);
-            this.rdbAddITem.Name = "rdbAddITem";
-            // 
-            // 
-            // 
-            this.rdbAddITem.RootElement.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.rdbAddITem.Size = new System.Drawing.Size(30, 20);
-            this.rdbAddITem.TabIndex = 103;
-            this.rdbAddITem.Click += new System.EventHandler(this.rdbAddITem_Click);
             // 
             // pnlItenped
             // 
@@ -889,7 +882,6 @@
             this.grpBxItPedVen.ResumeLayout(false);
             this.grpBxItPedVen.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pRODUTOBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rdbAddITem)).EndInit();
             this.pnlItenped.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgrdvItenspven)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iTEMPEDIDOBindingSource)).EndInit();
@@ -963,7 +955,6 @@
         private Comercial.COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter iTEMPEDIDOTableAdapter;
         private System.Windows.Forms.BindingSource pRODUTOBindingSource;
         private Comercial.COMERCIALDataSetTableAdapters.PRODUTOTableAdapter pRODUTOTableAdapter;
-        private Telerik.WinControls.UI.RadButton rdbAddITem;
         private System.Windows.Forms.Label lblDesconto;
         private System.Windows.Forms.TextBox txtDesconto;
         private System.Windows.Forms.ComboBox cmbProduto;
@@ -975,6 +966,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmPrcTotal;
         public System.Windows.Forms.DataGridView dtgrdvItenspven;
+        private System.Windows.Forms.Button btnAdditen;
 
     }
 }
