@@ -270,6 +270,15 @@ namespace Comercial
             btnEditar.Enabled = false;
             btnSalvar.Enabled = true;
             btnCancelEdicao.Enabled = true;
+
+            if (frm is FrmCadPed)
+            {
+                FrmCadPed Ped = (FrmCadPed)frm;
+               Ped.dtgrdvItenspven.DataSource = Ped.ListarItem(0);
+
+                Ped.dtgrdvItenspven.Refresh();
+
+            }
         }
         #endregion
 
@@ -1275,6 +1284,8 @@ namespace Comercial
             btnCancelEdicao.Enabled = true;
 
             #endregion
+
+          
         }
 
         private void toolStripButton4_Click(object sender, EventArgs e)
@@ -1288,6 +1299,14 @@ namespace Comercial
             edit = false;
 
             cancelEdicao();
+
+
+            if (frm is FrmCadPed)
+            {
+                FrmCadPed Ped = (FrmCadPed)frm;
+                Ped.populargrid();
+
+            }
         }
 
         private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -1340,6 +1359,50 @@ namespace Comercial
                 return;
             frm.Close();
             bindingNavigator1.Enabled = false;
+        }
+
+        private void bindingNavigatorMoveNextItem_Click(object sender, EventArgs e)
+        {
+            Form frm = this.ActiveMdiChild;
+            if (frm is FrmCadPed)
+            {
+                FrmCadPed Ped = (FrmCadPed)frm;
+                Ped.populargrid();
+               
+            }
+        }
+
+        private void bindingNavigatorMovePreviousItem_Click(object sender, EventArgs e)
+        {
+            Form frm = this.ActiveMdiChild;
+            if (frm is FrmCadPed)
+            {
+                FrmCadPed Ped = (FrmCadPed)frm;
+                Ped.populargrid();
+
+            }
+        }
+
+        private void bindingNavigatorMoveLastItem_Click(object sender, EventArgs e)
+        {
+            Form frm = this.ActiveMdiChild;
+            if (frm is FrmCadPed)
+            {
+                FrmCadPed Ped = (FrmCadPed)frm;
+                Ped.populargrid();
+
+            }
+        }
+
+        private void bindingNavigatorMoveFirstItem_Click(object sender, EventArgs e)
+        {
+            Form frm = this.ActiveMdiChild;
+            if (frm is FrmCadPed)
+            {
+                FrmCadPed Ped = (FrmCadPed)frm;
+                Ped.populargrid();
+
+            }
         }
 
     }

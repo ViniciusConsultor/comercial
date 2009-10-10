@@ -967,7 +967,6 @@
         private System.Windows.Forms.Label lblDesconto;
         private System.Windows.Forms.TextBox txtDesconto;
         private System.Windows.Forms.ComboBox cmbProduto;
-        private System.Windows.Forms.DataGridView dtgrdvItenspven;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmCodProd;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmQtde;
@@ -975,6 +974,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmIPI;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmPrcTotal;
+        public System.Windows.Forms.DataGridView dtgrdvItenspven;
 
     }
 }
