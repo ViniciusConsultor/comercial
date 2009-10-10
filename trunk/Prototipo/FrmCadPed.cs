@@ -19,7 +19,8 @@ namespace Comercial
     {
         private FrmPrinc _princ = null;
         DataTable dttRetorno = new DataTable();
-        private COMERCIALDataSet _dataset;
+    
+       
 
         public FrmCadPed(FrmPrinc parent)
         {
@@ -90,6 +91,8 @@ namespace Comercial
             this.tRANSPORTADORATableAdapter.Fill(this.cOMERCIALDataSet.TRANSPORTADORA);
             // TODO: This line of code loads data into the 'cOMERCIALDataSet.PEDIDO' table. You can move, or remove it, as needed.
             this.pEDIDOTableAdapter.Fill(this.cOMERCIALDataSet.PEDIDO);
+
+            populargrid();
 
         }
 
@@ -312,6 +315,7 @@ namespace Comercial
 
         #endregion
 
+        #region GetNumero Pedido
         public int GetNrPedido()
         {
 
@@ -332,6 +336,56 @@ namespace Comercial
 
 
         }
+        #endregion
+
+        #region Listar item pedido
+        public DataTable ListarItem(int CodPed)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+
+            DataSet dtsDados = new DataSet();
+
+            StringBuilder sqlcommand = new StringBuilder();
+
+            sqlcommand.Append("select * from itempedido where nrpedido = @nrpedido");
+
+            DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
+
+            db.AddInParameter(dbComd, "@nrpedido", DbType.String, CodPed);
+
+            dtsDados = db.ExecuteDataSet(dbComd);
+
+            return dtsDados.Tables[0];
+
+            
+
+        
+        }
+        #endregion
+
+        #region PopularGrid
+        public void populargrid()
+        {
+
+            DataTable dttRetorno = new DataTable();
+
+            int numeropedido = Convert.ToInt32(txtPedido.Text);
+            try
+            {
+
+                dttRetorno = ListarItem(numeropedido);
+
+                dtgrdvItenspven.DataSource = dttRetorno;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        
+       #endregion
+
 
         private void FrmCadPed_Load(object sender, EventArgs e)
         {
@@ -355,5 +409,7 @@ namespace Comercial
         }
 
 
+
+       
     }
 }
