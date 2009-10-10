@@ -85,7 +85,7 @@ namespace Comercial
             catch (Exception ex)
             {
                 Validacoes valida = new Validacoes();
-                valida.tratarExceções(ex);
+                valida.tratarSystemExceções(ex);
                 
             }
 
