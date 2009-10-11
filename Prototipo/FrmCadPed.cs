@@ -32,36 +32,36 @@ namespace Comercial
             _princ.novo();
         }
 
-        private void textButton1_ButtonClick_1(object sender, EventArgs e)
-        {
-            FrmVisGeral x = new FrmVisGeral(this);
-            x.ShowDialog();
-        }
+        //private void textButton1_ButtonClick_1(object sender, EventArgs e)
+        //{
+        //    FrmVisGeral x = new FrmVisGeral(this);
+        //    x.ShowDialog();
+        //}
 
-        private void textButton4_ButtonClick(object sender, EventArgs e)
-        {
-            FrmVisGeral x = new FrmVisGeral(this);
-            x.ShowDialog();
+        //private void textButton4_ButtonClick(object sender, EventArgs e)
+        //{
+        //    FrmVisGeral x = new FrmVisGeral(this);
+        //    x.ShowDialog();
 
-        }
+        //}
 
-        private void textButton2_ButtonClick(object sender, EventArgs e)
-        {
-            FrmVisGeral x = new FrmVisGeral(this);
-            x.ShowDialog();
-        }
+        //private void textButton2_ButtonClick(object sender, EventArgs e)
+        //{
+        //    FrmVisGeral x = new FrmVisGeral(this);
+        //    x.ShowDialog();
+        //}
 
-        private void textButton5_ButtonClick(object sender, EventArgs e)
-        {
-            FrmVisGeral x = new FrmVisGeral(this);
-            x.ShowDialog();
-        }
+        //private void textButton5_ButtonClick(object sender, EventArgs e)
+        //{
+        //    FrmVisGeral x = new FrmVisGeral(this);
+        //    x.ShowDialog();
+        //}
 
-        private void textButton3_ButtonClick(object sender, EventArgs e)
-        {
-            FrmVisGeral x = new FrmVisGeral(this);
-            x.ShowDialog();
-        }
+        //private void textButton3_ButtonClick(object sender, EventArgs e)
+        //{
+        //    FrmVisGeral x = new FrmVisGeral(this);
+        //    x.ShowDialog();
+        //}
 
         private void pEDIDOBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
@@ -128,6 +128,7 @@ namespace Comercial
                 objPedido["TIPO"] = "C";
             }
 
+            objPedido["CODCLIENTE"] = txtcodCli.getText;
 
             return 0;
 
@@ -186,6 +187,7 @@ namespace Comercial
                 chkComplemento.Checked = false;
             }
 
+            txtcodCli.getText = objPedido["CODCLIENTE"].ToString();
         }
         #endregion
 
@@ -363,6 +365,27 @@ namespace Comercial
         }
         #endregion
 
+        #region ListarClienteDataGridView Pesquisa
+
+        public DataTable ListarCliente()
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+
+            DataSet dtsDados = new DataSet();
+
+            StringBuilder sqlcommand = new StringBuilder();
+
+            sqlcommand.Append("select cnpj, razaosocial from Cliente");
+
+            DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
+
+            dtsDados = db.ExecuteDataSet(dbComd);
+
+            return dtsDados.Tables[0];
+
+        }
+        #endregion
+
         #region PopularGrid
         public void populargrid()
         {
@@ -402,8 +425,14 @@ namespace Comercial
 
         }
 
-        private void txtPedido_TextChanged(object sender, EventArgs e)
+        private void txtcodCli_ButtonClick(object sender, EventArgs e)
         {
+
+            FrmVisGeral x = new FrmVisGeral(this);
+            x.dtGrdVwVis.DataSource = ListarCliente();
+            x.Text = "Pesquisa Cadastro de Cliente";
+
+            x.ShowDialog();
 
         }
 

@@ -23,6 +23,9 @@ namespace Comercial
 
             if (_parent is FrmCadUsu)
             {
+
+
+
                 rdBtnCod.Visible = false;
                 rdBtnNome.Text = "Usuário";
                 rdBtnNome.Checked = true;
@@ -31,6 +34,25 @@ namespace Comercial
                 col1.DataPropertyName = "usuario";
                 dtGrdVwVis.Columns[1].Visible = false;
             }
+
+            #region ColunasPesquisaCliente
+            if (_parent is FrmCadPed)
+            {
+                rdBtnCod.Visible = true;
+                rdBtnCod.Text = "CNPJ";
+                rdBtnCod.Checked = true;
+                rdBtnNome.Text = "Nome";
+                rdBtnNome.Checked = true;
+
+                col1.HeaderText = "CNPJ";
+                col1.DataPropertyName = "CNPJ";
+                dtGrdVwVis.Columns[1].Visible = true;
+
+                col2.HeaderText = "Razão Social";
+                col2.DataPropertyName = "RAZAOSOCIAL";
+                dtGrdVwVis.Columns[1].Visible = true;
+            }
+            #endregion
             /*
                             if (form is FrmCadCli)
                             {
@@ -120,6 +142,52 @@ namespace Comercial
 
 
             }
+
+
+            if (_parent is FrmCadPed)
+            {
+
+
+                if (rdBtnCod.Checked == true)
+                {
+                    string c = ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString;
+
+                    SqlConnection conn = new SqlConnection(c);
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand("select cnpj, razaosocial from CLIENTE where cnpj like @cnpj ", conn);
+
+                    cmd.Parameters.Add(new SqlParameter("@cnpj", txtPesquisar.Text + "%"));
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    DataTable table = new DataTable();
+                    table.Load(reader);
+
+                    dtGrdVwVis.DataSource = table;
+                }
+
+
+                if (rdBtnNome.Checked == true)
+                {
+                    string c = ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString;
+
+                    SqlConnection conn = new SqlConnection(c);
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand("select cnpj, razaosocial from CLIENTE where razaosocial like @razaosocial ", conn);
+
+                    cmd.Parameters.Add(new SqlParameter("@razaosocial", txtPesquisar.Text + "%"));
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    DataTable table = new DataTable();
+                    table.Load(reader);
+
+                    dtGrdVwVis.DataSource = table;
+                }
+
+
+
+            }
         }
 
         private void dtGrdVwVis_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -135,8 +203,26 @@ namespace Comercial
                 int linha = celula.RowIndex;
                 int coluna = celula.ColumnIndex;
 
-                
+
                 usu.txtUsu.getText = celula.Value.ToString();
+
+                this.Close();
+                this.Dispose();
+            }
+
+            if (_parent is FrmCadPed)
+            {
+                FrmCadPed Ped = (FrmCadPed)_parent;
+
+                // vamos obter as células selecionadas no DataGridView
+                DataGridViewSelectedCellCollection selecionadas = dtGrdVwVis.SelectedCells;
+
+                DataGridViewCell celula = selecionadas[0];
+                int linha = celula.RowIndex;
+                int coluna = celula.ColumnIndex;
+
+
+                Ped.txtcodCli.getText = celula.Value.ToString();
 
                 this.Close();
                 this.Dispose();

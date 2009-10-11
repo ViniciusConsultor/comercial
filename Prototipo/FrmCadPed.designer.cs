@@ -36,6 +36,7 @@
             this.tbCntrlPedVend = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.grpBxPedVenda = new System.Windows.Forms.GroupBox();
+            this.txtcodCli = new Comercial.TextButton();
             this.grpTipoPedido = new System.Windows.Forms.GroupBox();
             this.chkComplemento = new System.Windows.Forms.CheckBox();
             this.chkNormal = new System.Windows.Forms.CheckBox();
@@ -51,7 +52,6 @@
             this.cODVENDEDORTextBox = new System.Windows.Forms.TextBox();
             this.rAZAOSOCIALTextBox = new System.Windows.Forms.TextBox();
             this.cLIENTEBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.cODCLIENTETextBox = new System.Windows.Forms.TextBox();
             this.txtPedido = new System.Windows.Forms.TextBox();
             this.grpBxSitPed = new System.Windows.Forms.GroupBox();
             this.chkCancelado = new System.Windows.Forms.CheckBox();
@@ -174,6 +174,7 @@
             // 
             // grpBxPedVenda
             // 
+            this.grpBxPedVenda.Controls.Add(this.txtcodCli);
             this.grpBxPedVenda.Controls.Add(this.grpTipoPedido);
             this.grpBxPedVenda.Controls.Add(this.cmbCondicao);
             this.grpBxPedVenda.Controls.Add(this.dATAEMISSAODateTimePicker);
@@ -181,7 +182,6 @@
             this.grpBxPedVenda.Controls.Add(this.nOMETextBox);
             this.grpBxPedVenda.Controls.Add(this.cODVENDEDORTextBox);
             this.grpBxPedVenda.Controls.Add(this.rAZAOSOCIALTextBox);
-            this.grpBxPedVenda.Controls.Add(this.cODCLIENTETextBox);
             this.grpBxPedVenda.Controls.Add(this.txtPedido);
             this.grpBxPedVenda.Controls.Add(this.grpBxSitPed);
             this.grpBxPedVenda.Controls.Add(this.lbltpfre);
@@ -200,6 +200,17 @@
             this.grpBxPedVenda.TabIndex = 17;
             this.grpBxPedVenda.TabStop = false;
             this.grpBxPedVenda.Text = "Pedido Venda";
+            // 
+            // txtcodCli
+            // 
+            this.txtcodCli.getText = "";
+            this.txtcodCli.Image = ((System.Drawing.Image)(resources.GetObject("txtcodCli.Image")));
+            this.txtcodCli.Location = new System.Drawing.Point(100, 37);
+            this.txtcodCli.Name = "txtcodCli";
+            this.txtcodCli.ShowButton = false;
+            this.txtcodCli.Size = new System.Drawing.Size(127, 25);
+            this.txtcodCli.TabIndex = 90;
+            this.txtcodCli.ButtonClick += new System.EventHandler(this.txtcodCli_ButtonClick);
             // 
             // grpTipoPedido
             // 
@@ -321,23 +332,15 @@
             this.cLIENTEBindingSource.DataMember = "CLIENTE";
             this.cLIENTEBindingSource.DataSource = this.cOMERCIALDataSet;
             // 
-            // cODCLIENTETextBox
-            // 
-            this.cODCLIENTETextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pEDIDOBindingSource, "CODCLIENTE", true));
-            this.cODCLIENTETextBox.Location = new System.Drawing.Point(120, 36);
-            this.cODCLIENTETextBox.Name = "cODCLIENTETextBox";
-            this.cODCLIENTETextBox.Size = new System.Drawing.Size(100, 20);
-            this.cODCLIENTETextBox.TabIndex = 81;
-            // 
             // txtPedido
             // 
             this.txtPedido.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pEDIDOBindingSource, "NRPEDIDO", true));
             this.txtPedido.Enabled = false;
             this.txtPedido.Location = new System.Drawing.Point(14, 37);
             this.txtPedido.Name = "txtPedido";
-            this.txtPedido.Size = new System.Drawing.Size(100, 20);
+            this.txtPedido.Size = new System.Drawing.Size(80, 20);
             this.txtPedido.TabIndex = 18;
-            this.txtPedido.TextChanged += new System.EventHandler(this.txtPedido_TextChanged);
+            
             // 
             // grpBxSitPed
             // 
@@ -459,7 +462,7 @@
             this.lblcodcli.AutoSize = true;
             this.lblcodcli.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblcodcli.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblcodcli.Location = new System.Drawing.Point(117, 20);
+            this.lblcodcli.Location = new System.Drawing.Point(101, 20);
             this.lblcodcli.Name = "lblcodcli";
             this.lblcodcli.Size = new System.Drawing.Size(93, 13);
             this.lblcodcli.TabIndex = 54;
@@ -901,7 +904,6 @@
         private System.Windows.Forms.TextBox nOMETextBox;
         private System.Windows.Forms.TextBox cODVENDEDORTextBox;
         private System.Windows.Forms.TextBox rAZAOSOCIALTextBox;
-        private System.Windows.Forms.TextBox cODCLIENTETextBox;
         private System.Windows.Forms.TextBox txtPedido;
         private System.Windows.Forms.GroupBox grpBxSitPed;
         private System.Windows.Forms.CheckBox chkCancelado;
@@ -967,6 +969,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmPrcTotal;
         public System.Windows.Forms.DataGridView dtgrdvItenspven;
         private System.Windows.Forms.Button btnAdditen;
+        public TextButton txtcodCli;
 
     }
 }
