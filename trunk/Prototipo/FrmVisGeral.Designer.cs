@@ -36,8 +36,8 @@
             this.txtPesquisar = new System.Windows.Forms.TextBox();
             this.lblPes = new System.Windows.Forms.Label();
             this.dtGrdVwVis = new System.Windows.Forms.DataGridView();
-            this.col1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.grpBxFiltro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGrdVwVis)).BeginInit();
@@ -157,6 +157,7 @@
             this.dtGrdVwVis.Location = new System.Drawing.Point(11, 83);
             this.dtGrdVwVis.MultiSelect = false;
             this.dtGrdVwVis.Name = "dtGrdVwVis";
+            this.dtGrdVwVis.ReadOnly = true;
             this.dtGrdVwVis.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtGrdVwVis.ShowCellErrors = false;
             this.dtGrdVwVis.ShowCellToolTips = false;
@@ -167,16 +168,18 @@
             this.dtGrdVwVis.UseWaitCursor = true;
             this.dtGrdVwVis.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGrdVwVis_CellDoubleClick);
             // 
-            // col1
-            // 
-            this.col1.HeaderText = "col1";
-            this.col1.Name = "col1";
-            // 
             // col2
             // 
             this.col2.HeaderText = "col2";
             this.col2.Name = "col2";
+            this.col2.ReadOnly = true;
             this.col2.Width = 260;
+            // 
+            // col1
+            // 
+            this.col1.HeaderText = "col1";
+            this.col1.Name = "col1";
+            this.col1.ReadOnly = true;
             // 
             // FrmVisGeral
             // 
@@ -209,8 +212,8 @@
         private System.Windows.Forms.TextBox txtPesquisar;
         private System.Windows.Forms.Label lblPes;
         private System.Windows.Forms.Button btnPesquisar;
+        public System.Windows.Forms.DataGridView dtGrdVwVis;
         private System.Windows.Forms.DataGridViewTextBoxColumn col1;
         private System.Windows.Forms.DataGridViewTextBoxColumn col2;
-        public System.Windows.Forms.DataGridView dtGrdVwVis;
     }
 }
