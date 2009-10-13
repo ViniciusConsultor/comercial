@@ -134,14 +134,14 @@ namespace Comercial
  #endregion
         private void txtCodPed_ButtonClick(object sender, EventArgs e)
         {
-            FrmVisGeral x = new FrmVisGeral(this);
+            FrmVisGeral x = new FrmVisGeral(this, (Control)sender);
             x.ShowDialog();
 
         }
 
         private void txtCodCli_ButtonClick(object sender, EventArgs e)
         {
-            FrmVisGeral x = new FrmVisGeral(this);
+            FrmVisGeral x = new FrmVisGeral(this, (Control)sender);
             x.ShowDialog();
         }
 
@@ -152,7 +152,7 @@ namespace Comercial
 
         private void txtAreaAtu_ButtonClick(object sender, EventArgs e)
         {
-            FrmVisGeral x = new FrmVisGeral(this);
+            FrmVisGeral x = new FrmVisGeral(this, (Control)sender);
             x.ShowDialog();
         }
 

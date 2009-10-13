@@ -146,7 +146,7 @@ namespace Comercial
 
         private void txtBtnUsu_ButtonClick(object sender, EventArgs e)
         {
-            FrmVisGeral x = new FrmVisGeral(this);
+            FrmVisGeral x = new FrmVisGeral(this, (Control)sender);
             x.Text = "Pesquisa Cadastro de Usuário";
             x.ShowDialog();
         }

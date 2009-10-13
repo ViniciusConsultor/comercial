@@ -27,7 +27,7 @@ namespace Comercial
 
         private void txtNumPed_ButtonClick(object sender, EventArgs e)
         {
-            FrmVisGeral x = new FrmVisGeral(this);
+            FrmVisGeral x = new FrmVisGeral(this, (Control)sender);
             x.ShowDialog();
 
         }
