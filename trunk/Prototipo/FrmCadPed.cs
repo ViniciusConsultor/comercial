@@ -32,37 +32,6 @@ namespace Comercial
             _princ.novo();
         }
 
-        //private void textButton1_ButtonClick_1(object sender, EventArgs e)
-        //{
-        //    FrmVisGeral x = new FrmVisGeral(this);
-        //    x.ShowDialog();
-        //}
-
-        //private void textButton4_ButtonClick(object sender, EventArgs e)
-        //{
-        //    FrmVisGeral x = new FrmVisGeral(this);
-        //    x.ShowDialog();
-
-        //}
-
-        //private void textButton2_ButtonClick(object sender, EventArgs e)
-        //{
-        //    FrmVisGeral x = new FrmVisGeral(this);
-        //    x.ShowDialog();
-        //}
-
-        //private void textButton5_ButtonClick(object sender, EventArgs e)
-        //{
-        //    FrmVisGeral x = new FrmVisGeral(this);
-        //    x.ShowDialog();
-        //}
-
-        //private void textButton3_ButtonClick(object sender, EventArgs e)
-        //{
-        //    FrmVisGeral x = new FrmVisGeral(this);
-        //    x.ShowDialog();
-        //}
-
         private void pEDIDOBindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             this.Validate();
@@ -129,6 +98,9 @@ namespace Comercial
             }
 
             objPedido["CODCLIENTE"] = txtcodCli.getText;
+            objPedido["CODVENDEDOR"] = txtCodVendedor.getText;
+            objPedido["CODCONDICAOPAGAMENTO"] = txtCondPagto.getText;
+            objPedido["CODTRANSPORTADORA"] = txtCodTransportadora.getText;
 
             return 0;
 
@@ -188,6 +160,9 @@ namespace Comercial
             }
 
             txtcodCli.getText = objPedido["CODCLIENTE"].ToString();
+            txtCodVendedor.getText = objPedido["CODVENDEDOR"].ToString();
+            txtCondPagto.getText = objPedido["CODCONDICAOPAGAMENTO"].ToString();
+            txtCodTransportadora.getText = objPedido["CODTRANSPORTADORA"].ToString();
         }
         #endregion
 
@@ -215,6 +190,28 @@ namespace Comercial
         #endregion
 
         #region LimparCampos
+        public void LimparCampos()
+        {
+            cmbProduto.SelectedValue = 0;
+            txtDescprod.Text = String.Empty;
+            txtEstAtual.Text = String.Empty;
+            txtUM.Text = String.Empty;
+            txtPrcVen.Text = String.Empty;
+            txtQtdItem.Text = String.Empty;
+            txtPrcUnit.Text = String.Empty;
+            txtVlrtotal.Text = String.Empty;
+            txtDesconto.Text = String.Empty;
+            txtipi.Text = String.Empty;
+            txtPedido.Text = String.Empty;
+            txtcodCli.Text = String.Empty;
+            txtRazaoSocial.Text = String.Empty;
+            txtNomeVendedor.Text = String.Empty;
+            txtNomeTransportadora.Text = String.Empty;
+        }
+
+        #endregion
+
+        #region LimparItens
         public void Limparitens()
         {
             cmbProduto.SelectedValue = 0;
@@ -227,6 +224,7 @@ namespace Comercial
             txtVlrtotal.Text = String.Empty;
             txtDesconto.Text = String.Empty;
             txtipi.Text = String.Empty;
+
         }
 
         #endregion
@@ -386,6 +384,68 @@ namespace Comercial
         }
         #endregion
 
+        #region ListarVendedorDataGridView Pesquisa
+
+        public DataTable ListarVendedor()
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+
+            DataSet dtsDados = new DataSet();
+
+            StringBuilder sqlcommand = new StringBuilder();
+
+            sqlcommand.Append("select CPF, NOME from Vendedor");
+
+            DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
+
+            dtsDados = db.ExecuteDataSet(dbComd);
+
+            return dtsDados.Tables[0];
+
+        }
+        #endregion
+
+        #region ListarCondicaoPagtoDataGridView Pesquisa
+
+        public DataTable ListarCondicaoPagto()
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+
+            DataSet dtsDados = new DataSet();
+
+            StringBuilder sqlcommand = new StringBuilder();
+
+            sqlcommand.Append("select * from CONDICAOPAGAMENTO");
+
+            DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
+
+            dtsDados = db.ExecuteDataSet(dbComd);
+
+            return dtsDados.Tables[0];
+
+        }
+        #endregion
+
+        #region ListarTransportadoraDataGridView Pesquisa
+        public DataTable ListaTransportadora()
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+
+            DataSet dtsDados = new DataSet();
+
+            StringBuilder sqlcommand = new StringBuilder();
+
+            sqlcommand.Append("select CNPJ,NOME from TRANSPORTADORA");
+
+            DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
+
+            dtsDados = db.ExecuteDataSet(dbComd);
+
+            return dtsDados.Tables[0];
+
+        }
+        #endregion
+
         #region PopularGrid
         public void populargrid()
         {
@@ -409,6 +469,58 @@ namespace Comercial
 
         #endregion
 
+        #region Chama Form Pesquisa
+
+        #region Cliente
+        private void txtcodCli_ButtonClick(object sender, EventArgs e)
+        {
+
+
+            FrmVisGeral x = new FrmVisGeral(this, (Control)sender);
+            x.dtGrdVwVis.DataSource = ListarCliente();
+            x.Text = "Pesquisa Cadastro de Cliente";
+
+            x.ShowDialog();
+
+        }
+
+        #endregion
+
+        #region Vendedor
+        private void txtCodVendedor_ButtonClick(object sender, EventArgs e)
+        {
+            FrmVisGeral x = new FrmVisGeral(this, (Control)sender);
+            x.dtGrdVwVis.DataSource = ListarVendedor();
+            x.Text = "Pesquisa Cadastro de Vendedor";
+
+            x.ShowDialog();
+        }
+        #endregion
+
+        #region Condição Pagto
+        private void txtCondPagto_ButtonClick(object sender, EventArgs e)
+        {
+            FrmVisGeral x = new FrmVisGeral(this, (Control)sender);
+            x.dtGrdVwVis.DataSource = ListarCondicaoPagto();
+            x.Text = "Pesquisa Cadastro de Condição Pagamento";
+
+            x.ShowDialog();
+        }
+        #endregion
+
+        #region Transportadora
+        private void txtCodTransportadora_ButtonClick(object sender, EventArgs e)
+        {
+            FrmVisGeral x = new FrmVisGeral(this, (Control)sender);
+            x.dtGrdVwVis.DataSource = ListaTransportadora();
+            x.Text = "Pesquisa Cadastro de Transportadora";
+
+            x.ShowDialog();
+        }
+
+        #endregion
+        #endregion
+
         private void FrmCadPed_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'cOMERCIALDataSet.ITEMPEDIDO' table. You can move, or remove it, as needed.
@@ -425,16 +537,18 @@ namespace Comercial
 
         }
 
-        private void txtcodCli_ButtonClick(object sender, EventArgs e)
+        private void txtCodVendedor_Load(object sender, EventArgs e)
         {
 
-            FrmVisGeral x = new FrmVisGeral(this);
-            x.dtGrdVwVis.DataSource = ListarCliente();
-            x.Text = "Pesquisa Cadastro de Cliente";
-
-            x.ShowDialog();
-
         }
+
+
+
+
+
+
+
+
 
     }
 }

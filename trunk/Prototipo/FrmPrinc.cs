@@ -248,7 +248,7 @@ namespace Comercial
         {
             if (this.ActiveMdiChild != null)
             {
-                FrmVisGeral x = new FrmVisGeral(this);
+                FrmVisGeral x = new FrmVisGeral(this, (Control)sender);
                 x.ShowDialog();
             }
         }
@@ -280,8 +280,8 @@ namespace Comercial
             if (frm is FrmCadPed)
             {
                 FrmCadPed Ped = (FrmCadPed)frm;
-               Ped.dtgrdvItenspven.DataSource = Ped.ListarItem(0);
-
+                Ped.dtgrdvItenspven.DataSource = Ped.ListarItem(0);
+                Ped.LimparCampos();
                 Ped.dtgrdvItenspven.Refresh();
 
             }
@@ -638,7 +638,7 @@ namespace Comercial
         {
             if (this.ActiveMdiChild != null)
             {
-                FrmVisGeral x = new FrmVisGeral(this);
+                FrmVisGeral x = new FrmVisGeral(this, (Control)sender);
                 x.ShowDialog();
             }
         }

@@ -36,8 +36,8 @@
             this.txtPesquisar = new System.Windows.Forms.TextBox();
             this.lblPes = new System.Windows.Forms.Label();
             this.dtGrdVwVis = new System.Windows.Forms.DataGridView();
-            this.col2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.grpBxFiltro.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGrdVwVis)).BeginInit();
@@ -168,18 +168,18 @@
             this.dtGrdVwVis.UseWaitCursor = true;
             this.dtGrdVwVis.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGrdVwVis_CellDoubleClick);
             // 
+            // col1
+            // 
+            this.col1.HeaderText = "col1";
+            this.col1.Name = "col1";
+            this.col1.ReadOnly = true;
+            // 
             // col2
             // 
             this.col2.HeaderText = "col2";
             this.col2.Name = "col2";
             this.col2.ReadOnly = true;
             this.col2.Width = 260;
-            // 
-            // col1
-            // 
-            this.col1.HeaderText = "col1";
-            this.col1.Name = "col1";
-            this.col1.ReadOnly = true;
             // 
             // FrmVisGeral
             // 
@@ -194,6 +194,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pesquisa Cadastro Cliente";
+            this.Load += new System.EventHandler(this.FrmVisGeral_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.grpBxFiltro.ResumeLayout(false);

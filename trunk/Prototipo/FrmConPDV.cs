@@ -22,17 +22,11 @@ namespace Comercial
 
         private void txtCodPed_ButtonClick(object sender, EventArgs e)
         {
-            FrmVisGeral x = new FrmVisGeral(this);
+            FrmVisGeral x = new FrmVisGeral(this, txtCodPed);
             x.ShowDialog();
         }
 
-        private void txtBtnCodCli_ButtonClick(object sender, EventArgs e)
-        {
-
-            FrmVisGeral x = new FrmVisGeral(this);
-            x.ShowDialog();
-        }
-
+       
         private void tbPgConCli_Click(object sender, EventArgs e)
         {
 

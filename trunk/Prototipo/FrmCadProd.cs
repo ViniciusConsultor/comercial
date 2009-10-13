@@ -39,13 +39,13 @@ namespace Comercial
 
         private void txtFabricante_ButtonClick(object sender, EventArgs e)
         {
-            FrmVisGeral x = new FrmVisGeral(this);
+            FrmVisGeral x = new FrmVisGeral(this, (Control)sender);
             x.ShowDialog();
         }
 
         private void txtGrupo_ButtonClick(object sender, EventArgs e)
         {
-            FrmVisGeral x = new FrmVisGeral(this);
+            FrmVisGeral x = new FrmVisGeral(this, (Control)sender);
             x.ShowDialog();
         }
 

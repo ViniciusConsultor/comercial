@@ -22,13 +22,13 @@ namespace Comercial
 
         private void txtFabricante_ButtonClick(object sender, EventArgs e)
         {
-            FrmVisGeral x = new FrmVisGeral(this);
+            FrmVisGeral x = new FrmVisGeral(this, txtFabricante);
             x.ShowDialog();
         }
 
         private void txtCodProd_ButtonClick(object sender, EventArgs e)
         {
-            FrmVisGeral x = new FrmVisGeral(this);
+            FrmVisGeral x = new FrmVisGeral(this, txtCodProd);
             x.ShowDialog();
         }
 
