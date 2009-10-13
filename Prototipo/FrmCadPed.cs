@@ -65,7 +65,7 @@ namespace Comercial
 
             txtNomeCliente.Text = Convert.ToString(ListarNomeCliente(txtcodCli.getText));
             txtNomeTransportadora.Text = Convert.ToString(ListarNomeTransportadora(txtCodTransportadora.getText));
-            txtNomeVendedor.Text = Convert.ToString(ListarNomeVendedor(txtCodTransportadora.getText));
+            txtNomeVendedor.Text = Convert.ToString(ListarNomeVendedor(txtCodVendedor.getText));
 
         }
 
