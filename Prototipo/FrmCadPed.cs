@@ -63,6 +63,8 @@ namespace Comercial
 
             populargrid();
 
+            txtNomeCliente.Text = Convert.ToString(ListarNomeCliente(txtcodCli.getText));
+
         }
 
         #endregion
@@ -72,6 +74,9 @@ namespace Comercial
         {
             DataRowView objPedido;
             objPedido = (DataRowView)pEDIDOBindingSource.Current;
+
+            DataRowView objPedidoItem;
+            objPedidoItem = (DataRowView)iTEMPEDIDOBindingSource.Current;
 
             if (chkCancelado.Checked)
             {
@@ -101,6 +106,7 @@ namespace Comercial
             objPedido["CODVENDEDOR"] = txtCodVendedor.getText;
             objPedido["CODCONDICAOPAGAMENTO"] = txtCondPagto.getText;
             objPedido["CODTRANSPORTADORA"] = txtCodTransportadora.getText;
+            objPedidoItem["CODPRODUTO"] = txtProduto.getText;
 
             return 0;
 
@@ -163,6 +169,9 @@ namespace Comercial
             txtCodVendedor.getText = objPedido["CODVENDEDOR"].ToString();
             txtCondPagto.getText = objPedido["CODCONDICAOPAGAMENTO"].ToString();
             txtCodTransportadora.getText = objPedido["CODTRANSPORTADORA"].ToString();
+
+
+
         }
         #endregion
 
@@ -192,7 +201,7 @@ namespace Comercial
         #region LimparCampos
         public void LimparCampos()
         {
-            cmbProduto.SelectedValue = 0;
+
             txtDescprod.Text = String.Empty;
             txtEstAtual.Text = String.Empty;
             txtUM.Text = String.Empty;
@@ -204,7 +213,7 @@ namespace Comercial
             txtipi.Text = String.Empty;
             txtPedido.Text = String.Empty;
             txtcodCli.Text = String.Empty;
-            txtRazaoSocial.Text = String.Empty;
+            txtNomeCliente.Text = String.Empty;
             txtNomeVendedor.Text = String.Empty;
             txtNomeTransportadora.Text = String.Empty;
         }
@@ -214,7 +223,6 @@ namespace Comercial
         #region LimparItens
         public void Limparitens()
         {
-            cmbProduto.SelectedValue = 0;
             txtDescprod.Text = String.Empty;
             txtEstAtual.Text = String.Empty;
             txtUM.Text = String.Empty;
@@ -241,7 +249,7 @@ namespace Comercial
 
                 dtRow = dttRetorno.NewRow();
 
-                dtRow["CODPRODUTO"] = cmbProduto.SelectedValue;
+                dtRow["CODPRODUTO"] = txtProduto.getText;
                 dtRow["QUANTIDADE"] = txtQtdItem.Text;
                 dtRow["DESCONTO"] = txtDesconto.Text;
                 dtRow["VALOR"] = txtPrcUnit.Text;
@@ -446,6 +454,26 @@ namespace Comercial
         }
         #endregion
 
+        #region ListarTransportadoraDataGridView Pesquisa
+        public DataTable ListaProduto()
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+
+            DataSet dtsDados = new DataSet();
+
+            StringBuilder sqlcommand = new StringBuilder();
+
+            sqlcommand.Append("select CODPRODUTO,DESCRICAO,CODUNIDADEMEDIDA,ESTOQUEATUAL,PRECOVENDA from Produto");
+
+            DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
+
+            dtsDados = db.ExecuteDataSet(dbComd);
+
+            return dtsDados.Tables[0];
+
+        }
+        #endregion
+
         #region PopularGrid
         public void populargrid()
         {
@@ -519,8 +547,87 @@ namespace Comercial
         }
 
         #endregion
+
+        #region Produto
+        private void txtProduto_ButtonClick(object sender, EventArgs e)
+        {
+            FrmVisGeral x = new FrmVisGeral(this, (Control)sender);
+            x.dtGrdVwVis.DataSource = ListaProduto();
+            x.Text = "Pesquisa Cadastro de Produto";
+
+            x.ShowDialog();
+        }
+        #endregion
         #endregion
 
+        #region Listar Nome Cliente
+        public string ListarNomeCliente(string codCli)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+
+            StringBuilder sqlcommand = new StringBuilder();
+
+            sqlcommand.Append("select top 1 Razaosocial from CLIENTE inner join PEDIDO on CNPJ= CODCLIENTE WHERE CNPJ=@CNPJ ");
+
+            DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
+
+            db.AddInParameter(dbComd, "@CNPJ", DbType.String, codCli);
+
+            string nomecli = (string)db.ExecuteScalar(dbComd);
+
+            return nomecli;
+
+
+
+
+        }
+        #endregion
+
+        #region Listar Nome Vendedor
+        public string ListarNomeVendedor(string CodVendedor)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+
+            StringBuilder sqlcommand = new StringBuilder();
+
+            sqlcommand.Append("select top 1 NOME from VENDEDOR inner join PEDIDO on CPF= CODVENDEDOR WHERE CPF=@CPF ");
+
+            DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
+
+            db.AddInParameter(dbComd, "@CPF", DbType.String, CodVendedor);
+
+            string nomeVend = (string)db.ExecuteScalar(dbComd);
+
+            return nomeVend;
+
+
+
+
+        }
+        #endregion
+
+        #region Listar Nome Transportadora
+        public string ListarNomeTransportadora(string codTrans)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+
+            StringBuilder sqlcommand = new StringBuilder();
+
+            sqlcommand.Append("select top 1 NOME from TRANSPORTADORA inner join PEDIDO on CNPJ = CODTRANSPORTADORA  WHERE CNPJ=@CNPJ ");
+
+            DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
+
+            db.AddInParameter(dbComd, "@CNPJ", DbType.String, codTrans);
+
+            string nomeTrans = (string)db.ExecuteScalar(dbComd);
+
+            return nomeTrans;
+
+
+
+
+        }
+        #endregion
         private void FrmCadPed_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'cOMERCIALDataSet.ITEMPEDIDO' table. You can move, or remove it, as needed.
@@ -541,6 +648,8 @@ namespace Comercial
         {
 
         }
+
+
 
 
 

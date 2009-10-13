@@ -36,21 +36,17 @@
             this.tbCntrlPedVend = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.grpBxPedVenda = new System.Windows.Forms.GroupBox();
-            this.txtCodTransportadora = new Comercial.TextButton();
             this.txtNomeTransportadora = new System.Windows.Forms.TextBox();
             this.vENDEDORBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
             this.lblNomeTransportadora = new System.Windows.Forms.Label();
-            this.txtCondPagto = new Comercial.TextButton();
-            this.txtCodVendedor = new Comercial.TextButton();
-            this.txtcodCli = new Comercial.TextButton();
             this.grpTipoPedido = new System.Windows.Forms.GroupBox();
             this.chkComplemento = new System.Windows.Forms.CheckBox();
             this.chkNormal = new System.Windows.Forms.CheckBox();
             this.dtpEmissao = new System.Windows.Forms.DateTimePicker();
             this.pEDIDOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtNomeVendedor = new System.Windows.Forms.TextBox();
-            this.txtRazaoSocial = new System.Windows.Forms.TextBox();
+            this.txtNomeCliente = new System.Windows.Forms.TextBox();
             this.cLIENTEBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtPedido = new System.Windows.Forms.TextBox();
             this.grpBxSitPed = new System.Windows.Forms.GroupBox();
@@ -67,7 +63,6 @@
             this.lblnumPed = new System.Windows.Forms.Label();
             this.grpBxItPedVen = new System.Windows.Forms.GroupBox();
             this.btnAdditen = new System.Windows.Forms.Button();
-            this.cmbProduto = new System.Windows.Forms.ComboBox();
             this.pRODUTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lblDesconto = new System.Windows.Forms.Label();
             this.txtDesconto = new System.Windows.Forms.TextBox();
@@ -108,6 +103,11 @@
             this.cONDICAOPAGAMENTOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.CONDICAOPAGAMENTOTableAdapter();
             this.iTEMPEDIDOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter();
             this.pRODUTOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.PRODUTOTableAdapter();
+            this.txtCodTransportadora = new Comercial.TextButton();
+            this.txtCondPagto = new Comercial.TextButton();
+            this.txtCodVendedor = new Comercial.TextButton();
+            this.txtcodCli = new Comercial.TextButton();
+            this.txtProduto = new Comercial.TextButton();
             this.tbCntrlPedVend.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.grpBxPedVenda.SuspendLayout();
@@ -152,10 +152,10 @@
             // 
             this.tbCntrlPedVend.Controls.Add(this.tabPage1);
             this.tbCntrlPedVend.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbCntrlPedVend.Location = new System.Drawing.Point(-7, 1);
+            this.tbCntrlPedVend.Location = new System.Drawing.Point(12, 12);
             this.tbCntrlPedVend.Name = "tbCntrlPedVend";
             this.tbCntrlPedVend.SelectedIndex = 0;
-            this.tbCntrlPedVend.Size = new System.Drawing.Size(934, 560);
+            this.tbCntrlPedVend.Size = new System.Drawing.Size(954, 506);
             this.tbCntrlPedVend.TabIndex = 2001;
             // 
             // tabPage1
@@ -169,7 +169,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(926, 534);
+            this.tabPage1.Size = new System.Drawing.Size(946, 480);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Pedidos de Vendas";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -185,7 +185,7 @@
             this.grpBxPedVenda.Controls.Add(this.grpTipoPedido);
             this.grpBxPedVenda.Controls.Add(this.dtpEmissao);
             this.grpBxPedVenda.Controls.Add(this.txtNomeVendedor);
-            this.grpBxPedVenda.Controls.Add(this.txtRazaoSocial);
+            this.grpBxPedVenda.Controls.Add(this.txtNomeCliente);
             this.grpBxPedVenda.Controls.Add(this.txtPedido);
             this.grpBxPedVenda.Controls.Add(this.grpBxSitPed);
             this.grpBxPedVenda.Controls.Add(this.lbltpfre);
@@ -200,28 +200,17 @@
             this.grpBxPedVenda.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.grpBxPedVenda.Location = new System.Drawing.Point(11, 13);
             this.grpBxPedVenda.Name = "grpBxPedVenda";
-            this.grpBxPedVenda.Size = new System.Drawing.Size(907, 116);
+            this.grpBxPedVenda.Size = new System.Drawing.Size(929, 116);
             this.grpBxPedVenda.TabIndex = 17;
             this.grpBxPedVenda.TabStop = false;
             this.grpBxPedVenda.Text = "Pedido Venda";
             // 
-            // txtCodTransportadora
-            // 
-            this.txtCodTransportadora.getText = "";
-            this.txtCodTransportadora.Image = ((System.Drawing.Image)(resources.GetObject("txtCodTransportadora.Image")));
-            this.txtCodTransportadora.Location = new System.Drawing.Point(458, 82);
-            this.txtCodTransportadora.Name = "txtCodTransportadora";
-            this.txtCodTransportadora.ShowButton = false;
-            this.txtCodTransportadora.Size = new System.Drawing.Size(94, 25);
-            this.txtCodTransportadora.TabIndex = 95;
-            this.txtCodTransportadora.ButtonClick += new System.EventHandler(this.txtCodTransportadora_ButtonClick);
-            // 
             // txtNomeTransportadora
             // 
             this.txtNomeTransportadora.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vENDEDORBindingSource, "NOME", true));
-            this.txtNomeTransportadora.Location = new System.Drawing.Point(558, 82);
+            this.txtNomeTransportadora.Location = new System.Drawing.Point(615, 80);
             this.txtNomeTransportadora.Name = "txtNomeTransportadora";
-            this.txtNomeTransportadora.Size = new System.Drawing.Size(205, 20);
+            this.txtNomeTransportadora.Size = new System.Drawing.Size(184, 20);
             this.txtNomeTransportadora.TabIndex = 94;
             // 
             // vENDEDORBindingSource
@@ -239,45 +228,11 @@
             this.lblNomeTransportadora.AutoSize = true;
             this.lblNomeTransportadora.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNomeTransportadora.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblNomeTransportadora.Location = new System.Drawing.Point(555, 64);
+            this.lblNomeTransportadora.Location = new System.Drawing.Point(612, 63);
             this.lblNomeTransportadora.Name = "lblNomeTransportadora";
             this.lblNomeTransportadora.Size = new System.Drawing.Size(184, 13);
             this.lblNomeTransportadora.TabIndex = 93;
             this.lblNomeTransportadora.Text = "Nome / Razão Social Transportadora";
-            // 
-            // txtCondPagto
-            // 
-            this.txtCondPagto.getText = "";
-            this.txtCondPagto.Image = ((System.Drawing.Image)(resources.GetObject("txtCondPagto.Image")));
-            this.txtCondPagto.Location = new System.Drawing.Point(384, 81);
-            this.txtCondPagto.Name = "txtCondPagto";
-            this.txtCondPagto.ShowButton = false;
-            this.txtCondPagto.Size = new System.Drawing.Size(71, 25);
-            this.txtCondPagto.TabIndex = 92;
-            this.txtCondPagto.ButtonClick += new System.EventHandler(this.txtCondPagto_ButtonClick);
-            // 
-            // txtCodVendedor
-            // 
-            this.txtCodVendedor.getText = "";
-            this.txtCodVendedor.Image = ((System.Drawing.Image)(resources.GetObject("txtCodVendedor.Image")));
-            this.txtCodVendedor.Location = new System.Drawing.Point(14, 81);
-            this.txtCodVendedor.Name = "txtCodVendedor";
-            this.txtCodVendedor.ShowButton = false;
-            this.txtCodVendedor.Size = new System.Drawing.Size(132, 25);
-            this.txtCodVendedor.TabIndex = 91;
-            this.txtCodVendedor.Load += new System.EventHandler(this.txtCodVendedor_Load);
-            this.txtCodVendedor.ButtonClick += new System.EventHandler(this.txtCodVendedor_ButtonClick);
-            // 
-            // txtcodCli
-            // 
-            this.txtcodCli.getText = "";
-            this.txtcodCli.Image = ((System.Drawing.Image)(resources.GetObject("txtcodCli.Image")));
-            this.txtcodCli.Location = new System.Drawing.Point(100, 37);
-            this.txtcodCli.Name = "txtcodCli";
-            this.txtcodCli.ShowButton = false;
-            this.txtcodCli.Size = new System.Drawing.Size(127, 25);
-            this.txtcodCli.TabIndex = 90;
-            this.txtcodCli.ButtonClick += new System.EventHandler(this.txtcodCli_ButtonClick);
             // 
             // grpTipoPedido
             // 
@@ -286,7 +241,7 @@
             this.grpTipoPedido.ForeColor = System.Drawing.Color.CadetBlue;
             this.grpTipoPedido.Location = new System.Drawing.Point(458, 16);
             this.grpTipoPedido.Name = "grpTipoPedido";
-            this.grpTipoPedido.Size = new System.Drawing.Size(198, 41);
+            this.grpTipoPedido.Size = new System.Drawing.Size(224, 41);
             this.grpTipoPedido.TabIndex = 51;
             this.grpTipoPedido.TabStop = false;
             this.grpTipoPedido.Text = "Tipo Pedido";
@@ -294,7 +249,7 @@
             // chkComplemento
             // 
             this.chkComplemento.AutoSize = true;
-            this.chkComplemento.Location = new System.Drawing.Point(69, 16);
+            this.chkComplemento.Location = new System.Drawing.Point(87, 15);
             this.chkComplemento.Name = "chkComplemento";
             this.chkComplemento.Size = new System.Drawing.Size(131, 17);
             this.chkComplemento.TabIndex = 1;
@@ -315,9 +270,9 @@
             // 
             this.dtpEmissao.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pEDIDOBindingSource, "DATAEMISSAO", true));
             this.dtpEmissao.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpEmissao.Location = new System.Drawing.Point(665, 35);
+            this.dtpEmissao.Location = new System.Drawing.Point(688, 36);
             this.dtpEmissao.Name = "dtpEmissao";
-            this.dtpEmissao.Size = new System.Drawing.Size(98, 20);
+            this.dtpEmissao.Size = new System.Drawing.Size(105, 20);
             this.dtpEmissao.TabIndex = 88;
             // 
             // pEDIDOBindingSource
@@ -334,13 +289,13 @@
             this.txtNomeVendedor.Size = new System.Drawing.Size(225, 20);
             this.txtNomeVendedor.TabIndex = 84;
             // 
-            // txtRazaoSocial
+            // txtNomeCliente
             // 
-            this.txtRazaoSocial.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cLIENTEBindingSource, "RAZAOSOCIAL", true));
-            this.txtRazaoSocial.Location = new System.Drawing.Point(233, 36);
-            this.txtRazaoSocial.Name = "txtRazaoSocial";
-            this.txtRazaoSocial.Size = new System.Drawing.Size(219, 20);
-            this.txtRazaoSocial.TabIndex = 82;
+            this.txtNomeCliente.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cLIENTEBindingSource, "RAZAOSOCIAL", true));
+            this.txtNomeCliente.Location = new System.Drawing.Point(233, 36);
+            this.txtNomeCliente.Name = "txtNomeCliente";
+            this.txtNomeCliente.Size = new System.Drawing.Size(219, 20);
+            this.txtNomeCliente.TabIndex = 82;
             // 
             // cLIENTEBindingSource
             // 
@@ -362,7 +317,7 @@
             this.grpBxSitPed.Controls.Add(this.chkPendente);
             this.grpBxSitPed.Controls.Add(this.chkEfetivado);
             this.grpBxSitPed.ForeColor = System.Drawing.Color.CadetBlue;
-            this.grpBxSitPed.Location = new System.Drawing.Point(769, 11);
+            this.grpBxSitPed.Location = new System.Drawing.Point(805, 16);
             this.grpBxSitPed.Name = "grpBxSitPed";
             this.grpBxSitPed.Size = new System.Drawing.Size(118, 93);
             this.grpBxSitPed.TabIndex = 9;
@@ -410,7 +365,7 @@
             this.lbltpfre.AutoSize = true;
             this.lbltpfre.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbltpfre.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lbltpfre.Location = new System.Drawing.Point(455, 63);
+            this.lbltpfre.Location = new System.Drawing.Point(462, 66);
             this.lbltpfre.Name = "lbltpfre";
             this.lbltpfre.Size = new System.Drawing.Size(97, 13);
             this.lbltpfre.TabIndex = 73;
@@ -454,7 +409,7 @@
             this.lbldtemi.AutoSize = true;
             this.lbldtemi.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbldtemi.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lbldtemi.Location = new System.Drawing.Point(662, 20);
+            this.lbldtemi.Location = new System.Drawing.Point(685, 20);
             this.lbldtemi.Name = "lbldtemi";
             this.lbldtemi.Size = new System.Drawing.Size(75, 13);
             this.lbldtemi.TabIndex = 62;
@@ -495,8 +450,8 @@
             // 
             // grpBxItPedVen
             // 
+            this.grpBxItPedVen.Controls.Add(this.txtProduto);
             this.grpBxItPedVen.Controls.Add(this.btnAdditen);
-            this.grpBxItPedVen.Controls.Add(this.cmbProduto);
             this.grpBxItPedVen.Controls.Add(this.lblDesconto);
             this.grpBxItPedVen.Controls.Add(this.txtDesconto);
             this.grpBxItPedVen.Controls.Add(this.pnlItenped);
@@ -521,7 +476,7 @@
             this.grpBxItPedVen.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.grpBxItPedVen.Location = new System.Drawing.Point(11, 129);
             this.grpBxItPedVen.Name = "grpBxItPedVen";
-            this.grpBxItPedVen.Size = new System.Drawing.Size(907, 394);
+            this.grpBxItPedVen.Size = new System.Drawing.Size(929, 340);
             this.grpBxItPedVen.TabIndex = 16;
             this.grpBxItPedVen.TabStop = false;
             this.grpBxItPedVen.Text = "Itens Pedido Venda";
@@ -529,24 +484,12 @@
             // btnAdditen
             // 
             this.btnAdditen.Image = ((System.Drawing.Image)(resources.GetObject("btnAdditen.Image")));
-            this.btnAdditen.Location = new System.Drawing.Point(203, 334);
+            this.btnAdditen.Location = new System.Drawing.Point(875, 294);
             this.btnAdditen.Name = "btnAdditen";
             this.btnAdditen.Size = new System.Drawing.Size(37, 23);
             this.btnAdditen.TabIndex = 107;
             this.btnAdditen.UseVisualStyleBackColor = true;
             this.btnAdditen.Click += new System.EventHandler(this.btnAdditen_Click);
-            // 
-            // cmbProduto
-            // 
-            this.cmbProduto.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.pEDIDOBindingSource, "CODCONDICAOPAGAMENTO", true));
-            this.cmbProduto.DataSource = this.pRODUTOBindingSource;
-            this.cmbProduto.DisplayMember = "DESCRICAO";
-            this.cmbProduto.FormattingEnabled = true;
-            this.cmbProduto.Location = new System.Drawing.Point(10, 296);
-            this.cmbProduto.Name = "cmbProduto";
-            this.cmbProduto.Size = new System.Drawing.Size(184, 21);
-            this.cmbProduto.TabIndex = 106;
-            this.cmbProduto.ValueMember = "CODPRODUTO";
             // 
             // pRODUTOBindingSource
             // 
@@ -558,7 +501,7 @@
             this.lblDesconto.AutoSize = true;
             this.lblDesconto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDesconto.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblDesconto.Location = new System.Drawing.Point(11, 320);
+            this.lblDesconto.Location = new System.Drawing.Point(732, 280);
             this.lblDesconto.Name = "lblDesconto";
             this.lblDesconto.Size = new System.Drawing.Size(61, 13);
             this.lblDesconto.TabIndex = 105;
@@ -566,9 +509,9 @@
             // 
             // txtDesconto
             // 
-            this.txtDesconto.Location = new System.Drawing.Point(10, 336);
+            this.txtDesconto.Location = new System.Drawing.Point(732, 296);
             this.txtDesconto.Name = "txtDesconto";
-            this.txtDesconto.Size = new System.Drawing.Size(100, 20);
+            this.txtDesconto.Size = new System.Drawing.Size(61, 20);
             this.txtDesconto.TabIndex = 104;
             // 
             // pnlItenped
@@ -577,7 +520,7 @@
             this.pnlItenped.Controls.Add(this.dtgrdvItenspven);
             this.pnlItenped.Location = new System.Drawing.Point(10, 19);
             this.pnlItenped.Name = "pnlItenped";
-            this.pnlItenped.Size = new System.Drawing.Size(841, 235);
+            this.pnlItenped.Size = new System.Drawing.Size(902, 235);
             this.pnlItenped.TabIndex = 100;
             // 
             // dtgrdvItenspven
@@ -598,7 +541,7 @@
             this.dtgrdvItenspven.Location = new System.Drawing.Point(0, 0);
             this.dtgrdvItenspven.Name = "dtgrdvItenspven";
             this.dtgrdvItenspven.ReadOnly = true;
-            this.dtgrdvItenspven.Size = new System.Drawing.Size(841, 235);
+            this.dtgrdvItenspven.Size = new System.Drawing.Size(902, 235);
             this.dtgrdvItenspven.TabIndex = 25;
             // 
             // ClmItem
@@ -654,7 +597,7 @@
             // txtipi
             // 
             this.txtipi.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.iTEMPEDIDOBindingSource, "IPI", true));
-            this.txtipi.Location = new System.Drawing.Point(124, 336);
+            this.txtipi.Location = new System.Drawing.Point(799, 296);
             this.txtipi.Name = "txtipi";
             this.txtipi.Size = new System.Drawing.Size(70, 20);
             this.txtipi.TabIndex = 20;
@@ -669,7 +612,7 @@
             this.LblIPI.AutoSize = true;
             this.LblIPI.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblIPI.ForeColor = System.Drawing.Color.CadetBlue;
-            this.LblIPI.Location = new System.Drawing.Point(121, 320);
+            this.LblIPI.Location = new System.Drawing.Point(796, 280);
             this.LblIPI.Name = "LblIPI";
             this.LblIPI.Size = new System.Drawing.Size(44, 13);
             this.LblIPI.TabIndex = 94;
@@ -677,9 +620,9 @@
             // 
             // txtVlrtotal
             // 
-            this.txtVlrtotal.Location = new System.Drawing.Point(748, 297);
+            this.txtVlrtotal.Location = new System.Drawing.Point(652, 297);
             this.txtVlrtotal.Name = "txtVlrtotal";
-            this.txtVlrtotal.Size = new System.Drawing.Size(103, 20);
+            this.txtVlrtotal.Size = new System.Drawing.Size(74, 20);
             this.txtVlrtotal.TabIndex = 19;
             // 
             // LblVlrTotal
@@ -687,7 +630,7 @@
             this.LblVlrTotal.AutoSize = true;
             this.LblVlrTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblVlrTotal.ForeColor = System.Drawing.Color.CadetBlue;
-            this.LblVlrTotal.Location = new System.Drawing.Point(745, 281);
+            this.LblVlrTotal.Location = new System.Drawing.Point(649, 281);
             this.LblVlrTotal.Name = "LblVlrTotal";
             this.LblVlrTotal.Size = new System.Drawing.Size(77, 13);
             this.LblVlrTotal.TabIndex = 90;
@@ -696,7 +639,7 @@
             // txtPrcUnit
             // 
             this.txtPrcUnit.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.iTEMPEDIDOBindingSource, "VALOR", true));
-            this.txtPrcUnit.Location = new System.Drawing.Point(672, 297);
+            this.txtPrcUnit.Location = new System.Drawing.Point(576, 297);
             this.txtPrcUnit.Name = "txtPrcUnit";
             this.txtPrcUnit.Size = new System.Drawing.Size(70, 20);
             this.txtPrcUnit.TabIndex = 18;
@@ -706,7 +649,7 @@
             this.LblPrcUnit.AutoSize = true;
             this.LblPrcUnit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblPrcUnit.ForeColor = System.Drawing.Color.CadetBlue;
-            this.LblPrcUnit.Location = new System.Drawing.Point(669, 281);
+            this.LblPrcUnit.Location = new System.Drawing.Point(573, 281);
             this.LblPrcUnit.Name = "LblPrcUnit";
             this.LblPrcUnit.Size = new System.Drawing.Size(75, 13);
             this.LblPrcUnit.TabIndex = 88;
@@ -715,7 +658,7 @@
             // txtQtdItem
             // 
             this.txtQtdItem.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.iTEMPEDIDOBindingSource, "QUANTIDADE", true));
-            this.txtQtdItem.Location = new System.Drawing.Point(593, 297);
+            this.txtQtdItem.Location = new System.Drawing.Point(497, 297);
             this.txtQtdItem.Name = "txtQtdItem";
             this.txtQtdItem.Size = new System.Drawing.Size(70, 20);
             this.txtQtdItem.TabIndex = 17;
@@ -725,7 +668,7 @@
             this.LblqtdItem.AutoSize = true;
             this.LblqtdItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblqtdItem.ForeColor = System.Drawing.Color.CadetBlue;
-            this.LblqtdItem.Location = new System.Drawing.Point(590, 281);
+            this.LblqtdItem.Location = new System.Drawing.Point(494, 281);
             this.LblqtdItem.Name = "LblqtdItem";
             this.LblqtdItem.Size = new System.Drawing.Size(70, 13);
             this.LblqtdItem.TabIndex = 86;
@@ -734,7 +677,7 @@
             // txtPrcVen
             // 
             this.txtPrcVen.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pRODUTOBindingSource, "PRECOVENDA", true));
-            this.txtPrcVen.Location = new System.Drawing.Point(514, 297);
+            this.txtPrcVen.Location = new System.Drawing.Point(418, 297);
             this.txtPrcVen.Name = "txtPrcVen";
             this.txtPrcVen.Size = new System.Drawing.Size(70, 20);
             this.txtPrcVen.TabIndex = 16;
@@ -744,7 +687,7 @@
             this.LblPrcVen.AutoSize = true;
             this.LblPrcVen.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblPrcVen.ForeColor = System.Drawing.Color.CadetBlue;
-            this.LblPrcVen.Location = new System.Drawing.Point(511, 281);
+            this.LblPrcVen.Location = new System.Drawing.Point(415, 281);
             this.LblPrcVen.Name = "LblPrcVen";
             this.LblPrcVen.Size = new System.Drawing.Size(69, 13);
             this.LblPrcVen.TabIndex = 84;
@@ -753,7 +696,7 @@
             // txtEstAtual
             // 
             this.txtEstAtual.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pRODUTOBindingSource, "ESTOQUEATUAL", true));
-            this.txtEstAtual.Location = new System.Drawing.Point(435, 297);
+            this.txtEstAtual.Location = new System.Drawing.Point(339, 297);
             this.txtEstAtual.Name = "txtEstAtual";
             this.txtEstAtual.Size = new System.Drawing.Size(70, 20);
             this.txtEstAtual.TabIndex = 15;
@@ -763,7 +706,7 @@
             this.LblEstAtu.AutoSize = true;
             this.LblEstAtu.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblEstAtu.ForeColor = System.Drawing.Color.CadetBlue;
-            this.LblEstAtu.Location = new System.Drawing.Point(432, 281);
+            this.LblEstAtu.Location = new System.Drawing.Point(336, 281);
             this.LblEstAtu.Name = "LblEstAtu";
             this.LblEstAtu.Size = new System.Drawing.Size(73, 13);
             this.LblEstAtu.TabIndex = 82;
@@ -772,7 +715,7 @@
             // txtUM
             // 
             this.txtUM.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pRODUTOBindingSource, "CODUNIDADEMEDIDA", true));
-            this.txtUM.Location = new System.Drawing.Point(391, 297);
+            this.txtUM.Location = new System.Drawing.Point(295, 297);
             this.txtUM.Name = "txtUM";
             this.txtUM.Size = new System.Drawing.Size(38, 20);
             this.txtUM.TabIndex = 14;
@@ -782,7 +725,7 @@
             this.LblUm.AutoSize = true;
             this.LblUm.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblUm.ForeColor = System.Drawing.Color.CadetBlue;
-            this.LblUm.Location = new System.Drawing.Point(388, 281);
+            this.LblUm.Location = new System.Drawing.Point(292, 281);
             this.LblUm.Name = "LblUm";
             this.LblUm.Size = new System.Drawing.Size(24, 13);
             this.LblUm.TabIndex = 80;
@@ -791,7 +734,7 @@
             // txtDescprod
             // 
             this.txtDescprod.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pRODUTOBindingSource, "DESCRICAO", true));
-            this.txtDescprod.Location = new System.Drawing.Point(200, 297);
+            this.txtDescprod.Location = new System.Drawing.Point(104, 297);
             this.txtDescprod.Name = "txtDescprod";
             this.txtDescprod.Size = new System.Drawing.Size(185, 20);
             this.txtDescprod.TabIndex = 13;
@@ -801,7 +744,7 @@
             this.LbDescProd.AutoSize = true;
             this.LbDescProd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LbDescProd.ForeColor = System.Drawing.Color.CadetBlue;
-            this.LbDescProd.Location = new System.Drawing.Point(197, 280);
+            this.LbDescProd.Location = new System.Drawing.Point(101, 280);
             this.LbDescProd.Name = "LbDescProd";
             this.LbDescProd.Size = new System.Drawing.Size(95, 13);
             this.LbDescProd.TabIndex = 78;
@@ -879,12 +822,68 @@
             // 
             this.pRODUTOTableAdapter.ClearBeforeFill = true;
             // 
+            // txtCodTransportadora
+            // 
+            this.txtCodTransportadora.getText = "";
+            this.txtCodTransportadora.Image = ((System.Drawing.Image)(resources.GetObject("txtCodTransportadora.Image")));
+            this.txtCodTransportadora.Location = new System.Drawing.Point(465, 81);
+            this.txtCodTransportadora.Name = "txtCodTransportadora";
+            this.txtCodTransportadora.ShowButton = false;
+            this.txtCodTransportadora.Size = new System.Drawing.Size(144, 25);
+            this.txtCodTransportadora.TabIndex = 95;
+            this.txtCodTransportadora.ButtonClick += new System.EventHandler(this.txtCodTransportadora_ButtonClick);
+            // 
+            // txtCondPagto
+            // 
+            this.txtCondPagto.getText = "";
+            this.txtCondPagto.Image = ((System.Drawing.Image)(resources.GetObject("txtCondPagto.Image")));
+            this.txtCondPagto.Location = new System.Drawing.Point(384, 81);
+            this.txtCondPagto.Name = "txtCondPagto";
+            this.txtCondPagto.ShowButton = false;
+            this.txtCondPagto.Size = new System.Drawing.Size(71, 25);
+            this.txtCondPagto.TabIndex = 92;
+            this.txtCondPagto.ButtonClick += new System.EventHandler(this.txtCondPagto_ButtonClick);
+            // 
+            // txtCodVendedor
+            // 
+            this.txtCodVendedor.getText = "";
+            this.txtCodVendedor.Image = ((System.Drawing.Image)(resources.GetObject("txtCodVendedor.Image")));
+            this.txtCodVendedor.Location = new System.Drawing.Point(14, 81);
+            this.txtCodVendedor.Name = "txtCodVendedor";
+            this.txtCodVendedor.ShowButton = false;
+            this.txtCodVendedor.Size = new System.Drawing.Size(132, 25);
+            this.txtCodVendedor.TabIndex = 91;
+            this.txtCodVendedor.Load += new System.EventHandler(this.txtCodVendedor_Load);
+            this.txtCodVendedor.ButtonClick += new System.EventHandler(this.txtCodVendedor_ButtonClick);
+            // 
+            // txtcodCli
+            // 
+            this.txtcodCli.getText = "";
+            this.txtcodCli.Image = ((System.Drawing.Image)(resources.GetObject("txtcodCli.Image")));
+            this.txtcodCli.Location = new System.Drawing.Point(100, 37);
+            this.txtcodCli.Name = "txtcodCli";
+            this.txtcodCli.ShowButton = false;
+            this.txtcodCli.Size = new System.Drawing.Size(127, 25);
+            this.txtcodCli.TabIndex = 90;
+            this.txtcodCli.ButtonClick += new System.EventHandler(this.txtcodCli_ButtonClick);
+            // 
+            // txtProduto
+            // 
+            this.txtProduto.getText = "";
+            this.txtProduto.Image = ((System.Drawing.Image)(resources.GetObject("txtProduto.Image")));
+            this.txtProduto.Location = new System.Drawing.Point(10, 297);
+            this.txtProduto.Name = "txtProduto";
+            this.txtProduto.ShowButton = false;
+            this.txtProduto.Size = new System.Drawing.Size(84, 25);
+            this.txtProduto.TabIndex = 108;
+            this.txtProduto.ButtonClick += new System.EventHandler(this.txtProduto_ButtonClick);
+            // 
             // FrmCadPed
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(936, 574);
+            this.ClientSize = new System.Drawing.Size(974, 525);
             this.Controls.Add(this.tbCntrlPedVend);
             this.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.MaximizeBox = false;
@@ -947,13 +946,9 @@
         private System.Windows.Forms.Label LblPrcUnit;
         private System.Windows.Forms.TextBox txtQtdItem;
         private System.Windows.Forms.Label LblqtdItem;
-        private System.Windows.Forms.TextBox txtPrcVen;
         private System.Windows.Forms.Label LblPrcVen;
-        private System.Windows.Forms.TextBox txtEstAtual;
         private System.Windows.Forms.Label LblEstAtu;
-        private System.Windows.Forms.TextBox txtUM;
         private System.Windows.Forms.Label LblUm;
-        private System.Windows.Forms.TextBox txtDescprod;
         private System.Windows.Forms.Label LbDescProd;
         private System.Windows.Forms.Label lblCodProd;
         private COMERCIALDataSet cOMERCIALDataSet;
@@ -978,7 +973,6 @@
         private Comercial.COMERCIALDataSetTableAdapters.PRODUTOTableAdapter pRODUTOTableAdapter;
         private System.Windows.Forms.Label lblDesconto;
         private System.Windows.Forms.TextBox txtDesconto;
-        private System.Windows.Forms.ComboBox cmbProduto;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmCodProd;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmQtde;
@@ -990,12 +984,17 @@
         private System.Windows.Forms.Button btnAdditen;
         public TextButton txtcodCli;
         public TextButton txtCodVendedor;
-        public System.Windows.Forms.TextBox txtRazaoSocial;
+        public System.Windows.Forms.TextBox txtNomeCliente;
         public System.Windows.Forms.TextBox txtNomeVendedor;
         public TextButton txtCondPagto;
         public System.Windows.Forms.TextBox txtNomeTransportadora;
         private System.Windows.Forms.Label lblNomeTransportadora;
         public TextButton txtCodTransportadora;
+        public TextButton txtProduto;
+        public System.Windows.Forms.TextBox txtPrcVen;
+        public System.Windows.Forms.TextBox txtEstAtual;
+        public System.Windows.Forms.TextBox txtUM;
+        public System.Windows.Forms.TextBox txtDescprod;
 
     }
 }

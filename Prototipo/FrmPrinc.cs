@@ -1374,6 +1374,9 @@ namespace Comercial
             {
                 FrmCadPed Ped = (FrmCadPed)frm;
                 Ped.populargrid();
+                Ped.txtNomeCliente.Text = Ped.ListarNomeCliente(Ped.txtcodCli.getText);
+                Ped.txtNomeTransportadora.Text = Ped.ListarNomeTransportadora(Ped.txtCodTransportadora.getText);
+                Ped.txtNomeVendedor.Text = Ped.ListarNomeVendedor(Ped.txtCodVendedor.getText);
                
             }
         }
@@ -1385,6 +1388,9 @@ namespace Comercial
             {
                 FrmCadPed Ped = (FrmCadPed)frm;
                 Ped.populargrid();
+                Ped.txtNomeCliente.Text = Ped.ListarNomeCliente(Ped.txtcodCli.getText);
+                Ped.txtNomeTransportadora.Text = Ped.ListarNomeTransportadora(Ped.txtCodTransportadora.getText);
+                Ped.txtNomeVendedor.Text = Ped.ListarNomeVendedor(Ped.txtCodVendedor.getText);
 
             }
         }
@@ -1396,7 +1402,9 @@ namespace Comercial
             {
                 FrmCadPed Ped = (FrmCadPed)frm;
                 Ped.populargrid();
-
+                Ped.txtNomeCliente.Text = Ped.ListarNomeCliente(Ped.txtcodCli.getText);
+                Ped.txtNomeTransportadora.Text = Ped.ListarNomeTransportadora(Ped.txtCodTransportadora.getText);
+                Ped.txtNomeVendedor.Text = Ped.ListarNomeVendedor(Ped.txtCodVendedor.getText);
             }
         }
 
@@ -1407,7 +1415,9 @@ namespace Comercial
             {
                 FrmCadPed Ped = (FrmCadPed)frm;
                 Ped.populargrid();
-
+                Ped.txtNomeCliente.Text = Ped.ListarNomeCliente(Ped.txtcodCli.getText);
+                Ped.txtNomeTransportadora.Text = Ped.ListarNomeTransportadora(Ped.txtCodTransportadora.getText);
+                Ped.txtNomeVendedor.Text = Ped.ListarNomeVendedor(Ped.txtCodVendedor.getText);
             }
         }
 

@@ -102,7 +102,7 @@ namespace Comercial
 
                     dtGrdVwVis.Columns.Add("col4", "Entrada");
                     dtGrdVwVis.Columns["col4"].DataPropertyName = "ENTRADA";
-                  
+
 
                     //col3.HeaderText = "Vezes";
                     //col3.DataPropertyName = "QTDEVEZES";
@@ -132,6 +132,37 @@ namespace Comercial
                     col2.HeaderText = "Nome";
                     col2.DataPropertyName = "NOME";
                     dtGrdVwVis.Columns[1].Visible = true;
+                }
+                #endregion
+
+                #region VisGeral Pedido Produto
+                if (controle.Name == "txtProduto")
+                {
+                    rdBtnCod.Visible = true;
+                    rdBtnCod.Text = "Código";
+                    rdBtnCod.Checked = true;
+                    rdBtnNome.Text = "Descrição";
+                    rdBtnNome.Checked = true;
+
+                    col1.HeaderText = "Código";
+                    col1.DataPropertyName = "CODPRODUTO";
+                    dtGrdVwVis.Columns[1].Visible = true;
+
+                    col2.HeaderText = "Descrição";
+                    col2.DataPropertyName = "DESCRICAO";
+                    dtGrdVwVis.Columns[1].Visible = true;
+
+                    dtGrdVwVis.Columns.Add("col3", "UM");
+                    dtGrdVwVis.Columns["col3"].DataPropertyName = "CODUNIDADEMEDIDA";
+
+                    dtGrdVwVis.Columns.Add("col4", "Estoque Atual");
+                    dtGrdVwVis.Columns["col4"].DataPropertyName = "ESTOQUEATUAL";
+
+                    dtGrdVwVis.Columns.Add("col5", "Preço Venda");
+                    dtGrdVwVis.Columns["col5"].DataPropertyName = "PRECOVENDA";
+
+
+                   
                 }
                 #endregion
 
@@ -344,9 +375,51 @@ namespace Comercial
                 }
                 #endregion
 
+                #region Pedido Pesquisa Produto
+
+                if (_controle.Name == "txtProduto")
+                {
+                    if (rdBtnCod.Checked == true)
+                    {
+                        string c = ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString;
+
+                        SqlConnection conn = new SqlConnection(c);
+                        conn.Open();
+
+                        SqlCommand cmd = new SqlCommand("select CODPRODUTO,DESCRICAO,CODUNIDADEMEDIDA,ESTOQUEATUAL,PRECOVENDA from PRODUTO where CODPRODUTO like @CODPRODUTO ", conn);
+
+                        cmd.Parameters.Add(new SqlParameter("@CODPRODUTO", txtPesquisar.Text + "%"));
+
+                        SqlDataReader reader = cmd.ExecuteReader();
+                        DataTable table = new DataTable();
+                        table.Load(reader);
+
+                        dtGrdVwVis.DataSource = table;
+                    }
+
+                    if (rdBtnNome.Checked == true)
+                    {
+                        string c = ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString;
+
+                        SqlConnection conn = new SqlConnection(c);
+                        conn.Open();
+
+                        SqlCommand cmd = new SqlCommand("select CODPRODUTO,DESCRICAO,CODUNIDADEMEDIDA,ESTOQUEATUAL,PRECOVENDA from PRODUTO where DESCRICAO like @DESCRICAO ", conn);
+
+                        cmd.Parameters.Add(new SqlParameter("@DESCRICAO", txtPesquisar.Text + "%"));
+
+                        SqlDataReader reader = cmd.ExecuteReader();
+                        DataTable table = new DataTable();
+                        table.Load(reader);
+
+                        dtGrdVwVis.DataSource = table;
+                    }
+
+                }
+                #endregion
+
             }
             #endregion
-
 
         }
         #endregion
@@ -391,7 +464,7 @@ namespace Comercial
 
 
                     Ped.txtcodCli.getText = celula.Value.ToString();
-                    Ped.txtRazaoSocial.Text = selecionadas[1].Value.ToString();
+                    Ped.txtNomeCliente.Text = selecionadas[1].Value.ToString();
 
                     this.Close();
                     this.Dispose();
@@ -451,6 +524,29 @@ namespace Comercial
 
                     Ped.txtCodTransportadora.getText = celula.Value.ToString();
                     Ped.txtNomeTransportadora.Text = selecionadas[1].Value.ToString();
+
+                    this.Close();
+                    this.Dispose();
+                }
+
+                #endregion
+
+                #region Double Click Pesquisa Produto
+                if (_controle.Name == "txtProduto")
+                {
+                    // vamos obter as células selecionadas no DataGridView
+                    DataGridViewSelectedCellCollection selecionadas = dtGrdVwVis.SelectedCells;
+
+                    DataGridViewCell celula = selecionadas[0];
+                    int linha = celula.RowIndex;
+                    int coluna = celula.ColumnIndex;
+
+
+                    Ped.txtProduto.getText = celula.Value.ToString();
+                    Ped.txtDescprod.Text = selecionadas[1].Value.ToString();
+                    Ped.txtUM.Text = selecionadas[2].Value.ToString();
+                    Ped.txtEstAtual.Text = selecionadas[3].Value.ToString();
+                    Ped.txtPrcVen.Text = selecionadas[4].Value.ToString();
 
                     this.Close();
                     this.Dispose();
