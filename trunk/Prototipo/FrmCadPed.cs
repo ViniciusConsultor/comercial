@@ -628,6 +628,7 @@ namespace Comercial
 
         }
         #endregion
+
         private void FrmCadPed_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'cOMERCIALDataSet.ITEMPEDIDO' table. You can move, or remove it, as needed.
@@ -643,21 +644,6 @@ namespace Comercial
             this.iTEMPEDIDOTableAdapter.Fill(this.cOMERCIALDataSet.ITEMPEDIDO);
 
         }
-
-        private void txtCodVendedor_Load(object sender, EventArgs e)
-        {
-
-        }
-
-
-
-
-
-
-
-
-
-
 
     }
 }

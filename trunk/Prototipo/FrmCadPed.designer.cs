@@ -853,7 +853,7 @@
             this.txtCodVendedor.ShowButton = false;
             this.txtCodVendedor.Size = new System.Drawing.Size(132, 25);
             this.txtCodVendedor.TabIndex = 91;
-            this.txtCodVendedor.Load += new System.EventHandler(this.txtCodVendedor_Load);
+            
             this.txtCodVendedor.ButtonClick += new System.EventHandler(this.txtCodVendedor_ButtonClick);
             // 
             // txtcodCli
