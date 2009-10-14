@@ -124,8 +124,7 @@ namespace Comercial
                    
           // );
 
-            this.SalvarPedidoDeta();
-
+           
             return 0;
 
         }
