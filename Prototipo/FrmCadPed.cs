@@ -19,7 +19,7 @@ namespace Comercial
     {
         private FrmPrinc _princ = null;
         DataTable dttRetorno = new DataTable();
-
+        private COMERCIALDataSet _dataset;
 
 
         public FrmCadPed(FrmPrinc parent)
@@ -108,7 +108,7 @@ namespace Comercial
             objPedido["CODVENDEDOR"] = txtCodVendedor.getText;
             objPedido["CODCONDICAOPAGAMENTO"] = txtCondPagto.getText;
             objPedido["CODTRANSPORTADORA"] = txtCodTransportadora.getText;
-            objPedidoItem["CODPRODUTO"] = txtProduto.getText;
+
 
             return 0;
 
@@ -186,9 +186,9 @@ namespace Comercial
             dttRetorno.Columns.Add("ITEM", typeof(int));
             dttRetorno.Columns.Add("CODPRODUTO", typeof(int));
             dttRetorno.Columns.Add("QUANTIDADE", typeof(int));
-            dttRetorno.Columns.Add("DESCONTO", typeof(double));
             dttRetorno.Columns.Add("VALOR", typeof(double));
             dttRetorno.Columns.Add("IPI", typeof(double));
+            dttRetorno.Columns.Add("DESCONTO", typeof(double));
 
             dttRetorno.AcceptChanges();
 
@@ -253,9 +253,9 @@ namespace Comercial
 
                 dtRow["CODPRODUTO"] = txtProduto.getText;
                 dtRow["QUANTIDADE"] = txtQtdItem.Text;
-                dtRow["DESCONTO"] = txtDesconto.Text;
                 dtRow["VALOR"] = txtPrcUnit.Text;
                 dtRow["IPI"] = txtipi.Text;
+                dtRow["DESCONTO"] = txtDesconto.Text;
 
                 dttRetorno.Rows.Add(dtRow);
 
@@ -335,7 +335,7 @@ namespace Comercial
 
             StringBuilder sqlcommand = new StringBuilder();
 
-            sqlcommand.Append("select top 1 * from PEDIDO order by nrpedido desc");
+            sqlcommand.Append(" select top 1 * from PEDIDO order by nrpedido desc");
 
             DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
 
@@ -482,13 +482,17 @@ namespace Comercial
 
             DataTable dttRetorno = new DataTable();
 
-            int numeropedido = Convert.ToInt32(txtPedido.Text);
+            int numeropedido;
             try
             {
+                if (txtPedido.Text != String.Empty)
+                {
+                    numeropedido = Convert.ToInt32(txtPedido.Text);
 
-                dttRetorno = ListarItem(numeropedido);
+                    dttRetorno = ListarItem(numeropedido);
 
-                dtgrdvItenspven.DataSource = dttRetorno;
+                    dtgrdvItenspven.DataSource = dttRetorno;
+                }
             }
             catch (Exception)
             {
