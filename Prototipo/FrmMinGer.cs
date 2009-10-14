@@ -406,14 +406,7 @@ namespace Comercial
 
         private void treeView1_BeforeCheck(object sender, TreeViewCancelEventArgs e)
         {
-            string node = treeView1.SelectedNode.Name;
-
-            foreach (TreeNode item in treeView1.Nodes)
-            {
-                item.Checked = false;
-            }
-
-        //    node.Checked = true;
+           
         }
 
     }
