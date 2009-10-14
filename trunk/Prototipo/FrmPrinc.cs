@@ -151,10 +151,10 @@ namespace Comercial
                         COMERCIALDataSetTableAdapters.PEDIDOTableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.PEDIDOTableAdapter();
                         table.Update(_dataset);
 
-                        //frmPed.SalvarPedidoDeta();
+                        frmPed.SalvarPedidoDeta();
 
-                        //Util.Interface.ChangeControlStatus(frm, false);
-                        //bindingNavigator1.Refresh();
+                        Util.Interface.ChangeControlStatus(frm, false);
+                        bindingNavigator1.Refresh();
                     }
 
                     Util.Interface.ChangeControlStatus(frm, false);
@@ -199,12 +199,6 @@ namespace Comercial
                         }
 
                     }
-
-
-                    // ====
-
-
-
 
                 }
             }
