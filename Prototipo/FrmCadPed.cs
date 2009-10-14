@@ -19,7 +19,7 @@ namespace Comercial
     {
         private FrmPrinc _princ = null;
         DataTable dttRetorno = new DataTable();
-       
+
 
 
         public FrmCadPed(FrmPrinc parent)
@@ -67,7 +67,7 @@ namespace Comercial
             txtNomeTransportadora.Text = Convert.ToString(ListarNomeTransportadora(txtCodTransportadora.getText));
             txtNomeVendedor.Text = Convert.ToString(ListarNomeVendedor(txtCodVendedor.getText));
 
-         
+
         }
 
         #endregion
@@ -78,7 +78,7 @@ namespace Comercial
             DataRowView objPedido;
             objPedido = (DataRowView)pEDIDOBindingSource.Current;
 
-        
+
             if (chkCancelado.Checked)
             {
 
@@ -103,12 +103,28 @@ namespace Comercial
                 objPedido["TIPO"] = "C";
             }
 
+            objPedido["DATAEMISSAO"] = Convert.ToDateTime(dtpEmissao.Value).ToString("dd/MM/yyyy");
+            objPedido["DATAENTREGA"] = DateTime.Now;
             objPedido["CODCLIENTE"] = txtcodCli.getText;
             objPedido["CODVENDEDOR"] = txtCodVendedor.getText;
             objPedido["CODCONDICAOPAGAMENTO"] = txtCondPagto.getText;
             //objPedido["NRPEDIDO"] = txtPedido.Text;
             objPedido["CODTRANSPORTADORA"] = txtCodTransportadora.getText;
 
+            //COMERCIALDataSetTableAdapters.PEDIDOTableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.PEDIDOTableAdapter();
+            //table.Insert(Convert.ToString(objPedido["TIPO"].ToString()),
+            //       Convert.ToDateTime(objPedido["DATAEMISSAO"].ToString()),
+            //       Convert.ToDateTime(objPedido["DATAENTREGA"].ToString()),
+            //       Convert.ToInt32(objPedido["CODCONDICAOPAGAMENTO"].ToString()),
+            //       Convert.ToString(objPedido["SITUACAO"].ToString()),
+            //       Convert.ToString(objPedido["CODVENDEDOR"].ToString()),
+            //       Convert.ToString(objPedido["CODCLIENTE"].ToString()),
+            //       Convert.ToString(objPedido["CODTRANSPORTADORA"].ToString())
+
+                   
+           );
+
+            this.SalvarPedidoDeta();
 
             return 0;
 
@@ -281,10 +297,10 @@ namespace Comercial
 
         public int SalvarPedidoDeta()
         {
-           
+
             DataRowView objPedidoItem;
             objPedidoItem = (DataRowView)iTEMPEDIDOBindingSource.Current;
-           
+
             int CodPed = GetNrPedido();
 
             try
