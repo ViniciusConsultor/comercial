@@ -151,10 +151,10 @@ namespace Comercial
                         COMERCIALDataSetTableAdapters.PEDIDOTableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.PEDIDOTableAdapter();
                         table.Update(_dataset);
 
-                        frmPed.SalvarPedidoDeta();
+                        //frmPed.SalvarPedidoDeta();
 
-                        Util.Interface.ChangeControlStatus(frm, false);
-                        bindingNavigator1.Refresh();
+                        //Util.Interface.ChangeControlStatus(frm, false);
+                        //bindingNavigator1.Refresh();
                     }
 
                     Util.Interface.ChangeControlStatus(frm, false);
@@ -1293,7 +1293,7 @@ namespace Comercial
 
             #endregion
 
-          
+
         }
 
         private void toolStripButton4_Click(object sender, EventArgs e)
@@ -1379,7 +1379,7 @@ namespace Comercial
                 Ped.txtNomeCliente.Text = Ped.ListarNomeCliente(Ped.txtcodCli.getText);
                 Ped.txtNomeTransportadora.Text = Ped.ListarNomeTransportadora(Ped.txtCodTransportadora.getText);
                 Ped.txtNomeVendedor.Text = Ped.ListarNomeVendedor(Ped.txtCodVendedor.getText);
-               
+
             }
         }
 
