@@ -63,18 +63,10 @@
             this.lblnumPed = new System.Windows.Forms.Label();
             this.grpBxItPedVen = new System.Windows.Forms.GroupBox();
             this.btnAdditen = new System.Windows.Forms.Button();
-            this.pRODUTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lblDesconto = new System.Windows.Forms.Label();
             this.txtDesconto = new System.Windows.Forms.TextBox();
             this.pnlItenped = new System.Windows.Forms.Panel();
             this.dtgrdvItenspven = new System.Windows.Forms.DataGridView();
-            this.ClmItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClmCodProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClmQtde = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClmPrcUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClmIPI = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClmPrcTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtipi = new System.Windows.Forms.TextBox();
             this.iTEMPEDIDOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.LblIPI = new System.Windows.Forms.Label();
@@ -85,6 +77,7 @@
             this.txtQtdItem = new System.Windows.Forms.TextBox();
             this.LblqtdItem = new System.Windows.Forms.Label();
             this.txtPrcVen = new System.Windows.Forms.TextBox();
+            this.pRODUTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.LblPrcVen = new System.Windows.Forms.Label();
             this.txtEstAtual = new System.Windows.Forms.TextBox();
             this.LblEstAtu = new System.Windows.Forms.Label();
@@ -108,6 +101,13 @@
             this.txtCodVendedor = new Comercial.TextButton();
             this.txtcodCli = new Comercial.TextButton();
             this.txtProduto = new Comercial.TextButton();
+            this.ClmItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClmCodProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClmQtde = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClmPrcUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClmIPI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClmDesconto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tbCntrlPedVend.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.grpBxPedVenda.SuspendLayout();
@@ -118,10 +118,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.cLIENTEBindingSource)).BeginInit();
             this.grpBxSitPed.SuspendLayout();
             this.grpBxItPedVen.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pRODUTOBindingSource)).BeginInit();
             this.pnlItenped.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgrdvItenspven)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iTEMPEDIDOBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pRODUTOBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tRANSPORTADORABindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cONDICAOPAGAMENTOBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -491,11 +491,6 @@
             this.btnAdditen.UseVisualStyleBackColor = true;
             this.btnAdditen.Click += new System.EventHandler(this.btnAdditen_Click);
             // 
-            // pRODUTOBindingSource
-            // 
-            this.pRODUTOBindingSource.DataMember = "PRODUTO";
-            this.pRODUTOBindingSource.DataSource = this.cOMERCIALDataSet;
-            // 
             // lblDesconto
             // 
             this.lblDesconto.AutoSize = true;
@@ -534,8 +529,8 @@
             this.ClmQtde,
             this.ClmPrcUnit,
             this.ClmIPI,
-            this.Column1,
-            this.ClmPrcTotal});
+            this.ClmDesconto,
+            this.Column1});
             this.dtgrdvItenspven.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtgrdvItenspven.GridColor = System.Drawing.Color.WhiteSmoke;
             this.dtgrdvItenspven.Location = new System.Drawing.Point(0, 0);
@@ -543,56 +538,6 @@
             this.dtgrdvItenspven.ReadOnly = true;
             this.dtgrdvItenspven.Size = new System.Drawing.Size(902, 235);
             this.dtgrdvItenspven.TabIndex = 25;
-            // 
-            // ClmItem
-            // 
-            this.ClmItem.DataPropertyName = "ITEM";
-            this.ClmItem.HeaderText = "Item";
-            this.ClmItem.Name = "ClmItem";
-            this.ClmItem.ReadOnly = true;
-            this.ClmItem.Width = 35;
-            // 
-            // ClmCodProd
-            // 
-            this.ClmCodProd.DataPropertyName = "CODPRODUTO";
-            this.ClmCodProd.HeaderText = "Código Produto";
-            this.ClmCodProd.Name = "ClmCodProd";
-            this.ClmCodProd.ReadOnly = true;
-            this.ClmCodProd.Width = 125;
-            // 
-            // ClmQtde
-            // 
-            this.ClmQtde.DataPropertyName = "QUANTIDADE";
-            this.ClmQtde.HeaderText = "Quantidade";
-            this.ClmQtde.Name = "ClmQtde";
-            this.ClmQtde.ReadOnly = true;
-            // 
-            // ClmPrcUnit
-            // 
-            this.ClmPrcUnit.DataPropertyName = "VALOR";
-            this.ClmPrcUnit.HeaderText = "Preço Unitário";
-            this.ClmPrcUnit.Name = "ClmPrcUnit";
-            this.ClmPrcUnit.ReadOnly = true;
-            // 
-            // ClmIPI
-            // 
-            this.ClmIPI.DataPropertyName = "IPI";
-            this.ClmIPI.HeaderText = "% IPI";
-            this.ClmIPI.Name = "ClmIPI";
-            this.ClmIPI.ReadOnly = true;
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "DESCONTO";
-            this.Column1.HeaderText = "Desconto";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // ClmPrcTotal
-            // 
-            this.ClmPrcTotal.HeaderText = "Preço Total";
-            this.ClmPrcTotal.Name = "ClmPrcTotal";
-            this.ClmPrcTotal.ReadOnly = true;
             // 
             // txtipi
             // 
@@ -681,6 +626,11 @@
             this.txtPrcVen.Name = "txtPrcVen";
             this.txtPrcVen.Size = new System.Drawing.Size(70, 20);
             this.txtPrcVen.TabIndex = 16;
+            // 
+            // pRODUTOBindingSource
+            // 
+            this.pRODUTOBindingSource.DataMember = "PRODUTO";
+            this.pRODUTOBindingSource.DataSource = this.cOMERCIALDataSet;
             // 
             // LblPrcVen
             // 
@@ -853,7 +803,6 @@
             this.txtCodVendedor.ShowButton = false;
             this.txtCodVendedor.Size = new System.Drawing.Size(132, 25);
             this.txtCodVendedor.TabIndex = 91;
-            
             this.txtCodVendedor.ButtonClick += new System.EventHandler(this.txtCodVendedor_ButtonClick);
             // 
             // txtcodCli
@@ -877,6 +826,56 @@
             this.txtProduto.Size = new System.Drawing.Size(84, 25);
             this.txtProduto.TabIndex = 108;
             this.txtProduto.ButtonClick += new System.EventHandler(this.txtProduto_ButtonClick);
+            // 
+            // ClmItem
+            // 
+            this.ClmItem.DataPropertyName = "ITEM";
+            this.ClmItem.HeaderText = "Item";
+            this.ClmItem.Name = "ClmItem";
+            this.ClmItem.ReadOnly = true;
+            this.ClmItem.Width = 35;
+            // 
+            // ClmCodProd
+            // 
+            this.ClmCodProd.DataPropertyName = "CODPRODUTO";
+            this.ClmCodProd.HeaderText = "Código Produto";
+            this.ClmCodProd.Name = "ClmCodProd";
+            this.ClmCodProd.ReadOnly = true;
+            this.ClmCodProd.Width = 125;
+            // 
+            // ClmQtde
+            // 
+            this.ClmQtde.DataPropertyName = "QUANTIDADE";
+            this.ClmQtde.HeaderText = "Quantidade";
+            this.ClmQtde.Name = "ClmQtde";
+            this.ClmQtde.ReadOnly = true;
+            // 
+            // ClmPrcUnit
+            // 
+            this.ClmPrcUnit.DataPropertyName = "VALOR";
+            this.ClmPrcUnit.HeaderText = "Preço Unitário";
+            this.ClmPrcUnit.Name = "ClmPrcUnit";
+            this.ClmPrcUnit.ReadOnly = true;
+            // 
+            // ClmIPI
+            // 
+            this.ClmIPI.DataPropertyName = "IPI";
+            this.ClmIPI.HeaderText = "% IPI";
+            this.ClmIPI.Name = "ClmIPI";
+            this.ClmIPI.ReadOnly = true;
+            // 
+            // ClmDesconto
+            // 
+            this.ClmDesconto.DataPropertyName = "DESCONTO";
+            this.ClmDesconto.HeaderText = "Desconto";
+            this.ClmDesconto.Name = "ClmDesconto";
+            this.ClmDesconto.ReadOnly = true;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
             // 
             // FrmCadPed
             // 
@@ -905,10 +904,10 @@
             this.grpBxSitPed.ResumeLayout(false);
             this.grpBxItPedVen.ResumeLayout(false);
             this.grpBxItPedVen.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pRODUTOBindingSource)).EndInit();
             this.pnlItenped.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgrdvItenspven)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.iTEMPEDIDOBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pRODUTOBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tRANSPORTADORABindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cONDICAOPAGAMENTOBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -973,13 +972,6 @@
         private Comercial.COMERCIALDataSetTableAdapters.PRODUTOTableAdapter pRODUTOTableAdapter;
         private System.Windows.Forms.Label lblDesconto;
         private System.Windows.Forms.TextBox txtDesconto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ClmItem;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ClmCodProd;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ClmQtde;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ClmPrcUnit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ClmIPI;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ClmPrcTotal;
         public System.Windows.Forms.DataGridView dtgrdvItenspven;
         private System.Windows.Forms.Button btnAdditen;
         public TextButton txtcodCli;
@@ -995,6 +987,13 @@
         public System.Windows.Forms.TextBox txtEstAtual;
         public System.Windows.Forms.TextBox txtUM;
         public System.Windows.Forms.TextBox txtDescprod;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClmItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClmCodProd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClmQtde;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClmPrcUnit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClmIPI;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClmDesconto;
+        private System.Windows.Forms.DataGridViewButtonColumn Column1;
 
     }
 }
