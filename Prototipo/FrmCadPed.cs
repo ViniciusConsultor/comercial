@@ -56,10 +56,11 @@ namespace Comercial
 
             // TODO: This line of code loads data into the 'cOMERCIALDataSet.TRANSPORTADORA' table. You can move, or remove it, as needed.
             this.tRANSPORTADORATableAdapter.Fill(this.cOMERCIALDataSet.TRANSPORTADORA);
-            // TODO: This line of code loads data into the 'cOMERCIALDataSet.TRANSPORTADORA' table. You can move, or remove it, as needed.
-            this.tRANSPORTADORATableAdapter.Fill(this.cOMERCIALDataSet.TRANSPORTADORA);
+
             // TODO: This line of code loads data into the 'cOMERCIALDataSet.PEDIDO' table. You can move, or remove it, as needed.
             this.pEDIDOTableAdapter.Fill(this.cOMERCIALDataSet.PEDIDO);
+
+            this.iTEMPEDIDOTableAdapter.Fill(this.cOMERCIALDataSet.ITEMPEDIDO);
 
             populargrid();
 
@@ -111,20 +112,21 @@ namespace Comercial
             //objPedido["NRPEDIDO"] = txtPedido.Text;
             objPedido["CODTRANSPORTADORA"] = txtCodTransportadora.getText;
 
-            //COMERCIALDataSetTableAdapters.PEDIDOTableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.PEDIDOTableAdapter();
-            //table.Insert(Convert.ToString(objPedido["TIPO"].ToString()),
-            //       Convert.ToDateTime(objPedido["DATAEMISSAO"].ToString()),
-            //       Convert.ToDateTime(objPedido["DATAENTREGA"].ToString()),
-            //       Convert.ToInt32(objPedido["CODCONDICAOPAGAMENTO"].ToString()),
-            //       Convert.ToString(objPedido["SITUACAO"].ToString()),
-            //       Convert.ToString(objPedido["CODVENDEDOR"].ToString()),
-            //       Convert.ToString(objPedido["CODCLIENTE"].ToString()),
-            //       Convert.ToString(objPedido["CODTRANSPORTADORA"].ToString())
+            COMERCIALDataSetTableAdapters.PEDIDOTableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.PEDIDOTableAdapter();
+            table.Insert(Convert.ToString(objPedido["TIPO"].ToString()),
+                   Convert.ToDateTime(objPedido["DATAEMISSAO"].ToString()),
+                   Convert.ToDateTime(objPedido["DATAENTREGA"].ToString()),
+                   Convert.ToInt32(objPedido["CODCONDICAOPAGAMENTO"].ToString()),
+                   Convert.ToString(objPedido["SITUACAO"].ToString()),
+                   Convert.ToString(objPedido["CODVENDEDOR"].ToString()),
+                   Convert.ToString(objPedido["CODCLIENTE"].ToString()),
+                   Convert.ToString(objPedido["CODTRANSPORTADORA"].ToString()));
 
-                   
-          // );
 
-           
+            // );
+
+            this.SalvarPedidoDeta();
+
             return 0;
 
         }
@@ -297,8 +299,8 @@ namespace Comercial
         public int SalvarPedidoDeta()
         {
 
-            DataRowView objPedidoItem;
-            objPedidoItem = (DataRowView)iTEMPEDIDOBindingSource.Current;
+            //  DataRowView objPedidoItem;
+            // objPedidoItem = (DataRowView)iTEMPEDIDOBindingSource.Current;
 
             int CodPed = GetNrPedido();
 
@@ -307,22 +309,31 @@ namespace Comercial
 
                 for (int index = 0; index < dtgrdvItenspven.RowCount; index++)
                 {
-                    objPedidoItem["ITEM"] = Convert.ToInt32(dtgrdvItenspven.Rows[index].Cells[1].Value);
-                    objPedidoItem["NRPEDIDO"] = Convert.ToInt32(CodPed);
-                    objPedidoItem["CODPRODUTO"] = Convert.ToInt32(dtgrdvItenspven.Rows[index].Cells[2].Value);
-                    objPedidoItem["QUANTIDADE"] = Convert.ToInt32(dtgrdvItenspven.Rows[index].Cells[3].Value);
-                    objPedidoItem["VALOR"] = Convert.ToDouble(dtgrdvItenspven.Rows[index].Cells[4].Value);
-                    objPedidoItem["IPI"] = Convert.ToDouble(dtgrdvItenspven.Rows[index].Cells[5].Value);
-                    objPedidoItem["DESCONTO"] = Convert.ToDouble(dtgrdvItenspven.Rows[index].Cells[6].Value);
-
                     COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter();
-                    table.Insert(Convert.ToInt32(objPedidoItem["NRPEDIDO"].ToString()),
-                        Convert.ToInt32(objPedidoItem["CODPRODUTO"].ToString()),
-                        Convert.ToInt32(objPedidoItem["QUANTIDADE"].ToString()),
-                        Convert.ToInt32(objPedidoItem["DESCONTO"].ToString()),
-                        Convert.ToInt32(objPedidoItem["VALOR"].ToString()),
-                        Convert.ToInt32(objPedidoItem["IPI"].ToString()),
-                        Convert.ToInt32(objPedidoItem["ITEM"].ToString()));
+                    table.Insert(Convert.ToInt32(CodPed),
+                        Convert.ToInt32(dtgrdvItenspven.Rows[index].Cells[2].Value),
+                        Convert.ToInt32(dtgrdvItenspven.Rows[index].Cells[3].Value),
+                        Convert.ToDouble(dtgrdvItenspven.Rows[index].Cells[6].Value),
+                        Convert.ToDouble(dtgrdvItenspven.Rows[index].Cells[4].Value),
+                        Convert.ToDouble(dtgrdvItenspven.Rows[index].Cells[5].Value),
+                        Convert.ToInt32(dtgrdvItenspven.Rows[index].Cells[1].Value));
+
+                    //objPedidoItem["ITEM"] = Convert.ToInt32(dtgrdvItenspven.Rows[index].Cells[1].Value);
+                    //objPedidoItem["NRPEDIDO"] = Convert.ToInt32(CodPed);
+                    //objPedidoItem["CODPRODUTO"] = Convert.ToInt32(dtgrdvItenspven.Rows[index].Cells[2].Value);
+                    //objPedidoItem["QUANTIDADE"] = Convert.ToInt32(dtgrdvItenspven.Rows[index].Cells[3].Value);
+                    //objPedidoItem["VALOR"] = Convert.ToDouble(dtgrdvItenspven.Rows[index].Cells[4].Value);
+                    //objPedidoItem["IPI"] = Convert.ToDouble(dtgrdvItenspven.Rows[index].Cells[5].Value);
+                    //objPedidoItem["DESCONTO"] = Convert.ToDouble(dtgrdvItenspven.Rows[index].Cells[6].Value);
+
+                    //COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter();
+                    //table.Insert(Convert.ToInt32(objPedidoItem["NRPEDIDO"].ToString()),
+                    //    Convert.ToInt32(objPedidoItem["CODPRODUTO"].ToString()),
+                    //    Convert.ToInt32(objPedidoItem["QUANTIDADE"].ToString()),
+                    //    Convert.ToInt32(objPedidoItem["DESCONTO"].ToString()),
+                    //    Convert.ToInt32(objPedidoItem["VALOR"].ToString()),
+                    //    Convert.ToInt32(objPedidoItem["IPI"].ToString()),
+                    //    Convert.ToInt32(objPedidoItem["ITEM"].ToString()));
 
                     continue;
 
