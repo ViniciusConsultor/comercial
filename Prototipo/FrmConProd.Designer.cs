@@ -30,31 +30,34 @@
         {
             this.tbCntrlConProd = new System.Windows.Forms.TabControl();
             this.tbPgConProd = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.ClmnCodGrupo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClmnDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtGrdVwConProd = new System.Windows.Forms.DataGridView();
             this.grpBxFiltro = new System.Windows.Forms.GroupBox();
             this.grpBxProd = new System.Windows.Forms.GroupBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtDescricao = new System.Windows.Forms.TextBox();
+            this.txtProdDesc = new System.Windows.Forms.TextBox();
             this.LblDesc = new System.Windows.Forms.Label();
-            this.txtCodProd = new Comercial.TextButton();
-            this.LblCodProd = new System.Windows.Forms.Label();
             this.grpBxFab = new System.Windows.Forms.GroupBox();
-            this.txtFabricante = new Comercial.TextButton();
-            this.dtTmPckrDtFim = new System.Windows.Forms.DateTimePicker();
-            this.lblAte = new System.Windows.Forms.Label();
-            this.dtTmPckrDtIni = new System.Windows.Forms.DateTimePicker();
-            this.lblDe = new System.Windows.Forms.Label();
-            this.lblDtCadastro = new System.Windows.Forms.Label();
             this.lblGrupo = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cmBxOpEstoque = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cmBxOpDesconto = new System.Windows.Forms.ComboBox();
+            this.txtDesconto = new System.Windows.Forms.TextBox();
+            this.ClmnDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DATACADASTRO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PRECOCUSTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PRECOVENDA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DESCONTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ESTOQUEATUAL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ESTOQUEMIN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IPI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtEstoque = new Comercial.TextButton();
+            this.txtGrupo = new Comercial.TextButton();
             this.tbCntrlConProd.SuspendLayout();
             this.tbPgConProd.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGrdVwConProd)).BeginInit();
             this.grpBxFiltro.SuspendLayout();
             this.grpBxProd.SuspendLayout();
             this.grpBxFab.SuspendLayout();
@@ -72,7 +75,7 @@
             // 
             // tbPgConProd
             // 
-            this.tbPgConProd.Controls.Add(this.dataGridView1);
+            this.tbPgConProd.Controls.Add(this.dtGrdVwConProd);
             this.tbPgConProd.Controls.Add(this.grpBxFiltro);
             this.tbPgConProd.Location = new System.Drawing.Point(4, 22);
             this.tbPgConProd.Name = "tbPgConProd";
@@ -82,28 +85,23 @@
             this.tbPgConProd.Text = "Consulta de Desconto permitido por Grupo de Produto - Grupos e produtos";
             this.tbPgConProd.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // dtGrdVwConProd
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ClmnCodGrupo,
-            this.ClmnDesc});
-            this.dataGridView1.Location = new System.Drawing.Point(6, 181);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(717, 252);
-            this.dataGridView1.TabIndex = 2;
-            // 
-            // ClmnCodGrupo
-            // 
-            this.ClmnCodGrupo.HeaderText = "Cód. Grupo";
-            this.ClmnCodGrupo.Name = "ClmnCodGrupo";
-            this.ClmnCodGrupo.Width = 150;
-            // 
-            // ClmnDesc
-            // 
-            this.ClmnDesc.HeaderText = "Descrição";
-            this.ClmnDesc.Name = "ClmnDesc";
-            this.ClmnDesc.Width = 400;
+            this.dtGrdVwConProd.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtGrdVwConProd.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ClmnDesc,
+            this.Produto,
+            this.DATACADASTRO,
+            this.PRECOCUSTO,
+            this.PRECOVENDA,
+            this.DESCONTO,
+            this.ESTOQUEATUAL,
+            this.ESTOQUEMIN,
+            this.IPI});
+            this.dtGrdVwConProd.Location = new System.Drawing.Point(6, 181);
+            this.dtGrdVwConProd.Name = "dtGrdVwConProd";
+            this.dtGrdVwConProd.Size = new System.Drawing.Size(717, 252);
+            this.dtGrdVwConProd.TabIndex = 2;
             // 
             // grpBxFiltro
             // 
@@ -120,15 +118,13 @@
             // 
             // grpBxProd
             // 
-            this.grpBxProd.Controls.Add(this.dateTimePicker1);
+            this.grpBxProd.Controls.Add(this.cmBxOpEstoque);
+            this.grpBxProd.Controls.Add(this.txtEstoque);
             this.grpBxProd.Controls.Add(this.label1);
             this.grpBxProd.Controls.Add(this.dateTimePicker2);
-            this.grpBxProd.Controls.Add(this.label2);
             this.grpBxProd.Controls.Add(this.label3);
-            this.grpBxProd.Controls.Add(this.txtDescricao);
+            this.grpBxProd.Controls.Add(this.txtProdDesc);
             this.grpBxProd.Controls.Add(this.LblDesc);
-            this.grpBxProd.Controls.Add(this.txtCodProd);
-            this.grpBxProd.Controls.Add(this.LblCodProd);
             this.grpBxProd.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.grpBxProd.Location = new System.Drawing.Point(337, 19);
             this.grpBxProd.Name = "grpBxProd";
@@ -137,105 +133,50 @@
             this.grpBxProd.TabStop = false;
             this.grpBxProd.Text = "Dados Produtos:";
             // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(184, 91);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(92, 20);
-            this.dateTimePicker1.TabIndex = 19;
-            this.dateTimePicker1.Value = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.CadetBlue;
-            this.label1.Location = new System.Drawing.Point(155, 95);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(23, 13);
-            this.label1.TabIndex = 18;
-            this.label1.Text = "Até";
-            // 
             // dateTimePicker2
             // 
             this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker2.Location = new System.Drawing.Point(57, 91);
+            this.dateTimePicker2.Location = new System.Drawing.Point(20, 91);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(92, 20);
             this.dateTimePicker2.TabIndex = 17;
             this.dateTimePicker2.Value = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.CadetBlue;
-            this.label2.Location = new System.Drawing.Point(30, 95);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(21, 13);
-            this.label2.TabIndex = 16;
-            this.label2.Text = "De";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.CadetBlue;
-            this.label3.Location = new System.Drawing.Point(21, 72);
+            this.label3.Location = new System.Drawing.Point(17, 75);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(92, 13);
             this.label3.TabIndex = 15;
             this.label3.Text = "Data de cadastro:";
             // 
-            // txtDescricao
+            // txtProdDesc
             // 
-            this.txtDescricao.Location = new System.Drawing.Point(113, 38);
-            this.txtDescricao.Name = "txtDescricao";
-            this.txtDescricao.Size = new System.Drawing.Size(183, 20);
-            this.txtDescricao.TabIndex = 14;
+            this.txtProdDesc.Location = new System.Drawing.Point(20, 38);
+            this.txtProdDesc.Name = "txtProdDesc";
+            this.txtProdDesc.Size = new System.Drawing.Size(273, 20);
+            this.txtProdDesc.TabIndex = 14;
             // 
             // LblDesc
             // 
             this.LblDesc.AutoSize = true;
             this.LblDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblDesc.ForeColor = System.Drawing.Color.CadetBlue;
-            this.LblDesc.Location = new System.Drawing.Point(110, 21);
+            this.LblDesc.Location = new System.Drawing.Point(17, 21);
             this.LblDesc.Name = "LblDesc";
             this.LblDesc.Size = new System.Drawing.Size(58, 13);
             this.LblDesc.TabIndex = 13;
             this.LblDesc.Text = "Descrição:";
             // 
-            // txtCodProd
-            // 
-            this.txtCodProd.getText = "";
-            this.txtCodProd.Image = global::Comercial.Properties.Resources.search1;
-            this.txtCodProd.Location = new System.Drawing.Point(20, 38);
-            this.txtCodProd.Name = "txtCodProd";
-            this.txtCodProd.ShowButton = false;
-            this.txtCodProd.Size = new System.Drawing.Size(83, 25);
-            this.txtCodProd.TabIndex = 12;
-            this.txtCodProd.ButtonClick += new System.EventHandler(this.txtCodProd_ButtonClick);
-            // 
-            // LblCodProd
-            // 
-            this.LblCodProd.AutoSize = true;
-            this.LblCodProd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblCodProd.ForeColor = System.Drawing.Color.CadetBlue;
-            this.LblCodProd.Location = new System.Drawing.Point(15, 21);
-            this.LblCodProd.Name = "LblCodProd";
-            this.LblCodProd.Size = new System.Drawing.Size(171, 13);
-            this.LblCodProd.TabIndex = 11;
-            this.LblCodProd.Text = "CodCondicaoPagamento. Produto:";
-            // 
             // grpBxFab
             // 
-            this.grpBxFab.Controls.Add(this.txtFabricante);
-            this.grpBxFab.Controls.Add(this.dtTmPckrDtFim);
-            this.grpBxFab.Controls.Add(this.lblAte);
-            this.grpBxFab.Controls.Add(this.dtTmPckrDtIni);
-            this.grpBxFab.Controls.Add(this.lblDe);
-            this.grpBxFab.Controls.Add(this.lblDtCadastro);
+            this.grpBxFab.Controls.Add(this.txtDesconto);
+            this.grpBxFab.Controls.Add(this.cmBxOpDesconto);
+            this.grpBxFab.Controls.Add(this.label4);
+            this.grpBxFab.Controls.Add(this.txtGrupo);
             this.grpBxFab.Controls.Add(this.lblGrupo);
             this.grpBxFab.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.grpBxFab.Location = new System.Drawing.Point(24, 19);
@@ -244,68 +185,6 @@
             this.grpBxFab.TabIndex = 0;
             this.grpBxFab.TabStop = false;
             this.grpBxFab.Text = "Dados grupos:";
-            // 
-            // txtFabricante
-            // 
-            this.txtFabricante.getText = "";
-            this.txtFabricante.Image = global::Comercial.Properties.Resources.search1;
-            this.txtFabricante.Location = new System.Drawing.Point(20, 38);
-            this.txtFabricante.Name = "txtFabricante";
-            this.txtFabricante.ShowButton = false;
-            this.txtFabricante.Size = new System.Drawing.Size(252, 25);
-            this.txtFabricante.TabIndex = 10;
-            this.txtFabricante.ButtonClick += new System.EventHandler(this.txtFabricante_ButtonClick);
-            // 
-            // dtTmPckrDtFim
-            // 
-            this.dtTmPckrDtFim.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtTmPckrDtFim.Location = new System.Drawing.Point(180, 91);
-            this.dtTmPckrDtFim.Name = "dtTmPckrDtFim";
-            this.dtTmPckrDtFim.Size = new System.Drawing.Size(92, 20);
-            this.dtTmPckrDtFim.TabIndex = 9;
-            this.dtTmPckrDtFim.Value = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
-            // 
-            // lblAte
-            // 
-            this.lblAte.AutoSize = true;
-            this.lblAte.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAte.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblAte.Location = new System.Drawing.Point(151, 95);
-            this.lblAte.Name = "lblAte";
-            this.lblAte.Size = new System.Drawing.Size(23, 13);
-            this.lblAte.TabIndex = 8;
-            this.lblAte.Text = "Até";
-            // 
-            // dtTmPckrDtIni
-            // 
-            this.dtTmPckrDtIni.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtTmPckrDtIni.Location = new System.Drawing.Point(53, 91);
-            this.dtTmPckrDtIni.Name = "dtTmPckrDtIni";
-            this.dtTmPckrDtIni.Size = new System.Drawing.Size(92, 20);
-            this.dtTmPckrDtIni.TabIndex = 7;
-            this.dtTmPckrDtIni.Value = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
-            // 
-            // lblDe
-            // 
-            this.lblDe.AutoSize = true;
-            this.lblDe.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDe.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblDe.Location = new System.Drawing.Point(26, 95);
-            this.lblDe.Name = "lblDe";
-            this.lblDe.Size = new System.Drawing.Size(21, 13);
-            this.lblDe.TabIndex = 6;
-            this.lblDe.Text = "De";
-            // 
-            // lblDtCadastro
-            // 
-            this.lblDtCadastro.AutoSize = true;
-            this.lblDtCadastro.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDtCadastro.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblDtCadastro.Location = new System.Drawing.Point(17, 72);
-            this.lblDtCadastro.Name = "lblDtCadastro";
-            this.lblDtCadastro.Size = new System.Drawing.Size(92, 13);
-            this.lblDtCadastro.TabIndex = 5;
-            this.lblDtCadastro.Text = "Data de cadastro:";
             // 
             // lblGrupo
             // 
@@ -317,6 +196,143 @@
             this.lblGrupo.Size = new System.Drawing.Size(39, 13);
             this.lblGrupo.TabIndex = 4;
             this.lblGrupo.Text = "Grupo:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.CadetBlue;
+            this.label1.Location = new System.Drawing.Point(119, 75);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(49, 13);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "Estoque:";
+            // 
+            // cmBxOpEstoque
+            // 
+            this.cmBxOpEstoque.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmBxOpEstoque.FormattingEnabled = true;
+            this.cmBxOpEstoque.Items.AddRange(new object[] {
+            "",
+            ">",
+            "<",
+            "=",
+            ">=",
+            "<="});
+            this.cmBxOpEstoque.Location = new System.Drawing.Point(122, 90);
+            this.cmBxOpEstoque.Name = "cmBxOpEstoque";
+            this.cmBxOpEstoque.Size = new System.Drawing.Size(51, 21);
+            this.cmBxOpEstoque.TabIndex = 20;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.CadetBlue;
+            this.label4.Location = new System.Drawing.Point(17, 75);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(67, 13);
+            this.label4.TabIndex = 24;
+            this.label4.Text = "% Desconto:";
+            // 
+            // cmBxOpDesconto
+            // 
+            this.cmBxOpDesconto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmBxOpDesconto.FormattingEnabled = true;
+            this.cmBxOpDesconto.Items.AddRange(new object[] {
+            "",
+            ">",
+            "<",
+            "=",
+            ">=",
+            "<="});
+            this.cmBxOpDesconto.Location = new System.Drawing.Point(22, 91);
+            this.cmBxOpDesconto.Name = "cmBxOpDesconto";
+            this.cmBxOpDesconto.Size = new System.Drawing.Size(51, 21);
+            this.cmBxOpDesconto.TabIndex = 22;
+            // 
+            // txtDesconto
+            // 
+            this.txtDesconto.Location = new System.Drawing.Point(79, 92);
+            this.txtDesconto.Name = "txtDesconto";
+            this.txtDesconto.Size = new System.Drawing.Size(60, 20);
+            this.txtDesconto.TabIndex = 21;
+            // 
+            // ClmnDesc
+            // 
+            this.ClmnDesc.DataPropertyName = "GRUPO";
+            this.ClmnDesc.HeaderText = "Grupo";
+            this.ClmnDesc.Name = "ClmnDesc";
+            this.ClmnDesc.Width = 400;
+            // 
+            // Produto
+            // 
+            this.Produto.DataPropertyName = "PRODUTO";
+            this.Produto.HeaderText = "Produto";
+            this.Produto.Name = "Produto";
+            // 
+            // DATACADASTRO
+            // 
+            this.DATACADASTRO.DataPropertyName = "DATACADASTRO";
+            this.DATACADASTRO.HeaderText = "Dt Cadastro";
+            this.DATACADASTRO.Name = "DATACADASTRO";
+            // 
+            // PRECOCUSTO
+            // 
+            this.PRECOCUSTO.DataPropertyName = "PRECOCUSTO";
+            this.PRECOCUSTO.HeaderText = "Preço Custo";
+            this.PRECOCUSTO.Name = "PRECOCUSTO";
+            // 
+            // PRECOVENDA
+            // 
+            this.PRECOVENDA.DataPropertyName = "PRECOVENDA";
+            this.PRECOVENDA.HeaderText = "Preço Venda";
+            this.PRECOVENDA.Name = "PRECOVENDA";
+            // 
+            // DESCONTO
+            // 
+            this.DESCONTO.DataPropertyName = "DESCONTO";
+            this.DESCONTO.HeaderText = "% Desconto";
+            this.DESCONTO.Name = "DESCONTO";
+            // 
+            // ESTOQUEATUAL
+            // 
+            this.ESTOQUEATUAL.DataPropertyName = "ESTOQUEATUAL";
+            this.ESTOQUEATUAL.HeaderText = "Estoque Atual";
+            this.ESTOQUEATUAL.Name = "ESTOQUEATUAL";
+            // 
+            // ESTOQUEMIN
+            // 
+            this.ESTOQUEMIN.DataPropertyName = "ESTOQUEMIN";
+            this.ESTOQUEMIN.HeaderText = "Estoque Mínimo";
+            this.ESTOQUEMIN.Name = "ESTOQUEMIN";
+            // 
+            // IPI
+            // 
+            this.IPI.DataPropertyName = "IPI";
+            this.IPI.HeaderText = "IPI";
+            this.IPI.Name = "IPI";
+            // 
+            // txtEstoque
+            // 
+            this.txtEstoque.getText = "";
+            this.txtEstoque.Image = global::Comercial.Properties.Resources.search1;
+            this.txtEstoque.Location = new System.Drawing.Point(179, 90);
+            this.txtEstoque.Name = "txtEstoque";
+            this.txtEstoque.ShowButton = false;
+            this.txtEstoque.Size = new System.Drawing.Size(64, 25);
+            this.txtEstoque.TabIndex = 19;
+            // 
+            // txtGrupo
+            // 
+            this.txtGrupo.getText = "";
+            this.txtGrupo.Image = global::Comercial.Properties.Resources.search1;
+            this.txtGrupo.Location = new System.Drawing.Point(20, 38);
+            this.txtGrupo.Name = "txtGrupo";
+            this.txtGrupo.ShowButton = false;
+            this.txtGrupo.Size = new System.Drawing.Size(252, 25);
+            this.txtGrupo.TabIndex = 10;
+            this.txtGrupo.ButtonClick += new System.EventHandler(this.txtFabricante_ButtonClick);
             // 
             // FrmConProd
             // 
@@ -334,7 +350,7 @@
             this.Leave += new System.EventHandler(this.FrmConProd_Leave);
             this.tbCntrlConProd.ResumeLayout(false);
             this.tbPgConProd.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGrdVwConProd)).EndInit();
             this.grpBxFiltro.ResumeLayout(false);
             this.grpBxProd.ResumeLayout(false);
             this.grpBxProd.PerformLayout();
@@ -351,24 +367,27 @@
         private System.Windows.Forms.GroupBox grpBxFiltro;
         private System.Windows.Forms.GroupBox grpBxFab;
         private System.Windows.Forms.GroupBox grpBxProd;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Label lblDtCadastro;
-        private System.Windows.Forms.DateTimePicker dtTmPckrDtFim;
-        private System.Windows.Forms.Label lblAte;
-        private System.Windows.Forms.DateTimePicker dtTmPckrDtIni;
-        private System.Windows.Forms.Label lblDe;
-        private TextButton txtFabricante;
+        private System.Windows.Forms.DataGridView dtGrdVwConProd;
+        private TextButton txtGrupo;
         private System.Windows.Forms.Label LblDesc;
-        private TextButton txtCodProd;
-        private System.Windows.Forms.Label LblCodProd;
-        private System.Windows.Forms.TextBox txtDescricao;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtProdDesc;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblGrupo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ClmnCodGrupo;
+        private TextButton txtEstoque;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cmBxOpEstoque;
+        private System.Windows.Forms.ComboBox cmBxOpDesconto;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtDesconto;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmnDesc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Produto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DATACADASTRO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PRECOCUSTO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PRECOVENDA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DESCONTO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ESTOQUEATUAL;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ESTOQUEMIN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IPI;
     }
 }
