@@ -431,12 +431,7 @@ namespace Comercial
                 tlStrpBtnPesquisar.Visible = false;
                 bindingNavigator1.Visible = false;
 
-                // Util.Interface.ResetControls(filho);
-                //Util.Interface.ChangeControlStatus(filho, false);
-
-
-
-                filho.WindowState = FormWindowState.Maximized;
+               filho.WindowState = FormWindowState.Maximized;
             }
         }
 
@@ -461,11 +456,7 @@ namespace Comercial
             if (x == 0 && y == 0)
             {
                 frmSobre filho = new frmSobre(this);
-                filho.Show();
-
-                //Util.Interface.ResetControls(filho);
-                //Util.Interface.ChangeControlStatus(filho, false);
-
+                filho.Show();                               
                 filho.WindowState = FormWindowState.Normal;
             }
         }
@@ -489,6 +480,12 @@ namespace Comercial
             }
 
             #endregion
+
+            if (frm is FrmConProd)
+            {
+                FrmConProd prod = (FrmConProd)frm;
+                prod.pesquisar();
+            }
         }
 
         private void gerarNotaFiscalToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -676,7 +673,7 @@ namespace Comercial
             //CreateForm(this, typeof(FrmDevNotaFiscal));
         }
 
-        private void CreateForm(Form parent, object children)
+        private void CreateForm(Form parent, Type children)
         {
             int x = 0, y = 0;
 
@@ -690,28 +687,29 @@ namespace Comercial
                     x++;
                 }
                 y++;
-
             }
 
             // Para criar o formulario 
             if (x == 0 && y == 0)
             {
-                Type[] conTypes = new Type[1];
-                conTypes[0] = typeof(Form);
+                // We are anticipating a constructor that take 1 parameter
+                var conTypes = new Type[1];
+                conTypes[0] = typeof(FrmPrinc);
 
                 // Get the constructor that adheres to our parameters.
-                ConstructorInfo constructor = children.GetType().GetConstructor(conTypes);
+                ConstructorInfo constructor = children.GetConstructor(conTypes);
 
-                object[] constructorParams = new object[1];
+                // Define the parameters to pass into our constructor when we call it.
+                var constructorParams = new object[1];
                 constructorParams[0] = parent;
 
                 // Invoke the constructor dynamically, getting an instance of the class.
-                Form frm = (Form)constructor.Invoke(constructorParams);
+                var frm = (Form)constructor.Invoke(constructorParams);
 
                 frm.Show();
 
-                Util.Interface.ResetControls(frm);
-                Util.Interface.ChangeControlStatus(frm, false);
+                //Interface.ResetControls(frm);
+                //Interface.ChangeControlStatus(frm, false);
 
                 frm.WindowState = FormWindowState.Maximized;
             }
@@ -848,62 +846,12 @@ namespace Comercial
 
         private void produtosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int x = 0, y = 0;
-
-            // Localiza o formulario
-            foreach (Form form in this.MdiChildren)
-            {
-                if (form is FrmCadProd)
-                {
-                    form.WindowState = FormWindowState.Maximized;
-                    form.Activate();
-                    x++;
-                }
-                y++;
-
-            }
-
-            // Para criar o formulario 
-            if (x == 0 && y == 0)
-            {
-                FrmCadProd filho = new FrmCadProd(this);
-                filho.Show();
-
-                Util.Interface.ResetControls(filho);
-                Util.Interface.ChangeControlStatus(filho, false);
-
-                filho.WindowState = FormWindowState.Maximized;
-            }
+            CreateForm(this, typeof(FrmCadProd));           
         }
 
         private void pedidosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int x = 0, y = 0;
-
-            // Localiza o formulario
-            foreach (Form form in this.MdiChildren)
-            {
-                if (form is FrmCadPed)
-                {
-                    form.WindowState = FormWindowState.Maximized;
-                    form.Activate();
-                    x++;
-                }
-                y++;
-
-            }
-
-            // Para criar o formulario 
-            if (x == 0 && y == 0)
-            {
-                FrmCadPed filho = new FrmCadPed(this);
-                filho.Show();
-
-                Util.Interface.ResetControls(filho);
-                Util.Interface.ChangeControlStatus(filho, false);
-
-                filho.WindowState = FormWindowState.Maximized;
-            }
+            CreateForm(this, typeof(FrmCadPed));                
         }
 
         private void produtoToolStripMenuItem_Click(object sender, EventArgs e)
