@@ -31,6 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmConCli));
             this.tbCntrlConCli = new System.Windows.Forms.TabControl();
             this.tbPgConCli = new System.Windows.Forms.TabPage();
             this.grpBxFiltro = new System.Windows.Forms.GroupBox();
@@ -48,7 +49,6 @@
             this.lblTipoPed = new System.Windows.Forms.Label();
             this.grpBxCli = new System.Windows.Forms.GroupBox();
             this.cmbAreaAtuCli = new System.Windows.Forms.ComboBox();
-            this.txtCnpjCli = new System.Windows.Forms.MaskedTextBox();
             this.lblCNPJ = new System.Windows.Forms.Label();
             this.lblArea = new System.Windows.Forms.Label();
             this.txtRazaoSocialCli = new System.Windows.Forms.TextBox();
@@ -61,6 +61,7 @@
             this.ClmnCodPed = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClmnDtPed = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClmnValPed = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtCnpjCli = new Comercial.TextButton();
             this.tbCntrlConCli.SuspendLayout();
             this.tbPgConCli.SuspendLayout();
             this.grpBxFiltro.SuspendLayout();
@@ -254,8 +255,8 @@
             // 
             // grpBxCli
             // 
-            this.grpBxCli.Controls.Add(this.cmbAreaAtuCli);
             this.grpBxCli.Controls.Add(this.txtCnpjCli);
+            this.grpBxCli.Controls.Add(this.cmbAreaAtuCli);
             this.grpBxCli.Controls.Add(this.lblCNPJ);
             this.grpBxCli.Controls.Add(this.lblArea);
             this.grpBxCli.Controls.Add(this.txtRazaoSocialCli);
@@ -305,16 +306,6 @@
             this.cmbAreaAtuCli.Name = "cmbAreaAtuCli";
             this.cmbAreaAtuCli.Size = new System.Drawing.Size(286, 21);
             this.cmbAreaAtuCli.TabIndex = 29;
-            // 
-            // txtCnpjCli
-            // 
-            this.txtCnpjCli.Location = new System.Drawing.Point(20, 35);
-            this.txtCnpjCli.Mask = "99,999,999/9999-99";
-            this.txtCnpjCli.Name = "txtCnpjCli";
-            this.txtCnpjCli.PromptChar = ' ';
-            this.txtCnpjCli.Size = new System.Drawing.Size(144, 20);
-            this.txtCnpjCli.TabIndex = 28;
-            this.txtCnpjCli.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // lblCNPJ
             // 
@@ -398,7 +389,7 @@
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.CadetBlue;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
@@ -455,6 +446,17 @@
             this.ClmnValPed.ReadOnly = true;
             this.ClmnValPed.Width = 160;
             // 
+            // txtCnpjCli
+            // 
+            this.txtCnpjCli.getText = "";
+            this.txtCnpjCli.Image = ((System.Drawing.Image)(resources.GetObject("txtCnpjCli.Image")));
+            this.txtCnpjCli.Location = new System.Drawing.Point(17, 32);
+            this.txtCnpjCli.Name = "txtCnpjCli";
+            this.txtCnpjCli.ShowButton = false;
+            this.txtCnpjCli.Size = new System.Drawing.Size(148, 25);
+            this.txtCnpjCli.TabIndex = 91;
+            this.txtCnpjCli.ButtonClick += new System.EventHandler(this.txtCnpjCli_ButtonClick);
+            // 
             // frmConCli
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -506,7 +508,6 @@
         private System.Windows.Forms.TextBox txtRazaoSocialCli;
         private System.Windows.Forms.Label lblRazao;
         private System.Windows.Forms.Label lblArea;
-        public System.Windows.Forms.MaskedTextBox txtCnpjCli;
         private System.Windows.Forms.Label lblCNPJ;
         private System.Windows.Forms.ComboBox cmbAreaAtuCli;
         private System.Windows.Forms.CheckBox checkBox1;
@@ -515,5 +516,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmnCodPed;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmnDtPed;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmnValPed;
+        public TextButton txtCnpjCli;
     }
 }

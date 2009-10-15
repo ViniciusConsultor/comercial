@@ -73,6 +73,7 @@
             this.lblComplemento = new System.Windows.Forms.Label();
             this.lblEnderecoCliente = new System.Windows.Forms.Label();
             this.txtNomeFantCli = new System.Windows.Forms.TextBox();
+            this.txtCnpjCli = new System.Windows.Forms.MaskedTextBox();
             this.lblNomeFantasiaCliente = new System.Windows.Forms.Label();
             this.lblCnpjCliente = new System.Windows.Forms.Label();
             this.uSUARIOBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -82,14 +83,13 @@
             this.rEGIAOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.REGIAOTableAdapter();
             this.cnsltTlStrpConsultaCli = new System.Windows.Forms.ToolStrip();
             this.cnpjCliToolStripLabel = new System.Windows.Forms.ToolStripButton();
+            this.cnpjToolStripTextBox = new System.Windows.Forms.ToolStripTextBox();
             this.nomeFantasiaCliToolStripLabel = new System.Windows.Forms.ToolStripLabel();
             this.nomeFantasiaToolStripTextBox = new System.Windows.Forms.ToolStripTextBox();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.consultaToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.txtCnpjCli = new System.Windows.Forms.MaskedTextBox();
-            this.cnpjToolStripTextBox = new System.Windows.Forms.ToolStripTextBox();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tbCntrlCadCli.SuspendLayout();
             this.tbpCadCli.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cLIENTEBindingSource)).BeginInit();
@@ -208,10 +208,10 @@
             this.chckBxCred.Location = new System.Drawing.Point(6, 352);
             this.chckBxCred.Name = "chckBxCred";
             this.chckBxCred.Size = new System.Drawing.Size(108, 17);
-            this.chckBxCred.TabIndex = 15;
+            this.chckBxCred.TabIndex = 16;
             this.chckBxCred.Text = "Crédito Aprovado";
             this.chckBxCred.UseVisualStyleBackColor = true;
-            this.chckBxCred.CheckedChanged += new System.EventHandler(this.chckBxCred_CheckedChanged);
+            this.chckBxCred.CheckStateChanged += new System.EventHandler(this.chckBxCred_CheckedChanged);
             // 
             // txtLimCredCli
             // 
@@ -224,7 +224,7 @@
             this.txtLimCredCli.PromptChar = ' ';
             this.txtLimCredCli.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txtLimCredCli.Size = new System.Drawing.Size(125, 20);
-            this.txtLimCredCli.TabIndex = 14;
+            this.txtLimCredCli.TabIndex = 17;
             this.txtLimCredCli.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtLimCredCli.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
@@ -272,7 +272,7 @@
             this.cmbAreaAtuCli.Location = new System.Drawing.Point(9, 300);
             this.cmbAreaAtuCli.Name = "cmbAreaAtuCli";
             this.cmbAreaAtuCli.Size = new System.Drawing.Size(285, 21);
-            this.cmbAreaAtuCli.TabIndex = 13;
+            this.cmbAreaAtuCli.TabIndex = 15;
             // 
             // lblAreaAtuCli
             // 
@@ -307,7 +307,7 @@
             this.txtSenhaCli.Name = "txtSenhaCli";
             this.txtSenhaCli.PasswordChar = '*';
             this.txtSenhaCli.Size = new System.Drawing.Size(155, 20);
-            this.txtSenhaCli.TabIndex = 17;
+            this.txtSenhaCli.TabIndex = 19;
             // 
             // txtUsuarioCli
             // 
@@ -315,7 +315,7 @@
             this.txtUsuarioCli.Location = new System.Drawing.Point(17, 42);
             this.txtUsuarioCli.Name = "txtUsuarioCli";
             this.txtUsuarioCli.Size = new System.Drawing.Size(155, 20);
-            this.txtUsuarioCli.TabIndex = 16;
+            this.txtUsuarioCli.TabIndex = 18;
             // 
             // lblSenha
             // 
@@ -399,7 +399,7 @@
             this.txtBairroCli.Location = new System.Drawing.Point(286, 81);
             this.txtBairroCli.Name = "txtBairroCli";
             this.txtBairroCli.Size = new System.Drawing.Size(205, 20);
-            this.txtBairroCli.TabIndex = 7;
+            this.txtBairroCli.TabIndex = 9;
             // 
             // lblBairroCli
             // 
@@ -419,7 +419,7 @@
             this.txtNumCli.Location = new System.Drawing.Point(436, 42);
             this.txtNumCli.Name = "txtNumCli";
             this.txtNumCli.Size = new System.Drawing.Size(55, 20);
-            this.txtNumCli.TabIndex = 6;
+            this.txtNumCli.TabIndex = 7;
             // 
             // lblNum
             // 
@@ -461,7 +461,7 @@
             this.txtFaxCli.Name = "txtFaxCli";
             this.txtFaxCli.PromptChar = ' ';
             this.txtFaxCli.Size = new System.Drawing.Size(78, 20);
-            this.txtFaxCli.TabIndex = 11;
+            this.txtFaxCli.TabIndex = 13;
             this.txtFaxCli.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtFaxCli.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
@@ -475,7 +475,7 @@
             this.txtTelCli.PromptChar = ' ';
             this.txtTelCli.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txtTelCli.Size = new System.Drawing.Size(89, 20);
-            this.txtTelCli.TabIndex = 10;
+            this.txtTelCli.TabIndex = 12;
             this.txtTelCli.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtTelCli.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
@@ -497,7 +497,7 @@
             this.txtEmailCli.Location = new System.Drawing.Point(191, 167);
             this.txtEmailCli.Name = "txtEmailCli";
             this.txtEmailCli.Size = new System.Drawing.Size(300, 20);
-            this.txtEmailCli.TabIndex = 12;
+            this.txtEmailCli.TabIndex = 14;
             // 
             // lblEmailCliente
             // 
@@ -561,7 +561,7 @@
             this.cmbUfCli.Location = new System.Drawing.Point(402, 120);
             this.cmbUfCli.Name = "cmbUfCli";
             this.cmbUfCli.Size = new System.Drawing.Size(89, 21);
-            this.cmbUfCli.TabIndex = 9;
+            this.cmbUfCli.TabIndex = 11;
             this.cmbUfCli.Text = "Selecione...";
             // 
             // lblUfCliente
@@ -582,7 +582,7 @@
             this.txtMunicipioCli.Location = new System.Drawing.Point(9, 121);
             this.txtMunicipioCli.Name = "txtMunicipioCli";
             this.txtMunicipioCli.Size = new System.Drawing.Size(387, 20);
-            this.txtMunicipioCli.TabIndex = 8;
+            this.txtMunicipioCli.TabIndex = 10;
             // 
             // lblMunicipioCliente
             // 
@@ -602,7 +602,7 @@
             this.txtComplementoCli.Location = new System.Drawing.Point(6, 81);
             this.txtComplementoCli.Name = "txtComplementoCli";
             this.txtComplementoCli.Size = new System.Drawing.Size(274, 20);
-            this.txtComplementoCli.TabIndex = 7;
+            this.txtComplementoCli.TabIndex = 8;
             // 
             // txtEndCli
             // 
@@ -642,6 +642,17 @@
             this.txtNomeFantCli.Name = "txtNomeFantCli";
             this.txtNomeFantCli.Size = new System.Drawing.Size(217, 20);
             this.txtNomeFantCli.TabIndex = 3;
+            // 
+            // txtCnpjCli
+            // 
+            this.txtCnpjCli.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cLIENTEBindingSource, "CNPJ", true));
+            this.txtCnpjCli.Location = new System.Drawing.Point(9, 19);
+            this.txtCnpjCli.Mask = "99,999,999/9999-99";
+            this.txtCnpjCli.Name = "txtCnpjCli";
+            this.txtCnpjCli.PromptChar = ' ';
+            this.txtCnpjCli.Size = new System.Drawing.Size(124, 20);
+            this.txtCnpjCli.TabIndex = 0;
+            this.txtCnpjCli.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // lblNomeFantasiaCliente
             // 
@@ -730,6 +741,11 @@
             this.cnpjCliToolStripLabel.Size = new System.Drawing.Size(39, 22);
             this.cnpjCliToolStripLabel.Text = "CNPJ:";
             // 
+            // cnpjToolStripTextBox
+            // 
+            this.cnpjToolStripTextBox.Name = "cnpjToolStripTextBox";
+            this.cnpjToolStripTextBox.Size = new System.Drawing.Size(100, 25);
+            // 
             // nomeFantasiaCliToolStripLabel
             // 
             this.nomeFantasiaCliToolStripLabel.Name = "nomeFantasiaCliToolStripLabel";
@@ -740,6 +756,11 @@
             // 
             this.nomeFantasiaToolStripTextBox.Name = "nomeFantasiaToolStripTextBox";
             this.nomeFantasiaToolStripTextBox.Size = new System.Drawing.Size(100, 25);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // consultaToolStripButton
             // 
@@ -772,27 +793,6 @@
             this.toolStripButton2.Text = "Cancelar";
             this.toolStripButton2.ToolTipText = "Cancelar";
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
-            // 
-            // txtCnpjCli
-            // 
-            this.txtCnpjCli.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cLIENTEBindingSource, "CNPJ", true));
-            this.txtCnpjCli.Location = new System.Drawing.Point(9, 19);
-            this.txtCnpjCli.Mask = "99,999,999/9999-99";
-            this.txtCnpjCli.Name = "txtCnpjCli";
-            this.txtCnpjCli.PromptChar = ' ';
-            this.txtCnpjCli.Size = new System.Drawing.Size(124, 20);
-            this.txtCnpjCli.TabIndex = 0;
-            this.txtCnpjCli.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
-            // 
-            // cnpjToolStripTextBox
-            // 
-            this.cnpjToolStripTextBox.Name = "cnpjToolStripTextBox";
-            this.cnpjToolStripTextBox.Size = new System.Drawing.Size(100, 25);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // FrmCadCli
             // 

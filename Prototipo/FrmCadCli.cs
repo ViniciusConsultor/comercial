@@ -8,6 +8,8 @@ using System.Text;
 using System.Windows.Forms;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Runtime.InteropServices;
+using System.IO;
 
 
 namespace Comercial
@@ -16,6 +18,8 @@ namespace Comercial
     public partial class FrmCadCli : Form
     {
        private FrmPrinc _princ = null;
+        
+
 
         public FrmCadCli(FrmPrinc parent)
         {
@@ -60,6 +64,8 @@ namespace Comercial
             // TODO: This line of code loads data into the 'cOMERCIALDataSet.CLIENTE' table. You can move, or remove it, as needed.
             this.cLIENTETableAdapter.Fill(this.cOMERCIALDataSet.CLIENTE);
         }
+        [DllImport("dllInscE32.dll")] 
+        public static extern int ConsisteInscricaoEstadual(string ie, string uf);
 
         public int salvar()
         {
@@ -75,6 +81,17 @@ namespace Comercial
                 MessageBox.Show("CNPJ Inválido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return 1;
             }
+            // Valida IE
+            string ie = txtIeCli.Text;
+            string uf = cmbUfCli.SelectedItem.ToString();
+            int returnIe = ConsisteInscricaoEstadual(ie, uf);        
+            if (returnIe==1)
+            {
+                MessageBox.Show("I.E. Inválida.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                   return 1;
+            }
+
+
             // Valida email
 
             if(!string.IsNullOrEmpty(txtEmailCli.Text))
@@ -184,12 +201,15 @@ namespace Comercial
 
         private void chckBxCred_CheckedChanged(object sender, EventArgs e)
         {
-            /*if (chckBxCred.Checked)
+            if(txtBairroCli.Enabled==true)
             {
+                if (chckBxCred.Checked)
+                {
                 
-                txtLimCredCli.Enabled = true;
+                    txtLimCredCli.Enabled = true;
+                }
+                else txtLimCredCli.Enabled = false;
             }
-            else txtLimCredCli.Enabled = false;*/
         }
 
         

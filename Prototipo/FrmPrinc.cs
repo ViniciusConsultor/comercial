@@ -273,6 +273,12 @@ namespace Comercial
             btnSalvar.Enabled = true;
             btnCancelEdicao.Enabled = true;
 
+            if (frm is FrmCadCli)
+            {
+                FrmCadCli cli = (FrmCadCli)frm;
+                cli.txtLimCredCli.Enabled = false;
+            }
+
             if (frm is FrmCadPed)
             {
                 FrmCadPed Ped = (FrmCadPed)frm;

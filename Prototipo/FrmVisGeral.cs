@@ -169,6 +169,26 @@ namespace Comercial
             }
             #endregion
 
+            #region Colunas GridViewGeral Cliente
+            if (_parent is frmConCli)
+            {
+                rdBtnCod.Visible = true;
+                rdBtnCod.Text = "CNPJ";
+                rdBtnNome.Visible = true;
+                rdBtnNome.Text = "N. Fant.";
+                rdBtnCod.Checked = true;
+
+                col1.HeaderText = "CNPJ";
+                col1.DataPropertyName = "CNPJ";
+                dtGrdVwVis.Columns[1].Visible = true;
+
+                col2.HeaderText = "Nome Fantasia";
+                col2.DataPropertyName = "NomeFantasia";
+                dtGrdVwVis.Columns[1].Visible = true;
+            }
+
+            #endregion
+
 
         }
 
@@ -419,6 +439,11 @@ namespace Comercial
                 #endregion
 
             }
+            #endregion
+
+            #region FormPesquisa Claudio
+            //falta terminar
+
             #endregion
 
         }
