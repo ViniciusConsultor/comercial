@@ -296,6 +296,13 @@ namespace Comercial
 
         }
 
+        private void txtCnpjCli_ButtonClick(object sender, EventArgs e)
+        {
+            FrmVisGeral x = new FrmVisGeral(this, (Control)sender);
+            x.Text = "Pesquisa Cadastro de Cliente";
+            x.ShowDialog();
+        }
+
 
       }
     }
