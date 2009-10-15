@@ -178,6 +178,8 @@ namespace Comercial
                 rdBtnNome.Text = "N. Fant.";
                 rdBtnCod.Checked = true;
 
+               
+
                 col1.HeaderText = "CNPJ";
                 col1.DataPropertyName = "CNPJ";
                 dtGrdVwVis.Columns[1].Visible = true;
@@ -185,6 +187,7 @@ namespace Comercial
                 col2.HeaderText = "Nome Fantasia";
                 col2.DataPropertyName = "NomeFantasia";
                 dtGrdVwVis.Columns[1].Visible = true;
+
             }
 
             #endregion
@@ -442,7 +445,33 @@ namespace Comercial
             #endregion
 
             #region FormPesquisa Claudio
-            //falta terminar
+            if (_parent is frmConCli)
+            {
+                string c = ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString;
+                SqlConnection conn = new SqlConnection(c);
+                conn.Open();
+                String consulta="select cnpj,nomefantasia from cliente where ";
+                if (rdBtnCod.Checked == true)
+                {
+                    consulta += "cnpj=@cnpj";
+                }
+                else consulta += "nomefantasia like @nomefantasia";
+
+                SqlCommand cmd = new SqlCommand(consulta, conn);
+
+                if (rdBtnCod.Checked == true)
+                {
+                    cmd.Parameters.Add(new SqlParameter("@cnpj", txtPesquisar.Text));
+                }
+                else cmd.Parameters.Add(new SqlParameter("@nomefantasia","%"+txtPesquisar.Text+"%"));
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                DataTable table = new DataTable();
+                table.Load(reader);
+
+                dtGrdVwVis.DataSource = table;
+               
+            }
 
             #endregion
 
@@ -580,6 +609,25 @@ namespace Comercial
                 #endregion
 
             }
+            #endregion
+
+            #region Double Click Pesquisa Cliente
+            if (_parent is frmConCli)
+            {
+                frmConCli cli = (frmConCli)_parent;
+
+                DataGridViewSelectedCellCollection selecionadas = dtGrdVwVis.SelectedCells;
+                DataGridViewCell celula = selecionadas[0];
+                int linha = celula.RowIndex;
+                int coluna = celula.ColumnIndex;
+
+                cli.txtCnpjCli.getText = celula.Value.ToString();
+                cli.txtNomeFantasiaCli.Text = selecionadas[1].Value.ToString();
+
+                this.Close();
+                this.Dispose();
+            }
+
             #endregion
         }
         #endregion

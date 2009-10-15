@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -38,7 +39,6 @@
             this.grpBxPedido = new System.Windows.Forms.GroupBox();
             this.dttmDataPedido = new System.Windows.Forms.DateTimePicker();
             this.lblDataPed = new System.Windows.Forms.Label();
-            this.txtNumPed = new Comercial.TextButton();
             this.lblNumPed = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -61,6 +61,10 @@
             this.ClmnCodPed = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClmnDtPed = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClmnValPed = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtNumPed = new System.Windows.Forms.TextBox();
+            this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
+            this.cLIENTEBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cLIENTETableAdapter = new Comercial.COMERCIALDataSetTableAdapters.CLIENTETableAdapter();
             this.txtCnpjCli = new Comercial.TextButton();
             this.tbCntrlConCli.SuspendLayout();
             this.tbPgConCli.SuspendLayout();
@@ -69,6 +73,8 @@
             this.groupBox2.SuspendLayout();
             this.grpBxCli.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgrdConCli)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cLIENTEBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tbCntrlConCli
@@ -110,9 +116,9 @@
             // 
             // grpBxPedido
             // 
+            this.grpBxPedido.Controls.Add(this.txtNumPed);
             this.grpBxPedido.Controls.Add(this.dttmDataPedido);
             this.grpBxPedido.Controls.Add(this.lblDataPed);
-            this.grpBxPedido.Controls.Add(this.txtNumPed);
             this.grpBxPedido.Controls.Add(this.lblNumPed);
             this.grpBxPedido.Controls.Add(this.groupBox2);
             this.grpBxPedido.Controls.Add(this.cmBxTipoPed);
@@ -145,17 +151,6 @@
             this.lblDataPed.Size = new System.Drawing.Size(83, 13);
             this.lblDataPed.TabIndex = 20;
             this.lblDataPed.Text = "Data do pedido:";
-            // 
-            // txtNumPed
-            // 
-            this.txtNumPed.getText = "";
-            this.txtNumPed.Image = global::Comercial.Properties.Resources.search1;
-            this.txtNumPed.Location = new System.Drawing.Point(12, 36);
-            this.txtNumPed.Name = "txtNumPed";
-            this.txtNumPed.ShowButton = false;
-            this.txtNumPed.Size = new System.Drawing.Size(74, 25);
-            this.txtNumPed.TabIndex = 19;
-            this.txtNumPed.ButtonClick += new System.EventHandler(this.txtCodPed_ButtonClick);
             // 
             // lblNumPed
             // 
@@ -446,6 +441,27 @@
             this.ClmnValPed.ReadOnly = true;
             this.ClmnValPed.Width = 160;
             // 
+            // txtNumPed
+            // 
+            this.txtNumPed.Location = new System.Drawing.Point(12, 36);
+            this.txtNumPed.Name = "txtNumPed";
+            this.txtNumPed.Size = new System.Drawing.Size(80, 20);
+            this.txtNumPed.TabIndex = 22;
+            // 
+            // cOMERCIALDataSet
+            // 
+            this.cOMERCIALDataSet.DataSetName = "COMERCIALDataSet";
+            this.cOMERCIALDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // cLIENTEBindingSource
+            // 
+            this.cLIENTEBindingSource.DataMember = "CLIENTE";
+            this.cLIENTEBindingSource.DataSource = this.cOMERCIALDataSet;
+            // 
+            // cLIENTETableAdapter
+            // 
+            this.cLIENTETableAdapter.ClearBeforeFill = true;
+            // 
             // txtCnpjCli
             // 
             this.txtCnpjCli.getText = "";
@@ -481,6 +497,8 @@
             this.grpBxCli.ResumeLayout(false);
             this.grpBxCli.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgrdConCli)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cLIENTEBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -494,7 +512,6 @@
         private System.Windows.Forms.GroupBox grpBxCli;
         private System.Windows.Forms.GroupBox grpBxPedido;
         private System.Windows.Forms.Label lblDataPed;
-        private TextButton txtNumPed;
         private System.Windows.Forms.Label lblNumPed;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.RadioButton rdbtnCancelado;
@@ -504,12 +521,9 @@
         private System.Windows.Forms.Label lblTipoPed;
         private System.Windows.Forms.DateTimePicker dttmDataPedido;
         private System.Windows.Forms.Label lblNome;
-        private System.Windows.Forms.TextBox txtNomeFantasiaCli;
-        private System.Windows.Forms.TextBox txtRazaoSocialCli;
         private System.Windows.Forms.Label lblRazao;
         private System.Windows.Forms.Label lblArea;
         private System.Windows.Forms.Label lblCNPJ;
-        private System.Windows.Forms.ComboBox cmbAreaAtuCli;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.DataGridViewTextBoxColumn CNPJCli;
         private System.Windows.Forms.DataGridViewTextBoxColumn NomeFantasiaCli;
@@ -517,5 +531,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmnDtPed;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmnValPed;
         public TextButton txtCnpjCli;
+        public System.Windows.Forms.TextBox txtNomeFantasiaCli;
+        public System.Windows.Forms.TextBox txtRazaoSocialCli;
+        public System.Windows.Forms.ComboBox cmbAreaAtuCli;
+        private System.Windows.Forms.TextBox txtNumPed;
+        private COMERCIALDataSet cOMERCIALDataSet;
+        private System.Windows.Forms.BindingSource cLIENTEBindingSource;
+        private Comercial.COMERCIALDataSetTableAdapters.CLIENTETableAdapter cLIENTETableAdapter;
     }
 }
