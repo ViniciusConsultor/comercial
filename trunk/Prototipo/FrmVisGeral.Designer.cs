@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmVisGeral));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnPesquisar = new System.Windows.Forms.Button();
             this.grpBxFiltro = new System.Windows.Forms.GroupBox();
@@ -50,7 +51,7 @@
             this.groupBox1.Controls.Add(this.txtPesquisar);
             this.groupBox1.Controls.Add(this.lblPes);
             this.groupBox1.Controls.Add(this.dtGrdVwVis);
-            this.groupBox1.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+            this.groupBox1.Cursor = System.Windows.Forms.Cursors.Default;
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
@@ -59,11 +60,10 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Pesquisar:";
-            this.groupBox1.UseWaitCursor = true;
             // 
             // btnPesquisar
             // 
-            this.btnPesquisar.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+            this.btnPesquisar.Cursor = System.Windows.Forms.Cursors.Default;
             this.btnPesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPesquisar.ForeColor = System.Drawing.Color.Black;
             this.btnPesquisar.Image = global::Comercial.Properties.Resources.search1;
@@ -75,13 +75,13 @@
             this.btnPesquisar.Text = "Pesquisar";
             this.btnPesquisar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnPesquisar.UseVisualStyleBackColor = true;
-            this.btnPesquisar.UseWaitCursor = true;
             this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
             // 
             // grpBxFiltro
             // 
             this.grpBxFiltro.Controls.Add(this.rdBtnNome);
             this.grpBxFiltro.Controls.Add(this.rdBtnCod);
+            this.grpBxFiltro.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.grpBxFiltro.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpBxFiltro.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.grpBxFiltro.Location = new System.Drawing.Point(268, 23);
@@ -90,7 +90,6 @@
             this.grpBxFiltro.TabIndex = 13;
             this.grpBxFiltro.TabStop = false;
             this.grpBxFiltro.Text = "Filtro";
-            this.grpBxFiltro.UseWaitCursor = true;
             // 
             // rdBtnNome
             // 
@@ -105,7 +104,6 @@
             this.rdBtnNome.TabStop = true;
             this.rdBtnNome.Text = "Nome";
             this.rdBtnNome.UseVisualStyleBackColor = true;
-            this.rdBtnNome.UseWaitCursor = true;
             // 
             // rdBtnCod
             // 
@@ -119,16 +117,14 @@
             this.rdBtnCod.TabStop = true;
             this.rdBtnCod.Text = "Código";
             this.rdBtnCod.UseVisualStyleBackColor = true;
-            this.rdBtnCod.UseWaitCursor = true;
             // 
             // txtPesquisar
             // 
-            this.txtPesquisar.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+            this.txtPesquisar.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtPesquisar.Location = new System.Drawing.Point(11, 44);
             this.txtPesquisar.Name = "txtPesquisar";
             this.txtPesquisar.Size = new System.Drawing.Size(251, 20);
             this.txtPesquisar.TabIndex = 10;
-            this.txtPesquisar.UseWaitCursor = true;
             // 
             // lblPes
             // 
@@ -140,7 +136,6 @@
             this.lblPes.Size = new System.Drawing.Size(62, 13);
             this.lblPes.TabIndex = 12;
             this.lblPes.Text = "Pesquisar";
-            this.lblPes.UseWaitCursor = true;
             // 
             // dtGrdVwVis
             // 
@@ -152,7 +147,7 @@
             this.dtGrdVwVis.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.col1,
             this.col2});
-            this.dtGrdVwVis.Cursor = System.Windows.Forms.Cursors.WaitCursor;
+            this.dtGrdVwVis.Cursor = System.Windows.Forms.Cursors.Default;
             this.dtGrdVwVis.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dtGrdVwVis.Location = new System.Drawing.Point(11, 83);
             this.dtGrdVwVis.MultiSelect = false;
@@ -165,7 +160,6 @@
             this.dtGrdVwVis.ShowRowErrors = false;
             this.dtGrdVwVis.Size = new System.Drawing.Size(422, 187);
             this.dtGrdVwVis.TabIndex = 11;
-            this.dtGrdVwVis.UseWaitCursor = true;
             this.dtGrdVwVis.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGrdVwVis_CellDoubleClick);
             // 
             // col1
@@ -173,6 +167,7 @@
             this.col1.HeaderText = "col1";
             this.col1.Name = "col1";
             this.col1.ReadOnly = true;
+            this.col1.Width = 130;
             // 
             // col2
             // 
@@ -188,10 +183,13 @@
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(459, 338);
             this.Controls.Add(this.groupBox1);
+            this.Cursor = System.Windows.Forms.Cursors.Default;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmVisGeral";
-            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pesquisa Cadastro Cliente";
             this.Load += new System.EventHandler(this.FrmVisGeral_Load);

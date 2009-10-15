@@ -176,9 +176,9 @@ namespace Comercial
             string groupBy = " group by p.NRPEDIDO,  p.DATAEMISSAO,p.CODCLIENTE,c.NomeFantasia ";
             
             // pesquisa por nrPedido
-            if (!string.IsNullOrEmpty(txtNumPed.getText))
+            if (!string.IsNullOrEmpty(txtNumPed.Text))
             {
-                sql += " and p.nrPedido = " + txtNumPed.getText;
+                sql += " and p.nrPedido = " + txtNumPed.Text;
             }
 
             // pesquisa por tipo pedido
@@ -293,6 +293,8 @@ namespace Comercial
 
         private void frmConCli_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'cOMERCIALDataSet.CLIENTE' table. You can move, or remove it, as needed.
+            this.cLIENTETableAdapter.Fill(this.cOMERCIALDataSet.CLIENTE);
 
         }
 
