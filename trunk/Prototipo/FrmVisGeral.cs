@@ -161,6 +161,8 @@ namespace Comercial
                     dtGrdVwVis.Columns.Add("col5", "Preço Venda");
                     dtGrdVwVis.Columns["col5"].DataPropertyName = "PRECOVENDA";
 
+                    dtGrdVwVis.Columns.Add("col6", "IPI Produto");
+                    dtGrdVwVis.Columns["col6"].DataPropertyName = "IPI";
 
                    
                 }
@@ -601,6 +603,7 @@ namespace Comercial
                     Ped.txtUM.Text = selecionadas[2].Value.ToString();
                     Ped.txtEstAtual.Text = selecionadas[3].Value.ToString();
                     Ped.txtPrcVen.Text = selecionadas[4].Value.ToString();
+                    Ped.txtipi.Text = selecionadas[5].Value.ToString();
 
                     this.Close();
                     this.Dispose();

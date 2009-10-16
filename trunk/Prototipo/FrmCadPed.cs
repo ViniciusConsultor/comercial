@@ -78,12 +78,7 @@ namespace Comercial
             objPedido = (DataRowView)pEDIDOBindingSource.Current;
 
 
-            if (chkCancelado.Checked)
-            {
-
-                objPedido["SITUACAO"] = "C";
-            }
-            else if (chkEfetivado.Checked)
+            if (chkEfetivado.Checked)
             {
                 objPedido["SITUACAO"] = "E";
             }
@@ -135,21 +130,14 @@ namespace Comercial
             DataRowView objPedido;
             objPedido = (DataRowView)pEDIDOBindingSource.Current;
 
-            if (objPedido["SITUACAO"].ToString() == "C")
-            {
-                chkCancelado.Checked = true;
-            }
-            else
-            {
-                chkCancelado.Checked = false;
-            }
+            
             if (objPedido["SITUACAO"].ToString() == "E")
             {
                 chkEfetivado.Checked = true;
             }
             else
             {
-                chkPendente.Checked = false;
+                chkEfetivado.Checked = false;
             }
 
             if (objPedido["SITUACAO"].ToString() == "P")
@@ -265,8 +253,15 @@ namespace Comercial
 
                 dtRow = dttRetorno.NewRow();
 
-                dtRow["DESCRICAO"] = txtDescprod.Text;
+                //dtRow[1] = txtProduto.getText;
+                //dtRow[2] = txtDescprod.Text;
+                //dtRow[3] = txtQtdItem.Text;
+                //dtRow[4] = txtPrcUnit.Text;
+                //dtRow[5] = txtipi.Text;
+                //dtRow[6] = txtDesconto.Text;
+
                 dtRow["CODPRODUTO"] = txtProduto.getText;
+                dtRow["DESCRICAO"] = txtDescprod.Text;
                 dtRow["QUANTIDADE"] = txtQtdItem.Text;
                 dtRow["VALOR"] = txtPrcUnit.Text;
                 dtRow["IPI"] = txtipi.Text;
@@ -276,11 +271,13 @@ namespace Comercial
 
                 for (int index = 0; index <= dttRetorno.Rows.Count - 1; index++)
                 {
-                    dttRetorno.Rows[index]["ITEM"] = index + 1;
+                    dttRetorno.Rows[index][0] = index + 1;
                     continue;
                 }
 
                 dtgrdvItenspven.DataSource = dttRetorno;
+               
+              
 
                 this.Limparitens();
             }
@@ -492,7 +489,7 @@ namespace Comercial
 
             StringBuilder sqlcommand = new StringBuilder();
 
-            sqlcommand.Append("select CODPRODUTO,DESCRICAO,CODUNIDADEMEDIDA,ESTOQUEATUAL,PRECOVENDA from Produto");
+            sqlcommand.Append("SELECT CODPRODUTO,DESCRICAO,CODUNIDADEMEDIDA,ESTOQUEATUAL,PRECOVENDA, IPI FROM PRODUTO");
 
             DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
 
@@ -677,6 +674,104 @@ namespace Comercial
             this.iTEMPEDIDOTableAdapter.Fill(this.cOMERCIALDataSet.ITEMPEDIDO);
 
         }
+
+        private void CreateUnboundButtonColumn()
+        {
+            // Initialize the button column.
+            DataGridViewButtonColumn buttonColumn =
+                new DataGridViewButtonColumn();
+            buttonColumn.Name = "Delete";
+            buttonColumn.HeaderText = "";
+            buttonColumn.Text = "";
+            buttonColumn.Width = 25;
+            
+                      
+
+            // Use the Text property for the button text for all cells rather
+            // than using each cell's value as the text for its own button.
+            buttonColumn.UseColumnTextForButtonValue = true;
+            
+
+
+            // Add the button column to the control.
+            dtgrdvItenspven.Columns.Insert(7, buttonColumn);
+        }
+
+        private void dtgrdvItenspven_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                DataGridViewButtonColumn buttonColumn =
+                new DataGridViewButtonColumn();
+
+                
+            }
+            catch (Exception ex)
+            {
+                
+                throw ex;
+            }
+
+        }
+
+        private void dtgrdvItenspven_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                DataGridViewButtonColumn buttonColumn =
+                new DataGridViewButtonColumn();
+
+                if (buttonColumn.Index == -1)
+                {
+                    if (dttRetorno.Rows.Count != 0)
+                    {
+                        dttRetorno.Rows.RemoveAt(e.RowIndex);
+                    }
+                    else
+                    {
+
+                        COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter();
+                        table.Delete(Convert.ToInt32(txtPedido.Text),
+                            Convert.ToInt32(dtgrdvItenspven.Rows[e.RowIndex].Cells[2].Value),
+                            Convert.ToInt32(dtgrdvItenspven.Rows[e.RowIndex].Cells[4].Value),
+                            Convert.ToDouble(dtgrdvItenspven.Rows[e.RowIndex].Cells[7].Value),
+                            Convert.ToDouble(dtgrdvItenspven.Rows[e.RowIndex].Cells[5].Value),
+                            Convert.ToDouble(dtgrdvItenspven.Rows[e.RowIndex].Cells[6].Value),
+                            Convert.ToInt32(dtgrdvItenspven.Rows[e.RowIndex].Cells[1].Value));
+
+                        this.populargrid();
+                    }
+                    
+                }
+            }
+            catch (Exception ex)
+            {
+                
+                throw ex;
+            }
+        }
+
+        #region Validação
+        public void validaSituacao()
+        {
+            try
+            {
+                if (chkEfetivado.Checked == true)
+                {
+                    MessageBox.Show("Pedido não pode ser alterado pois já está Efetivado.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    _princ.novo();
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+
+
+        }
+        #endregion
 
     }
 }
