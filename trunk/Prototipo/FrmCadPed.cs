@@ -19,9 +19,7 @@ namespace Comercial
     {
         private FrmPrinc _princ = null;
         DataTable dttRetorno = new DataTable();
-
-
-
+        
         public FrmCadPed(FrmPrinc parent)
         {
             InitializeComponent();
@@ -109,7 +107,6 @@ namespace Comercial
             objPedido["CODCLIENTE"] = txtcodCli.getText;
             objPedido["CODVENDEDOR"] = txtCodVendedor.getText;
             objPedido["CODCONDICAOPAGAMENTO"] = txtCondPagto.getText;
-            //objPedido["NRPEDIDO"] = txtPedido.Text;
             objPedido["CODTRANSPORTADORA"] = txtCodTransportadora.getText;
 
             COMERCIALDataSetTableAdapters.PEDIDOTableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.PEDIDOTableAdapter();
@@ -123,8 +120,7 @@ namespace Comercial
                    Convert.ToString(objPedido["CODTRANSPORTADORA"].ToString()));
 
 
-            // );
-
+   
             this.SalvarPedidoDeta();
 
             return 0;
@@ -202,6 +198,7 @@ namespace Comercial
 
             dttRetorno.Columns.Add("ITEM", typeof(int));
             dttRetorno.Columns.Add("CODPRODUTO", typeof(int));
+            dttRetorno.Columns.Add("DESCRICAO", typeof(string));
             dttRetorno.Columns.Add("QUANTIDADE", typeof(int));
             dttRetorno.Columns.Add("VALOR", typeof(double));
             dttRetorno.Columns.Add("IPI", typeof(double));
@@ -268,6 +265,7 @@ namespace Comercial
 
                 dtRow = dttRetorno.NewRow();
 
+                dtRow["DESCRICAO"] = txtDescprod.Text;
                 dtRow["CODPRODUTO"] = txtProduto.getText;
                 dtRow["QUANTIDADE"] = txtQtdItem.Text;
                 dtRow["VALOR"] = txtPrcUnit.Text;
@@ -311,12 +309,12 @@ namespace Comercial
                 {
                     COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter();
                     table.Insert(Convert.ToInt32(CodPed),
-                        Convert.ToInt32(dtgrdvItenspven.Rows[index].Cells[2].Value),
+                        Convert.ToInt32(dtgrdvItenspven.Rows[index].Cells[1].Value),
                         Convert.ToInt32(dtgrdvItenspven.Rows[index].Cells[3].Value),
                         Convert.ToDouble(dtgrdvItenspven.Rows[index].Cells[6].Value),
                         Convert.ToDouble(dtgrdvItenspven.Rows[index].Cells[4].Value),
                         Convert.ToDouble(dtgrdvItenspven.Rows[index].Cells[5].Value),
-                        Convert.ToInt32(dtgrdvItenspven.Rows[index].Cells[1].Value));
+                        Convert.ToInt32(dtgrdvItenspven.Rows[index].Cells[0].Value));
 
                     //objPedidoItem["ITEM"] = Convert.ToInt32(dtgrdvItenspven.Rows[index].Cells[1].Value);
                     //objPedidoItem["NRPEDIDO"] = Convert.ToInt32(CodPed);
@@ -384,7 +382,9 @@ namespace Comercial
 
             StringBuilder sqlcommand = new StringBuilder();
 
-            sqlcommand.Append("select * from itempedido where nrpedido = @nrpedido");
+            sqlcommand.Append(" SELECT ITEM,ITEMPEDIDO.CODPRODUTO,DESCRICAO,QUANTIDADE,DESCONTO,VALOR,ITEMPEDIDO.IPI ");
+            sqlcommand.Append(" FROM ITEMPEDIDO INNER JOIN PRODUTO ON ITEMPEDIDO.CODPRODUTO = PRODUTO.CODPRODUTO ");
+            sqlcommand.Append(" WHERE NRPEDIDO = @nrpedido ");
 
             DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
 
