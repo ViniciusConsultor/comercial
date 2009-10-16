@@ -19,7 +19,7 @@ namespace Comercial
     {
         private FrmPrinc _princ = null;
         DataTable dttRetorno = new DataTable();
-        
+
         public FrmCadPed(FrmPrinc parent)
         {
             InitializeComponent();
@@ -78,6 +78,7 @@ namespace Comercial
             objPedido = (DataRowView)pEDIDOBindingSource.Current;
 
 
+
             if (chkEfetivado.Checked)
             {
                 objPedido["SITUACAO"] = "E";
@@ -104,18 +105,27 @@ namespace Comercial
             objPedido["CODCONDICAOPAGAMENTO"] = txtCondPagto.getText;
             objPedido["CODTRANSPORTADORA"] = txtCodTransportadora.getText;
 
-            COMERCIALDataSetTableAdapters.PEDIDOTableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.PEDIDOTableAdapter();
-            table.Insert(Convert.ToString(objPedido["TIPO"].ToString()),
-                   Convert.ToDateTime(objPedido["DATAEMISSAO"].ToString()),
-                   Convert.ToDateTime(objPedido["DATAENTREGA"].ToString()),
-                   Convert.ToInt32(objPedido["CODCONDICAOPAGAMENTO"].ToString()),
-                   Convert.ToString(objPedido["SITUACAO"].ToString()),
-                   Convert.ToString(objPedido["CODVENDEDOR"].ToString()),
-                   Convert.ToString(objPedido["CODCLIENTE"].ToString()),
-                   Convert.ToString(objPedido["CODTRANSPORTADORA"].ToString()));
+            if (dtgrdvItenspven.RowCount == 0)
+            {
+                MessageBox.Show("Operação Cancelada, pois não existe itens para este pedido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Util.Interface.ChangeControlStatus(this, false);
+                
+            }
+            else
+            {
+                COMERCIALDataSetTableAdapters.PEDIDOTableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.PEDIDOTableAdapter();
+                table.Insert(Convert.ToString(objPedido["TIPO"].ToString()),
+                       Convert.ToDateTime(objPedido["DATAEMISSAO"].ToString()),
+                       Convert.ToDateTime(objPedido["DATAENTREGA"].ToString()),
+                       Convert.ToInt32(objPedido["CODCONDICAOPAGAMENTO"].ToString()),
+                       Convert.ToString(objPedido["SITUACAO"].ToString()),
+                       Convert.ToString(objPedido["CODVENDEDOR"].ToString()),
+                       Convert.ToString(objPedido["CODCLIENTE"].ToString()),
+                       Convert.ToString(objPedido["CODTRANSPORTADORA"].ToString()));
+            }
 
 
-   
+
             this.SalvarPedidoDeta();
 
             return 0;
@@ -130,7 +140,7 @@ namespace Comercial
             DataRowView objPedido;
             objPedido = (DataRowView)pEDIDOBindingSource.Current;
 
-            
+
             if (objPedido["SITUACAO"].ToString() == "E")
             {
                 chkEfetivado.Checked = true;
@@ -245,41 +255,52 @@ namespace Comercial
 
         private void btnAdditen_Click(object sender, EventArgs e)
         {
+            int quantidade = Convert.ToInt32(txtQtdItem.Text);
+            int estoqueatual = Convert.ToInt32(txtEstAtual.Text);
 
             DataRow dtRow;
 
             try
             {
 
-                dtRow = dttRetorno.NewRow();
-
-                //dtRow[1] = txtProduto.getText;
-                //dtRow[2] = txtDescprod.Text;
-                //dtRow[3] = txtQtdItem.Text;
-                //dtRow[4] = txtPrcUnit.Text;
-                //dtRow[5] = txtipi.Text;
-                //dtRow[6] = txtDesconto.Text;
-
-                dtRow["CODPRODUTO"] = txtProduto.getText;
-                dtRow["DESCRICAO"] = txtDescprod.Text;
-                dtRow["QUANTIDADE"] = txtQtdItem.Text;
-                dtRow["VALOR"] = txtPrcUnit.Text;
-                dtRow["IPI"] = txtipi.Text;
-                dtRow["DESCONTO"] = txtDesconto.Text;
-
-                dttRetorno.Rows.Add(dtRow);
-
-                for (int index = 0; index <= dttRetorno.Rows.Count - 1; index++)
+                if (quantidade > estoqueatual)
                 {
-                    dttRetorno.Rows[index][0] = index + 1;
-                    continue;
+                    MessageBox.Show("A Quantidade não pode ser maior que o estoque atual.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    dtRow = dttRetorno.NewRow();
+
+                    //dtRow[1] = txtProduto.getText;
+                    //dtRow[2] = txtDescprod.Text;
+                    //dtRow[3] = txtQtdItem.Text;
+                    //dtRow[4] = txtPrcUnit.Text;
+                    //dtRow[5] = txtipi.Text;
+                    //dtRow[6] = txtDesconto.Text;
+
+                    dtRow["CODPRODUTO"] = txtProduto.getText;
+                    dtRow["DESCRICAO"] = txtDescprod.Text;
+                    dtRow["QUANTIDADE"] = txtQtdItem.Text;
+                    dtRow["VALOR"] = txtPrcUnit.Text;
+                    dtRow["IPI"] = txtipi.Text;
+                    dtRow["DESCONTO"] = txtDesconto.Text;
+
+                    dttRetorno.Rows.Add(dtRow);
+
+                    for (int index = 0; index <= dttRetorno.Rows.Count - 1; index++)
+                    {
+                        dttRetorno.Rows[index][0] = index + 1;
+                        continue;
+                    }
+
+                    dtgrdvItenspven.DataSource = dttRetorno;
+
+
+
+                    this.Limparitens();
                 }
 
-                dtgrdvItenspven.DataSource = dttRetorno;
-               
-              
 
-                this.Limparitens();
             }
             catch (Exception ex)
             {
@@ -306,12 +327,12 @@ namespace Comercial
                 {
                     COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter();
                     table.Insert(Convert.ToInt32(CodPed),
-                        Convert.ToInt32(dtgrdvItenspven.Rows[index].Cells[1].Value),
-                        Convert.ToInt32(dtgrdvItenspven.Rows[index].Cells[3].Value),
-                        Convert.ToDouble(dtgrdvItenspven.Rows[index].Cells[6].Value),
-                        Convert.ToDouble(dtgrdvItenspven.Rows[index].Cells[4].Value),
-                        Convert.ToDouble(dtgrdvItenspven.Rows[index].Cells[5].Value),
-                        Convert.ToInt32(dtgrdvItenspven.Rows[index].Cells[0].Value));
+                         Convert.ToInt32(dtgrdvItenspven.Rows[index].Cells[2].Value),
+                            Convert.ToInt32(dtgrdvItenspven.Rows[index].Cells[4].Value),
+                            Convert.ToDouble(dtgrdvItenspven.Rows[index].Cells[7].Value),
+                            Convert.ToDouble(dtgrdvItenspven.Rows[index].Cells[5].Value),
+                            Convert.ToDouble(dtgrdvItenspven.Rows[index].Cells[6].Value),
+                            Convert.ToInt32(dtgrdvItenspven.Rows[index].Cells[1].Value));
 
                     //objPedidoItem["ITEM"] = Convert.ToInt32(dtgrdvItenspven.Rows[index].Cells[1].Value);
                     //objPedidoItem["NRPEDIDO"] = Convert.ToInt32(CodPed);
@@ -659,61 +680,7 @@ namespace Comercial
         }
         #endregion
 
-        private void FrmCadPed_Load(object sender, EventArgs e)
-        {
-            // TODO: This line of code loads data into the 'cOMERCIALDataSet.ITEMPEDIDO' table. You can move, or remove it, as needed.
-            this.iTEMPEDIDOTableAdapter.Fill(this.cOMERCIALDataSet.ITEMPEDIDO);
-
-        }
-
-        private void FrmCadPed_Load_1(object sender, EventArgs e)
-        {
-            // TODO: This line of code loads data into the 'cOMERCIALDataSet.PRODUTO' table. You can move, or remove it, as needed.
-            this.pRODUTOTableAdapter.Fill(this.cOMERCIALDataSet.PRODUTO);
-            // TODO: This line of code loads data into the 'cOMERCIALDataSet.ITEMPEDIDO' table. You can move, or remove it, as needed.
-            this.iTEMPEDIDOTableAdapter.Fill(this.cOMERCIALDataSet.ITEMPEDIDO);
-
-        }
-
-        private void CreateUnboundButtonColumn()
-        {
-            // Initialize the button column.
-            DataGridViewButtonColumn buttonColumn =
-                new DataGridViewButtonColumn();
-            buttonColumn.Name = "Delete";
-            buttonColumn.HeaderText = "";
-            buttonColumn.Text = "";
-            buttonColumn.Width = 25;
-            
-                      
-
-            // Use the Text property for the button text for all cells rather
-            // than using each cell's value as the text for its own button.
-            buttonColumn.UseColumnTextForButtonValue = true;
-            
-
-
-            // Add the button column to the control.
-            dtgrdvItenspven.Columns.Insert(7, buttonColumn);
-        }
-
-        private void dtgrdvItenspven_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                DataGridViewButtonColumn buttonColumn =
-                new DataGridViewButtonColumn();
-
-                
-            }
-            catch (Exception ex)
-            {
-                
-                throw ex;
-            }
-
-        }
-
+        #region Remover item data grid
         private void dtgrdvItenspven_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -741,15 +708,17 @@ namespace Comercial
 
                         this.populargrid();
                     }
-                    
+
                 }
             }
             catch (Exception ex)
             {
-                
+
                 throw ex;
             }
         }
+
+        #endregion
 
         #region Validação
         public void validaSituacao()
@@ -771,6 +740,8 @@ namespace Comercial
 
 
         }
+
+
         #endregion
 
     }
