@@ -8,6 +8,8 @@ using System.Text;
 using System.Windows.Forms;
 using System.Configuration;
 using System.Data.SqlClient;
+using Microsoft.Practices.EnterpriseLibrary.Data;
+using System.Data.Common;
 
 namespace Comercial
 {
@@ -52,26 +54,33 @@ namespace Comercial
             string sql = "select g.DESCRICAO GRUPO, p.DESCRICAO PRODUTO, p.DATACADASTRO, p.PRECOCUSTO, "+
                 "p.PRECOVENDA, p.ESTOQUEATUAL, p.ESTOQUEMIN, p.IPI, g.DESCONTO from PRODUTO p inner join "+
                 "GRUPOPRODUTO g on (p.CODGRUPOPRODUTO = g.CODGRUPOPRODUTO) ";
-                      
-            //if (!string.IsNullOrEmpty(txtDesconto.Text))
-            //{
-            //    sql += "and v.nome like '" + txtDesconto.Text + "%' ";
-            //}
+
+            if (!string.IsNullOrEmpty(txtDesconto.Text))
+            {
+                sql += "and g.desconto " + cmBxOpDesconto.Text + " " + txtDesconto.Text; 
+            }
 
             if (!string.IsNullOrEmpty(txtGrupo.Text))
             {
-                sql += "and g.descricao like '" + txtGrupo.Text + "%' ";
+                sql += "and g.descricao like '%" + txtGrupo.Text + "%' ";
             }
 
             if (!string.IsNullOrEmpty(txtProdDesc.Text))
             {
-                sql += "and p.descricao like '" + txtProdDesc.Text + "%' ";
+                sql += "and p.descricao like '%" + txtProdDesc.Text + "%' ";
             }
 
-            //if (!string.IsNullOrEmpty(txtEstoque.Text))
-            //{
-            //    sql += "and v.nome like '" + txtEstoque.Text + "%' ";
-            //}
+            //Pesquisa por data
+            if (dtTPckrDtCadastro.Checked)
+            {
+                string formatData = dtTPckrDtCadastro.Value.Year + "-" + dtTPckrDtCadastro.Value.Month + "-" + dtTPckrDtCadastro.Value.Day;
+                sql += "and p.datacadastro = '" + formatData + "'";
+            }
+
+            if (!string.IsNullOrEmpty(txtEstoque.Text))
+            {
+                sql += "and p.estoqueatual " + cmBxOpEstoque.Text + " " + txtEstoque.Text;                 
+            }
 
             string c = ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString;
 
@@ -86,5 +95,59 @@ namespace Comercial
 
             dtGrdVwConProd.DataSource = table;
         }
+              
+        private void txtBtnCodGrp_ButtonClick(object sender, EventArgs e)
+        {
+            FrmVisGeral x = new FrmVisGeral(this, (Control)sender);
+            x.dtGrdVwVis.DataSource = ListarGrupoProduto();
+            x.Text = "Pesquisa Cadastro de Grupo de Produtos";
+
+            x.ShowDialog();            
+        }
+
+        public DataTable ListarGrupoProduto()
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+
+            DataSet dtsDados = new DataSet();
+
+            StringBuilder sqlcommand = new StringBuilder();
+
+            sqlcommand.Append("select codgrupoproduto, descricao from grupoproduto");
+
+            DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
+
+            dtsDados = db.ExecuteDataSet(dbComd);
+
+            return dtsDados.Tables[0];
+
+        }      
+
+        public DataTable ListarProduto()
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+
+            DataSet dtsDados = new DataSet();
+
+            StringBuilder sqlcommand = new StringBuilder();
+
+            sqlcommand.Append("select codproduto, descricao from produto");
+
+            DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
+
+            dtsDados = db.ExecuteDataSet(dbComd);
+
+            return dtsDados.Tables[0];
+
+        }
+
+        private void txtNumPed_ButtonClick(object sender, EventArgs e)
+        {
+            FrmVisGeral x = new FrmVisGeral(this, (Control)sender);
+            x.dtGrdVwVis.DataSource = ListarProduto();
+            x.Text = "Pesquisa Cadastro de Produtos";
+
+            x.ShowDialog();
+        }        
     }
 }
