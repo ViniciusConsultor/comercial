@@ -41,10 +41,10 @@
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             this.textBox1.Leave += new System.EventHandler(this.textBox1_Leave);
             this.textBox1.Enter += new System.EventHandler(this.textBox1_Enter);
-            this.textBox1.Text = "";
             // 
             // button1
             // 
+            this.button1.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.Color.Transparent;
             this.button1.Location = new System.Drawing.Point(92, 0);
