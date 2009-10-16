@@ -525,7 +525,7 @@
             this.dtgrdvItenspven.ReadOnly = true;
             this.dtgrdvItenspven.Size = new System.Drawing.Size(902, 235);
             this.dtgrdvItenspven.TabIndex = 25;
-            this.dtgrdvItenspven.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgrdvItenspven_CellClick);
+            
             this.dtgrdvItenspven.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgrdvItenspven_CellContentClick);
             // 
             // txtipi
@@ -880,7 +880,7 @@
             this.MinimizeBox = false;
             this.Name = "FrmCadPed";
             this.Text = "FrmCadPed";
-            this.Load += new System.EventHandler(this.FrmCadPed_Load_1);
+            
             this.Shown += new System.EventHandler(this.FrmCadPed_Shown);
             this.tbCntrlPedVend.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
