@@ -212,6 +212,11 @@ namespace Comercial
             nomeToolStripTextBox.Clear();
         }
 
+        private void FrmCadVen_Load(object sender, EventArgs e)
+        {
+
+        }
+
     }
 
 }

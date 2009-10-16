@@ -144,18 +144,6 @@ namespace Comercial
                     }
 
 
-                    //if (frm is FrmCadPed)
-                    //{
-                    //    FrmCadPed frmPed = (FrmCadPed)frm;
-
-                    //    COMERCIALDataSetTableAdapters.PEDIDOTableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.PEDIDOTableAdapter();
-                    //    table.Update(_dataset);
-
-                    //    frmPed.SalvarPedidoDeta();
-
-                    //    Util.Interface.ChangeControlStatus(frm, false);
-                    //    bindingNavigator1.Refresh();
-                    //}
 
                     Util.Interface.ChangeControlStatus(frm, false);
                     bindingNavigator1.Refresh();
@@ -1173,6 +1161,13 @@ namespace Comercial
                         teste.Update(_dataset);
                     }
 
+                    if (frm is FrmCadPed)
+                    {
+                        bindingNavigator1.BindingSource.RemoveCurrent();
+                        COMERCIALDataSetTableAdapters.PEDIDOTableAdapter objPedido = new Comercial.COMERCIALDataSetTableAdapters.PEDIDOTableAdapter();
+                        objPedido.Update(_dataset);
+                    }
+
 
 
                 }
@@ -1242,6 +1237,15 @@ namespace Comercial
             #endregion
 
 
+            if (frm is FrmCadPed)
+            {
+                FrmCadPed Ped = (FrmCadPed)frm;
+                Ped.validaSituacao();
+                
+              
+            }
+
+
         }
 
         private void toolStripButton4_Click(object sender, EventArgs e)
@@ -1301,12 +1305,10 @@ namespace Comercial
             #endregion
         }
 
-
         private void FrmPrinc_Load(object sender, EventArgs e)
         {
 
         }
-
 
         private void BtnPrincipalCons_Click(object sender, EventArgs e)
         {

@@ -50,7 +50,6 @@
             this.cLIENTEBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtPedido = new System.Windows.Forms.TextBox();
             this.grpBxSitPed = new System.Windows.Forms.GroupBox();
-            this.chkCancelado = new System.Windows.Forms.CheckBox();
             this.chkPendente = new System.Windows.Forms.CheckBox();
             this.chkEfetivado = new System.Windows.Forms.CheckBox();
             this.lbltpfre = new System.Windows.Forms.Label();
@@ -68,7 +67,6 @@
             this.pnlItenped = new System.Windows.Forms.Panel();
             this.dtgrdvItenspven = new System.Windows.Forms.DataGridView();
             this.txtipi = new System.Windows.Forms.TextBox();
-            this.iTEMPEDIDOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.LblIPI = new System.Windows.Forms.Label();
             this.txtVlrtotal = new System.Windows.Forms.TextBox();
             this.LblVlrTotal = new System.Windows.Forms.Label();
@@ -86,6 +84,7 @@
             this.txtDescprod = new System.Windows.Forms.TextBox();
             this.LbDescProd = new System.Windows.Forms.Label();
             this.lblCodProd = new System.Windows.Forms.Label();
+            this.iTEMPEDIDOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tRANSPORTADORABindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cONDICAOPAGAMENTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pEDIDOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.PEDIDOTableAdapter();
@@ -96,6 +95,7 @@
             this.cONDICAOPAGAMENTOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.CONDICAOPAGAMENTOTableAdapter();
             this.iTEMPEDIDOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter();
             this.pRODUTOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.PRODUTOTableAdapter();
+            this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ClmItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClmDescProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -120,8 +120,8 @@
             this.grpBxItPedVen.SuspendLayout();
             this.pnlItenped.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgrdvItenspven)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iTEMPEDIDOBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pRODUTOBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iTEMPEDIDOBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tRANSPORTADORABindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cONDICAOPAGAMENTOBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -313,28 +313,15 @@
             // 
             // grpBxSitPed
             // 
-            this.grpBxSitPed.Controls.Add(this.chkCancelado);
             this.grpBxSitPed.Controls.Add(this.chkPendente);
             this.grpBxSitPed.Controls.Add(this.chkEfetivado);
             this.grpBxSitPed.ForeColor = System.Drawing.Color.CadetBlue;
-            this.grpBxSitPed.Location = new System.Drawing.Point(805, 16);
+            this.grpBxSitPed.Location = new System.Drawing.Point(805, 31);
             this.grpBxSitPed.Name = "grpBxSitPed";
-            this.grpBxSitPed.Size = new System.Drawing.Size(118, 93);
+            this.grpBxSitPed.Size = new System.Drawing.Size(118, 73);
             this.grpBxSitPed.TabIndex = 9;
             this.grpBxSitPed.TabStop = false;
             this.grpBxSitPed.Text = "Situação Pedido";
-            // 
-            // chkCancelado
-            // 
-            this.chkCancelado.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.chkCancelado.Location = new System.Drawing.Point(6, 64);
-            this.chkCancelado.Name = "chkCancelado";
-            this.chkCancelado.Size = new System.Drawing.Size(86, 27);
-            this.chkCancelado.TabIndex = 50;
-            this.chkCancelado.Text = "Cancelado";
-            this.chkCancelado.UseVisualStyleBackColor = true;
             // 
             // chkPendente
             // 
@@ -343,7 +330,7 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.chkPendente.Location = new System.Drawing.Point(6, 40);
             this.chkPendente.Name = "chkPendente";
-            this.chkPendente.Size = new System.Drawing.Size(86, 27);
+            this.chkPendente.Size = new System.Drawing.Size(86, 24);
             this.chkPendente.TabIndex = 49;
             this.chkPendente.Text = "Pendente";
             this.chkPendente.UseVisualStyleBackColor = true;
@@ -355,7 +342,7 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.chkEfetivado.Location = new System.Drawing.Point(6, 15);
             this.chkEfetivado.Name = "chkEfetivado";
-            this.chkEfetivado.Size = new System.Drawing.Size(106, 27);
+            this.chkEfetivado.Size = new System.Drawing.Size(106, 25);
             this.chkEfetivado.TabIndex = 48;
             this.chkEfetivado.Text = "Efetivado";
             this.chkEfetivado.UseVisualStyleBackColor = true;
@@ -521,9 +508,9 @@
             // dtgrdvItenspven
             // 
             this.dtgrdvItenspven.AllowUserToAddRows = false;
-            this.dtgrdvItenspven.AllowUserToDeleteRows = false;
             this.dtgrdvItenspven.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgrdvItenspven.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Delete,
             this.ClmItem,
             this.ColProd,
             this.ClmDescProd,
@@ -538,6 +525,8 @@
             this.dtgrdvItenspven.ReadOnly = true;
             this.dtgrdvItenspven.Size = new System.Drawing.Size(902, 235);
             this.dtgrdvItenspven.TabIndex = 25;
+            this.dtgrdvItenspven.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgrdvItenspven_CellClick);
+            this.dtgrdvItenspven.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgrdvItenspven_CellContentClick);
             // 
             // txtipi
             // 
@@ -545,11 +534,6 @@
             this.txtipi.Name = "txtipi";
             this.txtipi.Size = new System.Drawing.Size(70, 20);
             this.txtipi.TabIndex = 20;
-            // 
-            // iTEMPEDIDOBindingSource
-            // 
-            this.iTEMPEDIDOBindingSource.DataMember = "ITEMPEDIDO";
-            this.iTEMPEDIDOBindingSource.DataSource = this.cOMERCIALDataSet;
             // 
             // LblIPI
             // 
@@ -618,7 +602,6 @@
             // 
             // txtPrcVen
             // 
-            this.txtPrcVen.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pRODUTOBindingSource, "PRECOVENDA", true));
             this.txtPrcVen.Location = new System.Drawing.Point(418, 297);
             this.txtPrcVen.Name = "txtPrcVen";
             this.txtPrcVen.Size = new System.Drawing.Size(70, 20);
@@ -642,7 +625,6 @@
             // 
             // txtEstAtual
             // 
-            this.txtEstAtual.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pRODUTOBindingSource, "ESTOQUEATUAL", true));
             this.txtEstAtual.Location = new System.Drawing.Point(339, 297);
             this.txtEstAtual.Name = "txtEstAtual";
             this.txtEstAtual.Size = new System.Drawing.Size(70, 20);
@@ -661,7 +643,6 @@
             // 
             // txtUM
             // 
-            this.txtUM.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pRODUTOBindingSource, "CODUNIDADEMEDIDA", true));
             this.txtUM.Location = new System.Drawing.Point(295, 297);
             this.txtUM.Name = "txtUM";
             this.txtUM.Size = new System.Drawing.Size(38, 20);
@@ -680,7 +661,6 @@
             // 
             // txtDescprod
             // 
-            this.txtDescprod.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pRODUTOBindingSource, "DESCRICAO", true));
             this.txtDescprod.Location = new System.Drawing.Point(104, 297);
             this.txtDescprod.Name = "txtDescprod";
             this.txtDescprod.Size = new System.Drawing.Size(185, 20);
@@ -707,6 +687,11 @@
             this.lblCodProd.Size = new System.Drawing.Size(94, 13);
             this.lblCodProd.TabIndex = 75;
             this.lblCodProd.Text = "Código Produto";
+            // 
+            // iTEMPEDIDOBindingSource
+            // 
+            this.iTEMPEDIDOBindingSource.DataMember = "ITEMPEDIDO";
+            this.iTEMPEDIDOBindingSource.DataSource = this.cOMERCIALDataSet;
             // 
             // tRANSPORTADORABindingSource
             // 
@@ -768,6 +753,13 @@
             // pRODUTOTableAdapter
             // 
             this.pRODUTOTableAdapter.ClearBeforeFill = true;
+            // 
+            // Delete
+            // 
+            this.Delete.HeaderText = "";
+            this.Delete.Name = "Delete";
+            this.Delete.ReadOnly = true;
+            this.Delete.Width = 25;
             // 
             // ClmItem
             // 
@@ -905,8 +897,8 @@
             this.grpBxItPedVen.PerformLayout();
             this.pnlItenped.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgrdvItenspven)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iTEMPEDIDOBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pRODUTOBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iTEMPEDIDOBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tRANSPORTADORABindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cONDICAOPAGAMENTOBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -923,7 +915,6 @@
         private System.Windows.Forms.DateTimePicker dtpEmissao;
         private System.Windows.Forms.TextBox txtPedido;
         private System.Windows.Forms.GroupBox grpBxSitPed;
-        private System.Windows.Forms.CheckBox chkCancelado;
         private System.Windows.Forms.CheckBox chkPendente;
         private System.Windows.Forms.CheckBox chkEfetivado;
         private System.Windows.Forms.Label lbltpfre;
@@ -936,7 +927,6 @@
         private System.Windows.Forms.Label lblnumPed;
         private System.Windows.Forms.GroupBox grpBxItPedVen;
         private System.Windows.Forms.Panel pnlItenped;
-        private System.Windows.Forms.TextBox txtipi;
         private System.Windows.Forms.Label LblIPI;
         private System.Windows.Forms.TextBox txtVlrtotal;
         private System.Windows.Forms.Label LblVlrTotal;
@@ -986,6 +976,8 @@
         public System.Windows.Forms.TextBox txtEstAtual;
         public System.Windows.Forms.TextBox txtUM;
         public System.Windows.Forms.TextBox txtDescprod;
+        public System.Windows.Forms.TextBox txtipi;
+        private System.Windows.Forms.DataGridViewButtonColumn Delete;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColProd;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmDescProd;

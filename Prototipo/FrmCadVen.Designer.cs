@@ -675,7 +675,7 @@
             // cpfToolStripLabel
             // 
             this.cpfToolStripLabel.Name = "cpfToolStripLabel";
-            this.cpfToolStripLabel.Size = new System.Drawing.Size(29, 22);
+            this.cpfToolStripLabel.Size = new System.Drawing.Size(31, 22);
             this.cpfToolStripLabel.Text = "CPF:";
             // 
             // cpfToolStripTextBox
@@ -687,7 +687,7 @@
             // nomeToolStripLabel
             // 
             this.nomeToolStripLabel.Name = "nomeToolStripLabel";
-            this.nomeToolStripLabel.Size = new System.Drawing.Size(40, 22);
+            this.nomeToolStripLabel.Size = new System.Drawing.Size(43, 22);
             this.nomeToolStripLabel.Text = "Nome:";
             // 
             // nomeToolStripTextBox
@@ -743,6 +743,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro de vendedor";
+            this.Load += new System.EventHandler(this.FrmCadVen_Load);
             this.Shown += new System.EventHandler(this.FrmCadVen_Shown);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
