@@ -98,8 +98,8 @@ namespace Comercial
                 objPedido["TIPO"] = "C";
             }
 
-            objPedido["DATAEMISSAO"] = Convert.ToDateTime(dtpEmissao.Value).ToString("dd/MM/yyyy");
-            objPedido["DATAENTREGA"] = DateTime.Now;
+            objPedido["DATAEMISSAO"] = DateTime.Now;
+            objPedido["DATAENTREGA"] = Convert.ToDateTime(dtpEntrega.Value).ToString("dd/MM/yyyy");
             objPedido["CODCLIENTE"] = txtcodCli.getText;
             objPedido["CODVENDEDOR"] = txtCodVendedor.getText;
             objPedido["CODCONDICAOPAGAMENTO"] = txtCondPagto.getText;
@@ -182,6 +182,8 @@ namespace Comercial
             txtCodVendedor.getText = objPedido["CODVENDEDOR"].ToString();
             txtCondPagto.getText = objPedido["CODCONDICAOPAGAMENTO"].ToString();
             txtCodTransportadora.getText = objPedido["CODTRANSPORTADORA"].ToString();
+            //dtpEmissao.Value = Convert.ToDateTime(objPedido["DATAEMISSAO"].ToString());
+            //dtpEntrega.Value = Convert.ToDateTime(objPedido["DATAENTREGA"].ToString());
 
 
 
