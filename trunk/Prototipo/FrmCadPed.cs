@@ -109,7 +109,7 @@ namespace Comercial
             {
                 MessageBox.Show("Operação Cancelada, pois não existe itens para este pedido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Util.Interface.ChangeControlStatus(this, false);
-                
+
             }
             else
             {
@@ -222,7 +222,6 @@ namespace Comercial
             txtPrcVen.Text = String.Empty;
             txtQtdItem.Text = String.Empty;
             txtPrcUnit.Text = String.Empty;
-            txtVlrtotal.Text = String.Empty;
             txtDesconto.Text = String.Empty;
             txtipi.Text = String.Empty;
             txtPedido.Text = String.Empty;
@@ -243,7 +242,6 @@ namespace Comercial
             txtPrcVen.Text = String.Empty;
             txtQtdItem.Text = String.Empty;
             txtPrcUnit.Text = String.Empty;
-            txtVlrtotal.Text = String.Empty;
             txtDesconto.Text = String.Empty;
             txtipi.Text = String.Empty;
 
@@ -501,7 +499,7 @@ namespace Comercial
         }
         #endregion
 
-        #region ListarTransportadoraDataGridView Pesquisa
+        #region ListarProdutoDataGridView Pesquisa
         public DataTable ListaProduto()
         {
             Database db = DatabaseFactory.CreateDatabase();
@@ -510,7 +508,8 @@ namespace Comercial
 
             StringBuilder sqlcommand = new StringBuilder();
 
-            sqlcommand.Append("SELECT CODPRODUTO,DESCRICAO,CODUNIDADEMEDIDA,ESTOQUEATUAL,PRECOVENDA, IPI FROM PRODUTO");
+            sqlcommand.Append(" SELECT CODPRODUTO,PRODUTO.DESCRICAO,CODUNIDADEMEDIDA,ESTOQUEATUAL,PRECOVENDA,IPI,GRUPOPRODUTO.DESCONTO");
+            sqlcommand.Append(" FROM PRODUTO INNER JOIN GRUPOPRODUTO ON PRODUTO.CODGRUPOPRODUTO = GRUPOPRODUTO.CODGRUPOPRODUTO");
 
             DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
 

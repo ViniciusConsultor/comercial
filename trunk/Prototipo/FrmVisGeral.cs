@@ -164,6 +164,9 @@ namespace Comercial
                     dtGrdVwVis.Columns.Add("col6", "IPI Produto");
                     dtGrdVwVis.Columns["col6"].DataPropertyName = "IPI";
 
+                    dtGrdVwVis.Columns.Add("col7", "Desconto Produto");
+                    dtGrdVwVis.Columns["col7"].DataPropertyName = "DESCONTO";
+
                    
                 }
                 #endregion
@@ -604,6 +607,7 @@ namespace Comercial
                     Ped.txtEstAtual.Text = selecionadas[3].Value.ToString();
                     Ped.txtPrcVen.Text = selecionadas[4].Value.ToString();
                     Ped.txtipi.Text = selecionadas[5].Value.ToString();
+                    Ped.txtDesconto.Text = selecionadas[6].Value.ToString();
 
                     this.Close();
                     this.Dispose();
