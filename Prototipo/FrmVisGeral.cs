@@ -167,7 +167,7 @@ namespace Comercial
                     dtGrdVwVis.Columns.Add("col7", "Desconto Produto");
                     dtGrdVwVis.Columns["col7"].DataPropertyName = "DESCONTO";
 
-                   
+
                 }
                 #endregion
 
@@ -183,7 +183,7 @@ namespace Comercial
                 rdBtnNome.Text = "N. Fant.";
                 rdBtnCod.Checked = true;
 
-               
+
 
                 col1.HeaderText = "CNPJ";
                 col1.DataPropertyName = "CNPJ";
@@ -197,6 +197,49 @@ namespace Comercial
 
             #endregion
 
+            #region Colunas GridViewGeral Consulta Pedido
+            if (_parent is FrmConPDV)
+            {
+                FrmConPDV Conped = (FrmConPDV)_parent;
+
+                #region VisGeral Consulta Pedido Produto
+                if (controle.Name == "txtCodProd")
+                {
+                    rdBtnCod.Visible = true;
+                    rdBtnCod.Text = "Código";
+                    rdBtnCod.Checked = true;
+                    rdBtnNome.Text = "Descrição";
+                    rdBtnNome.Checked = true;
+
+                    col1.HeaderText = "Código";
+                    col1.DataPropertyName = "CODPRODUTO";
+                    dtGrdVwVis.Columns[1].Visible = true;
+
+                    col2.HeaderText = "Descrição";
+                    col2.DataPropertyName = "DESCRICAO";
+                    dtGrdVwVis.Columns[1].Visible = true;
+
+                    dtGrdVwVis.Columns.Add("col3", "UM");
+                    dtGrdVwVis.Columns["col3"].DataPropertyName = "CODUNIDADEMEDIDA";
+
+                    dtGrdVwVis.Columns.Add("col4", "Estoque Atual");
+                    dtGrdVwVis.Columns["col4"].DataPropertyName = "ESTOQUEATUAL";
+
+                    dtGrdVwVis.Columns.Add("col5", "Preço Venda");
+                    dtGrdVwVis.Columns["col5"].DataPropertyName = "PRECOVENDA";
+
+                    dtGrdVwVis.Columns.Add("col6", "IPI Produto");
+                    dtGrdVwVis.Columns["col6"].DataPropertyName = "IPI";
+
+                    dtGrdVwVis.Columns.Add("col7", "Desconto Produto");
+                    dtGrdVwVis.Columns["col7"].DataPropertyName = "DESCONTO";
+
+
+                }
+                #endregion
+
+            }
+            #endregion
 
         }
 
@@ -228,9 +271,8 @@ namespace Comercial
             #endregion
 
             #region FormPesquisa Zabotto
-            if (_parent is FrmCadPed)
+            if ((_parent is FrmCadPed) || (_parent is FrmConPDV))
             {
-                FrmCadPed Ped = (FrmCadPed)_parent;
 
                 #region Pedido Pesquisa Cliente
                 if (_controle.Name == "txtcodCli")
@@ -405,7 +447,7 @@ namespace Comercial
 
                 #region Pedido Pesquisa Produto
 
-                if (_controle.Name == "txtProduto")
+                if ((_controle.Name == "txtProduto") || (_controle.Name == "txtCodProd"))
                 {
                     if (rdBtnCod.Checked == true)
                     {
@@ -455,7 +497,7 @@ namespace Comercial
                 string c = ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString;
                 SqlConnection conn = new SqlConnection(c);
                 conn.Open();
-                String consulta="select cnpj,nomefantasia from cliente where ";
+                String consulta = "select cnpj,nomefantasia from cliente where ";
                 if (rdBtnCod.Checked == true)
                 {
                     consulta += "cnpj=@cnpj";
@@ -468,14 +510,14 @@ namespace Comercial
                 {
                     cmd.Parameters.Add(new SqlParameter("@cnpj", txtPesquisar.Text));
                 }
-                else cmd.Parameters.Add(new SqlParameter("@nomefantasia","%"+txtPesquisar.Text+"%"));
+                else cmd.Parameters.Add(new SqlParameter("@nomefantasia", "%" + txtPesquisar.Text + "%"));
 
                 SqlDataReader reader = cmd.ExecuteReader();
                 DataTable table = new DataTable();
                 table.Load(reader);
 
                 dtGrdVwVis.DataSource = table;
-               
+
             }
 
             #endregion
@@ -616,6 +658,7 @@ namespace Comercial
                 #endregion
 
             }
+
             #endregion
 
             #region Double Click Pesquisa Cliente
@@ -635,6 +678,38 @@ namespace Comercial
                 this.Dispose();
             }
 
+            #endregion
+
+            #region Double Click Consulta Pedido
+
+            #region Produto
+            if (_parent is FrmConPDV)
+            {
+                FrmConPDV ConPed = (FrmConPDV)_parent;
+
+                #region Double Click Consulta Produto
+                if (_controle.Name == "txtCodProd")
+                {
+                    // vamos obter as células selecionadas no DataGridView
+                    DataGridViewSelectedCellCollection selecionadas = dtGrdVwVis.SelectedCells;
+
+                    DataGridViewCell celula = selecionadas[0];
+                    int linha = celula.RowIndex;
+                    int coluna = celula.ColumnIndex;
+
+
+                    ConPed.txtCodProd.getText = celula.Value.ToString();
+
+
+                    this.Close();
+                    this.Dispose();
+                }
+                #endregion
+
+            #endregion
+
+
+            }
             #endregion
         }
         #endregion

@@ -480,6 +480,12 @@ namespace Comercial
                 FrmConProd prod = (FrmConProd)frm;
                 prod.pesquisar();
             }
+
+            if (frm is FrmConPDV)
+            {
+                FrmConPDV Ped = (FrmConPDV)frm;
+                Ped.pesquisar();
+            }
         }
 
         private void gerarNotaFiscalToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -1303,6 +1309,8 @@ namespace Comercial
             }
 
             #endregion
+
+           
         }
 
         private void FrmPrinc_Load(object sender, EventArgs e)
