@@ -29,25 +29,26 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmConCli));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tbCntrlConCli = new System.Windows.Forms.TabControl();
             this.tbPgConCli = new System.Windows.Forms.TabPage();
             this.grpBxFiltro = new System.Windows.Forms.GroupBox();
             this.grpBxPedido = new System.Windows.Forms.GroupBox();
+            this.txtNumPed = new System.Windows.Forms.TextBox();
             this.dttmDataPedido = new System.Windows.Forms.DateTimePicker();
             this.lblDataPed = new System.Windows.Forms.Label();
             this.lblNumPed = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.rdbtnCancelado = new System.Windows.Forms.RadioButton();
             this.rdbtnPendente = new System.Windows.Forms.RadioButton();
             this.rdbtnEfetivado = new System.Windows.Forms.RadioButton();
             this.cmBxTipoPed = new System.Windows.Forms.ComboBox();
             this.lblTipoPed = new System.Windows.Forms.Label();
             this.grpBxCli = new System.Windows.Forms.GroupBox();
+            this.txtCnpjCli = new Comercial.TextButton();
             this.cmbAreaAtuCli = new System.Windows.Forms.ComboBox();
             this.lblCNPJ = new System.Windows.Forms.Label();
             this.lblArea = new System.Windows.Forms.Label();
@@ -61,11 +62,10 @@
             this.ClmnCodPed = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClmnDtPed = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClmnValPed = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtNumPed = new System.Windows.Forms.TextBox();
             this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
             this.cLIENTEBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cLIENTETableAdapter = new Comercial.COMERCIALDataSetTableAdapters.CLIENTETableAdapter();
-            this.txtCnpjCli = new Comercial.TextButton();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.tbCntrlConCli.SuspendLayout();
             this.tbPgConCli.SuspendLayout();
             this.grpBxFiltro.SuspendLayout();
@@ -131,6 +131,13 @@
             this.grpBxPedido.TabStop = false;
             this.grpBxPedido.Text = "Dados Pedido";
             // 
+            // txtNumPed
+            // 
+            this.txtNumPed.Location = new System.Drawing.Point(12, 36);
+            this.txtNumPed.Name = "txtNumPed";
+            this.txtNumPed.Size = new System.Drawing.Size(80, 20);
+            this.txtNumPed.TabIndex = 22;
+            // 
             // dttmDataPedido
             // 
             this.dttmDataPedido.Checked = false;
@@ -177,16 +184,6 @@
             this.groupBox2.TabIndex = 14;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Situação do Pedido:";
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(111, 1);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(15, 14);
-            this.checkBox1.TabIndex = 3;
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckStateChanged += new System.EventHandler(this.checkBox1_CheckStateChanged);
             // 
             // rdbtnCancelado
             // 
@@ -266,6 +263,17 @@
             this.grpBxCli.TabIndex = 3;
             this.grpBxCli.TabStop = false;
             this.grpBxCli.Text = "Dados Cliente:";
+            // 
+            // txtCnpjCli
+            // 
+            this.txtCnpjCli.getText = "";
+            this.txtCnpjCli.Image = ((System.Drawing.Image)(resources.GetObject("txtCnpjCli.Image")));
+            this.txtCnpjCli.Location = new System.Drawing.Point(17, 32);
+            this.txtCnpjCli.Name = "txtCnpjCli";
+            this.txtCnpjCli.ShowButton = false;
+            this.txtCnpjCli.Size = new System.Drawing.Size(148, 25);
+            this.txtCnpjCli.TabIndex = 91;
+            this.txtCnpjCli.ButtonClick += new System.EventHandler(this.txtCnpjCli_ButtonClick);
             // 
             // cmbAreaAtuCli
             // 
@@ -366,14 +374,14 @@
             this.dtgrdConCli.AllowUserToAddRows = false;
             this.dtgrdConCli.AllowUserToDeleteRows = false;
             this.dtgrdConCli.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgrdConCli.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgrdConCli.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dtgrdConCli.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgrdConCli.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CNPJCli,
@@ -381,25 +389,25 @@
             this.ClmnCodPed,
             this.ClmnDtPed,
             this.ClmnValPed});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.CadetBlue;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgrdConCli.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.CadetBlue;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgrdConCli.DefaultCellStyle = dataGridViewCellStyle5;
             this.dtgrdConCli.Location = new System.Drawing.Point(6, 209);
             this.dtgrdConCli.Name = "dtgrdConCli";
             this.dtgrdConCli.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgrdConCli.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgrdConCli.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dtgrdConCli.Size = new System.Drawing.Size(813, 243);
             this.dtgrdConCli.TabIndex = 0;
             // 
@@ -441,13 +449,6 @@
             this.ClmnValPed.ReadOnly = true;
             this.ClmnValPed.Width = 160;
             // 
-            // txtNumPed
-            // 
-            this.txtNumPed.Location = new System.Drawing.Point(12, 36);
-            this.txtNumPed.Name = "txtNumPed";
-            this.txtNumPed.Size = new System.Drawing.Size(80, 20);
-            this.txtNumPed.TabIndex = 22;
-            // 
             // cOMERCIALDataSet
             // 
             this.cOMERCIALDataSet.DataSetName = "COMERCIALDataSet";
@@ -462,16 +463,15 @@
             // 
             this.cLIENTETableAdapter.ClearBeforeFill = true;
             // 
-            // txtCnpjCli
+            // checkBox1
             // 
-            this.txtCnpjCli.getText = "";
-            this.txtCnpjCli.Image = ((System.Drawing.Image)(resources.GetObject("txtCnpjCli.Image")));
-            this.txtCnpjCli.Location = new System.Drawing.Point(17, 32);
-            this.txtCnpjCli.Name = "txtCnpjCli";
-            this.txtCnpjCli.ShowButton = false;
-            this.txtCnpjCli.Size = new System.Drawing.Size(148, 25);
-            this.txtCnpjCli.TabIndex = 91;
-            this.txtCnpjCli.ButtonClick += new System.EventHandler(this.txtCnpjCli_ButtonClick);
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(111, 1);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(15, 14);
+            this.checkBox1.TabIndex = 3;
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckStateChanged += new System.EventHandler(this.checkBox1_CheckStateChanged);
             // 
             // frmConCli
             // 
@@ -524,7 +524,6 @@
         private System.Windows.Forms.Label lblRazao;
         private System.Windows.Forms.Label lblArea;
         private System.Windows.Forms.Label lblCNPJ;
-        private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.DataGridViewTextBoxColumn CNPJCli;
         private System.Windows.Forms.DataGridViewTextBoxColumn NomeFantasiaCli;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmnCodPed;
@@ -538,5 +537,6 @@
         private COMERCIALDataSet cOMERCIALDataSet;
         private System.Windows.Forms.BindingSource cLIENTEBindingSource;
         private Comercial.COMERCIALDataSetTableAdapters.CLIENTETableAdapter cLIENTETableAdapter;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

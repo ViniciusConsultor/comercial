@@ -132,6 +132,7 @@ namespace Comercial
 
         }
  #endregion
+
         private void txtCodPed_ButtonClick(object sender, EventArgs e)
         {
             FrmVisGeral x = new FrmVisGeral(this, (Control)sender);
