@@ -684,39 +684,7 @@ namespace Comercial
         #region Remover item data grid
         private void dtgrdvItenspven_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
-            {
-                DataGridViewButtonColumn buttonColumn =
-                new DataGridViewButtonColumn();
-
-                if (buttonColumn.Index == -1)
-                {
-                    if (dttRetorno.Rows.Count != 0)
-                    {
-                        dttRetorno.Rows.RemoveAt(e.RowIndex);
-                    }
-                    else
-                    {
-
-                        COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter();
-                        table.Delete(Convert.ToInt32(txtPedido.Text),
-                            Convert.ToInt32(dtgrdvItenspven.Rows[e.RowIndex].Cells[2].Value),
-                            Convert.ToInt32(dtgrdvItenspven.Rows[e.RowIndex].Cells[4].Value),
-                            Convert.ToDouble(dtgrdvItenspven.Rows[e.RowIndex].Cells[7].Value),
-                            Convert.ToDouble(dtgrdvItenspven.Rows[e.RowIndex].Cells[5].Value),
-                            Convert.ToDouble(dtgrdvItenspven.Rows[e.RowIndex].Cells[6].Value),
-                            Convert.ToInt32(dtgrdvItenspven.Rows[e.RowIndex].Cells[1].Value));
-
-                        this.populargrid();
-                    }
-
-                }
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
+            
         }
 
         #endregion
@@ -744,6 +712,48 @@ namespace Comercial
 
 
         #endregion
+
+
+        private void dtgrdvItenspven_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (e.RowIndex >= 0)
+                {
+                    DataGridViewImageColumn imagecolumn = new DataGridViewImageColumn();
+
+                    if (e.ColumnIndex == 0)
+                    {
+                        if (dttRetorno.Rows.Count != 0)
+                        {
+                            dttRetorno.Rows.RemoveAt(e.RowIndex);
+                        }
+                        else
+                        {
+
+                            //COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter();
+                            //table.Delete(Convert.ToInt32(txtPedido.Text),
+                            //    Convert.ToInt32(dtgrdvItenspven.Rows[e.RowIndex].Cells[2].Value),
+                            //    Convert.ToInt32(dtgrdvItenspven.Rows[e.RowIndex].Cells[4].Value),
+                            //    Convert.ToDouble(dtgrdvItenspven.Rows[e.RowIndex].Cells[7].Value),
+                            //    Convert.ToDouble(dtgrdvItenspven.Rows[e.RowIndex].Cells[5].Value),
+                            //    Convert.ToDouble(dtgrdvItenspven.Rows[e.RowIndex].Cells[6].Value),
+                            //    Convert.ToInt32(dtgrdvItenspven.Rows[e.RowIndex].Cells[1].Value));
+
+                            //this.populargrid();
+                        }
+
+                    }
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
 
     }
 }

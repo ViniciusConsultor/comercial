@@ -39,7 +39,7 @@
             this.crstlRprtVwrRel.Location = new System.Drawing.Point(0, 0);
             this.crstlRprtVwrRel.Name = "crstlRprtVwrRel";
             this.crstlRprtVwrRel.SelectionFormula = "";
-            this.crstlRprtVwrRel.Size = new System.Drawing.Size(292, 267);
+            this.crstlRprtVwrRel.Size = new System.Drawing.Size(465, 389);
             this.crstlRprtVwrRel.TabIndex = 0;
             this.crstlRprtVwrRel.ViewTimeSelectionFormula = "";
             // 
@@ -48,7 +48,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(292, 267);
+            this.ClientSize = new System.Drawing.Size(465, 389);
             this.Controls.Add(this.crstlRprtVwrRel);
             this.MaximizeBox = false;
             this.MinimizeBox = false;

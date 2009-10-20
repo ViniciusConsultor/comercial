@@ -604,7 +604,11 @@ namespace Comercial
                 }
                 if (form is FrmConPDV)
                 {
+                    FrmConPDV frmPed = (FrmConPDV)form;
+                    
                     FrmRelGeral filho = new FrmRelGeral("FrmConPDV", ((FrmConPDV)form));
+                    filho.Codped= Convert.ToInt32(frmPed.dtGrdConPDV.CurrentRow.Cells[0].Value);
+
                     filho.Show();
                 }
                 if (form is FrmConProd)
