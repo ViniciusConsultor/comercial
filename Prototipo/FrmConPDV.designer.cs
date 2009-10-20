@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmConPDV));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmConPDV));
             this.tbCntrlConPDV = new System.Windows.Forms.TabControl();
             this.tbPgConCli = new System.Windows.Forms.TabPage();
             this.grpBxFiltro = new System.Windows.Forms.GroupBox();
@@ -40,11 +40,11 @@
             this.rdbProd = new System.Windows.Forms.RadioButton();
             this.rdbped = new System.Windows.Forms.RadioButton();
             this.grpBxCli = new System.Windows.Forms.GroupBox();
-            this.txtCodProd = new Comercial.TextButton();
             this.txtDesc = new System.Windows.Forms.TextBox();
             this.lblNome = new System.Windows.Forms.Label();
             this.lblCodCli = new System.Windows.Forms.Label();
             this.grpBxPedido = new System.Windows.Forms.GroupBox();
+            this.txtCodPed = new System.Windows.Forms.TextBox();
             this.cmBxTipoPed = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
@@ -73,7 +73,7 @@
             this.tableAdapterManager = new Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager();
             this.iTEMPEDIDOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter();
             this.iTEMPEDIDOBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.txtCodPed = new System.Windows.Forms.TextBox();
+            this.txtCodProd = new Comercial.TextButton();
             this.tbCntrlConPDV.SuspendLayout();
             this.tbPgConCli.SuspendLayout();
             this.grpBxFiltro.SuspendLayout();
@@ -145,13 +145,13 @@
             this.rdbProd.Name = "rdbProd";
             this.rdbProd.Size = new System.Drawing.Size(65, 17);
             this.rdbProd.TabIndex = 1;
-            this.rdbProd.TabStop = true;
             this.rdbProd.Text = "Poduto";
             this.rdbProd.UseVisualStyleBackColor = true;
             // 
             // rdbped
             // 
             this.rdbped.AutoSize = true;
+            this.rdbped.Checked = true;
             this.rdbped.ForeColor = System.Drawing.Color.CadetBlue;
             this.rdbped.Location = new System.Drawing.Point(6, 28);
             this.rdbped.Name = "rdbped";
@@ -175,17 +175,6 @@
             this.grpBxCli.TabIndex = 9;
             this.grpBxCli.TabStop = false;
             this.grpBxCli.Text = "Dados Produto:";
-            // 
-            // txtCodProd
-            // 
-            this.txtCodProd.getText = "";
-            this.txtCodProd.Image = ((System.Drawing.Image)(resources.GetObject("txtCodProd.Image")));
-            this.txtCodProd.Location = new System.Drawing.Point(15, 35);
-            this.txtCodProd.Name = "txtCodProd";
-            this.txtCodProd.ShowButton = false;
-            this.txtCodProd.Size = new System.Drawing.Size(98, 25);
-            this.txtCodProd.TabIndex = 109;
-            this.txtCodProd.ButtonClick += new System.EventHandler(this.txtCodProd_ButtonClick);
             // 
             // txtDesc
             // 
@@ -234,6 +223,13 @@
             this.grpBxPedido.TabIndex = 8;
             this.grpBxPedido.TabStop = false;
             this.grpBxPedido.Text = "Dados Pedido";
+            // 
+            // txtCodPed
+            // 
+            this.txtCodPed.Location = new System.Drawing.Point(10, 35);
+            this.txtCodPed.Name = "txtCodPed";
+            this.txtCodPed.Size = new System.Drawing.Size(92, 20);
+            this.txtCodPed.TabIndex = 27;
             // 
             // cmBxTipoPed
             // 
@@ -525,12 +521,16 @@
             this.iTEMPEDIDOBindingSource.DataMember = "ITEMPEDIDO";
             this.iTEMPEDIDOBindingSource.DataSource = this.cOMERCIALDataSet;
             // 
-            // txtCodPed
+            // txtCodProd
             // 
-            this.txtCodPed.Location = new System.Drawing.Point(10, 35);
-            this.txtCodPed.Name = "txtCodPed";
-            this.txtCodPed.Size = new System.Drawing.Size(92, 20);
-            this.txtCodPed.TabIndex = 27;
+            this.txtCodProd.getText = "";
+            this.txtCodProd.Image = ((System.Drawing.Image)(resources.GetObject("txtCodProd.Image")));
+            this.txtCodProd.Location = new System.Drawing.Point(15, 35);
+            this.txtCodProd.Name = "txtCodProd";
+            this.txtCodProd.ShowButton = false;
+            this.txtCodProd.Size = new System.Drawing.Size(98, 25);
+            this.txtCodProd.TabIndex = 109;
+            this.txtCodProd.ButtonClick += new System.EventHandler(this.txtCodProd_ButtonClick);
             // 
             // FrmConPDV
             // 
@@ -570,15 +570,12 @@
         private System.Windows.Forms.Label lblDataPed;
         private System.Windows.Forms.Label lblCod;
         private System.Windows.Forms.Label lblTipoPed;
-        private System.Windows.Forms.DataGridView dtGrdConPDV;
         private System.Windows.Forms.Label lblDataate;
         private System.Windows.Forms.GroupBox grpBxCli;
         private System.Windows.Forms.TextBox txtDesc;
         private System.Windows.Forms.Label lblNome;
         private System.Windows.Forms.Label lblCodCli;
         private System.Windows.Forms.GroupBox grpBxTpRel;
-        private System.Windows.Forms.RadioButton rdbProd;
-        private System.Windows.Forms.RadioButton rdbped;
         private COMERCIALDataSet cOMERCIALDataSet;
         private System.Windows.Forms.BindingSource pEDIDOBindingSource;
         private Comercial.COMERCIALDataSetTableAdapters.PEDIDOTableAdapter pEDIDOTableAdapter;
@@ -604,5 +601,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmnValPed;
         public TextButton txtCodProd;
         private System.Windows.Forms.TextBox txtCodPed;
+        public System.Windows.Forms.DataGridView dtGrdConPDV;
+        public System.Windows.Forms.RadioButton rdbProd;
+        public System.Windows.Forms.RadioButton rdbped;
     }
 }
