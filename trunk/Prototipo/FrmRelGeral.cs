@@ -17,6 +17,7 @@ using System.Configuration;
 
 
 
+
 namespace Comercial
 {
     public partial class FrmRelGeral : Form
@@ -54,33 +55,101 @@ namespace Comercial
 
             if (_princ == "FrmConPDV")
             {
-
-                ParameterDiscreteValue parameter = new ParameterDiscreteValue();
-
-                //CrystalDecisions.CrystalReports.Engine.ReportDocument report = new CrystalDecisions.CrystalReports.Engine.ReportDocument();
-                
-
-                //CrystalDecisions.Shared.ParameterField param = new CrystalDecisions.Shared.ParameterField();
-
+                //Instancio o FormConsulta
                 FrmConPDV x = (FrmConPDV)_pdv;
-
-                //Control[] c = x.Controls.Find("rdbped", true);
-
-
-                //RadioButton r = (RadioButton)c[0];
-
+                
                 if (x.rdbped.Checked)
                 {
-                    parameter.Value = "PDV";               
-                    this.ImprimirRelPed(Codped);
+                    //Instancio o Relatorio
+                    RptConPDV objRptConPDV = new RptConPDV();
+
+                    //Instancio o Dataset
+                    COMERCIALDataSet oDataset = new COMERCIALDataSet();
+
+                    Microsoft.Practices.EnterpriseLibrary.Data.Database db = DatabaseFactory.CreateDatabase();
+                    //Crio a Conexão
+                    SqlConnection sqlcon = new SqlConnection("Data Source=zabs\\sql2008;Initial Catalog=COMERCIAL;Persist Security Info=True;User ID=SIGA;Password=SIGA");
+
+                    //Abro a conexão
+                    sqlcon.Open();
+
+                    //Recebo a String SQL feita na tela de consulta
+                    string StringConnection = x.pesquisar();
+
+                    SqlDataAdapter dtAdapter = new SqlDataAdapter(StringConnection, sqlcon);
+
+                    //Localiso o datateble criado no dataset
+                    dtAdapter.Fill(oDataset, "RelPedido");
+
+                    objRptConPDV.SetDataSource(oDataset);
+
+                    //Passo parametro para relatorio no caso somente o de pedido tem parametro
+                    ParameterFieldDefinitions crParameterFieldDefinitions;
+                    ParameterFieldDefinition crParameterFieldDefinition;
+                    ParameterValues crParameterValues = new ParameterValues();
+                    ParameterDiscreteValue crParameterDiscreteValue = new ParameterDiscreteValue();
+
+                    crParameterDiscreteValue.Value = "PDV";
+                    crParameterFieldDefinitions = objRptConPDV.DataDefinition.ParameterFields;
+                    crParameterFieldDefinition = crParameterFieldDefinitions["Tipo"];
+                    crParameterValues = crParameterFieldDefinition.CurrentValues;
+
+                    crParameterValues.Clear();
+                    crParameterValues.Add(crParameterDiscreteValue);
+                    crParameterFieldDefinition.ApplyCurrentValues(crParameterValues);
+
+                    //atribiu o resultado ao CristalReportView            
+                    crstlRprtVwrRel.DisplayGroupTree = false;
+                    crstlRprtVwrRel.ReportSource = objRptConPDV;
+
                 }
                 else
                 {
-                    //report.SetParameterValue(0, "prod");
+                    //Instancio o Relatorio
+                    RptConPDV objRptConPDV = new RptConPDV();
+
+                    //Instancio o Dataset
+                    COMERCIALDataSet oDataset = new COMERCIALDataSet();
+
+                    Microsoft.Practices.EnterpriseLibrary.Data.Database db = DatabaseFactory.CreateDatabase();
+                    //Crio a Conexão
+                    SqlConnection sqlcon = new SqlConnection("Data Source=zabs\\sql2008;Initial Catalog=COMERCIAL;Persist Security Info=True;User ID=SIGA;Password=SIGA");
+
+                    //Abro a conexão
+                    sqlcon.Open();
+
+                    //Recebo a String SQL feita na tela de consulta
+                    string StringConnection = x.pesquisar();
+
+                    SqlDataAdapter dtAdapter = new SqlDataAdapter(StringConnection, sqlcon);
+
+                    //Localiso o datateble criado no dataset
+                    dtAdapter.Fill(oDataset, "RelPedido");
+
+                    objRptConPDV.SetDataSource(oDataset);
+
+                    //Passo parametro para relatorio no caso somente o de pedido tem parametro
+                    ParameterFieldDefinitions crParameterFieldDefinitions;
+                    ParameterFieldDefinition crParameterFieldDefinition;
+                    ParameterValues crParameterValues = new ParameterValues();
+                    ParameterDiscreteValue crParameterDiscreteValue = new ParameterDiscreteValue();
+
+                    crParameterDiscreteValue.Value = "prd";
+                    crParameterFieldDefinitions = objRptConPDV.DataDefinition.ParameterFields;
+                    crParameterFieldDefinition = crParameterFieldDefinitions["Tipo"];
+                    crParameterValues = crParameterFieldDefinition.CurrentValues;
+
+                    crParameterValues.Clear();
+                    crParameterValues.Add(crParameterDiscreteValue);
+                    crParameterFieldDefinition.ApplyCurrentValues(crParameterValues);
+
+                    //atribiu o resultado ao CristalReportView            
+                    crstlRprtVwrRel.DisplayGroupTree = false;
+                    crstlRprtVwrRel.ReportSource = objRptConPDV;
                 }
 
-                
-              
+
+
             }
 
             if (_princ == "FrmConVen")
@@ -102,42 +171,15 @@ namespace Comercial
             }
         }
 
+       
+        #region ImprimerRelatorio Pedido
         public void ImprimirRelPed(int CodPed)
         {
-
-            RptConPDV objRptConPDV = new RptConPDV();
-            COMERCIALDataSet oDataset = new COMERCIALDataSet();
-
-           Microsoft.Practices.EnterpriseLibrary.Data.Database db = DatabaseFactory.CreateDatabase();
-
-           SqlConnection sqlcon = new SqlConnection("Data Source=zabs\\sql2008;Initial Catalog=COMERCIAL;Persist Security Info=True;User ID=SIGA;Password=SIGA");
-
-           sqlcon.Open();
-
-            StringBuilder sqlcommand = new StringBuilder();
-
-            sqlcommand.Append("SELECT p.NRPEDIDO as CodPedido,c.RAZAOSOCIAL as Cliente, DATAEMISSAO, DATAENTREGA ,prd.CODPRODUTO as CodProduto, prd.DESCRICAO as DescricaoProd, QUANTIDADE, VALOR as PrecoUnitario");
-            sqlcommand.Append(" FROM PEDIDO p INNER JOIN CLIENTE c ON p.CODCLIENTE = c.CNPJ ");
-            sqlcommand.Append(" INNER JOIN ITEMPEDIDO ip ON p.NRPEDIDO = ip.NRPEDIDO ");
-            sqlcommand.Append(" INNER JOIN PRODUTO prd ON ip.CODPRODUTO = prd.CODPRODUTO ");
-            sqlcommand.Append(" WHERE p.NRPEDIDO = " + Codped);
             
-            DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
-
-            //db.AddInParameter(dbComd, "@CodPedido", DbType.String, CodPed);
-
-            SqlDataAdapter dtAdapter = new SqlDataAdapter(sqlcommand.ToString(), sqlcon);
-
-            dtAdapter.Fill(oDataset, "RelPedido");
-            
-           // db.ExecuteDataSet(dbComd);
-
-            objRptConPDV.SetDataSource(oDataset);
-
-            crstlRprtVwrRel.DisplayGroupTree = false;
-            crstlRprtVwrRel.ReportSource = objRptConPDV;
+        
 
         }
+        #endregion
 
 
     }
