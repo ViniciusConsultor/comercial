@@ -295,7 +295,7 @@
             // dttmDataPedidoate
             // 
             this.dttmDataPedidoate.Checked = false;
-            this.dttmDataPedidoate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dttmDataPedidoate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dttmDataPedidoate.Location = new System.Drawing.Point(133, 128);
             this.dttmDataPedidoate.Name = "dttmDataPedidoate";
             this.dttmDataPedidoate.ShowCheckBox = true;
@@ -305,7 +305,7 @@
             // dttmDataPedido
             // 
             this.dttmDataPedido.Checked = false;
-            this.dttmDataPedido.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dttmDataPedido.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dttmDataPedido.Location = new System.Drawing.Point(12, 128);
             this.dttmDataPedido.Name = "dttmDataPedido";
             this.dttmDataPedido.ShowCheckBox = true;

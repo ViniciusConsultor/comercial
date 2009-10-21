@@ -6899,21 +6899,25 @@ namespace Comercial {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class RelPedidoDataTable : global::System.Data.TypedTableBase<RelPedidoRow> {
             
-            private global::System.Data.DataColumn columnCodPedido;
+            private global::System.Data.DataColumn columnNRPEDIDO;
             
-            private global::System.Data.DataColumn columnCliente;
+            private global::System.Data.DataColumn columnTIPO;
             
-            private global::System.Data.DataColumn columnDataEmissao;
+            private global::System.Data.DataColumn columnSITUACAO;
             
-            private global::System.Data.DataColumn columnDataEntrega;
+            private global::System.Data.DataColumn columnRAZAOSOCIAL;
             
-            private global::System.Data.DataColumn columnCodProduto;
+            private global::System.Data.DataColumn columnDATAEMISSAO;
             
-            private global::System.Data.DataColumn columnDescricaoProd;
+            private global::System.Data.DataColumn columnDATAENTREGA;
             
-            private global::System.Data.DataColumn columnQuantidade;
+            private global::System.Data.DataColumn columnCODPRODUTO;
             
-            private global::System.Data.DataColumn columnPrecoUnitario;
+            private global::System.Data.DataColumn columnDESCRICAO;
+            
+            private global::System.Data.DataColumn columnQUANTIDADE;
+            
+            private global::System.Data.DataColumn columnVALOR;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public RelPedidoDataTable() {
@@ -6946,58 +6950,72 @@ namespace Comercial {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public global::System.Data.DataColumn CodPedidoColumn {
+            public global::System.Data.DataColumn NRPEDIDOColumn {
                 get {
-                    return this.columnCodPedido;
+                    return this.columnNRPEDIDO;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public global::System.Data.DataColumn ClienteColumn {
+            public global::System.Data.DataColumn TIPOColumn {
                 get {
-                    return this.columnCliente;
+                    return this.columnTIPO;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public global::System.Data.DataColumn DataEmissaoColumn {
+            public global::System.Data.DataColumn SITUACAOColumn {
                 get {
-                    return this.columnDataEmissao;
+                    return this.columnSITUACAO;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public global::System.Data.DataColumn DataEntregaColumn {
+            public global::System.Data.DataColumn RAZAOSOCIALColumn {
                 get {
-                    return this.columnDataEntrega;
+                    return this.columnRAZAOSOCIAL;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public global::System.Data.DataColumn CodProdutoColumn {
+            public global::System.Data.DataColumn DATAEMISSAOColumn {
                 get {
-                    return this.columnCodProduto;
+                    return this.columnDATAEMISSAO;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public global::System.Data.DataColumn DescricaoProdColumn {
+            public global::System.Data.DataColumn DATAENTREGAColumn {
                 get {
-                    return this.columnDescricaoProd;
+                    return this.columnDATAENTREGA;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public global::System.Data.DataColumn QuantidadeColumn {
+            public global::System.Data.DataColumn CODPRODUTOColumn {
                 get {
-                    return this.columnQuantidade;
+                    return this.columnCODPRODUTO;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public global::System.Data.DataColumn PrecoUnitarioColumn {
+            public global::System.Data.DataColumn DESCRICAOColumn {
                 get {
-                    return this.columnPrecoUnitario;
+                    return this.columnDESCRICAO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn QUANTIDADEColumn {
+                get {
+                    return this.columnQUANTIDADE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn VALORColumn {
+                get {
+                    return this.columnVALOR;
                 }
             }
             
@@ -7030,17 +7048,19 @@ namespace Comercial {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public RelPedidoRow AddRelPedidoRow(string CodPedido, string Cliente, string DataEmissao, string DataEntrega, string CodProduto, string DescricaoProd, string Quantidade, string PrecoUnitario) {
+            public RelPedidoRow AddRelPedidoRow(string NRPEDIDO, string TIPO, string SITUACAO, string RAZAOSOCIAL, string DATAEMISSAO, string DATAENTREGA, string CODPRODUTO, string DESCRICAO, string QUANTIDADE, string VALOR) {
                 RelPedidoRow rowRelPedidoRow = ((RelPedidoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        CodPedido,
-                        Cliente,
-                        DataEmissao,
-                        DataEntrega,
-                        CodProduto,
-                        DescricaoProd,
-                        Quantidade,
-                        PrecoUnitario};
+                        NRPEDIDO,
+                        TIPO,
+                        SITUACAO,
+                        RAZAOSOCIAL,
+                        DATAEMISSAO,
+                        DATAENTREGA,
+                        CODPRODUTO,
+                        DESCRICAO,
+                        QUANTIDADE,
+                        VALOR};
                 rowRelPedidoRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowRelPedidoRow);
                 return rowRelPedidoRow;
@@ -7060,34 +7080,40 @@ namespace Comercial {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             internal void InitVars() {
-                this.columnCodPedido = base.Columns["CodPedido"];
-                this.columnCliente = base.Columns["Cliente"];
-                this.columnDataEmissao = base.Columns["DataEmissao"];
-                this.columnDataEntrega = base.Columns["DataEntrega"];
-                this.columnCodProduto = base.Columns["CodProduto"];
-                this.columnDescricaoProd = base.Columns["DescricaoProd"];
-                this.columnQuantidade = base.Columns["Quantidade"];
-                this.columnPrecoUnitario = base.Columns["PrecoUnitario"];
+                this.columnNRPEDIDO = base.Columns["NRPEDIDO"];
+                this.columnTIPO = base.Columns["TIPO"];
+                this.columnSITUACAO = base.Columns["SITUACAO"];
+                this.columnRAZAOSOCIAL = base.Columns["RAZAOSOCIAL"];
+                this.columnDATAEMISSAO = base.Columns["DATAEMISSAO"];
+                this.columnDATAENTREGA = base.Columns["DATAENTREGA"];
+                this.columnCODPRODUTO = base.Columns["CODPRODUTO"];
+                this.columnDESCRICAO = base.Columns["DESCRICAO"];
+                this.columnQUANTIDADE = base.Columns["QUANTIDADE"];
+                this.columnVALOR = base.Columns["VALOR"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             private void InitClass() {
-                this.columnCodPedido = new global::System.Data.DataColumn("CodPedido", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCodPedido);
-                this.columnCliente = new global::System.Data.DataColumn("Cliente", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCliente);
-                this.columnDataEmissao = new global::System.Data.DataColumn("DataEmissao", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDataEmissao);
-                this.columnDataEntrega = new global::System.Data.DataColumn("DataEntrega", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDataEntrega);
-                this.columnCodProduto = new global::System.Data.DataColumn("CodProduto", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCodProduto);
-                this.columnDescricaoProd = new global::System.Data.DataColumn("DescricaoProd", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDescricaoProd);
-                this.columnQuantidade = new global::System.Data.DataColumn("Quantidade", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnQuantidade);
-                this.columnPrecoUnitario = new global::System.Data.DataColumn("PrecoUnitario", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPrecoUnitario);
+                this.columnNRPEDIDO = new global::System.Data.DataColumn("NRPEDIDO", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNRPEDIDO);
+                this.columnTIPO = new global::System.Data.DataColumn("TIPO", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTIPO);
+                this.columnSITUACAO = new global::System.Data.DataColumn("SITUACAO", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSITUACAO);
+                this.columnRAZAOSOCIAL = new global::System.Data.DataColumn("RAZAOSOCIAL", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRAZAOSOCIAL);
+                this.columnDATAEMISSAO = new global::System.Data.DataColumn("DATAEMISSAO", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDATAEMISSAO);
+                this.columnDATAENTREGA = new global::System.Data.DataColumn("DATAENTREGA", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDATAENTREGA);
+                this.columnCODPRODUTO = new global::System.Data.DataColumn("CODPRODUTO", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCODPRODUTO);
+                this.columnDESCRICAO = new global::System.Data.DataColumn("DESCRICAO", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDESCRICAO);
+                this.columnQUANTIDADE = new global::System.Data.DataColumn("QUANTIDADE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnQUANTIDADE);
+                this.columnVALOR = new global::System.Data.DataColumn("VALOR", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnVALOR);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9995,203 +10021,253 @@ namespace Comercial {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public string CodPedido {
+            public string NRPEDIDO {
                 get {
                     try {
-                        return ((string)(this[this.tableRelPedido.CodPedidoColumn]));
+                        return ((string)(this[this.tableRelPedido.NRPEDIDOColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'CodPedido\' in table \'RelPedido\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'NRPEDIDO\' in table \'RelPedido\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableRelPedido.CodPedidoColumn] = value;
+                    this[this.tableRelPedido.NRPEDIDOColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public string Cliente {
+            public string TIPO {
                 get {
                     try {
-                        return ((string)(this[this.tableRelPedido.ClienteColumn]));
+                        return ((string)(this[this.tableRelPedido.TIPOColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Cliente\' in table \'RelPedido\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'TIPO\' in table \'RelPedido\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableRelPedido.ClienteColumn] = value;
+                    this[this.tableRelPedido.TIPOColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public string DataEmissao {
+            public string SITUACAO {
                 get {
                     try {
-                        return ((string)(this[this.tableRelPedido.DataEmissaoColumn]));
+                        return ((string)(this[this.tableRelPedido.SITUACAOColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'DataEmissao\' in table \'RelPedido\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'SITUACAO\' in table \'RelPedido\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableRelPedido.DataEmissaoColumn] = value;
+                    this[this.tableRelPedido.SITUACAOColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public string DataEntrega {
+            public string RAZAOSOCIAL {
                 get {
                     try {
-                        return ((string)(this[this.tableRelPedido.DataEntregaColumn]));
+                        return ((string)(this[this.tableRelPedido.RAZAOSOCIALColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'DataEntrega\' in table \'RelPedido\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'RAZAOSOCIAL\' in table \'RelPedido\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableRelPedido.DataEntregaColumn] = value;
+                    this[this.tableRelPedido.RAZAOSOCIALColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public string CodProduto {
+            public string DATAEMISSAO {
                 get {
                     try {
-                        return ((string)(this[this.tableRelPedido.CodProdutoColumn]));
+                        return ((string)(this[this.tableRelPedido.DATAEMISSAOColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'CodProduto\' in table \'RelPedido\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'DATAEMISSAO\' in table \'RelPedido\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableRelPedido.CodProdutoColumn] = value;
+                    this[this.tableRelPedido.DATAEMISSAOColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public string DescricaoProd {
+            public string DATAENTREGA {
                 get {
                     try {
-                        return ((string)(this[this.tableRelPedido.DescricaoProdColumn]));
+                        return ((string)(this[this.tableRelPedido.DATAENTREGAColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'DescricaoProd\' in table \'RelPedido\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'DATAENTREGA\' in table \'RelPedido\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableRelPedido.DescricaoProdColumn] = value;
+                    this[this.tableRelPedido.DATAENTREGAColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public string Quantidade {
+            public string CODPRODUTO {
                 get {
                     try {
-                        return ((string)(this[this.tableRelPedido.QuantidadeColumn]));
+                        return ((string)(this[this.tableRelPedido.CODPRODUTOColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Quantidade\' in table \'RelPedido\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'CODPRODUTO\' in table \'RelPedido\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableRelPedido.QuantidadeColumn] = value;
+                    this[this.tableRelPedido.CODPRODUTOColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public string PrecoUnitario {
+            public string DESCRICAO {
                 get {
                     try {
-                        return ((string)(this[this.tableRelPedido.PrecoUnitarioColumn]));
+                        return ((string)(this[this.tableRelPedido.DESCRICAOColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'PrecoUnitario\' in table \'RelPedido\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'DESCRICAO\' in table \'RelPedido\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableRelPedido.PrecoUnitarioColumn] = value;
+                    this[this.tableRelPedido.DESCRICAOColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public bool IsCodPedidoNull() {
-                return this.IsNull(this.tableRelPedido.CodPedidoColumn);
+            public string QUANTIDADE {
+                get {
+                    try {
+                        return ((string)(this[this.tableRelPedido.QUANTIDADEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'QUANTIDADE\' in table \'RelPedido\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRelPedido.QUANTIDADEColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public void SetCodPedidoNull() {
-                this[this.tableRelPedido.CodPedidoColumn] = global::System.Convert.DBNull;
+            public string VALOR {
+                get {
+                    try {
+                        return ((string)(this[this.tableRelPedido.VALORColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'VALOR\' in table \'RelPedido\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRelPedido.VALORColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public bool IsClienteNull() {
-                return this.IsNull(this.tableRelPedido.ClienteColumn);
+            public bool IsNRPEDIDONull() {
+                return this.IsNull(this.tableRelPedido.NRPEDIDOColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public void SetClienteNull() {
-                this[this.tableRelPedido.ClienteColumn] = global::System.Convert.DBNull;
+            public void SetNRPEDIDONull() {
+                this[this.tableRelPedido.NRPEDIDOColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public bool IsDataEmissaoNull() {
-                return this.IsNull(this.tableRelPedido.DataEmissaoColumn);
+            public bool IsTIPONull() {
+                return this.IsNull(this.tableRelPedido.TIPOColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public void SetDataEmissaoNull() {
-                this[this.tableRelPedido.DataEmissaoColumn] = global::System.Convert.DBNull;
+            public void SetTIPONull() {
+                this[this.tableRelPedido.TIPOColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public bool IsDataEntregaNull() {
-                return this.IsNull(this.tableRelPedido.DataEntregaColumn);
+            public bool IsSITUACAONull() {
+                return this.IsNull(this.tableRelPedido.SITUACAOColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public void SetDataEntregaNull() {
-                this[this.tableRelPedido.DataEntregaColumn] = global::System.Convert.DBNull;
+            public void SetSITUACAONull() {
+                this[this.tableRelPedido.SITUACAOColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public bool IsCodProdutoNull() {
-                return this.IsNull(this.tableRelPedido.CodProdutoColumn);
+            public bool IsRAZAOSOCIALNull() {
+                return this.IsNull(this.tableRelPedido.RAZAOSOCIALColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public void SetCodProdutoNull() {
-                this[this.tableRelPedido.CodProdutoColumn] = global::System.Convert.DBNull;
+            public void SetRAZAOSOCIALNull() {
+                this[this.tableRelPedido.RAZAOSOCIALColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public bool IsDescricaoProdNull() {
-                return this.IsNull(this.tableRelPedido.DescricaoProdColumn);
+            public bool IsDATAEMISSAONull() {
+                return this.IsNull(this.tableRelPedido.DATAEMISSAOColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public void SetDescricaoProdNull() {
-                this[this.tableRelPedido.DescricaoProdColumn] = global::System.Convert.DBNull;
+            public void SetDATAEMISSAONull() {
+                this[this.tableRelPedido.DATAEMISSAOColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public bool IsQuantidadeNull() {
-                return this.IsNull(this.tableRelPedido.QuantidadeColumn);
+            public bool IsDATAENTREGANull() {
+                return this.IsNull(this.tableRelPedido.DATAENTREGAColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public void SetQuantidadeNull() {
-                this[this.tableRelPedido.QuantidadeColumn] = global::System.Convert.DBNull;
+            public void SetDATAENTREGANull() {
+                this[this.tableRelPedido.DATAENTREGAColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public bool IsPrecoUnitarioNull() {
-                return this.IsNull(this.tableRelPedido.PrecoUnitarioColumn);
+            public bool IsCODPRODUTONull() {
+                return this.IsNull(this.tableRelPedido.CODPRODUTOColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public void SetPrecoUnitarioNull() {
-                this[this.tableRelPedido.PrecoUnitarioColumn] = global::System.Convert.DBNull;
+            public void SetCODPRODUTONull() {
+                this[this.tableRelPedido.CODPRODUTOColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsDESCRICAONull() {
+                return this.IsNull(this.tableRelPedido.DESCRICAOColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetDESCRICAONull() {
+                this[this.tableRelPedido.DESCRICAOColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsQUANTIDADENull() {
+                return this.IsNull(this.tableRelPedido.QUANTIDADEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetQUANTIDADENull() {
+                this[this.tableRelPedido.QUANTIDADEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsVALORNull() {
+                return this.IsNull(this.tableRelPedido.VALORColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetVALORNull() {
+                this[this.tableRelPedido.VALORColumn] = global::System.Convert.DBNull;
             }
         }
         

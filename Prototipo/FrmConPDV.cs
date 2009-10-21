@@ -63,9 +63,9 @@ namespace Comercial
 
         }
 
-        public void pesquisar()
+        public string pesquisar()
         {
-            string sql = "SELECT p.NRPEDIDO,TIPO,SITUACAO,c.RAZAOSOCIAL, DATAEMISSAO, DATAENTREGA,prd.CODPRODUTO, prd.DESCRICAO, QUANTIDADE, SUM(VALOR) as Valor " +
+            string sql = "SELECT p.NRPEDIDO ,TIPO,SITUACAO,c.RAZAOSOCIAL, DATAEMISSAO, DATAENTREGA,prd.CODPRODUTO, prd.DESCRICAO, QUANTIDADE, SUM(VALOR) as Valor " +
                          " FROM PEDIDO p INNER JOIN CLIENTE c ON p.CODCLIENTE = c.CNPJ  "+
                          " INNER JOIN ITEMPEDIDO ip ON p.NRPEDIDO = ip.NRPEDIDO   "+
                          " INNER JOIN PRODUTO prd ON ip.CODPRODUTO = prd.CODPRODUTO ";
@@ -106,9 +106,7 @@ namespace Comercial
                 sql += " and p.situacao ='P'";
             }
 
-           
-
-            //Pesquisa por data
+             //Pesquisa por data
             if ((dttmDataPedido.Checked) && (dttmDataPedidoate.Checked))
             {
                 string formatData = dttmDataPedido.Value.Year + "-" + dttmDataPedido.Value.Month + "-" + dttmDataPedido.Value.Day;
@@ -135,6 +133,10 @@ namespace Comercial
 
 
             dtGrdConPDV.DataSource = table;
+
+            string sqlconn = sql;
+
+            return sqlconn;
 
 
         }
