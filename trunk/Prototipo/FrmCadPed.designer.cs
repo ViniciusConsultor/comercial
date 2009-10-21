@@ -39,6 +39,10 @@
             this.grpTipoPedido = new System.Windows.Forms.GroupBox();
             this.chkComplemento = new System.Windows.Forms.CheckBox();
             this.chkNormal = new System.Windows.Forms.CheckBox();
+            this.grpBxSitPed = new System.Windows.Forms.GroupBox();
+            this.chkCancelado = new System.Windows.Forms.CheckBox();
+            this.chkPendente = new System.Windows.Forms.CheckBox();
+            this.chkEfetivado = new System.Windows.Forms.CheckBox();
             this.dtpEntrega = new System.Windows.Forms.DateTimePicker();
             this.pEDIDOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
@@ -47,9 +51,6 @@
             this.txtNomeTransportadora = new System.Windows.Forms.TextBox();
             this.vENDEDORBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lbldtemi = new System.Windows.Forms.Label();
-            this.grpBxSitPed = new System.Windows.Forms.GroupBox();
-            this.chkPendente = new System.Windows.Forms.CheckBox();
-            this.chkEfetivado = new System.Windows.Forms.CheckBox();
             this.lblNomeTransportadora = new System.Windows.Forms.Label();
             this.txtNomeVendedor = new System.Windows.Forms.TextBox();
             this.txtNomeCliente = new System.Windows.Forms.TextBox();
@@ -113,10 +114,10 @@
             this.tabPage1.SuspendLayout();
             this.grpBxPedVenda.SuspendLayout();
             this.grpTipoPedido.SuspendLayout();
+            this.grpBxSitPed.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pEDIDOBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vENDEDORBindingSource)).BeginInit();
-            this.grpBxSitPed.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cLIENTEBindingSource)).BeginInit();
             this.grpBxItPedVen.SuspendLayout();
             this.pnlItenped.SuspendLayout();
@@ -178,13 +179,13 @@
             // grpBxPedVenda
             // 
             this.grpBxPedVenda.Controls.Add(this.grpTipoPedido);
+            this.grpBxPedVenda.Controls.Add(this.grpBxSitPed);
             this.grpBxPedVenda.Controls.Add(this.dtpEntrega);
             this.grpBxPedVenda.Controls.Add(this.label1);
             this.grpBxPedVenda.Controls.Add(this.txtCodTransportadora);
             this.grpBxPedVenda.Controls.Add(this.dtpEmissao);
             this.grpBxPedVenda.Controls.Add(this.txtNomeTransportadora);
             this.grpBxPedVenda.Controls.Add(this.lbldtemi);
-            this.grpBxPedVenda.Controls.Add(this.grpBxSitPed);
             this.grpBxPedVenda.Controls.Add(this.lblNomeTransportadora);
             this.grpBxPedVenda.Controls.Add(this.txtCondPagto);
             this.grpBxPedVenda.Controls.Add(this.txtCodVendedor);
@@ -203,7 +204,7 @@
             this.grpBxPedVenda.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.grpBxPedVenda.Location = new System.Drawing.Point(11, 13);
             this.grpBxPedVenda.Name = "grpBxPedVenda";
-            this.grpBxPedVenda.Size = new System.Drawing.Size(929, 116);
+            this.grpBxPedVenda.Size = new System.Drawing.Size(942, 116);
             this.grpBxPedVenda.TabIndex = 17;
             this.grpBxPedVenda.TabStop = false;
             this.grpBxPedVenda.Text = "Pedido Venda";
@@ -229,6 +230,7 @@
             this.chkComplemento.TabIndex = 1;
             this.chkComplemento.Text = "Complemeto ";
             this.chkComplemento.UseVisualStyleBackColor = true;
+            this.chkComplemento.CheckedChanged += new System.EventHandler(this.chkComplemento_CheckedChanged);
             // 
             // chkNormal
             // 
@@ -239,14 +241,66 @@
             this.chkNormal.TabIndex = 0;
             this.chkNormal.Text = "Normal";
             this.chkNormal.UseVisualStyleBackColor = true;
+            this.chkNormal.CheckedChanged += new System.EventHandler(this.chkNormal_CheckedChanged);
+            // 
+            // grpBxSitPed
+            // 
+            this.grpBxSitPed.Controls.Add(this.chkCancelado);
+            this.grpBxSitPed.Controls.Add(this.chkPendente);
+            this.grpBxSitPed.Controls.Add(this.chkEfetivado);
+            this.grpBxSitPed.ForeColor = System.Drawing.Color.CadetBlue;
+            this.grpBxSitPed.Location = new System.Drawing.Point(838, 18);
+            this.grpBxSitPed.Name = "grpBxSitPed";
+            this.grpBxSitPed.Size = new System.Drawing.Size(91, 85);
+            this.grpBxSitPed.TabIndex = 89;
+            this.grpBxSitPed.TabStop = false;
+            this.grpBxSitPed.Text = "Situação ";
+            // 
+            // chkCancelado
+            // 
+            this.chkCancelado.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkCancelado.Location = new System.Drawing.Point(6, 54);
+            this.chkCancelado.Name = "chkCancelado";
+            this.chkCancelado.Size = new System.Drawing.Size(92, 26);
+            this.chkCancelado.TabIndex = 50;
+            this.chkCancelado.Text = "Cancelado";
+            this.chkCancelado.UseVisualStyleBackColor = true;
+            // 
+            // chkPendente
+            // 
+            this.chkPendente.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkPendente.Checked = true;
+            this.chkPendente.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkPendente.Location = new System.Drawing.Point(6, 32);
+            this.chkPendente.Name = "chkPendente";
+            this.chkPendente.Size = new System.Drawing.Size(85, 26);
+            this.chkPendente.TabIndex = 49;
+            this.chkPendente.Text = "Pendente";
+            this.chkPendente.UseVisualStyleBackColor = true;
+            // 
+            // chkEfetivado
+            // 
+            this.chkEfetivado.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkEfetivado.Location = new System.Drawing.Point(6, 10);
+            this.chkEfetivado.Name = "chkEfetivado";
+            this.chkEfetivado.Size = new System.Drawing.Size(92, 30);
+            this.chkEfetivado.TabIndex = 48;
+            this.chkEfetivado.Text = "Efetivado";
+            this.chkEfetivado.UseVisualStyleBackColor = true;
             // 
             // dtpEntrega
             // 
             this.dtpEntrega.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pEDIDOBindingSource, "DATAENTREGA", true));
             this.dtpEntrega.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpEntrega.Location = new System.Drawing.Point(818, 78);
+            this.dtpEntrega.Location = new System.Drawing.Point(742, 76);
             this.dtpEntrega.Name = "dtpEntrega";
-            this.dtpEntrega.Size = new System.Drawing.Size(105, 20);
+            this.dtpEntrega.Size = new System.Drawing.Size(90, 20);
             this.dtpEntrega.TabIndex = 97;
             // 
             // pEDIDOBindingSource
@@ -265,7 +319,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.CadetBlue;
-            this.label1.Location = new System.Drawing.Point(815, 60);
+            this.label1.Location = new System.Drawing.Point(739, 59);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(73, 13);
             this.label1.TabIndex = 96;
@@ -275,9 +329,9 @@
             // 
             this.dtpEmissao.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pEDIDOBindingSource, "DATAEMISSAO", true));
             this.dtpEmissao.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpEmissao.Location = new System.Drawing.Point(818, 34);
+            this.dtpEmissao.Location = new System.Drawing.Point(640, 75);
             this.dtpEmissao.Name = "dtpEmissao";
-            this.dtpEmissao.Size = new System.Drawing.Size(105, 20);
+            this.dtpEmissao.Size = new System.Drawing.Size(96, 20);
             this.dtpEmissao.TabIndex = 92;
             // 
             // txtNomeTransportadora
@@ -298,47 +352,11 @@
             this.lbldtemi.AutoSize = true;
             this.lbldtemi.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbldtemi.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lbldtemi.Location = new System.Drawing.Point(815, 16);
+            this.lbldtemi.Location = new System.Drawing.Point(637, 57);
             this.lbldtemi.Name = "lbldtemi";
             this.lbldtemi.Size = new System.Drawing.Size(75, 13);
             this.lbldtemi.TabIndex = 91;
             this.lbldtemi.Text = "Data Emissão:";
-            // 
-            // grpBxSitPed
-            // 
-            this.grpBxSitPed.Controls.Add(this.chkPendente);
-            this.grpBxSitPed.Controls.Add(this.chkEfetivado);
-            this.grpBxSitPed.ForeColor = System.Drawing.Color.CadetBlue;
-            this.grpBxSitPed.Location = new System.Drawing.Point(641, 57);
-            this.grpBxSitPed.Name = "grpBxSitPed";
-            this.grpBxSitPed.Size = new System.Drawing.Size(171, 42);
-            this.grpBxSitPed.TabIndex = 89;
-            this.grpBxSitPed.TabStop = false;
-            this.grpBxSitPed.Text = "Situação Pedido";
-            // 
-            // chkPendente
-            // 
-            this.chkPendente.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.chkPendente.Location = new System.Drawing.Point(86, 15);
-            this.chkPendente.Name = "chkPendente";
-            this.chkPendente.Size = new System.Drawing.Size(85, 21);
-            this.chkPendente.TabIndex = 49;
-            this.chkPendente.Text = "Pendente";
-            this.chkPendente.UseVisualStyleBackColor = true;
-            // 
-            // chkEfetivado
-            // 
-            this.chkEfetivado.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.chkEfetivado.Location = new System.Drawing.Point(6, 15);
-            this.chkEfetivado.Name = "chkEfetivado";
-            this.chkEfetivado.Size = new System.Drawing.Size(91, 21);
-            this.chkEfetivado.TabIndex = 48;
-            this.chkEfetivado.Text = "Efetivado";
-            this.chkEfetivado.UseVisualStyleBackColor = true;
             // 
             // lblNomeTransportadora
             // 
@@ -356,7 +374,7 @@
             this.txtNomeVendedor.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vENDEDORBindingSource, "NOME", true));
             this.txtNomeVendedor.Location = new System.Drawing.Point(595, 34);
             this.txtNomeVendedor.Name = "txtNomeVendedor";
-            this.txtNomeVendedor.Size = new System.Drawing.Size(217, 20);
+            this.txtNomeVendedor.Size = new System.Drawing.Size(237, 20);
             this.txtNomeVendedor.TabIndex = 84;
             // 
             // txtNomeCliente
@@ -484,7 +502,7 @@
             this.grpBxItPedVen.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.grpBxItPedVen.Location = new System.Drawing.Point(11, 145);
             this.grpBxItPedVen.Name = "grpBxItPedVen";
-            this.grpBxItPedVen.Size = new System.Drawing.Size(929, 320);
+            this.grpBxItPedVen.Size = new System.Drawing.Size(942, 320);
             this.grpBxItPedVen.TabIndex = 16;
             this.grpBxItPedVen.TabStop = false;
             this.grpBxItPedVen.Text = "Itens Pedido Venda";
@@ -492,7 +510,7 @@
             // btnAdditen
             // 
             this.btnAdditen.Image = ((System.Drawing.Image)(resources.GetObject("btnAdditen.Image")));
-            this.btnAdditen.Location = new System.Drawing.Point(818, 285);
+            this.btnAdditen.Location = new System.Drawing.Point(835, 283);
             this.btnAdditen.Name = "btnAdditen";
             this.btnAdditen.Size = new System.Drawing.Size(37, 23);
             this.btnAdditen.TabIndex = 107;
@@ -504,7 +522,7 @@
             this.lblDesconto.AutoSize = true;
             this.lblDesconto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDesconto.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblDesconto.Location = new System.Drawing.Point(675, 269);
+            this.lblDesconto.Location = new System.Drawing.Point(692, 267);
             this.lblDesconto.Name = "lblDesconto";
             this.lblDesconto.Size = new System.Drawing.Size(61, 13);
             this.lblDesconto.TabIndex = 105;
@@ -512,7 +530,7 @@
             // 
             // txtDesconto
             // 
-            this.txtDesconto.Location = new System.Drawing.Point(675, 285);
+            this.txtDesconto.Location = new System.Drawing.Point(692, 283);
             this.txtDesconto.Name = "txtDesconto";
             this.txtDesconto.Size = new System.Drawing.Size(61, 20);
             this.txtDesconto.TabIndex = 104;
@@ -521,7 +539,7 @@
             // 
             this.pnlItenped.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.pnlItenped.Controls.Add(this.dtgrdvItenspven);
-            this.pnlItenped.Location = new System.Drawing.Point(30, 19);
+            this.pnlItenped.Location = new System.Drawing.Point(39, 19);
             this.pnlItenped.Name = "pnlItenped";
             this.pnlItenped.Size = new System.Drawing.Size(867, 235);
             this.pnlItenped.TabIndex = 100;
@@ -548,11 +566,10 @@
             this.dtgrdvItenspven.Size = new System.Drawing.Size(867, 235);
             this.dtgrdvItenspven.TabIndex = 25;
             this.dtgrdvItenspven.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgrdvItenspven_CellClick);
-            this.dtgrdvItenspven.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgrdvItenspven_CellContentClick);
             // 
             // txtipi
             // 
-            this.txtipi.Location = new System.Drawing.Point(742, 285);
+            this.txtipi.Location = new System.Drawing.Point(759, 283);
             this.txtipi.Name = "txtipi";
             this.txtipi.Size = new System.Drawing.Size(70, 20);
             this.txtipi.TabIndex = 20;
@@ -562,7 +579,7 @@
             this.LblIPI.AutoSize = true;
             this.LblIPI.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblIPI.ForeColor = System.Drawing.Color.CadetBlue;
-            this.LblIPI.Location = new System.Drawing.Point(739, 269);
+            this.LblIPI.Location = new System.Drawing.Point(756, 267);
             this.LblIPI.Name = "LblIPI";
             this.LblIPI.Size = new System.Drawing.Size(44, 13);
             this.LblIPI.TabIndex = 94;
@@ -570,7 +587,7 @@
             // 
             // txtPrcUnit
             // 
-            this.txtPrcUnit.Location = new System.Drawing.Point(595, 286);
+            this.txtPrcUnit.Location = new System.Drawing.Point(612, 284);
             this.txtPrcUnit.Name = "txtPrcUnit";
             this.txtPrcUnit.Size = new System.Drawing.Size(70, 20);
             this.txtPrcUnit.TabIndex = 18;
@@ -580,7 +597,7 @@
             this.LblPrcUnit.AutoSize = true;
             this.LblPrcUnit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblPrcUnit.ForeColor = System.Drawing.Color.CadetBlue;
-            this.LblPrcUnit.Location = new System.Drawing.Point(592, 270);
+            this.LblPrcUnit.Location = new System.Drawing.Point(609, 268);
             this.LblPrcUnit.Name = "LblPrcUnit";
             this.LblPrcUnit.Size = new System.Drawing.Size(75, 13);
             this.LblPrcUnit.TabIndex = 88;
@@ -588,7 +605,7 @@
             // 
             // txtQtdItem
             // 
-            this.txtQtdItem.Location = new System.Drawing.Point(516, 286);
+            this.txtQtdItem.Location = new System.Drawing.Point(533, 284);
             this.txtQtdItem.Name = "txtQtdItem";
             this.txtQtdItem.Size = new System.Drawing.Size(70, 20);
             this.txtQtdItem.TabIndex = 17;
@@ -598,7 +615,7 @@
             this.LblqtdItem.AutoSize = true;
             this.LblqtdItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblqtdItem.ForeColor = System.Drawing.Color.CadetBlue;
-            this.LblqtdItem.Location = new System.Drawing.Point(513, 270);
+            this.LblqtdItem.Location = new System.Drawing.Point(530, 268);
             this.LblqtdItem.Name = "LblqtdItem";
             this.LblqtdItem.Size = new System.Drawing.Size(70, 13);
             this.LblqtdItem.TabIndex = 86;
@@ -606,7 +623,7 @@
             // 
             // txtPrcVen
             // 
-            this.txtPrcVen.Location = new System.Drawing.Point(437, 286);
+            this.txtPrcVen.Location = new System.Drawing.Point(454, 284);
             this.txtPrcVen.Name = "txtPrcVen";
             this.txtPrcVen.Size = new System.Drawing.Size(70, 20);
             this.txtPrcVen.TabIndex = 16;
@@ -616,7 +633,7 @@
             this.LblPrcVen.AutoSize = true;
             this.LblPrcVen.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblPrcVen.ForeColor = System.Drawing.Color.CadetBlue;
-            this.LblPrcVen.Location = new System.Drawing.Point(434, 270);
+            this.LblPrcVen.Location = new System.Drawing.Point(451, 268);
             this.LblPrcVen.Name = "LblPrcVen";
             this.LblPrcVen.Size = new System.Drawing.Size(69, 13);
             this.LblPrcVen.TabIndex = 84;
@@ -624,7 +641,7 @@
             // 
             // txtEstAtual
             // 
-            this.txtEstAtual.Location = new System.Drawing.Point(358, 286);
+            this.txtEstAtual.Location = new System.Drawing.Point(375, 284);
             this.txtEstAtual.Name = "txtEstAtual";
             this.txtEstAtual.Size = new System.Drawing.Size(70, 20);
             this.txtEstAtual.TabIndex = 15;
@@ -634,7 +651,7 @@
             this.LblEstAtu.AutoSize = true;
             this.LblEstAtu.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblEstAtu.ForeColor = System.Drawing.Color.CadetBlue;
-            this.LblEstAtu.Location = new System.Drawing.Point(355, 270);
+            this.LblEstAtu.Location = new System.Drawing.Point(372, 268);
             this.LblEstAtu.Name = "LblEstAtu";
             this.LblEstAtu.Size = new System.Drawing.Size(73, 13);
             this.LblEstAtu.TabIndex = 82;
@@ -642,7 +659,7 @@
             // 
             // txtUM
             // 
-            this.txtUM.Location = new System.Drawing.Point(314, 286);
+            this.txtUM.Location = new System.Drawing.Point(331, 284);
             this.txtUM.Name = "txtUM";
             this.txtUM.Size = new System.Drawing.Size(38, 20);
             this.txtUM.TabIndex = 14;
@@ -652,7 +669,7 @@
             this.LblUm.AutoSize = true;
             this.LblUm.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblUm.ForeColor = System.Drawing.Color.CadetBlue;
-            this.LblUm.Location = new System.Drawing.Point(311, 270);
+            this.LblUm.Location = new System.Drawing.Point(328, 268);
             this.LblUm.Name = "LblUm";
             this.LblUm.Size = new System.Drawing.Size(24, 13);
             this.LblUm.TabIndex = 80;
@@ -660,7 +677,7 @@
             // 
             // txtDescprod
             // 
-            this.txtDescprod.Location = new System.Drawing.Point(123, 286);
+            this.txtDescprod.Location = new System.Drawing.Point(140, 284);
             this.txtDescprod.Name = "txtDescprod";
             this.txtDescprod.Size = new System.Drawing.Size(185, 20);
             this.txtDescprod.TabIndex = 13;
@@ -670,7 +687,7 @@
             this.LbDescProd.AutoSize = true;
             this.LbDescProd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LbDescProd.ForeColor = System.Drawing.Color.CadetBlue;
-            this.LbDescProd.Location = new System.Drawing.Point(120, 269);
+            this.LbDescProd.Location = new System.Drawing.Point(137, 267);
             this.LbDescProd.Name = "LbDescProd";
             this.LbDescProd.Size = new System.Drawing.Size(95, 13);
             this.LbDescProd.TabIndex = 78;
@@ -681,7 +698,7 @@
             this.lblCodProd.AutoSize = true;
             this.lblCodProd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCodProd.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblCodProd.Location = new System.Drawing.Point(27, 270);
+            this.lblCodProd.Location = new System.Drawing.Point(44, 268);
             this.lblCodProd.Name = "lblCodProd";
             this.lblCodProd.Size = new System.Drawing.Size(94, 13);
             this.lblCodProd.TabIndex = 75;
@@ -814,7 +831,7 @@
             // 
             this.txtProduto.getText = "";
             this.txtProduto.Image = ((System.Drawing.Image)(resources.GetObject("txtProduto.Image")));
-            this.txtProduto.Location = new System.Drawing.Point(29, 286);
+            this.txtProduto.Location = new System.Drawing.Point(46, 284);
             this.txtProduto.Name = "txtProduto";
             this.txtProduto.ShowButton = false;
             this.txtProduto.Size = new System.Drawing.Size(84, 25);
@@ -824,7 +841,7 @@
             // Delete
             // 
             this.Delete.HeaderText = "";
-            this.Delete.Image = global::Comercial.Properties.Resources.Excluir;
+            this.Delete.Image = ((System.Drawing.Image)(resources.GetObject("Delete.Image")));
             this.Delete.Name = "Delete";
             this.Delete.ReadOnly = true;
             this.Delete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -901,10 +918,10 @@
             this.grpBxPedVenda.PerformLayout();
             this.grpTipoPedido.ResumeLayout(false);
             this.grpTipoPedido.PerformLayout();
+            this.grpBxSitPed.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pEDIDOBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vENDEDORBindingSource)).EndInit();
-            this.grpBxSitPed.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.cLIENTEBindingSource)).EndInit();
             this.grpBxItPedVen.ResumeLayout(false);
             this.grpBxItPedVen.PerformLayout();
@@ -991,6 +1008,7 @@
         private System.Windows.Forms.Label lblNomeTransportadora;
         private System.Windows.Forms.Label lbltpfre;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
+        private System.Windows.Forms.CheckBox chkCancelado;
         private System.Windows.Forms.DataGridViewImageColumn Delete;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColProd;

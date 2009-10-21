@@ -510,6 +510,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Config-Tools.ico" />
+    <Content Include="Img\Excluir.png" />
     <None Include="Resources\Excluir.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

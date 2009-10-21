@@ -94,6 +94,13 @@ namespace Comercial
 
                 }
 
+                if (frm is FrmCadPed && edit == true)
+                {
+                    FrmCadPed frmPed = (FrmCadPed)frm;
+                    retorno = frmPed.AtualizarPedido();
+
+                }
+
                 if (retorno == 0)
                 {
                     bindingNavigator1.BindingSource.EndEdit();
@@ -299,6 +306,10 @@ namespace Comercial
             if (frm == null)
                 return;
             Util.Interface.ChangeControlStatus(frm, true);
+
+
+         
+            
         }
         #endregion
 
@@ -1244,6 +1255,7 @@ namespace Comercial
             btnSalvar.Enabled = true;
             btnCancelEdicao.Enabled = true;
 
+            
             #endregion
 
 
@@ -1251,7 +1263,7 @@ namespace Comercial
             {
                 FrmCadPed Ped = (FrmCadPed)frm;
                 Ped.validaSituacao();
-                
+                Ped.ValidaControles();
               
             }
 
