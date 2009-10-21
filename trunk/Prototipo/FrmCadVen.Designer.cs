@@ -55,7 +55,7 @@
             this.lblUfCliente = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtcep = new Comercial.TextButton();
-            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
             this.lblemail = new System.Windows.Forms.Label();
             this.txtEndereco = new System.Windows.Forms.TextBox();
             this.lblEndereco = new System.Windows.Forms.Label();
@@ -264,7 +264,7 @@
             this.grpBxContato.Controls.Add(this.lblUfCliente);
             this.grpBxContato.Controls.Add(this.label1);
             this.grpBxContato.Controls.Add(this.txtcep);
-            this.grpBxContato.Controls.Add(this.textBox10);
+            this.grpBxContato.Controls.Add(this.txtEmail);
             this.grpBxContato.Controls.Add(this.lblemail);
             this.grpBxContato.Controls.Add(this.txtEndereco);
             this.grpBxContato.Controls.Add(this.lblEndereco);
@@ -414,13 +414,13 @@
             this.txtcep.Size = new System.Drawing.Size(108, 25);
             this.txtcep.TabIndex = 64;
             // 
-            // textBox10
+            // txtEmail
             // 
-            this.textBox10.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vENDEDORBindingSource, "EMAIL", true));
-            this.textBox10.Location = new System.Drawing.Point(322, 118);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(223, 20);
-            this.textBox10.TabIndex = 63;
+            this.txtEmail.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vENDEDORBindingSource, "EMAIL", true));
+            this.txtEmail.Location = new System.Drawing.Point(322, 118);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(223, 20);
+            this.txtEmail.TabIndex = 63;
             // 
             // lblemail
             // 
@@ -675,7 +675,7 @@
             // cpfToolStripLabel
             // 
             this.cpfToolStripLabel.Name = "cpfToolStripLabel";
-            this.cpfToolStripLabel.Size = new System.Drawing.Size(31, 22);
+            this.cpfToolStripLabel.Size = new System.Drawing.Size(30, 22);
             this.cpfToolStripLabel.Text = "CPF:";
             // 
             // cpfToolStripTextBox
@@ -687,7 +687,7 @@
             // nomeToolStripLabel
             // 
             this.nomeToolStripLabel.Name = "nomeToolStripLabel";
-            this.nomeToolStripLabel.Size = new System.Drawing.Size(43, 22);
+            this.nomeToolStripLabel.Size = new System.Drawing.Size(38, 22);
             this.nomeToolStripLabel.Text = "Nome:";
             // 
             // nomeToolStripTextBox
@@ -786,7 +786,7 @@
         private System.Windows.Forms.Label lblBairro;
         private System.Windows.Forms.TextBox txtEndereco;
         private System.Windows.Forms.Label lblEndereco;
-        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label lblemail;
         private System.Windows.Forms.GroupBox grpBxUsuario;
         private System.Windows.Forms.Label lblSenha;
@@ -808,7 +808,6 @@
         private System.Windows.Forms.ComboBox cmBxRegiao;
         private Comercial.COMERCIALDataSetTableAdapters.REGIAOTableAdapter rEGIAOTableAdapter;
         private System.Windows.Forms.BindingSource rEGIAOBindingSource;
-        private System.Windows.Forms.MaskedTextBox txtCPF;
         private System.Windows.Forms.ToolStripLabel cpfToolStripLabel;
         private System.Windows.Forms.ToolStripLabel nomeToolStripLabel;
         public System.Windows.Forms.ToolStrip cnsltTlStrpConsulta;
@@ -823,5 +822,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox cOMPLEMENTOTextBox;
         private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        public System.Windows.Forms.MaskedTextBox txtCPF;
     }
 }

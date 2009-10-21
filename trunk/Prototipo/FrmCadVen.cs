@@ -29,16 +29,19 @@ namespace Comercial
          * 0 - OK
          * 1 - ERRO
          */
-        public int salvar()
+        public int salvar(bool edit)
         {
-            //Valida CPF
+
+            #region Validaçoes
+
+            //Valida CPFe email
 
             string c = ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString;
 
-
-
             Validacoes valida = new Validacoes();
             int cpf = valida.ValidaCPF(txtCPF.Text);
+
+            bool email = valida.ValidaEmail(txtEmail.Text);
 
             if (cpf == 1)
             {
@@ -46,60 +49,79 @@ namespace Comercial
                 return 1;
             }
 
-            if (!string.IsNullOrEmpty(txtUsu.Text) && !string.IsNullOrEmpty(txtSenha.Text))
+            if (email == false)
             {
-
-                SqlConnection conn = new SqlConnection(c);
-                conn.Open();
-
-                SqlCommand cmd = new SqlCommand("select * from usuario where usuario = @usu", conn);
-                SqlParameter param = new SqlParameter();
-                param.ParameterName = "@usu";
-                param.Value = txtUsu.Text;
-                cmd.Parameters.Add(param);
-                SqlDataReader reader = cmd.ExecuteReader();
-                reader.Read();
-
-                if (reader.HasRows)
-                {
-                    MessageBox.Show("Usuário ja cadastrado.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return 1;
-                }
-                else
-                {
-                    COMERCIALDataSetTableAdapters.USUARIOTableAdapter usu = new Comercial.COMERCIALDataSetTableAdapters.USUARIOTableAdapter();
-                    usu.Insert(txtUsu.Text, txtSenha.Text, "N", "S");
-                }
-
-                reader.Dispose();
-                reader.Close();
-                conn.Close();
-                conn.Dispose();
+                MessageBox.Show("E-mail Inválido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 1;
             }
 
-
-            SqlConnection conn1 = new SqlConnection(c);
-            conn1.Open();
-
-            SqlCommand cmd1 = new SqlCommand("select * from usuario where usuario = @usu", conn1);
-            SqlParameter param1 = new SqlParameter();
-            param1.ParameterName = "@usu";
-            param1.Value = txtUsu.Text;
-            cmd1.Parameters.Add(param1);
-            SqlDataReader reader1 = cmd1.ExecuteReader();
-
-            reader1.Read();
+            #endregion
 
             DataRowView x;
-
             x = (DataRowView)vENDEDORBindingSource.Current;
+
+            #region Salva Usuario
+            if (edit == false)
+            {
+
+                if (!string.IsNullOrEmpty(txtUsu.Text) && !string.IsNullOrEmpty(txtSenha.Text))
+                {
+
+                    SqlConnection conn = new SqlConnection(c);
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand("select * from usuario where usuario = @usu", conn);
+                    SqlParameter param = new SqlParameter();
+                    param.ParameterName = "@usu";
+                    param.Value = txtUsu.Text;
+                    cmd.Parameters.Add(param);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    reader.Read();
+
+                    if (reader.HasRows)
+                    {
+                        MessageBox.Show("Usuário ja cadastrado.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return 1;
+                    }
+                    else
+                    {
+                        COMERCIALDataSetTableAdapters.USUARIOTableAdapter usu = new Comercial.COMERCIALDataSetTableAdapters.USUARIOTableAdapter();
+                        usu.Insert(txtUsu.Text, txtSenha.Text, "N", "S");
+                    }
+
+                    reader.Dispose();
+                    reader.Close();
+                    conn.Close();
+                    conn.Dispose();
+                }
+
+
+                SqlConnection conn1 = new SqlConnection(c);
+                conn1.Open();
+
+                SqlCommand cmd1 = new SqlCommand("select * from usuario where usuario = @usu", conn1);
+                SqlParameter param1 = new SqlParameter();
+                param1.ParameterName = "@usu";
+                param1.Value = txtUsu.Text;
+                cmd1.Parameters.Add(param1);
+                SqlDataReader reader1 = cmd1.ExecuteReader();
+
+                reader1.Read();
+
+                x["CodUSUARIO"] = reader1["codusuario"];
+
+                reader1.Dispose();
+                reader1.Close();
+
+                conn1.Close();
+                conn1.Dispose();
+
+            }
+
+            #endregion
 
             x["CEP"] = txtcep.getText;
             x["ATIVO"] = "S";
-            x["CodUSUARIO"] = reader1["codusuario"];
-
-            reader1.Dispose();
-            reader1.Close();
 
             if (radioButton1.Checked)
             {
@@ -111,10 +133,8 @@ namespace Comercial
                 x["SEXO"] = "F";
             }
 
-            conn1.Close();
-            conn1.Dispose();
-
             return 0;
+
         }
 
 
