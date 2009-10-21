@@ -53,11 +53,12 @@ namespace Comercial
                 crstlRprtVwrRel.ReportSource = report;
             }
 
+            #region Relatorio Pedido
             if (_princ == "FrmConPDV")
             {
                 //Instancio o FormConsulta
                 FrmConPDV x = (FrmConPDV)_pdv;
-                
+
                 if (x.rdbped.Checked)
                 {
                     //Instancio o Relatorio
@@ -151,6 +152,7 @@ namespace Comercial
 
 
             }
+            #endregion
 
             if (_princ == "FrmConVen")
             {

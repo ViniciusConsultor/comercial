@@ -24,7 +24,7 @@ namespace Comercial
             _princ = parent;
         }
 
-      
+
 
         private void tbPgConCli_Click(object sender, EventArgs e)
         {
@@ -46,7 +46,7 @@ namespace Comercial
 
         private void FrmConPDV_Load(object sender, EventArgs e)
         {
-           
+
             // TODO: This line of code loads data into the 'cOMERCIALDataSet.ITEMPEDIDO' table. You can move, or remove it, as needed.
             this.iTEMPEDIDOTableAdapter.Fill(this.cOMERCIALDataSet.ITEMPEDIDO);
             // TODO: This line of code loads data into the 'cOMERCIALDataSet.PEDIDO' table. You can move, or remove it, as needed.
@@ -66,10 +66,16 @@ namespace Comercial
         public string pesquisar()
         {
             string sql = "SELECT p.NRPEDIDO ,TIPO,SITUACAO,c.RAZAOSOCIAL, DATAEMISSAO, DATAENTREGA,prd.CODPRODUTO, prd.DESCRICAO, QUANTIDADE, SUM(VALOR) as Valor " +
-                         " FROM PEDIDO p INNER JOIN CLIENTE c ON p.CODCLIENTE = c.CNPJ  "+
-                         " INNER JOIN ITEMPEDIDO ip ON p.NRPEDIDO = ip.NRPEDIDO   "+
+                         " FROM PEDIDO p INNER JOIN CLIENTE c ON p.CODCLIENTE = c.CNPJ  " +
+                         " INNER JOIN ITEMPEDIDO ip ON p.NRPEDIDO = ip.NRPEDIDO   " +
                          " INNER JOIN PRODUTO prd ON ip.CODPRODUTO = prd.CODPRODUTO ";
             string groupBy = " GROUP BY p.NRPEDIDO,TIPO,SITUACAO,c.RAZAOSOCIAL, DATAEMISSAO, DATAENTREGA,prd.CODPRODUTO,prd.DESCRICAO, QUANTIDADE ";
+
+            //string sql = "SELECT p.NRPEDIDO ,TIPO,SITUACAO, DATAEMISSAO, DATAENTREGA " +
+            // " FROM PEDIDO p INNER JOIN (Select c.CNPJ,c.RAZAOSOCIAL from CLIENTE c) c ON p.CODCLIENTE = c.CNPJ  " +
+            // " INNER JOIN (Select ip.NRPEDIDO,ip.CODPRODUTO,ip.QUANTIDADE,ip.VALOR from ITEMPEDIDO ip) ip ON p.NRPEDIDO = ip.NRPEDIDO " +
+            // " INNER JOIN (Select prd.CODPRODUTO, prd.DESCRICAO from PRODUTO prd) prd ON ip.CODPRODUTO = prd.CODPRODUTO ";
+            //string groupBy = " GROUP BY p.NRPEDIDO,TIPO,SITUACAO, DATAEMISSAO, DATAENTREGA ";
 
             // pesquisa por nrPedido
             if (!string.IsNullOrEmpty(txtCodPed.Text))
@@ -94,7 +100,6 @@ namespace Comercial
 
             }
 
-
             // pesquisa por situacao pedido
             if (rdbtnEfetivado.Checked)
             {
@@ -106,7 +111,7 @@ namespace Comercial
                 sql += " and p.situacao ='P'";
             }
 
-             //Pesquisa por data
+            //Pesquisa por data
             if ((dttmDataPedido.Checked) && (dttmDataPedidoate.Checked))
             {
                 string formatData = dttmDataPedido.Value.Year + "-" + dttmDataPedido.Value.Month + "-" + dttmDataPedido.Value.Day;
@@ -115,11 +120,7 @@ namespace Comercial
                 sql += " and p.dataEmissao BETWEEN '" + formatData + "'AND'" + formatDataate + "'";
             }
 
-           
-
-
             sql += groupBy;
-
 
             string c = ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString;
 
@@ -145,7 +146,7 @@ namespace Comercial
         {
             if (checkBox1.Checked == false)
             {
-                
+
                 rdbtnEfetivado.Checked = false;
                 rdbtnPendente.Checked = false;
                 //groupBox2.Enabled = false;
