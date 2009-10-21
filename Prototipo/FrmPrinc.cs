@@ -60,10 +60,10 @@ namespace Comercial
             try
             {
                 // METODOS QUE NECESSITAM DE LOGICA ANTES DE SALVAR
-                if (frm is FrmCadVen && edit == false)
+                if (frm is FrmCadVen)
                 {
                     FrmCadVen frmVen = (FrmCadVen)frm;
-                    retorno = frmVen.salvar();
+                    retorno = frmVen.salvar(edit);
                 }
 
                 #region Form's Claudio
@@ -1236,6 +1236,7 @@ namespace Comercial
 
                 ven.txtUsu.Enabled = false;
                 ven.txtSenha.Enabled = false;
+                ven.txtCPF.Enabled = false;
             }
             #region Form's Claudio
             if (frm is FrmCadCli)

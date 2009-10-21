@@ -69,7 +69,7 @@ namespace Comercial
 
                     Microsoft.Practices.EnterpriseLibrary.Data.Database db = DatabaseFactory.CreateDatabase();
                     //Crio a Conexão
-                    SqlConnection sqlcon = new SqlConnection("Data Source=zabs\\sql2008;Initial Catalog=COMERCIAL;Persist Security Info=True;User ID=SIGA;Password=SIGA");
+                    SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString);
 
                     //Abro a conexão
                     sqlcon.Open();

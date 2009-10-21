@@ -16,7 +16,7 @@ namespace Comercial
         private FrmPrinc _princ = null;
 
         private string _algoritmo;
-
+        private string opc = "'U','V'";
 
 
         public FrmMinGer(FrmPrinc parent)
@@ -383,18 +383,24 @@ namespace Comercial
             SqlConnection conn = new SqlConnection(c);
             conn.Open();
 
-            SqlCommand cmd = new SqlCommand("select * from sys.all_objects where type in ('U','V') "+
+            SqlCommand cmd = new SqlCommand("select * from sys.all_objects where type in (" + opc + ") " +
                                                 "and schema_id = '1'and name not like 'sysdiagrams'", conn);
             SqlDataReader reader = cmd.ExecuteReader();
-            reader.Read();
-
+           // reader.Read();
+            //while (reader.Read())
             if (reader.HasRows)
             {
                 foreach (var r in reader)
                 {
-                    treeView1.Nodes.Add(reader["name"].ToString());
+                    dataGridView2.Rows.Add(false, reader["name"].ToString());
                 }
             }
+
+            reader.Close();
+            reader.Dispose();
+
+            conn.Close();
+            conn.Dispose();
 
         }
 
@@ -406,7 +412,103 @@ namespace Comercial
 
         private void treeView1_BeforeCheck(object sender, TreeViewCancelEventArgs e)
         {
-           
+
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridView2_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+
+
+        }
+
+        private void dataGridView2_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridView2_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow dv = dataGridView2.Rows[e.RowIndex];
+
+            if (e.ColumnIndex == 0)
+            {
+
+                foreach (DataGridViewRow d in dataGridView2.Rows)
+                {
+                    d.Cells[0].Value = false;
+                }
+
+                dv.Cells[0].Value = true;
+            }
+        }
+
+        private void chckBxTable_CheckedChanged(object sender, EventArgs e)
+        {
+
+            if (chckBxTable.Checked)
+            {
+                if (chckBxVw.Checked)
+                {
+                    opc = "'U','V'";
+                }
+                else
+                {
+                    opc = "'U'";
+                }
+            }
+            else
+            {
+                if (chckBxVw.Checked)
+                {
+                    opc = "'V'";
+                }
+                else
+                {
+                    opc = "''";
+                }
+            }
+            dataGridView2.Rows.Clear();
+            tabPage2_Enter(null, null);
+            dataGridView2.Refresh();
+        }
+
+        private void chckBxVw_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chckBxVw.Checked)
+            {
+                if (chckBxTable.Checked)
+                {
+                    opc = "'U','V'";
+                }
+                else
+                {
+                    opc = "'V'";
+                }
+            }
+            else
+            {
+                if (chckBxTable.Checked)
+                {
+                    opc = "'U'";
+                }
+                else
+                {
+                    opc = "''";
+                }
+            }
+            dataGridView2.Rows.Clear();
+            tabPage2_Enter(null, null);
+            dataGridView2.Refresh();
         }
 
     }
