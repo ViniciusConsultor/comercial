@@ -83,6 +83,10 @@ namespace Comercial
             {
                 objPedido["SITUACAO"] = "E";
             }
+            else if (chkCancelado.Checked)
+            {
+                objPedido["SITUACAO"] = "C";
+            }
             else
             {
                 objPedido["SITUACAO"] = "P";
@@ -144,6 +148,10 @@ namespace Comercial
             if (objPedido["SITUACAO"].ToString() == "E")
             {
                 chkEfetivado.Checked = true;
+            }
+            else if (objPedido["SITUACAO"].ToString() == "C")
+            {
+                chkCancelado.Checked = true;
             }
             else
             {
@@ -217,7 +225,9 @@ namespace Comercial
         #region LimparCampos
         public void LimparCampos()
         {
-
+            grpBxSitPed.Enabled = false;
+            chkNormal.Checked = true;
+            chkPendente.Checked = true;
             txtDescprod.Text = String.Empty;
             txtEstAtual.Text = String.Empty;
             txtUM.Text = String.Empty;
@@ -681,15 +691,9 @@ namespace Comercial
         }
         #endregion
 
-        #region Remover item data grid
-        private void dtgrdvItenspven_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-        }
-
-        #endregion
-
         #region Validação
+
+        #region ValidaSituacao
         public void validaSituacao()
         {
             try
@@ -709,7 +713,34 @@ namespace Comercial
 
 
         }
+        #endregion
 
+        #region ValidaControles
+        public void ValidaControles()
+        {
+            try
+            {
+                grpBxPedVenda.Enabled = false;
+                //txtPedido.Enabled = false;
+                //txtcodCli.Enabled = false;
+                //txtNomeCliente.Enabled = false;
+                //txtNomeVendedor.Enabled = false;
+                //txtNomeTransportadora.Enabled = false;
+                //txtCodTransportadora.Enabled = false;
+                //txtCodVendedor.Enabled = false;
+                //txtCondPagto.Enabled = false;
+                //grpBxSitPed.Enabled = false;
+                //grpTipoPedido.Enabled = false;
+                //dtpEmissao.Enabled = false;
+                //dtpEntrega.Enabled = false;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+        #endregion
 
         #endregion
 
@@ -755,5 +786,40 @@ namespace Comercial
             }
         }
 
+
+        public int AtualizarPedido()
+        {
+            try
+            {
+
+                grpBxItPedVen.Enabled = false;
+
+
+                return 0;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+
+        }
+
+        private void chkNormal_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkNormal.Checked)
+            {
+                chkComplemento.Checked = false;
+            }
+        }
+
+        private void chkComplemento_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkComplemento.Checked)
+            {
+                chkNormal.Checked = false;
+            }
+        }
     }
 }

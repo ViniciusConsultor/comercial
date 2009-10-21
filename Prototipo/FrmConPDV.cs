@@ -63,6 +63,7 @@ namespace Comercial
 
         }
 
+        #region Pesquisar
         public string pesquisar()
         {
             string sql = "SELECT p.NRPEDIDO ,TIPO,SITUACAO,c.RAZAOSOCIAL, DATAEMISSAO, DATAENTREGA,prd.CODPRODUTO, prd.DESCRICAO, QUANTIDADE, SUM(VALOR) as Valor " +
@@ -141,6 +142,7 @@ namespace Comercial
 
 
         }
+        #endregion
 
         private void checkBox1_CheckStateChanged(object sender, EventArgs e)
         {
