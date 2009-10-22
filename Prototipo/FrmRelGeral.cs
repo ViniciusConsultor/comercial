@@ -24,12 +24,13 @@ namespace Comercial
     {
         private string _princ = null;
         private object _pdv = null;
-        public int Codped;
+                private FrmPrinc _frmprinc;
 
-        public FrmRelGeral(string parent, FrmConPDV pdv)
+        public FrmRelGeral(string parent, object pdv, FrmPrinc frmprinc)
         {
             _princ = parent;
             _pdv = pdv;
+            _frmprinc = frmprinc;
             InitializeComponent();
         }
 
@@ -103,6 +104,7 @@ namespace Comercial
                 }
 
                 #endregion
+
                 if (_princ == "FrmEmiNF")
                 {
                     CrystalDecisions.CrystalReports.Engine.ReportDocument report = new CrystalDecisions.CrystalReports.Engine.ReportDocument();
@@ -130,8 +132,6 @@ namespace Comercial
             {
                 //Instancio o FormConsulta
                 FrmConPDV x = (FrmConPDV)_pdv;
-
-
 
                 if (x.rdbped.Checked)
                 {
