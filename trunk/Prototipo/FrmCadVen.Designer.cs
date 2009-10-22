@@ -49,7 +49,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.cOMPLEMENTOTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.nUMTextBox = new System.Windows.Forms.TextBox();
+            this.txtnum = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.cmbUfCli = new System.Windows.Forms.ComboBox();
             this.lblUfCliente = new System.Windows.Forms.Label();
@@ -130,7 +130,7 @@
             this.txtCPF.Mask = "999,999,999-99";
             this.txtCPF.Name = "txtCPF";
             this.txtCPF.Size = new System.Drawing.Size(123, 20);
-            this.txtCPF.TabIndex = 54;
+            this.txtCPF.TabIndex = 2;
             this.txtCPF.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // vENDEDORBindingSource
@@ -153,7 +153,7 @@
             this.cmBxRegiao.Location = new System.Drawing.Point(130, 57);
             this.cmBxRegiao.Name = "cmBxRegiao";
             this.cmBxRegiao.Size = new System.Drawing.Size(115, 21);
-            this.cmBxRegiao.TabIndex = 53;
+            this.cmBxRegiao.TabIndex = 4;
             this.cmBxRegiao.ValueMember = "CODREGIAO";
             // 
             // rEGIAOBindingSource
@@ -170,7 +170,7 @@
             this.groupBox1.Location = new System.Drawing.Point(379, 45);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(172, 38);
-            this.groupBox1.TabIndex = 52;
+            this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Sexo";
             // 
@@ -258,7 +258,7 @@
             this.grpBxContato.Controls.Add(this.label4);
             this.grpBxContato.Controls.Add(this.cOMPLEMENTOTextBox);
             this.grpBxContato.Controls.Add(this.label3);
-            this.grpBxContato.Controls.Add(this.nUMTextBox);
+            this.grpBxContato.Controls.Add(this.txtnum);
             this.grpBxContato.Controls.Add(this.label2);
             this.grpBxContato.Controls.Add(this.cmbUfCli);
             this.grpBxContato.Controls.Add(this.lblUfCliente);
@@ -292,7 +292,7 @@
             this.maskedTextBox1.Mask = "(99)9999-9999";
             this.maskedTextBox1.Name = "maskedTextBox1";
             this.maskedTextBox1.Size = new System.Drawing.Size(100, 20);
-            this.maskedTextBox1.TabIndex = 73;
+            this.maskedTextBox1.TabIndex = 16;
             this.maskedTextBox1.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // label4
@@ -312,7 +312,7 @@
             this.cOMPLEMENTOTextBox.Location = new System.Drawing.Point(382, 76);
             this.cOMPLEMENTOTextBox.Name = "cOMPLEMENTOTextBox";
             this.cOMPLEMENTOTextBox.Size = new System.Drawing.Size(163, 20);
-            this.cOMPLEMENTOTextBox.TabIndex = 71;
+            this.cOMPLEMENTOTextBox.TabIndex = 13;
             // 
             // label3
             // 
@@ -325,13 +325,13 @@
             this.label3.TabIndex = 70;
             this.label3.Text = "Complemento:";
             // 
-            // nUMTextBox
+            // txtnum
             // 
-            this.nUMTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vENDEDORBindingSource, "NUM", true));
-            this.nUMTextBox.Location = new System.Drawing.Point(467, 32);
-            this.nUMTextBox.Name = "nUMTextBox";
-            this.nUMTextBox.Size = new System.Drawing.Size(78, 20);
-            this.nUMTextBox.TabIndex = 69;
+            this.txtnum.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vENDEDORBindingSource, "NUM", true));
+            this.txtnum.Location = new System.Drawing.Point(467, 32);
+            this.txtnum.Name = "txtnum";
+            this.txtnum.Size = new System.Drawing.Size(78, 20);
+            this.txtnum.TabIndex = 9;
             // 
             // label2
             // 
@@ -380,7 +380,7 @@
             this.cmbUfCli.Location = new System.Drawing.Point(138, 76);
             this.cmbUfCli.Name = "cmbUfCli";
             this.cmbUfCli.Size = new System.Drawing.Size(89, 21);
-            this.cmbUfCli.TabIndex = 66;
+            this.cmbUfCli.TabIndex = 11;
             this.cmbUfCli.Text = "Selecione...";
             // 
             // lblUfCliente
@@ -412,7 +412,8 @@
             this.txtcep.Name = "txtcep";
             this.txtcep.ShowButton = false;
             this.txtcep.Size = new System.Drawing.Size(108, 25);
-            this.txtcep.TabIndex = 64;
+            this.txtcep.TabIndex = 7;
+            this.txtcep.ButtonClick += new System.EventHandler(this.txtcep_ButtonClick);
             // 
             // txtEmail
             // 
@@ -420,7 +421,7 @@
             this.txtEmail.Location = new System.Drawing.Point(322, 118);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(223, 20);
-            this.txtEmail.TabIndex = 63;
+            this.txtEmail.TabIndex = 17;
             // 
             // lblemail
             // 
@@ -439,7 +440,7 @@
             this.txtEndereco.Location = new System.Drawing.Point(138, 32);
             this.txtEndereco.Name = "txtEndereco";
             this.txtEndereco.Size = new System.Drawing.Size(323, 20);
-            this.txtEndereco.TabIndex = 61;
+            this.txtEndereco.TabIndex = 8;
             // 
             // lblEndereco
             // 
@@ -459,7 +460,7 @@
             this.txtFax.Mask = "(99)9999-9999";
             this.txtFax.Name = "txtFax";
             this.txtFax.Size = new System.Drawing.Size(100, 20);
-            this.txtFax.TabIndex = 58;
+            this.txtFax.TabIndex = 15;
             this.txtFax.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // txtTelefone
@@ -469,7 +470,7 @@
             this.txtTelefone.Mask = "(99)9999-9999";
             this.txtTelefone.Name = "txtTelefone";
             this.txtTelefone.Size = new System.Drawing.Size(93, 20);
-            this.txtTelefone.TabIndex = 57;
+            this.txtTelefone.TabIndex = 14;
             this.txtTelefone.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // txtMunicipio
@@ -478,7 +479,7 @@
             this.txtMunicipio.Location = new System.Drawing.Point(233, 76);
             this.txtMunicipio.Name = "txtMunicipio";
             this.txtMunicipio.Size = new System.Drawing.Size(143, 20);
-            this.txtMunicipio.TabIndex = 55;
+            this.txtMunicipio.TabIndex = 12;
             // 
             // txtBairro
             // 
@@ -486,7 +487,7 @@
             this.txtBairro.Location = new System.Drawing.Point(9, 76);
             this.txtBairro.Name = "txtBairro";
             this.txtBairro.Size = new System.Drawing.Size(121, 20);
-            this.txtBairro.TabIndex = 54;
+            this.txtBairro.TabIndex = 10;
             // 
             // lblFax
             // 
@@ -549,7 +550,7 @@
             this.txtComissao.Location = new System.Drawing.Point(269, 58);
             this.txtComissao.Name = "txtComissao";
             this.txtComissao.Size = new System.Drawing.Size(82, 20);
-            this.txtComissao.TabIndex = 45;
+            this.txtComissao.TabIndex = 5;
             // 
             // txtRg
             // 
@@ -558,7 +559,7 @@
             this.txtRg.Mask = "99,999,999-9";
             this.txtRg.Name = "txtRg";
             this.txtRg.Size = new System.Drawing.Size(100, 20);
-            this.txtRg.TabIndex = 44;
+            this.txtRg.TabIndex = 3;
             this.txtRg.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // txtNome
@@ -567,7 +568,7 @@
             this.txtNome.Location = new System.Drawing.Point(9, 19);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(361, 20);
-            this.txtNome.TabIndex = 28;
+            this.txtNome.TabIndex = 1;
             // 
             // lblcomissao
             // 
@@ -818,7 +819,7 @@
         private System.Windows.Forms.ToolStripButton toolStripButton3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox nUMTextBox;
+        private System.Windows.Forms.TextBox txtnum;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox cOMPLEMENTOTextBox;
         private System.Windows.Forms.MaskedTextBox maskedTextBox1;
