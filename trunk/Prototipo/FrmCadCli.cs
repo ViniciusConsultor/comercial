@@ -64,22 +64,32 @@ namespace Comercial
             // TODO: This line of code loads data into the 'cOMERCIALDataSet.CLIENTE' table. You can move, or remove it, as needed.
             this.cLIENTETableAdapter.Fill(this.cOMERCIALDataSet.CLIENTE);
         }
-        [DllImport("dllInscE32.dll")] 
+        [DllImport("C:\\dllInscE32.dll")] 
         public static extern int ConsisteInscricaoEstadual(string ie, string uf);
 
         public int salvar()
         {
-            //Valida CNPJ
+            
 
             DataRowView x;
             x= (DataRowView) cLIENTEBindingSource.Current;
             Validacoes valida = new Validacoes();
-            int cnpj = valida.ValidaCNPJ(txtCnpjCli.Text);
-
-            if (cnpj == 1)
+            
+            //Valida CNPJ
+            if (!String.IsNullOrEmpty(txtCnpjCli.Text))
             {
-                MessageBox.Show("CNPJ Inválido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return 1;
+
+                int cnpj = valida.ValidaCNPJ(txtCnpjCli.Text);
+
+                if (cnpj == 1)
+                {
+                    MessageBox.Show("CNPJ Inválido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return 1;
+                }
+            }
+            else
+            {
+                throw new Exception("campo vazio");
             }
             // Valida IE
             string ie = txtIeCli.Text;
