@@ -6951,6 +6951,8 @@ namespace Comercial {
             
             private global::System.Data.DataColumn columnVALOR;
             
+            private global::System.Data.DataColumn columnValorTotal;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public RelPedidoDataTable() {
                 this.TableName = "RelPedido";
@@ -7052,6 +7054,13 @@ namespace Comercial {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn ValorTotalColumn {
+                get {
+                    return this.columnValorTotal;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -7080,8 +7089,9 @@ namespace Comercial {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public RelPedidoRow AddRelPedidoRow(string NRPEDIDO, string TIPO, string SITUACAO, string RAZAOSOCIAL, System.DateTime DATAEMISSAO, System.DateTime DATAENTREGA, string CODPRODUTO, string DESCRICAO, string QUANTIDADE, double VALOR) {
-                RelPedidoRow rowRelPedidoRow = ((RelPedidoRow)(this.NewRow()));
+<<<<<<< .mine            public RelPedidoRow AddRelPedidoRow(string NRPEDIDO, string TIPO, string SITUACAO, string RAZAOSOCIAL, string DATAEMISSAO, string DATAENTREGA, string CODPRODUTO, string DESCRICAO, string QUANTIDADE, string VALOR, string ValorTotal) {
+=======            public RelPedidoRow AddRelPedidoRow(string NRPEDIDO, string TIPO, string SITUACAO, string RAZAOSOCIAL, System.DateTime DATAEMISSAO, System.DateTime DATAENTREGA, string CODPRODUTO, string DESCRICAO, string QUANTIDADE, double VALOR) {
+>>>>>>> .theirs                RelPedidoRow rowRelPedidoRow = ((RelPedidoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         NRPEDIDO,
                         TIPO,
@@ -7092,7 +7102,8 @@ namespace Comercial {
                         CODPRODUTO,
                         DESCRICAO,
                         QUANTIDADE,
-                        VALOR};
+                        VALOR,
+                        ValorTotal};
                 rowRelPedidoRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowRelPedidoRow);
                 return rowRelPedidoRow;
@@ -7122,6 +7133,7 @@ namespace Comercial {
                 this.columnDESCRICAO = base.Columns["DESCRICAO"];
                 this.columnQUANTIDADE = base.Columns["QUANTIDADE"];
                 this.columnVALOR = base.Columns["VALOR"];
+                this.columnValorTotal = base.Columns["ValorTotal"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7146,6 +7158,8 @@ namespace Comercial {
                 base.Columns.Add(this.columnQUANTIDADE);
                 this.columnVALOR = new global::System.Data.DataColumn("VALOR", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnVALOR);
+                this.columnValorTotal = new global::System.Data.DataColumn("ValorTotal", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnValorTotal);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10504,6 +10518,21 @@ namespace Comercial {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string ValorTotal {
+                get {
+                    try {
+                        return ((string)(this[this.tableRelPedido.ValorTotalColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ValorTotal\' in table \'RelPedido\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRelPedido.ValorTotalColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public bool IsNRPEDIDONull() {
                 return this.IsNull(this.tableRelPedido.NRPEDIDOColumn);
             }
@@ -10601,6 +10630,16 @@ namespace Comercial {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void SetVALORNull() {
                 this[this.tableRelPedido.VALORColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsValorTotalNull() {
+                return this.IsNull(this.tableRelPedido.ValorTotalColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetValorTotalNull() {
+                this[this.tableRelPedido.ValorTotalColumn] = global::System.Convert.DBNull;
             }
         }
         

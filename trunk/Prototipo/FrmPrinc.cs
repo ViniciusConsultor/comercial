@@ -612,8 +612,14 @@ namespace Comercial
 
         private void tlStrpBtnImprimir_Click(object sender, EventArgs e)
         {
-            foreach (Form form in this.MdiChildren)
+            Validacoes valida = new Validacoes();
+
+            try
             {
+                foreach (Form form in this.MdiChildren)
+            {
+                
+
                 if (form is frmConCli)
                 {
                     FrmRelGeral filho = new FrmRelGeral("FrmConCli", null,this);
@@ -622,9 +628,14 @@ namespace Comercial
                 if (form is FrmConPDV)
                 {
                     FrmConPDV frmPed = (FrmConPDV)form;
+
+                    if (frmPed.dtGrdConPDV.RowCount == 0)
+                    {
+                        throw new Exception("Grid Vazio");
+                    }                    
                     
                     FrmRelGeral filho = new FrmRelGeral("FrmConPDV", form,this);
-                    filho.Codped= Convert.ToInt32(frmPed.dtGrdConPDV.CurrentRow.Cells[0].Value);
+                   
 
                     filho.Show();
                 }
@@ -640,6 +651,11 @@ namespace Comercial
                     filho.Show();
                 }
 
+            }
+            }
+            catch (Exception ex)
+            {
+                valida.tratarSystemExceções(ex);
             }
         }
 
@@ -730,8 +746,8 @@ namespace Comercial
 
                 frm.Show();
 
-                //Interface.ResetControls(frm);
-                //Interface.ChangeControlStatus(frm, false);
+               // Interface.ResetControls(frm);
+               Util.Interface.ChangeControlStatus(frm, false);
 
                 frm.WindowState = FormWindowState.Maximized;
             }

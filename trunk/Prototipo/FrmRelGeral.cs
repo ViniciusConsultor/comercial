@@ -37,125 +37,150 @@ namespace Comercial
 
         private void FrmRelGeral_Load(object sender, EventArgs e)
         {
-            if (_princ == "FrmConCli")
+            
+            try
             {
-                CrystalDecisions.CrystalReports.Engine.ReportDocument report = new CrystalDecisions.CrystalReports.Engine.ReportDocument();
-                report.Load(@"D:\Backup Facu\7 Semestre\TCC 2\TCC 2\Prototipo\Prototipo\RptConCli.rpt");
-                CrystalDecisions.Shared.ParameterField param;
+                if (_princ == "FrmConCli")
+                {
+                    CrystalDecisions.CrystalReports.Engine.ReportDocument report = new CrystalDecisions.CrystalReports.Engine.ReportDocument();
+                    report.Load(@"D:\Backup Facu\7 Semestre\TCC 2\TCC 2\Prototipo\Prototipo\RptConCli.rpt");
+                    CrystalDecisions.Shared.ParameterField param;
 
-                crstlRprtVwrRel.ReportSource = report;
+                    crstlRprtVwrRel.ReportSource = report;
+                }
+
+                if (_princ == "FrmConProd")
+                {
+                    CrystalDecisions.CrystalReports.Engine.ReportDocument report = new CrystalDecisions.CrystalReports.Engine.ReportDocument();
+                    report.Load(@"D:\Backup Facu\7 Semestre\TCC 2\TCC 2\Prototipo\Prototipo\RptConProd.rpt");
+                    CrystalDecisions.Shared.ParameterField param;
+
+                    crstlRprtVwrRel.ReportSource = report;
+                }
+
+                #region Relatorio Pedido
+                if (_princ == "FrmConPDV")
+                {
+
+                    ImprimirRelPed();
+
+                }
+                #endregion
+
+                if (_princ == "FrmConVen")
+                {
+                    CrystalDecisions.CrystalReports.Engine.ReportDocument report = new CrystalDecisions.CrystalReports.Engine.ReportDocument();
+                    report.Load(@"D:\Backup Facu\7 Semestre\TCC 2\TCC 2\Prototipo\Prototipo\RptConVen.rpt");
+                    CrystalDecisions.Shared.ParameterField param;
+
+                    crstlRprtVwrRel.ReportSource = report;
+                }
+
+                if (_princ == "FrmEmiNF")
+                {
+                    CrystalDecisions.CrystalReports.Engine.ReportDocument report = new CrystalDecisions.CrystalReports.Engine.ReportDocument();
+                    report.Load(@"D:\Backup Facu\7 Semestre\TCC 2\TCC 2\Prototipo\Prototipo\RptConNF.rpt");
+                    CrystalDecisions.Shared.ParameterField param;
+
+                    crstlRprtVwrRel.ReportSource = report;
+                }
+
             }
-
-            if (_princ == "FrmConProd")
+            catch (Exception ex)
             {
-                CrystalDecisions.CrystalReports.Engine.ReportDocument report = new CrystalDecisions.CrystalReports.Engine.ReportDocument();
-                report.Load(@"D:\Backup Facu\7 Semestre\TCC 2\TCC 2\Prototipo\Prototipo\RptConProd.rpt");
-                CrystalDecisions.Shared.ParameterField param;
 
-                crstlRprtVwrRel.ReportSource = report;
+
+                throw ex; 
+                
             }
+        }
 
-            #region Relatorio Pedido
-            if (_princ == "FrmConPDV")
+
+        #region ImprimerRelatorio Pedido
+        public void ImprimirRelPed()
+        {
+            try
             {
                 //Instancio o FormConsulta
-                FrmConPDV x = (FrmConPDV)_pdv;
+                    FrmConPDV x = (FrmConPDV)_pdv;
+                    
 
-                if (x.rdbped.Checked)
-                {
-                    //Instancio o Relatorio
-                    RptConPDV objRptConPDV = new RptConPDV();
+                   
+                    if (x.rdbped.Checked)
+                    {
+                        //Instancio o Relatorio
+                        RptConPDV objRptConPDV = new RptConPDV();
 
-                    //Instancio o Dataset
-                    COMERCIALDataSet oDataset = new COMERCIALDataSet();
+                        //Instancio o Dataset
+                        COMERCIALDataSet oDataset = new COMERCIALDataSet();
 
+                        Microsoft.Practices.EnterpriseLibrary.Data.Database db = DatabaseFactory.CreateDatabase();
+                        //Crio a Conexão
+                        SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString);
+
+                        //Abro a conexão
+                        sqlcon.Open();
+
+                        //Recebo a String SQL feita na tela de consulta
+                        string StringConnection = x.pesquisar();
+
+<<<<<<< .mine
+=======
                     Microsoft.Practices.EnterpriseLibrary.Data.Database db = DatabaseFactory.CreateDatabase();
                     //Crio a Conexão
                     SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString);
+>>>>>>> .r92
 
-                    //Abro a conexão
-                    sqlcon.Open();
+                        SqlDataAdapter dtAdapter = new SqlDataAdapter(StringConnection, sqlcon);
 
-                    //Recebo a String SQL feita na tela de consulta
-                    string StringConnection = x.pesquisar();
+                        //Localizo o datatable criado no dataset
+                        dtAdapter.Fill(oDataset, "RelPedido");
 
-                    SqlDataAdapter dtAdapter = new SqlDataAdapter(StringConnection, sqlcon);
+                        objRptConPDV.SetDataSource(oDataset);
 
-                    //Localiso o datateble criado no dataset
-                    dtAdapter.Fill(oDataset, "RelPedido");
+                        //Passo parametro para relatorio no caso somente o de pedido tem parametro
+                        ParameterFieldDefinitions crParameterFieldDefinitions;
+                        ParameterFieldDefinition crParameterFieldDefinition;
+                        ParameterValues crParameterValues = new ParameterValues();
+                        ParameterDiscreteValue crParameterDiscreteValue = new ParameterDiscreteValue();
 
-                    objRptConPDV.SetDataSource(oDataset);
+                        crParameterDiscreteValue.Value = "PDV";
+                        crParameterFieldDefinitions = objRptConPDV.DataDefinition.ParameterFields;
+                        crParameterFieldDefinition = crParameterFieldDefinitions["Tipo"];
+                        crParameterValues = crParameterFieldDefinition.CurrentValues;
 
-                    //Passo parametro para relatorio no caso somente o de pedido tem parametro
-                    ParameterFieldDefinitions crParameterFieldDefinitions;
-                    ParameterFieldDefinition crParameterFieldDefinition;
-                    ParameterValues crParameterValues = new ParameterValues();
-                    ParameterDiscreteValue crParameterDiscreteValue = new ParameterDiscreteValue();
+                        crParameterValues.Clear();
+                        crParameterValues.Add(crParameterDiscreteValue);
+                        crParameterFieldDefinition.ApplyCurrentValues(crParameterValues);
 
-                    crParameterDiscreteValue.Value = "PDV";
-                    crParameterFieldDefinitions = objRptConPDV.DataDefinition.ParameterFields;
-                    crParameterFieldDefinition = crParameterFieldDefinitions["Tipo"];
-                    crParameterValues = crParameterFieldDefinition.CurrentValues;
+                        //atribiu o resultado ao CristalReportView            
+                        crstlRprtVwrRel.DisplayGroupTree = false;
+                        crstlRprtVwrRel.ReportSource = objRptConPDV;
+                    }
+                    else
+                    {
+                        //Instancio o Relatorio
+                        RptConPDV objRptConPDV = new RptConPDV();
 
-                    crParameterValues.Clear();
-                    crParameterValues.Add(crParameterDiscreteValue);
-                    crParameterFieldDefinition.ApplyCurrentValues(crParameterValues);
+                        //Instancio o Dataset
+                        COMERCIALDataSet oDataset = new COMERCIALDataSet();
 
-                    //atribiu o resultado ao CristalReportView            
-                    crstlRprtVwrRel.DisplayGroupTree = false;
-                    crstlRprtVwrRel.ReportSource = objRptConPDV;
+                        Microsoft.Practices.EnterpriseLibrary.Data.Database db = DatabaseFactory.CreateDatabase();
+                        //Crio a Conexão
+                        SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString);
 
-                }
-                else
-                {
-                    //Instancio o Relatorio
-                    RptConPDV objRptConPDV = new RptConPDV();
+                        //Abro a conexão
+                        sqlcon.Open();
 
-                    //Instancio o Dataset
-                    COMERCIALDataSet oDataset = new COMERCIALDataSet();
+                        //Recebo a String SQL feita na tela de consulta
+                        string StringConnection = x.pesquisar();
 
-                    Microsoft.Practices.EnterpriseLibrary.Data.Database db = DatabaseFactory.CreateDatabase();
-                    //Crio a Conexão
-                    SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString);
+                        SqlDataAdapter dtAdapter = new SqlDataAdapter(StringConnection, sqlcon);
 
-                    //Abro a conexão
-                    sqlcon.Open();
-
-                    //Recebo a String SQL feita na tela de consulta
-                    string StringConnection = x.pesquisar();
-
-                    SqlDataAdapter dtAdapter = new SqlDataAdapter(StringConnection, sqlcon);
-
-                    //Localiso o datateble criado no dataset
-                    dtAdapter.Fill(oDataset, "RelPedido");
-
-                    objRptConPDV.SetDataSource(oDataset);
-
-                    //Passo parametro para relatorio no caso somente o de pedido tem parametro
-                    ParameterFieldDefinitions crParameterFieldDefinitions;
-                    ParameterFieldDefinition crParameterFieldDefinition;
-                    ParameterValues crParameterValues = new ParameterValues();
-                    ParameterDiscreteValue crParameterDiscreteValue = new ParameterDiscreteValue();
-
-                    crParameterDiscreteValue.Value = "prd";
-                    crParameterFieldDefinitions = objRptConPDV.DataDefinition.ParameterFields;
-                    crParameterFieldDefinition = crParameterFieldDefinitions["Tipo"];
-                    crParameterValues = crParameterFieldDefinition.CurrentValues;
-
-                    crParameterValues.Clear();
-                    crParameterValues.Add(crParameterDiscreteValue);
-                    crParameterFieldDefinition.ApplyCurrentValues(crParameterValues);
-
-                    //atribiu o resultado ao CristalReportView            
-                    crstlRprtVwrRel.DisplayGroupTree = false;
-                    crstlRprtVwrRel.ReportSource = objRptConPDV;
-                }
-
-
-
-            }
-            #endregion
-
+<<<<<<< .mine
+                        //Localiso o datateble criado no dataset
+                        dtAdapter.Fill(oDataset, "RelPedido");
+=======
             #region relatorio vendedor
 
      
@@ -164,7 +189,11 @@ namespace Comercial
             {
                 //Instancio o FormConsulta
                 FrmConVen x = (FrmConVen)_pdv;
+>>>>>>> .r92
 
+<<<<<<< .mine
+                        objRptConPDV.SetDataSource(oDataset);
+=======
                 //Instancio o Relatorio
                 RptConVen objRptConVen = new RptConVen();
 
@@ -192,7 +221,15 @@ namespace Comercial
                 crstlRprtVwrRel.DisplayGroupTree = false;
                 crstlRprtVwrRel.ReportSource = objRptConVen;
             }
+>>>>>>> .r92
 
+<<<<<<< .mine
+                        //Passo parametro para relatorio no caso somente o de pedido tem parametro
+                        ParameterFieldDefinitions crParameterFieldDefinitions;
+                        ParameterFieldDefinition crParameterFieldDefinition;
+                        ParameterValues crParameterValues = new ParameterValues();
+                        ParameterDiscreteValue crParameterDiscreteValue = new ParameterDiscreteValue();
+=======
             #endregion
 
             if (_princ == "FrmEmiNF")
@@ -200,17 +237,28 @@ namespace Comercial
                 CrystalDecisions.CrystalReports.Engine.ReportDocument report = new CrystalDecisions.CrystalReports.Engine.ReportDocument();
                 report.Load(@"D:\Backup Facu\7 Semestre\TCC 2\TCC 2\Prototipo\Prototipo\RptConNF.rpt");
                 CrystalDecisions.Shared.ParameterField param;
+>>>>>>> .r92
 
-                crstlRprtVwrRel.ReportSource = report;
+                        crParameterDiscreteValue.Value = "prd";
+                        crParameterFieldDefinitions = objRptConPDV.DataDefinition.ParameterFields;
+                        crParameterFieldDefinition = crParameterFieldDefinitions["Tipo"];
+                        crParameterValues = crParameterFieldDefinition.CurrentValues;
+
+                        crParameterValues.Clear();
+                        crParameterValues.Add(crParameterDiscreteValue);
+                        crParameterFieldDefinition.ApplyCurrentValues(crParameterValues);
+
+                        //atribiu o resultado ao CristalReportView            
+                        crstlRprtVwrRel.DisplayGroupTree = false;
+                        crstlRprtVwrRel.ReportSource = objRptConPDV;
+                    }
             }
-        }
+            catch (Exception ex)
+            {
+                
+                throw ex;
+            }
 
-       
-        #region ImprimerRelatorio Pedido
-        public void ImprimirRelPed(int CodPed)
-        {
-            
-        
 
         }
         #endregion

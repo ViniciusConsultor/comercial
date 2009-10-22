@@ -57,6 +57,13 @@
             this.lblCod = new System.Windows.Forms.Label();
             this.lblTipoPed = new System.Windows.Forms.Label();
             this.dtGrdConPDV = new System.Windows.Forms.DataGridView();
+            this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
+            this.pEDIDOBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.pEDIDOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.PEDIDOTableAdapter();
+            this.tableAdapterManager = new Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager();
+            this.iTEMPEDIDOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter();
+            this.iTEMPEDIDOBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.txtCodProd = new Comercial.TextButton();
             this.ClmnCodPed = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClmnDtPed = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColSituacao = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -67,13 +74,7 @@
             this.ColDescricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColQuantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClmnValPed = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
-            this.pEDIDOBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.pEDIDOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.PEDIDOTableAdapter();
-            this.tableAdapterManager = new Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager();
-            this.iTEMPEDIDOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter();
-            this.iTEMPEDIDOBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.txtCodProd = new Comercial.TextButton();
+            this.ColValorTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbCntrlConPDV.SuspendLayout();
             this.tbPgConCli.SuspendLayout();
             this.grpBxFiltro.SuspendLayout();
@@ -380,7 +381,8 @@
             this.ColCodProd,
             this.ColDescricao,
             this.ColQuantidade,
-            this.ClmnValPed});
+            this.ClmnValPed,
+            this.ColValorTotal});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -402,78 +404,6 @@
             this.dtGrdConPDV.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dtGrdConPDV.Size = new System.Drawing.Size(1125, 222);
             this.dtGrdConPDV.TabIndex = 0;
-            // 
-            // ClmnCodPed
-            // 
-            this.ClmnCodPed.DataPropertyName = "NRPEDIDO";
-            this.ClmnCodPed.HeaderText = "Num Ped.";
-            this.ClmnCodPed.Name = "ClmnCodPed";
-            this.ClmnCodPed.ReadOnly = true;
-            // 
-            // ClmnDtPed
-            // 
-            this.ClmnDtPed.DataPropertyName = "TIPO";
-            this.ClmnDtPed.HeaderText = "Tipo Ped.";
-            this.ClmnDtPed.Name = "ClmnDtPed";
-            this.ClmnDtPed.ReadOnly = true;
-            this.ClmnDtPed.Width = 120;
-            // 
-            // ColSituacao
-            // 
-            this.ColSituacao.DataPropertyName = "SITUACAO";
-            this.ColSituacao.HeaderText = "Situação";
-            this.ColSituacao.Name = "ColSituacao";
-            this.ColSituacao.ReadOnly = true;
-            // 
-            // Cliente
-            // 
-            this.Cliente.DataPropertyName = "RAZAOSOCIAL";
-            this.Cliente.HeaderText = "Cliente";
-            this.Cliente.Name = "Cliente";
-            this.Cliente.ReadOnly = true;
-            // 
-            // DtEmissão
-            // 
-            this.DtEmissão.DataPropertyName = "DATAEMISSAO";
-            this.DtEmissão.HeaderText = "Data Emissão";
-            this.DtEmissão.Name = "DtEmissão";
-            this.DtEmissão.ReadOnly = true;
-            // 
-            // ColDtEntrega
-            // 
-            this.ColDtEntrega.DataPropertyName = "DATAENTREGA";
-            this.ColDtEntrega.HeaderText = "Data Entrega";
-            this.ColDtEntrega.Name = "ColDtEntrega";
-            this.ColDtEntrega.ReadOnly = true;
-            // 
-            // ColCodProd
-            // 
-            this.ColCodProd.DataPropertyName = "CODPRODUTO";
-            this.ColCodProd.HeaderText = "Código Produto";
-            this.ColCodProd.Name = "ColCodProd";
-            this.ColCodProd.ReadOnly = true;
-            // 
-            // ColDescricao
-            // 
-            this.ColDescricao.DataPropertyName = "DESCRICAO";
-            this.ColDescricao.HeaderText = "Descrição Produto";
-            this.ColDescricao.Name = "ColDescricao";
-            this.ColDescricao.ReadOnly = true;
-            // 
-            // ColQuantidade
-            // 
-            this.ColQuantidade.DataPropertyName = "QUANTIDADE";
-            this.ColQuantidade.HeaderText = "Quantidade";
-            this.ColQuantidade.Name = "ColQuantidade";
-            this.ColQuantidade.ReadOnly = true;
-            // 
-            // ClmnValPed
-            // 
-            this.ClmnValPed.DataPropertyName = "VALOR";
-            this.ClmnValPed.HeaderText = "Valor do Pedido";
-            this.ClmnValPed.Name = "ClmnValPed";
-            this.ClmnValPed.ReadOnly = true;
-            this.ClmnValPed.Width = 160;
             // 
             // cOMERCIALDataSet
             // 
@@ -532,6 +462,86 @@
             this.txtCodProd.TabIndex = 109;
             this.txtCodProd.ButtonClick += new System.EventHandler(this.txtCodProd_ButtonClick);
             // 
+            // ClmnCodPed
+            // 
+            this.ClmnCodPed.DataPropertyName = "NRPEDIDO";
+            this.ClmnCodPed.HeaderText = "Num Ped.";
+            this.ClmnCodPed.Name = "ClmnCodPed";
+            this.ClmnCodPed.ReadOnly = true;
+            // 
+            // ClmnDtPed
+            // 
+            this.ClmnDtPed.DataPropertyName = "TIPO";
+            this.ClmnDtPed.HeaderText = "Tipo Ped.";
+            this.ClmnDtPed.Name = "ClmnDtPed";
+            this.ClmnDtPed.ReadOnly = true;
+            this.ClmnDtPed.Width = 80;
+            // 
+            // ColSituacao
+            // 
+            this.ColSituacao.DataPropertyName = "SITUACAO";
+            this.ColSituacao.HeaderText = "Situação";
+            this.ColSituacao.Name = "ColSituacao";
+            this.ColSituacao.ReadOnly = true;
+            this.ColSituacao.Width = 80;
+            // 
+            // Cliente
+            // 
+            this.Cliente.DataPropertyName = "RAZAOSOCIAL";
+            this.Cliente.HeaderText = "Cliente";
+            this.Cliente.Name = "Cliente";
+            this.Cliente.ReadOnly = true;
+            // 
+            // DtEmissão
+            // 
+            this.DtEmissão.DataPropertyName = "DATAEMISSAO";
+            this.DtEmissão.HeaderText = "Data Emissão";
+            this.DtEmissão.Name = "DtEmissão";
+            this.DtEmissão.ReadOnly = true;
+            // 
+            // ColDtEntrega
+            // 
+            this.ColDtEntrega.DataPropertyName = "DATAENTREGA";
+            this.ColDtEntrega.HeaderText = "Data Entrega";
+            this.ColDtEntrega.Name = "ColDtEntrega";
+            this.ColDtEntrega.ReadOnly = true;
+            // 
+            // ColCodProd
+            // 
+            this.ColCodProd.DataPropertyName = "CODPRODUTO";
+            this.ColCodProd.HeaderText = "Código Produto";
+            this.ColCodProd.Name = "ColCodProd";
+            this.ColCodProd.ReadOnly = true;
+            // 
+            // ColDescricao
+            // 
+            this.ColDescricao.DataPropertyName = "DESCRICAO";
+            this.ColDescricao.HeaderText = "Descrição Produto";
+            this.ColDescricao.Name = "ColDescricao";
+            this.ColDescricao.ReadOnly = true;
+            this.ColDescricao.Width = 120;
+            // 
+            // ColQuantidade
+            // 
+            this.ColQuantidade.DataPropertyName = "QUANTIDADE";
+            this.ColQuantidade.HeaderText = "Quantidade";
+            this.ColQuantidade.Name = "ColQuantidade";
+            this.ColQuantidade.ReadOnly = true;
+            // 
+            // ClmnValPed
+            // 
+            this.ClmnValPed.DataPropertyName = "VALOR";
+            this.ClmnValPed.HeaderText = "Preço Unitário";
+            this.ClmnValPed.Name = "ClmnValPed";
+            this.ClmnValPed.ReadOnly = true;
+            // 
+            // ColValorTotal
+            // 
+            this.ColValorTotal.DataPropertyName = "ValorTotal";
+            this.ColValorTotal.HeaderText = "Valor Total";
+            this.ColValorTotal.Name = "ColValorTotal";
+            this.ColValorTotal.ReadOnly = true;
+            // 
             // FrmConPDV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -589,6 +599,11 @@
         private System.Windows.Forms.RadioButton rdbtnPendente;
         private System.Windows.Forms.RadioButton rdbtnEfetivado;
         private System.Windows.Forms.ComboBox cmBxTipoPed;
+        public TextButton txtCodProd;
+        private System.Windows.Forms.TextBox txtCodPed;
+        public System.Windows.Forms.DataGridView dtGrdConPDV;
+        public System.Windows.Forms.RadioButton rdbProd;
+        public System.Windows.Forms.RadioButton rdbped;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmnCodPed;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmnDtPed;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColSituacao;
@@ -599,10 +614,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColDescricao;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColQuantidade;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmnValPed;
-        public TextButton txtCodProd;
-        private System.Windows.Forms.TextBox txtCodPed;
-        public System.Windows.Forms.DataGridView dtGrdConPDV;
-        public System.Windows.Forms.RadioButton rdbProd;
-        public System.Windows.Forms.RadioButton rdbped;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColValorTotal;
     }
 }
