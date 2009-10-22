@@ -160,7 +160,7 @@ namespace Comercial
         {
             if (ex.GetType().FullName == "System.Data.ConstraintException")
                 MessageBox.Show("Registro já cadastrado (Violação de chave primária)", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            else if (ex.GetType().FullName == "System.Data.NoNullAllowedException" || ex.GetType().FullName == "System.InvalidOperationException")
+            else if (ex.GetType().FullName == "System.Data.NoNullAllowedException" || ex.GetType().FullName == "System.InvalidOperationException" || ex.Message == "campo vazio")
                 MessageBox.Show("Campo(s) Obrigatório(s) não preenchido(s).", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else if (ex.Message== "Grid Vazio")
                 MessageBox.Show("Não há dados para gerar o relatório", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -181,7 +181,8 @@ namespace Comercial
         }
         #endregion
 
-        #region
+        #region Procura_CEP
+
         public string procuraCEP(string cep)
         {
             try
