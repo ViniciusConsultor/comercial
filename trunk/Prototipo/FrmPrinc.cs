@@ -622,7 +622,7 @@ namespace Comercial
 
                 if (form is frmConCli)
                 {
-                    FrmRelGeral filho = new FrmRelGeral("FrmConCli", null,this);
+                    FrmRelGeral filho = new FrmRelGeral("FrmConCli", null);
                     filho.Show();
                 }
                 if (form is FrmConPDV)
@@ -634,20 +634,20 @@ namespace Comercial
                         throw new Exception("Grid Vazio");
                     }                    
                     
-                    FrmRelGeral filho = new FrmRelGeral("FrmConPDV", form,this);
+                    FrmRelGeral filho = new FrmRelGeral("FrmConPDV",null);
                    
 
                     filho.Show();
                 }
                 if (form is FrmConProd)
                 {
-                    FrmRelGeral filho = new FrmRelGeral("FrmConProd", null, this);
+                    FrmRelGeral filho = new FrmRelGeral("FrmConProd", null);
                     filho.Show();
                 }
                 if (form is FrmConVen)
                 {
                     FrmConVen frmPed = (FrmConVen)form;
-                    FrmRelGeral filho = new FrmRelGeral("FrmConVen", form, this);
+                    FrmRelGeral filho = new FrmRelGeral("FrmConVen", null);
                     filho.Show();
                 }
 
@@ -661,7 +661,7 @@ namespace Comercial
 
         private void tlStrpBtnGeraNt_Click(object sender, EventArgs e)
         {
-            FrmRelGeral filho = new FrmRelGeral("FrmEmiNF", null,this);
+            FrmRelGeral filho = new FrmRelGeral("FrmEmiNF", null);
             filho.Show();
         }
 

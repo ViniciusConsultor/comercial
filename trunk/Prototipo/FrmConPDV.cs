@@ -46,6 +46,12 @@ namespace Comercial
 
         private void FrmConPDV_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'cOMERCIALDataSet.PEDIDO' table. You can move, or remove it, as needed.
+            this.pEDIDOTableAdapter.Fill(this.cOMERCIALDataSet.PEDIDO);
+            // TODO: This line of code loads data into the 'cOMERCIALDataSet.ITEMPEDIDO' table. You can move, or remove it, as needed.
+            this.iTEMPEDIDOTableAdapter.Fill(this.cOMERCIALDataSet.ITEMPEDIDO);
+            // TODO: This line of code loads data into the 'cOMERCIALDataSet.ITEMPEDIDO' table. You can move, or remove it, as needed.
+            this.iTEMPEDIDOTableAdapter.Fill(this.cOMERCIALDataSet.ITEMPEDIDO);
 
             // TODO: This line of code loads data into the 'cOMERCIALDataSet.ITEMPEDIDO' table. You can move, or remove it, as needed.
             this.iTEMPEDIDOTableAdapter.Fill(this.cOMERCIALDataSet.ITEMPEDIDO);
@@ -199,6 +205,22 @@ namespace Comercial
 
         private void txtCodPed_ButtonClick(object sender, EventArgs e)
         {
+
+        }
+
+        private void iTEMPEDIDOBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.iTEMPEDIDOBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.cOMERCIALDataSet);
+
+        }
+
+        private void iTEMPEDIDOBindingNavigatorSaveItem_Click_1(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.iTEMPEDIDOBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.cOMERCIALDataSet);
 
         }
     }
