@@ -237,6 +237,30 @@ namespace Comercial
 
         }
 
+        private void txtcep_ButtonClick(object sender, EventArgs e)
+        {
+            Validacoes v = new Validacoes();
+
+            string cep = v.procuraCEP(txtcep.getText);
+
+            if (cep != "")
+            {
+                string[] x = cep.Split(';');
+
+                txtMunicipio.Text = x[0];
+                cmbUfCli.Text = x[1];
+                txtBairro.Text = x[2];
+                txtEndereco.Text = x[3];
+
+                txtnum.Focus();
+            }
+            else
+            {
+                MessageBox.Show("CEP não encontrado.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtEndereco.Focus();
+            }
+        }
+
     }
 
 }

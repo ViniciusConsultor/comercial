@@ -18,6 +18,9 @@ namespace Comercial
         private string _algoritmo;
         private string opc = "'U','V'";
 
+        private string tabela = "";
+        private string algoritmo = "";
+
 
         public FrmMinGer(FrmPrinc parent)
         {
@@ -125,36 +128,12 @@ namespace Comercial
             {
                 rchTxtBxTexto.Text = "O algoritmo MTS usa uma combinação de análise ARIMA e de regressão linear com base em árvores de decisão para analisar os dados relacionados a tempo, por exemplo, dados de vendas mensais ou lucros anuais. Os padrões descobertos podem ser usados para prever valores para futuros períodos. O algoritmo pode ser personalizado para usar ou método de árvore de decisão ou ARIMA, ou mesmo ambos.";
             }
+
+            algoritmo = (string)cmbBxTipoDataMining.SelectedValue;
         }
 
         private void checkBox32_CheckedChanged(object sender, EventArgs e)
         {
-
-            //Pedido...
-
-            if (checkBox32.Checked)
-            {
-                dataGridView1.Rows.Clear();
-
-                dataGridView1.RowsDefaultCellStyle.ForeColor = Color.Black;
-
-                dataGridView1.Rows.Add(false, "NrPedido");
-                dataGridView1.Rows.Add(false, "CodCliente");
-                dataGridView1.Rows.Add(false, "CodVendedor");
-                dataGridView1.Rows.Add(false, "Tipo");
-                dataGridView1.Rows.Add(false, "DataEmissao");
-                dataGridView1.Rows.Add(false, "DataEntrega");
-                dataGridView1.Rows.Add(false, "NrNotaFiscal");
-                dataGridView1.Rows.Add(false, "CodCondicaoPagamento");
-                dataGridView1.Rows.Add(false, "CodTransportadora");
-                dataGridView1.Rows.Add(false, "Situacao");
-            }
-            else
-            {
-                dataGridView1.Rows.Clear();
-
-            }
-
 
 
 
@@ -162,219 +141,43 @@ namespace Comercial
 
         private void checkBox31_CheckedChanged(object sender, EventArgs e)
         {
-            //Produto...
-
-            if (checkBox31.Checked)
-            {
-                dataGridView1.Rows.Clear();
-
-                dataGridView1.RowsDefaultCellStyle.ForeColor = Color.Black;
-
-                dataGridView1.Rows.Add(false, "CodProduto");
-                dataGridView1.Rows.Add(false, "Descricao");
-                dataGridView1.Rows.Add(false, "DataCadastro");
-                dataGridView1.Rows.Add(false, "PrecoCusto");
-                dataGridView1.Rows.Add(false, "PesoLiquido");
-                dataGridView1.Rows.Add(false, "CodUnidadeMedida");
-                dataGridView1.Rows.Add(false, "CodGrupoProduto");
-                dataGridView1.Rows.Add(false, "PrecoVenda");
-                dataGridView1.Rows.Add(false, "EstoqueAtual");
-                dataGridView1.Rows.Add(false, "EstoqueMinimo");
-                dataGridView1.Rows.Add(false, "IPI");
-            }
-            else
-            {
-                dataGridView1.Rows.Clear();
-
-            }
-
-        }
+                   }
 
         private void checkBox36_CheckedChanged(object sender, EventArgs e)
         {
 
-            //Item...
-
-            if (checkBox36.Checked)
-            {
-                dataGridView1.Rows.Clear();
-
-                dataGridView1.RowsDefaultCellStyle.ForeColor = Color.Black;
-
-                dataGridView1.Rows.Add(false, "NrPedido");
-                dataGridView1.Rows.Add(false, "CodProduto");
-                dataGridView1.Rows.Add(false, "Quantidade");
-            }
-            else
-            {
-                dataGridView1.Rows.Clear();
-            }
         }
 
         private void checkBox30_CheckedChanged(object sender, EventArgs e)
         {
 
-
-            //Grupo de produto...
-
-            if (checkBox30.Checked)
-            {
-                dataGridView1.Rows.Clear();
-
-                dataGridView1.RowsDefaultCellStyle.ForeColor = Color.Black;
-
-                dataGridView1.Rows.Add(false, "CodGrupoPrduto");
-                dataGridView1.Rows.Add(false, "Descricao");
-                dataGridView1.Rows.Add(false, "Desconto");
-            }
-            else
-            {
-                dataGridView1.Rows.Clear();
-            }
         }
 
         private void checkBox29_CheckedChanged(object sender, EventArgs e)
         {
 
 
-
-            //Cliente...
-
-            if (checkBox29.Checked)
-            {
-                dataGridView1.Rows.Clear();
-                dataGridView1.RowsDefaultCellStyle.ForeColor = Color.Black;
-
-                dataGridView1.Rows.Add(false, "CodCliente");
-                dataGridView1.Rows.Add(false, "RazaoSocial");
-                dataGridView1.Rows.Add(false, "NomeFantasia");
-                dataGridView1.Rows.Add(false, "Telefone");
-                dataGridView1.Rows.Add(false, "Email");
-                dataGridView1.Rows.Add(false, "CNPJ");
-                dataGridView1.Rows.Add(false, "IE");
-                dataGridView1.Rows.Add(false, "Endereco");
-                dataGridView1.Rows.Add(false, "Bairro");
-                dataGridView1.Rows.Add(false, "Municipio");
-                dataGridView1.Rows.Add(false, "UF");
-                dataGridView1.Rows.Add(false, "CEP");
-                dataGridView1.Rows.Add(false, "CodRegiao");
-                dataGridView1.Rows.Add(false, "CodUsuario");
-                dataGridView1.Rows.Add(false, "AreaAtuacao");
-                dataGridView1.Rows.Add(false, "LimiteCred");
-                dataGridView1.Rows.Add(false, "AprovadoCred");
-            }
-            else
-            {
-                dataGridView1.Rows.Clear();
-            }
         }
 
         private void checkBox28_CheckedChanged(object sender, EventArgs e)
         {
 
-
-            //Vendedor...
-
-            if (checkBox28.Checked)
-            {
-
-                dataGridView1.Rows.Clear();
-                dataGridView1.RowsDefaultCellStyle.ForeColor = Color.Black;
-
-                dataGridView1.Rows.Add(false, "CodVendedor");
-                dataGridView1.Rows.Add(false, "Nome");
-                dataGridView1.Rows.Add(false, "Endereco");
-                dataGridView1.Rows.Add(false, "Bairro");
-                dataGridView1.Rows.Add(false, "Municipio");
-                dataGridView1.Rows.Add(false, "UF");
-                dataGridView1.Rows.Add(false, "CEP");
-                dataGridView1.Rows.Add(false, "Telefone");
-                dataGridView1.Rows.Add(false, "Fax");
-                dataGridView1.Rows.Add(false, "CPF");
-                dataGridView1.Rows.Add(false, "RG");
-                dataGridView1.Rows.Add(false, "Email");
-                dataGridView1.Rows.Add(false, "Comissao");
-                dataGridView1.Rows.Add(false, "Sexo");
-                dataGridView1.Rows.Add(false, "CodRegiao");
-            }
-            else
-            {
-                dataGridView1.Rows.Clear();
-            }
         }
 
         private void checkBox27_CheckedChanged(object sender, EventArgs e)
         {
 
-
-            //Condicao Pagamento...
-
-            if (checkBox28.Checked)
-            {
-
-                dataGridView1.Rows.Clear();
-                dataGridView1.RowsDefaultCellStyle.ForeColor = Color.Black;
-
-                dataGridView1.Rows.Add(false, "CodCondicaoPagamento");
-                dataGridView1.Rows.Add(false, "Descricao");
-                dataGridView1.Rows.Add(false, "DiasCondicao");
-                dataGridView1.Rows.Add(false, "Entrada");
-            }
-            else
-            {
-                dataGridView1.Rows.Clear();
-            }
-
-
+       
         }
 
         private void checkBox26_CheckedChanged(object sender, EventArgs e)
         {
-            //Transportadora...
-
-            if (checkBox28.Checked)
-            {
-
-                dataGridView1.Rows.Clear();
-                dataGridView1.RowsDefaultCellStyle.ForeColor = Color.Black;
-
-                dataGridView1.Rows.Add(false, "CodTransportadora");
-                dataGridView1.Rows.Add(false, "Nome");
-                dataGridView1.Rows.Add(false, "NomeReduzido");
-                dataGridView1.Rows.Add(false, "ViaTransporte");
-                dataGridView1.Rows.Add(false, "Endereco");
-                dataGridView1.Rows.Add(false, "Bairro");
-                dataGridView1.Rows.Add(false, "Municipio");
-                dataGridView1.Rows.Add(false, "CEP");
-                dataGridView1.Rows.Add(false, "Telefone");
-                dataGridView1.Rows.Add(false, "CNPJ");
-                dataGridView1.Rows.Add(false, "IE");
-                dataGridView1.Rows.Add(false, "Email");
-            }
-            else
-            {
-                dataGridView1.Rows.Clear();
-            }
+          
         }
 
         private void checkBox25_CheckedChanged(object sender, EventArgs e)
         {
-
-            //Regiao
-
-            if (checkBox28.Checked)
-            {
-                dataGridView1.Rows.Clear();
-
-                dataGridView1.RowsDefaultCellStyle.ForeColor = Color.Black;
-
-                dataGridView1.Rows.Add(false, "CodRegiao");
-                dataGridView1.Rows.Add(false, "Descricao");
-            }
-            else
-            {
-                dataGridView1.Rows.Clear();
-            }
+           
         }
 
         private void tabPage2_Enter(object sender, EventArgs e)
@@ -384,7 +187,8 @@ namespace Comercial
             conn.Open();
 
             SqlCommand cmd = new SqlCommand("select * from sys.all_objects where type in (" + opc + ") " +
-                                                "and schema_id = '1'and name not like 'sysdiagrams'", conn);
+                                                "and schema_id = '1'and name not like 'sysdiagrams' "+
+                                                "order by name", conn);
             SqlDataReader reader = cmd.ExecuteReader();
            // reader.Read();
             //while (reader.Read())
@@ -449,6 +253,7 @@ namespace Comercial
                 }
 
                 dv.Cells[0].Value = true;
+                tabela = (string) dv.Cells[1].Value;
             }
         }
 
@@ -509,6 +314,36 @@ namespace Comercial
             dataGridView2.Rows.Clear();
             tabPage2_Enter(null, null);
             dataGridView2.Refresh();
+        }
+
+        private void tabPage3_Enter(object sender, EventArgs e)
+        {
+            string c = ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString;
+            SqlConnection conn = new SqlConnection(c);
+            conn.Open();
+
+            SqlCommand cmd = new SqlCommand("select t.name tipo, c.name coluna from sys.all_columns c inner join sys.all_objects o on c.object_id = o.object_id "+
+								            "inner join sys.types t on c.system_type_id = t.system_type_id "+
+                                            "where o.name = @col "+
+                                            "and t.name <> 'sysname' "+
+                                            "order by c.name", conn);
+            cmd.Parameters.Add(new SqlParameter("@col", tabela));
+            SqlDataReader reader = cmd.ExecuteReader();
+            // reader.Read();
+            //while (reader.Read())
+            if (reader.HasRows)
+            {
+                foreach (var r in reader)
+                {
+                    dataGridView1.Rows.Add(reader["coluna"].ToString() + " (" + reader["tipo"].ToString() + ")", false, false, false);
+                }
+            }
+
+            reader.Close();
+            reader.Dispose();
+
+            conn.Close();
+            conn.Dispose();
         }
 
     }

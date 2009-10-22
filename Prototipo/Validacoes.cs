@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Runtime.InteropServices;
 using System.IO;
+using System.Configuration;
 
 namespace Comercial
 {
@@ -179,7 +180,51 @@ namespace Comercial
             }
         }
         #endregion
-        
+
+        #region
+        public string procuraCEP(string cep)
+        {
+            try
+            {
+                string sql = "select c.cidade_descricao cidade, u.uf_sigla UF, bairro_descricao bairro, endereco_logradouro endereco, " +
+                "endereco_complemento complemento " +
+                "from cidade c inner join uf u on u.uf_codigo = c.uf_codigo " +
+                           "left join bairro b on c.cidade_codigo = b.cidade_codigo " +
+                           "left join endereco e on b.bairro_codigo = e.bairro_codigo " +
+                "where ISNULL(e.endereco_cep,c.cidade_cep) = @CEP";
+
+                string c = ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString;
+
+
+                SqlConnection conn = new SqlConnection(c);
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.Add(new SqlParameter("@CEP", cep));
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                reader.Read();
+
+                if (reader.HasRows)
+                {
+                    return reader["cidade"].ToString() + ";" + reader["UF"].ToString() + ";" +
+                            reader["bairro"].ToString() + ";" + reader["endereco"].ToString() + ";" +
+                            reader["complemento"].ToString();
+                }
+                else
+                {
+                    return "";
+                }
+            }
+            catch
+            {
+                return "";
+            }
+
+
+        }
+        #endregion
+
     }
 
 
