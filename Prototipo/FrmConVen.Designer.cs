@@ -31,13 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.tbPgConVen = new System.Windows.Forms.TabPage();
             this.dtGrdVwConVen = new System.Windows.Forms.DataGridView();
-            this.CPF = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NomeVem = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NRPEDIDO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataEmissao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Valor_Pedido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Comissao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Valor_Comissao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grpBxFiltro = new System.Windows.Forms.GroupBox();
             this.grpBxVendedor = new System.Windows.Forms.GroupBox();
             this.txtComissao = new System.Windows.Forms.TextBox();
@@ -61,6 +54,14 @@
             this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
             this.vENDEDORBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.vENDEDORTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.VENDEDORTableAdapter();
+            this.relVendedorBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cPFDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nrPedidoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dtEmissaoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.comissaoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valorPedidoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.valorComissaoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbPgConVen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGrdVwConVen)).BeginInit();
             this.grpBxFiltro.SuspendLayout();
@@ -70,6 +71,7 @@
             this.tbCntrlConVen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vENDEDORBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.relVendedorBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tbPgConVen
@@ -89,71 +91,23 @@
             this.dtGrdVwConVen.AllowUserToAddRows = false;
             this.dtGrdVwConVen.AllowUserToDeleteRows = false;
             this.dtGrdVwConVen.AllowUserToOrderColumns = true;
+            this.dtGrdVwConVen.AutoGenerateColumns = false;
             this.dtGrdVwConVen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGrdVwConVen.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.CPF,
-            this.NomeVem,
-            this.NRPEDIDO,
-            this.DataEmissao,
-            this.Valor_Pedido,
-            this.Comissao,
-            this.Valor_Comissao});
+            this.cPFDataGridViewTextBoxColumn,
+            this.nomeDataGridViewTextBoxColumn,
+            this.nrPedidoDataGridViewTextBoxColumn,
+            this.dtEmissaoDataGridViewTextBoxColumn,
+            this.comissaoDataGridViewTextBoxColumn,
+            this.valorPedidoDataGridViewTextBoxColumn,
+            this.valorComissaoDataGridViewTextBoxColumn});
+            this.dtGrdVwConVen.DataSource = this.relVendedorBindingSource;
             this.dtGrdVwConVen.Location = new System.Drawing.Point(6, 164);
             this.dtGrdVwConVen.Name = "dtGrdVwConVen";
             this.dtGrdVwConVen.ReadOnly = true;
             this.dtGrdVwConVen.Size = new System.Drawing.Size(593, 233);
             this.dtGrdVwConVen.TabIndex = 1;
             this.dtGrdVwConVen.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // CPF
-            // 
-            this.CPF.DataPropertyName = "cpf";
-            this.CPF.HeaderText = "CPF";
-            this.CPF.Name = "CPF";
-            this.CPF.ReadOnly = true;
-            // 
-            // NomeVem
-            // 
-            this.NomeVem.DataPropertyName = "nome";
-            this.NomeVem.HeaderText = "Nome";
-            this.NomeVem.Name = "NomeVem";
-            this.NomeVem.ReadOnly = true;
-            this.NomeVem.Width = 200;
-            // 
-            // NRPEDIDO
-            // 
-            this.NRPEDIDO.DataPropertyName = "nrpedido";
-            this.NRPEDIDO.HeaderText = "Num. Pedido";
-            this.NRPEDIDO.Name = "NRPEDIDO";
-            this.NRPEDIDO.ReadOnly = true;
-            // 
-            // DataEmissao
-            // 
-            this.DataEmissao.DataPropertyName = "dataemissao";
-            this.DataEmissao.HeaderText = "Data Emissão";
-            this.DataEmissao.Name = "DataEmissao";
-            this.DataEmissao.ReadOnly = true;
-            // 
-            // Valor_Pedido
-            // 
-            this.Valor_Pedido.DataPropertyName = "valor_pedido";
-            this.Valor_Pedido.HeaderText = "Valor Pedido";
-            this.Valor_Pedido.Name = "Valor_Pedido";
-            this.Valor_Pedido.ReadOnly = true;
-            // 
-            // Comissao
-            // 
-            this.Comissao.DataPropertyName = "comissao";
-            this.Comissao.HeaderText = "Comissão";
-            this.Comissao.Name = "Comissao";
-            this.Comissao.ReadOnly = true;
-            // 
-            // Valor_Comissao
-            // 
-            this.Valor_Comissao.DataPropertyName = "valor_comissao";
-            this.Valor_Comissao.HeaderText = "Valor da Comissão";
-            this.Valor_Comissao.Name = "Valor_Comissao";
-            this.Valor_Comissao.ReadOnly = true;
             // 
             // grpBxFiltro
             // 
@@ -401,6 +355,60 @@
             // 
             this.vENDEDORTableAdapter.ClearBeforeFill = true;
             // 
+            // relVendedorBindingSource
+            // 
+            this.relVendedorBindingSource.DataMember = "RelVendedor";
+            this.relVendedorBindingSource.DataSource = this.cOMERCIALDataSet;
+            // 
+            // cPFDataGridViewTextBoxColumn
+            // 
+            this.cPFDataGridViewTextBoxColumn.DataPropertyName = "CPF";
+            this.cPFDataGridViewTextBoxColumn.HeaderText = "CPF";
+            this.cPFDataGridViewTextBoxColumn.Name = "cPFDataGridViewTextBoxColumn";
+            this.cPFDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nomeDataGridViewTextBoxColumn
+            // 
+            this.nomeDataGridViewTextBoxColumn.DataPropertyName = "Nome";
+            this.nomeDataGridViewTextBoxColumn.HeaderText = "Nome";
+            this.nomeDataGridViewTextBoxColumn.Name = "nomeDataGridViewTextBoxColumn";
+            this.nomeDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // nrPedidoDataGridViewTextBoxColumn
+            // 
+            this.nrPedidoDataGridViewTextBoxColumn.DataPropertyName = "NrPedido";
+            this.nrPedidoDataGridViewTextBoxColumn.HeaderText = "NrPedido";
+            this.nrPedidoDataGridViewTextBoxColumn.Name = "nrPedidoDataGridViewTextBoxColumn";
+            this.nrPedidoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // dtEmissaoDataGridViewTextBoxColumn
+            // 
+            this.dtEmissaoDataGridViewTextBoxColumn.DataPropertyName = "dtEmissao";
+            this.dtEmissaoDataGridViewTextBoxColumn.HeaderText = "dtEmissao";
+            this.dtEmissaoDataGridViewTextBoxColumn.Name = "dtEmissaoDataGridViewTextBoxColumn";
+            this.dtEmissaoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // comissaoDataGridViewTextBoxColumn
+            // 
+            this.comissaoDataGridViewTextBoxColumn.DataPropertyName = "Comissao";
+            this.comissaoDataGridViewTextBoxColumn.HeaderText = "Comissao";
+            this.comissaoDataGridViewTextBoxColumn.Name = "comissaoDataGridViewTextBoxColumn";
+            this.comissaoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // valorPedidoDataGridViewTextBoxColumn
+            // 
+            this.valorPedidoDataGridViewTextBoxColumn.DataPropertyName = "ValorPedido";
+            this.valorPedidoDataGridViewTextBoxColumn.HeaderText = "ValorPedido";
+            this.valorPedidoDataGridViewTextBoxColumn.Name = "valorPedidoDataGridViewTextBoxColumn";
+            this.valorPedidoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // valorComissaoDataGridViewTextBoxColumn
+            // 
+            this.valorComissaoDataGridViewTextBoxColumn.DataPropertyName = "ValorComissao";
+            this.valorComissaoDataGridViewTextBoxColumn.HeaderText = "ValorComissao";
+            this.valorComissaoDataGridViewTextBoxColumn.Name = "valorComissaoDataGridViewTextBoxColumn";
+            this.valorComissaoDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // FrmConVen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -427,6 +435,7 @@
             this.tbCntrlConVen.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vENDEDORBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.relVendedorBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -458,12 +467,13 @@
         private COMERCIALDataSet cOMERCIALDataSet;
         private System.Windows.Forms.BindingSource vENDEDORBindingSource;
         private Comercial.COMERCIALDataSetTableAdapters.VENDEDORTableAdapter vENDEDORTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CPF;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NomeVem;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NRPEDIDO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DataEmissao;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Valor_Pedido;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Comissao;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Valor_Comissao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cPFDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nomeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nrPedidoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dtEmissaoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn comissaoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn valorPedidoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn valorComissaoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource relVendedorBindingSource;
     }
 }

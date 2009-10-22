@@ -23,13 +23,15 @@ namespace Comercial
     public partial class FrmRelGeral : Form
     {
         private string _princ = null;
-        private FrmConPDV _pdv = null;
+        private object _pdv = null;
         public int Codped;
+        private FrmPrinc _frmprinc;
 
-        public FrmRelGeral(string parent, FrmConPDV pdv)
+        public FrmRelGeral(string parent, object pdv, FrmPrinc frmprinc)
         {
             _princ = parent;
             _pdv = pdv;
+            _frmprinc = frmprinc;
             InitializeComponent();
         }
 
@@ -114,7 +116,7 @@ namespace Comercial
 
                     Microsoft.Practices.EnterpriseLibrary.Data.Database db = DatabaseFactory.CreateDatabase();
                     //Crio a Conexão
-                    SqlConnection sqlcon = new SqlConnection("Data Source=zabs\\sql2008;Initial Catalog=COMERCIAL;Persist Security Info=True;User ID=SIGA;Password=SIGA");
+                    SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString);
 
                     //Abro a conexão
                     sqlcon.Open();
@@ -154,14 +156,44 @@ namespace Comercial
             }
             #endregion
 
+            #region relatorio vendedor
+
+     
+
             if (_princ == "FrmConVen")
             {
-                CrystalDecisions.CrystalReports.Engine.ReportDocument report = new CrystalDecisions.CrystalReports.Engine.ReportDocument();
-                report.Load(@"D:\Backup Facu\7 Semestre\TCC 2\TCC 2\Prototipo\Prototipo\RptConVen.rpt");
-                CrystalDecisions.Shared.ParameterField param;
+                //Instancio o FormConsulta
+                FrmConVen x = (FrmConVen)_pdv;
 
-                crstlRprtVwrRel.ReportSource = report;
+                //Instancio o Relatorio
+                RptConVen objRptConVen = new RptConVen();
+
+                //Instancio o Dataset
+                COMERCIALDataSet oDataset = new COMERCIALDataSet();
+
+                Microsoft.Practices.EnterpriseLibrary.Data.Database db = DatabaseFactory.CreateDatabase();
+                //Crio a Conexão
+                SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString);
+
+                //Abro a conexão
+                sqlcon.Open();
+
+                //Recebo a String SQL feita na tela de consulta
+                string StringConnection = x.pesquisar();
+
+                SqlDataAdapter dtAdapter = new SqlDataAdapter(StringConnection, sqlcon);
+
+                //Localiso o datateble criado no dataset
+                dtAdapter.Fill(oDataset, "RelVendedor");
+
+                objRptConVen.SetDataSource(oDataset);
+
+                //atribiu o resultado ao CristalReportView            
+                crstlRprtVwrRel.DisplayGroupTree = false;
+                crstlRprtVwrRel.ReportSource = objRptConVen;
             }
+
+            #endregion
 
             if (_princ == "FrmEmiNF")
             {

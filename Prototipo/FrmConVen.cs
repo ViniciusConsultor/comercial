@@ -20,15 +20,15 @@ namespace Comercial
             InitializeComponent();
             this.MdiParent = parent;
             _princ = parent;
-            
+
         }
 
-        public void pesquisar()
+        public string pesquisar()
         {
-            string sql = "select v.nome, v.cpf ,p.nrpedido, p.dataemissao, "+ 
-                 "( select SUM(i.VALOR) from ITEMPEDIDO i where i.NRPEDIDO = p.NRPEDIDO "+
-                 ") valor_pedido,comissao, (COMISSAO/100 * (select SUM(i.VALOR) from ITEMPEDIDO i "+
-                 "where i.NRPEDIDO = p.NRPEDIDO)) valor_comissao "+
+            string sql = "select v.nome, v.cpf ,p.nrpedido, p.dataemissao dtemissao, " +
+                 "( select isnull(SUM(i.VALOR),0) from ITEMPEDIDO i where i.NRPEDIDO = p.NRPEDIDO " +
+                 ") valorpedido,comissao, (COMISSAO/100 * (select isnull(SUM(i.VALOR),0) from ITEMPEDIDO i " +
+                 "where i.NRPEDIDO = p.NRPEDIDO)) valorcomissao " +
                             "from vendedor as v, pedido as p where p.codvendedor = v.cpf ";
 
             // pesquisa por nome
@@ -75,7 +75,7 @@ namespace Comercial
 
             if (cmBxTipoPed.Text == "N = Normal")
             {
-               
+
                 sql += "and p.tipo = 'N' ";
             }
 
@@ -85,19 +85,19 @@ namespace Comercial
                 sql += "and p.tipo = 'C' ";
             }
 
-             string c = ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString;
+            string c = ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString;
 
-             SqlConnection conn = new SqlConnection(c);
-             conn.Open();
-                SqlCommand cmd = new SqlCommand(sql, conn);
-                SqlDataReader reader = cmd.ExecuteReader();
+            SqlConnection conn = new SqlConnection(c);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            SqlDataReader reader = cmd.ExecuteReader();
 
-                DataTable table = new DataTable();
-                table.Load(reader);
+            DataTable table = new DataTable();
+            table.Load(reader);
+            
+            dtGrdVwConVen.DataSource = table;
 
-
-                dtGrdVwConVen.DataSource = table;
-
+            return sql;         
 
         }
 
@@ -127,7 +127,7 @@ namespace Comercial
         private void FrmConVen_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'cOMERCIALDataSet.VENDEDOR' table. You can move, or remove it, as needed.
-         //   this.vENDEDORTableAdapter.Fill(this.cOMERCIALDataSet.VENDEDOR);
+            //   this.vENDEDORTableAdapter.Fill(this.cOMERCIALDataSet.VENDEDOR);
 
         }
     }

@@ -20,6 +20,12 @@ namespace Comercial
         {
             _dataset = data;
         }
+
+        public COMERCIALDataSet getdataSet()
+        {
+            return _dataset;
+        }
+
         public FrmPrinc()
         {
             InitializeComponent();
@@ -610,26 +616,27 @@ namespace Comercial
             {
                 if (form is frmConCli)
                 {
-                    FrmRelGeral filho = new FrmRelGeral("FrmConCli", null);
+                    FrmRelGeral filho = new FrmRelGeral("FrmConCli", null,this);
                     filho.Show();
                 }
                 if (form is FrmConPDV)
                 {
                     FrmConPDV frmPed = (FrmConPDV)form;
                     
-                    FrmRelGeral filho = new FrmRelGeral("FrmConPDV", ((FrmConPDV)form));
+                    FrmRelGeral filho = new FrmRelGeral("FrmConPDV", form,this);
                     filho.Codped= Convert.ToInt32(frmPed.dtGrdConPDV.CurrentRow.Cells[0].Value);
 
                     filho.Show();
                 }
                 if (form is FrmConProd)
                 {
-                    FrmRelGeral filho = new FrmRelGeral("FrmConProd", null);
+                    FrmRelGeral filho = new FrmRelGeral("FrmConProd", null, this);
                     filho.Show();
                 }
                 if (form is FrmConVen)
                 {
-                    FrmRelGeral filho = new FrmRelGeral("FrmConVen", null);
+                    FrmConVen frmPed = (FrmConVen)form;
+                    FrmRelGeral filho = new FrmRelGeral("FrmConVen", form, this);
                     filho.Show();
                 }
 
@@ -638,7 +645,7 @@ namespace Comercial
 
         private void tlStrpBtnGeraNt_Click(object sender, EventArgs e)
         {
-            FrmRelGeral filho = new FrmRelGeral("FrmEmiNF", null);
+            FrmRelGeral filho = new FrmRelGeral("FrmEmiNF", null,this);
             filho.Show();
         }
 
