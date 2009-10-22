@@ -66,11 +66,12 @@ namespace Comercial
         #region Pesquisar
         public string pesquisar()
         {
-            string sql = "SELECT p.NRPEDIDO ,TIPO,SITUACAO,c.RAZAOSOCIAL, DATAEMISSAO, DATAENTREGA,prd.CODPRODUTO, prd.DESCRICAO, QUANTIDADE, SUM(VALOR) as Valor " +
+
+            string sql = "SELECT p.NRPEDIDO ,TIPO,SITUACAO,c.RAZAOSOCIAL, DATAEMISSAO, DATAENTREGA,prd.CODPRODUTO, prd.DESCRICAO, QUANTIDADE, SUM(VALOR) as Valor, (VALOR * QUANTIDADE) as ValorTotal  " +
                          " FROM PEDIDO p INNER JOIN CLIENTE c ON p.CODCLIENTE = c.CNPJ  " +
                          " INNER JOIN ITEMPEDIDO ip ON p.NRPEDIDO = ip.NRPEDIDO   " +
                          " INNER JOIN PRODUTO prd ON ip.CODPRODUTO = prd.CODPRODUTO ";
-            string groupBy = " GROUP BY p.NRPEDIDO,TIPO,SITUACAO,c.RAZAOSOCIAL, DATAEMISSAO, DATAENTREGA,prd.CODPRODUTO,prd.DESCRICAO, QUANTIDADE ";
+            string groupBy = " GROUP BY p.NRPEDIDO,TIPO,SITUACAO,c.RAZAOSOCIAL, DATAEMISSAO, DATAENTREGA,prd.CODPRODUTO,prd.DESCRICAO, QUANTIDADE, VALOR";
 
             //string sql = "SELECT p.NRPEDIDO ,TIPO,SITUACAO, DATAEMISSAO, DATAENTREGA " +
             // " FROM PEDIDO p INNER JOIN (Select c.CNPJ,c.RAZAOSOCIAL from CLIENTE c) c ON p.CODCLIENTE = c.CNPJ  " +
@@ -133,12 +134,9 @@ namespace Comercial
             DataTable table = new DataTable();
             table.Load(reader);
 
-
             dtGrdConPDV.DataSource = table;
 
-            string sqlconn = sql;
-
-            return sqlconn;
+            return sql;
 
 
         }

@@ -26,6 +26,8 @@ namespace Comercial.Util
                     ((MaskedTextBox)ctrl).Enabled = status;
                 else if (ctrl is DateTimePicker)
                     ((DateTimePicker)ctrl).Enabled = status;
+                else if (ctrl is DataGridView)
+                    ((DataGridView)ctrl).Enabled = status;
                 if (ctrl.HasChildren)
                     ChangeControlStatus(ctrl, status);
 
