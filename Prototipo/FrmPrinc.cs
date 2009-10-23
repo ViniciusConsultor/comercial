@@ -260,13 +260,13 @@ namespace Comercial
             if (frm == null)
                 return;
 
+            Util.Interface.ChangeControlStatus(frm, true);
+
             if (frm is FrmCadProd && edit == false)
             {
                 FrmCadProd frmCadProd = (FrmCadProd)frm;
                 frmCadProd.novo();
             }
-
-            Util.Interface.ChangeControlStatus(frm, true);
 
             btnPesquisar.Enabled = false;
             BtnDeletar.Enabled = false;

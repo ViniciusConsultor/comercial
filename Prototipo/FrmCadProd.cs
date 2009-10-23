@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
+using System.Data.Common;
 using System.Text;
 using System.Windows.Forms;
+using Microsoft.Practices.EnterpriseLibrary.Data;
 
 namespace Comercial
 {
@@ -26,36 +26,12 @@ namespace Comercial
 
             _princ.novo();
         }
-
-        private void mskedTxtBxImpostos_KeyPress(object sender, KeyPressEventArgs e)
-        {
-
-        }
-
+        
         private void mskedTxtBxPrecoUnitario_Leave(object sender, EventArgs e)
         {
 
         }
-
-        private void txtFabricante_ButtonClick(object sender, EventArgs e)
-        {
-            FrmVisGeral x = new FrmVisGeral(this, (Control)sender);
-            x.ShowDialog();
-        }
-
-        private void txtGrupo_ButtonClick(object sender, EventArgs e)
-        {
-            FrmVisGeral x = new FrmVisGeral(this, (Control)sender);
-            x.ShowDialog();
-        }
-
-        private void pRODUTOBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.pRODUTOBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.cOMERCIALDataSet);
-        }
-
+        
         private void FrmCadProd_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'cOMERCIALDataSet.UNIDADEMEDIDA' table. You can move, or remove it, as needed.
@@ -65,7 +41,7 @@ namespace Comercial
 
         private void FrmCadProd_Shown(object sender, EventArgs e)
         {
-            this.pRODUTOTableAdapter.Fill(this.cOMERCIALDataSet.PRODUTO);
+            pRODUTOTableAdapter.Fill(cOMERCIALDataSet.PRODUTO);
         }
 
         public int salvar()
@@ -77,6 +53,37 @@ namespace Comercial
         public void novo()
         {
             dtmPckrCadastro.Value = DateTime.Now;
+            dtmPckrCadastro.Enabled = false;
+        }
+
+        #region ListarProdutoDataGridView Pesquisa
+        public DataTable ListaProduto()
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+
+            DataSet dtsDados = new DataSet();
+
+            StringBuilder sqlcommand = new StringBuilder();
+
+            sqlcommand.Append(" SELECT CODPRODUTO,PRODUTO.DESCRICAO,CODUNIDADEMEDIDA,ESTOQUEATUAL,PRECOVENDA,IPI,GRUPOPRODUTO.DESCONTO");
+            sqlcommand.Append(" FROM PRODUTO INNER JOIN GRUPOPRODUTO ON PRODUTO.CODGRUPOPRODUTO = GRUPOPRODUTO.CODGRUPOPRODUTO");
+
+            DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
+
+            dtsDados = db.ExecuteDataSet(dbComd);
+
+            return dtsDados.Tables[0];
+
+        }
+        #endregion
+
+        private void txtCodProd_ButtonClick(object sender, EventArgs e)
+        {
+            FrmVisGeral x = new FrmVisGeral(this, (Control)sender);
+            x.dtGrdVwVis.DataSource = ListaProduto();
+            x.Text = "Consulta Cadastro de Produto";
+
+            x.ShowDialog();
         }
     }
 }
