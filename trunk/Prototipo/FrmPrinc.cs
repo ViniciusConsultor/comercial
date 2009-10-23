@@ -15,6 +15,7 @@ namespace Comercial
     {
         private COMERCIALDataSet _dataset;
         private bool edit;
+        Validacoes valida = new Validacoes();
 
         public void setdataSet(COMERCIALDataSet data)
         {
@@ -315,8 +316,8 @@ namespace Comercial
             Util.Interface.ChangeControlStatus(frm, true);
 
 
-         
-            
+
+
         }
         #endregion
 
@@ -443,7 +444,7 @@ namespace Comercial
                 tlStrpBtnPesquisar.Visible = false;
                 bindingNavigator1.Visible = false;
 
-               filho.WindowState = FormWindowState.Maximized;
+                filho.WindowState = FormWindowState.Maximized;
             }
         }
 
@@ -468,7 +469,7 @@ namespace Comercial
             if (x == 0 && y == 0)
             {
                 frmSobre filho = new frmSobre(this);
-                filho.Show();                               
+                filho.Show();
                 filho.WindowState = FormWindowState.Normal;
             }
         }
@@ -619,61 +620,61 @@ namespace Comercial
 
         private void tlStrpBtnImprimir_Click(object sender, EventArgs e)
         {
-            Validacoes valida = new Validacoes();
+
 
             try
             {
                 foreach (Form form in this.MdiChildren)
-            {
-                
-
-                if (form is frmConCli)
                 {
-                    FrmRelGeral filho = new FrmRelGeral("FrmConCli", form, this);
-                    filho.Show();
-                }
-                if (form is FrmConPDV)
-                {
-                    FrmConPDV frmPed = (FrmConPDV)form;
 
-                    if (frmPed.dtGrdConPDV.RowCount == 0)
+
+                    if (form is frmConCli)
                     {
-                        throw new Exception("Grid Vazio");
+                        FrmRelGeral filho = new FrmRelGeral("FrmConCli", form, this);
+                        filho.Show();
+                    }
+                    if (form is FrmConPDV)
+                    {
+                        FrmConPDV frmPed = (FrmConPDV)form;
+
+                        if (frmPed.dtGrdConPDV.RowCount == 0)
+                        {
+                            throw new Exception("Grid Vazio");
+                        }
+
+                        FrmRelGeral filho = new FrmRelGeral("FrmConPDV", form, this);
+
+
+                        filho.Show();
                     }
 
-                    FrmRelGeral filho = new FrmRelGeral("FrmConPDV", form, this);
-                   
-
-                    filho.Show();
-                }
-
-                if (form is FrmConEstProd)
-                {
-                    FrmConEstProd frmConEst = (FrmConEstProd)form;
-
-                    if (frmConEst.dtGrdVwConProd.RowCount == 0)
+                    if (form is FrmConEstProd)
                     {
-                        throw new Exception("Grid Vazio");
+                        FrmConEstProd frmConEst = (FrmConEstProd)form;
+
+                        if (frmConEst.dtGrdVwConProd.RowCount == 0)
+                        {
+                            throw new Exception("Grid Vazio");
+                        }
+
+                        FrmRelGeral filho = new FrmRelGeral("FrmConEstProd", form, this);
+
+
+                        filho.Show();
+                    }
+                    if (form is FrmConProd)
+                    {
+                        FrmRelGeral filho = new FrmRelGeral("FrmConProd", form, this);
+                        filho.Show();
+                    }
+                    if (form is FrmConVen)
+                    {
+                        FrmConVen frmPed = (FrmConVen)form;
+                        FrmRelGeral filho = new FrmRelGeral("FrmConVen", form, this);
+                        filho.Show();
                     }
 
-                    FrmRelGeral filho = new FrmRelGeral("FrmConEstProd", form, this);
-
-
-                    filho.Show();
                 }
-                if (form is FrmConProd)
-                {
-                    FrmRelGeral filho = new FrmRelGeral("FrmConProd", form, this);
-                    filho.Show();
-                }
-                if (form is FrmConVen)
-                {
-                    FrmConVen frmPed = (FrmConVen)form;
-                    FrmRelGeral filho = new FrmRelGeral("FrmConVen", form, this);
-                    filho.Show();
-                }
-
-            }
             }
             catch (Exception ex)
             {
@@ -768,8 +769,8 @@ namespace Comercial
 
                 frm.Show();
 
-               // Interface.ResetControls(frm);
-               Util.Interface.ChangeControlStatus(frm, false);
+                // Interface.ResetControls(frm);
+                Util.Interface.ChangeControlStatus(frm, false);
 
                 frm.WindowState = FormWindowState.Maximized;
             }
@@ -906,12 +907,12 @@ namespace Comercial
 
         private void produtosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CreateForm(this, typeof(FrmCadProd));           
+            CreateForm(this, typeof(FrmCadProd));
         }
 
         private void pedidosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CreateForm(this, typeof(FrmCadPed));                
+            CreateForm(this, typeof(FrmCadPed));
         }
 
         private void produtoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1267,52 +1268,69 @@ namespace Comercial
 
         private void toolStripButton5_Click(object sender, EventArgs e)
         {
-            Form frm = this.ActiveMdiChild;
-            if (frm == null)
-                return;
-
-            edit = true;
-            Util.Interface.ChangeControlStatus(frm, true);
-
-
-            if (frm is FrmCadVen)
+            try
             {
-                FrmCadVen ven = (FrmCadVen)frm;
 
-                ven.txtUsu.Enabled = false;
-                ven.txtSenha.Enabled = false;
-                ven.txtCPF.Enabled = false;
+                Form frm = this.ActiveMdiChild;
+                if (frm == null)
+                    return;
+
+                edit = true;
+                Util.Interface.ChangeControlStatus(frm, true);
+
+
+                if (frm is FrmCadVen)
+                {
+                    FrmCadVen ven = (FrmCadVen)frm;
+
+                    ven.txtUsu.Enabled = false;
+                    ven.txtSenha.Enabled = false;
+                    ven.txtCPF.Enabled = false;
+                }
+                #region Form's Claudio
+                if (frm is FrmCadCli)
+                {
+                    FrmCadCli cli = (FrmCadCli)frm;
+
+                    cli.txtUsuarioCli.Enabled = false;
+                    cli.txtSenhaCli.Enabled = false;
+                    cli.txtCnpjCli.Enabled = false;
+                }
+
+                btnPesquisar.Enabled = false;
+                BtnDeletar.Enabled = false;
+                btnNovo.Enabled = false;
+                BtnPrincipal.Enabled = false;
+                btnEditar.Enabled = false;
+                btnSalvar.Enabled = true;
+                btnCancelEdicao.Enabled = true;
+
+
+                #endregion
+
+
+                if (frm is FrmCadPed)
+                {
+                    FrmCadPed frmPed = (FrmCadPed)frm;
+                    
+
+                    if (frmPed.chkEfetivado.Checked == true)
+                    {
+                        throw new Exception("Efetivado");
+                      
+                    }
+
+
+                    //                    frmPed.ValidaControles();
+
+                }
+
             }
-            #region Form's Claudio
-            if (frm is FrmCadCli)
+            catch (Exception ex)
             {
-                FrmCadCli cli = (FrmCadCli)frm;
 
-                cli.txtUsuarioCli.Enabled = false;
-                cli.txtSenhaCli.Enabled = false;
-                cli.txtCnpjCli.Enabled = false;
+                valida.tratarSystemExceções(ex);
             }
-
-            btnPesquisar.Enabled = false;
-            BtnDeletar.Enabled = false;
-            btnNovo.Enabled = false;
-            BtnPrincipal.Enabled = false;
-            btnEditar.Enabled = false;
-            btnSalvar.Enabled = true;
-            btnCancelEdicao.Enabled = true;
-
-            
-            #endregion
-
-
-            if (frm is FrmCadPed)
-            {
-                FrmCadPed Ped = (FrmCadPed)frm;
-                Ped.validaSituacao();
-                Ped.ValidaControles();
-              
-            }
-
 
         }
 
@@ -1372,7 +1390,7 @@ namespace Comercial
 
             #endregion
 
-           
+
         }
 
         private void FrmPrinc_Load(object sender, EventArgs e)
