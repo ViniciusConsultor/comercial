@@ -483,6 +483,12 @@ namespace Comercial
                 FrmConVen ven = (FrmConVen)frm;
                 ven.pesquisar();
             }
+
+            if (frm is FrmConEstProd)
+            {
+                FrmConEstProd est = (FrmConEstProd)frm;
+                est.pesquisar();
+            }
             #region Form's Claudio
             if (frm is frmConCli)
             {
@@ -1418,6 +1424,39 @@ namespace Comercial
                 Ped.txtNomeCliente.Text = Ped.ListarNomeCliente(Ped.txtcodCli.getText);
                 Ped.txtNomeTransportadora.Text = Ped.ListarNomeTransportadora(Ped.txtCodTransportadora.getText);
                 Ped.txtNomeVendedor.Text = Ped.ListarNomeVendedor(Ped.txtCodVendedor.getText);
+            }
+        }
+
+        private void estoqueToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int x = 0, y = 0;
+
+            // Localiza o formulario
+            foreach (Form form in this.MdiChildren)
+            {
+                if (form is FrmConEstProd)
+                {
+                    form.WindowState = FormWindowState.Maximized;
+                    form.Activate();
+                    x++;
+                }
+                y++;
+
+            }
+
+            // Para criar o formulario 
+            if (x == 0 && y == 0)
+            {
+                FrmConEstProd filho = new FrmConEstProd(this);
+                filho.Show();
+
+                tlStrpConsulta.Visible = true;
+                bindingNavigator1.Visible = false;
+
+                // Util.Interface.ResetControls(filho);
+                //Util.Interface.ChangeControlStatus(filho, false);
+
+                filho.WindowState = FormWindowState.Maximized;
             }
         }
 
