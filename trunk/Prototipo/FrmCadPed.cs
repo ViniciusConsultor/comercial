@@ -277,10 +277,28 @@ namespace Comercial
                     throw new Exception("Quantidade");
                 }
 
+                if (Convert.ToInt32(txtQtdItem.Text) < 0)
+                {
+                    throw new Exception("QuantidadeNegativa");
+                }
                 String valortotal = (String)txtValorTotal.Text.Replace(".", ",");
+                
                 if (Convert.ToDouble(valortotal) == 0)
                 {
+                    throw new Exception("valortotal");
+                }
+                if (Convert.ToDouble(valortotal) < 0)
+                {
+                    throw new Exception("valortotalnegativo");
+                }
+                if (Convert.ToDouble(txtPrcUnit.Text) == 0)
+                {
                     throw new Exception("PrecoUnitario");
+                }
+
+                if (Convert.ToDouble(txtPrcUnit.Text) < 0)
+                {
+                    throw new Exception("PrecoUnitarioNegativo");
                 }
 
                 int quantidade = Convert.ToInt32(txtQtdItem.Text);
@@ -677,6 +695,25 @@ namespace Comercial
         }
         #endregion
 
+        #region Listar Excluiritem
+        public void Excluiritem(int CodPed , int Item)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+
+            StringBuilder sqlcommand = new StringBuilder();
+
+            sqlcommand.Append("DELETE FROM ITEMPEDIDO WHERE NRPEDIDO =  @NRPEDIDO AND ITEM = @ITEM ");
+
+            DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
+
+            db.AddInParameter(dbComd, "@NRPEDIDO", DbType.Int32, CodPed);
+            db.AddInParameter(dbComd, "@ITEM", DbType.String, Item);
+
+           db.ExecuteScalar(dbComd);
+
+         }
+        #endregion
+
         #region Listar Nome Vendedor
         public string ListarNomeVendedor(string CodVendedor)
         {
@@ -787,12 +824,16 @@ namespace Comercial
 
                     if (e.ColumnIndex == 0)
                     {
+                        
+
                         if (dttRetorno.Rows.Count != 0)
                         {
+                            MessageBox.Show("Deseja Excluir o Item?", "Erro", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
                             dttRetorno.Rows.RemoveAt(e.RowIndex);
                         }
                         else
                         {
+                            MessageBox.Show("Deseja Excluir o Item?", "Erro", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
 
                             //COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter();
                             //table.Delete(Convert.ToInt32(txtPedido.Text),
@@ -803,7 +844,9 @@ namespace Comercial
                             //    Convert.ToDouble(dtgrdvItenspven.Rows[e.RowIndex].Cells[6].Value),
                             //    Convert.ToInt32(dtgrdvItenspven.Rows[e.RowIndex].Cells[1].Value));
 
-                            //this.populargrid();
+                            Excluiritem(Convert.ToInt32(txtPedido.Text), Convert.ToInt32(dtgrdvItenspven.Rows[e.RowIndex].Cells[1].Value));
+
+                            this.populargrid();
                         }
 
                     }
@@ -825,7 +868,7 @@ namespace Comercial
             {
 
                 grpBxItPedVen.Enabled = false;
-
+                SalvarPedidoDeta();
 
                 return 0;
             }
