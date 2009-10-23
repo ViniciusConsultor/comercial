@@ -37,7 +37,7 @@ namespace Comercial
             #endregion
 
             #region Colunas GridViewGeral Produto
-            if (_parent is FrmConEstProd)
+            if ((_parent is FrmConEstProd) || (_parent is FrmConProd && _controle.Name == "txtBtnCodProd"))
             {
                 rdBtnCod.Visible = true;
                 rdBtnCod.Text = "Código";
@@ -51,6 +51,25 @@ namespace Comercial
 
                 col2.HeaderText = "Descrição";
                 col2.DataPropertyName = "DESCRICAO";
+                dtGrdVwVis.Columns[1].Visible = true;
+            }
+            #endregion
+
+            #region Colunas GridViewGeral GrupoProduto
+            if ((_parent is FrmConProd && _controle.Name == "txtBtnCodGrp") || (_parent is FrmCadProd && _controle.Name == "txtBtnCodGrp"))
+            {
+                rdBtnCod.Visible = true;
+                rdBtnCod.Text = "Código";
+                rdBtnCod.Checked = true;
+                rdBtnNome.Text = "Descrição";
+                rdBtnNome.Checked = true;
+
+                col1.HeaderText = "Código";
+                col1.DataPropertyName = "codgrupoproduto";
+                dtGrdVwVis.Columns[1].Visible = true;
+
+                col2.HeaderText = "Descrição";
+                col2.DataPropertyName = "descricao";
                 dtGrdVwVis.Columns[1].Visible = true;
             }
             #endregion
@@ -202,8 +221,6 @@ namespace Comercial
                 rdBtnNome.Text = "N. Fant.";
                 rdBtnCod.Checked = true;
 
-
-
                 col1.HeaderText = "CNPJ";
                 col1.DataPropertyName = "CNPJ";
                 dtGrdVwVis.Columns[1].Visible = true;
@@ -290,7 +307,7 @@ namespace Comercial
             #endregion
 
             #region FormPesquisa Zabotto
-            if ((_parent is FrmCadPed) || (_parent is FrmConPDV) || (_parent is FrmConEstProd))
+            if ((_parent is FrmCadPed) || (_parent is FrmConPDV) || (_parent is FrmConEstProd) || (_parent is FrmConProd) || (_parent is FrmCadProd))
             {
 
                 #region Pedido Pesquisa Cliente
@@ -507,6 +524,49 @@ namespace Comercial
                 }
                 #endregion
 
+                #region Pedido Pesquisa Grupo Produto
+
+                if ((_controle.Name == "txtBtnCodGrp"))
+                {
+                    if (rdBtnCod.Checked)
+                    {
+                        string c = ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString;
+
+                        SqlConnection conn = new SqlConnection(c);
+                        conn.Open();
+
+                        SqlCommand cmd = new SqlCommand("select codgrupoproduto, descricao from grupoproduto where codgrupoproduto like @codgrupoproduto ", conn);
+
+                        cmd.Parameters.Add(new SqlParameter("@codgrupoproduto", txtPesquisar.Text + "%"));
+
+                        SqlDataReader reader = cmd.ExecuteReader();
+                        DataTable table = new DataTable();
+                        table.Load(reader);
+
+                        dtGrdVwVis.DataSource = table;
+                    }
+
+                    if (rdBtnNome.Checked)
+                    {
+                        string c = ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString;
+
+                        SqlConnection conn = new SqlConnection(c);
+                        conn.Open();
+
+                        SqlCommand cmd = new SqlCommand("select codgrupoproduto, descricao from grupoproduto where DESCRICAO like @DESCRICAO ", conn);
+                        
+                        cmd.Parameters.Add(new SqlParameter("@DESCRICAO", txtPesquisar.Text + "%"));
+
+                        SqlDataReader reader = cmd.ExecuteReader();
+                        DataTable table = new DataTable();
+                        table.Load(reader);
+
+                        dtGrdVwVis.DataSource = table;
+                    }
+
+                }
+                #endregion
+
             }
             #endregion
 
@@ -702,10 +762,23 @@ namespace Comercial
             #region Double Click Consulta Produto
 
             #region Produto
-            if ((_parent is FrmConPDV) || (_parent is FrmConEstProd))
+            if ((_parent is FrmConPDV) || (_parent is FrmConEstProd) || (_parent is FrmConProd))
             {
-                
+                if (_controle.Name == "txtBtnCodGrp")
+                {
+                    FrmConProd conprod = (FrmConProd)_parent;
 
+                    // vamos obter as células selecionadas no DataGridView
+                    DataGridViewSelectedCellCollection selecionadas = dtGrdVwVis.SelectedCells;
+                    DataGridViewCell celula = selecionadas[0];
+                    
+                    conprod.txtBtnCodGrp.getText = celula.Value.ToString();
+                    conprod.txtGrupo.Text = selecionadas[1].Value.ToString();
+                    
+                    this.Close();
+                    this.Dispose();
+                }
+                
                 #region Double Click Consulta Produto
                 if (_controle.Name == "txtCodProd")
                 {
@@ -715,35 +788,49 @@ namespace Comercial
                     DataGridViewSelectedCellCollection selecionadas = dtGrdVwVis.SelectedCells;
 
                     DataGridViewCell celula = selecionadas[0];
-                    int linha = celula.RowIndex;
-                    int coluna = celula.ColumnIndex;
-
-
+                    
                     ConPed.txtCodProd.getText = celula.Value.ToString();
-
-
+                    
                     this.Close();
                     this.Dispose();
                 }
 
                 if (_controle.Name == "txtBtnCodProd")
                 {
-                    FrmConEstProd EstProd = (FrmConEstProd)_parent;
-                    
+                    FrmConEstProd EstProd = null;
+                    FrmConProd prod = null;
+                    if (_parent.GetType() == typeof(FrmConProd))
+                    {
+                        prod = (FrmConProd)_parent;
+                        DataGridViewSelectedCellCollection selecionadas = dtGrdVwVis.SelectedCells;
+
+                        DataGridViewCell celula = selecionadas[0];
+
+                        prod.txtBtnCodProd.getText = celula.Value.ToString();
+                        prod.txtProdDesc.Text = selecionadas[1].Value.ToString();
+                    }
+
+                    else
+                    {
+                        EstProd = (FrmConEstProd)_parent;
+                        DataGridViewSelectedCellCollection selecionadas = dtGrdVwVis.SelectedCells;
+
+                        DataGridViewCell celula = selecionadas[0];
+
+                        EstProd.txtBtnCodProd.getText = celula.Value.ToString();
+                    }
+
+
                     // vamos obter as células selecionadas no DataGridView
-                    DataGridViewSelectedCellCollection selecionadas = dtGrdVwVis.SelectedCells;
 
-                    DataGridViewCell celula = selecionadas[0];
-                    int linha = celula.RowIndex;
-                    int coluna = celula.ColumnIndex;
-
-
-                    EstProd.txtBtnCodProd.getText = celula.Value.ToString();
 
 
                     this.Close();
                     this.Dispose();
                 }
+
+
+
                 #endregion
 
             #endregion
