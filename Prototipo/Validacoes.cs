@@ -14,8 +14,8 @@ namespace Comercial
     class Validacoes
     {
         #region Validação de CPF
-        
-        
+
+
         public int ValidaCPF(string cpf)
         {
             int soma = 0;
@@ -55,12 +55,13 @@ namespace Comercial
             else resultado = 1;
 
             return resultado;
+
         }
-#endregion
+        #endregion
 
         #region Validação de CNPJ
-        
-        
+
+
         public int ValidaCNPJ(string cnpj)
         {
             int result;
@@ -71,18 +72,18 @@ namespace Comercial
             {
                 switch (i)
                 {
-                    case 0: soma += Convert.ToInt32(Convert.ToString(cnpj[i])) * 5;break;
-                    case 1: soma += Convert.ToInt32(Convert.ToString(cnpj[i])) * 4;break;
-                    case 2: soma += Convert.ToInt32(Convert.ToString(cnpj[i])) * 3;break;
-                    case 3: soma += Convert.ToInt32(Convert.ToString(cnpj[i])) * 2;break;
-                    case 4: soma += Convert.ToInt32(Convert.ToString(cnpj[i])) * 9;break;
-                    case 5: soma += Convert.ToInt32(Convert.ToString(cnpj[i])) * 8;break;
-                    case 6: soma += Convert.ToInt32(Convert.ToString(cnpj[i])) * 7;break;
-                    case 7: soma += Convert.ToInt32(Convert.ToString(cnpj[i])) * 6;break;
-                    case 8: soma += Convert.ToInt32(Convert.ToString(cnpj[i])) * 5;break;
-                    case 9: soma += Convert.ToInt32(Convert.ToString(cnpj[i])) * 4;break;
-                    case 10: soma += Convert.ToInt32(Convert.ToString(cnpj[i])) * 3;break;
-                    case 11: soma += Convert.ToInt32(Convert.ToString(cnpj[i])) * 2;break;
+                    case 0: soma += Convert.ToInt32(Convert.ToString(cnpj[i])) * 5; break;
+                    case 1: soma += Convert.ToInt32(Convert.ToString(cnpj[i])) * 4; break;
+                    case 2: soma += Convert.ToInt32(Convert.ToString(cnpj[i])) * 3; break;
+                    case 3: soma += Convert.ToInt32(Convert.ToString(cnpj[i])) * 2; break;
+                    case 4: soma += Convert.ToInt32(Convert.ToString(cnpj[i])) * 9; break;
+                    case 5: soma += Convert.ToInt32(Convert.ToString(cnpj[i])) * 8; break;
+                    case 6: soma += Convert.ToInt32(Convert.ToString(cnpj[i])) * 7; break;
+                    case 7: soma += Convert.ToInt32(Convert.ToString(cnpj[i])) * 6; break;
+                    case 8: soma += Convert.ToInt32(Convert.ToString(cnpj[i])) * 5; break;
+                    case 9: soma += Convert.ToInt32(Convert.ToString(cnpj[i])) * 4; break;
+                    case 10: soma += Convert.ToInt32(Convert.ToString(cnpj[i])) * 3; break;
+                    case 11: soma += Convert.ToInt32(Convert.ToString(cnpj[i])) * 2; break;
                 }
             }
             int resto = (soma % 11);
@@ -94,13 +95,13 @@ namespace Comercial
                 resto = 11 - resto;
                 d1 = resto;
             }
-            
+
             soma = 0;
             for (int i = 0; i < cnpj.Length - 2; i++)
             {
                 switch (i)
                 {
-                    case 0: soma += Convert.ToInt32(Convert.ToString(cnpj[i])) * 6;break;
+                    case 0: soma += Convert.ToInt32(Convert.ToString(cnpj[i])) * 6; break;
                     case 1: soma += Convert.ToInt32(Convert.ToString(cnpj[i])) * 5; break;
                     case 2: soma += Convert.ToInt32(Convert.ToString(cnpj[i])) * 4; break;
                     case 3: soma += Convert.ToInt32(Convert.ToString(cnpj[i])) * 3; break;
@@ -127,8 +128,8 @@ namespace Comercial
             if (d1 == Convert.ToInt32(Convert.ToString(cnpj[12])) && d2 == Convert.ToInt32(Convert.ToString(cnpj[13])))
                 result = 0;
             else result = 1;
-            
-            return result;    
+
+            return result;
 
         }
         #endregion
@@ -162,10 +163,10 @@ namespace Comercial
                 MessageBox.Show("Registro já cadastrado (Violação de chave primária)", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else if (ex.GetType().FullName == "System.Data.NoNullAllowedException" || ex.GetType().FullName == "System.InvalidOperationException" || ex.Message == "campo vazio")
                 MessageBox.Show("Campo(s) Obrigatório(s) não preenchido(s).", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            else if (ex.Message== "Grid Vazio")
+            else if (ex.Message == "Grid Vazio")
                 MessageBox.Show("Não há dados para gerar o relatório", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                else MessageBox.Show("Erro desconhecido.\nContate o administrador do sistema", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);  
+            else MessageBox.Show("Erro desconhecido.\nContate o administrador do sistema", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
         #endregion
 
@@ -232,4 +233,3 @@ namespace Comercial
 }
 
 
- 
