@@ -216,7 +216,7 @@
             // txtLimCredCli
             // 
             this.txtLimCredCli.BeepOnError = true;
-            this.txtLimCredCli.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cLIENTEBindingSource, "LIMITECRED", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C2"));
+            this.txtLimCredCli.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cLIENTEBindingSource, "LIMITECRED", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, null, "C2"));
             this.txtLimCredCli.Enabled = false;
             this.txtLimCredCli.InsertKeyMode = System.Windows.Forms.InsertKeyMode.Insert;
             this.txtLimCredCli.Location = new System.Drawing.Point(125, 352);
@@ -738,7 +738,7 @@
             // 
             this.cnpjCliToolStripLabel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.cnpjCliToolStripLabel.Name = "cnpjCliToolStripLabel";
-            this.cnpjCliToolStripLabel.Size = new System.Drawing.Size(39, 22);
+            this.cnpjCliToolStripLabel.Size = new System.Drawing.Size(40, 22);
             this.cnpjCliToolStripLabel.Text = "CNPJ:";
             // 
             // cnpjToolStripTextBox
@@ -749,7 +749,7 @@
             // nomeFantasiaCliToolStripLabel
             // 
             this.nomeFantasiaCliToolStripLabel.Name = "nomeFantasiaCliToolStripLabel";
-            this.nomeFantasiaCliToolStripLabel.Size = new System.Drawing.Size(83, 22);
+            this.nomeFantasiaCliToolStripLabel.Size = new System.Drawing.Size(78, 22);
             this.nomeFantasiaCliToolStripLabel.Text = "Nome Fantasia";
             // 
             // nomeFantasiaToolStripTextBox
