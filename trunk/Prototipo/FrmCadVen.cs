@@ -39,22 +39,35 @@ namespace Comercial
             string c = ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString;
 
             Validacoes valida = new Validacoes();
-            int cpf = valida.ValidaCPF(txtCPF.Text);
 
-            bool email = valida.ValidaEmail(txtEmail.Text);
-
-            if (cpf == 1)
+            if (!string.IsNullOrEmpty(txtCPF.Text))
             {
-                MessageBox.Show("CPF Inválido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return 1;
-            }
+                int cpf = valida.ValidaCPF(txtCPF.Text);
 
-            if (email == false)
+                bool email = true;
+                if (!string.IsNullOrEmpty(txtEmail.Text))
+                {
+                    email = valida.ValidaEmail(txtEmail.Text);
+                }
+                
+
+                if (cpf == 1)
+                {
+                    MessageBox.Show("CPF Inválido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return 1;
+                }
+
+
+                if (email == false)
+                {
+                    MessageBox.Show("E-mail Inválido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return 1;
+                }
+            }
+            else
             {
-                MessageBox.Show("E-mail Inválido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return 1;
+                throw new Exception("campo vazio");
             }
-
             #endregion
 
             DataRowView x;
