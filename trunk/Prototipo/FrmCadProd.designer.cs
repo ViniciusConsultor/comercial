@@ -29,28 +29,29 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCadProd));
             this.tbCntrlCadProd = new System.Windows.Forms.TabControl();
             this.tbPgCadProd = new System.Windows.Forms.TabPage();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.lblPrecoCusto = new System.Windows.Forms.Label();
-            this.lblPrecoVenda = new System.Windows.Forms.Label();
-            this.mskedTxtBxPrecoCusto = new System.Windows.Forms.MaskedTextBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.pRODUTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
-            this.mskedTxtBxPrecoUnitario = new System.Windows.Forms.MaskedTextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.uNIDADEMEDIDABindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.textBox10 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label26 = new System.Windows.Forms.Label();
             this.maskedTextBox8 = new System.Windows.Forms.MaskedTextBox();
             this.maskedTextBox9 = new System.Windows.Forms.MaskedTextBox();
             this.label27 = new System.Windows.Forms.Label();
-            this.lblPesoLiquido = new System.Windows.Forms.Label();
-            this.lblUnidMedida = new System.Windows.Forms.Label();
-            this.cmbBxUnidMedida = new System.Windows.Forms.ComboBox();
-            this.uNIDADEMEDIDABindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.txtPesoLiquido = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lblPrecoCusto = new System.Windows.Forms.Label();
+            this.lblPrecoVenda = new System.Windows.Forms.Label();
+            this.mskedTxtBxPrecoCusto = new System.Windows.Forms.MaskedTextBox();
+            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.mskedTxtBxPrecoUnitario = new System.Windows.Forms.MaskedTextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.dtmPckrCadastro = new System.Windows.Forms.DateTimePicker();
             this.lblGrupo = new System.Windows.Forms.Label();
             this.lblDtCadastro = new System.Windows.Forms.Label();
@@ -107,13 +108,15 @@
             this.textButton2 = new Comercial.TextButton();
             this.textButton3 = new Comercial.TextButton();
             this.textButton4 = new Comercial.TextButton();
+            this.txtCodProd = new Comercial.TextButton();
             this.tbCntrlCadProd.SuspendLayout();
             this.tbPgCadProd.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pRODUTOBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).BeginInit();
-            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uNIDADEMEDIDABindingSource)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbCntrlCadProd
@@ -128,9 +131,10 @@
             // 
             // tbPgCadProd
             // 
-            this.tbPgCadProd.Controls.Add(this.groupBox2);
+            this.tbPgCadProd.Controls.Add(this.txtCodProd);
+            this.tbPgCadProd.Controls.Add(this.groupBox3);
             this.tbPgCadProd.Controls.Add(this.groupBox1);
-            this.tbPgCadProd.Controls.Add(this.textBox9);
+            this.tbPgCadProd.Controls.Add(this.groupBox2);
             this.tbPgCadProd.Controls.Add(this.dtmPckrCadastro);
             this.tbPgCadProd.Controls.Add(this.lblGrupo);
             this.tbPgCadProd.Controls.Add(this.lblDtCadastro);
@@ -143,6 +147,133 @@
             this.tbPgCadProd.TabIndex = 0;
             this.tbPgCadProd.Text = "Cadastro de Produtos";
             this.tbPgCadProd.UseVisualStyleBackColor = true;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.label30);
+            this.groupBox3.Controls.Add(this.label31);
+            this.groupBox3.Controls.Add(this.comboBox3);
+            this.groupBox3.Controls.Add(this.textBox10);
+            this.groupBox3.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.groupBox3.Location = new System.Drawing.Point(339, 165);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(286, 69);
+            this.groupBox3.TabIndex = 44;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Medidas";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.ForeColor = System.Drawing.Color.CadetBlue;
+            this.label30.Location = new System.Drawing.Point(158, 22);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(73, 13);
+            this.label30.TabIndex = 17;
+            this.label30.Text = "Peso Líquido:";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.ForeColor = System.Drawing.Color.CadetBlue;
+            this.label31.Location = new System.Drawing.Point(19, 22);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(103, 13);
+            this.label31.TabIndex = 11;
+            this.label31.Text = "Unidade Medida:";
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.pRODUTOBindingSource, "CODUNIDADEMEDIDA", true));
+            this.comboBox3.DataSource = this.uNIDADEMEDIDABindingSource;
+            this.comboBox3.DisplayMember = "DESCRICAO";
+            this.comboBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Location = new System.Drawing.Point(22, 38);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(100, 21);
+            this.comboBox3.TabIndex = 4;
+            this.comboBox3.ValueMember = "CODUNIDADEMEDIDA";
+            // 
+            // pRODUTOBindingSource
+            // 
+            this.pRODUTOBindingSource.DataMember = "PRODUTO";
+            this.pRODUTOBindingSource.DataSource = this.cOMERCIALDataSet;
+            // 
+            // cOMERCIALDataSet
+            // 
+            this.cOMERCIALDataSet.DataSetName = "COMERCIALDataSet";
+            this.cOMERCIALDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // uNIDADEMEDIDABindingSource
+            // 
+            this.uNIDADEMEDIDABindingSource.DataMember = "UNIDADEMEDIDA";
+            this.uNIDADEMEDIDABindingSource.DataSource = this.cOMERCIALDataSet;
+            // 
+            // textBox10
+            // 
+            this.textBox10.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pRODUTOBindingSource, "PESOLIQUIDO", true));
+            this.textBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox10.Location = new System.Drawing.Point(161, 39);
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(70, 20);
+            this.textBox10.TabIndex = 5;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.label26);
+            this.groupBox1.Controls.Add(this.maskedTextBox8);
+            this.groupBox1.Controls.Add(this.maskedTextBox9);
+            this.groupBox1.Controls.Add(this.label27);
+            this.groupBox1.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.groupBox1.Location = new System.Drawing.Point(9, 165);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(287, 69);
+            this.groupBox1.TabIndex = 43;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Estoque";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.ForeColor = System.Drawing.Color.CadetBlue;
+            this.label26.Location = new System.Drawing.Point(150, 22);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(97, 13);
+            this.label26.TabIndex = 40;
+            this.label26.Text = "Estoque mínimo";
+            // 
+            // maskedTextBox8
+            // 
+            this.maskedTextBox8.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pRODUTOBindingSource, "ESTOQUEMIN", true));
+            this.maskedTextBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.maskedTextBox8.Location = new System.Drawing.Point(153, 38);
+            this.maskedTextBox8.Name = "maskedTextBox8";
+            this.maskedTextBox8.Size = new System.Drawing.Size(99, 20);
+            this.maskedTextBox8.TabIndex = 7;
+            // 
+            // maskedTextBox9
+            // 
+            this.maskedTextBox9.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pRODUTOBindingSource, "ESTOQUEATUAL", true));
+            this.maskedTextBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.maskedTextBox9.Location = new System.Drawing.Point(14, 38);
+            this.maskedTextBox9.Name = "maskedTextBox9";
+            this.maskedTextBox9.Size = new System.Drawing.Size(96, 20);
+            this.maskedTextBox9.TabIndex = 6;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.ForeColor = System.Drawing.Color.CadetBlue;
+            this.label27.Location = new System.Drawing.Point(9, 22);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(86, 13);
+            this.label27.TabIndex = 42;
+            this.label27.Text = "Estoque Atual";
             // 
             // groupBox2
             // 
@@ -191,16 +322,6 @@
             this.mskedTxtBxPrecoCusto.Size = new System.Drawing.Size(100, 20);
             this.mskedTxtBxPrecoCusto.TabIndex = 9;
             // 
-            // pRODUTOBindingSource
-            // 
-            this.pRODUTOBindingSource.DataMember = "PRODUTO";
-            this.pRODUTOBindingSource.DataSource = this.cOMERCIALDataSet;
-            // 
-            // cOMERCIALDataSet
-            // 
-            this.cOMERCIALDataSet.DataSetName = "COMERCIALDataSet";
-            this.cOMERCIALDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // maskedTextBox1
             // 
             this.maskedTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pRODUTOBindingSource, "IPI", true));
@@ -231,125 +352,10 @@
             this.label1.TabIndex = 38;
             this.label1.Text = "% IPI:";
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.label26);
-            this.groupBox1.Controls.Add(this.maskedTextBox8);
-            this.groupBox1.Controls.Add(this.maskedTextBox9);
-            this.groupBox1.Controls.Add(this.label27);
-            this.groupBox1.Controls.Add(this.lblPesoLiquido);
-            this.groupBox1.Controls.Add(this.lblUnidMedida);
-            this.groupBox1.Controls.Add(this.cmbBxUnidMedida);
-            this.groupBox1.Controls.Add(this.txtPesoLiquido);
-            this.groupBox1.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.groupBox1.Location = new System.Drawing.Point(7, 163);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(618, 69);
-            this.groupBox1.TabIndex = 43;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Estoque";
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.ForeColor = System.Drawing.Color.CadetBlue;
-            this.label26.Location = new System.Drawing.Point(126, 22);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(97, 13);
-            this.label26.TabIndex = 40;
-            this.label26.Text = "Estoque mínimo";
-            // 
-            // maskedTextBox8
-            // 
-            this.maskedTextBox8.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pRODUTOBindingSource, "ESTOQUEMIN", true));
-            this.maskedTextBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.maskedTextBox8.Location = new System.Drawing.Point(129, 38);
-            this.maskedTextBox8.Name = "maskedTextBox8";
-            this.maskedTextBox8.Size = new System.Drawing.Size(99, 20);
-            this.maskedTextBox8.TabIndex = 7;
-            // 
-            // maskedTextBox9
-            // 
-            this.maskedTextBox9.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pRODUTOBindingSource, "ESTOQUEATUAL", true));
-            this.maskedTextBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.maskedTextBox9.Location = new System.Drawing.Point(14, 38);
-            this.maskedTextBox9.Name = "maskedTextBox9";
-            this.maskedTextBox9.Size = new System.Drawing.Size(96, 20);
-            this.maskedTextBox9.TabIndex = 6;
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.ForeColor = System.Drawing.Color.CadetBlue;
-            this.label27.Location = new System.Drawing.Point(9, 22);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(86, 13);
-            this.label27.TabIndex = 42;
-            this.label27.Text = "Estoque Atual";
-            // 
-            // lblPesoLiquido
-            // 
-            this.lblPesoLiquido.AutoSize = true;
-            this.lblPesoLiquido.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPesoLiquido.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblPesoLiquido.Location = new System.Drawing.Point(370, 22);
-            this.lblPesoLiquido.Name = "lblPesoLiquido";
-            this.lblPesoLiquido.Size = new System.Drawing.Size(73, 13);
-            this.lblPesoLiquido.TabIndex = 17;
-            this.lblPesoLiquido.Text = "Peso Líquido:";
-            // 
-            // lblUnidMedida
-            // 
-            this.lblUnidMedida.AutoSize = true;
-            this.lblUnidMedida.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUnidMedida.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblUnidMedida.Location = new System.Drawing.Point(247, 22);
-            this.lblUnidMedida.Name = "lblUnidMedida";
-            this.lblUnidMedida.Size = new System.Drawing.Size(103, 13);
-            this.lblUnidMedida.TabIndex = 11;
-            this.lblUnidMedida.Text = "Unidade Medida:";
-            // 
-            // cmbBxUnidMedida
-            // 
-            this.cmbBxUnidMedida.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.pRODUTOBindingSource, "CODUNIDADEMEDIDA", true));
-            this.cmbBxUnidMedida.DataSource = this.uNIDADEMEDIDABindingSource;
-            this.cmbBxUnidMedida.DisplayMember = "DESCRICAO";
-            this.cmbBxUnidMedida.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbBxUnidMedida.FormattingEnabled = true;
-            this.cmbBxUnidMedida.Location = new System.Drawing.Point(250, 38);
-            this.cmbBxUnidMedida.Name = "cmbBxUnidMedida";
-            this.cmbBxUnidMedida.Size = new System.Drawing.Size(100, 21);
-            this.cmbBxUnidMedida.TabIndex = 4;
-            this.cmbBxUnidMedida.ValueMember = "CODUNIDADEMEDIDA";
-            // 
-            // uNIDADEMEDIDABindingSource
-            // 
-            this.uNIDADEMEDIDABindingSource.DataMember = "UNIDADEMEDIDA";
-            this.uNIDADEMEDIDABindingSource.DataSource = this.cOMERCIALDataSet;
-            // 
-            // txtPesoLiquido
-            // 
-            this.txtPesoLiquido.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pRODUTOBindingSource, "PESOLIQUIDO", true));
-            this.txtPesoLiquido.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPesoLiquido.Location = new System.Drawing.Point(373, 39);
-            this.txtPesoLiquido.Name = "txtPesoLiquido";
-            this.txtPesoLiquido.Size = new System.Drawing.Size(70, 20);
-            this.txtPesoLiquido.TabIndex = 5;
-            // 
-            // textBox9
-            // 
-            this.textBox9.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pRODUTOBindingSource, "CODGRUPOPRODUTO", true));
-            this.textBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox9.Location = new System.Drawing.Point(7, 33);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(110, 20);
-            this.textBox9.TabIndex = 3;
-            // 
             // dtmPckrCadastro
             // 
             this.dtmPckrCadastro.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.pRODUTOBindingSource, "DATACADASTRO", true));
+            this.dtmPckrCadastro.Enabled = false;
             this.dtmPckrCadastro.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtmPckrCadastro.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtmPckrCadastro.Location = new System.Drawing.Point(518, 33);
@@ -900,6 +906,17 @@
             this.textButton4.Size = new System.Drawing.Size(146, 25);
             this.textButton4.TabIndex = 36;
             // 
+            // txtCodProd
+            // 
+            this.txtCodProd.getText = "";
+            this.txtCodProd.Image = ((System.Drawing.Image)(resources.GetObject("txtCodProd.Image")));
+            this.txtCodProd.Location = new System.Drawing.Point(9, 33);
+            this.txtCodProd.Name = "txtCodProd";
+            this.txtCodProd.ShowButton = false;
+            this.txtCodProd.Size = new System.Drawing.Size(114, 25);
+            this.txtCodProd.TabIndex = 110;
+            this.txtCodProd.ButtonClick += new System.EventHandler(this.txtCodProd_ButtonClick);
+            // 
             // FrmCadProd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -919,13 +936,15 @@
             this.tbCntrlCadProd.ResumeLayout(false);
             this.tbPgCadProd.ResumeLayout(false);
             this.tbPgCadProd.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pRODUTOBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uNIDADEMEDIDABindingSource)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.uNIDADEMEDIDABindingSource)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -936,12 +955,8 @@
         private System.Windows.Forms.TabPage tbPgCadProd;
         private System.Windows.Forms.MaskedTextBox mskedTxtBxPrecoUnitario;
         private System.Windows.Forms.MaskedTextBox mskedTxtBxPrecoCusto;
-        private System.Windows.Forms.ComboBox cmbBxUnidMedida;
         private System.Windows.Forms.DateTimePicker dtmPckrCadastro;
         private System.Windows.Forms.Label lblPrecoCusto;
-        private System.Windows.Forms.Label lblPesoLiquido;
-        private System.Windows.Forms.TextBox txtPesoLiquido;
-        private System.Windows.Forms.Label lblUnidMedida;
         private System.Windows.Forms.Label lblPrecoVenda;
         private System.Windows.Forms.Label lblGrupo;
         private System.Windows.Forms.Label lblDtCadastro;
@@ -1005,10 +1020,15 @@
         private System.Windows.Forms.BindingSource pRODUTOBindingSource;
         private Comercial.COMERCIALDataSetTableAdapters.PRODUTOTableAdapter pRODUTOTableAdapter;
         private Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager tableAdapterManager;
-        private System.Windows.Forms.TextBox textBox9;
         private Comercial.COMERCIALDataSetTableAdapters.UNIDADEMEDIDATableAdapter uNIDADEMEDIDATableAdapter;
         private System.Windows.Forms.BindingSource uNIDADEMEDIDABindingSource;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.TextBox textBox10;
+        public TextButton txtCodProd;
     }
 }
