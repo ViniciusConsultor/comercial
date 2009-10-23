@@ -1330,7 +1330,7 @@ namespace Comercial
                     }
 
 
-                    //                    frmPed.ValidaControles();
+                    frmPed.ValidaControles();
 
                 }
 
