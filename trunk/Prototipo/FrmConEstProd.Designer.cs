@@ -41,9 +41,11 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grpBxFiltro = new System.Windows.Forms.GroupBox();
             this.grpBxProd = new System.Windows.Forms.GroupBox();
+            this.lblGrpProd = new System.Windows.Forms.Label();
             this.cmbGrupoProd = new System.Windows.Forms.ComboBox();
             this.gRUPOPRODUTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
+            this.txtBtnCodProd = new Comercial.TextButton();
             this.label2 = new System.Windows.Forms.Label();
             this.txtEstoque = new System.Windows.Forms.TextBox();
             this.txtProdDesc = new System.Windows.Forms.TextBox();
@@ -54,8 +56,6 @@
             this.LblDesc = new System.Windows.Forms.Label();
             this.gRUPOPRODUTOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.GRUPOPRODUTOTableAdapter();
             this.tableAdapterManager = new Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager();
-            this.lblGrpProd = new System.Windows.Forms.Label();
-            this.txtBtnCodProd = new Comercial.TextButton();
             this.tbCntrlConProd.SuspendLayout();
             this.tbPgConProd.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGrdVwConProd)).BeginInit();
@@ -188,6 +188,17 @@
             this.grpBxProd.TabStop = false;
             this.grpBxProd.Text = "Dados Produtos:";
             // 
+            // lblGrpProd
+            // 
+            this.lblGrpProd.AutoSize = true;
+            this.lblGrpProd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGrpProd.ForeColor = System.Drawing.Color.CadetBlue;
+            this.lblGrpProd.Location = new System.Drawing.Point(284, 17);
+            this.lblGrpProd.Name = "lblGrpProd";
+            this.lblGrpProd.Size = new System.Drawing.Size(79, 13);
+            this.lblGrpProd.TabIndex = 30;
+            this.lblGrpProd.Text = "Grupo Produto:";
+            // 
             // cmbGrupoProd
             // 
             this.cmbGrupoProd.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.gRUPOPRODUTOBindingSource, "CODGRUPOPRODUTO", true));
@@ -209,6 +220,17 @@
             // 
             this.cOMERCIALDataSet.DataSetName = "COMERCIALDataSet";
             this.cOMERCIALDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // txtBtnCodProd
+            // 
+            this.txtBtnCodProd.getText = "";
+            this.txtBtnCodProd.Image = global::Comercial.Properties.Resources.search1;
+            this.txtBtnCodProd.Location = new System.Drawing.Point(9, 32);
+            this.txtBtnCodProd.Name = "txtBtnCodProd";
+            this.txtBtnCodProd.ShowButton = false;
+            this.txtBtnCodProd.Size = new System.Drawing.Size(45, 25);
+            this.txtBtnCodProd.TabIndex = 28;
+            this.txtBtnCodProd.ButtonClick += new System.EventHandler(this.txtNumPed_ButtonClick);
             // 
             // label2
             // 
@@ -322,28 +344,6 @@
             this.tableAdapterManager.VENDEDORTableAdapter = null;
             this.tableAdapterManager.VIATRANSPORTETableAdapter = null;
             // 
-            // lblGrpProd
-            // 
-            this.lblGrpProd.AutoSize = true;
-            this.lblGrpProd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGrpProd.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblGrpProd.Location = new System.Drawing.Point(284, 17);
-            this.lblGrpProd.Name = "lblGrpProd";
-            this.lblGrpProd.Size = new System.Drawing.Size(79, 13);
-            this.lblGrpProd.TabIndex = 30;
-            this.lblGrpProd.Text = "Grupo Produto:";
-            // 
-            // txtBtnCodProd
-            // 
-            this.txtBtnCodProd.getText = "";
-            this.txtBtnCodProd.Image = global::Comercial.Properties.Resources.search1;
-            this.txtBtnCodProd.Location = new System.Drawing.Point(9, 32);
-            this.txtBtnCodProd.Name = "txtBtnCodProd";
-            this.txtBtnCodProd.ShowButton = false;
-            this.txtBtnCodProd.Size = new System.Drawing.Size(45, 25);
-            this.txtBtnCodProd.TabIndex = 28;
-            this.txtBtnCodProd.ButtonClick += new System.EventHandler(this.txtNumPed_ButtonClick);
-            // 
             // FrmConEstProd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -383,10 +383,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmBxOpEstoque;
-        private System.Windows.Forms.TextBox txtProdDesc;
         private System.Windows.Forms.TextBox txtEstoque;
         private System.Windows.Forms.Label label2;
-        private TextButton txtBtnCodProd;
         private COMERCIALDataSet cOMERCIALDataSet;
         private System.Windows.Forms.BindingSource gRUPOPRODUTOBindingSource;
         private Comercial.COMERCIALDataSetTableAdapters.GRUPOPRODUTOTableAdapter gRUPOPRODUTOTableAdapter;
@@ -400,5 +398,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.Label lblGrpProd;
+        public System.Windows.Forms.TextBox txtProdDesc;
+        public TextButton txtBtnCodProd;
     }
 }
