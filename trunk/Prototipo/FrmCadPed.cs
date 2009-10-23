@@ -112,8 +112,8 @@ namespace Comercial
             if (dtgrdvItenspven.RowCount == 0)
             {
                 MessageBox.Show("Operação Cancelada, pois não existe itens para este pedido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Util.Interface.ChangeControlStatus(this, false);
 
+                return 1;
             }
             else
             {
@@ -126,13 +126,15 @@ namespace Comercial
                        Convert.ToString(objPedido["CODVENDEDOR"].ToString()),
                        Convert.ToString(objPedido["CODCLIENTE"].ToString()),
                        Convert.ToString(objPedido["CODTRANSPORTADORA"].ToString()));
+
+
+                this.SalvarPedidoDeta();
+
+                return 0;
             }
 
 
 
-            this.SalvarPedidoDeta();
-
-            return 0;
 
         }
         #endregion
@@ -211,6 +213,7 @@ namespace Comercial
             dttRetorno.Columns.Add("VALOR", typeof(double));
             dttRetorno.Columns.Add("IPI", typeof(double));
             dttRetorno.Columns.Add("DESCONTO", typeof(double));
+            dttRetorno.Columns.Add("ValorTotal", typeof(double));
 
             dttRetorno.AcceptChanges();
 
@@ -231,9 +234,9 @@ namespace Comercial
             txtDescprod.Text = String.Empty;
             txtEstAtual.Text = String.Empty;
             txtUM.Text = String.Empty;
-            txtPrcVen.Text = String.Empty;
-            txtQtdItem.Text = String.Empty;
             txtPrcUnit.Text = String.Empty;
+            txtQtdItem.Text = String.Empty;
+            txtValorTotal.Text = String.Empty;
             txtDesconto.Text = String.Empty;
             txtipi.Text = String.Empty;
             txtPedido.Text = String.Empty;
@@ -248,12 +251,13 @@ namespace Comercial
         #region LimparItens
         public void Limparitens()
         {
+            txtProduto.getText = String.Empty;
             txtDescprod.Text = String.Empty;
             txtEstAtual.Text = String.Empty;
             txtUM.Text = String.Empty;
-            txtPrcVen.Text = String.Empty;
-            txtQtdItem.Text = String.Empty;
             txtPrcUnit.Text = String.Empty;
+            txtQtdItem.Text = String.Empty;
+            txtValorTotal.Text = String.Empty;
             txtDesconto.Text = String.Empty;
             txtipi.Text = String.Empty;
 
@@ -265,57 +269,85 @@ namespace Comercial
 
         private void btnAdditen_Click(object sender, EventArgs e)
         {
-            int quantidade = Convert.ToInt32(txtQtdItem.Text);
-            int estoqueatual = Convert.ToInt32(txtEstAtual.Text);
-
-            DataRow dtRow;
-
             try
             {
 
-                if (quantidade > estoqueatual)
+                if (Convert.ToInt32(txtQtdItem.Text) == 0)
                 {
-                    MessageBox.Show("A Quantidade não pode ser maior que o estoque atual.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    throw new Exception("Quantidade");
                 }
-                else
+
+                String valortotal = (String)txtValorTotal.Text.Replace(".", ",");
+                if (Convert.ToDouble(valortotal) == 0)
                 {
-                    dtRow = dttRetorno.NewRow();
+                    throw new Exception("PrecoUnitario");
+                }
 
-                    //dtRow[1] = txtProduto.getText;
-                    //dtRow[2] = txtDescprod.Text;
-                    //dtRow[3] = txtQtdItem.Text;
-                    //dtRow[4] = txtPrcUnit.Text;
-                    //dtRow[5] = txtipi.Text;
-                    //dtRow[6] = txtDesconto.Text;
+                int quantidade = Convert.ToInt32(txtQtdItem.Text);
+                int estoqueatual = Convert.ToInt32(txtEstAtual.Text);
 
+
+                DataRow dtRow;
+
+
+                dtRow = dttRetorno.NewRow();
+
+                //dtRow[1] = txtProduto.getText;
+                //dtRow[2] = txtDescprod.Text;
+                //dtRow[3] = txtQtdItem.Text;
+                //dtRow[4] = txtPrcUnit.Text;
+                //dtRow[5] = txtipi.Text;
+                //dtRow[6] = txtDesconto.Text;
+
+                var teste = 0;
+                foreach (DataGridViewRow item in dtgrdvItenspven.Rows)
+                {
+
+                    if (txtProduto.getText == Convert.ToString(item.Cells[2].Value))
+                    {
+                        txtValorTotal.Text = "";
+                        txtQtdItem.Text = Convert.ToString(Convert.ToInt32(txtQtdItem.Text) + Convert.ToInt32(item.Cells[4].Value));
+                        txtValorTotal.Text = Convert.ToString(Convert.ToDouble(valortotal) + Convert.ToDouble(item.Cells[8].Value));
+
+                        item.Cells[4].Value = txtQtdItem.Text;
+                        item.Cells[8].Value = txtValorTotal.Text;
+                        teste += 1;
+                    }
+
+                    
+                }
+
+                if (teste == 0)
+                {
                     dtRow["CODPRODUTO"] = txtProduto.getText;
                     dtRow["DESCRICAO"] = txtDescprod.Text;
                     dtRow["QUANTIDADE"] = txtQtdItem.Text;
                     dtRow["VALOR"] = txtPrcUnit.Text;
                     dtRow["IPI"] = txtipi.Text;
                     dtRow["DESCONTO"] = txtDesconto.Text;
-
+                    dtRow["VALORTOTAL"] = valortotal;
                     dttRetorno.Rows.Add(dtRow);
-
-                    for (int index = 0; index <= dttRetorno.Rows.Count - 1; index++)
-                    {
-                        dttRetorno.Rows[index][0] = index + 1;
-                        continue;
-                    }
-
-                    dtgrdvItenspven.DataSource = dttRetorno;
-
-
-
-                    this.Limparitens();
                 }
+
+
+
+                for (int index = 0; index <= dttRetorno.Rows.Count - 1; index++)
+                {
+                    dttRetorno.Rows[index][0] = index + 1;
+                    continue;
+                }
+
+                dtgrdvItenspven.DataSource = dttRetorno;
+
+                this.Limparitens();
+
 
 
             }
             catch (Exception ex)
             {
-
-                throw ex;
+                Validacoes valida = new Validacoes();
+                valida.tratarSystemExceções(ex);
             }
         }
         #endregion
@@ -410,7 +442,7 @@ namespace Comercial
 
             StringBuilder sqlcommand = new StringBuilder();
 
-            sqlcommand.Append(" SELECT ITEM,ITEMPEDIDO.CODPRODUTO,DESCRICAO,QUANTIDADE,DESCONTO,VALOR,ITEMPEDIDO.IPI ");
+            sqlcommand.Append(" SELECT ITEM,ITEMPEDIDO.CODPRODUTO,DESCRICAO,QUANTIDADE,DESCONTO,VALOR,ITEMPEDIDO.IPI, (QUANTIDADE *VALOR) as VALORTOTAL ");
             sqlcommand.Append(" FROM ITEMPEDIDO INNER JOIN PRODUTO ON ITEMPEDIDO.CODPRODUTO = PRODUTO.CODPRODUTO ");
             sqlcommand.Append(" WHERE NRPEDIDO = @nrpedido ");
 
@@ -819,6 +851,14 @@ namespace Comercial
             if (chkComplemento.Checked)
             {
                 chkNormal.Checked = false;
+            }
+        }
+
+        private void txtQtdItem_TextChanged(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtQtdItem.Text) && !String.IsNullOrEmpty(txtPrcUnit.Text))
+            {
+                txtValorTotal.Text = Convert.ToString(Convert.ToDouble(txtQtdItem.Text) * Convert.ToDouble(txtPrcUnit.Text));
             }
         }
     }

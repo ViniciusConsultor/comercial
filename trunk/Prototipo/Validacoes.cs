@@ -161,12 +161,20 @@ namespace Comercial
         {
             if (ex.GetType().FullName == "System.Data.ConstraintException")
                 MessageBox.Show("Registro já cadastrado (Violação de chave primária)", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            else if (ex.GetType().FullName == "System.Data.NoNullAllowedException" || ex.GetType().FullName == "System.InvalidOperationException" || ex.Message == "campo vazio")
+            else if (ex.GetType().FullName == "System.Data.NoNullAllowedException" || ex.GetType().FullName == "System.InvalidOperationException" || ex.GetType().FullName == "System.ArgumentException" || ex.GetType().FullName == "System.FormatException" || ex.Message == "campo vazio")
                 MessageBox.Show("Campo(s) Obrigatório(s) não preenchido(s).", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else if (ex.GetType().FullName == "System.FormatException")
+                MessageBox.Show("Quantidade não pode ser 0!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else if (ex.Message == "Grid Vazio")
                 MessageBox.Show("Não há dados para gerar o relatório", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else if (ex.Message == "Efetivado")
                 MessageBox.Show("Pedido não pode ser alterado pois já está Efetivado", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else if (ex.Message == "DataInvalida")
+                MessageBox.Show("Data de entrega não pode ser inferior a data de emissão", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else if (ex.Message == "Quantidade")
+                MessageBox.Show("Quantidade não pode ser 0!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else if (ex.Message == "PrecoUnitario")
+                MessageBox.Show("Valor unitário não pode ser 0!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             else MessageBox.Show("Erro desconhecido.\nContate o administrador do sistema", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
