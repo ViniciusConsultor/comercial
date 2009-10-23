@@ -106,6 +106,7 @@ namespace Comercial
                     reader.Close();
                     conn.Close();
                     conn.Dispose();
+
                 }
 
 
@@ -145,6 +146,9 @@ namespace Comercial
             {
                 x["SEXO"] = "F";
             }
+
+            txtSenha.Text = "";
+            txtUsu.Text = "";
 
             return 0;
 

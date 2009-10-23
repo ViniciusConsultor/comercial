@@ -24,7 +24,7 @@ DROP TABLE Acesso
 go
 
 
-DROP TABLE Modulo
+--DROP TABLE Modulo
 go
 
 
