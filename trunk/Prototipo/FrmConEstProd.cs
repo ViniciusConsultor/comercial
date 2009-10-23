@@ -69,7 +69,7 @@ namespace Comercial
             }
             if (!string.IsNullOrEmpty(cmbGrupoProd.Text))
             {
-                sql += "and PRD.CODGRUPOPRODUTO " + cmBxOpEstoque.SelectedValue;
+                sql += "and GRP.DESCRICAO = '" + cmbGrupoProd.Text + "'";
             }
 
             string c = ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString;
@@ -166,9 +166,8 @@ namespace Comercial
             // TODO: This line of code loads data into the 'cOMERCIALDataSet.GRUPOPRODUTO' table. You can move, or remove it, as needed.
             this.gRUPOPRODUTOTableAdapter.Fill(this.cOMERCIALDataSet.GRUPOPRODUTO);
 
-            //cmbGrupoProd.DataSource = ListarGrupoProduto();
-            //cmbGrupoProd.SelectedText = "descricao";
-            //cmbGrupoProd.SelectedValue = "codgrupoproduto";
+           
+            cmbGrupoProd.SelectedIndex = -1;
         }        
     }
 }
