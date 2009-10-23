@@ -1664,7 +1664,7 @@ namespace Comercial {
                 this.columnTELEFONE.MaxLength = 10;
                 this.columnEMAIL.MaxLength = 100;
                 this.columnIE.AllowDBNull = false;
-                this.columnIE.MaxLength = 12;
+                this.columnIE.MaxLength = 20;
                 this.columnENDERECO.AllowDBNull = false;
                 this.columnENDERECO.MaxLength = 100;
                 this.columnBAIRRO.AllowDBNull = false;

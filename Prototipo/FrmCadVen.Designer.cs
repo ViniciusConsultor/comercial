@@ -150,6 +150,7 @@
             this.cmBxRegiao.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.vENDEDORBindingSource, "CODREGIAO", true));
             this.cmBxRegiao.DataSource = this.rEGIAOBindingSource;
             this.cmBxRegiao.DisplayMember = "DESCRICAO";
+            this.cmBxRegiao.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmBxRegiao.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmBxRegiao.FormattingEnabled = true;
             this.cmBxRegiao.Location = new System.Drawing.Point(130, 57);
@@ -691,7 +692,7 @@
             // cpfToolStripLabel
             // 
             this.cpfToolStripLabel.Name = "cpfToolStripLabel";
-            this.cpfToolStripLabel.Size = new System.Drawing.Size(30, 22);
+            this.cpfToolStripLabel.Size = new System.Drawing.Size(31, 22);
             this.cpfToolStripLabel.Text = "CPF:";
             // 
             // cpfToolStripTextBox
@@ -703,7 +704,7 @@
             // nomeToolStripLabel
             // 
             this.nomeToolStripLabel.Name = "nomeToolStripLabel";
-            this.nomeToolStripLabel.Size = new System.Drawing.Size(38, 22);
+            this.nomeToolStripLabel.Size = new System.Drawing.Size(43, 22);
             this.nomeToolStripLabel.Text = "Nome:";
             // 
             // nomeToolStripTextBox

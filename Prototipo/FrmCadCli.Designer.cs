@@ -147,6 +147,7 @@
             this.cmBxRegiaoCli.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.cLIENTEBindingSource, "CODREGIAO", true));
             this.cmBxRegiaoCli.DataSource = this.rEGIAOBindingSource;
             this.cmBxRegiaoCli.DisplayMember = "DESCRICAO";
+            this.cmBxRegiaoCli.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmBxRegiaoCli.FormattingEnabled = true;
             this.cmBxRegiaoCli.Location = new System.Drawing.Point(325, 18);
             this.cmBxRegiaoCli.Name = "cmBxRegiaoCli";
@@ -241,11 +242,14 @@
             // cmbAreaAtuCli
             // 
             this.cmbAreaAtuCli.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cmbAreaAtuCli.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cmbAreaAtuCli.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.cLIENTEBindingSource, "AREAATUACAO", true));
             this.cmbAreaAtuCli.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.cLIENTEBindingSource, "AREAATUACAO", true));
             this.cmbAreaAtuCli.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cLIENTEBindingSource, "AREAATUACAO", true));
+            this.cmbAreaAtuCli.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbAreaAtuCli.FormattingEnabled = true;
             this.cmbAreaAtuCli.Items.AddRange(new object[] {
+            "",
             "AEROESPACIAL",
             "AUTO - AUTOMOBILÍSTICO",
             "AUTO - RODA/DIREÇÃO",
@@ -343,7 +347,6 @@
             // 
             this.txtIeCli.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cLIENTEBindingSource, "IE", true));
             this.txtIeCli.Location = new System.Drawing.Point(232, 19);
-            this.txtIeCli.Mask = "999,999,999,999";
             this.txtIeCli.Name = "txtIeCli";
             this.txtIeCli.PromptChar = ' ';
             this.txtIeCli.Size = new System.Drawing.Size(87, 20);
@@ -451,6 +454,7 @@
             this.txtCepCli.ShowButton = false;
             this.txtCepCli.Size = new System.Drawing.Size(121, 25);
             this.txtCepCli.TabIndex = 5;
+            this.txtCepCli.ButtonClick += new System.EventHandler(this.txtCepCli_ButtonClick_1);
             // 
             // txtFaxCli
             // 
@@ -528,6 +532,8 @@
             this.cmbUfCli.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.cLIENTEBindingSource, "UF", true));
             this.cmbUfCli.DataBindings.Add(new System.Windows.Forms.Binding("SelectedItem", this.cLIENTEBindingSource, "UF", true));
             this.cmbUfCli.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cLIENTEBindingSource, "UF", true));
+            this.cmbUfCli.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbUfCli.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.cmbUfCli.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbUfCli.FormattingEnabled = true;
             this.cmbUfCli.Items.AddRange(new object[] {
@@ -562,7 +568,6 @@
             this.cmbUfCli.Name = "cmbUfCli";
             this.cmbUfCli.Size = new System.Drawing.Size(89, 21);
             this.cmbUfCli.TabIndex = 11;
-            this.cmbUfCli.Text = "Selecione...";
             // 
             // lblUfCliente
             // 
@@ -738,7 +743,7 @@
             // 
             this.cnpjCliToolStripLabel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.cnpjCliToolStripLabel.Name = "cnpjCliToolStripLabel";
-            this.cnpjCliToolStripLabel.Size = new System.Drawing.Size(40, 22);
+            this.cnpjCliToolStripLabel.Size = new System.Drawing.Size(42, 22);
             this.cnpjCliToolStripLabel.Text = "CNPJ:";
             // 
             // cnpjToolStripTextBox
@@ -749,7 +754,7 @@
             // nomeFantasiaCliToolStripLabel
             // 
             this.nomeFantasiaCliToolStripLabel.Name = "nomeFantasiaCliToolStripLabel";
-            this.nomeFantasiaCliToolStripLabel.Size = new System.Drawing.Size(78, 22);
+            this.nomeFantasiaCliToolStripLabel.Size = new System.Drawing.Size(86, 22);
             this.nomeFantasiaCliToolStripLabel.Text = "Nome Fantasia";
             // 
             // nomeFantasiaToolStripTextBox
