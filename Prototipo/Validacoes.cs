@@ -165,6 +165,8 @@ namespace Comercial
                 MessageBox.Show("Campo(s) Obrigatório(s) não preenchido(s).", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else if (ex.Message == "Grid Vazio")
                 MessageBox.Show("Não há dados para gerar o relatório", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else if (ex.Message == "Efetivado")
+                MessageBox.Show("Pedido não pode ser alterado pois já está Efetivado", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             else MessageBox.Show("Erro desconhecido.\nContate o administrador do sistema", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
