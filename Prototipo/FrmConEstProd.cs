@@ -15,16 +15,16 @@ namespace Comercial
 {
     public partial class FrmConEstProd : Form
     {
-         private FrmPrinc _princ = null;
+        private FrmPrinc _princ = null;
 
-         public FrmConEstProd(FrmPrinc parent)
+        public FrmConEstProd(FrmPrinc parent)
         {
             InitializeComponent();
             this.MdiParent = parent;
             _princ = parent;
         }
 
-       
+
         private void txtCodProd_ButtonClick(object sender, EventArgs e)
         {
             //FrmVisGeral x = new FrmVisGeral(this, txtCodProd);
@@ -48,9 +48,14 @@ namespace Comercial
         {
             string sql = "SELECT CODPRODUTO,PRD.DESCRICAO,PRD.DATACADASTRO,PRECOCUSTO,PRD.CODGRUPOPRODUTO,GRP.DESCRICAO AS GRPDESC,PRD.ESTOQUEATUAL " +
                 "FROM PRODUTO PRD INNER JOIN GRUPOPRODUTO GRP ON PRD.CODGRUPOPRODUTO = GRP.CODGRUPOPRODUTO ";
-                
 
-           
+            //Pesquiso por Código do produto
+            if (!string.IsNullOrEmpty(txtBtnCodProd.getText))
+            {
+                sql += "and CODPRODUTO ='" + txtBtnCodProd.getText + "'";
+            }
+
+            //Pesquiso por descrição do produto
             if (!string.IsNullOrEmpty(txtProdDesc.Text))
             {
                 sql += "and PRD.descricao like '%" + txtProdDesc.Text + "%' ";
@@ -63,10 +68,13 @@ namespace Comercial
                 sql += "and PRD.datacadastro = '" + formatData + "'";
             }
 
+            //Pesquiso por saldo estoque utilizando operadores 
             if (!string.IsNullOrEmpty(txtEstoque.Text))
             {
-                sql += "and PRD.estoqueatual " + cmBxOpEstoque.Text + " " + txtEstoque.Text;                 
+                sql += "and PRD.estoqueatual " + cmBxOpEstoque.Text + " " + txtEstoque.Text;
             }
+
+            //Pesquiso por grupo de produto
             if (!string.IsNullOrEmpty(cmbGrupoProd.Text))
             {
                 sql += "and GRP.DESCRICAO = '" + cmbGrupoProd.Text + "'";
@@ -85,14 +93,14 @@ namespace Comercial
 
             dtGrdVwConProd.DataSource = table;
         }
-              
+
         private void txtBtnCodGrp_ButtonClick(object sender, EventArgs e)
         {
             FrmVisGeral x = new FrmVisGeral(this, (Control)sender);
             x.dtGrdVwVis.DataSource = ListarGrupoProduto();
             x.Text = "Pesquisa Cadastro de Grupo de Produtos";
 
-            x.ShowDialog();            
+            x.ShowDialog();
         }
 
         public DataTable ListarGrupoProduto()
@@ -111,7 +119,7 @@ namespace Comercial
 
             return dtsDados.Tables[0];
 
-        }      
+        }
 
         public DataTable ListarProduto()
         {
@@ -166,8 +174,8 @@ namespace Comercial
             // TODO: This line of code loads data into the 'cOMERCIALDataSet.GRUPOPRODUTO' table. You can move, or remove it, as needed.
             this.gRUPOPRODUTOTableAdapter.Fill(this.cOMERCIALDataSet.GRUPOPRODUTO);
 
-           
+
             cmbGrupoProd.SelectedIndex = -1;
-        }        
+        }
     }
 }

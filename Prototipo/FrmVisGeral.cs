@@ -36,6 +36,25 @@ namespace Comercial
             }
             #endregion
 
+            #region Colunas GridViewGeral Produto
+            if (_parent is FrmConEstProd)
+            {
+                rdBtnCod.Visible = true;
+                rdBtnCod.Text = "Código";
+                rdBtnCod.Checked = true;
+                rdBtnNome.Text = "Descrição";
+                rdBtnNome.Checked = true;
+
+                col1.HeaderText = "Código";
+                col1.DataPropertyName = "CODPRODUTO";
+                dtGrdVwVis.Columns[1].Visible = true;
+
+                col2.HeaderText = "Descrição";
+                col2.DataPropertyName = "DESCRICAO";
+                dtGrdVwVis.Columns[1].Visible = true;
+            }
+            #endregion
+
             #region Colunas GridViewGeral Pedido
             if (_parent is FrmCadPed)
             {
@@ -271,7 +290,7 @@ namespace Comercial
             #endregion
 
             #region FormPesquisa Zabotto
-            if ((_parent is FrmCadPed) || (_parent is FrmConPDV))
+            if ((_parent is FrmCadPed) || (_parent is FrmConPDV) || (_parent is FrmConEstProd))
             {
 
                 #region Pedido Pesquisa Cliente
@@ -447,7 +466,7 @@ namespace Comercial
 
                 #region Pedido Pesquisa Produto
 
-                if ((_controle.Name == "txtProduto") || (_controle.Name == "txtCodProd"))
+                if ((_controle.Name == "txtProduto") || (_controle.Name == "txtCodProd") || (_controle.Name == "txtBtnCodProd"))
                 {
                     if (rdBtnCod.Checked == true)
                     {
@@ -680,16 +699,18 @@ namespace Comercial
 
             #endregion
 
-            #region Double Click Consulta Pedido
+            #region Double Click Consulta Produto
 
             #region Produto
-            if (_parent is FrmConPDV)
+            if ((_parent is FrmConPDV) || (_parent is FrmConEstProd))
             {
-                FrmConPDV ConPed = (FrmConPDV)_parent;
+                
 
                 #region Double Click Consulta Produto
                 if (_controle.Name == "txtCodProd")
                 {
+                    FrmConPDV ConPed = (FrmConPDV)_parent;
+
                     // vamos obter as células selecionadas no DataGridView
                     DataGridViewSelectedCellCollection selecionadas = dtGrdVwVis.SelectedCells;
 
@@ -699,6 +720,25 @@ namespace Comercial
 
 
                     ConPed.txtCodProd.getText = celula.Value.ToString();
+
+
+                    this.Close();
+                    this.Dispose();
+                }
+
+                if (_controle.Name == "txtBtnCodProd")
+                {
+                    FrmConEstProd EstProd = (FrmConEstProd)_parent;
+                    
+                    // vamos obter as células selecionadas no DataGridView
+                    DataGridViewSelectedCellCollection selecionadas = dtGrdVwVis.SelectedCells;
+
+                    DataGridViewCell celula = selecionadas[0];
+                    int linha = celula.RowIndex;
+                    int coluna = celula.ColumnIndex;
+
+
+                    EstProd.txtBtnCodProd.getText = celula.Value.ToString();
 
 
                     this.Close();
