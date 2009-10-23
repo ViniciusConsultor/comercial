@@ -7089,7 +7089,7 @@ namespace Comercial {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public RelPedidoRow AddRelPedidoRow(string NRPEDIDO, string TIPO, string SITUACAO, string RAZAOSOCIAL, string DATAEMISSAO, string DATAENTREGA, string CODPRODUTO, string DESCRICAO, string QUANTIDADE, string VALOR, string ValorTotal) {
+            public RelPedidoRow AddRelPedidoRow(string NRPEDIDO, string TIPO, string SITUACAO, string RAZAOSOCIAL, System.DateTime DATAEMISSAO, System.DateTime DATAENTREGA, string CODPRODUTO, string DESCRICAO, string QUANTIDADE, double VALOR, double ValorTotal) {
                 RelPedidoRow rowRelPedidoRow = ((RelPedidoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         NRPEDIDO,
@@ -7145,9 +7145,9 @@ namespace Comercial {
                 base.Columns.Add(this.columnSITUACAO);
                 this.columnRAZAOSOCIAL = new global::System.Data.DataColumn("RAZAOSOCIAL", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRAZAOSOCIAL);
-                this.columnDATAEMISSAO = new global::System.Data.DataColumn("DATAEMISSAO", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnDATAEMISSAO = new global::System.Data.DataColumn("DATAEMISSAO", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDATAEMISSAO);
-                this.columnDATAENTREGA = new global::System.Data.DataColumn("DATAENTREGA", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnDATAENTREGA = new global::System.Data.DataColumn("DATAENTREGA", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDATAENTREGA);
                 this.columnCODPRODUTO = new global::System.Data.DataColumn("CODPRODUTO", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCODPRODUTO);
@@ -7155,9 +7155,9 @@ namespace Comercial {
                 base.Columns.Add(this.columnDESCRICAO);
                 this.columnQUANTIDADE = new global::System.Data.DataColumn("QUANTIDADE", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnQUANTIDADE);
-                this.columnVALOR = new global::System.Data.DataColumn("VALOR", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnVALOR = new global::System.Data.DataColumn("VALOR", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnVALOR);
-                this.columnValorTotal = new global::System.Data.DataColumn("ValorTotal", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnValorTotal = new global::System.Data.DataColumn("ValorTotal", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnValorTotal);
             }
             
@@ -10427,10 +10427,10 @@ namespace Comercial {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public string DATAEMISSAO {
+            public System.DateTime DATAEMISSAO {
                 get {
                     try {
-                        return ((string)(this[this.tableRelPedido.DATAEMISSAOColumn]));
+                        return ((global::System.DateTime)(this[this.tableRelPedido.DATAEMISSAOColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'DATAEMISSAO\' in table \'RelPedido\' is DBNull.", e);
@@ -10442,10 +10442,10 @@ namespace Comercial {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public string DATAENTREGA {
+            public System.DateTime DATAENTREGA {
                 get {
                     try {
-                        return ((string)(this[this.tableRelPedido.DATAENTREGAColumn]));
+                        return ((global::System.DateTime)(this[this.tableRelPedido.DATAENTREGAColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'DATAENTREGA\' in table \'RelPedido\' is DBNull.", e);
@@ -10502,10 +10502,10 @@ namespace Comercial {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public string VALOR {
+            public double VALOR {
                 get {
                     try {
-                        return ((string)(this[this.tableRelPedido.VALORColumn]));
+                        return ((double)(this[this.tableRelPedido.VALORColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'VALOR\' in table \'RelPedido\' is DBNull.", e);
@@ -10517,10 +10517,10 @@ namespace Comercial {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public string ValorTotal {
+            public double ValorTotal {
                 get {
                     try {
-                        return ((string)(this[this.tableRelPedido.ValorTotalColumn]));
+                        return ((double)(this[this.tableRelPedido.ValorTotalColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'ValorTotal\' in table \'RelPedido\' is DBNull.", e);
