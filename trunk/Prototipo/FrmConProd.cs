@@ -148,6 +148,11 @@ namespace Comercial
             x.Text = "Pesquisa Cadastro de Produtos";
 
             x.ShowDialog();
+        }
+
+        private void txtBtnCodGrp_Load(object sender, EventArgs e)
+        {
+
         }        
     }
 }

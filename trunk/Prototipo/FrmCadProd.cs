@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.Common;
 using System.Text;
@@ -56,8 +54,8 @@ namespace Comercial
             dtmPckrCadastro.Enabled = false;
         }
 
-        #region ListarProdutoDataGridView Pesquisa
-        public DataTable ListaProduto()
+        #region ListarGrpProdutoDataGridView Pesquisa
+        public DataTable ListarGrupoProduto()
         {
             Database db = DatabaseFactory.CreateDatabase();
 
@@ -65,8 +63,7 @@ namespace Comercial
 
             StringBuilder sqlcommand = new StringBuilder();
 
-            sqlcommand.Append(" SELECT CODPRODUTO,PRODUTO.DESCRICAO,CODUNIDADEMEDIDA,ESTOQUEATUAL,PRECOVENDA,IPI,GRUPOPRODUTO.DESCONTO");
-            sqlcommand.Append(" FROM PRODUTO INNER JOIN GRUPOPRODUTO ON PRODUTO.CODGRUPOPRODUTO = GRUPOPRODUTO.CODGRUPOPRODUTO");
+            sqlcommand.Append("select codgrupoproduto, descricao from grupoproduto");
 
             DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
 
@@ -74,14 +71,14 @@ namespace Comercial
 
             return dtsDados.Tables[0];
 
-        }
+        }     
         #endregion
 
         private void txtCodProd_ButtonClick(object sender, EventArgs e)
         {
             FrmVisGeral x = new FrmVisGeral(this, (Control)sender);
-            x.dtGrdVwVis.DataSource = ListaProduto();
-            x.Text = "Consulta Cadastro de Produto";
+            x.dtGrdVwVis.DataSource = ListarGrupoProduto();
+            x.Text = "Consulta Cadastro de Grupo Produto";
 
             x.ShowDialog();
         }

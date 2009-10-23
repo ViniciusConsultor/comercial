@@ -42,7 +42,6 @@
             this.IPI = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grpBxFiltro = new System.Windows.Forms.GroupBox();
             this.grpBxProd = new System.Windows.Forms.GroupBox();
-            this.txtBtnCodProd = new Comercial.TextButton();
             this.label2 = new System.Windows.Forms.Label();
             this.txtEstoque = new System.Windows.Forms.TextBox();
             this.txtProdDesc = new System.Windows.Forms.TextBox();
@@ -52,13 +51,14 @@
             this.label3 = new System.Windows.Forms.Label();
             this.LblDesc = new System.Windows.Forms.Label();
             this.grpBxFab = new System.Windows.Forms.GroupBox();
-            this.txtBtnCodGrp = new Comercial.TextButton();
             this.label5 = new System.Windows.Forms.Label();
             this.txtGrupo = new System.Windows.Forms.TextBox();
             this.txtDesconto = new System.Windows.Forms.TextBox();
             this.cmBxOpDesconto = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.lblGrupo = new System.Windows.Forms.Label();
+            this.txtBtnCodProd = new Comercial.TextButton();
+            this.txtBtnCodGrp = new Comercial.TextButton();
             this.tbCntrlConProd.SuspendLayout();
             this.tbPgConProd.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGrdVwConProd)).BeginInit();
@@ -194,17 +194,6 @@
             this.grpBxProd.TabStop = false;
             this.grpBxProd.Text = "Dados Produtos:";
             // 
-            // txtBtnCodProd
-            // 
-            this.txtBtnCodProd.getText = "";
-            this.txtBtnCodProd.Image = global::Comercial.Properties.Resources.search1;
-            this.txtBtnCodProd.Location = new System.Drawing.Point(11, 37);
-            this.txtBtnCodProd.Name = "txtBtnCodProd";
-            this.txtBtnCodProd.ShowButton = false;
-            this.txtBtnCodProd.Size = new System.Drawing.Size(52, 25);
-            this.txtBtnCodProd.TabIndex = 28;
-            this.txtBtnCodProd.ButtonClick += new System.EventHandler(this.txtNumPed_ButtonClick);
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -307,17 +296,6 @@
             this.grpBxFab.TabStop = false;
             this.grpBxFab.Text = "Dados grupos:";
             // 
-            // txtBtnCodGrp
-            // 
-            this.txtBtnCodGrp.getText = "";
-            this.txtBtnCodGrp.Image = global::Comercial.Properties.Resources.search1;
-            this.txtBtnCodGrp.Location = new System.Drawing.Point(20, 37);
-            this.txtBtnCodGrp.Name = "txtBtnCodGrp";
-            this.txtBtnCodGrp.ShowButton = false;
-            this.txtBtnCodGrp.Size = new System.Drawing.Size(53, 25);
-            this.txtBtnCodGrp.TabIndex = 29;
-            this.txtBtnCodGrp.ButtonClick += new System.EventHandler(this.txtBtnCodGrp_ButtonClick);
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -381,6 +359,29 @@
             this.lblGrupo.TabIndex = 4;
             this.lblGrupo.Text = "Grupo:";
             // 
+            // txtBtnCodProd
+            // 
+            this.txtBtnCodProd.getText = "";
+            this.txtBtnCodProd.Image = global::Comercial.Properties.Resources.search1;
+            this.txtBtnCodProd.Location = new System.Drawing.Point(11, 37);
+            this.txtBtnCodProd.Name = "txtBtnCodProd";
+            this.txtBtnCodProd.ShowButton = false;
+            this.txtBtnCodProd.Size = new System.Drawing.Size(94, 25);
+            this.txtBtnCodProd.TabIndex = 28;
+            this.txtBtnCodProd.ButtonClick += new System.EventHandler(this.txtNumPed_ButtonClick);
+            // 
+            // txtBtnCodGrp
+            // 
+            this.txtBtnCodGrp.getText = "";
+            this.txtBtnCodGrp.Image = global::Comercial.Properties.Resources.search1;
+            this.txtBtnCodGrp.Location = new System.Drawing.Point(20, 37);
+            this.txtBtnCodGrp.Name = "txtBtnCodGrp";
+            this.txtBtnCodGrp.ShowButton = false;
+            this.txtBtnCodGrp.Size = new System.Drawing.Size(92, 25);
+            this.txtBtnCodGrp.TabIndex = 29;
+            this.txtBtnCodGrp.Load += new System.EventHandler(this.txtBtnCodGrp_Load);
+            this.txtBtnCodGrp.ButtonClick += new System.EventHandler(this.txtBtnCodGrp_ButtonClick);
+            // 
             // FrmConProd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -433,12 +434,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ESTOQUEATUAL;
         private System.Windows.Forms.DataGridViewTextBoxColumn ESTOQUEMIN;
         private System.Windows.Forms.DataGridViewTextBoxColumn IPI;
-        private System.Windows.Forms.TextBox txtProdDesc;
-        private System.Windows.Forms.TextBox txtGrupo;
         private System.Windows.Forms.TextBox txtEstoque;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label5;
-        private TextButton txtBtnCodProd;
-        private TextButton txtBtnCodGrp;
+        public TextButton txtBtnCodProd;
+        public System.Windows.Forms.TextBox txtProdDesc;
+        public System.Windows.Forms.TextBox txtGrupo;
+        public TextButton txtBtnCodGrp;
     }
 }
