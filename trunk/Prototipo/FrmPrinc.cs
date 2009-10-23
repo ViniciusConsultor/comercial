@@ -147,6 +147,7 @@ namespace Comercial
 
                         COMERCIALDataSetTableAdapters.VENDEDORTableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.VENDEDORTableAdapter();
                         table.Update(_dataset);
+
                     }
 
                     if (frm is FrmCadProd)

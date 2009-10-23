@@ -114,7 +114,7 @@
             this.tabPage2.Controls.Add(this.lblRG);
             this.tabPage2.Controls.Add(this.lblCPF);
             this.tabPage2.Controls.Add(this.lblNome);
-            this.tabPage2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabPage2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -126,6 +126,7 @@
             // txtCPF
             // 
             this.txtCPF.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vENDEDORBindingSource, "CPF", true));
+            this.txtCPF.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCPF.Location = new System.Drawing.Point(376, 19);
             this.txtCPF.Mask = "999,999,999-99";
             this.txtCPF.Name = "txtCPF";
@@ -149,6 +150,7 @@
             this.cmBxRegiao.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.vENDEDORBindingSource, "CODREGIAO", true));
             this.cmBxRegiao.DataSource = this.rEGIAOBindingSource;
             this.cmBxRegiao.DisplayMember = "DESCRICAO";
+            this.cmBxRegiao.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmBxRegiao.FormattingEnabled = true;
             this.cmBxRegiao.Location = new System.Drawing.Point(130, 57);
             this.cmBxRegiao.Name = "cmBxRegiao";
@@ -288,6 +290,7 @@
             // maskedTextBox1
             // 
             this.maskedTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vENDEDORBindingSource, "CELULAR", true));
+            this.maskedTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.maskedTextBox1.Location = new System.Drawing.Point(215, 118);
             this.maskedTextBox1.Mask = "(99)9999-9999";
             this.maskedTextBox1.Name = "maskedTextBox1";
@@ -309,6 +312,7 @@
             // cOMPLEMENTOTextBox
             // 
             this.cOMPLEMENTOTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vENDEDORBindingSource, "COMPLEMENTO", true));
+            this.cOMPLEMENTOTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cOMPLEMENTOTextBox.Location = new System.Drawing.Point(382, 76);
             this.cOMPLEMENTOTextBox.Name = "cOMPLEMENTOTextBox";
             this.cOMPLEMENTOTextBox.Size = new System.Drawing.Size(163, 20);
@@ -317,17 +321,18 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.CadetBlue;
             this.label3.Location = new System.Drawing.Point(379, 60);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(86, 13);
+            this.label3.Size = new System.Drawing.Size(74, 13);
             this.label3.TabIndex = 70;
             this.label3.Text = "Complemento:";
             // 
             // txtnum
             // 
             this.txtnum.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vENDEDORBindingSource, "NUM", true));
+            this.txtnum.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtnum.Location = new System.Drawing.Point(467, 32);
             this.txtnum.Name = "txtnum";
             this.txtnum.Size = new System.Drawing.Size(78, 20);
@@ -406,6 +411,7 @@
             // 
             // txtcep
             // 
+            this.txtcep.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtcep.getText = "";
             this.txtcep.Image = global::Comercial.Properties.Resources.btn_correios;
             this.txtcep.Location = new System.Drawing.Point(10, 32);
@@ -418,6 +424,7 @@
             // txtEmail
             // 
             this.txtEmail.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vENDEDORBindingSource, "EMAIL", true));
+            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmail.Location = new System.Drawing.Point(322, 118);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(223, 20);
@@ -437,6 +444,7 @@
             // txtEndereco
             // 
             this.txtEndereco.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vENDEDORBindingSource, "ENDERECO", true));
+            this.txtEndereco.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEndereco.Location = new System.Drawing.Point(138, 32);
             this.txtEndereco.Name = "txtEndereco";
             this.txtEndereco.Size = new System.Drawing.Size(323, 20);
@@ -456,6 +464,7 @@
             // txtFax
             // 
             this.txtFax.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vENDEDORBindingSource, "FAX", true));
+            this.txtFax.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFax.Location = new System.Drawing.Point(109, 118);
             this.txtFax.Mask = "(99)9999-9999";
             this.txtFax.Name = "txtFax";
@@ -466,6 +475,7 @@
             // txtTelefone
             // 
             this.txtTelefone.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vENDEDORBindingSource, "TELEFONE", true));
+            this.txtTelefone.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTelefone.Location = new System.Drawing.Point(10, 118);
             this.txtTelefone.Mask = "(99)9999-9999";
             this.txtTelefone.Name = "txtTelefone";
@@ -476,6 +486,7 @@
             // txtMunicipio
             // 
             this.txtMunicipio.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vENDEDORBindingSource, "MUNICIPIO", true));
+            this.txtMunicipio.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtMunicipio.Location = new System.Drawing.Point(233, 76);
             this.txtMunicipio.Name = "txtMunicipio";
             this.txtMunicipio.Size = new System.Drawing.Size(143, 20);
@@ -484,6 +495,7 @@
             // txtBairro
             // 
             this.txtBairro.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vENDEDORBindingSource, "BAIRRO", true));
+            this.txtBairro.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBairro.Location = new System.Drawing.Point(9, 76);
             this.txtBairro.Name = "txtBairro";
             this.txtBairro.Size = new System.Drawing.Size(121, 20);
@@ -547,6 +559,7 @@
             // txtComissao
             // 
             this.txtComissao.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vENDEDORBindingSource, "COMISSAO", true));
+            this.txtComissao.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtComissao.Location = new System.Drawing.Point(269, 58);
             this.txtComissao.Name = "txtComissao";
             this.txtComissao.Size = new System.Drawing.Size(82, 20);
@@ -555,6 +568,7 @@
             // txtRg
             // 
             this.txtRg.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vENDEDORBindingSource, "RG", true));
+            this.txtRg.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtRg.Location = new System.Drawing.Point(9, 59);
             this.txtRg.Mask = "99,999,999-9";
             this.txtRg.Name = "txtRg";
@@ -565,6 +579,7 @@
             // txtNome
             // 
             this.txtNome.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vENDEDORBindingSource, "NOME", true));
+            this.txtNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNome.Location = new System.Drawing.Point(9, 19);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(361, 20);
