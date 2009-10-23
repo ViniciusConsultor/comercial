@@ -1316,6 +1316,8 @@ namespace Comercial
 
                     if (frmPed.chkEfetivado.Checked == true)
                     {
+                        Util.Interface.ChangeControlStatus(frm, false);
+
                         throw new Exception("Efetivado");
                       
                     }
