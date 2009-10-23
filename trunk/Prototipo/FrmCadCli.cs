@@ -67,13 +67,14 @@ namespace Comercial
         [DllImport("C:\\dllInscE32.dll")] 
         public static extern int ConsisteInscricaoEstadual(string ie, string uf);
 
-        public int salvar()
+        public int salvar(bool edit)
         {
             
 
             DataRowView x;
             x= (DataRowView) cLIENTEBindingSource.Current;
             Validacoes valida = new Validacoes();
+            string c = ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString;
             
             //Valida CNPJ
             if (!String.IsNullOrEmpty(txtCnpjCli.Text))
@@ -92,15 +93,24 @@ namespace Comercial
                 throw new Exception("campo vazio");
             }
             // Valida IE
-            string ie = txtIeCli.Text;
-            string uf = cmbUfCli.SelectedItem.ToString();
-            int returnIe = ConsisteInscricaoEstadual(ie, uf);        
-            if (returnIe==1)
+            if (!String.IsNullOrEmpty(txtIeCli.Text))
             {
-                MessageBox.Show("I.E. Inválida.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                   return 1;
+                
+            
+                string ie = txtIeCli.Text;
+                string uf = cmbUfCli.SelectedItem.ToString();
+                int returnIe = ConsisteInscricaoEstadual(ie, uf);        
+                if (returnIe==1)
+                {
+                    MessageBox.Show("I.E. Inválida.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                       return 1;
+                }
+                if (string.IsNullOrEmpty(txtRazaoSocialCli.Text))
+                {
+                    MessageBox.Show("Campo(s) obrigatório(s) não preenchido(s).", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return 1;
+                }
             }
-
 
             // Valida email
 
@@ -113,48 +123,70 @@ namespace Comercial
                    return 1;
                 }
             }
-            #region Validação de campos vazios ou nulos
-            
-            
-            if (string.IsNullOrEmpty(txtRazaoSocialCli.Text))
+
+      
+
+            #region Salva Usuario
+            if (edit == false)
             {
-                MessageBox.Show("Campo(s) obrigatório(s) não preenchido(s).", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return 1;
+
+                if (!string.IsNullOrEmpty(txtUsuarioCli.Text) && !string.IsNullOrEmpty(txtSenhaCli.Text))
+                {
+
+                    SqlConnection conn = new SqlConnection(c);
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand("select * from usuario where usuario = @usu", conn);
+                    SqlParameter param = new SqlParameter();
+                    param.ParameterName = "@usu";
+                    param.Value = txtUsuarioCli.Text;
+                    cmd.Parameters.Add(param);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    reader.Read();
+
+                    if (reader.HasRows)
+                    {
+                        MessageBox.Show("Usuário ja cadastrado.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return 1;
+                    }
+                    else
+                    {
+                        COMERCIALDataSetTableAdapters.USUARIOTableAdapter usu = new Comercial.COMERCIALDataSetTableAdapters.USUARIOTableAdapter();
+                        usu.Insert(txtUsuarioCli.Text, txtSenhaCli.Text, "N", "S");
+                    }
+
+                    reader.Dispose();
+                    reader.Close();
+                    conn.Close();
+                    conn.Dispose();
+
+                }
+
+
+                SqlConnection conn1 = new SqlConnection(c);
+                conn1.Open();
+
+                SqlCommand cmd1 = new SqlCommand("select * from usuario where usuario = @usu", conn1);
+                SqlParameter param1 = new SqlParameter();
+                param1.ParameterName = "@usu";
+                param1.Value = txtUsuarioCli.Text;
+                cmd1.Parameters.Add(param1);
+                SqlDataReader reader1 = cmd1.ExecuteReader();
+
+                reader1.Read();
+
+                x["CodUSUARIO"] = reader1["codusuario"];
+
+                reader1.Dispose();
+                reader1.Close();
+
+                conn1.Close();
+                conn1.Dispose();
+
             }
-            if (string.IsNullOrEmpty(txtNomeFantCli.Text))
-            {
-                MessageBox.Show("Campo(s) obrigatório(s) não preenchido(s).", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return 1;
-            }
-            if (string.IsNullOrEmpty(txtIeCli.Text))
-            {
-                MessageBox.Show("Campo(s) obrigatório(s) não preenchido(s).", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return 1;
-            }
 
-            #endregion
-
-            if (!string.IsNullOrEmpty(txtUsuarioCli.Text) && !string.IsNullOrEmpty(txtSenhaCli.Text))
-            {
-                COMERCIALDataSetTableAdapters.USUARIOTableAdapter usu = new Comercial.COMERCIALDataSetTableAdapters.USUARIOTableAdapter();
-                usu.Insert(txtUsuarioCli.Text, txtSenhaCli.Text, "N", "S");
-            }
-
-            string c = ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString;
-
-
-            SqlConnection conn = new SqlConnection(c);
-            conn.Open();
-
-            SqlCommand cmd = new SqlCommand("select * from usuario where usuario = @usu", conn);
-            SqlParameter param = new SqlParameter();
-            param.ParameterName = "@usu";
-            param.Value = txtUsuarioCli.Text;
-            cmd.Parameters.Add(param);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            reader.Read();
-
+       
+#endregion
              if (chckBxCred.Checked)
             {
                  
@@ -166,10 +198,8 @@ namespace Comercial
             }
             x["CEP"] = txtCepCli.getText;
 
-            x["CodUSUARIO"] = reader["codusuario"];
-
-            reader.Dispose();
-            reader.Close();
+            txtSenhaCli.Text = "";
+            txtUsuarioCli.Text = "";
              
             return 0;
         }
@@ -275,5 +305,36 @@ namespace Comercial
         {
 
         }
-    }
-}
+
+        private void txtCepCli_ButtonClick(object sender, EventArgs e)
+        {
+        }
+            
+        private void txtCepCli_ButtonClick_1(object sender, EventArgs e)
+        {
+             Validacoes v = new Validacoes();
+
+            string cep = v.procuraCEP(txtCepCli.getText);
+
+            if (cep != "")
+            {
+                string[] x = cep.Split(';');
+
+                txtMunicipioCli.Text = x[0];
+                cmbUfCli.Text = x[1];
+                txtBairroCli.Text = x[2];
+                txtEndCli.Text = x[3];
+
+                txtNumCli.Focus();
+            }
+            else
+            {
+                MessageBox.Show("CEP não encontrado.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtEndCli.Focus();
+            }
+        }
+
+        }
+      }
+  
+

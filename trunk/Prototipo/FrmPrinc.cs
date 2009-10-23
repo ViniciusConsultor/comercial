@@ -74,10 +74,10 @@ namespace Comercial
                 }
 
                 #region Form's Claudio
-                if (frm is FrmCadCli && edit == false)
+                if (frm is FrmCadCli)
                 {
                     FrmCadCli frmCli = (FrmCadCli)frm;
-                    retorno = frmCli.salvar();
+                    retorno = frmCli.salvar(edit);
                 }
                 #endregion
 
