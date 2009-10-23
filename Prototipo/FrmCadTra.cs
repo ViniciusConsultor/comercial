@@ -179,7 +179,7 @@ namespace Comercial
         {
             String CnpjTrans = (String)txtCnpjTrans.Text.Replace(".", "").Replace("/", "").Replace("-", "");
 
-            //Valida CPF
+            //Valida CNPJ
 
             DataRowView x;
             x = (DataRowView)tRANSPORTADORABindingSource.Current;
@@ -187,6 +187,30 @@ namespace Comercial
             int cnpj = valida.ValidaCNPJ(CnpjTrans);
 
             return cnpj;
+        }
+
+        private void txtCepTrans_ButtonClick(object sender, EventArgs e)
+        {
+            Validacoes v = new Validacoes();
+
+            string cep = v.procuraCEP(txtCepTrans.getText);
+
+            if (cep != "")
+            {
+                string[] x = cep.Split(';');
+
+                txtMunicipiotrans.Text = x[0];
+                uFComboBox.Text = x[1];
+                txtBairrotrans.Text = x[2];
+                txtEndtrans.Text = x[3];
+
+                NumTrans.Focus();
+            }
+            else
+            {
+                MessageBox.Show("CEP não encontrado.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtEndtrans.Focus();
+            }
         }
     }
 

@@ -40,8 +40,11 @@
             this.tRANSPORTADORABindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
             this.gpbContatotrans = new System.Windows.Forms.GroupBox();
+            this.lblComplemento = new System.Windows.Forms.Label();
+            this.cOMPLEMENTOTextBox = new System.Windows.Forms.TextBox();
+            this.lblNumero = new System.Windows.Forms.Label();
+            this.NumTrans = new System.Windows.Forms.TextBox();
             this.uFComboBox = new System.Windows.Forms.ComboBox();
-            this.cEPTextBox = new System.Windows.Forms.TextBox();
             this.lblCeptrans = new System.Windows.Forms.Label();
             this.txtTeltrans = new System.Windows.Forms.MaskedTextBox();
             this.txtEmailtrans = new System.Windows.Forms.TextBox();
@@ -65,10 +68,7 @@
             this.tableAdapterManager = new Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager();
             this.tRANSPORTADORAVIABindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tRANSPORTADORAVIATableAdapter = new Comercial.COMERCIALDataSetTableAdapters.TRANSPORTADORAVIATableAdapter();
-            this.nUMTextBox = new System.Windows.Forms.TextBox();
-            this.lblNumero = new System.Windows.Forms.Label();
-            this.cOMPLEMENTOTextBox = new System.Windows.Forms.TextBox();
-            this.lblComplemento = new System.Windows.Forms.Label();
+            this.txtCepTrans = new Comercial.TextButton();
             this.TbCntCadTra.SuspendLayout();
             this.TbPgCadTra.SuspendLayout();
             this.grpBxViaTrans.SuspendLayout();
@@ -186,12 +186,12 @@
             // 
             // gpbContatotrans
             // 
+            this.gpbContatotrans.Controls.Add(this.txtCepTrans);
             this.gpbContatotrans.Controls.Add(this.lblComplemento);
             this.gpbContatotrans.Controls.Add(this.cOMPLEMENTOTextBox);
             this.gpbContatotrans.Controls.Add(this.lblNumero);
-            this.gpbContatotrans.Controls.Add(this.nUMTextBox);
+            this.gpbContatotrans.Controls.Add(this.NumTrans);
             this.gpbContatotrans.Controls.Add(this.uFComboBox);
-            this.gpbContatotrans.Controls.Add(this.cEPTextBox);
             this.gpbContatotrans.Controls.Add(this.lblCeptrans);
             this.gpbContatotrans.Controls.Add(this.txtTeltrans);
             this.gpbContatotrans.Controls.Add(this.txtEmailtrans);
@@ -212,6 +212,45 @@
             this.gpbContatotrans.TabIndex = 73;
             this.gpbContatotrans.TabStop = false;
             this.gpbContatotrans.Text = "Contato";
+            // 
+            // lblComplemento
+            // 
+            this.lblComplemento.AutoSize = true;
+            this.lblComplemento.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblComplemento.ForeColor = System.Drawing.Color.CadetBlue;
+            this.lblComplemento.Location = new System.Drawing.Point(6, 65);
+            this.lblComplemento.Name = "lblComplemento";
+            this.lblComplemento.Size = new System.Drawing.Size(82, 13);
+            this.lblComplemento.TabIndex = 50;
+            this.lblComplemento.Text = "Complemento";
+            // 
+            // cOMPLEMENTOTextBox
+            // 
+            this.cOMPLEMENTOTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tRANSPORTADORABindingSource, "COMPLEMENTO", true));
+            this.cOMPLEMENTOTextBox.Location = new System.Drawing.Point(6, 81);
+            this.cOMPLEMENTOTextBox.Name = "cOMPLEMENTOTextBox";
+            this.cOMPLEMENTOTextBox.Size = new System.Drawing.Size(115, 20);
+            this.cOMPLEMENTOTextBox.TabIndex = 49;
+            // 
+            // lblNumero
+            // 
+            this.lblNumero.AutoSize = true;
+            this.lblNumero.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNumero.ForeColor = System.Drawing.Color.CadetBlue;
+            this.lblNumero.Location = new System.Drawing.Point(477, 26);
+            this.lblNumero.Name = "lblNumero";
+            this.lblNumero.Size = new System.Drawing.Size(50, 13);
+            this.lblNumero.TabIndex = 48;
+            this.lblNumero.Text = "Numero";
+            // 
+            // NumTrans
+            // 
+            this.NumTrans.AcceptsReturn = true;
+            this.NumTrans.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tRANSPORTADORABindingSource, "NUM", true));
+            this.NumTrans.Location = new System.Drawing.Point(480, 42);
+            this.NumTrans.Name = "NumTrans";
+            this.NumTrans.Size = new System.Drawing.Size(56, 20);
+            this.NumTrans.TabIndex = 47;
             // 
             // uFComboBox
             // 
@@ -251,14 +290,6 @@
             this.uFComboBox.Name = "uFComboBox";
             this.uFComboBox.Size = new System.Drawing.Size(121, 21);
             this.uFComboBox.TabIndex = 46;
-            // 
-            // cEPTextBox
-            // 
-            this.cEPTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tRANSPORTADORABindingSource, "CEP", true));
-            this.cEPTextBox.Location = new System.Drawing.Point(6, 42);
-            this.cEPTextBox.Name = "cEPTextBox";
-            this.cEPTextBox.Size = new System.Drawing.Size(114, 20);
-            this.cEPTextBox.TabIndex = 45;
             // 
             // lblCeptrans
             // 
@@ -495,43 +526,16 @@
             // 
             this.tRANSPORTADORAVIATableAdapter.ClearBeforeFill = true;
             // 
-            // nUMTextBox
+            // txtCepTrans
             // 
-            this.nUMTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tRANSPORTADORABindingSource, "NUM", true));
-            this.nUMTextBox.Location = new System.Drawing.Point(480, 42);
-            this.nUMTextBox.Name = "nUMTextBox";
-            this.nUMTextBox.Size = new System.Drawing.Size(56, 20);
-            this.nUMTextBox.TabIndex = 47;
-            // 
-            // lblNumero
-            // 
-            this.lblNumero.AutoSize = true;
-            this.lblNumero.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNumero.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblNumero.Location = new System.Drawing.Point(477, 26);
-            this.lblNumero.Name = "lblNumero";
-            this.lblNumero.Size = new System.Drawing.Size(50, 13);
-            this.lblNumero.TabIndex = 48;
-            this.lblNumero.Text = "Numero";
-            // 
-            // cOMPLEMENTOTextBox
-            // 
-            this.cOMPLEMENTOTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tRANSPORTADORABindingSource, "COMPLEMENTO", true));
-            this.cOMPLEMENTOTextBox.Location = new System.Drawing.Point(6, 81);
-            this.cOMPLEMENTOTextBox.Name = "cOMPLEMENTOTextBox";
-            this.cOMPLEMENTOTextBox.Size = new System.Drawing.Size(115, 20);
-            this.cOMPLEMENTOTextBox.TabIndex = 49;
-            // 
-            // lblComplemento
-            // 
-            this.lblComplemento.AutoSize = true;
-            this.lblComplemento.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblComplemento.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblComplemento.Location = new System.Drawing.Point(6, 65);
-            this.lblComplemento.Name = "lblComplemento";
-            this.lblComplemento.Size = new System.Drawing.Size(82, 13);
-            this.lblComplemento.TabIndex = 50;
-            this.lblComplemento.Text = "Complemento";
+            this.txtCepTrans.getText = "";
+            this.txtCepTrans.Image = global::Comercial.Properties.Resources.btn_correios;
+            this.txtCepTrans.Location = new System.Drawing.Point(3, 42);
+            this.txtCepTrans.Name = "txtCepTrans";
+            this.txtCepTrans.ShowButton = false;
+            this.txtCepTrans.Size = new System.Drawing.Size(117, 25);
+            this.txtCepTrans.TabIndex = 6;
+            this.txtCepTrans.ButtonClick += new System.EventHandler(this.txtCepTrans_ButtonClick);
             // 
             // FrmCadTra
             // 
@@ -593,7 +597,6 @@
         private System.Windows.Forms.BindingSource tRANSPORTADORABindingSource;
         private Comercial.COMERCIALDataSetTableAdapters.TRANSPORTADORATableAdapter tRANSPORTADORATableAdapter;
         private Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager tableAdapterManager;
-        private System.Windows.Forms.TextBox cEPTextBox;
         private System.Windows.Forms.CheckBox chkTerrestre;
         private System.Windows.Forms.CheckBox chkMaritimo;
         private System.Windows.Forms.CheckBox chkFerroviario;
@@ -604,7 +607,8 @@
         private System.Windows.Forms.Label lblComplemento;
         private System.Windows.Forms.TextBox cOMPLEMENTOTextBox;
         private System.Windows.Forms.Label lblNumero;
-        private System.Windows.Forms.TextBox nUMTextBox;
+        private System.Windows.Forms.TextBox NumTrans;
+        private TextButton txtCepTrans;
 
     }
 }
