@@ -97,6 +97,11 @@ namespace Comercial
                 if (frm is FrmCadPed && edit == false)
                 {
                     FrmCadPed frmPed = (FrmCadPed)frm;
+
+                    if (frmPed.dtpEntrega.Value < frmPed.dtpEmissao.Value)
+                    {
+                        throw new Exception("DataInvalida");
+                    }
                     retorno = frmPed.SalvarPedidoCab();
 
                 }
@@ -105,7 +110,7 @@ namespace Comercial
                 {
                     FrmCadPed frmPed = (FrmCadPed)frm;
 
-                    
+
                     retorno = frmPed.AtualizarPedido();
 
                 }
@@ -1314,16 +1319,16 @@ namespace Comercial
                 if (frm is FrmCadPed)
                 {
                     FrmCadPed frmPed = (FrmCadPed)frm;
-                    
+
 
                     if (frmPed.chkEfetivado.Checked == true)
                     {
                         Util.Interface.ChangeControlStatus(frm, false);
                         novo();
                         throw new Exception("Efetivado");
-                        
+
                     }
-                    
+
 
                     //                    frmPed.ValidaControles();
 
@@ -1355,6 +1360,10 @@ namespace Comercial
             {
                 FrmCadPed Ped = (FrmCadPed)frm;
                 Ped.populargrid();
+                Ped.Limparitens();
+                Ped.txtNomeCliente.Text = Ped.ListarNomeCliente(Ped.txtcodCli.getText);
+                Ped.txtNomeTransportadora.Text = Ped.ListarNomeTransportadora(Ped.txtCodTransportadora.getText);
+                Ped.txtNomeVendedor.Text = Ped.ListarNomeVendedor(Ped.txtCodVendedor.getText);
 
             }
         }
