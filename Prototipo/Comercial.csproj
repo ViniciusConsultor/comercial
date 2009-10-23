@@ -83,6 +83,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>COMERCIALDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="RptConEstoque.cs">
+      <DependentUpon>RptConEstoque.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="FrmConEstProd.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -253,6 +259,10 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="RptConEstoque.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RptConEstoque.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmConEstProd.resx">
       <DependentUpon>FrmConEstProd.cs</DependentUpon>
       <SubType>Designer</SubType>

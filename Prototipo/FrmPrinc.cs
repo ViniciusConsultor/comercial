@@ -645,6 +645,21 @@ namespace Comercial
 
                     filho.Show();
                 }
+
+                if (form is FrmConEstProd)
+                {
+                    FrmConEstProd frmConEst = (FrmConEstProd)form;
+
+                    if (frmConEst.dtGrdVwConProd.RowCount == 0)
+                    {
+                        throw new Exception("Grid Vazio");
+                    }
+
+                    FrmRelGeral filho = new FrmRelGeral("FrmConEstProd", form, this);
+
+
+                    filho.Show();
+                }
                 if (form is FrmConProd)
                 {
                     FrmRelGeral filho = new FrmRelGeral("FrmConProd", form, this);
