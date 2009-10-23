@@ -44,7 +44,7 @@ namespace Comercial
             strip2.Visible = false;
         }
 
-        public void pesquisar()
+        public string pesquisar()
         {
             string sql = "SELECT CODPRODUTO,PRD.DESCRICAO,PRD.DATACADASTRO,PRECOCUSTO,PRD.CODGRUPOPRODUTO,GRP.DESCRICAO AS GRPDESC,PRD.ESTOQUEATUAL " +
                 "FROM PRODUTO PRD INNER JOIN GRUPOPRODUTO GRP ON PRD.CODGRUPOPRODUTO = GRP.CODGRUPOPRODUTO ";
@@ -90,8 +90,8 @@ namespace Comercial
             DataTable table = new DataTable();
             table.Load(reader);
 
-
             dtGrdVwConProd.DataSource = table;
+            return sql;
         }
 
         private void txtBtnCodGrp_ButtonClick(object sender, EventArgs e)

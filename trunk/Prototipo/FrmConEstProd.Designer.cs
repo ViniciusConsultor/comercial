@@ -84,7 +84,7 @@
             this.tbPgConProd.Padding = new System.Windows.Forms.Padding(3);
             this.tbPgConProd.Size = new System.Drawing.Size(729, 439);
             this.tbPgConProd.TabIndex = 0;
-            this.tbPgConProd.Text = "Consulta - Grupos e produtos";
+            this.tbPgConProd.Text = "Consulta - Estoque";
             this.tbPgConProd.UseVisualStyleBackColor = true;
             // 
             // dtGrdVwConProd
@@ -356,7 +356,7 @@
             this.MinimizeBox = false;
             this.Name = "FrmConEstProd";
             this.ShowIcon = false;
-            this.Text = "Consulta de Produto";
+            this.Text = "Consulta de Estoque";
             this.Load += new System.EventHandler(this.FrmConEstProd_Load_1);
             this.Leave += new System.EventHandler(this.FrmConProd_Leave);
             this.tbCntrlConProd.ResumeLayout(false);
@@ -377,7 +377,6 @@
         private System.Windows.Forms.TabPage tbPgConProd;
         private System.Windows.Forms.GroupBox grpBxFiltro;
         private System.Windows.Forms.GroupBox grpBxProd;
-        private System.Windows.Forms.DataGridView dtGrdVwConProd;
         private System.Windows.Forms.Label LblDesc;
         private System.Windows.Forms.DateTimePicker dtTPckrDtCadastro;
         private System.Windows.Forms.Label label3;
@@ -400,5 +399,6 @@
         private System.Windows.Forms.Label lblGrpProd;
         public System.Windows.Forms.TextBox txtProdDesc;
         public TextButton txtBtnCodProd;
+        public System.Windows.Forms.DataGridView dtGrdVwConProd;
     }
 }

@@ -104,6 +104,45 @@ namespace Comercial
                 }
 
                 #endregion
+                
+                #region relatorio Estoque
+
+                if (_princ == "FrmConEstProd")
+                {
+                    //Instancio o FormConsulta
+                    FrmConEstProd x = (FrmConEstProd)_pdv;
+
+                    RptConVen objRptConPDV = new RptConVen();
+
+                    //Instancio o Relatorio
+                    RptConEstoque objRptConEst = new RptConEstoque();
+
+                    //Instancio o Dataset
+                    COMERCIALDataSet oDataset = new COMERCIALDataSet();
+
+                    Microsoft.Practices.EnterpriseLibrary.Data.Database db = DatabaseFactory.CreateDatabase();
+                    //Crio a Conexão
+                    SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString);
+
+                    //Abro a conexão
+                    sqlcon.Open();
+
+                    //Recebo a String SQL feita na tela de consulta
+                    string StringConnection = x.pesquisar();
+
+                    SqlDataAdapter dtAdapter = new SqlDataAdapter(StringConnection, sqlcon);
+
+                    //Localiso o datateble criado no dataset
+                    dtAdapter.Fill(oDataset, "RelEstoque");
+
+                    objRptConEst.SetDataSource(oDataset);
+
+                    //atribiu o resultado ao CristalReportView            
+                    crstlRprtVwrRel.DisplayGroupTree = false;
+                    crstlRprtVwrRel.ReportSource = objRptConEst;
+                }
+
+                #endregion
 
                 if (_princ == "FrmEmiNF")
                 {
