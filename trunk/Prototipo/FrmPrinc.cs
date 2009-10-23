@@ -104,6 +104,8 @@ namespace Comercial
                 if (frm is FrmCadPed && edit == true)
                 {
                     FrmCadPed frmPed = (FrmCadPed)frm;
+
+                    
                     retorno = frmPed.AtualizarPedido();
 
                 }
@@ -1317,11 +1319,11 @@ namespace Comercial
                     if (frmPed.chkEfetivado.Checked == true)
                     {
                         Util.Interface.ChangeControlStatus(frm, false);
-
+                        novo();
                         throw new Exception("Efetivado");
-                      
+                        
                     }
-
+                    
 
                     //                    frmPed.ValidaControles();
 
