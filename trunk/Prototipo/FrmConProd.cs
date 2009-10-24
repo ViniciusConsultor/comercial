@@ -15,25 +15,13 @@ namespace Comercial
 {
     public partial class FrmConProd : Form
     {
-         private FrmPrinc _princ = null;
+        private FrmPrinc _princ = null;
 
         public FrmConProd(FrmPrinc parent)
         {
             InitializeComponent();
             this.MdiParent = parent;
             _princ = parent;
-        }
-
-        private void txtFabricante_ButtonClick(object sender, EventArgs e)
-        {
-            FrmVisGeral x = new FrmVisGeral(this, txtGrupo);
-            x.ShowDialog();
-        }
-
-        private void txtCodProd_ButtonClick(object sender, EventArgs e)
-        {
-            //FrmVisGeral x = new FrmVisGeral(this, txtCodProd);
-            //x.ShowDialog();
         }
 
         private void FrmConProd_Leave(object sender, EventArgs e)
@@ -51,13 +39,13 @@ namespace Comercial
 
         public void pesquisar()
         {
-            string sql = "select g.DESCRICAO GRUPO, p.DESCRICAO PRODUTO, p.DATACADASTRO, p.PRECOCUSTO, "+
-                "p.PRECOVENDA, p.ESTOQUEATUAL, p.ESTOQUEMIN, p.IPI, g.DESCONTO from PRODUTO p inner join "+
+            string sql = "select g.DESCRICAO GRUPO, p.DESCRICAO PRODUTO, p.DATACADASTRO, p.PRECOCUSTO, " +
+                "p.PRECOVENDA, p.ESTOQUEATUAL, p.ESTOQUEMIN, p.IPI, g.DESCONTO from PRODUTO p inner join " +
                 "GRUPOPRODUTO g on (p.CODGRUPOPRODUTO = g.CODGRUPOPRODUTO) ";
 
             if (!string.IsNullOrEmpty(txtDesconto.Text))
             {
-                sql += "and g.desconto " + cmBxOpDesconto.Text + " " + txtDesconto.Text; 
+                sql += "and g.desconto " + cmBxOpDesconto.Text + " " + txtDesconto.Text;
             }
 
             if (!string.IsNullOrEmpty(txtGrupo.Text))
@@ -79,7 +67,7 @@ namespace Comercial
 
             if (!string.IsNullOrEmpty(txtEstoque.Text))
             {
-                sql += "and p.estoqueatual " + cmBxOpEstoque.Text + " " + txtEstoque.Text;                 
+                sql += "and p.estoqueatual " + cmBxOpEstoque.Text + " " + txtEstoque.Text;
             }
 
             string c = ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString;
@@ -95,14 +83,14 @@ namespace Comercial
 
             dtGrdVwConProd.DataSource = table;
         }
-              
+
         private void txtBtnCodGrp_ButtonClick(object sender, EventArgs e)
         {
             FrmVisGeral x = new FrmVisGeral(this, (Control)sender);
             x.dtGrdVwVis.DataSource = ListarGrupoProduto();
             x.Text = "Pesquisa Cadastro de Grupo de Produtos";
 
-            x.ShowDialog();            
+            x.ShowDialog();
         }
 
         public DataTable ListarGrupoProduto()
@@ -121,7 +109,7 @@ namespace Comercial
 
             return dtsDados.Tables[0];
 
-        }      
+        }
 
         public DataTable ListarProduto()
         {
@@ -149,10 +137,5 @@ namespace Comercial
 
             x.ShowDialog();
         }
-
-        private void txtBtnCodGrp_Load(object sender, EventArgs e)
-        {
-
-        }        
     }
 }

@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Configuration;
 using System.Data;
 using System.Data.Common;
+using System.Data.SqlClient;
 using System.Text;
 using System.Windows.Forms;
 using Microsoft.Practices.EnterpriseLibrary.Data;
@@ -24,12 +26,7 @@ namespace Comercial
 
             _princ.novo();
         }
-        
-        private void mskedTxtBxPrecoUnitario_Leave(object sender, EventArgs e)
-        {
 
-        }
-        
         private void FrmCadProd_Load(object sender, EventArgs e)
         {
             // TODO: This line of code loads data into the 'cOMERCIALDataSet.UNIDADEMEDIDA' table. You can move, or remove it, as needed.
@@ -45,6 +42,10 @@ namespace Comercial
         public int salvar()
         {
             String g = dtmPckrCadastro.Text;
+
+            DataRowView objProduto = (DataRowView)pRODUTOBindingSource.Current;
+            objProduto["CODGRUPOPRODUTO"] = txtBtnCodGrp.getText;
+
             return 0;
         }
 
@@ -52,6 +53,8 @@ namespace Comercial
         {
             dtmPckrCadastro.Value = DateTime.Now;
             dtmPckrCadastro.Enabled = false;
+            txtGrupo.Enabled = false;
+            txtGrupo.Text = "";
         }
 
         #region ListarGrpProdutoDataGridView Pesquisa
@@ -71,7 +74,7 @@ namespace Comercial
 
             return dtsDados.Tables[0];
 
-        }     
+        }
         #endregion
 
         private void txtCodProd_ButtonClick(object sender, EventArgs e)
@@ -81,6 +84,35 @@ namespace Comercial
             x.Text = "Consulta Cadastro de Grupo Produto";
 
             x.ShowDialog();
+        }
+
+        private void pRODUTOBindingSource_PositionChanged(object sender, EventArgs e)
+        {
+            if (pRODUTOBindingSource.Current != null)
+            {
+                DataRowView v = (DataRowView)pRODUTOBindingSource.Current;
+
+                txtBtnCodGrp.getText = v["CODGRUPOPRODUTO"].ToString();
+                string c = ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString;
+
+                SqlConnection conn = new SqlConnection(c);
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand("select * from grupoproduto where codgrupoproduto = @gr", conn);
+                SqlParameter param = new SqlParameter();
+                param.ParameterName = "@gr";
+                param.Value = txtBtnCodGrp.getText;
+                cmd.Parameters.Add(param);
+                SqlDataReader reader = cmd.ExecuteReader();
+                reader.Read();
+
+                if (reader.HasRows)
+                {
+                    txtGrupo.Text = reader["DESCRICAO"].ToString();
+                }
+                conn.Close();
+                conn.Dispose();
+            }
         }
     }
 }

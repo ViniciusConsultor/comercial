@@ -31,15 +31,6 @@
             this.tbCntrlConProd = new System.Windows.Forms.TabControl();
             this.tbPgConProd = new System.Windows.Forms.TabPage();
             this.dtGrdVwConProd = new System.Windows.Forms.DataGridView();
-            this.ClmnDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DATACADASTRO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PRECOCUSTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PRECOVENDA = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DESCONTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ESTOQUEATUAL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ESTOQUEMIN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IPI = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grpBxFiltro = new System.Windows.Forms.GroupBox();
             this.grpBxProd = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -57,6 +48,15 @@
             this.cmBxOpDesconto = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.lblGrupo = new System.Windows.Forms.Label();
+            this.Produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClmnDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DATACADASTRO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PRECOCUSTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PRECOVENDA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DESCONTO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ESTOQUEATUAL = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ESTOQUEMIN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IPI = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtBtnCodProd = new Comercial.TextButton();
             this.txtBtnCodGrp = new Comercial.TextButton();
             this.tbCntrlConProd.SuspendLayout();
@@ -91,10 +91,12 @@
             // 
             // dtGrdVwConProd
             // 
+            this.dtGrdVwConProd.AllowUserToAddRows = false;
+            this.dtGrdVwConProd.AllowUserToDeleteRows = false;
             this.dtGrdVwConProd.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGrdVwConProd.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ClmnDesc,
             this.Produto,
+            this.ClmnDesc,
             this.DATACADASTRO,
             this.PRECOCUSTO,
             this.PRECOVENDA,
@@ -104,63 +106,9 @@
             this.IPI});
             this.dtGrdVwConProd.Location = new System.Drawing.Point(6, 181);
             this.dtGrdVwConProd.Name = "dtGrdVwConProd";
+            this.dtGrdVwConProd.ReadOnly = true;
             this.dtGrdVwConProd.Size = new System.Drawing.Size(717, 252);
             this.dtGrdVwConProd.TabIndex = 2;
-            // 
-            // ClmnDesc
-            // 
-            this.ClmnDesc.DataPropertyName = "GRUPO";
-            this.ClmnDesc.HeaderText = "Grupo";
-            this.ClmnDesc.Name = "ClmnDesc";
-            this.ClmnDesc.Width = 400;
-            // 
-            // Produto
-            // 
-            this.Produto.DataPropertyName = "PRODUTO";
-            this.Produto.HeaderText = "Produto";
-            this.Produto.Name = "Produto";
-            // 
-            // DATACADASTRO
-            // 
-            this.DATACADASTRO.DataPropertyName = "DATACADASTRO";
-            this.DATACADASTRO.HeaderText = "Dt Cadastro";
-            this.DATACADASTRO.Name = "DATACADASTRO";
-            // 
-            // PRECOCUSTO
-            // 
-            this.PRECOCUSTO.DataPropertyName = "PRECOCUSTO";
-            this.PRECOCUSTO.HeaderText = "Preço Custo";
-            this.PRECOCUSTO.Name = "PRECOCUSTO";
-            // 
-            // PRECOVENDA
-            // 
-            this.PRECOVENDA.DataPropertyName = "PRECOVENDA";
-            this.PRECOVENDA.HeaderText = "Preço Venda";
-            this.PRECOVENDA.Name = "PRECOVENDA";
-            // 
-            // DESCONTO
-            // 
-            this.DESCONTO.DataPropertyName = "DESCONTO";
-            this.DESCONTO.HeaderText = "% Desconto";
-            this.DESCONTO.Name = "DESCONTO";
-            // 
-            // ESTOQUEATUAL
-            // 
-            this.ESTOQUEATUAL.DataPropertyName = "ESTOQUEATUAL";
-            this.ESTOQUEATUAL.HeaderText = "Estoque Atual";
-            this.ESTOQUEATUAL.Name = "ESTOQUEATUAL";
-            // 
-            // ESTOQUEMIN
-            // 
-            this.ESTOQUEMIN.DataPropertyName = "ESTOQUEMIN";
-            this.ESTOQUEMIN.HeaderText = "Estoque Mínimo";
-            this.ESTOQUEMIN.Name = "ESTOQUEMIN";
-            // 
-            // IPI
-            // 
-            this.IPI.DataPropertyName = "IPI";
-            this.IPI.HeaderText = "IPI";
-            this.IPI.Name = "IPI";
             // 
             // grpBxFiltro
             // 
@@ -210,14 +158,14 @@
             this.txtEstoque.Location = new System.Drawing.Point(263, 91);
             this.txtEstoque.Name = "txtEstoque";
             this.txtEstoque.Size = new System.Drawing.Size(60, 20);
-            this.txtEstoque.TabIndex = 26;
+            this.txtEstoque.TabIndex = 9;
             // 
             // txtProdDesc
             // 
             this.txtProdDesc.Location = new System.Drawing.Point(111, 38);
             this.txtProdDesc.Name = "txtProdDesc";
             this.txtProdDesc.Size = new System.Drawing.Size(212, 20);
-            this.txtProdDesc.TabIndex = 26;
+            this.txtProdDesc.TabIndex = 6;
             // 
             // cmBxOpEstoque
             // 
@@ -233,7 +181,7 @@
             this.cmBxOpEstoque.Location = new System.Drawing.Point(202, 91);
             this.cmBxOpEstoque.Name = "cmBxOpEstoque";
             this.cmBxOpEstoque.Size = new System.Drawing.Size(51, 21);
-            this.cmBxOpEstoque.TabIndex = 20;
+            this.cmBxOpEstoque.TabIndex = 8;
             // 
             // label1
             // 
@@ -254,7 +202,7 @@
             this.dtTPckrDtCadastro.Name = "dtTPckrDtCadastro";
             this.dtTPckrDtCadastro.ShowCheckBox = true;
             this.dtTPckrDtCadastro.Size = new System.Drawing.Size(119, 20);
-            this.dtTPckrDtCadastro.TabIndex = 17;
+            this.dtTPckrDtCadastro.TabIndex = 7;
             this.dtTPckrDtCadastro.Value = new System.DateTime(1900, 1, 1, 0, 0, 0, 0);
             // 
             // label3
@@ -312,14 +260,14 @@
             this.txtGrupo.Location = new System.Drawing.Point(118, 38);
             this.txtGrupo.Name = "txtGrupo";
             this.txtGrupo.Size = new System.Drawing.Size(198, 20);
-            this.txtGrupo.TabIndex = 25;
+            this.txtGrupo.TabIndex = 2;
             // 
             // txtDesconto
             // 
             this.txtDesconto.Location = new System.Drawing.Point(79, 92);
             this.txtDesconto.Name = "txtDesconto";
             this.txtDesconto.Size = new System.Drawing.Size(60, 20);
-            this.txtDesconto.TabIndex = 21;
+            this.txtDesconto.TabIndex = 4;
             // 
             // cmBxOpDesconto
             // 
@@ -335,7 +283,7 @@
             this.cmBxOpDesconto.Location = new System.Drawing.Point(22, 91);
             this.cmBxOpDesconto.Name = "cmBxOpDesconto";
             this.cmBxOpDesconto.Size = new System.Drawing.Size(51, 21);
-            this.cmBxOpDesconto.TabIndex = 22;
+            this.cmBxOpDesconto.TabIndex = 3;
             // 
             // label4
             // 
@@ -359,6 +307,70 @@
             this.lblGrupo.TabIndex = 4;
             this.lblGrupo.Text = "Grupo:";
             // 
+            // Produto
+            // 
+            this.Produto.DataPropertyName = "PRODUTO";
+            this.Produto.HeaderText = "Produto";
+            this.Produto.Name = "Produto";
+            this.Produto.ReadOnly = true;
+            // 
+            // ClmnDesc
+            // 
+            this.ClmnDesc.DataPropertyName = "GRUPO";
+            this.ClmnDesc.HeaderText = "Grupo";
+            this.ClmnDesc.Name = "ClmnDesc";
+            this.ClmnDesc.ReadOnly = true;
+            this.ClmnDesc.Width = 400;
+            // 
+            // DATACADASTRO
+            // 
+            this.DATACADASTRO.DataPropertyName = "DATACADASTRO";
+            this.DATACADASTRO.HeaderText = "Dt Cadastro";
+            this.DATACADASTRO.Name = "DATACADASTRO";
+            this.DATACADASTRO.ReadOnly = true;
+            // 
+            // PRECOCUSTO
+            // 
+            this.PRECOCUSTO.DataPropertyName = "PRECOCUSTO";
+            this.PRECOCUSTO.HeaderText = "Preço Custo";
+            this.PRECOCUSTO.Name = "PRECOCUSTO";
+            this.PRECOCUSTO.ReadOnly = true;
+            // 
+            // PRECOVENDA
+            // 
+            this.PRECOVENDA.DataPropertyName = "PRECOVENDA";
+            this.PRECOVENDA.HeaderText = "Preço Venda";
+            this.PRECOVENDA.Name = "PRECOVENDA";
+            this.PRECOVENDA.ReadOnly = true;
+            // 
+            // DESCONTO
+            // 
+            this.DESCONTO.DataPropertyName = "DESCONTO";
+            this.DESCONTO.HeaderText = "% Desconto";
+            this.DESCONTO.Name = "DESCONTO";
+            this.DESCONTO.ReadOnly = true;
+            // 
+            // ESTOQUEATUAL
+            // 
+            this.ESTOQUEATUAL.DataPropertyName = "ESTOQUEATUAL";
+            this.ESTOQUEATUAL.HeaderText = "Estoque Atual";
+            this.ESTOQUEATUAL.Name = "ESTOQUEATUAL";
+            this.ESTOQUEATUAL.ReadOnly = true;
+            // 
+            // ESTOQUEMIN
+            // 
+            this.ESTOQUEMIN.DataPropertyName = "ESTOQUEMIN";
+            this.ESTOQUEMIN.HeaderText = "Estoque Mínimo";
+            this.ESTOQUEMIN.Name = "ESTOQUEMIN";
+            this.ESTOQUEMIN.ReadOnly = true;
+            // 
+            // IPI
+            // 
+            this.IPI.DataPropertyName = "IPI";
+            this.IPI.HeaderText = "IPI";
+            this.IPI.Name = "IPI";
+            this.IPI.ReadOnly = true;
+            // 
             // txtBtnCodProd
             // 
             this.txtBtnCodProd.getText = "";
@@ -367,7 +379,7 @@
             this.txtBtnCodProd.Name = "txtBtnCodProd";
             this.txtBtnCodProd.ShowButton = false;
             this.txtBtnCodProd.Size = new System.Drawing.Size(94, 25);
-            this.txtBtnCodProd.TabIndex = 28;
+            this.txtBtnCodProd.TabIndex = 5;
             this.txtBtnCodProd.ButtonClick += new System.EventHandler(this.txtNumPed_ButtonClick);
             // 
             // txtBtnCodGrp
@@ -378,8 +390,7 @@
             this.txtBtnCodGrp.Name = "txtBtnCodGrp";
             this.txtBtnCodGrp.ShowButton = false;
             this.txtBtnCodGrp.Size = new System.Drawing.Size(92, 25);
-            this.txtBtnCodGrp.TabIndex = 29;
-            this.txtBtnCodGrp.Load += new System.EventHandler(this.txtBtnCodGrp_Load);
+            this.txtBtnCodGrp.TabIndex = 1;
             this.txtBtnCodGrp.ButtonClick += new System.EventHandler(this.txtBtnCodGrp_ButtonClick);
             // 
             // FrmConProd
@@ -425,15 +436,6 @@
         private System.Windows.Forms.ComboBox cmBxOpDesconto;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtDesconto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ClmnDesc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Produto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DATACADASTRO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PRECOCUSTO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PRECOVENDA;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DESCONTO;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ESTOQUEATUAL;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ESTOQUEMIN;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IPI;
         private System.Windows.Forms.TextBox txtEstoque;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label5;
@@ -441,5 +443,14 @@
         public System.Windows.Forms.TextBox txtProdDesc;
         public System.Windows.Forms.TextBox txtGrupo;
         public TextButton txtBtnCodGrp;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Produto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClmnDesc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DATACADASTRO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PRECOCUSTO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PRECOVENDA;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DESCONTO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ESTOQUEATUAL;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ESTOQUEMIN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IPI;
     }
 }

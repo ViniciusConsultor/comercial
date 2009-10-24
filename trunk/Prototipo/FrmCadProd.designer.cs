@@ -32,9 +32,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCadProd));
             this.tbCntrlCadProd = new System.Windows.Forms.TabControl();
             this.tbPgCadProd = new System.Windows.Forms.TabPage();
-            this.txtGrupo = new System.Windows.Forms.TextBox();
+            this.dESCRICAOTextBox = new System.Windows.Forms.TextBox();
             this.pRODUTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.txtGrupo = new System.Windows.Forms.TextBox();
+            this.lblGrupo = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.txtBtnCodGrp = new Comercial.TextButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -56,10 +59,8 @@
             this.mskedTxtBxPrecoUnitario = new System.Windows.Forms.MaskedTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dtmPckrCadastro = new System.Windows.Forms.DateTimePicker();
-            this.lblGrupo = new System.Windows.Forms.Label();
             this.lblDtCadastro = new System.Windows.Forms.Label();
             this.lblDescricao = new System.Windows.Forms.Label();
-            this.txtDescricao = new System.Windows.Forms.TextBox();
             this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.maskedTextBox3 = new System.Windows.Forms.MaskedTextBox();
@@ -111,16 +112,15 @@
             this.textButton2 = new Comercial.TextButton();
             this.textButton3 = new Comercial.TextButton();
             this.textButton4 = new Comercial.TextButton();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.tbCntrlCadProd.SuspendLayout();
             this.tbPgCadProd.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pRODUTOBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).BeginInit();
+            this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uNIDADEMEDIDABindingSource)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbCntrlCadProd
@@ -130,11 +130,13 @@
             this.tbCntrlCadProd.Location = new System.Drawing.Point(12, 12);
             this.tbCntrlCadProd.Name = "tbCntrlCadProd";
             this.tbCntrlCadProd.SelectedIndex = 0;
-            this.tbCntrlCadProd.Size = new System.Drawing.Size(658, 339);
+            this.tbCntrlCadProd.Size = new System.Drawing.Size(658, 330);
             this.tbCntrlCadProd.TabIndex = 0;
             // 
             // tbPgCadProd
             // 
+            this.tbPgCadProd.AutoScroll = true;
+            this.tbPgCadProd.Controls.Add(this.dESCRICAOTextBox);
             this.tbPgCadProd.Controls.Add(this.groupBox4);
             this.tbPgCadProd.Controls.Add(this.groupBox3);
             this.tbPgCadProd.Controls.Add(this.groupBox1);
@@ -142,33 +144,65 @@
             this.tbPgCadProd.Controls.Add(this.dtmPckrCadastro);
             this.tbPgCadProd.Controls.Add(this.lblDtCadastro);
             this.tbPgCadProd.Controls.Add(this.lblDescricao);
-            this.tbPgCadProd.Controls.Add(this.txtDescricao);
             this.tbPgCadProd.Location = new System.Drawing.Point(4, 22);
             this.tbPgCadProd.Name = "tbPgCadProd";
             this.tbPgCadProd.Padding = new System.Windows.Forms.Padding(3);
-            this.tbPgCadProd.Size = new System.Drawing.Size(650, 313);
+            this.tbPgCadProd.Size = new System.Drawing.Size(650, 304);
             this.tbPgCadProd.TabIndex = 0;
             this.tbPgCadProd.Text = "Cadastro de Produtos";
             this.tbPgCadProd.UseVisualStyleBackColor = true;
             // 
+            // dESCRICAOTextBox
+            // 
+            this.dESCRICAOTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pRODUTOBindingSource, "DESCRICAO", true));
+            this.dESCRICAOTextBox.Location = new System.Drawing.Point(16, 33);
+            this.dESCRICAOTextBox.Name = "dESCRICAOTextBox";
+            this.dESCRICAOTextBox.Size = new System.Drawing.Size(487, 20);
+            this.dESCRICAOTextBox.TabIndex = 1;
+            // 
+            // pRODUTOBindingSource
+            // 
+            this.pRODUTOBindingSource.DataMember = "PRODUTO";
+            this.pRODUTOBindingSource.DataSource = this.cOMERCIALDataSet;
+            this.pRODUTOBindingSource.PositionChanged += new System.EventHandler(this.pRODUTOBindingSource_PositionChanged);
+            // 
+            // cOMERCIALDataSet
+            // 
+            this.cOMERCIALDataSet.DataSetName = "COMERCIALDataSet";
+            this.cOMERCIALDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.txtGrupo);
+            this.groupBox4.Controls.Add(this.lblGrupo);
+            this.groupBox4.Controls.Add(this.label28);
+            this.groupBox4.Controls.Add(this.txtBtnCodGrp);
+            this.groupBox4.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.groupBox4.Location = new System.Drawing.Point(7, 65);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(618, 68);
+            this.groupBox4.TabIndex = 2;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Grupo Produto";
+            // 
             // txtGrupo
             // 
-            this.txtGrupo.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pRODUTOBindingSource, "DESCRICAO", true));
             this.txtGrupo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtGrupo.Location = new System.Drawing.Point(146, 32);
             this.txtGrupo.Name = "txtGrupo";
             this.txtGrupo.Size = new System.Drawing.Size(466, 20);
             this.txtGrupo.TabIndex = 112;
             // 
-            // pRODUTOBindingSource
+            // lblGrupo
             // 
-            this.pRODUTOBindingSource.DataMember = "PRODUTO";
-            this.pRODUTOBindingSource.DataSource = this.cOMERCIALDataSet;
-            // 
-            // cOMERCIALDataSet
-            // 
-            this.cOMERCIALDataSet.DataSetName = "COMERCIALDataSet";
-            this.cOMERCIALDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.lblGrupo.AutoSize = true;
+            this.lblGrupo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGrupo.ForeColor = System.Drawing.Color.CadetBlue;
+            this.lblGrupo.Location = new System.Drawing.Point(6, 16);
+            this.lblGrupo.Name = "lblGrupo";
+            this.lblGrupo.Size = new System.Drawing.Size(50, 13);
+            this.lblGrupo.TabIndex = 7;
+            this.lblGrupo.Text = "Codigo:";
             // 
             // label28
             // 
@@ -185,11 +219,11 @@
             // 
             this.txtBtnCodGrp.getText = "";
             this.txtBtnCodGrp.Image = ((System.Drawing.Image)(resources.GetObject("txtBtnCodGrp.Image")));
-            this.txtBtnCodGrp.Location = new System.Drawing.Point(6, 32);
+            this.txtBtnCodGrp.Location = new System.Drawing.Point(9, 32);
             this.txtBtnCodGrp.Name = "txtBtnCodGrp";
             this.txtBtnCodGrp.ShowButton = false;
-            this.txtBtnCodGrp.Size = new System.Drawing.Size(114, 25);
-            this.txtBtnCodGrp.TabIndex = 110;
+            this.txtBtnCodGrp.Size = new System.Drawing.Size(111, 25);
+            this.txtBtnCodGrp.TabIndex = 2;
             this.txtBtnCodGrp.ButtonClick += new System.EventHandler(this.txtCodProd_ButtonClick);
             // 
             // groupBox3
@@ -199,10 +233,10 @@
             this.groupBox3.Controls.Add(this.comboBox3);
             this.groupBox3.Controls.Add(this.textBox10);
             this.groupBox3.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.groupBox3.Location = new System.Drawing.Point(339, 228);
+            this.groupBox3.Location = new System.Drawing.Point(339, 217);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(286, 69);
-            this.groupBox3.TabIndex = 44;
+            this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Medidas";
             // 
@@ -238,7 +272,7 @@
             this.comboBox3.Location = new System.Drawing.Point(22, 38);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(100, 21);
-            this.comboBox3.TabIndex = 4;
+            this.comboBox3.TabIndex = 8;
             this.comboBox3.ValueMember = "CODUNIDADEMEDIDA";
             // 
             // uNIDADEMEDIDABindingSource
@@ -253,7 +287,7 @@
             this.textBox10.Location = new System.Drawing.Point(161, 39);
             this.textBox10.Name = "textBox10";
             this.textBox10.Size = new System.Drawing.Size(70, 20);
-            this.textBox10.TabIndex = 5;
+            this.textBox10.TabIndex = 9;
             // 
             // groupBox1
             // 
@@ -262,10 +296,10 @@
             this.groupBox1.Controls.Add(this.maskedTextBox9);
             this.groupBox1.Controls.Add(this.label27);
             this.groupBox1.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.groupBox1.Location = new System.Drawing.Point(9, 228);
+            this.groupBox1.Location = new System.Drawing.Point(9, 217);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(287, 69);
-            this.groupBox1.TabIndex = 43;
+            this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Estoque";
             // 
@@ -274,7 +308,7 @@
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label26.ForeColor = System.Drawing.Color.CadetBlue;
-            this.label26.Location = new System.Drawing.Point(150, 22);
+            this.label26.Location = new System.Drawing.Point(141, 23);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(97, 13);
             this.label26.TabIndex = 40;
@@ -284,16 +318,16 @@
             // 
             this.maskedTextBox8.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pRODUTOBindingSource, "ESTOQUEMIN", true));
             this.maskedTextBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.maskedTextBox8.Location = new System.Drawing.Point(153, 38);
+            this.maskedTextBox8.Location = new System.Drawing.Point(144, 39);
             this.maskedTextBox8.Name = "maskedTextBox8";
             this.maskedTextBox8.Size = new System.Drawing.Size(99, 20);
             this.maskedTextBox8.TabIndex = 7;
             // 
             // maskedTextBox9
             // 
-            this.maskedTextBox9.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pRODUTOBindingSource, "ESTOQUEATUAL", true));
+            this.maskedTextBox9.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pRODUTOBindingSource, "ESTOQUEATUAL", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, null, "N0"));
             this.maskedTextBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.maskedTextBox9.Location = new System.Drawing.Point(14, 38);
+            this.maskedTextBox9.Location = new System.Drawing.Point(7, 38);
             this.maskedTextBox9.Name = "maskedTextBox9";
             this.maskedTextBox9.Size = new System.Drawing.Size(96, 20);
             this.maskedTextBox9.TabIndex = 6;
@@ -303,7 +337,7 @@
             this.label27.AutoSize = true;
             this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label27.ForeColor = System.Drawing.Color.CadetBlue;
-            this.label27.Location = new System.Drawing.Point(9, 22);
+            this.label27.Location = new System.Drawing.Point(4, 22);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(86, 13);
             this.label27.TabIndex = 42;
@@ -321,7 +355,7 @@
             this.groupBox2.Location = new System.Drawing.Point(7, 139);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(618, 68);
-            this.groupBox2.TabIndex = 44;
+            this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Preços";
             // 
@@ -330,7 +364,7 @@
             this.lblPrecoCusto.AutoSize = true;
             this.lblPrecoCusto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPrecoCusto.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblPrecoCusto.Location = new System.Drawing.Point(125, 16);
+            this.lblPrecoCusto.Location = new System.Drawing.Point(143, 16);
             this.lblPrecoCusto.Name = "lblPrecoCusto";
             this.lblPrecoCusto.Size = new System.Drawing.Size(80, 13);
             this.lblPrecoCusto.TabIndex = 21;
@@ -351,19 +385,19 @@
             // 
             this.mskedTxtBxPrecoCusto.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pRODUTOBindingSource, "PRECOCUSTO", true));
             this.mskedTxtBxPrecoCusto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mskedTxtBxPrecoCusto.Location = new System.Drawing.Point(128, 32);
+            this.mskedTxtBxPrecoCusto.Location = new System.Drawing.Point(146, 32);
             this.mskedTxtBxPrecoCusto.Name = "mskedTxtBxPrecoCusto";
             this.mskedTxtBxPrecoCusto.Size = new System.Drawing.Size(100, 20);
-            this.mskedTxtBxPrecoCusto.TabIndex = 9;
+            this.mskedTxtBxPrecoCusto.TabIndex = 4;
             // 
             // maskedTextBox1
             // 
             this.maskedTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pRODUTOBindingSource, "IPI", true));
             this.maskedTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.maskedTextBox1.Location = new System.Drawing.Point(250, 32);
+            this.maskedTextBox1.Location = new System.Drawing.Point(268, 32);
             this.maskedTextBox1.Name = "maskedTextBox1";
             this.maskedTextBox1.Size = new System.Drawing.Size(55, 20);
-            this.maskedTextBox1.TabIndex = 10;
+            this.maskedTextBox1.TabIndex = 5;
             // 
             // mskedTxtBxPrecoUnitario
             // 
@@ -372,15 +406,14 @@
             this.mskedTxtBxPrecoUnitario.Location = new System.Drawing.Point(9, 32);
             this.mskedTxtBxPrecoUnitario.Name = "mskedTxtBxPrecoUnitario";
             this.mskedTxtBxPrecoUnitario.Size = new System.Drawing.Size(100, 20);
-            this.mskedTxtBxPrecoUnitario.TabIndex = 8;
-            this.mskedTxtBxPrecoUnitario.Leave += new System.EventHandler(this.mskedTxtBxPrecoUnitario_Leave);
+            this.mskedTxtBxPrecoUnitario.TabIndex = 3;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.CadetBlue;
-            this.label1.Location = new System.Drawing.Point(247, 16);
+            this.label1.Location = new System.Drawing.Point(265, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(40, 13);
             this.label1.TabIndex = 38;
@@ -396,17 +429,6 @@
             this.dtmPckrCadastro.Name = "dtmPckrCadastro";
             this.dtmPckrCadastro.Size = new System.Drawing.Size(107, 20);
             this.dtmPckrCadastro.TabIndex = 2;
-            // 
-            // lblGrupo
-            // 
-            this.lblGrupo.AutoSize = true;
-            this.lblGrupo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGrupo.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblGrupo.Location = new System.Drawing.Point(12, 16);
-            this.lblGrupo.Name = "lblGrupo";
-            this.lblGrupo.Size = new System.Drawing.Size(50, 13);
-            this.lblGrupo.TabIndex = 7;
-            this.lblGrupo.Text = "Codigo:";
             // 
             // lblDtCadastro
             // 
@@ -429,15 +451,6 @@
             this.lblDescricao.Size = new System.Drawing.Size(68, 13);
             this.lblDescricao.TabIndex = 3;
             this.lblDescricao.Text = "Descrição:";
-            // 
-            // txtDescricao
-            // 
-            this.txtDescricao.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pRODUTOBindingSource, "DESCRICAO", true));
-            this.txtDescricao.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDescricao.Location = new System.Drawing.Point(16, 33);
-            this.txtDescricao.Name = "txtDescricao";
-            this.txtDescricao.Size = new System.Drawing.Size(495, 20);
-            this.txtDescricao.TabIndex = 1;
             // 
             // maskedTextBox2
             // 
@@ -940,26 +953,12 @@
             this.textButton4.Size = new System.Drawing.Size(146, 25);
             this.textButton4.TabIndex = 36;
             // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.txtGrupo);
-            this.groupBox4.Controls.Add(this.lblGrupo);
-            this.groupBox4.Controls.Add(this.label28);
-            this.groupBox4.Controls.Add(this.txtBtnCodGrp);
-            this.groupBox4.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.groupBox4.Location = new System.Drawing.Point(7, 65);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(618, 68);
-            this.groupBox4.TabIndex = 45;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Grupo Produto";
-            // 
             // FrmCadProd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(680, 361);
+            this.ClientSize = new System.Drawing.Size(680, 350);
             this.ControlBox = false;
             this.Controls.Add(this.tbCntrlCadProd);
             this.ForeColor = System.Drawing.Color.Black;
@@ -975,6 +974,8 @@
             this.tbPgCadProd.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pRODUTOBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uNIDADEMEDIDABindingSource)).EndInit();
@@ -982,8 +983,6 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1000,7 +999,6 @@
         private System.Windows.Forms.Label lblGrupo;
         private System.Windows.Forms.Label lblDtCadastro;
         private System.Windows.Forms.Label lblDescricao;
-        private System.Windows.Forms.TextBox txtDescricao;
         private System.Windows.Forms.MaskedTextBox maskedTextBox9;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.MaskedTextBox maskedTextBox8;
@@ -1070,7 +1068,8 @@
         private System.Windows.Forms.TextBox textBox10;
         public TextButton txtBtnCodGrp;
         private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.TextBox txtGrupo;
         private System.Windows.Forms.GroupBox groupBox4;
+        public System.Windows.Forms.TextBox txtGrupo;
+        private System.Windows.Forms.TextBox dESCRICAOTextBox;
     }
 }
