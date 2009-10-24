@@ -294,6 +294,7 @@ namespace Comercial
                 FrmCadPed Ped = (FrmCadPed)frm;
                 Ped.dtgrdvItenspven.DataSource = Ped.ListarItem(0);
                 Ped.LimparCampos();
+                Ped.limpardttable();
                 Ped.dtgrdvItenspven.Refresh();
 
             }
@@ -1324,12 +1325,13 @@ namespace Comercial
                     if (frmPed.chkEfetivado.Checked == true)
                     {
                         Util.Interface.ChangeControlStatus(frm, false);
+                        
                         novo();
                         throw new Exception("Efetivado");
 
                     }
 
-
+                    frmPed.limpardttable();
                     frmPed.ValidaControles();
 
                 }
@@ -1361,10 +1363,11 @@ namespace Comercial
                 FrmCadPed Ped = (FrmCadPed)frm;
                 Ped.populargrid();
                 Ped.Limparitens();
+                Ped.limpardttable();
                 Ped.txtNomeCliente.Text = Ped.ListarNomeCliente(Ped.txtcodCli.getText);
                 Ped.txtNomeTransportadora.Text = Ped.ListarNomeTransportadora(Ped.txtCodTransportadora.getText);
                 Ped.txtNomeVendedor.Text = Ped.ListarNomeVendedor(Ped.txtCodVendedor.getText);
-
+                
             }
         }
 
