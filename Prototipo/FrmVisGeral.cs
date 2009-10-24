@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using System.Configuration;
 using System.Data.SqlClient;
@@ -554,7 +549,7 @@ namespace Comercial
                         conn.Open();
 
                         SqlCommand cmd = new SqlCommand("select codgrupoproduto, descricao from grupoproduto where DESCRICAO like @DESCRICAO ", conn);
-                        
+
                         cmd.Parameters.Add(new SqlParameter("@DESCRICAO", txtPesquisar.Text + "%"));
 
                         SqlDataReader reader = cmd.ExecuteReader();
@@ -762,6 +757,26 @@ namespace Comercial
             #region Double Click Consulta Produto
 
             #region Produto
+            if ((_parent is FrmCadProd))
+            {
+                if (_controle.Name == "txtBtnCodGrp")
+                {
+                    FrmCadProd conprod = (FrmCadProd)_parent;
+
+                    // vamos obter as células selecionadas no DataGridView
+                    DataGridViewSelectedCellCollection selecionadas = dtGrdVwVis.SelectedCells;
+                    DataGridViewCell celula = selecionadas[0];
+
+                    conprod.txtBtnCodGrp.getText = celula.Value.ToString();
+                    conprod.txtGrupo.Text = selecionadas[1].Value.ToString();
+
+                    this.Close();
+                    this.Dispose();
+                }
+            }
+            #endregion
+
+            #region Produto
             if ((_parent is FrmConPDV) || (_parent is FrmConEstProd) || (_parent is FrmConProd))
             {
                 if (_controle.Name == "txtBtnCodGrp")
@@ -771,14 +786,14 @@ namespace Comercial
                     // vamos obter as células selecionadas no DataGridView
                     DataGridViewSelectedCellCollection selecionadas = dtGrdVwVis.SelectedCells;
                     DataGridViewCell celula = selecionadas[0];
-                    
+
                     conprod.txtBtnCodGrp.getText = celula.Value.ToString();
                     conprod.txtGrupo.Text = selecionadas[1].Value.ToString();
-                    
+
                     this.Close();
                     this.Dispose();
                 }
-                
+
                 #region Double Click Consulta Produto
                 if (_controle.Name == "txtCodProd")
                 {
@@ -788,9 +803,9 @@ namespace Comercial
                     DataGridViewSelectedCellCollection selecionadas = dtGrdVwVis.SelectedCells;
 
                     DataGridViewCell celula = selecionadas[0];
-                    
+
                     ConPed.txtCodProd.getText = celula.Value.ToString();
-                    
+
                     this.Close();
                     this.Dispose();
                 }
@@ -829,12 +844,9 @@ namespace Comercial
                     this.Dispose();
                 }
 
-
-
                 #endregion
 
             #endregion
-
 
             }
             #endregion
