@@ -225,6 +225,21 @@ namespace Comercial
 
         #endregion
 
+        #region LimparDatatable
+        public void limpardttable()
+        {
+            try
+            {
+                dttRetorno.Clear();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+        #endregion
+
         #region LimparCampos
         public void LimparCampos()
         {
@@ -251,6 +266,7 @@ namespace Comercial
         #region LimparItens
         public void Limparitens()
         {
+
             txtProduto.getText = String.Empty;
             txtDescprod.Text = String.Empty;
             txtEstAtual.Text = String.Empty;
@@ -271,80 +287,19 @@ namespace Comercial
         {
             try
             {
-
-                if (Convert.ToInt32(txtQtdItem.Text) == 0)
+                if (_princ.edit == true)
                 {
-                    throw new Exception("Quantidade");
+                    additemeditar();
                 }
-
-                if (Convert.ToInt32(txtQtdItem.Text) < 0)
+                else
                 {
-                    throw new Exception("QuantidadeNegativa");
+                    additemnovo();
                 }
-                String valortotal = (String)txtValorTotal.Text.Replace(".", ",");
-
-                if (Convert.ToDouble(valortotal) == 0)
-                {
-                    throw new Exception("valortotal");
-                }
-                if (Convert.ToDouble(valortotal) < 0)
-                {
-                    throw new Exception("valortotalnegativo");
-                }
-                if (Convert.ToDouble(txtPrcUnit.Text) == 0)
-                {
-                    throw new Exception("PrecoUnitario");
-                }
-
-                if (Convert.ToDouble(txtPrcUnit.Text) < 0)
-                {
-                    throw new Exception("PrecoUnitarioNegativo");
-                }
-
-                DataRow dtRow;
-
-                dtRow = dttRetorno.NewRow();
-
-                var teste = 0;
-                foreach (DataGridViewRow item in dtgrdvItenspven.Rows)
-                {
-
-                    if (txtProduto.getText == Convert.ToString(item.Cells[2].Value))
-                    {
-                        txtValorTotal.Text = "";
-                        txtQtdItem.Text = Convert.ToString(Convert.ToInt32(txtQtdItem.Text) + Convert.ToInt32(item.Cells[4].Value));
-                        txtValorTotal.Text = Convert.ToString(Convert.ToDouble(valortotal) + Convert.ToDouble(item.Cells[8].Value));
-
-                        item.Cells[4].Value = txtQtdItem.Text;
-                        item.Cells[8].Value = txtValorTotal.Text;
-                        teste += 1;
-                    }
-                }
-                if (teste == 0)
-                {
-                    dtRow["CODPRODUTO"] = txtProduto.getText;
-                    dtRow["DESCRICAO"] = txtDescprod.Text;
-                    dtRow["QUANTIDADE"] = txtQtdItem.Text;
-                    dtRow["VALOR"] = txtPrcUnit.Text;
-                    dtRow["IPI"] = txtipi.Text;
-                    dtRow["DESCONTO"] = txtDesconto.Text;
-                    dtRow["VALORTOTAL"] = valortotal;
-                    dttRetorno.Rows.Add(dtRow);
-                }
-                for (int index = 0; index <= dttRetorno.Rows.Count - 1; index++)
-                {
-                    dttRetorno.Rows[index][0] = index + 1;
-                    continue;
-                }
-
-                dtgrdvItenspven.DataSource = dttRetorno;
-
-                this.Limparitens();
             }
             catch (Exception ex)
             {
-                Validacoes valida = new Validacoes();
-                valida.tratarSystemExceções(ex);
+
+                throw ex;
             }
         }
         #endregion
@@ -353,42 +308,26 @@ namespace Comercial
 
         public int SalvarPedidoDeta()
         {
-
-            //  DataRowView objPedidoItem;
-            // objPedidoItem = (DataRowView)iTEMPEDIDOBindingSource.Current;
-
             int CodPed = GetNrPedido();
 
             try
             {
 
-                for (int index = 0; index < dtgrdvItenspven.RowCount; index++)
+                for (int index = 0; index < dttRetorno.Rows.Count; index++)
                 {
-                    if (!(txtProduto.getText == Convert.ToString(index)))
-                    {
-                        COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter();
-                        table.Insert(Convert.ToInt32(CodPed),
-                             Convert.ToInt32(dtgrdvItenspven.Rows[index].Cells[2].Value),
-                                Convert.ToInt32(dtgrdvItenspven.Rows[index].Cells[4].Value),
-                                Convert.ToDouble(dtgrdvItenspven.Rows[index].Cells[7].Value),
-                                Convert.ToDouble(dtgrdvItenspven.Rows[index].Cells[5].Value),
-                                Convert.ToDouble(dtgrdvItenspven.Rows[index].Cells[6].Value),
-                                Convert.ToInt32(dtgrdvItenspven.Rows[index].Cells[1].Value));
-                    }
-
-
-                    //COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter();
-                    //table.Insert(Convert.ToInt32(objPedidoItem["NRPEDIDO"].ToString()),
-                    //    Convert.ToInt32(objPedidoItem["CODPRODUTO"].ToString()),
-                    //    Convert.ToInt32(objPedidoItem["QUANTIDADE"].ToString()),
-                    //    Convert.ToInt32(objPedidoItem["DESCONTO"].ToString()),
-                    //    Convert.ToInt32(objPedidoItem["VALOR"].ToString()),
-                    //    Convert.ToInt32(objPedidoItem["IPI"].ToString()),
-                    //    Convert.ToInt32(objPedidoItem["ITEM"].ToString()));
+                    COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter();
+                    table.Insert(Convert.ToInt32(CodPed),
+                         Convert.ToInt32(dttRetorno.Rows[index]["CODPRODUTO"]),
+                            Convert.ToInt32(dttRetorno.Rows[index]["QUANTIDADE"]),
+                            Convert.ToDouble(dttRetorno.Rows[index]["DESCONTO"]),
+                            Convert.ToDouble(dttRetorno.Rows[index]["VALOR"]),
+                            Convert.ToDouble(dttRetorno.Rows[index]["IPI"]),
+                            Convert.ToInt32(dttRetorno.Rows[index]["ITEM"]));
 
                     continue;
 
                 }
+
 
             }
             catch (Exception ex)
@@ -399,7 +338,6 @@ namespace Comercial
 
             return 0;
         }
-
 
         #endregion
 
@@ -785,18 +723,7 @@ namespace Comercial
             try
             {
                 grpBxPedVenda.Enabled = false;
-                //txtPedido.Enabled = false;
-                //txtcodCli.Enabled = false;
-                //txtNomeCliente.Enabled = false;
-                //txtNomeVendedor.Enabled = false;
-                //txtNomeTransportadora.Enabled = false;
-                //txtCodTransportadora.Enabled = false;
-                //txtCodVendedor.Enabled = false;
-                //txtCondPagto.Enabled = false;
-                //grpBxSitPed.Enabled = false;
-                //grpTipoPedido.Enabled = false;
-                //dtpEmissao.Enabled = false;
-                //dtpEntrega.Enabled = false;
+
             }
             catch (Exception ex)
             {
@@ -808,7 +735,7 @@ namespace Comercial
 
         #endregion
 
-
+        #region Excluir Item do Grid
         private void dtgrdvItenspven_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -820,30 +747,19 @@ namespace Comercial
                     if (e.ColumnIndex == 0)
                     {
 
-
-                        if (dttRetorno.Rows.Count != 0)
+                        if (MessageBox.Show("Deseja excluir o registro selecionado?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
-                            MessageBox.Show("Deseja Excluir o Item?", "Erro", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
-                            dttRetorno.Rows.RemoveAt(e.RowIndex);
+                            if (dttRetorno.Rows.Count != 0)
+                            {
+                                dttRetorno.Rows.RemoveAt(e.RowIndex);
+                            }
+                            else
+                            {
+                                Excluiritem(Convert.ToInt32(txtPedido.Text), Convert.ToInt32(dtgrdvItenspven.Rows[e.RowIndex].Cells[1].Value));
+
+                                this.populargrid();
+                            }
                         }
-                        else
-                        {
-                            MessageBox.Show("Deseja Excluir o Item?", "Erro", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
-
-                            //COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter();
-                            //table.Delete(Convert.ToInt32(txtPedido.Text),
-                            //    Convert.ToInt32(dtgrdvItenspven.Rows[e.RowIndex].Cells[2].Value),
-                            //    Convert.ToInt32(dtgrdvItenspven.Rows[e.RowIndex].Cells[4].Value),
-                            //    Convert.ToDouble(dtgrdvItenspven.Rows[e.RowIndex].Cells[7].Value),
-                            //    Convert.ToDouble(dtgrdvItenspven.Rows[e.RowIndex].Cells[5].Value),
-                            //    Convert.ToDouble(dtgrdvItenspven.Rows[e.RowIndex].Cells[6].Value),
-                            //    Convert.ToInt32(dtgrdvItenspven.Rows[e.RowIndex].Cells[1].Value));
-
-                            Excluiritem(Convert.ToInt32(txtPedido.Text), Convert.ToInt32(dtgrdvItenspven.Rows[e.RowIndex].Cells[1].Value));
-
-                            this.populargrid();
-                        }
-
                     }
                 }
 
@@ -856,14 +772,214 @@ namespace Comercial
             }
         }
 
+        #endregion
+
+        #region Adicionar Item Novo
+        public void additemnovo()
+        {
+            try
+            {
+
+                //Valida a quantidade for = 0
+                if (Convert.ToInt32(txtQtdItem.Text) == 0)
+                {
+                    throw new Exception("Quantidade");
+                }
+                //Valida a quantidade for negativa
+                if (Convert.ToInt32(txtQtdItem.Text) < 0)
+                {
+                    throw new Exception("QuantidadeNegativa");
+                }
+
+                //Replace no valor total de "." para ","
+                String valortotal = (String)txtValorTotal.Text.Replace(".", ",");
+
+                //Valida o Valor total = 0
+                if (Convert.ToDouble(valortotal) == 0)
+                {
+                    throw new Exception("valortotal");
+                }
+
+                //Valida o Valor total negativo
+                if (Convert.ToDouble(valortotal) < 0)
+                {
+                    throw new Exception("valortotalnegativo");
+                }
+
+                //Valida o preço unitário = 0
+                if (Convert.ToDouble(txtPrcUnit.Text) == 0)
+                {
+                    throw new Exception("PrecoUnitario");
+                }
+
+                //valida o preço unitário negativo
+                if (Convert.ToDouble(txtPrcUnit.Text) < 0)
+                {
+                    throw new Exception("PrecoUnitarioNegativo");
+                }
+
+                //Criação do Datarow para adicionar os itens
+                DataRow dtRow;
+                dtRow = dttRetorno.NewRow();
+
+                var teste = 0;
+                foreach (DataGridViewRow item in dtgrdvItenspven.Rows)
+                {
+
+                    if (txtProduto.getText == Convert.ToString(item.Cells[2].Value))
+                    {
+                        txtValorTotal.Text = "";
+                        txtQtdItem.Text = Convert.ToString(Convert.ToInt32(txtQtdItem.Text) + Convert.ToInt32(item.Cells[4].Value));
+                        txtValorTotal.Text = Convert.ToString(Convert.ToDouble(valortotal) + Convert.ToDouble(item.Cells[8].Value));
+
+                        item.Cells[4].Value = txtQtdItem.Text;
+                        item.Cells[8].Value = txtValorTotal.Text;
+                        teste += 1;
+                    }
+                }
+                if (teste == 0)
+                {
+                    dtRow["CODPRODUTO"] = txtProduto.getText;
+                    dtRow["DESCRICAO"] = txtDescprod.Text;
+                    dtRow["QUANTIDADE"] = txtQtdItem.Text;
+                    dtRow["VALOR"] = txtPrcUnit.Text;
+                    dtRow["IPI"] = txtipi.Text;
+                    dtRow["DESCONTO"] = txtDesconto.Text;
+                    dtRow["VALORTOTAL"] = valortotal;
+                    dttRetorno.Rows.Add(dtRow);
+                }
+                for (int index = 0; index <= dttRetorno.Rows.Count - 1; index++)
+                {
+                    dttRetorno.Rows[index][0] = index + 1;
+                    continue;
+                }
+
+                dtgrdvItenspven.DataSource = dttRetorno;
+
+                this.Limparitens();
+            }
+            catch (Exception ex)
+            {
+                Validacoes valida = new Validacoes();
+                valida.tratarSystemExceções(ex);
+            }
+        }
+        #endregion
+
+        #region Adicionar Item Editar
+
+
+        public void additemeditar()
+        {
+            try
+            {
+                //Valida a quantidade for = 0
+                if (Convert.ToInt32(txtQtdItem.Text) == 0)
+                {
+                    throw new Exception("Quantidade");
+                }
+                //Valida a quantidade for negativa
+                if (Convert.ToInt32(txtQtdItem.Text) < 0)
+                {
+                    throw new Exception("QuantidadeNegativa");
+                }
+
+                //Replace no valor total de "." para ","
+                String valortotal = (String)txtValorTotal.Text.Replace(".", ",");
+
+                //Valida o Valor total = 0
+                if (Convert.ToDouble(valortotal) == 0)
+                {
+                    throw new Exception("valortotal");
+                }
+
+                //Valida o Valor total negativo
+                if (Convert.ToDouble(valortotal) < 0)
+                {
+                    throw new Exception("valortotalnegativo");
+                }
+
+                //Valida o preço unitário = 0
+                if (Convert.ToDouble(txtPrcUnit.Text) == 0)
+                {
+                    throw new Exception("PrecoUnitario");
+                }
+
+                //valida o preço unitário negativo
+                if (Convert.ToDouble(txtPrcUnit.Text) < 0)
+                {
+                    throw new Exception("PrecoUnitarioNegativo");
+                }
+
+                //Criação do Datarow para adicionar os itens
+                DataRow dtRow;
+                dtRow = dttRetorno.NewRow();
+
+                var teste = 0;
+                foreach (DataGridViewRow item in dtgrdvItenspven.Rows)
+                {
+                    //Verifico se o produto existe, se existir ele atualiza a quantidade com o preço total
+                    if (txtProduto.getText == Convert.ToString(item.Cells[2].Value))
+                    {
+                        txtValorTotal.Text = "";
+                        txtQtdItem.Text = Convert.ToString(Convert.ToInt32(txtQtdItem.Text) + Convert.ToInt32(item.Cells[4].Value));
+                        txtValorTotal.Text = Convert.ToString(Convert.ToDouble(valortotal) + Convert.ToDouble(item.Cells[8].Value));
+
+                        item.Cells[4].Value = txtQtdItem.Text;
+                        item.Cells[8].Value = txtValorTotal.Text;
+
+                        dtRow["CODPRODUTO"] = item.Cells[2].Value;
+                        dtRow["DESCRICAO"] = item.Cells[3].Value;
+                        dtRow["QUANTIDADE"] = item.Cells[4].Value;
+                        dtRow["VALOR"] = item.Cells[5].Value;
+                        dtRow["IPI"] = item.Cells[6].Value;
+                        dtRow["DESCONTO"] = item.Cells[7].Value;
+                        dtRow["VALORTOTAL"] = item.Cells[8].Value;
+                        dttRetorno.Rows.Add(dtRow);
+                        teste += 1;
+                    }
+                }
+                //se o produto não existir no datagrid ele adiciona o item novo
+                if (teste == 0)
+                {
+                    dtRow["CODPRODUTO"] = txtProduto.getText;
+                    dtRow["DESCRICAO"] = txtDescprod.Text;
+                    dtRow["QUANTIDADE"] = txtQtdItem.Text;
+                    dtRow["VALOR"] = txtPrcUnit.Text;
+                    dtRow["IPI"] = txtipi.Text;
+                    dtRow["DESCONTO"] = txtDesconto.Text;
+                    dtRow["VALORTOTAL"] = valortotal;
+                    dttRetorno.Rows.Add(dtRow);
+                }
+                //for para verificação do item
+                for (int index = 0; index <= dttRetorno.Rows.Count - 1; index++)
+                {
+                    dttRetorno.Rows[index][0] = index + 1;
+                    continue;
+                }
+                //Popula o grid com o datatable
+                dtgrdvItenspven.DataSource = dttRetorno;
+
+                //Método para limpar os campos após insert dos itens
+                this.Limparitens();
+            }
+            catch (Exception ex)
+            {
+                Validacoes valida = new Validacoes();
+                valida.tratarSystemExceções(ex);
+            }
+        }
+        #endregion
 
         public int AtualizarPedido()
         {
             try
             {
+                DataTable dttItemPedido = ListarItem(Convert.ToInt32(txtPedido.Text));
+                DataColumn dtrow = dttItemPedido.Columns["CODPRODUTO"];
 
                 grpBxItPedVen.Enabled = false;
-                
+
 
                 return 0;
             }
