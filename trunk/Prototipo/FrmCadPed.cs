@@ -282,7 +282,7 @@ namespace Comercial
                     throw new Exception("QuantidadeNegativa");
                 }
                 String valortotal = (String)txtValorTotal.Text.Replace(".", ",");
-                
+
                 if (Convert.ToDouble(valortotal) == 0)
                 {
                     throw new Exception("valortotal");
@@ -301,21 +301,9 @@ namespace Comercial
                     throw new Exception("PrecoUnitarioNegativo");
                 }
 
-                int quantidade = Convert.ToInt32(txtQtdItem.Text);
-                int estoqueatual = Convert.ToInt32(txtEstAtual.Text);
-
-
                 DataRow dtRow;
 
-
                 dtRow = dttRetorno.NewRow();
-
-                //dtRow[1] = txtProduto.getText;
-                //dtRow[2] = txtDescprod.Text;
-                //dtRow[3] = txtQtdItem.Text;
-                //dtRow[4] = txtPrcUnit.Text;
-                //dtRow[5] = txtipi.Text;
-                //dtRow[6] = txtDesconto.Text;
 
                 var teste = 0;
                 foreach (DataGridViewRow item in dtgrdvItenspven.Rows)
@@ -331,10 +319,7 @@ namespace Comercial
                         item.Cells[8].Value = txtValorTotal.Text;
                         teste += 1;
                     }
-
-                    
                 }
-
                 if (teste == 0)
                 {
                     dtRow["CODPRODUTO"] = txtProduto.getText;
@@ -346,9 +331,6 @@ namespace Comercial
                     dtRow["VALORTOTAL"] = valortotal;
                     dttRetorno.Rows.Add(dtRow);
                 }
-
-
-
                 for (int index = 0; index <= dttRetorno.Rows.Count - 1; index++)
                 {
                     dttRetorno.Rows[index][0] = index + 1;
@@ -358,9 +340,6 @@ namespace Comercial
                 dtgrdvItenspven.DataSource = dttRetorno;
 
                 this.Limparitens();
-
-
-
             }
             catch (Exception ex)
             {
@@ -385,22 +364,18 @@ namespace Comercial
 
                 for (int index = 0; index < dtgrdvItenspven.RowCount; index++)
                 {
-                    COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter();
-                    table.Insert(Convert.ToInt32(CodPed),
-                         Convert.ToInt32(dtgrdvItenspven.Rows[index].Cells[2].Value),
-                            Convert.ToInt32(dtgrdvItenspven.Rows[index].Cells[4].Value),
-                            Convert.ToDouble(dtgrdvItenspven.Rows[index].Cells[7].Value),
-                            Convert.ToDouble(dtgrdvItenspven.Rows[index].Cells[5].Value),
-                            Convert.ToDouble(dtgrdvItenspven.Rows[index].Cells[6].Value),
-                            Convert.ToInt32(dtgrdvItenspven.Rows[index].Cells[1].Value));
+                    if (!(txtProduto.getText == Convert.ToString(index)))
+                    {
+                        COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter();
+                        table.Insert(Convert.ToInt32(CodPed),
+                             Convert.ToInt32(dtgrdvItenspven.Rows[index].Cells[2].Value),
+                                Convert.ToInt32(dtgrdvItenspven.Rows[index].Cells[4].Value),
+                                Convert.ToDouble(dtgrdvItenspven.Rows[index].Cells[7].Value),
+                                Convert.ToDouble(dtgrdvItenspven.Rows[index].Cells[5].Value),
+                                Convert.ToDouble(dtgrdvItenspven.Rows[index].Cells[6].Value),
+                                Convert.ToInt32(dtgrdvItenspven.Rows[index].Cells[1].Value));
+                    }
 
-                    //objPedidoItem["ITEM"] = Convert.ToInt32(dtgrdvItenspven.Rows[index].Cells[1].Value);
-                    //objPedidoItem["NRPEDIDO"] = Convert.ToInt32(CodPed);
-                    //objPedidoItem["CODPRODUTO"] = Convert.ToInt32(dtgrdvItenspven.Rows[index].Cells[2].Value);
-                    //objPedidoItem["QUANTIDADE"] = Convert.ToInt32(dtgrdvItenspven.Rows[index].Cells[3].Value);
-                    //objPedidoItem["VALOR"] = Convert.ToDouble(dtgrdvItenspven.Rows[index].Cells[4].Value);
-                    //objPedidoItem["IPI"] = Convert.ToDouble(dtgrdvItenspven.Rows[index].Cells[5].Value);
-                    //objPedidoItem["DESCONTO"] = Convert.ToDouble(dtgrdvItenspven.Rows[index].Cells[6].Value);
 
                     //COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter();
                     //table.Insert(Convert.ToInt32(objPedidoItem["NRPEDIDO"].ToString()),
@@ -696,7 +671,7 @@ namespace Comercial
         #endregion
 
         #region Listar Excluiritem
-        public void Excluiritem(int CodPed , int Item)
+        public void Excluiritem(int CodPed, int Item)
         {
             Database db = DatabaseFactory.CreateDatabase();
 
@@ -709,9 +684,29 @@ namespace Comercial
             db.AddInParameter(dbComd, "@NRPEDIDO", DbType.Int32, CodPed);
             db.AddInParameter(dbComd, "@ITEM", DbType.String, Item);
 
-           db.ExecuteScalar(dbComd);
+            db.ExecuteScalar(dbComd);
 
-         }
+        }
+        #endregion
+
+        #region Listar UpdateItem
+        public void UpdateItem(int CodPed, int Item, int quant)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+
+            StringBuilder sqlcommand = new StringBuilder();
+
+            sqlcommand.Append("UPDATE ITEMPEDIDO SET QUANTIDADE = @QUANTIDADE WHERE NRPEDIDO=@NRPEDIDO AND ITEM = @ITEM ");
+
+            DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
+
+            db.AddInParameter(dbComd, "@NRPEDIDO", DbType.Int32, CodPed);
+            db.AddInParameter(dbComd, "@ITEM", DbType.Int32, Item);
+            db.AddInParameter(dbComd, "@QUANTIDADE", DbType.Int32, quant);
+
+            db.ExecuteScalar(dbComd);
+
+        }
         #endregion
 
         #region Listar Nome Vendedor
@@ -824,7 +819,7 @@ namespace Comercial
 
                     if (e.ColumnIndex == 0)
                     {
-                        
+
 
                         if (dttRetorno.Rows.Count != 0)
                         {
@@ -868,7 +863,7 @@ namespace Comercial
             {
 
                 grpBxItPedVen.Enabled = false;
-                SalvarPedidoDeta();
+                
 
                 return 0;
             }

@@ -14,7 +14,7 @@ namespace Comercial
     public partial class FrmPrinc : Form
     {
         private COMERCIALDataSet _dataset;
-        private bool edit;
+        public bool edit;
         Validacoes valida = new Validacoes();
 
         public void setdataSet(COMERCIALDataSet data)
