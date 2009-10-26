@@ -212,6 +212,11 @@ namespace Comercial
                 txtEndtrans.Focus();
             }
         }
+
+        private void txtEmailtrans_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

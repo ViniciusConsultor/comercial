@@ -106,5 +106,10 @@ namespace Comercial
             }
 
         }
+
+        private void FrmCadConPag_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

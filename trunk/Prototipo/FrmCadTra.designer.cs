@@ -315,13 +315,13 @@
             // 
             // txtEmailtrans
             // 
-            this.txtEmailtrans.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtEmailtrans.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tRANSPORTADORABindingSource, "EMAIL", true));
             this.txtEmailtrans.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmailtrans.Location = new System.Drawing.Point(104, 122);
             this.txtEmailtrans.Name = "txtEmailtrans";
             this.txtEmailtrans.Size = new System.Drawing.Size(430, 20);
             this.txtEmailtrans.TabIndex = 30;
+            this.txtEmailtrans.TextChanged += new System.EventHandler(this.txtEmailtrans_TextChanged);
             // 
             // lblEmailtrans
             // 

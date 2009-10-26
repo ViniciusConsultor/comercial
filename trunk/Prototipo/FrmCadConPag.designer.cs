@@ -31,9 +31,9 @@
                 this.components = new System.ComponentModel.Container();
                 this.tabPage2 = new System.Windows.Forms.TabPage();
                 this.chkEntrada = new System.Windows.Forms.CheckBox();
+                this.lblCodigo = new System.Windows.Forms.Label();
                 this.cONDICAOPAGAMENTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
                 this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
-                this.lblCodigo = new System.Windows.Forms.Label();
                 this.TxtDiaDes = new System.Windows.Forms.TextBox();
                 this.TxtDes = new System.Windows.Forms.TextBox();
                 this.LblDiaPCo = new System.Windows.Forms.Label();
@@ -73,17 +73,6 @@
                 this.chkEntrada.Text = "Entrada";
                 this.chkEntrada.UseVisualStyleBackColor = true;
                 // 
-                // cONDICAOPAGAMENTOBindingSource
-                // 
-                this.cONDICAOPAGAMENTOBindingSource.DataMember = "CONDICAOPAGAMENTO";
-                this.cONDICAOPAGAMENTOBindingSource.DataSource = this.cOMERCIALDataSet;
-                this.cONDICAOPAGAMENTOBindingSource.PositionChanged += new System.EventHandler(this.cONDICAOPAGAMENTOBindingSource_PositionChanged);
-                // 
-                // cOMERCIALDataSet
-                // 
-                this.cOMERCIALDataSet.DataSetName = "COMERCIALDataSet";
-                this.cOMERCIALDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-                // 
                 // lblCodigo
                 // 
                 this.lblCodigo.AutoSize = true;
@@ -95,6 +84,17 @@
                 this.lblCodigo.Size = new System.Drawing.Size(43, 13);
                 this.lblCodigo.TabIndex = 47;
                 this.lblCodigo.Text = "Código:";
+                // 
+                // cONDICAOPAGAMENTOBindingSource
+                // 
+                this.cONDICAOPAGAMENTOBindingSource.DataMember = "CONDICAOPAGAMENTO";
+                this.cONDICAOPAGAMENTOBindingSource.DataSource = this.cOMERCIALDataSet;
+                this.cONDICAOPAGAMENTOBindingSource.PositionChanged += new System.EventHandler(this.cONDICAOPAGAMENTOBindingSource_PositionChanged);
+                // 
+                // cOMERCIALDataSet
+                // 
+                this.cOMERCIALDataSet.DataSetName = "COMERCIALDataSet";
+                this.cOMERCIALDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
                 // 
                 // TxtDiaDes
                 // 
@@ -186,6 +186,7 @@
                 this.ShowIcon = false;
                 this.ShowInTaskbar = false;
                 this.Text = "Cadastro Condições de Pagamento";
+                this.Load += new System.EventHandler(this.FrmCadConPag_Load);
                 this.Shown += new System.EventHandler(this.FrmCadConPag_Shown);
                 this.tabPage2.ResumeLayout(false);
                 this.tabPage2.PerformLayout();

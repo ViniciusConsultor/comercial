@@ -21,6 +21,7 @@ namespace Comercial
 
             _princ.bindingNavigator1.BindingSource = gRUPOPRODUTOBindingSource;
             _princ.setdataSet(cOMERCIALDataSet);
+            _princ.novo();
         }
 
         private void gRUPOPRODUTOBindingNavigatorSaveItem_Click(object sender, EventArgs e)
@@ -43,8 +44,7 @@ namespace Comercial
         {
             // TODO: This line of code loads data into the 'cOMERCIALDataSet.GRUPOPRODUTO' table. You can move, or remove it, as needed.
             this.gRUPOPRODUTOTableAdapter.Fill(this.cOMERCIALDataSet.GRUPOPRODUTO);
-            // TODO: This line of code loads data into the 'cOMERCIALDataSet.GRUPOPRODUTO' table. You can move, or remove it, as needed.
-            this.gRUPOPRODUTOTableAdapter.Fill(this.cOMERCIALDataSet.GRUPOPRODUTO);
+          
         }
 
        
