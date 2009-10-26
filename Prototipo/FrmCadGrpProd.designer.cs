@@ -100,7 +100,7 @@
                 this.textBox1.Location = new System.Drawing.Point(296, 34);
                 this.textBox1.Name = "textBox1";
                 this.textBox1.Size = new System.Drawing.Size(116, 20);
-                this.textBox1.TabIndex = 70;
+                this.textBox1.TabIndex = 1;
                 // 
                 // label1
                 // 
@@ -120,7 +120,7 @@
                 this.TxtNumCon.Location = new System.Drawing.Point(65, 34);
                 this.TxtNumCon.Name = "TxtNumCon";
                 this.TxtNumCon.Size = new System.Drawing.Size(225, 20);
-                this.TxtNumCon.TabIndex = 68;
+                this.TxtNumCon.TabIndex = 0;
                 // 
                 // LblNumCon
                 // 
@@ -153,10 +153,12 @@
                 this.tableAdapterManager.PRODUTOTableAdapter = null;
                 this.tableAdapterManager.REGIAOTableAdapter = null;
                 this.tableAdapterManager.TRANSPORTADORATableAdapter = null;
+                this.tableAdapterManager.TRANSPORTADORAVIATableAdapter = null;
                 this.tableAdapterManager.UNIDADEMEDIDATableAdapter = null;
                 this.tableAdapterManager.UpdateOrder = Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
                 this.tableAdapterManager.USUARIOTableAdapter = null;
                 this.tableAdapterManager.VENDEDORTableAdapter = null;
+                this.tableAdapterManager.VIATRANSPORTETableAdapter = null;
                 // 
                 // FrmCadGrpProd
                 // 

@@ -103,6 +103,7 @@
                 this.TxtDiaDes.Name = "TxtDiaDes";
                 this.TxtDiaDes.Size = new System.Drawing.Size(106, 20);
                 this.TxtDiaDes.TabIndex = 45;
+                this.TxtDiaDes.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtDiaDes_KeyPress);
                 // 
                 // TxtDes
                 // 

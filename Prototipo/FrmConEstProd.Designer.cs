@@ -249,6 +249,7 @@
             this.txtEstoque.Name = "txtEstoque";
             this.txtEstoque.Size = new System.Drawing.Size(60, 20);
             this.txtEstoque.TabIndex = 26;
+            this.txtEstoque.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEstoque_KeyPress);
             // 
             // txtProdDesc
             // 

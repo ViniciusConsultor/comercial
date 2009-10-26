@@ -170,7 +170,7 @@
             this.txtIeCli.Name = "txtIeCli";
             this.txtIeCli.PromptChar = ' ';
             this.txtIeCli.Size = new System.Drawing.Size(131, 20);
-            this.txtIeCli.TabIndex = 76;
+            this.txtIeCli.TabIndex = 5;
             this.txtIeCli.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // tRANSPORTADORABindingSource
@@ -230,7 +230,7 @@
             this.cOMPLEMENTOTextBox.Location = new System.Drawing.Point(6, 81);
             this.cOMPLEMENTOTextBox.Name = "cOMPLEMENTOTextBox";
             this.cOMPLEMENTOTextBox.Size = new System.Drawing.Size(115, 20);
-            this.cOMPLEMENTOTextBox.TabIndex = 49;
+            this.cOMPLEMENTOTextBox.TabIndex = 3;
             // 
             // lblNumero
             // 
@@ -250,7 +250,8 @@
             this.NumTrans.Location = new System.Drawing.Point(480, 42);
             this.NumTrans.Name = "NumTrans";
             this.NumTrans.Size = new System.Drawing.Size(56, 20);
-            this.NumTrans.TabIndex = 47;
+            this.NumTrans.TabIndex = 2;
+            this.NumTrans.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.NumTrans_KeyPress);
             // 
             // uFComboBox
             // 
@@ -289,7 +290,7 @@
             this.uFComboBox.Location = new System.Drawing.Point(411, 83);
             this.uFComboBox.Name = "uFComboBox";
             this.uFComboBox.Size = new System.Drawing.Size(121, 21);
-            this.uFComboBox.TabIndex = 46;
+            this.uFComboBox.TabIndex = 6;
             // 
             // lblCeptrans
             // 
@@ -309,7 +310,7 @@
             this.txtTeltrans.Mask = "(99) 9999-9999";
             this.txtTeltrans.Name = "txtTeltrans";
             this.txtTeltrans.Size = new System.Drawing.Size(89, 20);
-            this.txtTeltrans.TabIndex = 28;
+            this.txtTeltrans.TabIndex = 7;
             this.txtTeltrans.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtTeltrans.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
@@ -320,7 +321,7 @@
             this.txtEmailtrans.Location = new System.Drawing.Point(104, 122);
             this.txtEmailtrans.Name = "txtEmailtrans";
             this.txtEmailtrans.Size = new System.Drawing.Size(430, 20);
-            this.txtEmailtrans.TabIndex = 30;
+            this.txtEmailtrans.TabIndex = 8;
             this.txtEmailtrans.TextChanged += new System.EventHandler(this.txtEmailtrans_TextChanged);
             // 
             // lblEmailtrans
@@ -364,7 +365,7 @@
             this.txtMunicipiotrans.Location = new System.Drawing.Point(254, 83);
             this.txtMunicipiotrans.Name = "txtMunicipiotrans";
             this.txtMunicipiotrans.Size = new System.Drawing.Size(151, 20);
-            this.txtMunicipiotrans.TabIndex = 25;
+            this.txtMunicipiotrans.TabIndex = 5;
             // 
             // lblMunicipiotrans
             // 
@@ -385,7 +386,7 @@
             this.txtBairrotrans.Location = new System.Drawing.Point(127, 82);
             this.txtBairrotrans.Name = "txtBairrotrans";
             this.txtBairrotrans.Size = new System.Drawing.Size(121, 20);
-            this.txtBairrotrans.TabIndex = 24;
+            this.txtBairrotrans.TabIndex = 4;
             // 
             // txtEndtrans
             // 
@@ -395,7 +396,7 @@
             this.txtEndtrans.Location = new System.Drawing.Point(126, 42);
             this.txtEndtrans.Name = "txtEndtrans";
             this.txtEndtrans.Size = new System.Drawing.Size(348, 20);
-            this.txtEndtrans.TabIndex = 23;
+            this.txtEndtrans.TabIndex = 1;
             // 
             // lblBairrotrans
             // 
@@ -438,7 +439,7 @@
             this.txtCnpjTrans.Name = "txtCnpjTrans";
             this.txtCnpjTrans.PromptChar = ' ';
             this.txtCnpjTrans.Size = new System.Drawing.Size(123, 20);
-            this.txtCnpjTrans.TabIndex = 75;
+            this.txtCnpjTrans.TabIndex = 4;
             this.txtCnpjTrans.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // lblCnpjCliente
@@ -458,7 +459,7 @@
             this.TxtNomRed.Location = new System.Drawing.Point(6, 58);
             this.TxtNomRed.Name = "TxtNomRed";
             this.TxtNomRed.Size = new System.Drawing.Size(136, 20);
-            this.TxtNomRed.TabIndex = 62;
+            this.TxtNomRed.TabIndex = 3;
             // 
             // TxtNom
             // 
@@ -466,7 +467,7 @@
             this.TxtNom.Location = new System.Drawing.Point(6, 19);
             this.TxtNom.Name = "TxtNom";
             this.TxtNom.Size = new System.Drawing.Size(402, 20);
-            this.TxtNom.TabIndex = 61;
+            this.TxtNom.TabIndex = 2;
             // 
             // LblNomRed
             // 
@@ -487,7 +488,7 @@
             this.LblNom.Location = new System.Drawing.Point(3, 3);
             this.LblNom.Name = "LblNom";
             this.LblNom.Size = new System.Drawing.Size(43, 13);
-            this.LblNom.TabIndex = 49;
+            this.LblNom.TabIndex = 1;
             this.LblNom.Text = "Nome:";
             // 
             // tRANSPORTADORATableAdapter
@@ -534,7 +535,7 @@
             this.txtCepTrans.Name = "txtCepTrans";
             this.txtCepTrans.ShowButton = false;
             this.txtCepTrans.Size = new System.Drawing.Size(117, 25);
-            this.txtCepTrans.TabIndex = 6;
+            this.txtCepTrans.TabIndex = 0;
             this.txtCepTrans.ButtonClick += new System.EventHandler(this.txtCepTrans_ButtonClick);
             // 
             // FrmCadTra
