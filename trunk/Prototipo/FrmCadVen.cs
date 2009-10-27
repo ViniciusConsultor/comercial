@@ -40,7 +40,7 @@ namespace Comercial
 
             Validacoes valida = new Validacoes();
 
-            if (!string.IsNullOrEmpty(txtCPF.Text))
+            if (!string.IsNullOrEmpty(txtCPF.Text) && !string.IsNullOrEmpty(txtComissao.Text))
             {
                 int cpf = valida.ValidaCPF(txtCPF.Text);
 
@@ -49,7 +49,7 @@ namespace Comercial
                 {
                     email = valida.ValidaEmail(txtEmail.Text);
                 }
-                
+
 
                 if (cpf == 1)
                 {
@@ -61,6 +61,12 @@ namespace Comercial
                 if (email == false)
                 {
                     MessageBox.Show("E-mail Inválido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return 1;
+                }
+
+                if (Convert.ToDouble(txtComissao.Text) < 0)
+                {
+                    MessageBox.Show("Comissão Inválida.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return 1;
                 }
             }
@@ -275,6 +281,30 @@ namespace Comercial
             {
                 MessageBox.Show("CEP não encontrado.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtEndereco.Focus();
+            }
+        }
+
+        private void txtCPF_Leave(object sender, EventArgs e)
+        {
+            Validacoes v = new Validacoes();
+            
+            if (!string.IsNullOrEmpty(txtCPF.Text))
+            {
+                if (v.ValidaCPF(txtCPF.Text) == 1)
+                {
+                    pictureBox1.Visible = true;
+                    pictureBox2.Visible = false;
+                }
+                else
+                {
+                    pictureBox1.Visible = false;
+                    pictureBox2.Visible = true;
+                }
+            }
+            else
+            {
+                pictureBox1.Visible = true;
+                pictureBox2.Visible = false;
             }
         }
 

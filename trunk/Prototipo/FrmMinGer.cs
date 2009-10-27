@@ -19,6 +19,9 @@ namespace Comercial
         private string opc = "'U','V'";
 
         private string tabela = "";
+        private string key = "";
+        private string input = "";
+        private string predictable = "";
         private string algoritmo = "";
 
 
@@ -344,6 +347,36 @@ namespace Comercial
 
             conn.Close();
             conn.Dispose();
+        }
+
+        private void dataGridView1_CellEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridViewRow dv = dataGridView1.Rows[e.RowIndex];
+
+            if (e.ColumnIndex == 1)
+            {
+
+                foreach (DataGridViewRow d in dataGridView1.Rows)
+                {
+                    d.Cells[1].Value = false;
+                }
+
+                dv.Cells[1].Value = true;
+                key = (string)dv.Cells[0].Value;
+            }
+
+        }
+
+        private void tabPage4_Enter(object sender, EventArgs e)
+        {
+            richTextBox2.Text = "--------------------\nResumo:\n--------------------\nNome da estrutura: "+ txtnomeEstrutura.Text +"\n"+
+                    "Tipo do algoritmo: "+ cmbBxTipoDataMining.Text +"\n\n" +
+                    "--------------------\nTabela:\n--------------------\n"+
+                    "Nome: "+tabela+"\n\n"+
+                    "-------------------\nColunas:\n--------------------\n"+
+                    "Key: "+key+"\n"+
+                    "Input: "+input+"\n"+ 
+                    "Predictable: "+predictable+"\n";
         }
 
     }
