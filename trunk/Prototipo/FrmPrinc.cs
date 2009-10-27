@@ -699,6 +699,7 @@ namespace Comercial
             filho.Show();
         }
 
+
         private void tlStrpBtnPesquisar_Click(object sender, EventArgs e)
         {
             if (this.ActiveMdiChild != null)
@@ -1516,6 +1517,49 @@ namespace Comercial
                 //Util.Interface.ChangeControlStatus(filho, false);
 
                 filho.WindowState = FormWindowState.Maximized;
+            }
+        }
+
+
+
+        private void tlStrpBtnLibPed_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                int x = 0, y = 0;
+
+                // Localiza o formulario
+                foreach (Form form in this.MdiChildren)
+                {
+                    if (form is FrmConPDV)
+                    {
+                        form.WindowState = FormWindowState.Maximized;
+                        form.Activate();
+                        x++;
+                    }
+                    y++;
+
+                }
+
+                // Para criar o formulario 
+                if (x == 0 && y == 0)
+                {
+                    FrmConPDV filho = new FrmConPDV(this);
+                    filho.Show();
+
+                    tlStrpConsulta.Visible = true;
+                    bindingNavigator1.Visible = false;
+
+                    // Util.Interface.ResetControls(filho);
+                    //Util.Interface.ChangeControlStatus(filho, false);
+
+                    filho.WindowState = FormWindowState.Maximized;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
             }
         }
 

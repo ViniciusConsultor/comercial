@@ -135,6 +135,9 @@
         EwGfd2gA1rsHyR8qLCqGM+LTlv8C/IFQR5wLubl9ErFY8xtEigdfnU07igAAAABJRU5ErkJggg==
 </value>
   </data>
+  <metadata name="ColStatus.UserAddedColumn" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <metadata name="ClmnCodPed.UserAddedColumn" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>

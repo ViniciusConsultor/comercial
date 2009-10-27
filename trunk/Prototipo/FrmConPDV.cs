@@ -16,6 +16,7 @@ namespace Comercial
     public partial class FrmConPDV : Form
     {
         private FrmPrinc _princ = null;
+        DataTable dttRetorno = new DataTable();
 
         public FrmConPDV(FrmPrinc parent)
         {
@@ -57,7 +58,7 @@ namespace Comercial
             this.iTEMPEDIDOTableAdapter.Fill(this.cOMERCIALDataSet.ITEMPEDIDO);
             // TODO: This line of code loads data into the 'cOMERCIALDataSet.PEDIDO' table. You can move, or remove it, as needed.
             this.pEDIDOTableAdapter.Fill(this.cOMERCIALDataSet.PEDIDO);
-
+            dttRetorno.Columns.Add("ImageStatus", typeof(Object));
 
         }
 
@@ -72,78 +73,130 @@ namespace Comercial
         #region Pesquisar
         public string pesquisar()
         {
-
-            string sql = "SELECT p.NRPEDIDO ,TIPO,SITUACAO,c.RAZAOSOCIAL, DATAEMISSAO, DATAENTREGA,prd.CODPRODUTO, prd.DESCRICAO, QUANTIDADE, SUM(VALOR) as Valor, (VALOR * QUANTIDADE) as ValorTotal  " +
-                         " FROM PEDIDO p INNER JOIN CLIENTE c ON p.CODCLIENTE = c.CNPJ  " +
-                         " INNER JOIN ITEMPEDIDO ip ON p.NRPEDIDO = ip.NRPEDIDO   " +
-                         " INNER JOIN PRODUTO prd ON ip.CODPRODUTO = prd.CODPRODUTO ";
-            string groupBy = " GROUP BY p.NRPEDIDO,TIPO,SITUACAO,c.RAZAOSOCIAL, DATAEMISSAO, DATAENTREGA,prd.CODPRODUTO,prd.DESCRICAO, QUANTIDADE, VALOR";
-
-            //string sql = "SELECT p.NRPEDIDO ,TIPO,SITUACAO, DATAEMISSAO, DATAENTREGA " +
-            // " FROM PEDIDO p INNER JOIN (Select c.CNPJ,c.RAZAOSOCIAL from CLIENTE c) c ON p.CODCLIENTE = c.CNPJ  " +
-            // " INNER JOIN (Select ip.NRPEDIDO,ip.CODPRODUTO,ip.QUANTIDADE,ip.VALOR from ITEMPEDIDO ip) ip ON p.NRPEDIDO = ip.NRPEDIDO " +
-            // " INNER JOIN (Select prd.CODPRODUTO, prd.DESCRICAO from PRODUTO prd) prd ON ip.CODPRODUTO = prd.CODPRODUTO ";
-            //string groupBy = " GROUP BY p.NRPEDIDO,TIPO,SITUACAO, DATAEMISSAO, DATAENTREGA ";
-
-            // pesquisa por nrPedido
-            if (!string.IsNullOrEmpty(txtCodPed.Text))
+            
+            try
             {
-                sql += " and p.nrPedido = " + txtCodPed.Text;
-            }
+                dttRetorno.Clear();
 
-            // pesquisa por Produto
-            if (!string.IsNullOrEmpty(txtCodProd.getText))
-            {
-                sql += " and prd.CODPRODUTO = " + txtCodProd.getText;
-            }
+                string sql = "SELECT p.NRPEDIDO ,TIPO,SITUACAO,c.RAZAOSOCIAL, DATAEMISSAO, DATAENTREGA,prd.CODPRODUTO, prd.DESCRICAO, QUANTIDADE, SUM(VALOR) as Valor, (VALOR * QUANTIDADE) as ValorTotal  " +
+                             " FROM PEDIDO p INNER JOIN CLIENTE c ON p.CODCLIENTE = c.CNPJ  " +
+                             " INNER JOIN ITEMPEDIDO ip ON p.NRPEDIDO = ip.NRPEDIDO   " +
+                             " INNER JOIN PRODUTO prd ON ip.CODPRODUTO = prd.CODPRODUTO ";
+                string groupBy = " GROUP BY p.NRPEDIDO,TIPO,SITUACAO,c.RAZAOSOCIAL, DATAEMISSAO, DATAENTREGA,prd.CODPRODUTO,prd.DESCRICAO, QUANTIDADE, VALOR";
 
-            // pesquisa por tipo pedido
-            if (!string.IsNullOrEmpty(cmBxTipoPed.Text))
-            {
-                if (cmBxTipoPed.Text == "N = Normal")
+                //string sql = "SELECT p.NRPEDIDO ,TIPO,SITUACAO, DATAEMISSAO, DATAENTREGA " +
+                // " FROM PEDIDO p INNER JOIN (Select c.CNPJ,c.RAZAOSOCIAL from CLIENTE c) c ON p.CODCLIENTE = c.CNPJ  " +
+                // " INNER JOIN (Select ip.NRPEDIDO,ip.CODPRODUTO,ip.QUANTIDADE,ip.VALOR from ITEMPEDIDO ip) ip ON p.NRPEDIDO = ip.NRPEDIDO " +
+                // " INNER JOIN (Select prd.CODPRODUTO, prd.DESCRICAO from PRODUTO prd) prd ON ip.CODPRODUTO = prd.CODPRODUTO ";
+                //string groupBy = " GROUP BY p.NRPEDIDO,TIPO,SITUACAO, DATAEMISSAO, DATAENTREGA ";
+
+                // pesquisa por nrPedido
+                if (!string.IsNullOrEmpty(txtCodPed.Text))
                 {
-                    sql += " and p.tipo = 'N'";
+                    sql += " and p.nrPedido = " + txtCodPed.Text;
                 }
-                else sql += " and p.tipo = 'C'";
 
+                // pesquisa por Produto
+                if (!string.IsNullOrEmpty(txtCodProd.getText))
+                {
+                    sql += " and prd.CODPRODUTO = " + txtCodProd.getText;
+                }
+
+                // pesquisa por tipo pedido
+                if (!string.IsNullOrEmpty(cmBxTipoPed.Text))
+                {
+                    if (cmBxTipoPed.Text == "N = Normal")
+                    {
+                        sql += " and p.tipo = 'N'";
+                    }
+                    else sql += " and p.tipo = 'C'";
+
+                }
+
+                // pesquisa por situacao pedido
+                if (rdbtnEfetivado.Checked)
+                {
+                    sql += " and p.situacao ='E'";
+                }
+
+                if (rdbtnPendente.Checked)
+                {
+                    sql += " and p.situacao ='P'";
+                }
+
+                //Pesquisa por data
+                if ((dttmDataPedido.Checked) && (dttmDataPedidoate.Checked))
+                {
+                    string formatData = dttmDataPedido.Value.Year + "-" + dttmDataPedido.Value.Month + "-" + dttmDataPedido.Value.Day;
+                    string formatDataate = dttmDataPedidoate.Value.Year + "-" + dttmDataPedidoate.Value.Month + "-" + dttmDataPedidoate.Value.Day;
+
+                    sql += " and p.dataEmissao BETWEEN '" + formatData + "'AND'" + formatDataate + "'";
+                }
+
+                sql += groupBy;
+
+                string c = ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString;
+
+                SqlConnection conn = new SqlConnection(c);
+                conn.Open();
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                //DataTable table = new DataTable();
+                //table.Load(reader);
+
+                dttRetorno.Load(reader);
+                
+
+                status();
+
+                dtGrdConPDV.DataSource = dttRetorno;
+
+                return sql;
             }
-
-            // pesquisa por situacao pedido
-            if (rdbtnEfetivado.Checked)
+            catch (Exception)
             {
-                sql += " and p.situacao ='E'";
+
+                throw;
             }
 
-            if (rdbtnPendente.Checked)
+
+        }
+        #endregion
+
+        #region VerificaStatus
+        public void status()
+        {
+            try
             {
-                sql += " and p.situacao ='P'";
-            }
 
-            //Pesquisa por data
-            if ((dttmDataPedido.Checked) && (dttmDataPedidoate.Checked))
+                foreach (DataRow item in dttRetorno.Rows)
+                {
+
+                    if (item["SITUACAO"].ToString() == "P")
+                    {
+                        item["ImageStatus"] = Comercial.Properties.Resources.BolaAmarela;
+
+                    }
+                    else if (item["SITUACAO"].ToString() == "E")
+                    {
+                        item["ImageStatus"] = Comercial.Properties.Resources.BolaVerde;
+
+                    }
+                    else
+                    {
+                        item["ImageStatus"] = Comercial.Properties.Resources.BolaVermelho;
+                    }
+                    continue;
+                }
+
+
+            }
+            catch (Exception ex)
             {
-                string formatData = dttmDataPedido.Value.Year + "-" + dttmDataPedido.Value.Month + "-" + dttmDataPedido.Value.Day;
-                string formatDataate = dttmDataPedidoate.Value.Year + "-" + dttmDataPedidoate.Value.Month + "-" + dttmDataPedidoate.Value.Day;
 
-                sql += " and p.dataEmissao BETWEEN '" + formatData + "'AND'" + formatDataate + "'";
+                throw ex;
             }
-
-            sql += groupBy;
-
-            string c = ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString;
-
-            SqlConnection conn = new SqlConnection(c);
-            conn.Open();
-            SqlCommand cmd = new SqlCommand(sql, conn);
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            DataTable table = new DataTable();
-            table.Load(reader);
-
-            dtGrdConPDV.DataSource = table;
-
-            return sql;
-
 
         }
         #endregion
@@ -223,5 +276,7 @@ namespace Comercial
             this.tableAdapterManager.UpdateAll(this.cOMERCIALDataSet);
 
         }
+
+
     }
 }
