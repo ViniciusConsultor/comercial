@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCadVen));
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txtCPF = new System.Windows.Forms.MaskedTextBox();
             this.vENDEDORBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
@@ -88,6 +90,8 @@
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vENDEDORBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rEGIAOBindingSource)).BeginInit();
@@ -101,6 +105,8 @@
             // tabPage2
             // 
             this.tabPage2.AutoScroll = true;
+            this.tabPage2.Controls.Add(this.pictureBox2);
+            this.tabPage2.Controls.Add(this.pictureBox1);
             this.tabPage2.Controls.Add(this.txtCPF);
             this.tabPage2.Controls.Add(this.cmBxRegiao);
             this.tabPage2.Controls.Add(this.groupBox1);
@@ -123,6 +129,28 @@
             this.tabPage2.Text = "Cadastro de vendedor";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::Comercial.Properties.Resources.BolaVerde;
+            this.pictureBox2.Location = new System.Drawing.Point(505, 21);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(16, 16);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox2.TabIndex = 51;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Visible = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Comercial.Properties.Resources.BolaVermelho;
+            this.pictureBox1.Location = new System.Drawing.Point(505, 21);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(16, 16);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 50;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Visible = false;
+            // 
             // txtCPF
             // 
             this.txtCPF.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vENDEDORBindingSource, "CPF", true));
@@ -133,6 +161,7 @@
             this.txtCPF.Size = new System.Drawing.Size(123, 20);
             this.txtCPF.TabIndex = 2;
             this.txtCPF.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            this.txtCPF.Leave += new System.EventHandler(this.txtCPF_Leave);
             // 
             // vENDEDORBindingSource
             // 
@@ -692,7 +721,7 @@
             // cpfToolStripLabel
             // 
             this.cpfToolStripLabel.Name = "cpfToolStripLabel";
-            this.cpfToolStripLabel.Size = new System.Drawing.Size(31, 22);
+            this.cpfToolStripLabel.Size = new System.Drawing.Size(30, 22);
             this.cpfToolStripLabel.Text = "CPF:";
             // 
             // cpfToolStripTextBox
@@ -704,7 +733,7 @@
             // nomeToolStripLabel
             // 
             this.nomeToolStripLabel.Name = "nomeToolStripLabel";
-            this.nomeToolStripLabel.Size = new System.Drawing.Size(43, 22);
+            this.nomeToolStripLabel.Size = new System.Drawing.Size(38, 22);
             this.nomeToolStripLabel.Text = "Nome:";
             // 
             // nomeToolStripTextBox
@@ -764,6 +793,8 @@
             this.Shown += new System.EventHandler(this.FrmCadVen_Shown);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.vENDEDORBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rEGIAOBindingSource)).EndInit();
@@ -840,5 +871,7 @@
         private System.Windows.Forms.TextBox cOMPLEMENTOTextBox;
         private System.Windows.Forms.MaskedTextBox maskedTextBox1;
         public System.Windows.Forms.MaskedTextBox txtCPF;
+        public System.Windows.Forms.PictureBox pictureBox1;
+        public System.Windows.Forms.PictureBox pictureBox2;
     }
 }

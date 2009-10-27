@@ -85,6 +85,21 @@ namespace Comercial
                 sql += "and p.tipo = 'C' ";
             }
 
+            if (chckBxDtEmissao.Checked)
+            {
+                string[] x;
+                string dt1="";
+                string dt2="";
+
+                x = dateTimePicker1.Text.Split('/');
+                dt1 = x[2] + "-" + x[1] + "-" + x[0];
+
+                x = dateTimePicker2.Text.Split('/');
+                dt2 = x[2] + "-" + x[1] + "-" + x[0];
+
+                sql += "and p.dataemissao between '" + dt1 + "' and '" + dt2 + "' ";
+            }
+
             string c = ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString;
 
             SqlConnection conn = new SqlConnection(c);
@@ -129,6 +144,20 @@ namespace Comercial
             // TODO: This line of code loads data into the 'cOMERCIALDataSet.VENDEDOR' table. You can move, or remove it, as needed.
             //   this.vENDEDORTableAdapter.Fill(this.cOMERCIALDataSet.VENDEDOR);
 
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chckBxDtEmissao.Checked)
+            {
+                dateTimePicker1.Enabled = true;
+                dateTimePicker2.Enabled = true;
+            }
+            else
+            {
+                dateTimePicker1.Enabled = false;
+                dateTimePicker2.Enabled = false;
+            }
         }
     }
 }

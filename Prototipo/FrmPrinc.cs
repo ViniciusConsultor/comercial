@@ -156,6 +156,10 @@ namespace Comercial
                         COMERCIALDataSetTableAdapters.VENDEDORTableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.VENDEDORTableAdapter();
                         table.Update(_dataset);
 
+                        FrmCadVen ven = (FrmCadVen)frm;
+                        ven.pictureBox1.Visible = false;
+                        ven.pictureBox2.Visible = false;
+
                     }
 
                     if (frm is FrmCadProd)
@@ -1324,7 +1328,7 @@ namespace Comercial
                     if (frmPed.chkEfetivado.Checked == true)
                     {
                         Util.Interface.ChangeControlStatus(frm, false);
-                        
+
                         novo();
                         throw new Exception("Efetivado");
 
@@ -1366,7 +1370,13 @@ namespace Comercial
                 Ped.txtNomeCliente.Text = Ped.ListarNomeCliente(Ped.txtcodCli.getText);
                 Ped.txtNomeTransportadora.Text = Ped.ListarNomeTransportadora(Ped.txtCodTransportadora.getText);
                 Ped.txtNomeVendedor.Text = Ped.ListarNomeVendedor(Ped.txtCodVendedor.getText);
-                
+
+            }
+            if (frm is FrmCadVen)
+            {
+                FrmCadVen ven = (FrmCadVen)frm;
+                ven.pictureBox1.Visible = false;
+                ven.pictureBox2.Visible = false;
             }
         }
 
