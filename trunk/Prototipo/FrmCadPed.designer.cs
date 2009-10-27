@@ -64,6 +64,10 @@
             this.lblcodcli = new System.Windows.Forms.Label();
             this.lblnumPed = new System.Windows.Forms.Label();
             this.grpBxItPedVen = new System.Windows.Forms.GroupBox();
+            this.txtValorTotal = new System.Windows.Forms.TextBox();
+            this.lblValorTotal = new System.Windows.Forms.Label();
+            this.txtQtdItem = new System.Windows.Forms.TextBox();
+            this.LblqtdItem = new System.Windows.Forms.Label();
             this.btnAdditen = new System.Windows.Forms.Button();
             this.lblDesconto = new System.Windows.Forms.Label();
             this.txtDesconto = new System.Windows.Forms.TextBox();
@@ -93,10 +97,6 @@
             this.iTEMPEDIDOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter();
             this.pRODUTOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.PRODUTOTableAdapter();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.txtValorTotal = new System.Windows.Forms.TextBox();
-            this.lblValorTotal = new System.Windows.Forms.Label();
-            this.txtQtdItem = new System.Windows.Forms.TextBox();
-            this.LblqtdItem = new System.Windows.Forms.Label();
             this.txtCodTransportadora = new Comercial.TextButton();
             this.txtCondPagto = new Comercial.TextButton();
             this.txtCodVendedor = new Comercial.TextButton();
@@ -111,6 +111,7 @@
             this.ClmIPI = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColDesconto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColStatusItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbCntrlPedVend.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.grpBxPedVenda.SuspendLayout();
@@ -509,6 +510,43 @@
             this.grpBxItPedVen.TabStop = false;
             this.grpBxItPedVen.Text = "Itens Pedido Venda";
             // 
+            // txtValorTotal
+            // 
+            this.txtValorTotal.Location = new System.Drawing.Point(758, 283);
+            this.txtValorTotal.Name = "txtValorTotal";
+            this.txtValorTotal.Size = new System.Drawing.Size(70, 20);
+            this.txtValorTotal.TabIndex = 110;
+            // 
+            // lblValorTotal
+            // 
+            this.lblValorTotal.AutoSize = true;
+            this.lblValorTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblValorTotal.ForeColor = System.Drawing.Color.CadetBlue;
+            this.lblValorTotal.Location = new System.Drawing.Point(755, 267);
+            this.lblValorTotal.Name = "lblValorTotal";
+            this.lblValorTotal.Size = new System.Drawing.Size(75, 13);
+            this.lblValorTotal.TabIndex = 112;
+            this.lblValorTotal.Text = "Preço Unit :";
+            // 
+            // txtQtdItem
+            // 
+            this.txtQtdItem.Location = new System.Drawing.Point(679, 283);
+            this.txtQtdItem.Name = "txtQtdItem";
+            this.txtQtdItem.Size = new System.Drawing.Size(70, 20);
+            this.txtQtdItem.TabIndex = 109;
+            this.txtQtdItem.TextChanged += new System.EventHandler(this.txtQtdItem_TextChanged);
+            // 
+            // LblqtdItem
+            // 
+            this.LblqtdItem.AutoSize = true;
+            this.LblqtdItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblqtdItem.ForeColor = System.Drawing.Color.CadetBlue;
+            this.LblqtdItem.Location = new System.Drawing.Point(676, 267);
+            this.LblqtdItem.Name = "LblqtdItem";
+            this.LblqtdItem.Size = new System.Drawing.Size(76, 13);
+            this.LblqtdItem.TabIndex = 111;
+            this.LblqtdItem.Text = "Quantidade:";
+            // 
             // btnAdditen
             // 
             this.btnAdditen.Image = ((System.Drawing.Image)(resources.GetObject("btnAdditen.Image")));
@@ -560,7 +598,8 @@
             this.ClmPrcUnit,
             this.ClmIPI,
             this.ColDesconto,
-            this.ColTotal});
+            this.ColTotal,
+            this.ColStatusItem});
             this.dtgrdvItenspven.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtgrdvItenspven.GridColor = System.Drawing.Color.WhiteSmoke;
             this.dtgrdvItenspven.Location = new System.Drawing.Point(0, 0);
@@ -749,43 +788,6 @@
             this.dataGridViewImageColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewImageColumn2.Width = 25;
             // 
-            // txtValorTotal
-            // 
-            this.txtValorTotal.Location = new System.Drawing.Point(758, 283);
-            this.txtValorTotal.Name = "txtValorTotal";
-            this.txtValorTotal.Size = new System.Drawing.Size(70, 20);
-            this.txtValorTotal.TabIndex = 110;
-            // 
-            // lblValorTotal
-            // 
-            this.lblValorTotal.AutoSize = true;
-            this.lblValorTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblValorTotal.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblValorTotal.Location = new System.Drawing.Point(755, 267);
-            this.lblValorTotal.Name = "lblValorTotal";
-            this.lblValorTotal.Size = new System.Drawing.Size(75, 13);
-            this.lblValorTotal.TabIndex = 112;
-            this.lblValorTotal.Text = "Preço Unit :";
-            // 
-            // txtQtdItem
-            // 
-            this.txtQtdItem.Location = new System.Drawing.Point(679, 283);
-            this.txtQtdItem.Name = "txtQtdItem";
-            this.txtQtdItem.Size = new System.Drawing.Size(70, 20);
-            this.txtQtdItem.TabIndex = 109;
-            this.txtQtdItem.TextChanged += new System.EventHandler(this.txtQtdItem_TextChanged);
-            // 
-            // LblqtdItem
-            // 
-            this.LblqtdItem.AutoSize = true;
-            this.LblqtdItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblqtdItem.ForeColor = System.Drawing.Color.CadetBlue;
-            this.LblqtdItem.Location = new System.Drawing.Point(676, 267);
-            this.LblqtdItem.Name = "LblqtdItem";
-            this.LblqtdItem.Size = new System.Drawing.Size(76, 13);
-            this.LblqtdItem.TabIndex = 111;
-            this.LblqtdItem.Text = "Quantidade:";
-            // 
             // txtCodTransportadora
             // 
             this.txtCodTransportadora.getText = "";
@@ -864,7 +866,6 @@
             this.ColProd.HeaderText = "Codigo Produto";
             this.ColProd.Name = "ColProd";
             this.ColProd.ReadOnly = true;
-            this.ColProd.Visible = false;
             // 
             // ClmDescProd
             // 
@@ -908,6 +909,14 @@
             this.ColTotal.HeaderText = "Valor Total";
             this.ColTotal.Name = "ColTotal";
             this.ColTotal.ReadOnly = true;
+            // 
+            // ColStatusItem
+            // 
+            this.ColStatusItem.DataPropertyName = "Status";
+            this.ColStatusItem.HeaderText = "Status";
+            this.ColStatusItem.Name = "ColStatusItem";
+            this.ColStatusItem.ReadOnly = true;
+            this.ColStatusItem.Visible = false;
             // 
             // FrmCadPed
             // 
@@ -1028,6 +1037,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmIPI;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColDesconto;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColTotal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColStatusItem;
 
     }
 }
