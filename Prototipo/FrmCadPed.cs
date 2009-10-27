@@ -18,7 +18,7 @@ namespace Comercial
     public partial class FrmCadPed : Form
     {
         private FrmPrinc _princ = null;
-        DataTable dttRetorno = new DataTable();
+        public DataTable dttRetorno = new DataTable();
 
         public FrmCadPed(FrmPrinc parent)
         {
@@ -59,7 +59,7 @@ namespace Comercial
             this.pEDIDOTableAdapter.Fill(this.cOMERCIALDataSet.PEDIDO);
 
             this.iTEMPEDIDOTableAdapter.Fill(this.cOMERCIALDataSet.ITEMPEDIDO);
-
+           
             populargrid();
 
             txtNomeCliente.Text = Convert.ToString(ListarNomeCliente(txtcodCli.getText));
@@ -214,6 +214,7 @@ namespace Comercial
             dttRetorno.Columns.Add("IPI", typeof(double));
             dttRetorno.Columns.Add("DESCONTO", typeof(double));
             dttRetorno.Columns.Add("ValorTotal", typeof(double));
+            dttRetorno.Columns.Add("Status", typeof(string));
 
             dttRetorno.AcceptChanges();
 
@@ -231,6 +232,7 @@ namespace Comercial
             try
             {
                 dttRetorno.Clear();
+
             }
             catch (Exception ex)
             {
@@ -312,22 +314,46 @@ namespace Comercial
 
             try
             {
-
-                for (int index = 0; index < dttRetorno.Rows.Count; index++)
+                if (_princ.edit == false)
                 {
-                    COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter();
-                    table.Insert(Convert.ToInt32(CodPed),
-                         Convert.ToInt32(dttRetorno.Rows[index]["CODPRODUTO"]),
-                            Convert.ToInt32(dttRetorno.Rows[index]["QUANTIDADE"]),
-                            Convert.ToDouble(dttRetorno.Rows[index]["DESCONTO"]),
-                            Convert.ToDouble(dttRetorno.Rows[index]["VALOR"]),
-                            Convert.ToDouble(dttRetorno.Rows[index]["IPI"]),
-                            Convert.ToInt32(dttRetorno.Rows[index]["ITEM"]));
+                    for (int index = 0; index < dttRetorno.Rows.Count; index++)
+                    {
 
-                    continue;
+                        COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter();
+                        table.Insert(Convert.ToInt32(CodPed),
+                             Convert.ToInt32(dttRetorno.Rows[index]["CODPRODUTO"]),
+                                Convert.ToInt32(dttRetorno.Rows[index]["QUANTIDADE"]),
+                                Convert.ToDouble(dttRetorno.Rows[index]["DESCONTO"]),
+                                Convert.ToDouble(dttRetorno.Rows[index]["VALOR"]),
+                                Convert.ToDouble(dttRetorno.Rows[index]["IPI"]),
+                                Convert.ToInt32(dttRetorno.Rows[index]["ITEM"]));
 
+                        continue;
+
+
+                    }
                 }
+                if (_princ.edit == true)
+                {
 
+                    for (int index = 0; index < dttRetorno.Rows.Count; index++)
+                    {
+                        if (dttRetorno.Rows[index]["Status"] == "A")
+                        {
+                            COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter();
+                            table.Insert(Convert.ToInt32(txtPedido.Text),
+                                 Convert.ToInt32(dttRetorno.Rows[index]["CODPRODUTO"]),
+                                    Convert.ToInt32(dttRetorno.Rows[index]["QUANTIDADE"]),
+                                    Convert.ToDouble(dttRetorno.Rows[index]["DESCONTO"]),
+                                    Convert.ToDouble(dttRetorno.Rows[index]["VALOR"]),
+                                    Convert.ToDouble(dttRetorno.Rows[index]["IPI"]),
+                                    Convert.ToInt32(dttRetorno.Rows[index]["ITEM"]));
+
+                            continue;
+
+                        }
+                    }
+                }
 
             }
             catch (Exception ex)
@@ -499,7 +525,7 @@ namespace Comercial
         public void populargrid()
         {
 
-            DataTable dttRetorno = new DataTable();
+            // DataTable dttRetorno = new DataTable();
 
             int numeropedido;
             try
@@ -510,8 +536,12 @@ namespace Comercial
 
                     dttRetorno = ListarItem(numeropedido);
 
+                    dttRetorno.Columns.Add("Status", typeof(string));
+
                     dtgrdvItenspven.DataSource = dttRetorno;
                 }
+
+
             }
             catch (Exception)
             {
@@ -919,7 +949,7 @@ namespace Comercial
                 foreach (DataGridViewRow item in dtgrdvItenspven.Rows)
                 {
                     //Verifico se o produto existe, se existir ele atualiza a quantidade com o preço total
-                    if (txtProduto.getText == Convert.ToString(item.Cells[2].Value))
+                    if (txtProduto.getText == Convert.ToString(item.Cells["ColProd"].Value))
                     {
                         txtValorTotal.Text = "";
                         txtQtdItem.Text = Convert.ToString(Convert.ToInt32(txtQtdItem.Text) + Convert.ToInt32(item.Cells[4].Value));
@@ -935,6 +965,7 @@ namespace Comercial
                         dtRow["IPI"] = item.Cells[6].Value;
                         dtRow["DESCONTO"] = item.Cells[7].Value;
                         dtRow["VALORTOTAL"] = item.Cells[8].Value;
+                        dtRow["status"] = "A";
                         dttRetorno.Rows.Add(dtRow);
                         teste += 1;
                     }
@@ -949,6 +980,7 @@ namespace Comercial
                     dtRow["IPI"] = txtipi.Text;
                     dtRow["DESCONTO"] = txtDesconto.Text;
                     dtRow["VALORTOTAL"] = valortotal;
+                    dtRow["status"] = "A";
                     dttRetorno.Rows.Add(dtRow);
                 }
                 //for para verificação do item
@@ -979,6 +1011,9 @@ namespace Comercial
                 DataColumn dtrow = dttItemPedido.Columns["CODPRODUTO"];
 
                 grpBxItPedVen.Enabled = false;
+
+                SalvarPedidoDeta();
+
 
 
                 return 0;

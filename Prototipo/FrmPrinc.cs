@@ -294,9 +294,8 @@ namespace Comercial
                 FrmCadPed Ped = (FrmCadPed)frm;
                 Ped.dtgrdvItenspven.DataSource = Ped.ListarItem(0);
                 Ped.LimparCampos();
-                Ped.limpardttable();
                 Ped.dtgrdvItenspven.Refresh();
-
+                Ped.dttRetorno.Clear();
             }
         }
         #endregion
@@ -1331,7 +1330,7 @@ namespace Comercial
 
                     }
 
-                    frmPed.limpardttable();
+                    //frmPed.limpardttable();
                     frmPed.ValidaControles();
 
                 }

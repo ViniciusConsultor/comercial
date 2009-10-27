@@ -522,7 +522,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Config-Tools.ico" />
+    <None Include="Img\BolaAmarela.gif" />
+    <None Include="Img\BolaVerde.gif" />
+    <Content Include="Img\BolaVermelho.gif" />
     <Content Include="Img\Excluir.png" />
+    <Content Include="Resources\BolaVermelho.gif" />
     <None Include="Resources\Excluir.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

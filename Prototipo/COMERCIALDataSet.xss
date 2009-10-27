@@ -15,7 +15,7 @@
     <Shape ID="DesignTable:ITEMPEDIDO" ZOrder="33" X="327" Y="70" Height="210" Width="220" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="140" />
     <Shape ID="DesignTable:MODULO" ZOrder="32" X="1109" Y="612" Height="105" Width="192" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="58" />
     <Shape ID="DesignTable:NOTAFISCAL" ZOrder="31" X="1911" Y="70" Height="275" Width="215" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="228" />
-    <Shape ID="DesignTable:PEDIDO" ZOrder="30" X="70" Y="70" Height="224" Width="187" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="177" />
+    <Shape ID="DesignTable:PEDIDO" ZOrder="30" X="70" Y="70" Height="305" Width="190" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="197" />
     <Shape ID="DesignTable:PRODUTO" ZOrder="29" X="614" Y="70" Height="275" Width="198" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="228" />
     <Shape ID="DesignTable:REGIAO" ZOrder="28" X="587" Y="437" Height="105" Width="187" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="58" />
     <Shape ID="DesignTable:TRANSPORTADORA" ZOrder="27" X="327" Y="1392" Height="258" Width="253" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="211" />
@@ -96,7 +96,7 @@
     <Connector ID="DesignRelation:FK_ITEMPEDIDO_PEDIDO" ZOrder="18" LineWidth="11">
       <RoutePoints>
         <Point>
-          <X>257</X>
+          <X>260</X>
           <Y>156</Y>
         </Point>
         <Point>
@@ -129,7 +129,7 @@
         </Point>
         <Point>
           <X>240</X>
-          <Y>294</Y>
+          <Y>375</Y>
         </Point>
       </RoutePoints>
     </Connector>
@@ -145,7 +145,7 @@
         </Point>
         <Point>
           <X>224</X>
-          <Y>294</Y>
+          <Y>375</Y>
         </Point>
       </RoutePoints>
     </Connector>
@@ -161,7 +161,7 @@
         </Point>
         <Point>
           <X>216</X>
-          <Y>294</Y>
+          <Y>375</Y>
         </Point>
       </RoutePoints>
     </Connector>
@@ -177,7 +177,7 @@
         </Point>
         <Point>
           <X>232</X>
-          <Y>294</Y>
+          <Y>375</Y>
         </Point>
       </RoutePoints>
     </Connector>
