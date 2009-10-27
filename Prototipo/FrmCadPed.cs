@@ -61,7 +61,7 @@ namespace Comercial
             this.iTEMPEDIDOTableAdapter.Fill(this.cOMERCIALDataSet.ITEMPEDIDO);
            
             populargrid();
-
+           
             txtNomeCliente.Text = Convert.ToString(ListarNomeCliente(txtcodCli.getText));
             txtNomeTransportadora.Text = Convert.ToString(ListarNomeTransportadora(txtCodTransportadora.getText));
             txtNomeVendedor.Text = Convert.ToString(ListarNomeVendedor(txtCodVendedor.getText));
@@ -770,6 +770,10 @@ namespace Comercial
         {
             try
             {
+                //Criação do Datarow para adicionar os itens
+                DataRow dtRow;
+                dtRow = dttRetorno.NewRow();
+
                 if (e.RowIndex >= 0)
                 {
                     DataGridViewImageColumn imagecolumn = new DataGridViewImageColumn();
@@ -779,7 +783,7 @@ namespace Comercial
 
                         if (MessageBox.Show("Deseja excluir o registro selecionado?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
-                            if (dttRetorno.Rows.Count != 0)
+                            if (dttRetorno.Rows[e.RowIndex]["status"] == "A")
                             {
                                 dttRetorno.Rows.RemoveAt(e.RowIndex);
                             }

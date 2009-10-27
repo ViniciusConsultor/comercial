@@ -38,11 +38,6 @@
             this.tbCntrlPedVend = new System.Windows.Forms.TabControl();
             this.tbPgPDV = new System.Windows.Forms.TabPage();
             this.dtgvListarPedido = new System.Windows.Forms.DataGridView();
-            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.pEDIDOBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
-            this.pEDIDOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.PEDIDOTableAdapter();
-            this.tableAdapterManager = new Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager();
             this.ColStatus = new System.Windows.Forms.DataGridViewImageColumn();
             this.ColPedido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColTipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,6 +45,11 @@
             this.ColDtEmissao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColDtEntrega = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColSituacao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.pEDIDOBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
+            this.pEDIDOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.PEDIDOTableAdapter();
+            this.tableAdapterManager = new Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager();
             this.tbCntrlPedVend.SuspendLayout();
             this.tbPgPDV.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgvListarPedido)).BeginInit();
@@ -99,8 +99,70 @@
             this.dtgvListarPedido.GridColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.dtgvListarPedido.Location = new System.Drawing.Point(6, 6);
             this.dtgvListarPedido.Name = "dtgvListarPedido";
+            this.dtgvListarPedido.ReadOnly = true;
             this.dtgvListarPedido.Size = new System.Drawing.Size(869, 519);
             this.dtgvListarPedido.TabIndex = 0;
+            // 
+            // ColStatus
+            // 
+            this.ColStatus.DataPropertyName = "ImageStatus";
+            this.ColStatus.HeaderText = "Status";
+            this.ColStatus.Name = "ColStatus";
+            this.ColStatus.ReadOnly = true;
+            // 
+            // ColPedido
+            // 
+            this.ColPedido.DataPropertyName = "NRPEDIDO";
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            this.ColPedido.DefaultCellStyle = dataGridViewCellStyle1;
+            this.ColPedido.HeaderText = "Pedido";
+            this.ColPedido.Name = "ColPedido";
+            this.ColPedido.ReadOnly = true;
+            // 
+            // ColTipo
+            // 
+            this.ColTipo.DataPropertyName = "TIPO";
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            this.ColTipo.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ColTipo.HeaderText = "Tipo";
+            this.ColTipo.Name = "ColTipo";
+            this.ColTipo.ReadOnly = true;
+            // 
+            // ColCliente
+            // 
+            this.ColCliente.DataPropertyName = "RAZAOSOCIAL";
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            this.ColCliente.DefaultCellStyle = dataGridViewCellStyle3;
+            this.ColCliente.HeaderText = "Cliente";
+            this.ColCliente.Name = "ColCliente";
+            this.ColCliente.ReadOnly = true;
+            // 
+            // ColDtEmissao
+            // 
+            this.ColDtEmissao.DataPropertyName = "DATAEMISSAO";
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            this.ColDtEmissao.DefaultCellStyle = dataGridViewCellStyle4;
+            this.ColDtEmissao.HeaderText = "Data Emissão";
+            this.ColDtEmissao.Name = "ColDtEmissao";
+            this.ColDtEmissao.ReadOnly = true;
+            // 
+            // ColDtEntrega
+            // 
+            this.ColDtEntrega.DataPropertyName = "DATAENTREGA";
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            this.ColDtEntrega.DefaultCellStyle = dataGridViewCellStyle5;
+            this.ColDtEntrega.HeaderText = "Data Entrega";
+            this.ColDtEntrega.Name = "ColDtEntrega";
+            this.ColDtEntrega.ReadOnly = true;
+            // 
+            // ColSituacao
+            // 
+            this.ColSituacao.DataPropertyName = "SITUACAO";
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
+            this.ColSituacao.DefaultCellStyle = dataGridViewCellStyle6;
+            this.ColSituacao.HeaderText = "Situação";
+            this.ColSituacao.Name = "ColSituacao";
+            this.ColSituacao.ReadOnly = true;
             // 
             // dataGridViewImageColumn1
             // 
@@ -145,60 +207,6 @@
             this.tableAdapterManager.USUARIOTableAdapter = null;
             this.tableAdapterManager.VENDEDORTableAdapter = null;
             this.tableAdapterManager.VIATRANSPORTETableAdapter = null;
-            // 
-            // ColStatus
-            // 
-            this.ColStatus.DataPropertyName = "ImageStatus";
-            this.ColStatus.HeaderText = "Status";
-            this.ColStatus.Name = "ColStatus";
-            // 
-            // ColPedido
-            // 
-            this.ColPedido.DataPropertyName = "NRPEDIDO";
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            this.ColPedido.DefaultCellStyle = dataGridViewCellStyle1;
-            this.ColPedido.HeaderText = "Pedido";
-            this.ColPedido.Name = "ColPedido";
-            // 
-            // ColTipo
-            // 
-            this.ColTipo.DataPropertyName = "TIPO";
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            this.ColTipo.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ColTipo.HeaderText = "Tipo";
-            this.ColTipo.Name = "ColTipo";
-            // 
-            // ColCliente
-            // 
-            this.ColCliente.DataPropertyName = "RAZAOSOCIAL";
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            this.ColCliente.DefaultCellStyle = dataGridViewCellStyle3;
-            this.ColCliente.HeaderText = "Cliente";
-            this.ColCliente.Name = "ColCliente";
-            // 
-            // ColDtEmissao
-            // 
-            this.ColDtEmissao.DataPropertyName = "DATAEMISSAO";
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            this.ColDtEmissao.DefaultCellStyle = dataGridViewCellStyle4;
-            this.ColDtEmissao.HeaderText = "Data Emissão";
-            this.ColDtEmissao.Name = "ColDtEmissao";
-            // 
-            // ColDtEntrega
-            // 
-            this.ColDtEntrega.DataPropertyName = "DATAENTREGA";
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            this.ColDtEntrega.DefaultCellStyle = dataGridViewCellStyle5;
-            this.ColDtEntrega.HeaderText = "Data Entrega";
-            this.ColDtEntrega.Name = "ColDtEntrega";
-            // 
-            // ColSituacao
-            // 
-            this.ColSituacao.DataPropertyName = "SITUACAO";
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
-            this.ColSituacao.DefaultCellStyle = dataGridViewCellStyle6;
-            this.ColSituacao.HeaderText = "Situação";
-            this.ColSituacao.Name = "ColSituacao";
             // 
             // FrmLibPDV
             // 

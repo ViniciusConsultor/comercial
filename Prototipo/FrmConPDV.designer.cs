@@ -57,6 +57,13 @@
             this.lblCod = new System.Windows.Forms.Label();
             this.lblTipoPed = new System.Windows.Forms.Label();
             this.dtGrdConPDV = new System.Windows.Forms.DataGridView();
+            this.iTEMPEDIDOBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
+            this.iTEMPEDIDOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter();
+            this.tableAdapterManager = new Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager();
+            this.pEDIDOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.PEDIDOTableAdapter();
+            this.pEDIDOBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ColStatus = new System.Windows.Forms.DataGridViewImageColumn();
             this.ClmnCodPed = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClmnDtPed = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColSituacao = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -68,12 +75,13 @@
             this.ColQuantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClmnValPed = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColValorTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.iTEMPEDIDOBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
-            this.iTEMPEDIDOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter();
-            this.tableAdapterManager = new Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager();
-            this.pEDIDOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.PEDIDOTableAdapter();
-            this.pEDIDOBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.lblPendente = new System.Windows.Forms.Label();
+            this.lblEfetivado = new System.Windows.Forms.Label();
+            this.lblCancelado = new System.Windows.Forms.Label();
+            this.grpSituacao = new System.Windows.Forms.GroupBox();
+            this.lblteztoPendente = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.txtCodProd = new Comercial.TextButton();
             this.tbCntrlConPDV.SuspendLayout();
             this.tbPgConCli.SuspendLayout();
@@ -86,6 +94,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.iTEMPEDIDOBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pEDIDOBindingSource)).BeginInit();
+            this.grpSituacao.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbCntrlConPDV
@@ -116,6 +125,7 @@
             // 
             // grpBxFiltro
             // 
+            this.grpBxFiltro.Controls.Add(this.grpSituacao);
             this.grpBxFiltro.Controls.Add(this.grpBxTpRel);
             this.grpBxFiltro.Controls.Add(this.grpBxCli);
             this.grpBxFiltro.Controls.Add(this.grpBxPedido);
@@ -132,9 +142,10 @@
             // 
             this.grpBxTpRel.Controls.Add(this.rdbProd);
             this.grpBxTpRel.Controls.Add(this.rdbped);
-            this.grpBxTpRel.Location = new System.Drawing.Point(441, 131);
+            this.grpBxTpRel.ForeColor = System.Drawing.Color.CadetBlue;
+            this.grpBxTpRel.Location = new System.Drawing.Point(447, 132);
             this.grpBxTpRel.Name = "grpBxTpRel";
-            this.grpBxTpRel.Size = new System.Drawing.Size(201, 53);
+            this.grpBxTpRel.Size = new System.Drawing.Size(195, 53);
             this.grpBxTpRel.TabIndex = 10;
             this.grpBxTpRel.TabStop = false;
             this.grpBxTpRel.Text = "Tipo Relatório";
@@ -143,7 +154,7 @@
             // 
             this.rdbProd.AutoSize = true;
             this.rdbProd.ForeColor = System.Drawing.Color.CadetBlue;
-            this.rdbProd.Location = new System.Drawing.Point(89, 28);
+            this.rdbProd.Location = new System.Drawing.Point(93, 28);
             this.rdbProd.Name = "rdbProd";
             this.rdbProd.Size = new System.Drawing.Size(65, 17);
             this.rdbProd.TabIndex = 1;
@@ -155,7 +166,7 @@
             this.rdbped.AutoSize = true;
             this.rdbped.Checked = true;
             this.rdbped.ForeColor = System.Drawing.Color.CadetBlue;
-            this.rdbped.Location = new System.Drawing.Point(6, 28);
+            this.rdbped.Location = new System.Drawing.Point(10, 28);
             this.rdbped.Name = "rdbped";
             this.rdbped.Size = new System.Drawing.Size(64, 17);
             this.rdbped.TabIndex = 0;
@@ -373,6 +384,7 @@
             this.dtGrdConPDV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dtGrdConPDV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGrdConPDV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColStatus,
             this.ClmnCodPed,
             this.ClmnDtPed,
             this.ColSituacao,
@@ -405,6 +417,62 @@
             this.dtGrdConPDV.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dtGrdConPDV.Size = new System.Drawing.Size(1125, 222);
             this.dtGrdConPDV.TabIndex = 0;
+            // 
+            // iTEMPEDIDOBindingSource
+            // 
+            this.iTEMPEDIDOBindingSource.DataMember = "ITEMPEDIDO";
+            this.iTEMPEDIDOBindingSource.DataSource = this.cOMERCIALDataSet;
+            // 
+            // cOMERCIALDataSet
+            // 
+            this.cOMERCIALDataSet.DataSetName = "COMERCIALDataSet";
+            this.cOMERCIALDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // iTEMPEDIDOTableAdapter
+            // 
+            this.iTEMPEDIDOTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.ACESSOTableAdapter = null;
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.CLIENTETableAdapter = null;
+            this.tableAdapterManager.CONDICAOPAGAMENTOTableAdapter = null;
+            this.tableAdapterManager.GRUPOPRODUTOTableAdapter = null;
+            this.tableAdapterManager.ICMSTableAdapter = null;
+            this.tableAdapterManager.ItemNotaFiscalTableAdapter = null;
+            this.tableAdapterManager.ITEMPEDIDOTableAdapter = this.iTEMPEDIDOTableAdapter;
+            this.tableAdapterManager.MODULOTableAdapter = null;
+            this.tableAdapterManager.NOTAFISCALTableAdapter = null;
+            this.tableAdapterManager.PEDIDOTableAdapter = this.pEDIDOTableAdapter;
+            this.tableAdapterManager.PRODUTOTableAdapter = null;
+            this.tableAdapterManager.REGIAOTableAdapter = null;
+            this.tableAdapterManager.TRANSPORTADORATableAdapter = null;
+            this.tableAdapterManager.TRANSPORTADORAVIATableAdapter = null;
+            this.tableAdapterManager.UNIDADEMEDIDATableAdapter = null;
+            this.tableAdapterManager.UpdateOrder = Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.USUARIOTableAdapter = null;
+            this.tableAdapterManager.VENDEDORTableAdapter = null;
+            this.tableAdapterManager.VIATRANSPORTETableAdapter = null;
+            // 
+            // pEDIDOTableAdapter
+            // 
+            this.pEDIDOTableAdapter.ClearBeforeFill = true;
+            // 
+            // pEDIDOBindingSource
+            // 
+            this.pEDIDOBindingSource.DataMember = "PEDIDO";
+            this.pEDIDOBindingSource.DataSource = this.cOMERCIALDataSet;
+            // 
+            // ColStatus
+            // 
+            this.ColStatus.DataPropertyName = "ImageStatus";
+            this.ColStatus.HeaderText = "";
+            this.ColStatus.Name = "ColStatus";
+            this.ColStatus.ReadOnly = true;
+            this.ColStatus.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColStatus.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ColStatus.Width = 30;
             // 
             // ClmnCodPed
             // 
@@ -486,51 +554,81 @@
             this.ColValorTotal.Name = "ColValorTotal";
             this.ColValorTotal.ReadOnly = true;
             // 
-            // iTEMPEDIDOBindingSource
+            // lblPendente
             // 
-            this.iTEMPEDIDOBindingSource.DataMember = "ITEMPEDIDO";
-            this.iTEMPEDIDOBindingSource.DataSource = this.cOMERCIALDataSet;
+            this.lblPendente.AutoSize = true;
+            this.lblPendente.Image = global::Comercial.Properties.Resources.BolaAmarela;
+            this.lblPendente.Location = new System.Drawing.Point(6, 20);
+            this.lblPendente.MaximumSize = new System.Drawing.Size(30, 30);
+            this.lblPendente.MinimumSize = new System.Drawing.Size(30, 0);
+            this.lblPendente.Name = "lblPendente";
+            this.lblPendente.Size = new System.Drawing.Size(30, 13);
+            this.lblPendente.TabIndex = 2;
             // 
-            // cOMERCIALDataSet
+            // lblEfetivado
             // 
-            this.cOMERCIALDataSet.DataSetName = "COMERCIALDataSet";
-            this.cOMERCIALDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.lblEfetivado.AutoSize = true;
+            this.lblEfetivado.Image = global::Comercial.Properties.Resources.BolaVerde;
+            this.lblEfetivado.Location = new System.Drawing.Point(6, 43);
+            this.lblEfetivado.MaximumSize = new System.Drawing.Size(30, 30);
+            this.lblEfetivado.MinimumSize = new System.Drawing.Size(30, 0);
+            this.lblEfetivado.Name = "lblEfetivado";
+            this.lblEfetivado.Size = new System.Drawing.Size(30, 13);
+            this.lblEfetivado.TabIndex = 3;
             // 
-            // iTEMPEDIDOTableAdapter
+            // lblCancelado
             // 
-            this.iTEMPEDIDOTableAdapter.ClearBeforeFill = true;
+            this.lblCancelado.AutoSize = true;
+            this.lblCancelado.Image = global::Comercial.Properties.Resources.BolaVermelho;
+            this.lblCancelado.Location = new System.Drawing.Point(6, 65);
+            this.lblCancelado.MaximumSize = new System.Drawing.Size(30, 30);
+            this.lblCancelado.MinimumSize = new System.Drawing.Size(30, 0);
+            this.lblCancelado.Name = "lblCancelado";
+            this.lblCancelado.Size = new System.Drawing.Size(30, 13);
+            this.lblCancelado.TabIndex = 4;
             // 
-            // tableAdapterManager
+            // grpSituacao
             // 
-            this.tableAdapterManager.ACESSOTableAdapter = null;
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.CLIENTETableAdapter = null;
-            this.tableAdapterManager.CONDICAOPAGAMENTOTableAdapter = null;
-            this.tableAdapterManager.GRUPOPRODUTOTableAdapter = null;
-            this.tableAdapterManager.ICMSTableAdapter = null;
-            this.tableAdapterManager.ItemNotaFiscalTableAdapter = null;
-            this.tableAdapterManager.ITEMPEDIDOTableAdapter = this.iTEMPEDIDOTableAdapter;
-            this.tableAdapterManager.MODULOTableAdapter = null;
-            this.tableAdapterManager.NOTAFISCALTableAdapter = null;
-            this.tableAdapterManager.PEDIDOTableAdapter = this.pEDIDOTableAdapter;
-            this.tableAdapterManager.PRODUTOTableAdapter = null;
-            this.tableAdapterManager.REGIAOTableAdapter = null;
-            this.tableAdapterManager.TRANSPORTADORATableAdapter = null;
-            this.tableAdapterManager.TRANSPORTADORAVIATableAdapter = null;
-            this.tableAdapterManager.UNIDADEMEDIDATableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            this.tableAdapterManager.USUARIOTableAdapter = null;
-            this.tableAdapterManager.VENDEDORTableAdapter = null;
-            this.tableAdapterManager.VIATRANSPORTETableAdapter = null;
+            this.grpSituacao.Controls.Add(this.label2);
+            this.grpSituacao.Controls.Add(this.label1);
+            this.grpSituacao.Controls.Add(this.lblteztoPendente);
+            this.grpSituacao.Controls.Add(this.lblPendente);
+            this.grpSituacao.Controls.Add(this.lblCancelado);
+            this.grpSituacao.Controls.Add(this.lblEfetivado);
+            this.grpSituacao.ForeColor = System.Drawing.Color.CadetBlue;
+            this.grpSituacao.Location = new System.Drawing.Point(318, 98);
+            this.grpSituacao.Name = "grpSituacao";
+            this.grpSituacao.Size = new System.Drawing.Size(123, 91);
+            this.grpSituacao.TabIndex = 5;
+            this.grpSituacao.TabStop = false;
+            this.grpSituacao.Text = "Situação";
             // 
-            // pEDIDOTableAdapter
+            // lblteztoPendente
             // 
-            this.pEDIDOTableAdapter.ClearBeforeFill = true;
+            this.lblteztoPendente.AutoSize = true;
+            this.lblteztoPendente.Location = new System.Drawing.Point(33, 20);
+            this.lblteztoPendente.Name = "lblteztoPendente";
+            this.lblteztoPendente.Size = new System.Drawing.Size(61, 13);
+            this.lblteztoPendente.TabIndex = 5;
+            this.lblteztoPendente.Text = "Pendente";
             // 
-            // pEDIDOBindingSource
+            // label1
             // 
-            this.pEDIDOBindingSource.DataMember = "PEDIDO";
-            this.pEDIDOBindingSource.DataSource = this.cOMERCIALDataSet;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(33, 43);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(61, 13);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Efetivado";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(33, 65);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(67, 13);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Cancelado";
             // 
             // txtCodProd
             // 
@@ -568,6 +666,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.iTEMPEDIDOBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pEDIDOBindingSource)).EndInit();
+            this.grpSituacao.ResumeLayout(false);
+            this.grpSituacao.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -599,6 +699,13 @@
         public System.Windows.Forms.DataGridView dtGrdConPDV;
         public System.Windows.Forms.RadioButton rdbProd;
         public System.Windows.Forms.RadioButton rdbped;
+        private COMERCIALDataSet cOMERCIALDataSet;
+        private System.Windows.Forms.BindingSource iTEMPEDIDOBindingSource;
+        private Comercial.COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter iTEMPEDIDOTableAdapter;
+        private Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager tableAdapterManager;
+        private Comercial.COMERCIALDataSetTableAdapters.PEDIDOTableAdapter pEDIDOTableAdapter;
+        private System.Windows.Forms.BindingSource pEDIDOBindingSource;
+        private System.Windows.Forms.DataGridViewImageColumn ColStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmnCodPed;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmnDtPed;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColSituacao;
@@ -610,11 +717,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColQuantidade;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmnValPed;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColValorTotal;
-        private COMERCIALDataSet cOMERCIALDataSet;
-        private System.Windows.Forms.BindingSource iTEMPEDIDOBindingSource;
-        private Comercial.COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter iTEMPEDIDOTableAdapter;
-        private Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager tableAdapterManager;
-        private Comercial.COMERCIALDataSetTableAdapters.PEDIDOTableAdapter pEDIDOTableAdapter;
-        private System.Windows.Forms.BindingSource pEDIDOBindingSource;
+        private System.Windows.Forms.Label lblPendente;
+        private System.Windows.Forms.GroupBox grpSituacao;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblteztoPendente;
+        private System.Windows.Forms.Label lblCancelado;
+        private System.Windows.Forms.Label lblEfetivado;
     }
 }
