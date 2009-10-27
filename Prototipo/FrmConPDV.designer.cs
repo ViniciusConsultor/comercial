@@ -29,13 +29,20 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmConPDV));
             this.tbCntrlConPDV = new System.Windows.Forms.TabControl();
             this.tbPgConCli = new System.Windows.Forms.TabPage();
             this.grpBxFiltro = new System.Windows.Forms.GroupBox();
+            this.grpSituacao = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblteztoPendente = new System.Windows.Forms.Label();
+            this.lblPendente = new System.Windows.Forms.Label();
+            this.lblCancelado = new System.Windows.Forms.Label();
+            this.lblEfetivado = new System.Windows.Forms.Label();
             this.grpBxTpRel = new System.Windows.Forms.GroupBox();
             this.rdbProd = new System.Windows.Forms.RadioButton();
             this.rdbped = new System.Windows.Forms.RadioButton();
@@ -57,12 +64,6 @@
             this.lblCod = new System.Windows.Forms.Label();
             this.lblTipoPed = new System.Windows.Forms.Label();
             this.dtGrdConPDV = new System.Windows.Forms.DataGridView();
-            this.iTEMPEDIDOBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
-            this.iTEMPEDIDOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter();
-            this.tableAdapterManager = new Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager();
-            this.pEDIDOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.PEDIDOTableAdapter();
-            this.pEDIDOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ColStatus = new System.Windows.Forms.DataGridViewImageColumn();
             this.ClmnCodPed = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClmnDtPed = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -75,17 +76,17 @@
             this.ColQuantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClmnValPed = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColValorTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblPendente = new System.Windows.Forms.Label();
-            this.lblEfetivado = new System.Windows.Forms.Label();
-            this.lblCancelado = new System.Windows.Forms.Label();
-            this.grpSituacao = new System.Windows.Forms.GroupBox();
-            this.lblteztoPendente = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.iTEMPEDIDOBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
+            this.iTEMPEDIDOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter();
+            this.tableAdapterManager = new Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager();
+            this.pEDIDOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.PEDIDOTableAdapter();
+            this.pEDIDOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtCodProd = new Comercial.TextButton();
             this.tbCntrlConPDV.SuspendLayout();
             this.tbPgConCli.SuspendLayout();
             this.grpBxFiltro.SuspendLayout();
+            this.grpSituacao.SuspendLayout();
             this.grpBxTpRel.SuspendLayout();
             this.grpBxCli.SuspendLayout();
             this.grpBxPedido.SuspendLayout();
@@ -94,7 +95,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.iTEMPEDIDOBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pEDIDOBindingSource)).BeginInit();
-            this.grpSituacao.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbCntrlConPDV
@@ -138,12 +138,89 @@
             this.grpBxFiltro.TabStop = false;
             this.grpBxFiltro.Text = "Filtros:";
             // 
+            // grpSituacao
+            // 
+            this.grpSituacao.Controls.Add(this.label2);
+            this.grpSituacao.Controls.Add(this.label1);
+            this.grpSituacao.Controls.Add(this.lblteztoPendente);
+            this.grpSituacao.Controls.Add(this.lblPendente);
+            this.grpSituacao.Controls.Add(this.lblCancelado);
+            this.grpSituacao.Controls.Add(this.lblEfetivado);
+            this.grpSituacao.Enabled = false;
+            this.grpSituacao.ForeColor = System.Drawing.Color.CadetBlue;
+            this.grpSituacao.Location = new System.Drawing.Point(519, 102);
+            this.grpSituacao.Name = "grpSituacao";
+            this.grpSituacao.Size = new System.Drawing.Size(123, 91);
+            this.grpSituacao.TabIndex = 5;
+            this.grpSituacao.TabStop = false;
+            this.grpSituacao.Text = "Legenda";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(33, 65);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(67, 13);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Cancelado";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(33, 43);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(61, 13);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Efetivado";
+            // 
+            // lblteztoPendente
+            // 
+            this.lblteztoPendente.AutoSize = true;
+            this.lblteztoPendente.Location = new System.Drawing.Point(33, 20);
+            this.lblteztoPendente.Name = "lblteztoPendente";
+            this.lblteztoPendente.Size = new System.Drawing.Size(61, 13);
+            this.lblteztoPendente.TabIndex = 5;
+            this.lblteztoPendente.Text = "Pendente";
+            // 
+            // lblPendente
+            // 
+            this.lblPendente.AutoSize = true;
+            this.lblPendente.Image = global::Comercial.Properties.Resources.BolaAmarela;
+            this.lblPendente.Location = new System.Drawing.Point(6, 20);
+            this.lblPendente.MaximumSize = new System.Drawing.Size(30, 30);
+            this.lblPendente.MinimumSize = new System.Drawing.Size(30, 0);
+            this.lblPendente.Name = "lblPendente";
+            this.lblPendente.Size = new System.Drawing.Size(30, 13);
+            this.lblPendente.TabIndex = 2;
+            // 
+            // lblCancelado
+            // 
+            this.lblCancelado.AutoSize = true;
+            this.lblCancelado.Image = global::Comercial.Properties.Resources.BolaVermelho;
+            this.lblCancelado.Location = new System.Drawing.Point(6, 65);
+            this.lblCancelado.MaximumSize = new System.Drawing.Size(30, 30);
+            this.lblCancelado.MinimumSize = new System.Drawing.Size(30, 0);
+            this.lblCancelado.Name = "lblCancelado";
+            this.lblCancelado.Size = new System.Drawing.Size(30, 13);
+            this.lblCancelado.TabIndex = 4;
+            // 
+            // lblEfetivado
+            // 
+            this.lblEfetivado.AutoSize = true;
+            this.lblEfetivado.Image = global::Comercial.Properties.Resources.BolaVerde;
+            this.lblEfetivado.Location = new System.Drawing.Point(6, 43);
+            this.lblEfetivado.MaximumSize = new System.Drawing.Size(30, 30);
+            this.lblEfetivado.MinimumSize = new System.Drawing.Size(30, 0);
+            this.lblEfetivado.Name = "lblEfetivado";
+            this.lblEfetivado.Size = new System.Drawing.Size(30, 13);
+            this.lblEfetivado.TabIndex = 3;
+            // 
             // grpBxTpRel
             // 
             this.grpBxTpRel.Controls.Add(this.rdbProd);
             this.grpBxTpRel.Controls.Add(this.rdbped);
             this.grpBxTpRel.ForeColor = System.Drawing.Color.CadetBlue;
-            this.grpBxTpRel.Location = new System.Drawing.Point(447, 132);
+            this.grpBxTpRel.Location = new System.Drawing.Point(318, 101);
             this.grpBxTpRel.Name = "grpBxTpRel";
             this.grpBxTpRel.Size = new System.Drawing.Size(195, 53);
             this.grpBxTpRel.TabIndex = 10;
@@ -374,14 +451,14 @@
             this.dtGrdConPDV.AllowUserToAddRows = false;
             this.dtGrdConPDV.AllowUserToDeleteRows = false;
             this.dtGrdConPDV.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtGrdConPDV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtGrdConPDV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dtGrdConPDV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGrdConPDV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColStatus,
@@ -396,73 +473,27 @@
             this.ColQuantidade,
             this.ClmnValPed,
             this.ColValorTotal});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.CadetBlue;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtGrdConPDV.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.CadetBlue;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtGrdConPDV.DefaultCellStyle = dataGridViewCellStyle8;
             this.dtGrdConPDV.Location = new System.Drawing.Point(6, 210);
             this.dtGrdConPDV.Name = "dtGrdConPDV";
             this.dtGrdConPDV.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtGrdConPDV.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtGrdConPDV.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dtGrdConPDV.Size = new System.Drawing.Size(1125, 222);
             this.dtGrdConPDV.TabIndex = 0;
-            // 
-            // iTEMPEDIDOBindingSource
-            // 
-            this.iTEMPEDIDOBindingSource.DataMember = "ITEMPEDIDO";
-            this.iTEMPEDIDOBindingSource.DataSource = this.cOMERCIALDataSet;
-            // 
-            // cOMERCIALDataSet
-            // 
-            this.cOMERCIALDataSet.DataSetName = "COMERCIALDataSet";
-            this.cOMERCIALDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // iTEMPEDIDOTableAdapter
-            // 
-            this.iTEMPEDIDOTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.ACESSOTableAdapter = null;
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.CLIENTETableAdapter = null;
-            this.tableAdapterManager.CONDICAOPAGAMENTOTableAdapter = null;
-            this.tableAdapterManager.GRUPOPRODUTOTableAdapter = null;
-            this.tableAdapterManager.ICMSTableAdapter = null;
-            this.tableAdapterManager.ItemNotaFiscalTableAdapter = null;
-            this.tableAdapterManager.ITEMPEDIDOTableAdapter = this.iTEMPEDIDOTableAdapter;
-            this.tableAdapterManager.MODULOTableAdapter = null;
-            this.tableAdapterManager.NOTAFISCALTableAdapter = null;
-            this.tableAdapterManager.PEDIDOTableAdapter = this.pEDIDOTableAdapter;
-            this.tableAdapterManager.PRODUTOTableAdapter = null;
-            this.tableAdapterManager.REGIAOTableAdapter = null;
-            this.tableAdapterManager.TRANSPORTADORATableAdapter = null;
-            this.tableAdapterManager.TRANSPORTADORAVIATableAdapter = null;
-            this.tableAdapterManager.UNIDADEMEDIDATableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            this.tableAdapterManager.USUARIOTableAdapter = null;
-            this.tableAdapterManager.VENDEDORTableAdapter = null;
-            this.tableAdapterManager.VIATRANSPORTETableAdapter = null;
-            // 
-            // pEDIDOTableAdapter
-            // 
-            this.pEDIDOTableAdapter.ClearBeforeFill = true;
-            // 
-            // pEDIDOBindingSource
-            // 
-            this.pEDIDOBindingSource.DataMember = "PEDIDO";
-            this.pEDIDOBindingSource.DataSource = this.cOMERCIALDataSet;
             // 
             // ColStatus
             // 
@@ -554,81 +585,51 @@
             this.ColValorTotal.Name = "ColValorTotal";
             this.ColValorTotal.ReadOnly = true;
             // 
-            // lblPendente
+            // iTEMPEDIDOBindingSource
             // 
-            this.lblPendente.AutoSize = true;
-            this.lblPendente.Image = global::Comercial.Properties.Resources.BolaAmarela;
-            this.lblPendente.Location = new System.Drawing.Point(6, 20);
-            this.lblPendente.MaximumSize = new System.Drawing.Size(30, 30);
-            this.lblPendente.MinimumSize = new System.Drawing.Size(30, 0);
-            this.lblPendente.Name = "lblPendente";
-            this.lblPendente.Size = new System.Drawing.Size(30, 13);
-            this.lblPendente.TabIndex = 2;
+            this.iTEMPEDIDOBindingSource.DataMember = "ITEMPEDIDO";
+            this.iTEMPEDIDOBindingSource.DataSource = this.cOMERCIALDataSet;
             // 
-            // lblEfetivado
+            // cOMERCIALDataSet
             // 
-            this.lblEfetivado.AutoSize = true;
-            this.lblEfetivado.Image = global::Comercial.Properties.Resources.BolaVerde;
-            this.lblEfetivado.Location = new System.Drawing.Point(6, 43);
-            this.lblEfetivado.MaximumSize = new System.Drawing.Size(30, 30);
-            this.lblEfetivado.MinimumSize = new System.Drawing.Size(30, 0);
-            this.lblEfetivado.Name = "lblEfetivado";
-            this.lblEfetivado.Size = new System.Drawing.Size(30, 13);
-            this.lblEfetivado.TabIndex = 3;
+            this.cOMERCIALDataSet.DataSetName = "COMERCIALDataSet";
+            this.cOMERCIALDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // lblCancelado
+            // iTEMPEDIDOTableAdapter
             // 
-            this.lblCancelado.AutoSize = true;
-            this.lblCancelado.Image = global::Comercial.Properties.Resources.BolaVermelho;
-            this.lblCancelado.Location = new System.Drawing.Point(6, 65);
-            this.lblCancelado.MaximumSize = new System.Drawing.Size(30, 30);
-            this.lblCancelado.MinimumSize = new System.Drawing.Size(30, 0);
-            this.lblCancelado.Name = "lblCancelado";
-            this.lblCancelado.Size = new System.Drawing.Size(30, 13);
-            this.lblCancelado.TabIndex = 4;
+            this.iTEMPEDIDOTableAdapter.ClearBeforeFill = true;
             // 
-            // grpSituacao
+            // tableAdapterManager
             // 
-            this.grpSituacao.Controls.Add(this.label2);
-            this.grpSituacao.Controls.Add(this.label1);
-            this.grpSituacao.Controls.Add(this.lblteztoPendente);
-            this.grpSituacao.Controls.Add(this.lblPendente);
-            this.grpSituacao.Controls.Add(this.lblCancelado);
-            this.grpSituacao.Controls.Add(this.lblEfetivado);
-            this.grpSituacao.ForeColor = System.Drawing.Color.CadetBlue;
-            this.grpSituacao.Location = new System.Drawing.Point(318, 98);
-            this.grpSituacao.Name = "grpSituacao";
-            this.grpSituacao.Size = new System.Drawing.Size(123, 91);
-            this.grpSituacao.TabIndex = 5;
-            this.grpSituacao.TabStop = false;
-            this.grpSituacao.Text = "Situação";
+            this.tableAdapterManager.ACESSOTableAdapter = null;
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.CLIENTETableAdapter = null;
+            this.tableAdapterManager.CONDICAOPAGAMENTOTableAdapter = null;
+            this.tableAdapterManager.GRUPOPRODUTOTableAdapter = null;
+            this.tableAdapterManager.ICMSTableAdapter = null;
+            this.tableAdapterManager.ItemNotaFiscalTableAdapter = null;
+            this.tableAdapterManager.ITEMPEDIDOTableAdapter = this.iTEMPEDIDOTableAdapter;
+            this.tableAdapterManager.MODULOTableAdapter = null;
+            this.tableAdapterManager.NOTAFISCALTableAdapter = null;
+            this.tableAdapterManager.PEDIDOTableAdapter = this.pEDIDOTableAdapter;
+            this.tableAdapterManager.PRODUTOTableAdapter = null;
+            this.tableAdapterManager.REGIAOTableAdapter = null;
+            this.tableAdapterManager.TRANSPORTADORATableAdapter = null;
+            this.tableAdapterManager.TRANSPORTADORAVIATableAdapter = null;
+            this.tableAdapterManager.UNIDADEMEDIDATableAdapter = null;
+            this.tableAdapterManager.UpdateOrder = Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.USUARIOTableAdapter = null;
+            this.tableAdapterManager.VENDEDORTableAdapter = null;
+            this.tableAdapterManager.VIATRANSPORTETableAdapter = null;
             // 
-            // lblteztoPendente
+            // pEDIDOTableAdapter
             // 
-            this.lblteztoPendente.AutoSize = true;
-            this.lblteztoPendente.Location = new System.Drawing.Point(33, 20);
-            this.lblteztoPendente.Name = "lblteztoPendente";
-            this.lblteztoPendente.Size = new System.Drawing.Size(61, 13);
-            this.lblteztoPendente.TabIndex = 5;
-            this.lblteztoPendente.Text = "Pendente";
+            this.pEDIDOTableAdapter.ClearBeforeFill = true;
             // 
-            // label1
+            // pEDIDOBindingSource
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(33, 43);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 13);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Efetivado";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(33, 65);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 13);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Cancelado";
+            this.pEDIDOBindingSource.DataMember = "PEDIDO";
+            this.pEDIDOBindingSource.DataSource = this.cOMERCIALDataSet;
             // 
             // txtCodProd
             // 
@@ -654,6 +655,8 @@
             this.tbCntrlConPDV.ResumeLayout(false);
             this.tbPgConCli.ResumeLayout(false);
             this.grpBxFiltro.ResumeLayout(false);
+            this.grpSituacao.ResumeLayout(false);
+            this.grpSituacao.PerformLayout();
             this.grpBxTpRel.ResumeLayout(false);
             this.grpBxTpRel.PerformLayout();
             this.grpBxCli.ResumeLayout(false);
@@ -666,8 +669,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.iTEMPEDIDOBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pEDIDOBindingSource)).EndInit();
-            this.grpSituacao.ResumeLayout(false);
-            this.grpSituacao.PerformLayout();
             this.ResumeLayout(false);
 
         }

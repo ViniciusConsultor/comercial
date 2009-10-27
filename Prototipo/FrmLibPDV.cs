@@ -27,8 +27,8 @@ namespace Comercial
 
         private void txtNumPed_ButtonClick(object sender, EventArgs e)
         {
-            FrmVisGeral x = new FrmVisGeral(this);
-            x.ShowDialog();
+            //FrmVisGeral x = new FrmVisGeral(this);
+            //x.ShowDialog();
 
         }
 
@@ -47,6 +47,11 @@ namespace Comercial
             {
                 x.Visible = false;
             }
+        }
+
+        private void txtbtnPedido_ButtonClick(object sender, EventArgs e)
+        {
+
         }
     }
 }
