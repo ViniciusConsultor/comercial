@@ -276,9 +276,9 @@ namespace Comercial
             if (controle.Name == "txtbtnPedido")
             {
                 rdBtnCod.Visible = true;
-                rdBtnCod.Text = "Código";
+                rdBtnCod.Text = "Pedido";
                 rdBtnCod.Checked = true;
-                rdBtnNome.Text = "Descrição";
+                rdBtnNome.Text = "Cliente";
                 rdBtnNome.Checked = true;
 
                 col1.HeaderText = "Numero Pedido";
@@ -602,6 +602,8 @@ namespace Comercial
                 }
                 #endregion
 
+                
+
             }
             #endregion
 
@@ -635,6 +637,55 @@ namespace Comercial
             }
 
             #endregion
+
+            if (_parent is FrmLibPDV)
+            {
+                #region Processo Liberar Pedido Pesquisa 
+
+                if ((_controle.Name == "txtbtnPedido") )
+                {
+                    if (rdBtnCod.Checked == true)
+                    {
+                        string c = ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString;
+
+                        SqlConnection conn = new SqlConnection(c);
+                        conn.Open();
+
+                        SqlCommand cmd = new SqlCommand("SELECT NRPEDIDO, TIPO, ped.CODCLIENTE, CODVENDEDOR,CODCONDICAOPAGAMENTO, CODTRANSPORTADORA, Convert(char(10),DATAEMISSAO,103)as DATAEMISSAO , Convert(char(10),DATAENTREGA,103) as DATAENTREGA " +
+                            " FROM PEDIDO ped INNER JOIN CLIENTE cli ON ped.CODCLIENTE = cli.CNPJ "+
+                            "WHERE SITUACAO <> 'C' AND NRPEDIDO = @NRPEDIDO ", conn);
+
+                        cmd.Parameters.Add(new SqlParameter("@NRPEDIDO", txtPesquisar.Text));
+
+                        SqlDataReader reader = cmd.ExecuteReader();
+                        DataTable table = new DataTable();
+                        table.Load(reader);
+
+                        dtGrdVwVis.DataSource = table;
+                    }
+
+                    if (rdBtnNome.Checked == true)
+                    {
+                        string c = ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString;
+
+                        SqlConnection conn = new SqlConnection(c);
+                        conn.Open();
+
+                        SqlCommand cmd = new SqlCommand("SELECT NRPEDIDO, TIPO, ped.CODCLIENTE, CODVENDEDOR,CODCONDICAOPAGAMENTO, CODTRANSPORTADORA, Convert(char(10),DATAEMISSAO,103)as DATAEMISSAO , Convert(char(10),DATAENTREGA,103) as DATAENTREGA " +
+                            " FROM PEDIDO ped INNER JOIN CLIENTE cli ON ped.CODCLIENTE = cli.CNPJ ", conn);
+
+                        cmd.Parameters.Add(new SqlParameter("@CODCLIENTE", txtPesquisar.Text + "%"));
+
+                        SqlDataReader reader = cmd.ExecuteReader();
+                        DataTable table = new DataTable();
+                        table.Load(reader);
+
+                        dtGrdVwVis.DataSource = table;
+                    }
+
+                }
+                #endregion
+            }
 
         }
         #endregion
