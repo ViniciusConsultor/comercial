@@ -22,18 +22,6 @@ namespace Comercial
             _princ = parent;
         }
 
-        private void rptConProd1_InitReport(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtNumPed_ButtonClick(object sender, EventArgs e)
-        {
-            //FrmVisGeral x = new FrmVisGeral(this);
-            //x.ShowDialog();
-
-        }
-
         private void FrmLibPDV_Leave(object sender, EventArgs e)
         {
             Control[] z = _princ.Controls.Find("bindingNavigator1", true);
@@ -62,7 +50,7 @@ namespace Comercial
 
             sqlcommand.Append(" SELECT NRPEDIDO, TIPO, ped.CODCLIENTE, CODVENDEDOR,CODCONDICAOPAGAMENTO, CODTRANSPORTADORA, Convert(char(10),DATAEMISSAO,103)as DATAEMISSAO , Convert(char(10),DATAENTREGA,103) as DATAENTREGA ");
             sqlcommand.Append(" FROM PEDIDO ped INNER JOIN CLIENTE cli ON ped.CODCLIENTE = cli.CNPJ ");
-            sqlcommand.Append(" WHERE SITUACAO <> 'C'");
+            sqlcommand.Append(" WHERE SITUACAO <> 'C' AND SITUACAO <> 'E' ");
 
             DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
 
@@ -73,96 +61,48 @@ namespace Comercial
         }
         #endregion
 
+        #region SomarClunas
+        public void SomarColunas()
+        {
+            try
+            {
+                string total = "0,00";
+                string totalfaturado = "0,00";
+                Double desconto = 0;
+
+                foreach (DataGridViewRow item in dtgrdvItenspven.Rows)
+                {
+                    total = Convert.ToString(Convert.ToDouble(total) + Convert.ToDouble(item.Cells["ColTotal"].Value));
+                    desconto = Convert.ToDouble(desconto) + Convert.ToDouble(item.Cells["ColDesconto"].Value);
+
+                    //CheckBox ColCheck = (CheckBox)item.Cells["ColCheck"].Value;
+
+                    //if (ColCheck.Checked == true)
+                    //{
+                    //    totalfaturado = Convert.ToString(Convert.ToDouble(totalfaturado) + Convert.ToDouble(item.Cells["ColTotal"].Value));
+                    //}
+
+                }
+
+                txtBxVlrMercadoria.Text = total;
+                txtBxDescontos.Text = Convert.ToString(desconto);
+                
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+        }
+        #endregion
+
+        #region Botão Pesquisar TxtbtnPedido
         private void txtbtnPedido_ButtonClick(object sender, EventArgs e)
         {
 
-            FrmVisGeral x = new FrmVisGeral(this, (Control)sender);
-            x.dtGrdVwVis.DataSource = ListarPedido();
-            x.Text = "Pesquisa Cadastro de Cliente";
-            
-            x.ShowDialog();
         }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pEDIDOBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.pEDIDOBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.cOMERCIALDataSet);
-
-        }
-
-        private void pEDIDOBindingNavigatorSaveItem_Click_1(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.pEDIDOBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.cOMERCIALDataSet);
-
-        }
-
-        private void FrmLibPDV_Load(object sender, EventArgs e)
-        {
-            // TODO: This line of code loads data into the 'cOMERCIALDataSet.PEDIDO' table. You can move, or remove it, as needed.
-            this.pEDIDOTableAdapter.Fill(this.cOMERCIALDataSet.PEDIDO);
-
-        }
-
-        //private void pEDIDOBindingSource_PositionChanged(object sender, EventArgs e)
-        //{
-        //    DataRowView objPedido;
-        //    objPedido = (DataRowView)pEDIDOBindingSource.Current;
-
-
-        //    //if (objPedido["SITUACAO"].ToString() == "E")
-        //    //{
-        //    //    chkEfetivado.Checked = true;
-        //    //}
-        //    //else if (objPedido["SITUACAO"].ToString() == "C")
-        //    //{
-        //    //    chkCancelado.Checked = true;
-        //    //}
-        //    //else
-        //    //{
-        //    //    chkEfetivado.Checked = false;
-        //    //}
-
-        //    //if (objPedido["SITUACAO"].ToString() == "P")
-        //    //{
-        //    //    chkPendente.Checked = true;
-        //    //}
-        //    //else
-        //    //{
-        //    //    chkPendente.Checked = false;
-        //    //}
-
-        //    if (objPedido["TIPO"].ToString() == "N")
-        //    {
-        //        chkNormal.Checked = true;
-        //    }
-        //    else
-        //    {
-        //        chkNormal.Checked = false;
-        //    }
-
-
-        //    if (objPedido["TIPO"].ToString() == "C")
-        //    {
-        //        chkComplemento.Checked = true;
-        //    }
-        //    else
-        //    {
-        //        chkComplemento.Checked = false;
-        //    }
-
-        //    txtCodCliente.Text = objPedido["CODCLIENTE"].ToString();
-        //    txtCodVendedor.Text = objPedido["CODVENDEDOR"].ToString();
-        //    txtCondPagto.Text = objPedido["CODCONDICAOPAGAMENTO"].ToString();
-        //    txtCodTransportadora.Text = objPedido["CODTRANSPORTADORA"].ToString();
-        //}
+        #endregion
 
         #region Listar Nome Cliente
         public string ListarNomeCliente(string codCli)
@@ -244,9 +184,9 @@ namespace Comercial
             DataTable dttRetorno = new DataTable();
             try
             {
-                if (txtbtnPedido.getText != String.Empty)
+                if (txtbtnPedido.Text != String.Empty)
                 {
-                    numeropedido = Convert.ToInt32(txtbtnPedido.getText);
+                    numeropedido = Convert.ToInt32(txtbtnPedido.Text);
 
                     dttRetorno = ListarItem(numeropedido);
 
@@ -293,10 +233,25 @@ namespace Comercial
         }
         #endregion
 
-        //private void FrmLibPDV_Shown(object sender, EventArgs e)
-        //{
-        //    txtNomeCliente.Text = Convert.ToString(ListarNomeCliente(txtCodCliente.Text));
-        //    txtNomeTransportadora.Text = Convert.ToString(ListarNomeTransportadora(txtCodTransportadora.Text));              txtNomeVendedor.Text = Convert.ToString(ListarNomeVendedor(txtCodVendedor.Text));
-        //}
+        #region Pesquisar Pedido
+        public void PesquisaPedido()
+        {
+
+            try
+            {
+
+                FrmVisGeral x = new FrmVisGeral(this, txtbtnPedido);
+                x.dtGrdVwVis.DataSource = ListarPedido();
+                x.Text = "Pesquisa Pedido Venda";
+
+                x.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+        #endregion
     }
 }

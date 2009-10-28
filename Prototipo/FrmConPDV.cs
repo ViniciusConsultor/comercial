@@ -84,12 +84,6 @@ namespace Comercial
                              " INNER JOIN PRODUTO prd ON ip.CODPRODUTO = prd.CODPRODUTO ";
                 string groupBy = " GROUP BY p.NRPEDIDO,TIPO,SITUACAO,c.RAZAOSOCIAL, DATAEMISSAO, DATAENTREGA,prd.CODPRODUTO,prd.DESCRICAO, QUANTIDADE, VALOR";
 
-                //string sql = "SELECT p.NRPEDIDO ,TIPO,SITUACAO, DATAEMISSAO, DATAENTREGA " +
-                // " FROM PEDIDO p INNER JOIN (Select c.CNPJ,c.RAZAOSOCIAL from CLIENTE c) c ON p.CODCLIENTE = c.CNPJ  " +
-                // " INNER JOIN (Select ip.NRPEDIDO,ip.CODPRODUTO,ip.QUANTIDADE,ip.VALOR from ITEMPEDIDO ip) ip ON p.NRPEDIDO = ip.NRPEDIDO " +
-                // " INNER JOIN (Select prd.CODPRODUTO, prd.DESCRICAO from PRODUTO prd) prd ON ip.CODPRODUTO = prd.CODPRODUTO ";
-                //string groupBy = " GROUP BY p.NRPEDIDO,TIPO,SITUACAO, DATAEMISSAO, DATAENTREGA ";
-
                 // pesquisa por nrPedido
                 if (!string.IsNullOrEmpty(txtCodPed.Text))
                 {
