@@ -602,7 +602,7 @@ namespace Comercial
                 }
                 #endregion
 
-                
+
 
             }
             #endregion
@@ -638,11 +638,11 @@ namespace Comercial
 
             #endregion
 
+
+            #region Processo Liberar Pedido Pesquisa
             if (_parent is FrmLibPDV)
             {
-                #region Processo Liberar Pedido Pesquisa 
-
-                if ((_controle.Name == "txtbtnPedido") )
+                if ((_controle.Name == "txtbtnPedido"))
                 {
                     if (rdBtnCod.Checked == true)
                     {
@@ -652,8 +652,8 @@ namespace Comercial
                         conn.Open();
 
                         SqlCommand cmd = new SqlCommand("SELECT NRPEDIDO, TIPO, ped.CODCLIENTE, CODVENDEDOR,CODCONDICAOPAGAMENTO, CODTRANSPORTADORA, Convert(char(10),DATAEMISSAO,103)as DATAEMISSAO , Convert(char(10),DATAENTREGA,103) as DATAENTREGA " +
-                            " FROM PEDIDO ped INNER JOIN CLIENTE cli ON ped.CODCLIENTE = cli.CNPJ "+
-                            "WHERE SITUACAO <> 'C' AND NRPEDIDO = @NRPEDIDO ", conn);
+                            " FROM PEDIDO ped INNER JOIN CLIENTE cli ON ped.CODCLIENTE = cli.CNPJ " +
+                            "WHERE SITUACAO <> 'C' AND SITUACAO <> 'E' AND NRPEDIDO = @NRPEDIDO ", conn);
 
                         cmd.Parameters.Add(new SqlParameter("@NRPEDIDO", txtPesquisar.Text));
 
@@ -672,7 +672,8 @@ namespace Comercial
                         conn.Open();
 
                         SqlCommand cmd = new SqlCommand("SELECT NRPEDIDO, TIPO, ped.CODCLIENTE, CODVENDEDOR,CODCONDICAOPAGAMENTO, CODTRANSPORTADORA, Convert(char(10),DATAEMISSAO,103)as DATAEMISSAO , Convert(char(10),DATAENTREGA,103) as DATAENTREGA " +
-                            " FROM PEDIDO ped INNER JOIN CLIENTE cli ON ped.CODCLIENTE = cli.CNPJ ", conn);
+                            " FROM PEDIDO ped INNER JOIN CLIENTE cli ON ped.CODCLIENTE = cli.CNPJ " +
+                            "WHERE SITUACAO <> 'C' AND SITUACAO <> 'E'  AND CODCLIENTE LIKE @CODCLIENTE ", conn);
 
                         cmd.Parameters.Add(new SqlParameter("@CODCLIENTE", txtPesquisar.Text + "%"));
 
@@ -684,8 +685,9 @@ namespace Comercial
                     }
 
                 }
-                #endregion
             }
+            #endregion
+           
 
         }
         #endregion
@@ -953,7 +955,7 @@ namespace Comercial
                 int linha = celula.RowIndex;
                 int coluna = celula.ColumnIndex;
 
-                PedLib.txtbtnPedido.getText = selecionadas[0].Value.ToString();
+                PedLib.txtbtnPedido.Text = selecionadas[0].Value.ToString();
 
                 if (selecionadas[1].Value.ToString() == "N")
                 {
@@ -983,6 +985,7 @@ namespace Comercial
                 PedLib.txtNomeTransportadora.Text = Convert.ToString(PedLib.ListarNomeTransportadora(PedLib.txtCodTransportadora.Text));
                 PedLib.txtNomeVendedor.Text = Convert.ToString(PedLib.ListarNomeVendedor(PedLib.txtCodVendedor.Text));
                 PedLib.populargrid();
+                PedLib.SomarColunas();
 
                 this.Close();
                 this.Dispose();

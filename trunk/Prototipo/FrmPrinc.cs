@@ -702,10 +702,16 @@ namespace Comercial
 
         private void tlStrpBtnPesquisar_Click(object sender, EventArgs e)
         {
-            if (this.ActiveMdiChild != null)
+
+            Form form = this.ActiveMdiChild;
+            if (form == null)
+                return;
+
+            if (form is FrmLibPDV)
             {
-                FrmVisGeral x = new FrmVisGeral(this, (Control)sender);
-                x.ShowDialog();
+                FrmLibPDV frmlibPed = (FrmLibPDV)form;
+
+                frmlibPed.PesquisaPedido();
             }
         }
 
