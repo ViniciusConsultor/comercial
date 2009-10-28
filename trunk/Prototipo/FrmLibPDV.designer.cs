@@ -28,10 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLibPDV));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tbCntrlPedVend = new System.Windows.Forms.TabControl();
             this.tbPgPDV = new System.Windows.Forms.TabPage();
             this.pnlItenped = new System.Windows.Forms.Panel();
@@ -76,10 +75,10 @@
             this.ColTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColStatusItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtbtnPedido = new Comercial.TextButton();
-            this.txtCodTransportadora = new Comercial.TextButton();
-            this.txtCondPagto = new Comercial.TextButton();
-            this.txtCodVendedor = new Comercial.TextButton();
-            this.txtcodCli = new Comercial.TextButton();
+            this.txtCodCliente = new System.Windows.Forms.TextBox();
+            this.txtCodVendedor = new System.Windows.Forms.TextBox();
+            this.txtCodTransportadora = new System.Windows.Forms.TextBox();
+            this.txtCondPagto = new System.Windows.Forms.TextBox();
             this.tbCntrlPedVend.SuspendLayout();
             this.tbPgPDV.SuspendLayout();
             this.pnlItenped.SuspendLayout();
@@ -233,18 +232,18 @@
             // 
             // grpBxPedVenda
             // 
+            this.grpBxPedVenda.Controls.Add(this.txtCondPagto);
+            this.grpBxPedVenda.Controls.Add(this.txtCodTransportadora);
+            this.grpBxPedVenda.Controls.Add(this.txtCodVendedor);
+            this.grpBxPedVenda.Controls.Add(this.txtCodCliente);
             this.grpBxPedVenda.Controls.Add(this.txtbtnPedido);
             this.grpBxPedVenda.Controls.Add(this.grpTipoPedido);
             this.grpBxPedVenda.Controls.Add(this.dtpEntrega);
             this.grpBxPedVenda.Controls.Add(this.label1);
-            this.grpBxPedVenda.Controls.Add(this.txtCodTransportadora);
             this.grpBxPedVenda.Controls.Add(this.dtpEmissao);
             this.grpBxPedVenda.Controls.Add(this.txtNomeTransportadora);
             this.grpBxPedVenda.Controls.Add(this.lbldtemi);
             this.grpBxPedVenda.Controls.Add(this.lblNomeTransportadora);
-            this.grpBxPedVenda.Controls.Add(this.txtCondPagto);
-            this.grpBxPedVenda.Controls.Add(this.txtCodVendedor);
-            this.grpBxPedVenda.Controls.Add(this.txtcodCli);
             this.grpBxPedVenda.Controls.Add(this.txtNomeVendedor);
             this.grpBxPedVenda.Controls.Add(this.txtNomeCliente);
             this.grpBxPedVenda.Controls.Add(this.lbltpfre);
@@ -446,14 +445,14 @@
             // dtgrdvItenspven
             // 
             this.dtgrdvItenspven.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgrdvItenspven.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgrdvItenspven.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dtgrdvItenspven.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgrdvItenspven.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Delete,
@@ -466,27 +465,27 @@
             this.ColDesconto,
             this.ColTotal,
             this.ColStatusItem});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.CadetBlue;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgrdvItenspven.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.CadetBlue;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgrdvItenspven.DefaultCellStyle = dataGridViewCellStyle8;
             this.dtgrdvItenspven.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtgrdvItenspven.GridColor = System.Drawing.Color.WhiteSmoke;
             this.dtgrdvItenspven.Location = new System.Drawing.Point(0, 0);
             this.dtgrdvItenspven.Name = "dtgrdvItenspven";
             this.dtgrdvItenspven.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgrdvItenspven.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgrdvItenspven.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dtgrdvItenspven.Size = new System.Drawing.Size(841, 235);
             this.dtgrdvItenspven.TabIndex = 26;
             // 
@@ -575,45 +574,34 @@
             this.txtbtnPedido.TabIndex = 98;
             this.txtbtnPedido.ButtonClick += new System.EventHandler(this.txtbtnPedido_ButtonClick);
             // 
-            // txtCodTransportadora
+            // txtCodCliente
             // 
-            this.txtCodTransportadora.getText = "";
-            this.txtCodTransportadora.Image = ((System.Drawing.Image)(resources.GetObject("txtCodTransportadora.Image")));
-            this.txtCodTransportadora.Location = new System.Drawing.Point(14, 79);
-            this.txtCodTransportadora.Name = "txtCodTransportadora";
-            this.txtCodTransportadora.ShowButton = false;
-            this.txtCodTransportadora.Size = new System.Drawing.Size(144, 25);
-            this.txtCodTransportadora.TabIndex = 95;
-            // 
-            // txtCondPagto
-            // 
-            this.txtCondPagto.getText = "";
-            this.txtCondPagto.Image = ((System.Drawing.Image)(resources.GetObject("txtCondPagto.Image")));
-            this.txtCondPagto.Location = new System.Drawing.Point(358, 78);
-            this.txtCondPagto.Name = "txtCondPagto";
-            this.txtCondPagto.ShowButton = false;
-            this.txtCondPagto.Size = new System.Drawing.Size(71, 25);
-            this.txtCondPagto.TabIndex = 92;
+            this.txtCodCliente.Location = new System.Drawing.Point(104, 36);
+            this.txtCodCliente.Name = "txtCodCliente";
+            this.txtCodCliente.Size = new System.Drawing.Size(123, 20);
+            this.txtCodCliente.TabIndex = 99;
             // 
             // txtCodVendedor
             // 
-            this.txtCodVendedor.getText = "";
-            this.txtCodVendedor.Image = ((System.Drawing.Image)(resources.GetObject("txtCodVendedor.Image")));
-            this.txtCodVendedor.Location = new System.Drawing.Point(457, 34);
+            this.txtCodVendedor.Location = new System.Drawing.Point(458, 34);
             this.txtCodVendedor.Name = "txtCodVendedor";
-            this.txtCodVendedor.ShowButton = false;
-            this.txtCodVendedor.Size = new System.Drawing.Size(132, 25);
-            this.txtCodVendedor.TabIndex = 91;
+            this.txtCodVendedor.Size = new System.Drawing.Size(123, 20);
+            this.txtCodVendedor.TabIndex = 100;
             // 
-            // txtcodCli
+            // txtCodTransportadora
             // 
-            this.txtcodCli.getText = "";
-            this.txtcodCli.Image = ((System.Drawing.Image)(resources.GetObject("txtcodCli.Image")));
-            this.txtcodCli.Location = new System.Drawing.Point(100, 37);
-            this.txtcodCli.Name = "txtcodCli";
-            this.txtcodCli.ShowButton = false;
-            this.txtcodCli.Size = new System.Drawing.Size(127, 25);
-            this.txtcodCli.TabIndex = 90;
+            this.txtCodTransportadora.Location = new System.Drawing.Point(14, 78);
+            this.txtCodTransportadora.Name = "txtCodTransportadora";
+            this.txtCodTransportadora.Size = new System.Drawing.Size(144, 20);
+            this.txtCodTransportadora.TabIndex = 101;
+            this.txtCodTransportadora.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            // 
+            // txtCondPagto
+            // 
+            this.txtCondPagto.Location = new System.Drawing.Point(358, 77);
+            this.txtCondPagto.Name = "txtCondPagto";
+            this.txtCondPagto.Size = new System.Drawing.Size(83, 20);
+            this.txtCondPagto.TabIndex = 102;
             // 
             // FrmLibPDV
             // 
@@ -622,7 +610,7 @@
             this.ClientSize = new System.Drawing.Size(909, 577);
             this.Controls.Add(this.tbCntrlPedVend);
             this.Name = "FrmLibPDV";
-            this.Text = "FrmLibPDV";
+            this.Text = "Liberação de Pedido";
             this.Leave += new System.EventHandler(this.FrmLibPDV_Leave);
             this.tbCntrlPedVend.ResumeLayout(false);
             this.tbPgPDV.ResumeLayout(false);
@@ -660,14 +648,10 @@
         private System.Windows.Forms.CheckBox chkNormal;
         public System.Windows.Forms.DateTimePicker dtpEntrega;
         private System.Windows.Forms.Label label1;
-        public TextButton txtCodTransportadora;
         public System.Windows.Forms.DateTimePicker dtpEmissao;
         public System.Windows.Forms.TextBox txtNomeTransportadora;
         private System.Windows.Forms.Label lbldtemi;
         private System.Windows.Forms.Label lblNomeTransportadora;
-        public TextButton txtCondPagto;
-        public TextButton txtCodVendedor;
-        public TextButton txtcodCli;
         public System.Windows.Forms.TextBox txtNomeVendedor;
         public System.Windows.Forms.TextBox txtNomeCliente;
         private System.Windows.Forms.Label lbltpfre;
@@ -689,6 +673,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColDesconto;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColTotal;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColStatusItem;
+        public System.Windows.Forms.TextBox txtCodCliente;
+        public System.Windows.Forms.TextBox txtCodTransportadora;
+        public System.Windows.Forms.TextBox txtCodVendedor;
+        public System.Windows.Forms.TextBox txtCondPagto;
 
     }
 }
