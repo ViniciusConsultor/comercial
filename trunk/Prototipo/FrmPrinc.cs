@@ -1563,5 +1563,43 @@ namespace Comercial
             }
         }
 
+        
+
+        private void liberarPedidoVs2ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int x = 0, y = 0;
+
+            // Localiza o formulario
+            foreach (Form form in this.MdiChildren)
+            {
+                if (form is FrmLibPDV2)
+                {
+                    form.WindowState = FormWindowState.Maximized;
+                    form.Activate();
+                    x++;
+                }
+                y++;
+
+            }
+
+            // Para criar o formulario 
+            if (x == 0 && y == 0)
+            {
+                FrmLibPDV2 filho = new FrmLibPDV2(this);
+                filho.Show();
+
+                tlStrpProcesso.Visible = true;
+                tlStrpBtnLibPed.Visible = true;
+                bindingNavigator1.Visible = false;
+
+                // Util.Interface.ResetControls(filho);
+                //Util.Interface.ChangeControlStatus(filho, false);
+
+
+
+                filho.WindowState = FormWindowState.Maximized;
+            }
+        }
+
     }
 }

@@ -272,6 +272,46 @@ namespace Comercial
             }
             #endregion
 
+            #region Coluna GridViewGeral Pedido Processo
+            if (controle.Name == "txtbtnPedido")
+            {
+                rdBtnCod.Visible = true;
+                rdBtnCod.Text = "Código";
+                rdBtnCod.Checked = true;
+                rdBtnNome.Text = "Descrição";
+                rdBtnNome.Checked = true;
+
+                col1.HeaderText = "Numero Pedido";
+                col1.DataPropertyName = "NRPEDIDO";
+                dtGrdVwVis.Columns[1].Visible = true;
+
+                col2.HeaderText = "Cod Cliente";
+                col2.DataPropertyName = "CODCLIENTE";
+                dtGrdVwVis.Columns[1].Visible = true;
+
+
+                dtGrdVwVis.Columns.Add("col3", "Tipo");
+                dtGrdVwVis.Columns["col3"].DataPropertyName = "TIPO";
+
+                dtGrdVwVis.Columns.Add("col4", "Cod Vendedor");
+                dtGrdVwVis.Columns["col4"].DataPropertyName = "CODVENDEDOR";
+
+                dtGrdVwVis.Columns.Add("col5", "Cond Pagto");
+                dtGrdVwVis.Columns["col5"].DataPropertyName = "CODCONDICAOPAGAMENTO";
+
+                dtGrdVwVis.Columns.Add("col6", "Cod Trans");
+                dtGrdVwVis.Columns["col6"].DataPropertyName = "CODTRANSPORTADORA";
+
+                dtGrdVwVis.Columns.Add("col7", "Data Emissão");
+                dtGrdVwVis.Columns["col7"].DataPropertyName = "DATAEMISSAO";
+
+                dtGrdVwVis.Columns.Add("col8", "Data Entrega");
+                dtGrdVwVis.Columns["col8"].DataPropertyName = "DATAENTREGA";
+
+
+
+            }
+            #endregion
         }
 
         #region Botão Pesquisar
@@ -848,6 +888,53 @@ namespace Comercial
 
             #endregion
 
+            }
+            #endregion
+
+            #region Double Click Processo Pedido
+            if (_controle.Name == "txtbtnPedido")
+            {
+                FrmLibPDV PedLib = (FrmLibPDV)_parent;
+                // vamos obter as células selecionadas no DataGridView
+                DataGridViewSelectedCellCollection selecionadas = dtGrdVwVis.SelectedCells;
+
+                DataGridViewCell celula = selecionadas[0];
+                int linha = celula.RowIndex;
+                int coluna = celula.ColumnIndex;
+
+                PedLib.txtbtnPedido.getText = selecionadas[0].Value.ToString();
+
+                if (selecionadas[1].Value.ToString() == "N")
+                {
+                    PedLib.chkNormal.Checked = true;
+                }
+                else
+                {
+                    PedLib.chkNormal.Checked = false;
+                }
+
+                if (selecionadas[1].Value.ToString() == "C")
+                {
+                    PedLib.chkComplemento.Checked = true;
+                }
+                else
+                {
+                    PedLib.chkComplemento.Checked = false;
+                }
+                PedLib.txtCodCliente.Text = selecionadas[2].Value.ToString();
+                PedLib.txtCodVendedor.Text = selecionadas[3].Value.ToString();
+                PedLib.txtCondPagto.Text = selecionadas[4].Value.ToString();
+                PedLib.txtCodTransportadora.Text = selecionadas[5].Value.ToString();
+                PedLib.dtpEntrega.Text = selecionadas[7].Value.ToString();
+                PedLib.dtpEmissao.Text = selecionadas[6].Value.ToString();
+
+                PedLib.txtNomeCliente.Text = Convert.ToString(PedLib.ListarNomeCliente(PedLib.txtCodCliente.Text));
+                PedLib.txtNomeTransportadora.Text = Convert.ToString(PedLib.ListarNomeTransportadora(PedLib.txtCodTransportadora.Text));
+                PedLib.txtNomeVendedor.Text = Convert.ToString(PedLib.ListarNomeVendedor(PedLib.txtCodVendedor.Text));
+                PedLib.populargrid();
+
+                this.Close();
+                this.Dispose();
             }
             #endregion
         }
