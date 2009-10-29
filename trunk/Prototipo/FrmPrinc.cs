@@ -564,14 +564,8 @@ namespace Comercial
         private void tlStrpBtnMinGer_Click(object sender, EventArgs e)
         {
             FrmMinGer x = (FrmMinGer)this.MdiChildren[0];
-            Control[] c1 = x.Controls.Find("prgrsBrCarrega", true);
-            Control[] c2 = x.Controls.Find("tmrTempo", true);
-            ProgressBar pr = (ProgressBar)c1[0];
 
-
-            pr.Value = 0;
-            pr.Visible = true;
-            //  t.Enabled = true;
+            x.geraMining();
         }
 
         private void criarUsuárioToolStripMenuItem_Click(object sender, EventArgs e)

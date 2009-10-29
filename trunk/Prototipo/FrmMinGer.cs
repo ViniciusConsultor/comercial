@@ -8,6 +8,8 @@ using System.Text;
 using System.Windows.Forms;
 using System.Configuration;
 using System.Data.SqlClient;
+using Microsoft.AnalysisServices.AdomdClient;
+
 
 namespace Comercial
 {
@@ -23,6 +25,159 @@ namespace Comercial
         private string input = "";
         private string predictable = "";
         private string algoritmo = "";
+
+
+        #region geraMIning
+
+        public void geraMining()
+        {
+
+            // valida os dados...
+
+            if (string.IsNullOrEmpty(txtnomeEstrutura.Text))
+            {
+                MessageBox.Show("Nome da estrutura inválida.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                tbCntrlMining.SelectedTab = tabPage1;
+                txtnomeEstrutura.Focus();
+                return;
+            }
+
+            if (string.IsNullOrEmpty(cmbBxTipoDataMining.Text))
+            {
+                MessageBox.Show("Tipo da estrutura não selecionado.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                tbCntrlMining.SelectedTab = tabPage1;
+                cmbBxTipoDataMining.Focus();
+                return;
+            }
+
+            if (string.IsNullOrEmpty(tabela))
+            {
+                MessageBox.Show("Tabela não indicada.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                tbCntrlMining.SelectedTab = tbPgTabela;
+                // dataGridView2.Focus();
+                return;
+            }
+
+            if (string.IsNullOrEmpty(key))
+            {
+                MessageBox.Show("Campo chave obrigatório.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                tbCntrlMining.SelectedTab = tabPage3;
+                // dataGridView2.Focus();
+                return;
+            }
+
+            lblTexto.Visible = true;
+            prgrsBrCarrega.Value = 0;
+            prgrsBrCarrega.Visible = true;
+            tmrTempo.Enabled = true;
+
+            // GERAR MODELO...
+
+            /*    CREATE MINING MODEL SalesForecast (
+                    ReportingDate DATE KEY TIME,
+                    ModelRegion TEXT KEY,
+                    Amount LONG CONTINUOUS PREDICT,
+                    Quantity LONG CONTINUOUS PREDICT
+                )
+                USING Microsoft_Time_Series (PERIODICITY_HINT = '{12}', FORECAST_METHOD = 'ARTXP')
+         Microsoft_Clustering 
+             * */
+
+
+
+            // Create mining model
+            /* Árvore de decisão
+                Agrupamento
+                MTS (Microsoft Time Serial) */
+
+            if (cmbBxTipoDataMining.Text == "MTS (Microsoft Time Serial)")
+            {
+
+                if (!key.Contains("date"))
+                {
+                    MessageBox.Show("Campo chave deve ser do tipo datetime", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    tbCntrlMining.SelectedTab = tabPage3;
+                    // dataGridView2.Focus();
+                    return;
+                }
+
+                string[] inp = input.Split(';');
+
+                string input_limpo = "";
+
+                foreach (var x in inp)
+                {
+                    if (x.Contains("date"))
+                    {
+                      input_limpo += x.Remove(x.IndexOf("("), x.Length - x.IndexOf("(")) + " DATE, ";
+                    }
+
+                    if (x.Contains("varchar") || x.Contains("char"))
+                    {
+                        input_limpo += x.Remove(x.IndexOf("("), x.Length - x.IndexOf("(")) + " text, ";
+                    }
+
+                    if (x.Contains("float"))
+                    {
+                        input_limpo += x.Remove(x.IndexOf("("), x.Length - x.IndexOf("(")) + " double, ";
+                    }
+
+                    if (x.Contains("int"))
+                    {
+                        input_limpo += x.Remove(x.IndexOf("("), x.Length - x.IndexOf("(")) + " long, ";
+                    }
+                }
+
+                string[] pred = predictable.Split(';');
+
+                string pred_limpo = "";
+
+                foreach (var x in pred)
+                {
+                    if (x.Contains("date"))
+                    {
+                        pred_limpo += x.Remove(x.IndexOf("("), x.Length - x.IndexOf("(")) + " DATE PREDICT_ONLY, ";
+                    }
+
+                    if (x.Contains("varchar") || x.Contains("char"))
+                    {
+                        pred_limpo += x.Remove(x.IndexOf("("), x.Length - x.IndexOf("(")) + " text PREDICT_ONLY, ";
+                    }
+
+                    if (x.Contains("float"))
+                    {
+                        pred_limpo += x.Remove(x.IndexOf("("), x.Length - x.IndexOf("(")) + " double PREDICT_ONLY, ";
+                    }
+
+                    if (x.Contains("int"))
+                    {
+                        pred_limpo += x.Remove(x.IndexOf("("), x.Length - x.IndexOf("(")) + " long PREDICT_ONLY, ";
+                    }
+                }
+
+               pred_limpo = pred_limpo.Remove(pred_limpo.Length - 2, 2);
+
+
+                AdomdConnection conn = new AdomdConnection(ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString_Analysis"].ConnectionString);
+                AdomdCommand cmd = new AdomdCommand();
+                conn.Open();
+                cmd.Connection = conn;
+                String createMiningModel =
+                                "CREATE MINING MODEL " + txtnomeEstrutura.Text +
+                                " ( " +
+                                    key.Remove(key.IndexOf("("), key.Length - key.IndexOf("(")) + "DATE KEY TIME, " +
+                                    input_limpo + " " + pred_limpo +
+                                " ) USING Microsoft_Time_Series " +
+                                "WITH DRILLTHROUGH";
+                cmd.CommandText = createMiningModel;
+                cmd.ExecuteNonQuery();
+
+            }
+
+
+        }
+
+        #endregion
 
 
         public FrmMinGer(FrmPrinc parent)
@@ -44,6 +199,14 @@ namespace Comercial
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            if (prgrsBrCarrega.Value == 100)
+            {
+                tmrTempo.Enabled = false;
+            }
+            else
+            {
+                prgrsBrCarrega.Value += 1;
+            }
 
         }
 
@@ -144,7 +307,7 @@ namespace Comercial
 
         private void checkBox31_CheckedChanged(object sender, EventArgs e)
         {
-                   }
+        }
 
         private void checkBox36_CheckedChanged(object sender, EventArgs e)
         {
@@ -170,30 +333,32 @@ namespace Comercial
         private void checkBox27_CheckedChanged(object sender, EventArgs e)
         {
 
-       
+
         }
 
         private void checkBox26_CheckedChanged(object sender, EventArgs e)
         {
-          
+
         }
 
         private void checkBox25_CheckedChanged(object sender, EventArgs e)
         {
-           
+
         }
 
         private void tabPage2_Enter(object sender, EventArgs e)
         {
+            dataGridView2.Rows.Clear();
+
             string c = ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString;
             SqlConnection conn = new SqlConnection(c);
             conn.Open();
 
             SqlCommand cmd = new SqlCommand("select * from sys.all_objects where type in (" + opc + ") " +
-                                                "and schema_id = '1'and name not like 'sysdiagrams' "+
+                                                "and schema_id = '1'and name not like 'sysdiagrams' " +
                                                 "order by name", conn);
             SqlDataReader reader = cmd.ExecuteReader();
-           // reader.Read();
+            // reader.Read();
             //while (reader.Read())
             if (reader.HasRows)
             {
@@ -256,7 +421,7 @@ namespace Comercial
                 }
 
                 dv.Cells[0].Value = true;
-                tabela = (string) dv.Cells[1].Value;
+                tabela = (string)dv.Cells[1].Value;
             }
         }
 
@@ -321,14 +486,16 @@ namespace Comercial
 
         private void tabPage3_Enter(object sender, EventArgs e)
         {
+
+            dataGridView1.Rows.Clear();
             string c = ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString;
             SqlConnection conn = new SqlConnection(c);
             conn.Open();
 
-            SqlCommand cmd = new SqlCommand("select t.name tipo, c.name coluna from sys.all_columns c inner join sys.all_objects o on c.object_id = o.object_id "+
-								            "inner join sys.types t on c.system_type_id = t.system_type_id "+
-                                            "where o.name = @col "+
-                                            "and t.name <> 'sysname' "+
+            SqlCommand cmd = new SqlCommand("select t.name tipo, c.name coluna from sys.all_columns c inner join sys.all_objects o on c.object_id = o.object_id " +
+                                            "inner join sys.types t on c.system_type_id = t.system_type_id " +
+                                            "where o.name = @col " +
+                                            "and t.name <> 'sysname' " +
                                             "order by c.name", conn);
             cmd.Parameters.Add(new SqlParameter("@col", tabela));
             SqlDataReader reader = cmd.ExecuteReader();
@@ -358,10 +525,13 @@ namespace Comercial
 
                 foreach (DataGridViewRow d in dataGridView1.Rows)
                 {
-                    d.Cells[1].Value = false;
+                    if (d != dv)
+                    {
+                        d.Cells[1].Value = false;
+                    }
                 }
 
-                dv.Cells[1].Value = true;
+                //dv.Cells[1].Value = true;
                 key = (string)dv.Cells[0].Value;
             }
 
@@ -369,14 +539,27 @@ namespace Comercial
 
         private void tabPage4_Enter(object sender, EventArgs e)
         {
-            richTextBox2.Text = "--------------------\nResumo:\n--------------------\nNome da estrutura: "+ txtnomeEstrutura.Text +"\n"+
-                    "Tipo do algoritmo: "+ cmbBxTipoDataMining.Text +"\n\n" +
-                    "--------------------\nTabela:\n--------------------\n"+
-                    "Nome: "+tabela+"\n\n"+
-                    "-------------------\nColunas:\n--------------------\n"+
-                    "Key: "+key+"\n"+
-                    "Input: "+input+"\n"+ 
-                    "Predictable: "+predictable+"\n";
+            foreach (DataGridViewRow d in dataGridView1.Rows)
+            {
+                if (Convert.ToBoolean(d.Cells[2].Value) == true)
+                {
+                    input += d.Cells[0].Value + "; ";
+                }
+
+                if (Convert.ToBoolean(d.Cells[3].Value) == true)
+                {
+                    predictable += d.Cells[0].Value + "; ";
+                }
+            }
+
+            richTextBox2.Text = "--------------------\nResumo:\n--------------------\nNome da estrutura: " + txtnomeEstrutura.Text + "\n" +
+                    "Tipo do algoritmo: " + cmbBxTipoDataMining.Text + "\n\n" +
+                    "--------------------\nTabela:\n--------------------\n" +
+                    "Nome: " + tabela + "\n\n" +
+                    "-------------------\nColunas:\n--------------------\n" +
+                    "Key: " + key + "\n" +
+                    "Input: " + input + "\n" +
+                    "Predictable: " + predictable + "\n";
         }
 
     }
