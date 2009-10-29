@@ -131,10 +131,10 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::Comercial.Properties.Resources.BolaVerde;
-            this.pictureBox2.Location = new System.Drawing.Point(505, 21);
+            this.pictureBox2.Image = global::Comercial.Properties.Resources.certo;
+            this.pictureBox2.Location = new System.Drawing.Point(505, 16);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(16, 16);
+            this.pictureBox2.Size = new System.Drawing.Size(24, 24);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox2.TabIndex = 51;
             this.pictureBox2.TabStop = false;
@@ -142,10 +142,10 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Comercial.Properties.Resources.BolaVermelho;
-            this.pictureBox1.Location = new System.Drawing.Point(505, 21);
+            this.pictureBox1.Image = global::Comercial.Properties.Resources.errado;
+            this.pictureBox1.Location = new System.Drawing.Point(505, 16);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(16, 16);
+            this.pictureBox1.Size = new System.Drawing.Size(24, 24);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox1.TabIndex = 50;
             this.pictureBox1.TabStop = false;
