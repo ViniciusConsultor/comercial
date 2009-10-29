@@ -14,7 +14,9 @@ namespace Comercial
     public partial class FrmLibPDV : Form
     {
         private FrmPrinc _princ = null;
-
+        double ValorPedido;
+        double ValorLimite;
+        double ValorFaturar;
         public FrmLibPDV(FrmPrinc parent)
         {
             InitializeComponent();
@@ -66,27 +68,30 @@ namespace Comercial
         {
             try
             {
-                string total = "0,00";
-                string totalfaturado = "0,00";
+                Double total = 0;
+                Double totalfaturado = 0;
                 Double desconto = 0;
 
                 foreach (DataGridViewRow item in dtgrdvItenspven.Rows)
                 {
-                    total = Convert.ToString(Convert.ToDouble(total) + Convert.ToDouble(item.Cells["ColTotal"].Value));
+                    total = Convert.ToDouble(total) + Convert.ToDouble(item.Cells["ColTotal"].Value);
                     desconto = Convert.ToDouble(desconto) + Convert.ToDouble(item.Cells["ColDesconto"].Value);
+                    totalfaturado = Convert.ToDouble(totalfaturado) + Convert.ToDouble(item.Cells["ColVALORFATU"].Value);
+                 
+                    DataGridViewCheckBoxColumn ColCheck = (DataGridViewCheckBoxColumn)item.Cells["ColCheck"].Value;
 
-                    //CheckBox ColCheck = (CheckBox)item.Cells["ColCheck"].Value;
-
-                    //if (ColCheck.Checked == true)
-                    //{
-                    //    totalfaturado = Convert.ToString(Convert.ToDouble(totalfaturado) + Convert.ToDouble(item.Cells["ColTotal"].Value));
-                    //}
+                    if (Convert.ToInt32(item.Cells["ClmQtdeLib"].Value) == Convert.ToInt32(item.Cells["ClmQtde"].Value))
+                    {
+                        item.Cells["ColCheck"].Value = true;
+                        item.Cells["ColCheck"].ReadOnly = true;
+                  
+                    }
 
                 }
 
-                txtBxVlrMercadoria.Text = total;
+                txtBxVlrMercadoria.Text = Convert.ToString(total);
                 txtBxDescontos.Text = Convert.ToString(desconto);
-                
+                txtBxVlrFaturado.Text = Convert.ToString(totalfaturado);
             }
             catch (Exception ex)
             {
@@ -215,7 +220,7 @@ namespace Comercial
 
             StringBuilder sqlcommand = new StringBuilder();
 
-            sqlcommand.Append(" SELECT ITEM,ITEMPEDIDO.CODPRODUTO,DESCRICAO,QUANTIDADE,DESCONTO,VALOR,ITEMPEDIDO.IPI, (QUANTIDADE *VALOR) as VALORTOTAL ");
+            sqlcommand.Append(" SELECT ITEM,ITEMPEDIDO.CODPRODUTO,DESCRICAO,QUANTIDADE, ISNULL(QUANTIDADELIB,0) AS QUANTLIB,DESCONTO,VALOR,ITEMPEDIDO.IPI, (QUANTIDADE *VALOR) as VALORTOTAL,(QUANTIDADELIB * VALOR) as VALORFATU  ");
             sqlcommand.Append(" FROM ITEMPEDIDO INNER JOIN PRODUTO ON ITEMPEDIDO.CODPRODUTO = PRODUTO.CODPRODUTO ");
             sqlcommand.Append(" WHERE NRPEDIDO = @nrpedido ");
 
@@ -226,6 +231,87 @@ namespace Comercial
             dtsDados = db.ExecuteDataSet(dbComd);
 
             return dtsDados.Tables[0];
+
+
+
+
+        }
+        #endregion
+
+        #region Listar Valor Total Pedido Cliente
+        public DataTable ListarValorCliente(string CodCli)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+
+            DataSet dtsDados = new DataSet();
+
+            StringBuilder sqlcommand = new StringBuilder();
+
+            sqlcommand.Append(" SELECT ISNULL(SUM(QUANTIDADE * VALOR),0) AS VALOR  ");
+            sqlcommand.Append(" FROM PEDIDO p inner join ITEMPEDIDO i on p.NRPEDIDO = i.NRPEDIDO ");
+            sqlcommand.Append(" WHERE p.CODCLIENTE = @CODCLIENTE AND P.SITUACAO = 'E' ");
+
+
+            DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
+
+            db.AddInParameter(dbComd, "@CODCLIENTE", DbType.String, CodCli);
+
+            dtsDados = db.ExecuteDataSet(dbComd);
+
+            return dtsDados.Tables[0];
+
+
+
+
+        }
+        #endregion
+
+        #region Listar Valor Limite Pedido
+        public DataTable ListarLimiteCliente(string CodCli)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+
+            DataSet dtsDados = new DataSet();
+
+            StringBuilder sqlcommand = new StringBuilder();
+
+            sqlcommand.Append(" SELECT ISNULL(SUM(C.LIMITECRED),0) AS LIMITE ");
+            sqlcommand.Append(" FROM CLIENTE C  ");
+            sqlcommand.Append(" WHERE C.CNPJ = @CODCLIENTE ");
+
+
+            DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
+
+            db.AddInParameter(dbComd, "@CODCLIENTE", DbType.String, CodCli);
+
+            dtsDados = db.ExecuteDataSet(dbComd);
+
+            return dtsDados.Tables[0];
+
+
+
+
+        }
+        #endregion
+
+        #region Listar Saldo Estoque
+        public int ListarSaldoEstoque(int CodProd)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+
+            StringBuilder sqlcommand = new StringBuilder();
+
+            sqlcommand.Append(" SELECT ESTOQUEATUAL ");
+            sqlcommand.Append(" FROM PRODUTO  ");
+            sqlcommand.Append(" WHERE CODPRODUTO = @CODPRODUTO ");
+            
+            DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
+
+            db.AddInParameter(dbComd, "@CODPRODUTO", DbType.Int32, CodProd);
+
+            int estoque = Convert.ToInt32(db.ExecuteScalar(dbComd));
+
+            return estoque;
 
 
 
@@ -253,5 +339,78 @@ namespace Comercial
             }
         }
         #endregion
+
+        #region ValidaLimiteCliente
+        public void validalimite()
+        {
+            DataTable dttPedidocli = new DataTable();
+
+            dttPedidocli = ListarValorCliente(txtCodCliente.Text);
+
+            if (dttPedidocli.Rows.Count > 0)
+            {
+                ValorPedido = Convert.ToDouble(dttPedidocli.Rows[0]["VALOR"]);
+                ValorFaturar = ValorPedido + Convert.ToDouble(txtBxVlrMercadoria.Text);
+
+            }
+
+            DataTable dttCliente = new DataTable();
+
+            dttCliente = ListarLimiteCliente(txtCodCliente.Text);
+
+            if (dttCliente.Rows.Count > 0)
+            {
+                ValorLimite = Convert.ToDouble(dttCliente.Rows[0]["LIMITE"]);
+
+            }
+
+            if ((ValorFaturar > ValorLimite))
+            {
+                MessageBox.Show("Limite de Credito insuficiente!.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+        #endregion
+
+        #region ValidaSaldoEstoque
+        public void ValidaEstoque()
+        {
+            foreach (DataGridViewRow item in dtgrdvItenspven.Rows)
+            {
+                int SaldoEstoque = ListarSaldoEstoque(Convert.ToInt32(item.Cells["ColProd"].Value));
+
+                if (Convert.ToInt32(item.Cells["ClmQtde"].Value) > SaldoEstoque)
+                {
+                    MessageBox.Show("Saldo em Estoque Indisponivel para o produto!." + Convert.ToInt32(item.Cells["ColProd"].Value) , "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+
+        }
+        #endregion
+
+        #region Processo Liberacao
+        public int LiberaPedido()
+        {
+            try
+            {
+                validalimite();
+                ValidaEstoque();
+
+                return 0;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+        }
+        #endregion
+
+        private void FrmLibPDV_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

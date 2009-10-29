@@ -1525,37 +1525,18 @@ namespace Comercial
 
         private void tlStrpBtnLibPed_Click_1(object sender, EventArgs e)
         {
+            Form frm = this.ActiveMdiChild;
+            if (frm == null)
+                return;
+
             try
             {
-                int x = 0, y = 0;
-
-                // Localiza o formulario
-                foreach (Form form in this.MdiChildren)
+                if (frm is FrmLibPDV)
                 {
-                    if (form is FrmConPDV)
-                    {
-                        form.WindowState = FormWindowState.Maximized;
-                        form.Activate();
-                        x++;
-                    }
-                    y++;
-
+                    FrmLibPDV frmlib = (FrmLibPDV)frm;
+                    frmlib.LiberaPedido();
                 }
 
-                // Para criar o formulario 
-                if (x == 0 && y == 0)
-                {
-                    FrmConPDV filho = new FrmConPDV(this);
-                    filho.Show();
-
-                    tlStrpConsulta.Visible = true;
-                    bindingNavigator1.Visible = false;
-
-                    // Util.Interface.ResetControls(filho);
-                    //Util.Interface.ChangeControlStatus(filho, false);
-
-                    filho.WindowState = FormWindowState.Maximized;
-                }
             }
             catch (Exception ex)
             {
@@ -1564,7 +1545,7 @@ namespace Comercial
             }
         }
 
-        
+
 
         private void liberarPedidoVs2ToolStripMenuItem_Click(object sender, EventArgs e)
         {
