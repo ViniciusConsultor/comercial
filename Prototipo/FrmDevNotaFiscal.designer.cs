@@ -59,6 +59,7 @@
             this.dtTmPckrDtEmissao = new System.Windows.Forms.DateTimePicker();
             this.lblForncedor = new System.Windows.Forms.Label();
             this.tbCntrlDevNotFiscal = new System.Windows.Forms.TabControl();
+            this.BtnDevNF = new System.Windows.Forms.Button();
             this.tbPgDevNotaFiscal.SuspendLayout();
             this.grpBxItensNotFiscal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGrdVwItensNotFiscal)).BeginInit();
@@ -69,6 +70,7 @@
             // 
             // tbPgDevNotaFiscal
             // 
+            this.tbPgDevNotaFiscal.Controls.Add(this.BtnDevNF);
             this.tbPgDevNotaFiscal.Controls.Add(this.grpBxItensNotFiscal);
             this.tbPgDevNotaFiscal.Controls.Add(this.grpBxTotais);
             this.tbPgDevNotaFiscal.Controls.Add(this.grpBxInfNotFiscal);
@@ -162,7 +164,7 @@
             this.grpBxTotais.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.grpBxTotais.Location = new System.Drawing.Point(16, 342);
             this.grpBxTotais.Name = "grpBxTotais";
-            this.grpBxTotais.Size = new System.Drawing.Size(741, 135);
+            this.grpBxTotais.Size = new System.Drawing.Size(482, 135);
             this.grpBxTotais.TabIndex = 19;
             this.grpBxTotais.TabStop = false;
             this.grpBxTotais.Text = "Totais";
@@ -172,7 +174,7 @@
             this.lblVlrBruto.AutoSize = true;
             this.lblVlrBruto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVlrBruto.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblVlrBruto.Location = new System.Drawing.Point(573, 104);
+            this.lblVlrBruto.Location = new System.Drawing.Point(293, 99);
             this.lblVlrBruto.Name = "lblVlrBruto";
             this.lblVlrBruto.Size = new System.Drawing.Size(53, 13);
             this.lblVlrBruto.TabIndex = 25;
@@ -183,7 +185,7 @@
             this.lblDescontos.AutoSize = true;
             this.lblDescontos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDescontos.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblDescontos.Location = new System.Drawing.Point(565, 78);
+            this.lblDescontos.Location = new System.Drawing.Point(285, 73);
             this.lblDescontos.Name = "lblDescontos";
             this.lblDescontos.Size = new System.Drawing.Size(61, 13);
             this.lblDescontos.TabIndex = 24;
@@ -194,7 +196,7 @@
             this.lblVlrFrete.AutoSize = true;
             this.lblVlrFrete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVlrFrete.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblVlrFrete.Location = new System.Drawing.Point(574, 52);
+            this.lblVlrFrete.Location = new System.Drawing.Point(294, 47);
             this.lblVlrFrete.Name = "lblVlrFrete";
             this.lblVlrFrete.Size = new System.Drawing.Size(52, 13);
             this.lblVlrFrete.TabIndex = 23;
@@ -205,7 +207,7 @@
             this.lblVlrMercadoria.AutoSize = true;
             this.lblVlrMercadoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVlrMercadoria.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblVlrMercadoria.Location = new System.Drawing.Point(548, 23);
+            this.lblVlrMercadoria.Location = new System.Drawing.Point(268, 18);
             this.lblVlrMercadoria.Name = "lblVlrMercadoria";
             this.lblVlrMercadoria.Size = new System.Drawing.Size(81, 13);
             this.lblVlrMercadoria.TabIndex = 22;
@@ -213,32 +215,36 @@
             // 
             // txtBxDescontos
             // 
+            this.txtBxDescontos.Enabled = false;
             this.txtBxDescontos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBxDescontos.Location = new System.Drawing.Point(635, 75);
+            this.txtBxDescontos.Location = new System.Drawing.Point(355, 70);
             this.txtBxDescontos.Name = "txtBxDescontos";
             this.txtBxDescontos.Size = new System.Drawing.Size(83, 20);
             this.txtBxDescontos.TabIndex = 21;
             // 
             // txtBxVlrBruto
             // 
+            this.txtBxVlrBruto.Enabled = false;
             this.txtBxVlrBruto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBxVlrBruto.Location = new System.Drawing.Point(635, 101);
+            this.txtBxVlrBruto.Location = new System.Drawing.Point(355, 96);
             this.txtBxVlrBruto.Name = "txtBxVlrBruto";
             this.txtBxVlrBruto.Size = new System.Drawing.Size(83, 20);
             this.txtBxVlrBruto.TabIndex = 20;
             // 
             // txtBxVlrFrete
             // 
+            this.txtBxVlrFrete.Enabled = false;
             this.txtBxVlrFrete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBxVlrFrete.Location = new System.Drawing.Point(635, 49);
+            this.txtBxVlrFrete.Location = new System.Drawing.Point(355, 44);
             this.txtBxVlrFrete.Name = "txtBxVlrFrete";
             this.txtBxVlrFrete.Size = new System.Drawing.Size(83, 20);
             this.txtBxVlrFrete.TabIndex = 19;
             // 
             // txtBxVlrMercadoria
             // 
+            this.txtBxVlrMercadoria.Enabled = false;
             this.txtBxVlrMercadoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBxVlrMercadoria.Location = new System.Drawing.Point(635, 20);
+            this.txtBxVlrMercadoria.Location = new System.Drawing.Point(355, 15);
             this.txtBxVlrMercadoria.Name = "txtBxVlrMercadoria";
             this.txtBxVlrMercadoria.Size = new System.Drawing.Size(83, 20);
             this.txtBxVlrMercadoria.TabIndex = 18;
@@ -306,6 +312,7 @@
             // 
             // txtSerie
             // 
+            this.txtSerie.Enabled = false;
             this.txtSerie.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSerie.Location = new System.Drawing.Point(307, 33);
             this.txtSerie.Name = "txtSerie";
@@ -314,6 +321,7 @@
             // 
             // cmbBxUfOrigem
             // 
+            this.cmbBxUfOrigem.Enabled = false;
             this.cmbBxUfOrigem.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbBxUfOrigem.FormattingEnabled = true;
             this.cmbBxUfOrigem.Location = new System.Drawing.Point(634, 31);
@@ -334,6 +342,7 @@
             // 
             // cmbBxFornecedor
             // 
+            this.cmbBxFornecedor.Enabled = false;
             this.cmbBxFornecedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbBxFornecedor.FormattingEnabled = true;
             this.cmbBxFornecedor.Location = new System.Drawing.Point(498, 32);
@@ -343,6 +352,7 @@
             // 
             // dtTmPckrDtEmissao
             // 
+            this.dtTmPckrDtEmissao.Enabled = false;
             this.dtTmPckrDtEmissao.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtTmPckrDtEmissao.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtTmPckrDtEmissao.Location = new System.Drawing.Point(375, 32);
@@ -365,11 +375,20 @@
             // 
             this.tbCntrlDevNotFiscal.Controls.Add(this.tbPgDevNotaFiscal);
             this.tbCntrlDevNotFiscal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbCntrlDevNotFiscal.Location = new System.Drawing.Point(12, 31);
+            this.tbCntrlDevNotFiscal.Location = new System.Drawing.Point(12, 12);
             this.tbCntrlDevNotFiscal.Name = "tbCntrlDevNotFiscal";
             this.tbCntrlDevNotFiscal.SelectedIndex = 0;
             this.tbCntrlDevNotFiscal.Size = new System.Drawing.Size(792, 509);
             this.tbCntrlDevNotFiscal.TabIndex = 18;
+            // 
+            // BtnDevNF
+            // 
+            this.BtnDevNF.Location = new System.Drawing.Point(592, 390);
+            this.BtnDevNF.Name = "BtnDevNF";
+            this.BtnDevNF.Size = new System.Drawing.Size(114, 42);
+            this.BtnDevNF.TabIndex = 20;
+            this.BtnDevNF.Text = "Devolução da Nota Fiscal";
+            this.BtnDevNF.UseVisualStyleBackColor = true;
             // 
             // FrmDevNotaFiscal
             // 
@@ -427,6 +446,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clmQuantidade;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmVlrUnitário;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmVlrTotal;
+        private System.Windows.Forms.Button BtnDevNF;
 
     }
 }
