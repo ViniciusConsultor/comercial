@@ -48,15 +48,6 @@ namespace Comercial
                     crstlRprtVwrRel.ReportSource = report;
                 }
 
-                if (_princ == "FrmConProd")
-                {
-                    CrystalDecisions.CrystalReports.Engine.ReportDocument report = new CrystalDecisions.CrystalReports.Engine.ReportDocument();
-                    report.Load(@"D:\Backup Facu\7 Semestre\TCC 2\TCC 2\Prototipo\Prototipo\RptConProd.rpt");
-                    CrystalDecisions.Shared.ParameterField param;
-
-                    crstlRprtVwrRel.ReportSource = report;
-                }
-
                 #region Relatorio Pedido
                 if (_princ == "FrmConPDV")
                 {
@@ -104,6 +95,43 @@ namespace Comercial
                 }
 
                 #endregion
+
+                #region relatorio produto
+
+                if (_princ == "FrmConProd")
+                {
+                    //Instancio o FormConsulta
+                    FrmConProd x = (FrmConProd)_pdv;
+                    
+                    //Instancio o Relatorio
+                    RptConProd objRptConProd = new RptConProd();
+
+                    //Instancio o Dataset
+                    COMERCIALDataSet oDataset = new COMERCIALDataSet();
+
+                    Microsoft.Practices.EnterpriseLibrary.Data.Database db = DatabaseFactory.CreateDatabase();
+                    //Crio a Conexão
+                    SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString);
+
+                    //Abro a conexão
+                    sqlcon.Open();
+
+                    //Recebo a String SQL feita na tela de consulta
+                    string StringConnection = x.pesquisar();
+
+                    SqlDataAdapter dtAdapter = new SqlDataAdapter(StringConnection, sqlcon);
+
+                    //Localiso o datateble criado no dataset
+                    dtAdapter.Fill(oDataset, "RelProduto");
+
+                    objRptConProd.SetDataSource(oDataset);
+
+                    //atribiu o resultado ao CristalReportView            
+                    crstlRprtVwrRel.DisplayGroupTree = false;
+                    crstlRprtVwrRel.ReportSource = objRptConProd;
+                }
+
+                #endregion
                 
                 #region relatorio Estoque
 
@@ -111,9 +139,7 @@ namespace Comercial
                 {
                     //Instancio o FormConsulta
                     FrmConEstProd x = (FrmConEstProd)_pdv;
-
-                    RptConVen objRptConPDV = new RptConVen();
-
+                    
                     //Instancio o Relatorio
                     RptConEstoque objRptConEst = new RptConEstoque();
 
@@ -156,10 +182,7 @@ namespace Comercial
             }
             catch (Exception ex)
             {
-
-
                 throw ex;
-
             }
         }
 
