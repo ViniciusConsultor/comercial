@@ -537,6 +537,8 @@
     <None Include="Img\BolaAmarela.gif" />
     <None Include="Img\BolaVerde.gif" />
     <Content Include="Img\BolaVermelho.gif" />
+    <None Include="Img\certo.png" />
+    <None Include="Img\errado.png" />
     <Content Include="Img\Excluir.png" />
     <Content Include="Resources\BolaVermelho.gif" />
     <None Include="Resources\Excluir.png" />
