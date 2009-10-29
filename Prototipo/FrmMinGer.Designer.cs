@@ -34,6 +34,8 @@
             this.prgrsBrCarrega = new System.Windows.Forms.ProgressBar();
             this.tbCntrlMining = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.txtnomeEstrutura = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.rchTxtBxTexto = new System.Windows.Forms.RichTextBox();
             this.cmbBxTipoDataMining = new System.Windows.Forms.ComboBox();
@@ -55,12 +57,10 @@
             this.Key = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Input = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Predictable = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.lblTexto = new System.Windows.Forms.Label();
             this.tmrTempo = new System.Windows.Forms.Timer(this.components);
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.txtnomeEstrutura = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.tbCntrlMining.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tbPgTabela.SuspendLayout();
@@ -111,6 +111,23 @@
             this.tabPage1.TabIndex = 1;
             this.tabPage1.Text = "Estrutura";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // txtnomeEstrutura
+            // 
+            this.txtnomeEstrutura.Location = new System.Drawing.Point(196, 32);
+            this.txtnomeEstrutura.Name = "txtnomeEstrutura";
+            this.txtnomeEstrutura.Size = new System.Drawing.Size(274, 20);
+            this.txtnomeEstrutura.TabIndex = 13;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.Color.CadetBlue;
+            this.label7.Location = new System.Drawing.Point(193, 16);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(111, 13);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "Nome da estrutura";
             // 
             // label2
             // 
@@ -363,6 +380,28 @@
             this.Predictable.Name = "Predictable";
             this.Predictable.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.richTextBox2);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(631, 320);
+            this.tabPage4.TabIndex = 4;
+            this.tabPage4.Text = "Finalização";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            this.tabPage4.Enter += new System.EventHandler(this.tabPage4_Enter);
+            // 
+            // richTextBox2
+            // 
+            this.richTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBox2.Location = new System.Drawing.Point(3, 25);
+            this.richTextBox2.Name = "richTextBox2";
+            this.richTextBox2.ReadOnly = true;
+            this.richTextBox2.Size = new System.Drawing.Size(625, 292);
+            this.richTextBox2.TabIndex = 9;
+            this.richTextBox2.Text = "";
+            // 
             // lblTexto
             // 
             this.lblTexto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -379,46 +418,6 @@
             // tmrTempo
             // 
             this.tmrTempo.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // richTextBox2
-            // 
-            this.richTextBox2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox2.Location = new System.Drawing.Point(3, 3);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.ReadOnly = true;
-            this.richTextBox2.Size = new System.Drawing.Size(625, 314);
-            this.richTextBox2.TabIndex = 9;
-            this.richTextBox2.Text = "";
-            // 
-            // tabPage4
-            // 
-            this.tabPage4.Controls.Add(this.richTextBox2);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(631, 320);
-            this.tabPage4.TabIndex = 4;
-            this.tabPage4.Text = "Finalização";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            this.tabPage4.Enter += new System.EventHandler(this.tabPage4_Enter);
-            // 
-            // txtnomeEstrutura
-            // 
-            this.txtnomeEstrutura.Location = new System.Drawing.Point(196, 32);
-            this.txtnomeEstrutura.Name = "txtnomeEstrutura";
-            this.txtnomeEstrutura.Size = new System.Drawing.Size(274, 20);
-            this.txtnomeEstrutura.TabIndex = 13;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.ForeColor = System.Drawing.Color.CadetBlue;
-            this.label7.Location = new System.Drawing.Point(193, 16);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(111, 13);
-            this.label7.TabIndex = 12;
-            this.label7.Text = "Nome da estrutura";
             // 
             // FrmMinGer
             // 
