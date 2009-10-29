@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tbCntrlPedVend = new System.Windows.Forms.TabControl();
             this.tbPgPDV = new System.Windows.Forms.TabPage();
             this.grpBxPedVenda = new System.Windows.Forms.GroupBox();
@@ -64,7 +64,7 @@
             this.lblVlrFrete = new System.Windows.Forms.Label();
             this.lblVlrMercadoria = new System.Windows.Forms.Label();
             this.txtBxDescontos = new System.Windows.Forms.TextBox();
-            this.txtBxVlrFrete = new System.Windows.Forms.TextBox();
+            this.txtBxVlrFaturado = new System.Windows.Forms.TextBox();
             this.txtBxVlrMercadoria = new System.Windows.Forms.TextBox();
             this.pnlItenped = new System.Windows.Forms.Panel();
             this.dtgrdvItenspven = new System.Windows.Forms.DataGridView();
@@ -77,10 +77,12 @@
             this.ColProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClmDescProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClmQtde = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClmQtdeLib = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClmPrcUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClmIPI = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColDesconto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColVALORFATU = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColStatusItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbCntrlPedVend.SuspendLayout();
             this.tbPgPDV.SuspendLayout();
@@ -405,7 +407,7 @@
             this.grpBxTotais.Controls.Add(this.lblVlrFrete);
             this.grpBxTotais.Controls.Add(this.lblVlrMercadoria);
             this.grpBxTotais.Controls.Add(this.txtBxDescontos);
-            this.grpBxTotais.Controls.Add(this.txtBxVlrFrete);
+            this.grpBxTotais.Controls.Add(this.txtBxVlrFaturado);
             this.grpBxTotais.Controls.Add(this.txtBxVlrMercadoria);
             this.grpBxTotais.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.grpBxTotais.Location = new System.Drawing.Point(10, 260);
@@ -460,14 +462,14 @@
             this.txtBxDescontos.Size = new System.Drawing.Size(83, 20);
             this.txtBxDescontos.TabIndex = 21;
             // 
-            // txtBxVlrFrete
+            // txtBxVlrFaturado
             // 
-            this.txtBxVlrFrete.Enabled = false;
-            this.txtBxVlrFrete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBxVlrFrete.Location = new System.Drawing.Point(752, 19);
-            this.txtBxVlrFrete.Name = "txtBxVlrFrete";
-            this.txtBxVlrFrete.Size = new System.Drawing.Size(83, 20);
-            this.txtBxVlrFrete.TabIndex = 19;
+            this.txtBxVlrFaturado.Enabled = false;
+            this.txtBxVlrFaturado.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBxVlrFaturado.Location = new System.Drawing.Point(752, 19);
+            this.txtBxVlrFaturado.Name = "txtBxVlrFaturado";
+            this.txtBxVlrFaturado.Size = new System.Drawing.Size(83, 20);
+            this.txtBxVlrFaturado.TabIndex = 19;
             // 
             // txtBxVlrMercadoria
             // 
@@ -491,14 +493,14 @@
             // 
             this.dtgrdvItenspven.AllowUserToAddRows = false;
             this.dtgrdvItenspven.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgrdvItenspven.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgrdvItenspven.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgrdvItenspven.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgrdvItenspven.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColCheck,
@@ -506,31 +508,33 @@
             this.ColProd,
             this.ClmDescProd,
             this.ClmQtde,
+            this.ClmQtdeLib,
             this.ClmPrcUnit,
             this.ClmIPI,
             this.ColDesconto,
             this.ColTotal,
+            this.ColVALORFATU,
             this.ColStatusItem});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.CadetBlue;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgrdvItenspven.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.CadetBlue;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgrdvItenspven.DefaultCellStyle = dataGridViewCellStyle2;
             this.dtgrdvItenspven.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtgrdvItenspven.GridColor = System.Drawing.Color.WhiteSmoke;
             this.dtgrdvItenspven.Location = new System.Drawing.Point(0, 0);
             this.dtgrdvItenspven.Name = "dtgrdvItenspven";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgrdvItenspven.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgrdvItenspven.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dtgrdvItenspven.Size = new System.Drawing.Size(841, 235);
             this.dtgrdvItenspven.TabIndex = 26;
             // 
@@ -573,9 +577,11 @@
             // 
             // ColCheck
             // 
+            this.ColCheck.FalseValue = "";
             this.ColCheck.HeaderText = "";
             this.ColCheck.Name = "ColCheck";
             this.ColCheck.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColCheck.TrueValue = "";
             this.ColCheck.Width = 25;
             // 
             // ClmItem
@@ -583,7 +589,6 @@
             this.ClmItem.DataPropertyName = "ITEM";
             this.ClmItem.HeaderText = "Item";
             this.ClmItem.Name = "ClmItem";
-            this.ClmItem.ReadOnly = true;
             this.ClmItem.Width = 35;
             // 
             // ColProd
@@ -591,14 +596,12 @@
             this.ColProd.DataPropertyName = "CODPRODUTO";
             this.ColProd.HeaderText = "Codigo Produto";
             this.ColProd.Name = "ColProd";
-            this.ColProd.ReadOnly = true;
             // 
             // ClmDescProd
             // 
             this.ClmDescProd.DataPropertyName = "DESCRICAO";
             this.ClmDescProd.HeaderText = "Descrição Produto";
             this.ClmDescProd.Name = "ClmDescProd";
-            this.ClmDescProd.ReadOnly = true;
             this.ClmDescProd.Width = 125;
             // 
             // ClmQtde
@@ -608,40 +611,50 @@
             this.ClmQtde.Name = "ClmQtde";
             this.ClmQtde.ReadOnly = true;
             // 
+            // ClmQtdeLib
+            // 
+            this.ClmQtdeLib.DataPropertyName = "QUANTLIB";
+            this.ClmQtdeLib.HeaderText = "Quantidade Liberada";
+            this.ClmQtdeLib.Name = "ClmQtdeLib";
+            // 
             // ClmPrcUnit
             // 
             this.ClmPrcUnit.DataPropertyName = "VALOR";
             this.ClmPrcUnit.HeaderText = "Preço Unitário";
             this.ClmPrcUnit.Name = "ClmPrcUnit";
-            this.ClmPrcUnit.ReadOnly = true;
             // 
             // ClmIPI
             // 
             this.ClmIPI.DataPropertyName = "IPI";
             this.ClmIPI.HeaderText = "% IPI";
             this.ClmIPI.Name = "ClmIPI";
-            this.ClmIPI.ReadOnly = true;
+            this.ClmIPI.Visible = false;
             // 
             // ColDesconto
             // 
             this.ColDesconto.DataPropertyName = "DESCONTO";
             this.ColDesconto.HeaderText = "Desconto";
             this.ColDesconto.Name = "ColDesconto";
-            this.ColDesconto.ReadOnly = true;
             // 
             // ColTotal
             // 
             this.ColTotal.DataPropertyName = "VALORTOTAL";
             this.ColTotal.HeaderText = "Valor Total";
             this.ColTotal.Name = "ColTotal";
-            this.ColTotal.ReadOnly = true;
+            // 
+            // ColVALORFATU
+            // 
+            this.ColVALORFATU.DataPropertyName = "VALORFATU";
+            this.ColVALORFATU.HeaderText = "Valor Faturado";
+            this.ColVALORFATU.Name = "ColVALORFATU";
+            this.ColVALORFATU.ReadOnly = true;
+            this.ColVALORFATU.Visible = false;
             // 
             // ColStatusItem
             // 
             this.ColStatusItem.DataPropertyName = "Status";
             this.ColStatusItem.HeaderText = "Status";
             this.ColStatusItem.Name = "ColStatusItem";
-            this.ColStatusItem.ReadOnly = true;
             this.ColStatusItem.Visible = false;
             // 
             // FrmLibPDV
@@ -652,6 +665,7 @@
             this.Controls.Add(this.tbCntrlPedVend);
             this.Name = "FrmLibPDV";
             this.Text = "Liberação de Pedido";
+            this.Load += new System.EventHandler(this.FrmLibPDV_Load);
             this.Leave += new System.EventHandler(this.FrmLibPDV_Leave);
             this.tbCntrlPedVend.ResumeLayout(false);
             this.tbPgPDV.ResumeLayout(false);
@@ -680,7 +694,7 @@
         private System.Windows.Forms.Label lblVlrFrete;
         private System.Windows.Forms.Label lblVlrMercadoria;
         private System.Windows.Forms.TextBox txtBxDescontos;
-        private System.Windows.Forms.TextBox txtBxVlrFrete;
+        private System.Windows.Forms.TextBox txtBxVlrFaturado;
         private System.Windows.Forms.Panel pnlItenped;
         public System.Windows.Forms.GroupBox grpBxPedVenda;
         private System.Windows.Forms.GroupBox grpTipoPedido;
@@ -717,10 +731,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColProd;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmDescProd;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmQtde;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClmQtdeLib;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmPrcUnit;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmIPI;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColDesconto;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColTotal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColVALORFATU;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColStatusItem;
 
     }
