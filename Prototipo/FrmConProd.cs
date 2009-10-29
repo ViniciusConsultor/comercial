@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Configuration;
@@ -37,7 +33,7 @@ namespace Comercial
             strip2.Visible = false;
         }
 
-        public void pesquisar()
+        public string pesquisar()
         {
             string sql = "select g.DESCRICAO GRUPO, p.DESCRICAO PRODUTO, p.DATACADASTRO, p.PRECOCUSTO, " +
                 "p.PRECOVENDA, p.ESTOQUEATUAL, p.ESTOQUEMIN, p.IPI, g.DESCONTO from PRODUTO p inner join " +
@@ -80,8 +76,9 @@ namespace Comercial
             DataTable table = new DataTable();
             table.Load(reader);
 
-
             dtGrdVwConProd.DataSource = table;
+
+            return sql;
         }
 
         private void txtBtnCodGrp_ButtonClick(object sender, EventArgs e)
