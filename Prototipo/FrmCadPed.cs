@@ -19,7 +19,7 @@ namespace Comercial
     {
         private FrmPrinc _princ = null;
         public DataTable dttRetorno = new DataTable();
-
+        int statusped = 0;
         public FrmCadPed(FrmPrinc parent)
         {
             InitializeComponent();
@@ -59,9 +59,9 @@ namespace Comercial
             this.pEDIDOTableAdapter.Fill(this.cOMERCIALDataSet.PEDIDO);
 
             this.iTEMPEDIDOTableAdapter.Fill(this.cOMERCIALDataSet.ITEMPEDIDO);
-           
+
             populargrid();
-           
+
             txtNomeCliente.Text = Convert.ToString(ListarNomeCliente(txtcodCli.getText));
             txtNomeTransportadora.Text = Convert.ToString(ListarNomeTransportadora(txtCodTransportadora.getText));
             txtNomeVendedor.Text = Convert.ToString(ListarNomeVendedor(txtCodVendedor.getText));
@@ -351,6 +351,21 @@ namespace Comercial
 
                             continue;
 
+                        }
+                        if (statusped == 1)
+                        {
+                            Excluiritem(Convert.ToInt32(txtPedido.Text), Convert.ToInt32(dttRetorno.Rows[index]["ITEM"]));
+
+                            COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter tableinsert = new Comercial.COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter();
+                            tableinsert.Insert(Convert.ToInt32(txtPedido.Text),
+                                 Convert.ToInt32(dttRetorno.Rows[index]["CODPRODUTO"]),
+                                    Convert.ToInt32(dttRetorno.Rows[index]["QUANTIDADE"]),
+                                    Convert.ToDouble(dttRetorno.Rows[index]["DESCONTO"]),
+                                    Convert.ToDouble(dttRetorno.Rows[index]["VALOR"]),
+                                    Convert.ToDouble(dttRetorno.Rows[index]["IPI"]),
+                                    Convert.ToInt32(dttRetorno.Rows[index]["ITEM"]));
+
+                            continue;
                         }
                     }
                 }
@@ -950,6 +965,36 @@ namespace Comercial
                 dtRow = dttRetorno.NewRow();
 
                 var teste = 0;
+                #region For Antigo
+                //foreach (DataGridViewRow item in dtgrdvItenspven.Rows)
+                //{
+                //    //Verifico se o produto existe, se existir ele atualiza a quantidade com o preço total
+                //    if (txtProduto.getText == Convert.ToString(item.Cells["ColProd"].Value))
+                //    {
+                //        txtValorTotal.Text = "";
+                //        txtQtdItem.Text = Convert.ToString(Convert.ToInt32(txtQtdItem.Text) + Convert.ToInt32(item.Cells[4].Value));
+                //        txtValorTotal.Text = Convert.ToString(Convert.ToDouble(valortotal) + Convert.ToDouble(item.Cells[8].Value));
+
+                //        item.Cells[4].Value = txtQtdItem.Text;
+                //        item.Cells[8].Value = txtValorTotal.Text;
+
+                //        dtRow["CODPRODUTO"] = item.Cells[2].Value;
+                //        dtRow["DESCRICAO"] = item.Cells[3].Value;
+                //        dtRow["QUANTIDADE"] = item.Cells[4].Value;
+                //        dtRow["VALOR"] = item.Cells[5].Value;
+                //        dtRow["IPI"] = item.Cells[6].Value;
+                //        dtRow["DESCONTO"] = item.Cells[7].Value;
+                //        dtRow["VALORTOTAL"] = item.Cells[8].Value;
+                //        dtRow["status"] = "A";
+                //        dttRetorno.Rows.Add(dtRow);
+
+                //        // Excluiritem(Convert.ToInt32(txtPedido.Text), Convert.ToInt32(item.Cells["ClmItem"].Value));
+                //        teste += 1;
+
+                //    }
+                //}
+                #endregion
+
                 foreach (DataGridViewRow item in dtgrdvItenspven.Rows)
                 {
                     //Verifico se o produto existe, se existir ele atualiza a quantidade com o preço total
@@ -961,17 +1006,10 @@ namespace Comercial
 
                         item.Cells[4].Value = txtQtdItem.Text;
                         item.Cells[8].Value = txtValorTotal.Text;
-
-                        dtRow["CODPRODUTO"] = item.Cells[2].Value;
-                        dtRow["DESCRICAO"] = item.Cells[3].Value;
-                        dtRow["QUANTIDADE"] = item.Cells[4].Value;
-                        dtRow["VALOR"] = item.Cells[5].Value;
-                        dtRow["IPI"] = item.Cells[6].Value;
-                        dtRow["DESCONTO"] = item.Cells[7].Value;
-                        dtRow["VALORTOTAL"] = item.Cells[8].Value;
                         dtRow["status"] = "A";
-                        dttRetorno.Rows.Add(dtRow);
                         teste += 1;
+                        statusped += 1;
+
                     }
                 }
                 //se o produto não existir no datagrid ele adiciona o item novo
@@ -986,13 +1024,17 @@ namespace Comercial
                     dtRow["VALORTOTAL"] = valortotal;
                     dtRow["status"] = "A";
                     dttRetorno.Rows.Add(dtRow);
+
+
                 }
+
                 //for para verificação do item
                 for (int index = 0; index <= dttRetorno.Rows.Count - 1; index++)
                 {
                     dttRetorno.Rows[index][0] = index + 1;
                     continue;
                 }
+
                 //Popula o grid com o datatable
                 dtgrdvItenspven.DataSource = dttRetorno;
 

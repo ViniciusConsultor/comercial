@@ -417,6 +417,7 @@ namespace Comercial
                 tlStrpProcesso.Visible = true;
                 tlStrpBtnLibPed.Visible = true;
                 bindingNavigator1.Visible = false;
+                tlStrpBtnPesquisar.Visible = true;
 
                 // Util.Interface.ResetControls(filho);
                 //Util.Interface.ChangeControlStatus(filho, false);
