@@ -35,7 +35,7 @@ namespace Comercial
 
         public string pesquisar()
         {
-            string sql = "select g.DESCRICAO GRUPO, p.DESCRICAO PRODUTO, p.DATACADASTRO, p.PRECOCUSTO, " +
+            string sql = "select g.CODGRUPOPRODUTO CODGRUPO, P.CODPRODUTO CODPROD, g.DESCRICAO GRUPO, p.DESCRICAO PRODUTO, p.DATACADASTRO, p.PRECOCUSTO, " +
                 "p.PRECOVENDA, p.ESTOQUEATUAL, p.ESTOQUEMIN, p.IPI, g.DESCONTO from PRODUTO p inner join " +
                 "GRUPOPRODUTO g on (p.CODGRUPOPRODUTO = g.CODGRUPOPRODUTO) ";
 
