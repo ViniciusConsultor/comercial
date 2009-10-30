@@ -47,11 +47,15 @@
             this.pEDIDOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
             this.label1 = new System.Windows.Forms.Label();
+            this.txtCodTransportadora = new Comercial.TextButton();
             this.dtpEmissao = new System.Windows.Forms.DateTimePicker();
             this.txtNomeTransportadora = new System.Windows.Forms.TextBox();
             this.vENDEDORBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lbldtemi = new System.Windows.Forms.Label();
             this.lblNomeTransportadora = new System.Windows.Forms.Label();
+            this.txtCondPagto = new Comercial.TextButton();
+            this.txtCodVendedor = new Comercial.TextButton();
+            this.txtcodCli = new Comercial.TextButton();
             this.txtNomeVendedor = new System.Windows.Forms.TextBox();
             this.txtNomeCliente = new System.Windows.Forms.TextBox();
             this.cLIENTEBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -68,6 +72,7 @@
             this.lblValorTotal = new System.Windows.Forms.Label();
             this.txtQtdItem = new System.Windows.Forms.TextBox();
             this.LblqtdItem = new System.Windows.Forms.Label();
+            this.txtProduto = new Comercial.TextButton();
             this.btnAdditen = new System.Windows.Forms.Button();
             this.lblDesconto = new System.Windows.Forms.Label();
             this.txtDesconto = new System.Windows.Forms.TextBox();
@@ -107,11 +112,6 @@
             this.iTEMPEDIDOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter();
             this.pRODUTOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.PRODUTOTableAdapter();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.txtCodTransportadora = new Comercial.TextButton();
-            this.txtCondPagto = new Comercial.TextButton();
-            this.txtCodVendedor = new Comercial.TextButton();
-            this.txtcodCli = new Comercial.TextButton();
-            this.txtProduto = new Comercial.TextButton();
             this.tbCntrlPedVend.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.grpBxPedVenda.SuspendLayout();
@@ -295,6 +295,7 @@
             this.chkEfetivado.TabIndex = 48;
             this.chkEfetivado.Text = "Efetivado";
             this.chkEfetivado.UseVisualStyleBackColor = true;
+            
             // 
             // dtpEntrega
             // 
@@ -326,6 +327,17 @@
             this.label1.Size = new System.Drawing.Size(73, 13);
             this.label1.TabIndex = 96;
             this.label1.Text = "Data Entrega:";
+            // 
+            // txtCodTransportadora
+            // 
+            this.txtCodTransportadora.getText = "";
+            this.txtCodTransportadora.Image = ((System.Drawing.Image)(resources.GetObject("txtCodTransportadora.Image")));
+            this.txtCodTransportadora.Location = new System.Drawing.Point(14, 79);
+            this.txtCodTransportadora.Name = "txtCodTransportadora";
+            this.txtCodTransportadora.ShowButton = false;
+            this.txtCodTransportadora.Size = new System.Drawing.Size(144, 25);
+            this.txtCodTransportadora.TabIndex = 95;
+            this.txtCodTransportadora.ButtonClick += new System.EventHandler(this.txtCodTransportadora_ButtonClick);
             // 
             // dtpEmissao
             // 
@@ -371,6 +383,39 @@
             this.lblNomeTransportadora.Size = new System.Drawing.Size(184, 13);
             this.lblNomeTransportadora.TabIndex = 93;
             this.lblNomeTransportadora.Text = "Nome / Razão Social Transportadora";
+            // 
+            // txtCondPagto
+            // 
+            this.txtCondPagto.getText = "";
+            this.txtCondPagto.Image = ((System.Drawing.Image)(resources.GetObject("txtCondPagto.Image")));
+            this.txtCondPagto.Location = new System.Drawing.Point(358, 78);
+            this.txtCondPagto.Name = "txtCondPagto";
+            this.txtCondPagto.ShowButton = false;
+            this.txtCondPagto.Size = new System.Drawing.Size(71, 25);
+            this.txtCondPagto.TabIndex = 92;
+            this.txtCondPagto.ButtonClick += new System.EventHandler(this.txtCondPagto_ButtonClick);
+            // 
+            // txtCodVendedor
+            // 
+            this.txtCodVendedor.getText = "";
+            this.txtCodVendedor.Image = ((System.Drawing.Image)(resources.GetObject("txtCodVendedor.Image")));
+            this.txtCodVendedor.Location = new System.Drawing.Point(457, 34);
+            this.txtCodVendedor.Name = "txtCodVendedor";
+            this.txtCodVendedor.ShowButton = false;
+            this.txtCodVendedor.Size = new System.Drawing.Size(132, 25);
+            this.txtCodVendedor.TabIndex = 91;
+            this.txtCodVendedor.ButtonClick += new System.EventHandler(this.txtCodVendedor_ButtonClick);
+            // 
+            // txtcodCli
+            // 
+            this.txtcodCli.getText = "";
+            this.txtcodCli.Image = ((System.Drawing.Image)(resources.GetObject("txtcodCli.Image")));
+            this.txtcodCli.Location = new System.Drawing.Point(100, 37);
+            this.txtcodCli.Name = "txtcodCli";
+            this.txtcodCli.ShowButton = false;
+            this.txtcodCli.Size = new System.Drawing.Size(127, 25);
+            this.txtcodCli.TabIndex = 90;
+            this.txtcodCli.ButtonClick += new System.EventHandler(this.txtcodCli_ButtonClick);
             // 
             // txtNomeVendedor
             // 
@@ -546,6 +591,17 @@
             this.LblqtdItem.Size = new System.Drawing.Size(76, 13);
             this.LblqtdItem.TabIndex = 111;
             this.LblqtdItem.Text = "Quantidade:";
+            // 
+            // txtProduto
+            // 
+            this.txtProduto.getText = "";
+            this.txtProduto.Image = ((System.Drawing.Image)(resources.GetObject("txtProduto.Image")));
+            this.txtProduto.Location = new System.Drawing.Point(46, 284);
+            this.txtProduto.Name = "txtProduto";
+            this.txtProduto.ShowButton = false;
+            this.txtProduto.Size = new System.Drawing.Size(84, 25);
+            this.txtProduto.TabIndex = 108;
+            this.txtProduto.ButtonClick += new System.EventHandler(this.txtProduto_ButtonClick);
             // 
             // btnAdditen
             // 
@@ -862,61 +918,6 @@
             this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
             this.dataGridViewImageColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewImageColumn2.Width = 25;
-            // 
-            // txtCodTransportadora
-            // 
-            this.txtCodTransportadora.getText = "";
-            this.txtCodTransportadora.Image = ((System.Drawing.Image)(resources.GetObject("txtCodTransportadora.Image")));
-            this.txtCodTransportadora.Location = new System.Drawing.Point(14, 79);
-            this.txtCodTransportadora.Name = "txtCodTransportadora";
-            this.txtCodTransportadora.ShowButton = false;
-            this.txtCodTransportadora.Size = new System.Drawing.Size(144, 25);
-            this.txtCodTransportadora.TabIndex = 95;
-            this.txtCodTransportadora.ButtonClick += new System.EventHandler(this.txtCodTransportadora_ButtonClick);
-            // 
-            // txtCondPagto
-            // 
-            this.txtCondPagto.getText = "";
-            this.txtCondPagto.Image = ((System.Drawing.Image)(resources.GetObject("txtCondPagto.Image")));
-            this.txtCondPagto.Location = new System.Drawing.Point(358, 78);
-            this.txtCondPagto.Name = "txtCondPagto";
-            this.txtCondPagto.ShowButton = false;
-            this.txtCondPagto.Size = new System.Drawing.Size(71, 25);
-            this.txtCondPagto.TabIndex = 92;
-            this.txtCondPagto.ButtonClick += new System.EventHandler(this.txtCondPagto_ButtonClick);
-            // 
-            // txtCodVendedor
-            // 
-            this.txtCodVendedor.getText = "";
-            this.txtCodVendedor.Image = ((System.Drawing.Image)(resources.GetObject("txtCodVendedor.Image")));
-            this.txtCodVendedor.Location = new System.Drawing.Point(457, 34);
-            this.txtCodVendedor.Name = "txtCodVendedor";
-            this.txtCodVendedor.ShowButton = false;
-            this.txtCodVendedor.Size = new System.Drawing.Size(132, 25);
-            this.txtCodVendedor.TabIndex = 91;
-            this.txtCodVendedor.ButtonClick += new System.EventHandler(this.txtCodVendedor_ButtonClick);
-            // 
-            // txtcodCli
-            // 
-            this.txtcodCli.getText = "";
-            this.txtcodCli.Image = ((System.Drawing.Image)(resources.GetObject("txtcodCli.Image")));
-            this.txtcodCli.Location = new System.Drawing.Point(100, 37);
-            this.txtcodCli.Name = "txtcodCli";
-            this.txtcodCli.ShowButton = false;
-            this.txtcodCli.Size = new System.Drawing.Size(127, 25);
-            this.txtcodCli.TabIndex = 90;
-            this.txtcodCli.ButtonClick += new System.EventHandler(this.txtcodCli_ButtonClick);
-            // 
-            // txtProduto
-            // 
-            this.txtProduto.getText = "";
-            this.txtProduto.Image = ((System.Drawing.Image)(resources.GetObject("txtProduto.Image")));
-            this.txtProduto.Location = new System.Drawing.Point(46, 284);
-            this.txtProduto.Name = "txtProduto";
-            this.txtProduto.ShowButton = false;
-            this.txtProduto.Size = new System.Drawing.Size(84, 25);
-            this.txtProduto.TabIndex = 108;
-            this.txtProduto.ButtonClick += new System.EventHandler(this.txtProduto_ButtonClick);
             // 
             // FrmCadPed
             // 
