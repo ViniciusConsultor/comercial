@@ -77,15 +77,8 @@ namespace Comercial
                     total = Convert.ToDouble(total) + Convert.ToDouble(item.Cells["ColTotal"].Value);
                     desconto = Convert.ToDouble(desconto) + Convert.ToDouble(item.Cells["ColDesconto"].Value);
                     totalfaturado = Convert.ToDouble(totalfaturado) + Convert.ToDouble(item.Cells["ColVALORFATU"].Value);
-                 
-                    DataGridViewCheckBoxColumn ColCheck = (DataGridViewCheckBoxColumn)item.Cells["ColCheck"].Value;
 
-                    if (Convert.ToInt32(item.Cells["ClmQtdeLib"].Value) == Convert.ToInt32(item.Cells["ClmQtde"].Value))
-                    {
-                        item.Cells["ColCheck"].Value = true;
-                        item.Cells["ColCheck"].ReadOnly = true;
-                  
-                    }
+
 
                 }
 
@@ -304,7 +297,7 @@ namespace Comercial
             sqlcommand.Append(" SELECT ESTOQUEATUAL ");
             sqlcommand.Append(" FROM PRODUTO  ");
             sqlcommand.Append(" WHERE CODPRODUTO = @CODPRODUTO ");
-            
+
             DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
 
             db.AddInParameter(dbComd, "@CODPRODUTO", DbType.Int32, CodProd);
@@ -379,13 +372,40 @@ namespace Comercial
             {
                 int SaldoEstoque = ListarSaldoEstoque(Convert.ToInt32(item.Cells["ColProd"].Value));
 
-                if (Convert.ToInt32(item.Cells["ClmQtde"].Value) > SaldoEstoque)
+                if (Convert.ToInt32(item.Cells["ClmQtdeLib"].Value) > SaldoEstoque)
                 {
-                    MessageBox.Show("Saldo em Estoque Indisponivel para o produto!." + Convert.ToInt32(item.Cells["ColProd"].Value) , "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Saldo em Estoque Indisponivel para o produto!." + "Codigo: " + Convert.ToInt32(item.Cells["ColProd"].Value), "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
 
 
+        }
+        #endregion
+
+        #region ValidaItemLiberados
+        public void ValidaItemLiberado()
+        {
+            try
+            {
+                foreach (DataGridViewRow item in dtgrdvItenspven.Rows)
+                {
+
+                    if (Convert.ToInt32(item.Cells["ClmQtdeLib"].Value) == Convert.ToInt32(item.Cells["ClmQtde"].Value))
+                    {
+                        item.Cells["ColCheck"].Value = true;
+                        item.ReadOnly = true;
+
+
+
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
         #endregion
 
@@ -396,6 +416,7 @@ namespace Comercial
             {
                 validalimite();
                 ValidaEstoque();
+
 
                 return 0;
             }
@@ -410,7 +431,11 @@ namespace Comercial
 
         private void FrmLibPDV_Load(object sender, EventArgs e)
         {
+        }
 
+        private void dtgrdvItenspven_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            ValidaItemLiberado();
         }
     }
 }
