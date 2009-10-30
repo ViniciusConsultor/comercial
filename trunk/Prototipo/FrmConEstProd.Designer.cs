@@ -32,13 +32,6 @@
             this.tbCntrlConProd = new System.Windows.Forms.TabControl();
             this.tbPgConProd = new System.Windows.Forms.TabPage();
             this.dtGrdVwConProd = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grpBxFiltro = new System.Windows.Forms.GroupBox();
             this.grpBxProd = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -59,6 +52,14 @@
             this.LblDesc = new System.Windows.Forms.Label();
             this.gRUPOPRODUTOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.GRUPOPRODUTOTableAdapter();
             this.tableAdapterManager = new Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ESTOQUEMIN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbCntrlConProd.SuspendLayout();
             this.tbPgConProd.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGrdVwConProd)).BeginInit();
@@ -102,62 +103,14 @@
             this.Column7,
             this.Column4,
             this.Column5,
-            this.Column6});
+            this.Column6,
+            this.ESTOQUEMIN});
             this.dtGrdVwConProd.Location = new System.Drawing.Point(6, 181);
             this.dtGrdVwConProd.Name = "dtGrdVwConProd";
             this.dtGrdVwConProd.ReadOnly = true;
             this.dtGrdVwConProd.Size = new System.Drawing.Size(717, 252);
             this.dtGrdVwConProd.TabIndex = 2;
             this.dtGrdVwConProd.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGrdVwConProd_CellContentClick);
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "CODPRODUTO";
-            this.Column1.HeaderText = "Código Produto";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "DESCRICAO";
-            this.Column2.HeaderText = "Descrição Produto";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "PRECOCUSTO";
-            this.Column3.HeaderText = "Preço Custo";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // Column7
-            // 
-            this.Column7.DataPropertyName = "DATACADASTRO";
-            this.Column7.HeaderText = "Data Cadastro";
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.DataPropertyName = "CODGRUPOPRODUTO";
-            this.Column4.HeaderText = "Codigo Grupo Produto";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            // 
-            // Column5
-            // 
-            this.Column5.DataPropertyName = "GRPDESC";
-            this.Column5.HeaderText = "Descrição Grupo Produto";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            // 
-            // Column6
-            // 
-            this.Column6.DataPropertyName = "ESTOQUEATUAL";
-            this.Column6.HeaderText = "Estoque Atual";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
             // 
             // grpBxFiltro
             // 
@@ -386,6 +339,62 @@
             this.tableAdapterManager.VENDEDORTableAdapter = null;
             this.tableAdapterManager.VIATRANSPORTETableAdapter = null;
             // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "CODPRODUTO";
+            this.Column1.HeaderText = "Código Produto";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "DESCRICAO";
+            this.Column2.HeaderText = "Descrição Produto";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "PRECOCUSTO";
+            this.Column3.HeaderText = "Preço Custo";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // Column7
+            // 
+            this.Column7.DataPropertyName = "DATACADASTRO";
+            this.Column7.HeaderText = "Data Cadastro";
+            this.Column7.Name = "Column7";
+            this.Column7.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "CODGRUPOPRODUTO";
+            this.Column4.HeaderText = "Codigo Grupo Produto";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "GRPDESC";
+            this.Column5.HeaderText = "Descrição Grupo Produto";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            // 
+            // Column6
+            // 
+            this.Column6.DataPropertyName = "ESTOQUEATUAL";
+            this.Column6.HeaderText = "Estoque Atual";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            // 
+            // ESTOQUEMIN
+            // 
+            this.ESTOQUEMIN.DataPropertyName = "ESTOQUEMIN";
+            this.ESTOQUEMIN.HeaderText = "Estoque Mínimo";
+            this.ESTOQUEMIN.Name = "ESTOQUEMIN";
+            this.ESTOQUEMIN.ReadOnly = true;
+            // 
             // FrmConEstProd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -445,5 +454,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ESTOQUEMIN;
     }
 }
