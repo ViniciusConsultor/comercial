@@ -1096,5 +1096,7 @@ namespace Comercial
                 txtValorTotal.Text = Convert.ToString(Convert.ToDouble(txtQtdItem.Text) * Convert.ToDouble(txtPrcUnit.Text));
             }
         }
+
+      
     }
 }

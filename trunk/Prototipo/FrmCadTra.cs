@@ -226,6 +226,11 @@ namespace Comercial
             }
 
         }
+
+        private void TxtNom_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }
