@@ -312,6 +312,27 @@ namespace Comercial
         }
         #endregion
 
+        #region AtualizarQuantidadeLiberada
+        public void AtualizarQtde(int CodPed, int QtdeLib, int CodProd)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+
+            StringBuilder sqlcommand = new StringBuilder();
+
+            sqlcommand.Append(" UPDATE ITEMPEDIDO SET QUANTIDADELIB = @QUANTIDADELIB WHERE NRPEDIDO = @NRPEDIDO AND CODPRODUTO = @CODPRODUTO");
+
+            DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
+
+            db.AddInParameter(dbComd, "@QUANTIDADELIB", DbType.Int32, QtdeLib);
+            db.AddInParameter(dbComd, "@NRPEDIDO", DbType.Int32, CodPed);
+            db.AddInParameter(dbComd, "@CODPRODUTO", DbType.Int32, CodProd);
+
+            db.ExecuteScalar(dbComd);
+
+
+        }
+        #endregion
+
         #region Pesquisar Pedido
         public void PesquisaPedido()
         {
@@ -376,6 +397,12 @@ namespace Comercial
                 {
                     MessageBox.Show("Saldo em Estoque Indisponivel para o produto!." + "Codigo: " + Convert.ToInt32(item.Cells["ColProd"].Value), "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+
+                if (Convert.ToInt32(item.Cells["ClmQtdeLib"].Value) > Convert.ToInt32(item.Cells["ClmQtde"].Value))
+                {
+                    MessageBox.Show("Quantidade liberada não pode ser superio a quantidade do pedido!." + "Codigo: " + Convert.ToInt32(item.Cells["ColProd"].Value), "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
             }
 
 
@@ -387,19 +414,23 @@ namespace Comercial
         {
             try
             {
-                foreach (DataGridViewRow item in dtgrdvItenspven.Rows)
+                for (int i = 0; i < dtgrdvItenspven.RowCount; i++)
                 {
+                    int QuantidadeLib = (int)dtgrdvItenspven.Rows[i].Cells["ClmQtdeLib"].Value;
+                    int Quantidade = (int)dtgrdvItenspven.Rows[i].Cells["ClmQtde"].Value;
 
-                    if (Convert.ToInt32(item.Cells["ClmQtdeLib"].Value) == Convert.ToInt32(item.Cells["ClmQtde"].Value))
+
+                    if (QuantidadeLib == Quantidade)
                     {
-                        item.Cells["ColCheck"].Value = true;
-                        item.ReadOnly = true;
-
-
-
+                        dtgrdvItenspven.Rows[i].Cells["ColCheck"].Value = true;
+                        dtgrdvItenspven.Rows[i].ReadOnly = true;
                     }
-
+                    else if ((QuantidadeLib != 0) && (QuantidadeLib != Quantidade))
+                    {
+                        dtgrdvItenspven.Rows[i].Cells["ColCheck"].Value = true;
+                    }
                 }
+
             }
             catch (Exception ex)
             {
@@ -414,11 +445,51 @@ namespace Comercial
         {
             try
             {
-                validalimite();
-                ValidaEstoque();
+                var teste = 0;
+                DataTable dttRetorno = new DataTable();
+                for (int i = 0; i < dtgrdvItenspven.RowCount; i++)
+                {
+                    int QuantidadeLib = (int)dtgrdvItenspven.Rows[i].Cells["ClmQtdeLib"].Value;
+                    int Quantidade = (int)dtgrdvItenspven.Rows[i].Cells["ClmQtde"].Value;
+
+                    dttRetorno = ListarItem(Convert.ToInt32(txtbtnPedido.Text));
 
 
+
+                    if (QuantidadeLib == Quantidade)
+                    {
+                        teste += 1;
+                    }
+
+                }
+
+
+                if (teste == dtgrdvItenspven.Rows.Count)
+                {
+                    MessageBox.Show("ok!.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    validalimite();
+                    ValidaEstoque();
+
+                    foreach (DataGridViewRow item in dtgrdvItenspven.Rows)
+                    {
+                        if (Convert.ToBoolean(item.Cells["ColCheck"].Value = true))
+                        {
+                            AtualizarQtde(Convert.ToInt32(txtbtnPedido.Text), Convert.ToInt32(item.Cells["ClmQtdeLib"].Value), Convert.ToInt32(item.Cells["ColProd"].Value));
+                        }
+                        continue;
+                    }
+
+
+
+                    MessageBox.Show("Pedido Liberado com Sucesso!.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    limparcampos();
+                    //}
+                }
                 return 0;
+
             }
             catch (Exception ex)
             {
@@ -429,13 +500,64 @@ namespace Comercial
         }
         #endregion
 
+
+
         private void FrmLibPDV_Load(object sender, EventArgs e)
         {
+
         }
 
-        private void dtgrdvItenspven_CellClick(object sender, DataGridViewCellEventArgs e)
+        #region LimparCampos
+        public void limparcampos()
         {
-            ValidaItemLiberado();
+            try
+            {
+                txtbtnPedido.Text = String.Empty; ;
+                txtBxDescontos.Text = String.Empty;
+                txtBxVlrFaturado.Text = String.Empty;
+                txtBxVlrMercadoria.Text = String.Empty;
+                txtCodCliente.Text = String.Empty;
+                txtCodTransportadora.Text = String.Empty;
+                txtCodVendedor.Text = String.Empty;
+                txtCondPagto.Text = String.Empty;
+                txtNomeCliente.Text = String.Empty;
+                txtNomeTransportadora.Text = String.Empty;
+                txtNomeVendedor.Text = String.Empty;
+                dtgrdvItenspven.Refresh();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+        #endregion
+
+        private void dtgrdvItenspven_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                foreach (DataGridViewRow item in dtgrdvItenspven.Rows)
+                {
+                    int Quantidade = Convert.ToInt32(item.Cells["ClmQtdeLib"].Value);
+                    if (Quantidade == 0)
+                    {
+                        item.Cells["ColCheck"].Value = false;
+                    }
+                    else
+                    {
+                        item.Cells["ColCheck"].Value = true;
+                    }
+
+
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

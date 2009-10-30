@@ -29,13 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmConPDV));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmConPDV));
             this.tbCntrlConPDV = new System.Windows.Forms.TabControl();
             this.tbPgConCli = new System.Windows.Forms.TabPage();
-            this.grpBxFiltro = new System.Windows.Forms.GroupBox();
             this.grpSituacao = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -43,10 +42,12 @@
             this.lblPendente = new System.Windows.Forms.Label();
             this.lblCancelado = new System.Windows.Forms.Label();
             this.lblEfetivado = new System.Windows.Forms.Label();
+            this.grpBxFiltro = new System.Windows.Forms.GroupBox();
             this.grpBxTpRel = new System.Windows.Forms.GroupBox();
             this.rdbProd = new System.Windows.Forms.RadioButton();
             this.rdbped = new System.Windows.Forms.RadioButton();
             this.grpBxCli = new System.Windows.Forms.GroupBox();
+            this.txtCodProd = new Comercial.TextButton();
             this.txtDesc = new System.Windows.Forms.TextBox();
             this.lblNome = new System.Windows.Forms.Label();
             this.lblCodCli = new System.Windows.Forms.Label();
@@ -64,6 +65,12 @@
             this.lblCod = new System.Windows.Forms.Label();
             this.lblTipoPed = new System.Windows.Forms.Label();
             this.dtGrdConPDV = new System.Windows.Forms.DataGridView();
+            this.iTEMPEDIDOBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
+            this.iTEMPEDIDOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter();
+            this.tableAdapterManager = new Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager();
+            this.pEDIDOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.PEDIDOTableAdapter();
+            this.pEDIDOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ColStatus = new System.Windows.Forms.DataGridViewImageColumn();
             this.ClmnCodPed = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClmnDtPed = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -74,19 +81,13 @@
             this.ColCodProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColDescricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColQuantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColQtdeLib = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClmnValPed = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColValorTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.iTEMPEDIDOBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
-            this.iTEMPEDIDOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter();
-            this.tableAdapterManager = new Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager();
-            this.pEDIDOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.PEDIDOTableAdapter();
-            this.pEDIDOBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.txtCodProd = new Comercial.TextButton();
             this.tbCntrlConPDV.SuspendLayout();
             this.tbPgConCli.SuspendLayout();
-            this.grpBxFiltro.SuspendLayout();
             this.grpSituacao.SuspendLayout();
+            this.grpBxFiltro.SuspendLayout();
             this.grpBxTpRel.SuspendLayout();
             this.grpBxCli.SuspendLayout();
             this.grpBxPedido.SuspendLayout();
@@ -123,20 +124,6 @@
             this.tbPgConCli.Text = "Consulta Pedido de Venda - Pedido / Cliente";
             this.tbPgConCli.UseVisualStyleBackColor = true;
             this.tbPgConCli.Click += new System.EventHandler(this.tbPgConCli_Click);
-            // 
-            // grpBxFiltro
-            // 
-            this.grpBxFiltro.Controls.Add(this.grpBxTpRel);
-            this.grpBxFiltro.Controls.Add(this.grpBxCli);
-            this.grpBxFiltro.Controls.Add(this.grpBxPedido);
-            this.grpBxFiltro.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpBxFiltro.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.grpBxFiltro.Location = new System.Drawing.Point(6, 6);
-            this.grpBxFiltro.Name = "grpBxFiltro";
-            this.grpBxFiltro.Size = new System.Drawing.Size(648, 198);
-            this.grpBxFiltro.TabIndex = 1;
-            this.grpBxFiltro.TabStop = false;
-            this.grpBxFiltro.Text = "Filtros:";
             // 
             // grpSituacao
             // 
@@ -214,6 +201,20 @@
             this.lblEfetivado.Size = new System.Drawing.Size(30, 13);
             this.lblEfetivado.TabIndex = 3;
             // 
+            // grpBxFiltro
+            // 
+            this.grpBxFiltro.Controls.Add(this.grpBxTpRel);
+            this.grpBxFiltro.Controls.Add(this.grpBxCli);
+            this.grpBxFiltro.Controls.Add(this.grpBxPedido);
+            this.grpBxFiltro.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpBxFiltro.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.grpBxFiltro.Location = new System.Drawing.Point(6, 6);
+            this.grpBxFiltro.Name = "grpBxFiltro";
+            this.grpBxFiltro.Size = new System.Drawing.Size(648, 198);
+            this.grpBxFiltro.TabIndex = 1;
+            this.grpBxFiltro.TabStop = false;
+            this.grpBxFiltro.Text = "Filtros:";
+            // 
             // grpBxTpRel
             // 
             this.grpBxTpRel.Controls.Add(this.rdbProd);
@@ -264,6 +265,17 @@
             this.grpBxCli.TabIndex = 9;
             this.grpBxCli.TabStop = false;
             this.grpBxCli.Text = "Dados Produto:";
+            // 
+            // txtCodProd
+            // 
+            this.txtCodProd.getText = "";
+            this.txtCodProd.Image = ((System.Drawing.Image)(resources.GetObject("txtCodProd.Image")));
+            this.txtCodProd.Location = new System.Drawing.Point(15, 35);
+            this.txtCodProd.Name = "txtCodProd";
+            this.txtCodProd.ShowButton = false;
+            this.txtCodProd.Size = new System.Drawing.Size(98, 25);
+            this.txtCodProd.TabIndex = 109;
+            this.txtCodProd.ButtonClick += new System.EventHandler(this.txtCodProd_ButtonClick);
             // 
             // txtDesc
             // 
@@ -449,7 +461,6 @@
             // 
             this.dtGrdConPDV.AllowUserToAddRows = false;
             this.dtGrdConPDV.AllowUserToDeleteRows = false;
-            this.dtGrdConPDV.AllowUserToOrderColumns = true;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -470,6 +481,7 @@
             this.ColCodProd,
             this.ColDescricao,
             this.ColQuantidade,
+            this.ColQtdeLib,
             this.ClmnValPed,
             this.ColValorTotal});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -494,6 +506,52 @@
             this.dtGrdConPDV.Size = new System.Drawing.Size(1125, 222);
             this.dtGrdConPDV.TabIndex = 0;
             // 
+            // iTEMPEDIDOBindingSource
+            // 
+            this.iTEMPEDIDOBindingSource.DataMember = "ITEMPEDIDO";
+            this.iTEMPEDIDOBindingSource.DataSource = this.cOMERCIALDataSet;
+            // 
+            // cOMERCIALDataSet
+            // 
+            this.cOMERCIALDataSet.DataSetName = "COMERCIALDataSet";
+            this.cOMERCIALDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // iTEMPEDIDOTableAdapter
+            // 
+            this.iTEMPEDIDOTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.ACESSOTableAdapter = null;
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.CLIENTETableAdapter = null;
+            this.tableAdapterManager.CONDICAOPAGAMENTOTableAdapter = null;
+            this.tableAdapterManager.GRUPOPRODUTOTableAdapter = null;
+            this.tableAdapterManager.ICMSTableAdapter = null;
+            this.tableAdapterManager.ItemNotaFiscalTableAdapter = null;
+            this.tableAdapterManager.ITEMPEDIDOTableAdapter = this.iTEMPEDIDOTableAdapter;
+            this.tableAdapterManager.MODULOTableAdapter = null;
+            this.tableAdapterManager.NOTAFISCALTableAdapter = null;
+            this.tableAdapterManager.PEDIDOTableAdapter = this.pEDIDOTableAdapter;
+            this.tableAdapterManager.PRODUTOTableAdapter = null;
+            this.tableAdapterManager.REGIAOTableAdapter = null;
+            this.tableAdapterManager.TRANSPORTADORATableAdapter = null;
+            this.tableAdapterManager.TRANSPORTADORAVIATableAdapter = null;
+            this.tableAdapterManager.UNIDADEMEDIDATableAdapter = null;
+            this.tableAdapterManager.UpdateOrder = Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.USUARIOTableAdapter = null;
+            this.tableAdapterManager.VENDEDORTableAdapter = null;
+            this.tableAdapterManager.VIATRANSPORTETableAdapter = null;
+            // 
+            // pEDIDOTableAdapter
+            // 
+            this.pEDIDOTableAdapter.ClearBeforeFill = true;
+            // 
+            // pEDIDOBindingSource
+            // 
+            this.pEDIDOBindingSource.DataMember = "PEDIDO";
+            this.pEDIDOBindingSource.DataSource = this.cOMERCIALDataSet;
+            // 
             // ColStatus
             // 
             this.ColStatus.DataPropertyName = "ImageStatus";
@@ -517,6 +575,7 @@
             this.ClmnDtPed.HeaderText = "Tipo Ped.";
             this.ClmnDtPed.Name = "ClmnDtPed";
             this.ClmnDtPed.ReadOnly = true;
+            this.ClmnDtPed.Visible = false;
             this.ClmnDtPed.Width = 80;
             // 
             // ColSituacao
@@ -570,6 +629,13 @@
             this.ColQuantidade.Name = "ColQuantidade";
             this.ColQuantidade.ReadOnly = true;
             // 
+            // ColQtdeLib
+            // 
+            this.ColQtdeLib.DataPropertyName = "QUANTIDADELIB";
+            this.ColQtdeLib.HeaderText = "Quant. Liberada";
+            this.ColQtdeLib.Name = "ColQtdeLib";
+            this.ColQtdeLib.ReadOnly = true;
+            // 
             // ClmnValPed
             // 
             this.ClmnValPed.DataPropertyName = "VALOR";
@@ -584,63 +650,6 @@
             this.ColValorTotal.Name = "ColValorTotal";
             this.ColValorTotal.ReadOnly = true;
             // 
-            // iTEMPEDIDOBindingSource
-            // 
-            this.iTEMPEDIDOBindingSource.DataMember = "ITEMPEDIDO";
-            this.iTEMPEDIDOBindingSource.DataSource = this.cOMERCIALDataSet;
-            // 
-            // cOMERCIALDataSet
-            // 
-            this.cOMERCIALDataSet.DataSetName = "COMERCIALDataSet";
-            this.cOMERCIALDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // iTEMPEDIDOTableAdapter
-            // 
-            this.iTEMPEDIDOTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.ACESSOTableAdapter = null;
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.CLIENTETableAdapter = null;
-            this.tableAdapterManager.CONDICAOPAGAMENTOTableAdapter = null;
-            this.tableAdapterManager.GRUPOPRODUTOTableAdapter = null;
-            this.tableAdapterManager.ICMSTableAdapter = null;
-            this.tableAdapterManager.ItemNotaFiscalTableAdapter = null;
-            this.tableAdapterManager.ITEMPEDIDOTableAdapter = this.iTEMPEDIDOTableAdapter;
-            this.tableAdapterManager.MODULOTableAdapter = null;
-            this.tableAdapterManager.NOTAFISCALTableAdapter = null;
-            this.tableAdapterManager.PEDIDOTableAdapter = this.pEDIDOTableAdapter;
-            this.tableAdapterManager.PRODUTOTableAdapter = null;
-            this.tableAdapterManager.REGIAOTableAdapter = null;
-            this.tableAdapterManager.TRANSPORTADORATableAdapter = null;
-            this.tableAdapterManager.TRANSPORTADORAVIATableAdapter = null;
-            this.tableAdapterManager.UNIDADEMEDIDATableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            this.tableAdapterManager.USUARIOTableAdapter = null;
-            this.tableAdapterManager.VENDEDORTableAdapter = null;
-            this.tableAdapterManager.VIATRANSPORTETableAdapter = null;
-            // 
-            // pEDIDOTableAdapter
-            // 
-            this.pEDIDOTableAdapter.ClearBeforeFill = true;
-            // 
-            // pEDIDOBindingSource
-            // 
-            this.pEDIDOBindingSource.DataMember = "PEDIDO";
-            this.pEDIDOBindingSource.DataSource = this.cOMERCIALDataSet;
-            // 
-            // txtCodProd
-            // 
-            this.txtCodProd.getText = "";
-            this.txtCodProd.Image = ((System.Drawing.Image)(resources.GetObject("txtCodProd.Image")));
-            this.txtCodProd.Location = new System.Drawing.Point(15, 35);
-            this.txtCodProd.Name = "txtCodProd";
-            this.txtCodProd.ShowButton = false;
-            this.txtCodProd.Size = new System.Drawing.Size(98, 25);
-            this.txtCodProd.TabIndex = 109;
-            this.txtCodProd.ButtonClick += new System.EventHandler(this.txtCodProd_ButtonClick);
-            // 
             // FrmConPDV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -653,9 +662,9 @@
             this.Leave += new System.EventHandler(this.FrmConPDV_Leave);
             this.tbCntrlConPDV.ResumeLayout(false);
             this.tbPgConCli.ResumeLayout(false);
-            this.grpBxFiltro.ResumeLayout(false);
             this.grpSituacao.ResumeLayout(false);
             this.grpSituacao.PerformLayout();
+            this.grpBxFiltro.ResumeLayout(false);
             this.grpBxTpRel.ResumeLayout(false);
             this.grpBxTpRel.PerformLayout();
             this.grpBxCli.ResumeLayout(false);
@@ -705,6 +714,13 @@
         private Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private Comercial.COMERCIALDataSetTableAdapters.PEDIDOTableAdapter pEDIDOTableAdapter;
         private System.Windows.Forms.BindingSource pEDIDOBindingSource;
+        private System.Windows.Forms.Label lblPendente;
+        private System.Windows.Forms.GroupBox grpSituacao;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblteztoPendente;
+        private System.Windows.Forms.Label lblCancelado;
+        private System.Windows.Forms.Label lblEfetivado;
         private System.Windows.Forms.DataGridViewImageColumn ColStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmnCodPed;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmnDtPed;
@@ -715,14 +731,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColCodProd;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColDescricao;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColQuantidade;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColQtdeLib;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmnValPed;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColValorTotal;
-        private System.Windows.Forms.Label lblPendente;
-        private System.Windows.Forms.GroupBox grpSituacao;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lblteztoPendente;
-        private System.Windows.Forms.Label lblCancelado;
-        private System.Windows.Forms.Label lblEfetivado;
     }
 }

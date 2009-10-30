@@ -78,11 +78,11 @@ namespace Comercial
             {
                 dttRetorno.Clear();
 
-                string sql = "SELECT p.NRPEDIDO ,TIPO,SITUACAO,c.RAZAOSOCIAL, DATAEMISSAO, DATAENTREGA,prd.CODPRODUTO, prd.DESCRICAO, QUANTIDADE, SUM(VALOR) as Valor, (VALOR * QUANTIDADE) as ValorTotal  " +
+                string sql = "SELECT p.NRPEDIDO ,TIPO,SITUACAO,c.RAZAOSOCIAL, DATAEMISSAO, DATAENTREGA,prd.CODPRODUTO, prd.DESCRICAO, QUANTIDADE,QUANTIDADELIB, SUM(VALOR) as Valor, (VALOR * QUANTIDADE) as ValorTotal  " +
                              " FROM PEDIDO p INNER JOIN CLIENTE c ON p.CODCLIENTE = c.CNPJ  " +
                              " INNER JOIN ITEMPEDIDO ip ON p.NRPEDIDO = ip.NRPEDIDO   " +
                              " INNER JOIN PRODUTO prd ON ip.CODPRODUTO = prd.CODPRODUTO ";
-                string groupBy = " GROUP BY p.NRPEDIDO,TIPO,SITUACAO,c.RAZAOSOCIAL, DATAEMISSAO, DATAENTREGA,prd.CODPRODUTO,prd.DESCRICAO, QUANTIDADE, VALOR";
+                string groupBy = " GROUP BY p.NRPEDIDO,TIPO,SITUACAO,c.RAZAOSOCIAL, DATAEMISSAO, DATAENTREGA,prd.CODPRODUTO,prd.DESCRICAO, QUANTIDADE, QUANTIDADELIB, VALOR";
 
                 // pesquisa por nrPedido
                 if (!string.IsNullOrEmpty(txtCodPed.Text))
