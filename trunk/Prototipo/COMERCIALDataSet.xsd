@@ -2314,7 +2314,7 @@ SELECT CODVIATRANSPORTE, DESCRICAO FROM VIATRANSPORTE WHERE (CODVIATRANSPORTE = 
               <xs:element name="CODGRUPOPRODUTO" msdata:Caption="CodGrpProduto" msprop:Generator_UserColumnName="CODGRUPOPRODUTO" msprop:Generator_ColumnVarNameInTable="columnCODGRUPOPRODUTO" msprop:Generator_ColumnPropNameInRow="CODGRUPOPRODUTO" msprop:Generator_ColumnPropNameInTable="CODGRUPOPRODUTOColumn" type="xs:int" minOccurs="0" />
               <xs:element name="GRPDESC" msdata:Caption="GrpDescricao" msprop:Generator_UserColumnName="GRPDESC" msprop:Generator_ColumnVarNameInTable="columnGRPDESC" msprop:Generator_ColumnPropNameInRow="GRPDESC" msprop:Generator_ColumnPropNameInTable="GRPDESCColumn" type="xs:string" minOccurs="0" />
               <xs:element name="ESTOQUEATUAL" msdata:Caption="EstoqueAtual" msprop:Generator_UserColumnName="ESTOQUEATUAL" msprop:Generator_ColumnVarNameInTable="columnESTOQUEATUAL" msprop:Generator_ColumnPropNameInRow="ESTOQUEATUAL" msprop:Generator_ColumnPropNameInTable="ESTOQUEATUALColumn" type="xs:int" minOccurs="0" />
-              <xs:element name="ESTOQUEMIM" msprop:Generator_UserColumnName="ESTOQUEMIM" msprop:Generator_ColumnVarNameInTable="columnESTOQUEMIM" msprop:Generator_ColumnPropNameInRow="ESTOQUEMIM" msprop:Generator_ColumnPropNameInTable="ESTOQUEMIMColumn" type="xs:string" minOccurs="0" />
+              <xs:element name="ESTOQUEMIN" msdata:Caption="EstoqueMin" msprop:Generator_UserColumnName="ESTOQUEMIN" msprop:Generator_ColumnVarNameInTable="columnESTOQUEMIN" msprop:Generator_ColumnPropNameInRow="ESTOQUEMIN" msprop:Generator_ColumnPropNameInTable="ESTOQUEMINColumn" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
