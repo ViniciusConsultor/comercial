@@ -41,6 +41,9 @@
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grpBxFiltro = new System.Windows.Forms.GroupBox();
             this.grpBxProd = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.TxtEstMin = new System.Windows.Forms.TextBox();
+            this.cmBxOpEstoqueMin = new System.Windows.Forms.ComboBox();
             this.lblGrpProd = new System.Windows.Forms.Label();
             this.cmbGrupoProd = new System.Windows.Forms.ComboBox();
             this.gRUPOPRODUTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -105,6 +108,7 @@
             this.dtGrdVwConProd.ReadOnly = true;
             this.dtGrdVwConProd.Size = new System.Drawing.Size(717, 252);
             this.dtGrdVwConProd.TabIndex = 2;
+            this.dtGrdVwConProd.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtGrdVwConProd_CellContentClick);
             // 
             // Column1
             // 
@@ -169,6 +173,9 @@
             // 
             // grpBxProd
             // 
+            this.grpBxProd.Controls.Add(this.label4);
+            this.grpBxProd.Controls.Add(this.TxtEstMin);
+            this.grpBxProd.Controls.Add(this.cmBxOpEstoqueMin);
             this.grpBxProd.Controls.Add(this.lblGrpProd);
             this.grpBxProd.Controls.Add(this.cmbGrupoProd);
             this.grpBxProd.Controls.Add(this.txtBtnCodProd);
@@ -187,6 +194,40 @@
             this.grpBxProd.TabIndex = 1;
             this.grpBxProd.TabStop = false;
             this.grpBxProd.Text = "Dados Produtos:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.CadetBlue;
+            this.label4.Location = new System.Drawing.Point(284, 62);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(87, 13);
+            this.label4.TabIndex = 33;
+            this.label4.Text = "Estoque Mínimo:";
+            // 
+            // TxtEstMin
+            // 
+            this.TxtEstMin.Location = new System.Drawing.Point(344, 79);
+            this.TxtEstMin.Name = "TxtEstMin";
+            this.TxtEstMin.Size = new System.Drawing.Size(64, 20);
+            this.TxtEstMin.TabIndex = 32;
+            // 
+            // cmBxOpEstoqueMin
+            // 
+            this.cmBxOpEstoqueMin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmBxOpEstoqueMin.FormattingEnabled = true;
+            this.cmBxOpEstoqueMin.Items.AddRange(new object[] {
+            "",
+            ">",
+            "<",
+            "=",
+            ">=",
+            "<="});
+            this.cmBxOpEstoqueMin.Location = new System.Drawing.Point(287, 79);
+            this.cmBxOpEstoqueMin.Name = "cmBxOpEstoqueMin";
+            this.cmBxOpEstoqueMin.Size = new System.Drawing.Size(51, 21);
+            this.cmBxOpEstoqueMin.TabIndex = 31;
             // 
             // lblGrpProd
             // 
@@ -245,9 +286,9 @@
             // 
             // txtEstoque
             // 
-            this.txtEstoque.Location = new System.Drawing.Point(263, 76);
+            this.txtEstoque.Location = new System.Drawing.Point(211, 78);
             this.txtEstoque.Name = "txtEstoque";
-            this.txtEstoque.Size = new System.Drawing.Size(60, 20);
+            this.txtEstoque.Size = new System.Drawing.Size(61, 20);
             this.txtEstoque.TabIndex = 26;
             this.txtEstoque.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtEstoque_KeyPress);
             // 
@@ -269,9 +310,9 @@
             "=",
             ">=",
             "<="});
-            this.cmBxOpEstoque.Location = new System.Drawing.Point(202, 76);
+            this.cmBxOpEstoque.Location = new System.Drawing.Point(150, 78);
             this.cmBxOpEstoque.Name = "cmBxOpEstoque";
-            this.cmBxOpEstoque.Size = new System.Drawing.Size(51, 21);
+            this.cmBxOpEstoque.Size = new System.Drawing.Size(52, 21);
             this.cmBxOpEstoque.TabIndex = 20;
             // 
             // label1
@@ -279,11 +320,11 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.CadetBlue;
-            this.label1.Location = new System.Drawing.Point(199, 61);
+            this.label1.Location = new System.Drawing.Point(144, 62);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 13);
+            this.label1.Size = new System.Drawing.Size(76, 13);
             this.label1.TabIndex = 18;
-            this.label1.Text = "Estoque:";
+            this.label1.Text = "Estoque Atual:";
             // 
             // dtTPckrDtCadastro
             // 
@@ -390,6 +431,13 @@
         private Comercial.COMERCIALDataSetTableAdapters.GRUPOPRODUTOTableAdapter gRUPOPRODUTOTableAdapter;
         private Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.ComboBox cmbGrupoProd;
+        private System.Windows.Forms.Label lblGrpProd;
+        public System.Windows.Forms.TextBox txtProdDesc;
+        public TextButton txtBtnCodProd;
+        public System.Windows.Forms.DataGridView dtGrdVwConProd;
+        private System.Windows.Forms.TextBox TxtEstMin;
+        private System.Windows.Forms.ComboBox cmBxOpEstoqueMin;
+        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
@@ -397,9 +445,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.Label lblGrpProd;
-        public System.Windows.Forms.TextBox txtProdDesc;
-        public TextButton txtBtnCodProd;
-        public System.Windows.Forms.DataGridView dtGrdVwConProd;
     }
 }

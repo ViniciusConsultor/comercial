@@ -46,7 +46,7 @@ namespace Comercial
 
         public string pesquisar()
         {
-            string sql = "SELECT CODPRODUTO,PRD.DESCRICAO,PRD.DATACADASTRO,PRECOCUSTO,PRD.CODGRUPOPRODUTO,GRP.DESCRICAO AS GRPDESC,PRD.ESTOQUEATUAL " +
+            string sql = "SELECT CODPRODUTO,PRD.DESCRICAO,PRD.DATACADASTRO,PRD.ESTOQUEMIN,PRECOCUSTO,PRD.CODGRUPOPRODUTO,GRP.DESCRICAO AS GRPDESC,PRD.ESTOQUEATUAL " +
                 "FROM PRODUTO PRD INNER JOIN GRUPOPRODUTO GRP ON PRD.CODGRUPOPRODUTO = GRP.CODGRUPOPRODUTO ";
 
             //Pesquiso por Código do produto
@@ -72,6 +72,12 @@ namespace Comercial
             if (!string.IsNullOrEmpty(txtEstoque.Text))
             {
                 sql += "and PRD.estoqueatual " + cmBxOpEstoque.Text + " " + txtEstoque.Text;
+            }
+
+            //Pesquisa por saldo estoque minimo utilizando operadores 
+            if (!string.IsNullOrEmpty(TxtEstMin.Text))
+            {
+                sql += "and PRD.ESTOQUEMIN " + cmBxOpEstoqueMin.Text + " " + TxtEstMin.Text;
             }
 
             //Pesquiso por grupo de produto
@@ -184,6 +190,11 @@ namespace Comercial
             {
                 e.Handled = true;
             }
+
+        }
+
+        private void dtGrdVwConProd_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
     }
