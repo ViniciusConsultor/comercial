@@ -31,149 +31,231 @@ namespace Comercial
 
         public void geraMining()
         {
-
-            // valida os dados...
-
-            if (string.IsNullOrEmpty(txtnomeEstrutura.Text))
+            try
             {
-                MessageBox.Show("Nome da estrutura inválida.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                tbCntrlMining.SelectedTab = tabPage1;
-                txtnomeEstrutura.Focus();
-                return;
-            }
+                // valida os dados...
 
-            if (string.IsNullOrEmpty(cmbBxTipoDataMining.Text))
-            {
-                MessageBox.Show("Tipo da estrutura não selecionado.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                tbCntrlMining.SelectedTab = tabPage1;
-                cmbBxTipoDataMining.Focus();
-                return;
-            }
-
-            if (string.IsNullOrEmpty(tabela))
-            {
-                MessageBox.Show("Tabela não indicada.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                tbCntrlMining.SelectedTab = tbPgTabela;
-                // dataGridView2.Focus();
-                return;
-            }
-
-            if (string.IsNullOrEmpty(key))
-            {
-                MessageBox.Show("Campo chave obrigatório.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                tbCntrlMining.SelectedTab = tabPage3;
-                // dataGridView2.Focus();
-                return;
-            }
-
-            lblTexto.Visible = true;
-            prgrsBrCarrega.Value = 0;
-            prgrsBrCarrega.Visible = true;
-            tmrTempo.Enabled = true;
-
-            // GERAR MODELO...
-
-            /*    CREATE MINING MODEL SalesForecast (
-                    ReportingDate DATE KEY TIME,
-                    ModelRegion TEXT KEY,
-                    Amount LONG CONTINUOUS PREDICT,
-                    Quantity LONG CONTINUOUS PREDICT
-                )
-                USING Microsoft_Time_Series (PERIODICITY_HINT = '{12}', FORECAST_METHOD = 'ARTXP')
-         Microsoft_Clustering 
-             * */
-
-
-
-            // Create mining model
-            /* Árvore de decisão
-                Agrupamento
-                MTS (Microsoft Time Serial) */
-
-            if (cmbBxTipoDataMining.Text == "MTS (Microsoft Time Serial)")
-            {
-
-                if (!key.Contains("date"))
+                if (string.IsNullOrEmpty(txtnomeEstrutura.Text))
                 {
-                    MessageBox.Show("Campo chave deve ser do tipo datetime", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Nome da estrutura inválida.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    tbCntrlMining.SelectedTab = tabPage1;
+                    txtnomeEstrutura.Focus();
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(cmbBxTipoDataMining.Text))
+                {
+                    MessageBox.Show("Tipo da estrutura não selecionado.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    tbCntrlMining.SelectedTab = tabPage1;
+                    cmbBxTipoDataMining.Focus();
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(tabela))
+                {
+                    MessageBox.Show("Tabela não indicada.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    tbCntrlMining.SelectedTab = tbPgTabela;
+                    // dataGridView2.Focus();
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(key))
+                {
+                    MessageBox.Show("Campo chave obrigatório.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     tbCntrlMining.SelectedTab = tabPage3;
                     // dataGridView2.Focus();
                     return;
                 }
 
-                string[] inp = input.Split(';');
+                lblTexto.Visible = true;
+                prgrsBrCarrega.Value = 0;
+                prgrsBrCarrega.Visible = true;
+                tmrTempo.Enabled = true;
 
-                string input_limpo = "";
+                // GERAR MODELO...
 
-                foreach (var x in inp)
+                /*    CREATE MINING MODEL SalesForecast (
+                        ReportingDate DATE KEY TIME,
+                        ModelRegion TEXT KEY,
+                        Amount LONG CONTINUOUS PREDICT,
+                        Quantity LONG CONTINUOUS PREDICT
+                    )
+                    USING Microsoft_Time_Series (PERIODICITY_HINT = '{12}', FORECAST_METHOD = 'ARTXP')
+             Microsoft_Clustering 
+                 * */
+
+
+
+                // Create mining model
+                /* Árvore de decisão
+                    Agrupamento
+                    MTS (Microsoft Time Serial) */
+
+                if (cmbBxTipoDataMining.Text == "MTS (Microsoft Time Serial)")
                 {
-                    if (x.Contains("date"))
+
+                    if (!key.Contains("date"))
                     {
-                      input_limpo += x.Remove(x.IndexOf("("), x.Length - x.IndexOf("(")) + " DATE, ";
+                        MessageBox.Show("Campo chave deve ser do tipo datetime", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        tbCntrlMining.SelectedTab = tabPage3;
+                        // dataGridView2.Focus();
+                        return;
                     }
 
-                    if (x.Contains("varchar") || x.Contains("char"))
+                    string[] inp = input.Split(';');
+
+                    string input_limpo = "";
+
+                    foreach (var x in inp)
                     {
-                        input_limpo += x.Remove(x.IndexOf("("), x.Length - x.IndexOf("(")) + " text, ";
+                        if (x.Contains("date"))
+                        {
+                            input_limpo += x.Remove(x.IndexOf("("), x.Length - x.IndexOf("(")) + " DATE discrete, ";
+                        }
+
+                        if (x.Contains("varchar") || x.Contains("char"))
+                        {
+                            input_limpo += x.Remove(x.IndexOf("("), x.Length - x.IndexOf("(")) + " text discrete, ";
+                        }
+
+                        if (x.Contains("float"))
+                        {
+                            input_limpo += x.Remove(x.IndexOf("("), x.Length - x.IndexOf("(")) + " double discrete, ";
+                        }
+
+                        if (x.Contains("int"))
+                        {
+                            input_limpo += x.Remove(x.IndexOf("("), x.Length - x.IndexOf("(")) + " long discrete, ";
+                        }
                     }
 
-                    if (x.Contains("float"))
+                    string[] pred = predictable.Split(';');
+
+                    string pred_limpo = "";
+
+                    foreach (var x in pred)
                     {
-                        input_limpo += x.Remove(x.IndexOf("("), x.Length - x.IndexOf("(")) + " double, ";
+                        if (x.Contains("date"))
+                        {
+                            pred_limpo += x.Remove(x.IndexOf("("), x.Length - x.IndexOf("(")) + " DATE continuous PREDICT_ONLY, ";
+                        }
+
+                        if (x.Contains("varchar") || x.Contains("char"))
+                        {
+                            pred_limpo += x.Remove(x.IndexOf("("), x.Length - x.IndexOf("(")) + " text continuous PREDICT_ONLY, ";
+                        }
+
+                        if (x.Contains("float"))
+                        {
+                            pred_limpo += x.Remove(x.IndexOf("("), x.Length - x.IndexOf("(")) + " double continuous PREDICT_ONLY, ";
+                        }
+
+                        if (x.Contains("int"))
+                        {
+                            pred_limpo += x.Remove(x.IndexOf("("), x.Length - x.IndexOf("(")) + " long continuous PREDICT_ONLY, ";
+                        }
                     }
 
-                    if (x.Contains("int"))
+                    pred_limpo = pred_limpo.Remove(pred_limpo.Length - 2, 2);
+
+
+                    DataTable table = new DataTable();
+                    DataColumn column;
+
+                    column = table.Columns.Add("key");
+                    //  column.DataType = System.Type.GetType("System.Date");
+                    int y = 0;
+                    foreach (var item in inp)
                     {
-                        input_limpo += x.Remove(x.IndexOf("("), x.Length - x.IndexOf("(")) + " long, ";
+                        if (!string.IsNullOrEmpty(item) && item != " ")
+                        {
+                            column = table.Columns.Add(Convert.ToString(y));
+                            //    column.DataType = System.Type.GetType("System.Int32");
+                            y++;
+                        }
                     }
+
+                    foreach (var item in pred)
+                    {
+                        if (!string.IsNullOrEmpty(item) && item != " ")
+                        {
+                            column = table.Columns.Add(Convert.ToString(y));
+                            //    column.DataType = System.Type.GetType("System.Int32");
+                            y++;
+                        }
+                    }
+
+                    SqlConnection c = new SqlConnection(ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString);
+                    SqlCommand cm = new SqlCommand();
+                    c.Open();
+                    cm.Connection = c;
+
+                    string select = "select ";
+                    string from = " from  " + tabela;
+
+                    select += key.Remove(key.IndexOf("("), key.Length - key.IndexOf("("))+ ", ";
+
+                    foreach (var x in inp)
+                    {
+                        if (!string.IsNullOrEmpty(x) && x != " ")
+                        {
+                            select += x.Remove(x.IndexOf("("), x.Length - x.IndexOf("(")) + ", ";
+                        }
+                    }
+
+                    foreach (var x in pred)
+                    {
+                        if (!string.IsNullOrEmpty(x) && x != " ")
+                        {
+                            select += x.Remove(x.IndexOf("("), x.Length - x.IndexOf("(")) + ", ";
+                        }
+                    }
+
+                    select = select.Remove(select.Length - 2, 2);
+
+                    string sql = select + from;
+
+                    cm.CommandText = sql;
+                    SqlDataReader reader = cm.ExecuteReader();
+
+                    foreach (var item in reader)
+                    { 
+                        table.Rows.Add(item);
+                    }
+                              
+
+
+
+
+                    AdomdConnection conn = new AdomdConnection(ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString_Analysis"].ConnectionString);
+                    AdomdCommand cmd = new AdomdCommand();
+                    conn.Open();
+                    cmd.Connection = conn;
+                    String createMiningModel =
+                                    "CREATE MINING MODEL " + txtnomeEstrutura.Text +
+                                    " ( " +
+                                        key.Remove(key.IndexOf("("), key.Length - key.IndexOf("(")) + "DATE KEY TIME, " +
+                                        input_limpo + " " + pred_limpo +
+                                    " ) USING Microsoft_Time_Series " +
+                                    "WITH DRILLTHROUGH";
+                    cmd.CommandText = createMiningModel;
+                    cmd.ExecuteNonQuery();
+
+
+                    String insertInto =
+                        "INSERT INTO " + txtnomeEstrutura.Text +
+                        " select * from @t";
+                    cmd.CommandText = insertInto;
+                    cmd.Parameters.Add("t", table);
+                    cmd.ExecuteNonQuery();
+
+
                 }
-
-                string[] pred = predictable.Split(';');
-
-                string pred_limpo = "";
-
-                foreach (var x in pred)
-                {
-                    if (x.Contains("date"))
-                    {
-                        pred_limpo += x.Remove(x.IndexOf("("), x.Length - x.IndexOf("(")) + " DATE PREDICT_ONLY, ";
-                    }
-
-                    if (x.Contains("varchar") || x.Contains("char"))
-                    {
-                        pred_limpo += x.Remove(x.IndexOf("("), x.Length - x.IndexOf("(")) + " text PREDICT_ONLY, ";
-                    }
-
-                    if (x.Contains("float"))
-                    {
-                        pred_limpo += x.Remove(x.IndexOf("("), x.Length - x.IndexOf("(")) + " double PREDICT_ONLY, ";
-                    }
-
-                    if (x.Contains("int"))
-                    {
-                        pred_limpo += x.Remove(x.IndexOf("("), x.Length - x.IndexOf("(")) + " long PREDICT_ONLY, ";
-                    }
-                }
-
-               pred_limpo = pred_limpo.Remove(pred_limpo.Length - 2, 2);
-
-
-                AdomdConnection conn = new AdomdConnection(ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString_Analysis"].ConnectionString);
-                AdomdCommand cmd = new AdomdCommand();
-                conn.Open();
-                cmd.Connection = conn;
-                String createMiningModel =
-                                "CREATE MINING MODEL " + txtnomeEstrutura.Text +
-                                " ( " +
-                                    key.Remove(key.IndexOf("("), key.Length - key.IndexOf("(")) + "DATE KEY TIME, " +
-                                    input_limpo + " " + pred_limpo +
-                                " ) USING Microsoft_Time_Series " +
-                                "WITH DRILLTHROUGH";
-                cmd.CommandText = createMiningModel;
-                cmd.ExecuteNonQuery();
-
             }
-
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
 
