@@ -986,6 +986,7 @@ namespace Comercial
                 PedLib.txtNomeVendedor.Text = Convert.ToString(PedLib.ListarNomeVendedor(PedLib.txtCodVendedor.Text));
                 PedLib.populargrid();
                 PedLib.SomarColunas();
+                PedLib.ValidaItemLiberado();
 
                 this.Close();
                 this.Dispose();
