@@ -536,6 +536,9 @@
     <Content Include="Config-Tools.ico" />
     <None Include="Img\BolaAmarela.gif" />
     <None Include="Img\BolaVerde.gif" />
+    <Content Include="DllInscE32.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Img\BolaVermelho.gif" />
     <None Include="Img\certo.png" />
     <None Include="Img\errado.png" />

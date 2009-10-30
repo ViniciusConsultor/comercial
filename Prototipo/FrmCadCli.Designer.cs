@@ -228,6 +228,7 @@
             this.txtLimCredCli.TabIndex = 17;
             this.txtLimCredCli.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtLimCredCli.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            this.txtLimCredCli.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.txtLimCredCli_MaskInputRejected);
             // 
             // lblPotencialCli
             // 

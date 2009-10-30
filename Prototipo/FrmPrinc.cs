@@ -636,6 +636,7 @@ namespace Comercial
 
                     if (form is frmConCli)
                     {
+                        frmConCli frmcli = (frmConCli)form;
                         FrmRelGeral filho = new FrmRelGeral("FrmConCli", form, this);
                         filho.Show();
                     }
