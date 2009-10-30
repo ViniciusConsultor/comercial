@@ -49,13 +49,13 @@ namespace Comercial
             string sql = "SELECT CODPRODUTO,PRD.DESCRICAO,PRD.DATACADASTRO,PRD.ESTOQUEMIN,PRECOCUSTO,PRD.CODGRUPOPRODUTO,GRP.DESCRICAO AS GRPDESC,PRD.ESTOQUEATUAL " +
                 "FROM PRODUTO PRD INNER JOIN GRUPOPRODUTO GRP ON PRD.CODGRUPOPRODUTO = GRP.CODGRUPOPRODUTO ";
 
-            //Pesquiso por Código do produto
+            //Pesquisa por Código do produto
             if (!string.IsNullOrEmpty(txtBtnCodProd.getText))
             {
                 sql += "and CODPRODUTO ='" + txtBtnCodProd.getText + "'";
             }
 
-            //Pesquiso por descrição do produto
+            //Pesquisa por descrição do produto
             if (!string.IsNullOrEmpty(txtProdDesc.Text))
             {
                 sql += "and PRD.descricao like '%" + txtProdDesc.Text + "%' ";
@@ -68,7 +68,7 @@ namespace Comercial
                 sql += "and PRD.datacadastro = '" + formatData + "'";
             }
 
-            //Pesquiso por saldo estoque utilizando operadores 
+            //Pesquisa por saldo atual de estoque utilizando operadores 
             if (!string.IsNullOrEmpty(txtEstoque.Text))
             {
                 sql += "and PRD.estoqueatual " + cmBxOpEstoque.Text + " " + txtEstoque.Text;
@@ -80,7 +80,7 @@ namespace Comercial
                 sql += "and PRD.ESTOQUEMIN " + cmBxOpEstoqueMin.Text + " " + TxtEstMin.Text;
             }
 
-            //Pesquiso por grupo de produto
+            //Pesquisa por grupo de produto
             if (!string.IsNullOrEmpty(cmbGrupoProd.Text))
             {
                 sql += "and GRP.DESCRICAO = '" + cmbGrupoProd.Text + "'";

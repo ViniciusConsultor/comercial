@@ -7663,7 +7663,7 @@ namespace Comercial {
             
             private global::System.Data.DataColumn columnESTOQUEATUAL;
             
-            private global::System.Data.DataColumn columnESTOQUEMIM;
+            private global::System.Data.DataColumn columnESTOQUEMIN;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public RelEstoqueDataTable() {
@@ -7745,9 +7745,9 @@ namespace Comercial {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public global::System.Data.DataColumn ESTOQUEMIMColumn {
+            public global::System.Data.DataColumn ESTOQUEMINColumn {
                 get {
-                    return this.columnESTOQUEMIM;
+                    return this.columnESTOQUEMIN;
                 }
             }
             
@@ -7780,7 +7780,7 @@ namespace Comercial {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public RelEstoqueRow AddRelEstoqueRow(int CODPRODUTO, string DESCRICAO, System.DateTime DATACADASTRO, double PRECOCUSTO, int CODGRUPOPRODUTO, string GRPDESC, int ESTOQUEATUAL, string ESTOQUEMIM) {
+            public RelEstoqueRow AddRelEstoqueRow(int CODPRODUTO, string DESCRICAO, System.DateTime DATACADASTRO, double PRECOCUSTO, int CODGRUPOPRODUTO, string GRPDESC, int ESTOQUEATUAL, int ESTOQUEMIN) {
                 RelEstoqueRow rowRelEstoqueRow = ((RelEstoqueRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         CODPRODUTO,
@@ -7790,7 +7790,7 @@ namespace Comercial {
                         CODGRUPOPRODUTO,
                         GRPDESC,
                         ESTOQUEATUAL,
-                        ESTOQUEMIM};
+                        ESTOQUEMIN};
                 rowRelEstoqueRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowRelEstoqueRow);
                 return rowRelEstoqueRow;
@@ -7817,7 +7817,7 @@ namespace Comercial {
                 this.columnCODGRUPOPRODUTO = base.Columns["CODGRUPOPRODUTO"];
                 this.columnGRPDESC = base.Columns["GRPDESC"];
                 this.columnESTOQUEATUAL = base.Columns["ESTOQUEATUAL"];
-                this.columnESTOQUEMIM = base.Columns["ESTOQUEMIM"];
+                this.columnESTOQUEMIN = base.Columns["ESTOQUEMIN"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7836,8 +7836,8 @@ namespace Comercial {
                 base.Columns.Add(this.columnGRPDESC);
                 this.columnESTOQUEATUAL = new global::System.Data.DataColumn("ESTOQUEATUAL", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnESTOQUEATUAL);
-                this.columnESTOQUEMIM = new global::System.Data.DataColumn("ESTOQUEMIM", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnESTOQUEMIM);
+                this.columnESTOQUEMIN = new global::System.Data.DataColumn("ESTOQUEMIN", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnESTOQUEMIN);
                 this.columnCODPRODUTO.Caption = "CodProduto";
                 this.columnDESCRICAO.Caption = "DescricaoProd";
                 this.columnDATACADASTRO.Caption = "DataCadastro";
@@ -7845,6 +7845,7 @@ namespace Comercial {
                 this.columnCODGRUPOPRODUTO.Caption = "CodGrpProduto";
                 this.columnGRPDESC.Caption = "GrpDescricao";
                 this.columnESTOQUEATUAL.Caption = "EstoqueAtual";
+                this.columnESTOQUEMIN.Caption = "EstoqueMin";
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -11664,17 +11665,17 @@ namespace Comercial {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public string ESTOQUEMIM {
+            public int ESTOQUEMIN {
                 get {
                     try {
-                        return ((string)(this[this.tableRelEstoque.ESTOQUEMIMColumn]));
+                        return ((int)(this[this.tableRelEstoque.ESTOQUEMINColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'ESTOQUEMIM\' in table \'RelEstoque\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'ESTOQUEMIN\' in table \'RelEstoque\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableRelEstoque.ESTOQUEMIMColumn] = value;
+                    this[this.tableRelEstoque.ESTOQUEMINColumn] = value;
                 }
             }
             
@@ -11749,13 +11750,13 @@ namespace Comercial {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public bool IsESTOQUEMIMNull() {
-                return this.IsNull(this.tableRelEstoque.ESTOQUEMIMColumn);
+            public bool IsESTOQUEMINNull() {
+                return this.IsNull(this.tableRelEstoque.ESTOQUEMINColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public void SetESTOQUEMIMNull() {
-                this[this.tableRelEstoque.ESTOQUEMIMColumn] = global::System.Convert.DBNull;
+            public void SetESTOQUEMINNull() {
+                this[this.tableRelEstoque.ESTOQUEMINColumn] = global::System.Convert.DBNull;
             }
         }
         
