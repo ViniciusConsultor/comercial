@@ -10,6 +10,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Runtime.InteropServices;
 using System.IO;
+using System.Reflection;
 
 
 namespace Comercial
@@ -64,146 +65,158 @@ namespace Comercial
             // TODO: This line of code loads data into the 'cOMERCIALDataSet.CLIENTE' table. You can move, or remove it, as needed.
             this.cLIENTETableAdapter.Fill(this.cOMERCIALDataSet.CLIENTE);
         }
-        [DllImport("C:\\dllInscE32.dll")] 
+        
+        //[DllImport("C:\\dllInscE32.dll")]
+        [DllImport("//dllInscE32.dll")]
+        
+        
+
+
+        
+
         public static extern int ConsisteInscricaoEstadual(string ie, string uf);
 
         public int salvar(bool edit)
         {
-            
+
 
             DataRowView x;
-            x= (DataRowView) cLIENTEBindingSource.Current;
+            x = (DataRowView)cLIENTEBindingSource.Current;
             Validacoes valida = new Validacoes();
             string c = ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString;
-            
+
             //Valida CNPJ
-            if (!String.IsNullOrEmpty(txtCnpjCli.Text))
+            if (!String.IsNullOrEmpty(txtCnpjCli.Text) && txtCnpjCli.Text.Length == 14)
             {
 
                 int cnpj = valida.ValidaCNPJ(txtCnpjCli.Text);
 
                 if (cnpj == 1)
                 {
-                    MessageBox.Show("CNPJ Inválido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return 1;
+                    //MessageBox.Show("CNPJ Inválido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //return 1;
+                    throw new Exception("cnpj invalido");
+
                 }
             }
             else
             {
-                throw new Exception("campo vazio");
+                throw new Exception("cnpj invalido");
             }
             // Valida IE
             if (!String.IsNullOrEmpty(txtIeCli.Text))
             {
-                
-            
+
+
                 string ie = txtIeCli.Text;
                 string uf = cmbUfCli.SelectedItem.ToString();
-                int returnIe = ConsisteInscricaoEstadual(ie, uf);        
-                if (returnIe==1)
+                int returnIe = ConsisteInscricaoEstadual(ie, uf);
+                if (returnIe == 1)
                 {
-                    MessageBox.Show("I.E. Inválida.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                       return 1;
+                    //MessageBox.Show("I.E. Inválida.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                      //return 1;
+                    throw new Exception("ie invalida");
                 }
-                if (string.IsNullOrEmpty(txtRazaoSocialCli.Text))
-                {
-                    MessageBox.Show("Campo(s) obrigatório(s) não preenchido(s).", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return 1;
-                }
+                //if (string.IsNullOrEmpty(txtRazaoSocialCli.Text))
+                //{
+                //    MessageBox.Show("Campo(s) obrigatório(s) não preenchido(s).", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //    return 1;
+                //}
             }
 
             // Valida email
 
-            if(!string.IsNullOrEmpty(txtEmailCli.Text))
+            if (!string.IsNullOrEmpty(txtEmailCli.Text))
             {
                 Boolean emailOk = valida.ValidaEmail(txtEmailCli.Text);
                 if (emailOk == false)
                 {
-                   MessageBox.Show("Email Inválido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                   return 1;
+                    //MessageBox.Show("Email Inválido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //return 1;
+                    throw new Exception("email invalido");
                 }
-            }
 
-      
 
-            #region Salva Usuario
-            if (edit == false)
-            {
 
-                if (!string.IsNullOrEmpty(txtUsuarioCli.Text) && !string.IsNullOrEmpty(txtSenhaCli.Text))
+                #region Salva Usuario
+                if (edit == false)
                 {
 
-                    SqlConnection conn = new SqlConnection(c);
-                    conn.Open();
-
-                    SqlCommand cmd = new SqlCommand("select * from usuario where usuario = @usu", conn);
-                    SqlParameter param = new SqlParameter();
-                    param.ParameterName = "@usu";
-                    param.Value = txtUsuarioCli.Text;
-                    cmd.Parameters.Add(param);
-                    SqlDataReader reader = cmd.ExecuteReader();
-                    reader.Read();
-
-                    if (reader.HasRows)
+                    if (!string.IsNullOrEmpty(txtUsuarioCli.Text) && !string.IsNullOrEmpty(txtSenhaCli.Text))
                     {
-                        MessageBox.Show("Usuário ja cadastrado.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return 1;
-                    }
-                    else
-                    {
-                        COMERCIALDataSetTableAdapters.USUARIOTableAdapter usu = new Comercial.COMERCIALDataSetTableAdapters.USUARIOTableAdapter();
-                        usu.Insert(txtUsuarioCli.Text, txtSenhaCli.Text, "N", "S");
+
+                        SqlConnection conn = new SqlConnection(c);
+                        conn.Open();
+
+                        SqlCommand cmd = new SqlCommand("select * from usuario where usuario = @usu", conn);
+                        SqlParameter param = new SqlParameter();
+                        param.ParameterName = "@usu";
+                        param.Value = txtUsuarioCli.Text;
+                        cmd.Parameters.Add(param);
+                        SqlDataReader reader = cmd.ExecuteReader();
+                        reader.Read();
+
+                        if (reader.HasRows)
+                        {
+                            MessageBox.Show("Usuário ja cadastrado.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return 1;
+                        }
+                        else
+                        {
+                            COMERCIALDataSetTableAdapters.USUARIOTableAdapter usu = new Comercial.COMERCIALDataSetTableAdapters.USUARIOTableAdapter();
+                            usu.Insert(txtUsuarioCli.Text, txtSenhaCli.Text, "N", "S");
+                        }
+
+                        reader.Dispose();
+                        reader.Close();
+                        conn.Close();
+                        conn.Dispose();
+
                     }
 
-                    reader.Dispose();
-                    reader.Close();
-                    conn.Close();
-                    conn.Dispose();
+
+                    SqlConnection conn1 = new SqlConnection(c);
+                    conn1.Open();
+
+                    SqlCommand cmd1 = new SqlCommand("select * from usuario where usuario = @usu", conn1);
+                    SqlParameter param1 = new SqlParameter();
+                    param1.ParameterName = "@usu";
+                    param1.Value = txtUsuarioCli.Text;
+                    cmd1.Parameters.Add(param1);
+                    SqlDataReader reader1 = cmd1.ExecuteReader();
+
+                    reader1.Read();
+
+                    x["CodUSUARIO"] = reader1["codusuario"];
+
+                    reader1.Dispose();
+                    reader1.Close();
+
+                    conn1.Close();
+                    conn1.Dispose();
 
                 }
 
 
-                SqlConnection conn1 = new SqlConnection(c);
-                conn1.Open();
+                #endregion
+                if (chckBxCred.Checked)
+                {
 
-                SqlCommand cmd1 = new SqlCommand("select * from usuario where usuario = @usu", conn1);
-                SqlParameter param1 = new SqlParameter();
-                param1.ParameterName = "@usu";
-                param1.Value = txtUsuarioCli.Text;
-                cmd1.Parameters.Add(param1);
-                SqlDataReader reader1 = cmd1.ExecuteReader();
+                    x["APROVADOCRED"] = "S";
+                }
+                else
+                {
+                    x["APROVADOCRED"] = "N";
+                }
+                x["CEP"] = txtCepCli.getText;
 
-                reader1.Read();
+                txtSenhaCli.Text = "";
+                txtUsuarioCli.Text = "";
 
-                x["CodUSUARIO"] = reader1["codusuario"];
-
-                reader1.Dispose();
-                reader1.Close();
-
-                conn1.Close();
-                conn1.Dispose();
-
+                
             }
-
-       
-#endregion
-             if (chckBxCred.Checked)
-            {
-                 
-               x["APROVADOCRED"] = "S";
-            }
-            else
-            {
-                x["APROVADOCRED"] = "N";
-            }
-            x["CEP"] = txtCepCli.getText;
-
-            txtSenhaCli.Text = "";
-            txtUsuarioCli.Text = "";
-             
             return 0;
         }
-
         private void cLIENTEBindingSource_PositionChanged(object sender, EventArgs e)
         {
             if (cLIENTEBindingSource.Current != null)
@@ -332,6 +345,11 @@ namespace Comercial
                 MessageBox.Show("CEP não encontrado.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtEndCli.Focus();
             }
+        }
+
+        private void txtLimCredCli_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
         }
 
         }

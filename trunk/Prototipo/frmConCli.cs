@@ -171,7 +171,7 @@ namespace Comercial
 
         }
 
-        public void pesquisar()
+        public string pesquisar()
         {
             string sql = "select p.CODCLIENTE,c.NOMEFANTASIA,p.NRPEDIDO,p.DATAEMISSAO,SUM(VALOR) valor from PEDIDO p, ITEMPEDIDO ip , CLIENTE c where p.NRPEDIDO=ip.NRPEDIDO and p.codCliente=c.cnpj ";
             string groupBy = " group by p.NRPEDIDO,  p.DATAEMISSAO,p.CODCLIENTE,c.NomeFantasia ";
@@ -258,7 +258,7 @@ namespace Comercial
 
                 dtgrdConCli.DataSource = table;
 
-            
+                return sql;
         }
 
         private void checkBox1_CheckStateChanged(object sender, EventArgs e)

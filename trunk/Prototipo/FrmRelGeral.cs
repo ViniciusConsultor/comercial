@@ -39,14 +39,43 @@ namespace Comercial
 
             try
             {
+                #region Relatorio Cliente
+                
+                
                 if (_princ == "FrmConCli")
                 {
-                    CrystalDecisions.CrystalReports.Engine.ReportDocument report = new CrystalDecisions.CrystalReports.Engine.ReportDocument();
-                    report.Load(@"D:\Backup Facu\7 Semestre\TCC 2\TCC 2\Prototipo\Prototipo\RptConCli.rpt");
-                    CrystalDecisions.Shared.ParameterField param;
+                    //Instancio o FormConsulta
+                    frmConCli x = (frmConCli)_pdv;
+                    RptConCli objRptConPDV = new RptConCli();
 
-                    crstlRprtVwrRel.ReportSource = report;
+                    //Instancio o Relatorio
+                    RptConCli objRptConCli = new RptConCli();
+
+                    //Instancio o Dataset
+                    COMERCIALDataSet oDataset = new COMERCIALDataSet();
+
+                    Microsoft.Practices.EnterpriseLibrary.Data.Database db = DatabaseFactory.CreateDatabase();
+                    //Crio a Conexão
+                    SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString);
+
+                    //Abro a conexão
+                    sqlcon.Open();
+
+                    //Recebo a String SQL feita na tela de consulta
+                    string StringConnection = x.pesquisar();
+
+                    SqlDataAdapter dtAdapter = new SqlDataAdapter(StringConnection, sqlcon);
+
+                    //Localiso o datatable criado no dataset
+                    dtAdapter.Fill(oDataset, "RelCliente");
+
+                    objRptConCli.SetDataSource(oDataset);
+
+                    //atribiu o resultado ao CristalReportView            
+                    crstlRprtVwrRel.DisplayGroupTree = false;
+                    crstlRprtVwrRel.ReportSource = objRptConCli;
                 }
+                #endregion
 
                 #region Relatorio Pedido
                 if (_princ == "FrmConPDV")

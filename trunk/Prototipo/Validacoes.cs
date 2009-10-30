@@ -159,14 +159,21 @@ namespace Comercial
         #region Tratar SystemExceções
         public void tratarSystemExceções(Exception ex)
         {
+            
             if (ex.GetType().FullName == "System.Data.ConstraintException")
                 MessageBox.Show("Registro já cadastrado (Violação de chave primária)", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else if (ex.GetType().FullName == "System.Data.NoNullAllowedException" || ex.GetType().FullName == "System.InvalidOperationException" || ex.GetType().FullName == "System.ArgumentException" || ex.GetType().FullName == "System.FormatException" || ex.Message == "campo vazio")
                 MessageBox.Show("Campo(s) Obrigatório(s) não preenchido(s).", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else if (ex.GetType().FullName == "System.FormatException")
                 MessageBox.Show("Quantidade não pode ser 0!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else if (ex.Message == "cnpj invalido")
+                MessageBox.Show("CNPJ Inválido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else if (ex.Message == "Grid Vazio")
                 MessageBox.Show("Não há dados para gerar o relatório", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else if (ex.Message == "email invalido")
+                MessageBox.Show("Email Inválido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+               else if (ex.Message == "ie invalida")
+                MessageBox.Show("I.E. Inválida.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else if (ex.Message == "Efetivado")
                 MessageBox.Show("Pedido não pode ser alterado pois já está Efetivado", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else if (ex.Message == "DataInvalida")
