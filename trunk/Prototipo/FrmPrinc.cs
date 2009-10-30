@@ -1521,8 +1521,6 @@ namespace Comercial
             }
         }
 
-
-
         private void tlStrpBtnLibPed_Click_1(object sender, EventArgs e)
         {
             Form frm = this.ActiveMdiChild;
@@ -1544,8 +1542,6 @@ namespace Comercial
                 throw ex;
             }
         }
-
-
 
         private void liberarPedidoVs2ToolStripMenuItem_Click(object sender, EventArgs e)
         {
