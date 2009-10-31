@@ -193,7 +193,7 @@ namespace Comercial
                     string select = "select ";
                     string from = " from  " + tabela;
 
-                    select += key.Remove(key.IndexOf("("), key.Length - key.IndexOf("("))+ ", ";
+                    select += key.Remove(key.IndexOf("("), key.Length - key.IndexOf("(")) + ", ";
 
                     foreach (var x in inp)
                     {
@@ -215,14 +215,16 @@ namespace Comercial
 
                     string sql = select + from;
 
+                    string campos = select.Replace("select", "");
+
                     cm.CommandText = sql;
                     SqlDataReader reader = cm.ExecuteReader();
 
                     foreach (var item in reader)
-                    { 
+                    {
                         table.Rows.Add(item);
                     }
-                              
+
 
 
 
@@ -242,9 +244,16 @@ namespace Comercial
                     cmd.ExecuteNonQuery();
 
 
+                    /*
+                     * INSERT INTO NBSample (CustomerKey, Gender, [Number Cars Owned],
+    [Bike Buyer])
+OPENQUERY([Adventure Works DW],'Select CustomerKey, Gender, [NumberCarsOwned], [BikeBuyer] 
+FROM [vTargetMail]')
+                     */
+
                     String insertInto =
-                        "INSERT INTO " + txtnomeEstrutura.Text +
-                        " select * from @t";
+                        "INSERT INTO " + txtnomeEstrutura.Text + " ("+ campos +")"+
+                        " openquery(COMERCIAL,'"+sql+"')";
                     cmd.CommandText = insertInto;
                     cmd.Parameters.Add("t", table);
                     cmd.ExecuteNonQuery();
