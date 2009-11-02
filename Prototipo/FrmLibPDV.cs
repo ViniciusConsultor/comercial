@@ -420,7 +420,7 @@ namespace Comercial
                     int Quantidade = (int)dtgrdvItenspven.Rows[i].Cells["ClmQtde"].Value;
 
 
-                    if (QuantidadeLib == Quantidade)
+                    if ((int)dtgrdvItenspven.Rows[i].Cells["ClmQtdeLib"].Value == (int)dtgrdvItenspven.Rows[i].Cells["ClmQtde"].Value)
                     {
                         dtgrdvItenspven.Rows[i].Cells["ColCheck"].Value = true;
                         dtgrdvItenspven.Rows[i].ReadOnly = true;
@@ -428,8 +428,10 @@ namespace Comercial
                     else if ((QuantidadeLib != 0) && (QuantidadeLib != Quantidade))
                     {
                         dtgrdvItenspven.Rows[i].Cells["ColCheck"].Value = true;
+
                     }
                 }
+
 
             }
             catch (Exception ex)
@@ -545,10 +547,10 @@ namespace Comercial
                     {
                         item.Cells["ColCheck"].Value = false;
                     }
-                    else
-                    {
-                        item.Cells["ColCheck"].Value = true;
-                    }
+                    //else
+                    //{
+                    //    item.Cells["ColCheck"].Value = true;
+                    //}
 
 
                 }
