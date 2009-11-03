@@ -24,7 +24,9 @@ namespace Comercial
 
         public int salvar()
         {
-         
+
+            if (!string.IsNullOrEmpty(txtUsu.getText))
+            {
                 //verificar se senha antiga esta certa...
                 //se sim update no usuario e deleta todas permissoes e insere de novo...
 
@@ -36,7 +38,7 @@ namespace Comercial
 
                 SqlCommand cmd = new SqlCommand("select * from usuario where usuario = @usu and senha = @senha", conn);
                 cmd.Parameters.Add(new SqlParameter("@usu", txtUsu.getText));
-                cmd.Parameters.Add(new SqlParameter("@usu", txtBxSenhaAntiga.Text));
+                cmd.Parameters.Add(new SqlParameter("@senha", txtBxSenhaAntiga.Text));
 
                 SqlDataReader reader = cmd.ExecuteReader();
 
@@ -47,7 +49,7 @@ namespace Comercial
                     //confere senha
                     if (txtConSenha.Text != txtSenha.Text)
                     {
-                        MessageBox.Show("Senha digitado errado.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Senha digitada não confere.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return 1;
                     }
                     else
@@ -79,7 +81,7 @@ namespace Comercial
 
                         SqlCommand cmd1 = new SqlCommand("update usuario set " +
                                                             "SENHA = @senha, PRIVILEGIADO = @priv, " +
-                                                            "BLOQUEADO = @bloq where usuario = @usu", conn);
+                                                            "BLOQUEADO = @bloq where usuario = @usu", conn1);
                         cmd1.CommandType = CommandType.Text;
                         cmd1.Parameters.Add(new SqlParameter("@usu", txtUsu.getText));
                         cmd1.Parameters.Add(new SqlParameter("@senha", txtConSenha.Text));
@@ -90,14 +92,14 @@ namespace Comercial
 
                         //deleta todas permissoes do usuario
 
-                        cmd1.CommandText = "delete from acesso where codusuario = @usu";
+                        cmd1.CommandText = "delete from acesso where codusuario = (select codusuario from usuario where usuario = @usuario)";
                         cmd1.CommandType = CommandType.Text;
-                        cmd1.Parameters.Add(new SqlParameter("@usu", txtUsu.getText));
+                        cmd1.Parameters.Add(new SqlParameter("@usuario", txtUsu.getText));
                         cmd1.ExecuteNonQuery();
 
                         //cria novamente todas permissoes do usuario
 
-                        // ***** ARRUMAR *****
+
 
                         conn1.Close();
 
@@ -111,7 +113,15 @@ namespace Comercial
                     MessageBox.Show("Senha não confere com usuário selecionado.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return 1;
                 }
-         
+
+            }
+            else
+            {
+                MessageBox.Show("Usuário não selecionado.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 1;
+            }
+
+
         }
 
         private void label5_Click(object sender, EventArgs e)

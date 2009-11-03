@@ -595,7 +595,10 @@ namespace Comercial
                 // Util.Interface.ResetControls(filho);
                 //Util.Interface.ChangeControlStatus(filho, false);
 
-
+                tlStrpProcesso.Visible = true;
+               // tlStrpBtnDevNf.Visible = true;
+                bindingNavigator1.Visible = false;
+                tlStrpBtnSalvarUsu.Visible = true;
 
                 filho.WindowState = FormWindowState.Maximized;
             }
@@ -1577,6 +1580,20 @@ namespace Comercial
 
 
                 filho.WindowState = FormWindowState.Maximized;
+            }
+        }
+
+        private void tlStrpBtnSalvarUsu_Click(object sender, EventArgs e)
+        {
+            Form frm = this.ActiveMdiChild;
+            if (frm is FrmCadUsu)
+            {
+                FrmCadUsu frmusu = (FrmCadUsu)frm;
+                if (frmusu.salvar() != 1)
+                {
+                    MessageBox.Show("Registro alterado com sucesso.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Util.Interface.ResetControls(frm);
+                }
             }
         }
 
