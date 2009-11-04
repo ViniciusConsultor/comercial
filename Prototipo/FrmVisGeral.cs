@@ -984,8 +984,12 @@ namespace Comercial
                 PedLib.txtNomeCliente.Text = Convert.ToString(PedLib.ListarNomeCliente(PedLib.txtCodCliente.Text));
                 PedLib.txtNomeTransportadora.Text = Convert.ToString(PedLib.ListarNomeTransportadora(PedLib.txtCodTransportadora.Text));
                 PedLib.txtNomeVendedor.Text = Convert.ToString(PedLib.ListarNomeVendedor(PedLib.txtCodVendedor.Text));
+               //populo o item do pedido passando como parametro o pedido selecionado.
                 PedLib.populargrid();
+                //somo as colunas do grid
                 PedLib.SomarColunas();
+                //valido os itens que já foram liberado, travando a celula se o item estiver liberado totalmente
+                //se tiver liberado parcialmente mudo a cor da celula para vermelho
                 PedLib.ValidaItemLiberado();
 
                 this.Close();

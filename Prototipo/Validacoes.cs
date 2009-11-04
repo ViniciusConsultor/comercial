@@ -190,6 +190,12 @@ namespace Comercial
                 MessageBox.Show("Preço Unitário não pode ser 0!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else if (ex.Message == "PrecoUnitarioNegativo")
                 MessageBox.Show("Preço Unitário não pode ser negativo!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else if (ex.Message == "ValidaEstoque")
+                MessageBox.Show("Saldo em Estoque Indisponivel!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else if (ex.Message == "ValidaLimite")
+                MessageBox.Show("Limite de Credito insuficiente!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else if (ex.Message == "ValidaQtdeLiberada")
+                MessageBox.Show("Quantidade liberada não pode ser superio a quantidade do pedido!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             else MessageBox.Show("Erro desconhecido.\nContate o administrador do sistema", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }

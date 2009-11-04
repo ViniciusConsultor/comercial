@@ -17,6 +17,8 @@ namespace Comercial
         double ValorPedido;
         double ValorLimite;
         double ValorFaturar;
+        Validacoes valida = new Validacoes();
+                
         public FrmLibPDV(FrmPrinc parent)
         {
             InitializeComponent();
@@ -333,6 +335,68 @@ namespace Comercial
         }
         #endregion
 
+        #region Saldo a Liberar
+        public int SaldoLiberar(int CodPed, int CodProd)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+
+            StringBuilder sqlcommand = new StringBuilder();
+
+            sqlcommand.Append(" SELECT QUANTIDADELIB FROM ITEMPEDIDO WHERE CODPRODUTO = @CODPRODUTO AND NRPEDIDO = @NRPEDIDO ");
+
+            DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
+
+            db.AddInParameter(dbComd, "@NRPEDIDO", DbType.Int32, CodPed);
+            db.AddInParameter(dbComd, "@CODPRODUTO", DbType.Int32, CodProd);
+
+            int saldo = Convert.ToInt32(db.ExecuteScalar(dbComd));
+
+            return saldo;
+        }
+        #endregion
+
+        #region AtualizaSaldoEstoque
+        public void atualizaSaldoEstoque(int CodProd, int qtde)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+
+            StringBuilder sqlcommand = new StringBuilder();
+
+            sqlcommand.Append(" UPDATE PRODUTO SET ESTOQUEATUAL = @ESTOQUEATUAL WHERE CODPRODUTO = @CODPRODUTO ");
+
+            DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
+
+            db.AddInParameter(dbComd, "@ESTOQUEATUAL", DbType.Int32, qtde);
+            db.AddInParameter(dbComd, "@CODPRODUTO", DbType.Int32, CodProd);
+
+
+            db.ExecuteScalar(dbComd);
+
+
+        }
+        #endregion
+
+        #region AtualizaSituaçãoPedido
+        public void atualizaSituacao(string Situacao, int NrPedido)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+
+            StringBuilder sqlcommand = new StringBuilder();
+
+            sqlcommand.Append(" UPDATE PEDIDO SET SITUACAO = @SITUACAO WHERE NRPEDIDO = @NRPEDIDO ");
+
+            DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
+
+            db.AddInParameter(dbComd, "@SITUACAO", DbType.String, Situacao);
+            db.AddInParameter(dbComd, "@NRPEDIDO", DbType.Int32, NrPedido);
+
+
+            db.ExecuteScalar(dbComd);
+
+
+        }
+        #endregion
+
         #region Pesquisar Pedido
         public void PesquisaPedido()
         {
@@ -357,52 +421,70 @@ namespace Comercial
         #region ValidaLimiteCliente
         public void validalimite()
         {
-            DataTable dttPedidocli = new DataTable();
-
-            dttPedidocli = ListarValorCliente(txtCodCliente.Text);
-
-            if (dttPedidocli.Rows.Count > 0)
+            try
             {
-                ValorPedido = Convert.ToDouble(dttPedidocli.Rows[0]["VALOR"]);
-                ValorFaturar = ValorPedido + Convert.ToDouble(txtBxVlrMercadoria.Text);
+                DataTable dttPedidocli = new DataTable();
+
+                dttPedidocli = ListarValorCliente(txtCodCliente.Text);
+
+                if (dttPedidocli.Rows.Count > 0)
+                {
+                    ValorPedido = Convert.ToDouble(dttPedidocli.Rows[0]["VALOR"]);
+                    ValorFaturar = ValorPedido + Convert.ToDouble(txtBxVlrMercadoria.Text);
+
+                }
+
+                DataTable dttCliente = new DataTable();
+
+                dttCliente = ListarLimiteCliente(txtCodCliente.Text);
+
+                if (dttCliente.Rows.Count > 0)
+                {
+                    ValorLimite = Convert.ToDouble(dttCliente.Rows[0]["LIMITE"]);
+
+                }
+
+                if ((ValorFaturar > ValorLimite))
+                {
+                    throw new Exception("ValidaLimite");
+                }
 
             }
-
-            DataTable dttCliente = new DataTable();
-
-            dttCliente = ListarLimiteCliente(txtCodCliente.Text);
-
-            if (dttCliente.Rows.Count > 0)
+            catch (Exception ex)
             {
-                ValorLimite = Convert.ToDouble(dttCliente.Rows[0]["LIMITE"]);
-
+                Validacoes valida = new Validacoes();
+                valida.tratarSystemExceções(ex);
             }
-
-            if ((ValorFaturar > ValorLimite))
-            {
-                MessageBox.Show("Limite de Credito insuficiente!.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
         }
         #endregion
 
         #region ValidaSaldoEstoque
         public void ValidaEstoque()
         {
-            foreach (DataGridViewRow item in dtgrdvItenspven.Rows)
+            try
             {
-                int SaldoEstoque = ListarSaldoEstoque(Convert.ToInt32(item.Cells["ColProd"].Value));
-
-                if (Convert.ToInt32(item.Cells["ClmQtdeLib"].Value) > SaldoEstoque)
+                foreach (DataGridViewRow item in dtgrdvItenspven.Rows)
                 {
-                    MessageBox.Show("Saldo em Estoque Indisponivel para o produto!." + "Codigo: " + Convert.ToInt32(item.Cells["ColProd"].Value), "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                    int SaldoEstoque = ListarSaldoEstoque(Convert.ToInt32(item.Cells["ColProd"].Value));
 
-                if (Convert.ToInt32(item.Cells["ClmQtdeLib"].Value) > Convert.ToInt32(item.Cells["ClmQtde"].Value))
-                {
-                    MessageBox.Show("Quantidade liberada não pode ser superio a quantidade do pedido!." + "Codigo: " + Convert.ToInt32(item.Cells["ColProd"].Value), "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (Convert.ToInt32(item.Cells["ClmQtdeLib"].Value) > SaldoEstoque)
+                    {
+                        //MessageBox.Show("Saldo em Estoque Indisponivel para o produto!." + "Codigo: " + Convert.ToInt32(item.Cells["ColProd"].Value), "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        throw new Exception("ValidaEstoque");
+                    }
 
+                    if (Convert.ToInt32(item.Cells["ClmQtdeLib"].Value) > Convert.ToInt32(item.Cells["ClmQtde"].Value))
+                    {
+                        //MessageBox.Show("Quantidade liberada não pode ser superio a quantidade do pedido!." + "Codigo: " + Convert.ToInt32(item.Cells["ColProd"].Value), "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        throw new Exception("ValidaQtdeLiberada");
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+
+                Validacoes valida = new Validacoes();
+                valida.tratarSystemExceções(ex);
             }
 
 
@@ -424,11 +506,20 @@ namespace Comercial
                     {
                         dtgrdvItenspven.Rows[i].Cells["ColCheck"].Value = true;
                         dtgrdvItenspven.Rows[i].ReadOnly = true;
+                        //dtgrdvItenspven.Rows[i].Cells["ColCheck"].Style.BackColor = Color.Green;
+                        dtgrdvItenspven.Rows[i].Cells["ColStatus"].Value = Comercial.Properties.Resources.BolaVerde;
                     }
                     else if ((QuantidadeLib != 0) && (QuantidadeLib != Quantidade))
                     {
                         dtgrdvItenspven.Rows[i].Cells["ColCheck"].Value = true;
-
+                        //dtgrdvItenspven.Rows[i].Cells["ColCheck"].Style.BackColor = Color.Yellow;
+                        dtgrdvItenspven.Rows[i].Cells["ColStatus"].Value = Comercial.Properties.Resources.BolaAmarela;
+                    }
+                    else if ((QuantidadeLib == 0))
+                    {
+                        dtgrdvItenspven.Rows[i].Cells["ColCheck"].Value = true;
+                        //dtgrdvItenspven.Rows[i].Cells["ColCheck"].Style.BackColor = Color.Red;
+                        dtgrdvItenspven.Rows[i].Cells["ColStatus"].Value = Comercial.Properties.Resources.BolaVermelho;
                     }
                 }
 
@@ -443,60 +534,122 @@ namespace Comercial
         #endregion
 
         #region Processo Liberacao
-        public int LiberaPedido()
+        public void LiberaPedido()
         {
             try
             {
+
+                //Verifico o limite de crêdito do cliente
+                validalimite();
+                
+                //Verifico Saldo em estoque do produto selecionado
+                ValidaEstoque();
+
+                //Variavel para o contador dos itens
                 var teste = 0;
+
+                //variavelpara contador, para atualizar situação
+                var situacao = 0;
+
+                //Crio o Datatable
                 DataTable dttRetorno = new DataTable();
+
+                //For para verificar os itens liberados e incrementar o contador
                 for (int i = 0; i < dtgrdvItenspven.RowCount; i++)
                 {
-                    int QuantidadeLib = (int)dtgrdvItenspven.Rows[i].Cells["ClmQtdeLib"].Value;
-                    int Quantidade = (int)dtgrdvItenspven.Rows[i].Cells["ClmQtde"].Value;
+
+                    //Verifico o saldo disponivel para liberação
+                    int saldolib = SaldoLiberar(Convert.ToInt32(txtbtnPedido.Text), Convert.ToInt32(dtgrdvItenspven.Rows[i].Cells["ColProd"].Value));
 
                     dttRetorno = ListarItem(Convert.ToInt32(txtbtnPedido.Text));
 
-
-
-                    if (QuantidadeLib == Quantidade)
+                    if (saldolib == Convert.ToInt32(dttRetorno.Rows[i]["QUANTIDADE"]))
                     {
                         teste += 1;
                     }
 
+
                 }
 
-
+                //se o contador for = a qtde iten liberado dá a mensagem que o pedido já foi efetivado
                 if (teste == dtgrdvItenspven.Rows.Count)
                 {
-                    MessageBox.Show("ok!.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Pedido já efetvado!.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                //se não continuo a liberação dos itens pendentes
                 else
                 {
-                    validalimite();
-                    ValidaEstoque();
 
-                    foreach (DataGridViewRow item in dtgrdvItenspven.Rows)
+                    //For para verificar os itens liberados, pego os itens checkado e que a quantidade liberada seja menor que a quantidade solicitada
+                    for (int i = 0; i < dtgrdvItenspven.RowCount; i++)
                     {
-                        if (Convert.ToBoolean(item.Cells["ColCheck"].Value = true))
+
+                        //Verifico o saldo disponivel para liberação
+                        int saldolib = SaldoLiberar(Convert.ToInt32(txtbtnPedido.Text), Convert.ToInt32(dtgrdvItenspven.Rows[i].Cells["ColProd"].Value));
+
+                        if (Convert.ToBoolean(dtgrdvItenspven.Rows[i].Cells["ColCheck"].Value = true) && (saldolib <= Convert.ToInt32(dtgrdvItenspven.Rows[i].Cells["ClmQtde"].Value)))
                         {
-                            AtualizarQtde(Convert.ToInt32(txtbtnPedido.Text), Convert.ToInt32(item.Cells["ClmQtdeLib"].Value), Convert.ToInt32(item.Cells["ColProd"].Value));
+
+
+                            //verifico a quantidade liberada - saldodisponivel para liberacao
+                            int qdeliberada = Convert.ToInt32(dtgrdvItenspven.Rows[i].Cells["ClmQtdelib"].Value) - saldolib;
+
+                            //verifico saldo atual em estoque
+                            int estoqueatual = ListarSaldoEstoque(Convert.ToInt32(dtgrdvItenspven.Rows[i].Cells["ColProd"].Value));
+
+                            //subtraio o saldo atual - qtdeliberada
+                            int atualizaestoque = estoqueatual - qdeliberada;
+
+                            //Atualiza a quantidade liberada do itenpedido
+                            AtualizarQtde(Convert.ToInt32(txtbtnPedido.Text), Convert.ToInt32(dtgrdvItenspven.Rows[i].Cells["ClmQtdeLib"].Value), Convert.ToInt32(dtgrdvItenspven.Rows[i].Cells["ColProd"].Value));
+                            atualizaSaldoEstoque(Convert.ToInt32(dtgrdvItenspven.Rows[i].Cells["ColProd"].Value), atualizaestoque);
                         }
-                        continue;
+
+
                     }
 
+                    //for para atualizar a situação do pedido
+                    for (int i = 0; i < dtgrdvItenspven.RowCount; i++)
+                    {
 
+                        int qtdelib = Convert.ToInt32(dtgrdvItenspven.Rows[i].Cells["ClmQtdeLib"].Value);
+                        //Verifico o saldo disponivel para liberação
+                        int saldolib = SaldoLiberar(Convert.ToInt32(txtbtnPedido.Text), Convert.ToInt32(dtgrdvItenspven.Rows[i].Cells["ColProd"].Value));
 
+                        dttRetorno = ListarItem(Convert.ToInt32(txtbtnPedido.Text));
+
+                        if (qtdelib == Convert.ToInt32(dttRetorno.Rows[i]["QUANTIDADE"]))
+                        {
+                            situacao += 1;
+                        }
+
+                    }
+
+                    //se o contador for = a qtde iten liberado Atualiza a situação pedido para Efetivado
+                    if (situacao == dtgrdvItenspven.Rows.Count)
+                    {
+                        atualizaSituacao("E", Convert.ToInt32(txtbtnPedido.Text));
+                    }
+                    else
+                    {
+                        atualizaSituacao("P", Convert.ToInt32(txtbtnPedido.Text));
+
+                    }
+
+                    //mensagem de pedido liberao (Efetivado) Com sucesso
                     MessageBox.Show("Pedido Liberado com Sucesso!.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    limparcampos();
-                    //}
-                }
-                return 0;
 
+                    //Limpo os controles da tela, preparando para uma nova liberação 
+                    limparcampos();
+
+                }
+
+               
             }
             catch (Exception ex)
             {
-
-                throw ex;
+                Validacoes valida = new Validacoes();
+                valida.tratarSystemExceções(ex);
             }
 
         }
@@ -547,10 +700,10 @@ namespace Comercial
                     {
                         item.Cells["ColCheck"].Value = false;
                     }
-                    //else
-                    //{
-                    //    item.Cells["ColCheck"].Value = true;
-                    //}
+                    else
+                    {
+                        item.Cells["ColCheck"].Value = true;
+                    }
 
 
                 }
