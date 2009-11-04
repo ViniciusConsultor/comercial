@@ -196,6 +196,8 @@ namespace Comercial
                 MessageBox.Show("Limite de Credito insuficiente!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else if (ex.Message == "ValidaQtdeLiberada")
                 MessageBox.Show("Quantidade liberada não pode ser superio a quantidade do pedido!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else if (ex.Message == "ItenLibMenor")
+                MessageBox.Show("A quantidade liberada é inválida \nJá existe quantidade liberada anteriormente!.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 
             else MessageBox.Show("Erro desconhecido.\nContate o administrador do sistema", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
