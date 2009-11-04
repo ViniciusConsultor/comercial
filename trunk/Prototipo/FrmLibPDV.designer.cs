@@ -72,6 +72,14 @@
             this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
             this.pEDIDOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.PEDIDOTableAdapter();
             this.tableAdapterManager = new Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager();
+            this.grpSituacaoItens = new System.Windows.Forms.GroupBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lblteztoPendente = new System.Windows.Forms.Label();
+            this.lblPendente = new System.Windows.Forms.Label();
+            this.lblCancelado = new System.Windows.Forms.Label();
+            this.lblEfetivado = new System.Windows.Forms.Label();
+            this.ColStatus = new System.Windows.Forms.DataGridViewImageColumn();
             this.ColCheck = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ClmItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -94,6 +102,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtgrdvItenspven)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pEDIDOBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).BeginInit();
+            this.grpSituacaoItens.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbCntrlPedVend
@@ -403,6 +412,7 @@
             // 
             // grpBxTotais
             // 
+            this.grpBxTotais.Controls.Add(this.grpSituacaoItens);
             this.grpBxTotais.Controls.Add(this.lblDescontos);
             this.grpBxTotais.Controls.Add(this.lblVlrFrete);
             this.grpBxTotais.Controls.Add(this.lblVlrMercadoria);
@@ -505,6 +515,7 @@
             this.dtgrdvItenspven.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgrdvItenspven.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgrdvItenspven.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColStatus,
             this.ColCheck,
             this.ClmItem,
             this.ColProd,
@@ -578,6 +589,90 @@
             this.tableAdapterManager.USUARIOTableAdapter = null;
             this.tableAdapterManager.VENDEDORTableAdapter = null;
             this.tableAdapterManager.VIATRANSPORTETableAdapter = null;
+            // 
+            // grpSituacaoItens
+            // 
+            this.grpSituacaoItens.Controls.Add(this.label2);
+            this.grpSituacaoItens.Controls.Add(this.label3);
+            this.grpSituacaoItens.Controls.Add(this.lblteztoPendente);
+            this.grpSituacaoItens.Controls.Add(this.lblPendente);
+            this.grpSituacaoItens.Controls.Add(this.lblCancelado);
+            this.grpSituacaoItens.Controls.Add(this.lblEfetivado);
+            this.grpSituacaoItens.ForeColor = System.Drawing.Color.CadetBlue;
+            this.grpSituacaoItens.Location = new System.Drawing.Point(6, 13);
+            this.grpSituacaoItens.Name = "grpSituacaoItens";
+            this.grpSituacaoItens.Size = new System.Drawing.Size(125, 78);
+            this.grpSituacaoItens.TabIndex = 25;
+            this.grpSituacaoItens.TabStop = false;
+            this.grpSituacaoItens.Text = "Legenda Itens";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(33, 58);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(72, 13);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Não Faturado";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(33, 36);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(49, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Faturado";
+            // 
+            // lblteztoPendente
+            // 
+            this.lblteztoPendente.AutoSize = true;
+            this.lblteztoPendente.Location = new System.Drawing.Point(33, 15);
+            this.lblteztoPendente.Name = "lblteztoPendente";
+            this.lblteztoPendente.Size = new System.Drawing.Size(84, 13);
+            this.lblteztoPendente.TabIndex = 5;
+            this.lblteztoPendente.Text = "Faturado Parcial";
+            // 
+            // lblPendente
+            // 
+            this.lblPendente.AutoSize = true;
+            this.lblPendente.Image = global::Comercial.Properties.Resources.BolaAmarela;
+            this.lblPendente.Location = new System.Drawing.Point(6, 15);
+            this.lblPendente.MaximumSize = new System.Drawing.Size(30, 30);
+            this.lblPendente.MinimumSize = new System.Drawing.Size(30, 0);
+            this.lblPendente.Name = "lblPendente";
+            this.lblPendente.Size = new System.Drawing.Size(30, 13);
+            this.lblPendente.TabIndex = 2;
+            // 
+            // lblCancelado
+            // 
+            this.lblCancelado.AutoSize = true;
+            this.lblCancelado.Image = global::Comercial.Properties.Resources.BolaVermelho;
+            this.lblCancelado.Location = new System.Drawing.Point(6, 58);
+            this.lblCancelado.MaximumSize = new System.Drawing.Size(30, 30);
+            this.lblCancelado.MinimumSize = new System.Drawing.Size(30, 0);
+            this.lblCancelado.Name = "lblCancelado";
+            this.lblCancelado.Size = new System.Drawing.Size(30, 13);
+            this.lblCancelado.TabIndex = 4;
+            // 
+            // lblEfetivado
+            // 
+            this.lblEfetivado.AutoSize = true;
+            this.lblEfetivado.Image = global::Comercial.Properties.Resources.BolaVerde;
+            this.lblEfetivado.Location = new System.Drawing.Point(6, 36);
+            this.lblEfetivado.MaximumSize = new System.Drawing.Size(30, 30);
+            this.lblEfetivado.MinimumSize = new System.Drawing.Size(30, 0);
+            this.lblEfetivado.Name = "lblEfetivado";
+            this.lblEfetivado.Size = new System.Drawing.Size(30, 13);
+            this.lblEfetivado.TabIndex = 3;
+            // 
+            // ColStatus
+            // 
+            this.ColStatus.HeaderText = "";
+            this.ColStatus.Name = "ColStatus";
+            this.ColStatus.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColStatus.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ColStatus.Width = 28;
             // 
             // ColCheck
             // 
@@ -698,6 +793,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtgrdvItenspven)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pEDIDOBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).EndInit();
+            this.grpSituacaoItens.ResumeLayout(false);
+            this.grpSituacaoItens.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -744,6 +841,14 @@
         public System.Windows.Forms.CheckBox chkNormal;
         public System.Windows.Forms.TextBox txtBxVlrMercadoria;
         public System.Windows.Forms.TextBox txtbtnPedido;
+        private System.Windows.Forms.GroupBox grpSituacaoItens;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblteztoPendente;
+        private System.Windows.Forms.Label lblPendente;
+        private System.Windows.Forms.Label lblCancelado;
+        private System.Windows.Forms.Label lblEfetivado;
+        private System.Windows.Forms.DataGridViewImageColumn ColStatus;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ColCheck;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColProd;
