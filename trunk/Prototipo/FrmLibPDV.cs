@@ -18,7 +18,7 @@ namespace Comercial
         double ValorLimite;
         double ValorFaturar;
         Validacoes valida = new Validacoes();
-                
+
         public FrmLibPDV(FrmPrinc parent)
         {
             InitializeComponent();
@@ -26,22 +26,6 @@ namespace Comercial
             _princ = parent;
         }
 
-        private void FrmLibPDV_Leave(object sender, EventArgs e)
-        {
-            Control[] z = _princ.Controls.Find("bindingNavigator1", true);
-            ToolStrip strip = (ToolStrip)z[0];
-
-            strip.Visible = true;
-
-            Control[] y = _princ.Controls.Find("tlStrpProcesso", true);
-            ToolStrip strip2 = (ToolStrip)y[0];
-
-            strip2.Visible = false;
-            foreach (ToolStripButton x in strip2.Items)
-            {
-                x.Visible = false;
-            }
-        }
 
         #region Listar Pedido
         public DataTable ListarPedido()
@@ -342,7 +326,7 @@ namespace Comercial
 
             StringBuilder sqlcommand = new StringBuilder();
 
-            sqlcommand.Append(" SELECT QUANTIDADELIB FROM ITEMPEDIDO WHERE CODPRODUTO = @CODPRODUTO AND NRPEDIDO = @NRPEDIDO ");
+            sqlcommand.Append(" SELECT QUANTIDADELIB AS QUANTIDADELIB  FROM ITEMPEDIDO WHERE CODPRODUTO = @CODPRODUTO AND NRPEDIDO = @NRPEDIDO ");
 
             DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
 
@@ -541,7 +525,7 @@ namespace Comercial
 
                 //Verifico o limite de crêdito do cliente
                 validalimite();
-                
+
                 //Verifico Saldo em estoque do produto selecionado
                 ValidaEstoque();
 
@@ -561,8 +545,10 @@ namespace Comercial
                     //Verifico o saldo disponivel para liberação
                     int saldolib = SaldoLiberar(Convert.ToInt32(txtbtnPedido.Text), Convert.ToInt32(dtgrdvItenspven.Rows[i].Cells["ColProd"].Value));
 
+                    //atribuo a lista de itens ao datatable
                     dttRetorno = ListarItem(Convert.ToInt32(txtbtnPedido.Text));
 
+                    //verifico se o saldo = a quantidade do datatable se for = incremento o contador
                     if (saldolib == Convert.ToInt32(dttRetorno.Rows[i]["QUANTIDADE"]))
                     {
                         teste += 1;
@@ -587,10 +573,13 @@ namespace Comercial
                         //Verifico o saldo disponivel para liberação
                         int saldolib = SaldoLiberar(Convert.ToInt32(txtbtnPedido.Text), Convert.ToInt32(dtgrdvItenspven.Rows[i].Cells["ColProd"].Value));
 
-                        if (Convert.ToBoolean(dtgrdvItenspven.Rows[i].Cells["ColCheck"].Value = true) && (saldolib <= Convert.ToInt32(dtgrdvItenspven.Rows[i].Cells["ClmQtde"].Value)))
+                        //verifico se o iten liberado é < que a quantidade já liberada
+                        if (Convert.ToInt32(dtgrdvItenspven.Rows[i].Cells["ClmQtdelib"].Value) < saldolib)
                         {
-
-
+                            throw new Exception("ItenLibMenor");
+                        }
+                        else if (Convert.ToBoolean(dtgrdvItenspven.Rows[i].Cells["ColCheck"].Value = true) && (saldolib <= Convert.ToInt32(dtgrdvItenspven.Rows[i].Cells["ClmQtde"].Value)))
+                        {
                             //verifico a quantidade liberada - saldodisponivel para liberacao
                             int qdeliberada = Convert.ToInt32(dtgrdvItenspven.Rows[i].Cells["ClmQtdelib"].Value) - saldolib;
 
@@ -602,23 +591,26 @@ namespace Comercial
 
                             //Atualiza a quantidade liberada do itenpedido
                             AtualizarQtde(Convert.ToInt32(txtbtnPedido.Text), Convert.ToInt32(dtgrdvItenspven.Rows[i].Cells["ClmQtdeLib"].Value), Convert.ToInt32(dtgrdvItenspven.Rows[i].Cells["ColProd"].Value));
+
+                            //Atuliza a quantidade atual em estoque
                             atualizaSaldoEstoque(Convert.ToInt32(dtgrdvItenspven.Rows[i].Cells["ColProd"].Value), atualizaestoque);
+
                         }
-
-
+                        continue;
                     }
 
                     //for para atualizar a situação do pedido
-                    for (int i = 0; i < dtgrdvItenspven.RowCount; i++)
+                    for (int j = 0; j < dtgrdvItenspven.RowCount; j++)
                     {
 
-                        int qtdelib = Convert.ToInt32(dtgrdvItenspven.Rows[i].Cells["ClmQtdeLib"].Value);
-                        //Verifico o saldo disponivel para liberação
-                        int saldolib = SaldoLiberar(Convert.ToInt32(txtbtnPedido.Text), Convert.ToInt32(dtgrdvItenspven.Rows[i].Cells["ColProd"].Value));
+                        //Pego a quantidade liberada do pedido por item
+                        int qtdelib = Convert.ToInt32(dtgrdvItenspven.Rows[j].Cells["ClmQtdeLib"].Value);
 
+                        //atribuo a lista de itens ao datatable
                         dttRetorno = ListarItem(Convert.ToInt32(txtbtnPedido.Text));
 
-                        if (qtdelib == Convert.ToInt32(dttRetorno.Rows[i]["QUANTIDADE"]))
+                        //verifico se é = a quantidade do datatable incrememnto meu contador
+                        if (qtdelib == Convert.ToInt32(dttRetorno.Rows[j]["QUANTIDADE"]))
                         {
                             situacao += 1;
                         }
@@ -630,6 +622,7 @@ namespace Comercial
                     {
                         atualizaSituacao("E", Convert.ToInt32(txtbtnPedido.Text));
                     }
+                    //se for != da quantidade do datatable deixa como pendente o pedido
                     else
                     {
                         atualizaSituacao("P", Convert.ToInt32(txtbtnPedido.Text));
@@ -637,14 +630,14 @@ namespace Comercial
                     }
 
                     //mensagem de pedido liberao (Efetivado) Com sucesso
-                    MessageBox.Show("Pedido Liberado com Sucesso!.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Pedido Liberado.", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                     //Limpo os controles da tela, preparando para uma nova liberação 
                     limparcampos();
 
                 }
 
-               
+
             }
             catch (Exception ex)
             {
@@ -654,13 +647,6 @@ namespace Comercial
 
         }
         #endregion
-
-
-
-        private void FrmLibPDV_Load(object sender, EventArgs e)
-        {
-
-        }
 
         #region LimparCampos
         public void limparcampos()
@@ -689,6 +675,7 @@ namespace Comercial
         }
         #endregion
 
+        #region CellValueChanged
         private void dtgrdvItenspven_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -714,5 +701,6 @@ namespace Comercial
                 throw;
             }
         }
+        #endregion
     }
 }

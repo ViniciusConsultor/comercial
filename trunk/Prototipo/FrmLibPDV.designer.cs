@@ -778,8 +778,6 @@
             this.Controls.Add(this.tbCntrlPedVend);
             this.Name = "FrmLibPDV";
             this.Text = "Liberação de Pedido";
-            this.Load += new System.EventHandler(this.FrmLibPDV_Load);
-            this.Leave += new System.EventHandler(this.FrmLibPDV_Leave);
             this.tbCntrlPedVend.ResumeLayout(false);
             this.tbPgPDV.ResumeLayout(false);
             this.grpBxPedVenda.ResumeLayout(false);
