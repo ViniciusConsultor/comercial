@@ -418,6 +418,7 @@ namespace Comercial
                 tlStrpBtnLibPed.Visible = true;
                 bindingNavigator1.Visible = false;
                 tlStrpBtnPesquisar.Visible = true;
+                tsbhomeProcesso.Visible = true;
 
                 // Util.Interface.ResetControls(filho);
                 //Util.Interface.ChangeControlStatus(filho, false);
@@ -1595,6 +1596,15 @@ namespace Comercial
                     Util.Interface.ResetControls(frm);
                 }
             }
+        }
+
+        private void tsbhomeProcesso_Click(object sender, EventArgs e)
+        {
+            Form frm = this.ActiveMdiChild;
+            if (frm == null)
+                return;
+            frm.Close();
+            bindingNavigator1.Enabled = false;
         }
 
     }
