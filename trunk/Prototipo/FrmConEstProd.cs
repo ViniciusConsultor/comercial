@@ -27,8 +27,8 @@ namespace Comercial
 
         private void txtCodProd_ButtonClick(object sender, EventArgs e)
         {
-            //FrmVisGeral x = new FrmVisGeral(this, txtCodProd);
-            //x.ShowDialog();
+           // FrmVisGeral x = new FrmVisGeral(this, txtCodProd);
+           // x.ShowDialog();
         }
 
         private void FrmConProd_Leave(object sender, EventArgs e)
@@ -50,9 +50,9 @@ namespace Comercial
                 "FROM PRODUTO PRD INNER JOIN GRUPOPRODUTO GRP ON PRD.CODGRUPOPRODUTO = GRP.CODGRUPOPRODUTO ";
 
             //Pesquisa por Código do produto
-            if (!string.IsNullOrEmpty(txtBtnCodProd.getText))
+            if (!string.IsNullOrEmpty(txtCodProd.getText))
             {
-                sql += "and CODPRODUTO ='" + txtBtnCodProd.getText + "'";
+                sql += "and CODPRODUTO ='" + txtCodProd.getText + "'";
             }
 
             //Pesquisa por descrição do produto
@@ -100,13 +100,13 @@ namespace Comercial
             return sql;
         }
 
-        private void txtBtnCodGrp_ButtonClick(object sender, EventArgs e)
+        private void txtCodGrp_ButtonClick(object sender, EventArgs e)
         {
-            FrmVisGeral x = new FrmVisGeral(this, (Control)sender);
-            x.dtGrdVwVis.DataSource = ListarGrupoProduto();
-            x.Text = "Pesquisa Cadastro de Grupo de Produtos";
+           // FrmVisGeral x = new FrmVisGeral(this, (Control)sender);
+           // x.dtGrdVwVis.DataSource = ListarGrupoProduto();
+           // x.Text = "Pesquisa Produtos";
 
-            x.ShowDialog();
+           // x.ShowDialog();
         }
 
         public DataTable ListarGrupoProduto()
@@ -149,7 +149,7 @@ namespace Comercial
         {
             FrmVisGeral x = new FrmVisGeral(this, (Control)sender);
             x.dtGrdVwVis.DataSource = ListarProduto();
-            x.Text = "Pesquisa Cadastro de Produtos";
+            x.Text = "Pesquisa Estoque de Produtos";
 
             x.ShowDialog();
         }
@@ -194,6 +194,11 @@ namespace Comercial
         }
 
         private void dtGrdVwConProd_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void grpBxProd_Enter(object sender, EventArgs e)
         {
 
         }

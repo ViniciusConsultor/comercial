@@ -1607,5 +1607,10 @@ namespace Comercial
             bindingNavigator1.Enabled = false;
         }
 
+        private void tlStrpBtnDevNf_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

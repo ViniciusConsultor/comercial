@@ -49,7 +49,6 @@
             this.cmbGrupoProd = new System.Windows.Forms.ComboBox();
             this.gRUPOPRODUTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
-            this.txtBtnCodProd = new Comercial.TextButton();
             this.label2 = new System.Windows.Forms.Label();
             this.txtEstoque = new System.Windows.Forms.TextBox();
             this.txtProdDesc = new System.Windows.Forms.TextBox();
@@ -60,6 +59,7 @@
             this.LblDesc = new System.Windows.Forms.Label();
             this.gRUPOPRODUTOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.GRUPOPRODUTOTableAdapter();
             this.tableAdapterManager = new Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager();
+            this.txtCodProd = new Comercial.TextButton();
             this.tbCntrlConProd.SuspendLayout();
             this.tbPgConProd.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGrdVwConProd)).BeginInit();
@@ -187,7 +187,7 @@
             this.grpBxProd.Controls.Add(this.cmBxOpEstoqueMin);
             this.grpBxProd.Controls.Add(this.lblGrpProd);
             this.grpBxProd.Controls.Add(this.cmbGrupoProd);
-            this.grpBxProd.Controls.Add(this.txtBtnCodProd);
+            this.grpBxProd.Controls.Add(this.txtCodProd);
             this.grpBxProd.Controls.Add(this.label2);
             this.grpBxProd.Controls.Add(this.txtEstoque);
             this.grpBxProd.Controls.Add(this.txtProdDesc);
@@ -203,6 +203,7 @@
             this.grpBxProd.TabIndex = 1;
             this.grpBxProd.TabStop = false;
             this.grpBxProd.Text = "Dados Produtos:";
+            this.grpBxProd.Enter += new System.EventHandler(this.grpBxProd_Enter);
             // 
             // label4
             // 
@@ -270,17 +271,6 @@
             // 
             this.cOMERCIALDataSet.DataSetName = "COMERCIALDataSet";
             this.cOMERCIALDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // txtBtnCodProd
-            // 
-            this.txtBtnCodProd.getText = "";
-            this.txtBtnCodProd.Image = global::Comercial.Properties.Resources.search1;
-            this.txtBtnCodProd.Location = new System.Drawing.Point(9, 32);
-            this.txtBtnCodProd.Name = "txtBtnCodProd";
-            this.txtBtnCodProd.ShowButton = false;
-            this.txtBtnCodProd.Size = new System.Drawing.Size(45, 25);
-            this.txtBtnCodProd.TabIndex = 28;
-            this.txtBtnCodProd.ButtonClick += new System.EventHandler(this.txtNumPed_ButtonClick);
             // 
             // label2
             // 
@@ -395,6 +385,17 @@
             this.tableAdapterManager.VENDEDORTableAdapter = null;
             this.tableAdapterManager.VIATRANSPORTETableAdapter = null;
             // 
+            // txtCodProd
+            // 
+            this.txtCodProd.getText = "";
+            this.txtCodProd.Image = global::Comercial.Properties.Resources.search1;
+            this.txtCodProd.Location = new System.Drawing.Point(9, 32);
+            this.txtCodProd.Name = "txtCodProd";
+            this.txtCodProd.ShowButton = false;
+            this.txtCodProd.Size = new System.Drawing.Size(45, 25);
+            this.txtCodProd.TabIndex = 28;
+            this.txtCodProd.ButtonClick += new System.EventHandler(this.txtNumPed_ButtonClick);
+            // 
             // FrmConEstProd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -442,7 +443,7 @@
         private System.Windows.Forms.ComboBox cmbGrupoProd;
         private System.Windows.Forms.Label lblGrpProd;
         public System.Windows.Forms.TextBox txtProdDesc;
-        public TextButton txtBtnCodProd;
+        public TextButton txtCodProd;
         public System.Windows.Forms.DataGridView dtGrdVwConProd;
         private System.Windows.Forms.TextBox TxtEstMin;
         private System.Windows.Forms.ComboBox cmBxOpEstoqueMin;

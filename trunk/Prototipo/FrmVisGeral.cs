@@ -312,6 +312,35 @@ namespace Comercial
 
             }
             #endregion
+
+            #region Coluna GridViewGeral Devolução NF Processo
+            if (controle.Name == "txtNumNF")
+            {
+                rdBtnCod.Visible = false;
+                rdBtnCod.Text = "Numero NF";
+                rdBtnCod.Checked = true;
+                rdBtnNome.Text = "Numero NF";
+                rdBtnNome.Checked = true;
+                rdBtnNome.Visible = true;
+
+                col1.HeaderText = "Numero NF";
+                col1.DataPropertyName = "NRNOTAFISCAL";
+                dtGrdVwVis.Columns[1].Visible = true;
+
+                col2.HeaderText = "Serie";
+                col2.DataPropertyName = "Serie";
+                dtGrdVwVis.Columns[1].Visible = true;
+
+
+                dtGrdVwVis.Columns.Add("col3", "Data Emissão");
+                dtGrdVwVis.Columns["col3"].DataPropertyName = "DATAEMISSAO";
+
+                dtGrdVwVis.Columns.Add("col4", "Tipo");
+                dtGrdVwVis.Columns["col4"].DataPropertyName = "TIPO";
+
+
+            }
+            #endregion
         }
 
         #region Botão Pesquisar
@@ -687,8 +716,34 @@ namespace Comercial
                 }
             }
             #endregion
-           
 
+            #region Processo Devolucao NF Pesquisa
+            if (_parent is FrmLibPDV)
+            {
+                if ((_controle.Name == "txtNumNF"))
+                {
+                    if (rdBtnNome.Checked == true)
+                    {
+                        string c = ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString;
+
+                        SqlConnection conn = new SqlConnection(c);
+                        conn.Open();
+
+                        SqlCommand cmd = new SqlCommand(" SELECT NRNOTAFISCAL, SERIE, DATAEMISSAO, TIPO" +
+                            " FROM NOTAFISCAL WHERE NRNOTAFISCAL LIKE @NRNOTAFISCAL ", conn);
+
+                        cmd.Parameters.Add(new SqlParameter("@NRNOTAFISCAL", txtPesquisar.Text + "%"));
+
+                        SqlDataReader reader = cmd.ExecuteReader();
+                        DataTable table = new DataTable();
+                        table.Load(reader);
+
+                        dtGrdVwVis.DataSource = table;
+                    }
+
+                }
+            }
+            #endregion
         }
         #endregion
 
@@ -925,7 +980,7 @@ namespace Comercial
 
                         DataGridViewCell celula = selecionadas[0];
 
-                        EstProd.txtBtnCodProd.getText = celula.Value.ToString();
+                        EstProd.txtCodProd.getText = celula.Value.ToString();
                     }
 
 
@@ -984,13 +1039,48 @@ namespace Comercial
                 PedLib.txtNomeCliente.Text = Convert.ToString(PedLib.ListarNomeCliente(PedLib.txtCodCliente.Text));
                 PedLib.txtNomeTransportadora.Text = Convert.ToString(PedLib.ListarNomeTransportadora(PedLib.txtCodTransportadora.Text));
                 PedLib.txtNomeVendedor.Text = Convert.ToString(PedLib.ListarNomeVendedor(PedLib.txtCodVendedor.Text));
-               //populo o item do pedido passando como parametro o pedido selecionado.
+                //populo o item do pedido passando como parametro o pedido selecionado.
                 PedLib.populargrid();
                 //somo as colunas do grid
                 PedLib.SomarColunas();
                 //valido os itens que já foram liberado, travando a celula se o item estiver liberado totalmente
                 //se tiver liberado parcialmente mudo a cor da celula para vermelho
                 PedLib.ValidaItemLiberado();
+
+                this.Close();
+                this.Dispose();
+            }
+            #endregion
+
+            #region Double Click Devolução NF
+            if (_controle.Name == "txtNumNF")
+            {
+                FrmDevNotaFiscal DevNF = (FrmDevNotaFiscal)_parent;
+                // vamos obter as células selecionadas no DataGridView
+                DataGridViewSelectedCellCollection selecionadas = dtGrdVwVis.SelectedCells;
+
+                DataGridViewCell celula = selecionadas[0];
+                int linha = celula.RowIndex;
+                int coluna = celula.ColumnIndex;
+
+                DevNF.txtNumNF.getText = selecionadas[0].Value.ToString();
+
+                DevNF.txtSerie.Text = selecionadas[1].Value.ToString();
+                DevNF.dtTmPckrDtEmissao.Text = selecionadas[2].Value.ToString();
+                DevNF.txtTipoNF.Text = selecionadas[3].Value.ToString();
+
+                //populo o item do pedido passando como parametro a NF selecionada.
+                DevNF.populargrid();
+
+
+                //PedLib.txtNomeCliente.Text = Convert.ToString(PedLib.ListarNomeCliente(PedLib.txtCodCliente.Text));
+                //PedLib.txtNomeTransportadora.Text = Convert.ToString(PedLib.ListarNomeTransportadora(PedLib.txtCodTransportadora.Text));
+                //PedLib.txtNomeVendedor.Text = Convert.ToString(PedLib.ListarNomeVendedor(PedLib.txtCodVendedor.Text));
+                
+                
+                //valido os itens que já foram liberado, travando a celula se o item estiver liberado totalmente
+                //se tiver liberado parcialmente mudo a cor da celula para vermelho
+              //  PedLib.ValidaItemLiberado();
 
                 this.Close();
                 this.Dispose();
