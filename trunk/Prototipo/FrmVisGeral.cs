@@ -945,7 +945,7 @@ namespace Comercial
                 #region Double Click Consulta Produto
                 if (_controle.Name == "txtCodProd")
                 {
-                    FrmConPDV ConPed = (FrmConPDV)_parent;
+                    FrmConEstProd ConPed = (FrmConEstProd)_parent;
 
                     // vamos obter as células selecionadas no DataGridView
                     DataGridViewSelectedCellCollection selecionadas = dtGrdVwVis.SelectedCells;
