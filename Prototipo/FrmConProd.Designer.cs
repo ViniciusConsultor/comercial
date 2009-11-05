@@ -31,23 +31,6 @@
             this.tbCntrlConProd = new System.Windows.Forms.TabControl();
             this.tbPgConProd = new System.Windows.Forms.TabPage();
             this.dtGrdVwConProd = new System.Windows.Forms.DataGridView();
-            this.grpBxFiltro = new System.Windows.Forms.GroupBox();
-            this.grpBxProd = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtEstoque = new System.Windows.Forms.TextBox();
-            this.txtProdDesc = new System.Windows.Forms.TextBox();
-            this.cmBxOpEstoque = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dtTPckrDtCadastro = new System.Windows.Forms.DateTimePicker();
-            this.label3 = new System.Windows.Forms.Label();
-            this.LblDesc = new System.Windows.Forms.Label();
-            this.grpBxFab = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtGrupo = new System.Windows.Forms.TextBox();
-            this.txtDesconto = new System.Windows.Forms.TextBox();
-            this.cmBxOpDesconto = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.lblGrupo = new System.Windows.Forms.Label();
             this.Produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClmnDesc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DATACADASTRO = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,8 +40,25 @@
             this.ESTOQUEATUAL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ESTOQUEMIN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IPI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.grpBxFiltro = new System.Windows.Forms.GroupBox();
+            this.grpBxProd = new System.Windows.Forms.GroupBox();
             this.txtBtnCodProd = new Comercial.TextButton();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtEstoque = new System.Windows.Forms.TextBox();
+            this.txtProdDesc = new System.Windows.Forms.TextBox();
+            this.cmBxOpEstoque = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dtTPckrDtCadastro = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.LblDesc = new System.Windows.Forms.Label();
+            this.grpBxFab = new System.Windows.Forms.GroupBox();
             this.txtBtnCodGrp = new Comercial.TextButton();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtGrupo = new System.Windows.Forms.TextBox();
+            this.txtDesconto = new System.Windows.Forms.TextBox();
+            this.cmBxOpDesconto = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lblGrupo = new System.Windows.Forms.Label();
             this.tbCntrlConProd.SuspendLayout();
             this.tbPgConProd.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGrdVwConProd)).BeginInit();
@@ -110,6 +110,70 @@
             this.dtGrdVwConProd.Size = new System.Drawing.Size(717, 252);
             this.dtGrdVwConProd.TabIndex = 2;
             // 
+            // Produto
+            // 
+            this.Produto.DataPropertyName = "PRODUTO";
+            this.Produto.HeaderText = "Produto";
+            this.Produto.Name = "Produto";
+            this.Produto.ReadOnly = true;
+            // 
+            // ClmnDesc
+            // 
+            this.ClmnDesc.DataPropertyName = "GRUPO";
+            this.ClmnDesc.HeaderText = "Grupo";
+            this.ClmnDesc.Name = "ClmnDesc";
+            this.ClmnDesc.ReadOnly = true;
+            this.ClmnDesc.Width = 400;
+            // 
+            // DATACADASTRO
+            // 
+            this.DATACADASTRO.DataPropertyName = "DATACADASTRO";
+            this.DATACADASTRO.HeaderText = "Dt Cadastro";
+            this.DATACADASTRO.Name = "DATACADASTRO";
+            this.DATACADASTRO.ReadOnly = true;
+            // 
+            // PRECOCUSTO
+            // 
+            this.PRECOCUSTO.DataPropertyName = "PRECOCUSTO";
+            this.PRECOCUSTO.HeaderText = "Preço Custo";
+            this.PRECOCUSTO.Name = "PRECOCUSTO";
+            this.PRECOCUSTO.ReadOnly = true;
+            // 
+            // PRECOVENDA
+            // 
+            this.PRECOVENDA.DataPropertyName = "PRECOVENDA";
+            this.PRECOVENDA.HeaderText = "Preço Venda";
+            this.PRECOVENDA.Name = "PRECOVENDA";
+            this.PRECOVENDA.ReadOnly = true;
+            // 
+            // DESCONTO
+            // 
+            this.DESCONTO.DataPropertyName = "DESCONTO";
+            this.DESCONTO.HeaderText = "% Desconto";
+            this.DESCONTO.Name = "DESCONTO";
+            this.DESCONTO.ReadOnly = true;
+            // 
+            // ESTOQUEATUAL
+            // 
+            this.ESTOQUEATUAL.DataPropertyName = "ESTOQUEATUAL";
+            this.ESTOQUEATUAL.HeaderText = "Estoque Atual";
+            this.ESTOQUEATUAL.Name = "ESTOQUEATUAL";
+            this.ESTOQUEATUAL.ReadOnly = true;
+            // 
+            // ESTOQUEMIN
+            // 
+            this.ESTOQUEMIN.DataPropertyName = "ESTOQUEMIN";
+            this.ESTOQUEMIN.HeaderText = "Estoque Mínimo";
+            this.ESTOQUEMIN.Name = "ESTOQUEMIN";
+            this.ESTOQUEMIN.ReadOnly = true;
+            // 
+            // IPI
+            // 
+            this.IPI.DataPropertyName = "IPI";
+            this.IPI.HeaderText = "IPI";
+            this.IPI.Name = "IPI";
+            this.IPI.ReadOnly = true;
+            // 
             // grpBxFiltro
             // 
             this.grpBxFiltro.Controls.Add(this.grpBxProd);
@@ -141,6 +205,17 @@
             this.grpBxProd.TabIndex = 1;
             this.grpBxProd.TabStop = false;
             this.grpBxProd.Text = "Dados Produtos:";
+            // 
+            // txtBtnCodProd
+            // 
+            this.txtBtnCodProd.getText = "";
+            this.txtBtnCodProd.Image = global::Comercial.Properties.Resources.search1;
+            this.txtBtnCodProd.Location = new System.Drawing.Point(11, 37);
+            this.txtBtnCodProd.Name = "txtBtnCodProd";
+            this.txtBtnCodProd.ShowButton = false;
+            this.txtBtnCodProd.Size = new System.Drawing.Size(94, 25);
+            this.txtBtnCodProd.TabIndex = 5;
+            this.txtBtnCodProd.ButtonClick += new System.EventHandler(this.txtNumPed_ButtonClick);
             // 
             // label2
             // 
@@ -244,6 +319,17 @@
             this.grpBxFab.TabStop = false;
             this.grpBxFab.Text = "Dados grupos:";
             // 
+            // txtBtnCodGrp
+            // 
+            this.txtBtnCodGrp.getText = "";
+            this.txtBtnCodGrp.Image = global::Comercial.Properties.Resources.search1;
+            this.txtBtnCodGrp.Location = new System.Drawing.Point(20, 37);
+            this.txtBtnCodGrp.Name = "txtBtnCodGrp";
+            this.txtBtnCodGrp.ShowButton = false;
+            this.txtBtnCodGrp.Size = new System.Drawing.Size(92, 25);
+            this.txtBtnCodGrp.TabIndex = 1;
+            this.txtBtnCodGrp.ButtonClick += new System.EventHandler(this.txtBtnCodGrp_ButtonClick);
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -306,92 +392,6 @@
             this.lblGrupo.Size = new System.Drawing.Size(39, 13);
             this.lblGrupo.TabIndex = 4;
             this.lblGrupo.Text = "Grupo:";
-            // 
-            // Produto
-            // 
-            this.Produto.DataPropertyName = "PRODUTO";
-            this.Produto.HeaderText = "Produto";
-            this.Produto.Name = "Produto";
-            this.Produto.ReadOnly = true;
-            // 
-            // ClmnDesc
-            // 
-            this.ClmnDesc.DataPropertyName = "GRUPO";
-            this.ClmnDesc.HeaderText = "Grupo";
-            this.ClmnDesc.Name = "ClmnDesc";
-            this.ClmnDesc.ReadOnly = true;
-            this.ClmnDesc.Width = 400;
-            // 
-            // DATACADASTRO
-            // 
-            this.DATACADASTRO.DataPropertyName = "DATACADASTRO";
-            this.DATACADASTRO.HeaderText = "Dt Cadastro";
-            this.DATACADASTRO.Name = "DATACADASTRO";
-            this.DATACADASTRO.ReadOnly = true;
-            // 
-            // PRECOCUSTO
-            // 
-            this.PRECOCUSTO.DataPropertyName = "PRECOCUSTO";
-            this.PRECOCUSTO.HeaderText = "Preço Custo";
-            this.PRECOCUSTO.Name = "PRECOCUSTO";
-            this.PRECOCUSTO.ReadOnly = true;
-            // 
-            // PRECOVENDA
-            // 
-            this.PRECOVENDA.DataPropertyName = "PRECOVENDA";
-            this.PRECOVENDA.HeaderText = "Preço Venda";
-            this.PRECOVENDA.Name = "PRECOVENDA";
-            this.PRECOVENDA.ReadOnly = true;
-            // 
-            // DESCONTO
-            // 
-            this.DESCONTO.DataPropertyName = "DESCONTO";
-            this.DESCONTO.HeaderText = "% Desconto";
-            this.DESCONTO.Name = "DESCONTO";
-            this.DESCONTO.ReadOnly = true;
-            // 
-            // ESTOQUEATUAL
-            // 
-            this.ESTOQUEATUAL.DataPropertyName = "ESTOQUEATUAL";
-            this.ESTOQUEATUAL.HeaderText = "Estoque Atual";
-            this.ESTOQUEATUAL.Name = "ESTOQUEATUAL";
-            this.ESTOQUEATUAL.ReadOnly = true;
-            // 
-            // ESTOQUEMIN
-            // 
-            this.ESTOQUEMIN.DataPropertyName = "ESTOQUEMIN";
-            this.ESTOQUEMIN.HeaderText = "Estoque Mínimo";
-            this.ESTOQUEMIN.Name = "ESTOQUEMIN";
-            this.ESTOQUEMIN.ReadOnly = true;
-            // 
-            // IPI
-            // 
-            this.IPI.DataPropertyName = "IPI";
-            this.IPI.HeaderText = "IPI";
-            this.IPI.Name = "IPI";
-            this.IPI.ReadOnly = true;
-            // 
-            // txtBtnCodProd
-            // 
-            this.txtBtnCodProd.getText = "";
-            this.txtBtnCodProd.Image = global::Comercial.Properties.Resources.search1;
-            this.txtBtnCodProd.Location = new System.Drawing.Point(11, 37);
-            this.txtBtnCodProd.Name = "txtBtnCodProd";
-            this.txtBtnCodProd.ShowButton = false;
-            this.txtBtnCodProd.Size = new System.Drawing.Size(94, 25);
-            this.txtBtnCodProd.TabIndex = 5;
-            this.txtBtnCodProd.ButtonClick += new System.EventHandler(this.txtNumPed_ButtonClick);
-            // 
-            // txtBtnCodGrp
-            // 
-            this.txtBtnCodGrp.getText = "";
-            this.txtBtnCodGrp.Image = global::Comercial.Properties.Resources.search1;
-            this.txtBtnCodGrp.Location = new System.Drawing.Point(20, 37);
-            this.txtBtnCodGrp.Name = "txtBtnCodGrp";
-            this.txtBtnCodGrp.ShowButton = false;
-            this.txtBtnCodGrp.Size = new System.Drawing.Size(92, 25);
-            this.txtBtnCodGrp.TabIndex = 1;
-            this.txtBtnCodGrp.ButtonClick += new System.EventHandler(this.txtBtnCodGrp_ButtonClick);
             // 
             // FrmConProd
             // 
