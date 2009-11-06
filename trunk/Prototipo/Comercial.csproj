@@ -86,6 +86,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>COMERCIALDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="FrmAtuCubo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAtuCubo.Designer.cs">
+      <DependentUpon>FrmAtuCubo.cs</DependentUpon>
+    </Compile>
     <Compile Include="RptConEstoque.cs">
       <DependentUpon>RptConEstoque.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -134,11 +140,11 @@
     <Compile Include="FrmCadProd.designer.cs">
       <DependentUpon>FrmCadProd.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmCadTes.cs">
+    <Compile Include="FrmCadRegiao.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmCadTes.designer.cs">
-      <DependentUpon>FrmCadTes.cs</DependentUpon>
+    <Compile Include="FrmCadRegiao.designer.cs">
+      <DependentUpon>FrmCadRegiao.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmCadTra.cs">
       <SubType>Form</SubType>
@@ -262,6 +268,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmAtuCubo.resx">
+      <DependentUpon>FrmAtuCubo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RptConEstoque.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RptConEstoque.cs</LastGenOutput>
@@ -294,8 +303,8 @@
       <DependentUpon>FrmCadProd.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmCadTes.resx">
-      <DependentUpon>FrmCadTes.cs</DependentUpon>
+    <EmbeddedResource Include="FrmCadRegiao.resx">
+      <DependentUpon>FrmCadRegiao.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCadTra.resx">

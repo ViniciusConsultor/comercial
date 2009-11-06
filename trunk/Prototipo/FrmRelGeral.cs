@@ -55,6 +55,7 @@ namespace Comercial
                     COMERCIALDataSet oDataset = new COMERCIALDataSet();
 
                     Microsoft.Practices.EnterpriseLibrary.Data.Database db = DatabaseFactory.CreateDatabase();
+                 
                     //Crio a Conexão
                     SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString);
 

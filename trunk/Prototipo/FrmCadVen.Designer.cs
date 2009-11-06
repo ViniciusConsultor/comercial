@@ -721,7 +721,7 @@
             // cpfToolStripLabel
             // 
             this.cpfToolStripLabel.Name = "cpfToolStripLabel";
-            this.cpfToolStripLabel.Size = new System.Drawing.Size(30, 22);
+            this.cpfToolStripLabel.Size = new System.Drawing.Size(31, 22);
             this.cpfToolStripLabel.Text = "CPF:";
             // 
             // cpfToolStripTextBox
@@ -733,7 +733,7 @@
             // nomeToolStripLabel
             // 
             this.nomeToolStripLabel.Name = "nomeToolStripLabel";
-            this.nomeToolStripLabel.Size = new System.Drawing.Size(38, 22);
+            this.nomeToolStripLabel.Size = new System.Drawing.Size(43, 22);
             this.nomeToolStripLabel.Text = "Nome:";
             // 
             // nomeToolStripTextBox

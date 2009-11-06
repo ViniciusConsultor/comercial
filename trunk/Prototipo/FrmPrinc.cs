@@ -79,6 +79,7 @@ namespace Comercial
                     FrmCadCli frmCli = (FrmCadCli)frm;
                     retorno = frmCli.salvar(edit);
                 }
+
                 #endregion
 
                 if (frm is FrmCadProd && edit == false)
@@ -141,6 +142,12 @@ namespace Comercial
                     {
                         COMERCIALDataSetTableAdapters.CLIENTETableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.CLIENTETableAdapter();
                         table.Update(_dataset);
+                    }
+                    if (frm is FrmCadRegiao)
+                    {
+                        COMERCIALDataSetTableAdapters.REGIAOTableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.REGIAOTableAdapter();
+                        table.Update(_dataset);
+
                     }
                     #endregion
 
@@ -291,6 +298,7 @@ namespace Comercial
             {
                 FrmCadCli cli = (FrmCadCli)frm;
                 cli.txtLimCredCli.Enabled = false;
+                cli.txtCnpjCli.Focus();
             }
 
             if (frm is FrmCadPed)
@@ -1152,35 +1160,35 @@ namespace Comercial
             }
         }
 
-        private void tESToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            int x = 0, y = 0;
+        //private void tESToolStripMenuItem_Click(object sender, EventArgs e)
+        //{
+        //    int x = 0, y = 0;
 
-            // Localiza o formulario
-            foreach (Form form in this.MdiChildren)
-            {
-                if (form is FrmCadTes)
-                {
-                    form.WindowState = FormWindowState.Maximized;
-                    form.Activate();
-                    x++;
-                }
-                y++;
+        //    // Localiza o formulario
+        //    foreach (Form form in this.MdiChildren)
+        //    {
+        //        if (form is FrmCadTes)
+        //        {
+        //            form.WindowState = FormWindowState.Maximized;
+        //            form.Activate();
+        //            x++;
+        //        }
+        //        y++;
 
-            }
+        //    }
 
             // Para criar o formulario 
-            if (x == 0 && y == 0)
-            {
-                FrmCadTes filho = new FrmCadTes(this);
-                filho.Show();
+        //    if (x == 0 && y == 0)
+        //    {
+        //        FrmCadTes filho = new FrmCadTes(this);
+        //        filho.Show();
 
-                Util.Interface.ResetControls(filho);
-                Util.Interface.ChangeControlStatus(filho, false);
+        //        Util.Interface.ResetControls(filho);
+        //        Util.Interface.ChangeControlStatus(filho, false);
 
-                filho.WindowState = FormWindowState.Maximized;
-            }
-        }
+        //        filho.WindowState = FormWindowState.Maximized;
+        //    }
+        //}
 
         #endregion
 
@@ -1610,6 +1618,16 @@ namespace Comercial
 
                 throw ex;
             }
+        }
+
+        private void regiãoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CreateForm(this, typeof(FrmCadRegiao));
+        }
+
+        private void atualizarCuboToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CreateForm(this, typeof(FrmAtuCubo));
         }
 
 

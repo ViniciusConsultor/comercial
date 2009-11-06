@@ -30,18 +30,19 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmConCli));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tbCntrlConCli = new System.Windows.Forms.TabControl();
             this.tbPgConCli = new System.Windows.Forms.TabPage();
             this.grpBxFiltro = new System.Windows.Forms.GroupBox();
             this.grpBxPedido = new System.Windows.Forms.GroupBox();
             this.txtNumPed = new System.Windows.Forms.TextBox();
-            this.dttmDataPedido = new System.Windows.Forms.DateTimePicker();
+            this.dttmDataPedido1 = new System.Windows.Forms.DateTimePicker();
             this.lblDataPed = new System.Windows.Forms.Label();
             this.lblNumPed = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.rdbtnCancelado = new System.Windows.Forms.RadioButton();
             this.rdbtnPendente = new System.Windows.Forms.RadioButton();
             this.rdbtnEfetivado = new System.Windows.Forms.RadioButton();
@@ -65,7 +66,8 @@
             this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
             this.cLIENTEBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cLIENTETableAdapter = new Comercial.COMERCIALDataSetTableAdapters.CLIENTETableAdapter();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.dttmDataPedido2 = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
             this.tbCntrlConCli.SuspendLayout();
             this.tbPgConCli.SuspendLayout();
             this.grpBxFiltro.SuspendLayout();
@@ -116,8 +118,10 @@
             // 
             // grpBxPedido
             // 
+            this.grpBxPedido.Controls.Add(this.label1);
+            this.grpBxPedido.Controls.Add(this.dttmDataPedido2);
             this.grpBxPedido.Controls.Add(this.txtNumPed);
-            this.grpBxPedido.Controls.Add(this.dttmDataPedido);
+            this.grpBxPedido.Controls.Add(this.dttmDataPedido1);
             this.grpBxPedido.Controls.Add(this.lblDataPed);
             this.grpBxPedido.Controls.Add(this.lblNumPed);
             this.grpBxPedido.Controls.Add(this.groupBox2);
@@ -138,15 +142,15 @@
             this.txtNumPed.Size = new System.Drawing.Size(80, 20);
             this.txtNumPed.TabIndex = 22;
             // 
-            // dttmDataPedido
+            // dttmDataPedido1
             // 
-            this.dttmDataPedido.Checked = false;
-            this.dttmDataPedido.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dttmDataPedido.Location = new System.Drawing.Point(12, 132);
-            this.dttmDataPedido.Name = "dttmDataPedido";
-            this.dttmDataPedido.ShowCheckBox = true;
-            this.dttmDataPedido.Size = new System.Drawing.Size(115, 20);
-            this.dttmDataPedido.TabIndex = 21;
+            this.dttmDataPedido1.Checked = false;
+            this.dttmDataPedido1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dttmDataPedido1.Location = new System.Drawing.Point(12, 132);
+            this.dttmDataPedido1.Name = "dttmDataPedido1";
+            this.dttmDataPedido1.ShowCheckBox = true;
+            this.dttmDataPedido1.Size = new System.Drawing.Size(115, 20);
+            this.dttmDataPedido1.TabIndex = 21;
             // 
             // lblDataPed
             // 
@@ -184,6 +188,16 @@
             this.groupBox2.TabIndex = 14;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Situação do Pedido:";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(111, 1);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(15, 14);
+            this.checkBox1.TabIndex = 3;
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckStateChanged += new System.EventHandler(this.checkBox1_CheckStateChanged);
             // 
             // rdbtnCancelado
             // 
@@ -374,14 +388,14 @@
             this.dtgrdConCli.AllowUserToAddRows = false;
             this.dtgrdConCli.AllowUserToDeleteRows = false;
             this.dtgrdConCli.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgrdConCli.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgrdConCli.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgrdConCli.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgrdConCli.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CNPJCli,
@@ -389,25 +403,25 @@
             this.ClmnCodPed,
             this.ClmnDtPed,
             this.ClmnValPed});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.CadetBlue;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgrdConCli.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.CadetBlue;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgrdConCli.DefaultCellStyle = dataGridViewCellStyle2;
             this.dtgrdConCli.Location = new System.Drawing.Point(6, 209);
             this.dtgrdConCli.Name = "dtgrdConCli";
             this.dtgrdConCli.ReadOnly = true;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgrdConCli.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgrdConCli.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dtgrdConCli.Size = new System.Drawing.Size(813, 243);
             this.dtgrdConCli.TabIndex = 0;
             // 
@@ -463,15 +477,26 @@
             // 
             this.cLIENTETableAdapter.ClearBeforeFill = true;
             // 
-            // checkBox1
+            // dttmDataPedido2
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(111, 1);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(15, 14);
-            this.checkBox1.TabIndex = 3;
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckStateChanged += new System.EventHandler(this.checkBox1_CheckStateChanged);
+            this.dttmDataPedido2.Checked = false;
+            this.dttmDataPedido2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dttmDataPedido2.Location = new System.Drawing.Point(165, 132);
+            this.dttmDataPedido2.Name = "dttmDataPedido2";
+            this.dttmDataPedido2.ShowCheckBox = true;
+            this.dttmDataPedido2.Size = new System.Drawing.Size(115, 20);
+            this.dttmDataPedido2.TabIndex = 23;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.CadetBlue;
+            this.label1.Location = new System.Drawing.Point(133, 136);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(26, 13);
+            this.label1.TabIndex = 27;
+            this.label1.Text = "Até:";
             // 
             // frmConCli
             // 
@@ -519,7 +544,7 @@
         private System.Windows.Forms.RadioButton rdbtnEfetivado;
         private System.Windows.Forms.ComboBox cmBxTipoPed;
         private System.Windows.Forms.Label lblTipoPed;
-        private System.Windows.Forms.DateTimePicker dttmDataPedido;
+        private System.Windows.Forms.DateTimePicker dttmDataPedido1;
         private System.Windows.Forms.Label lblNome;
         private System.Windows.Forms.Label lblRazao;
         private System.Windows.Forms.Label lblArea;
@@ -538,5 +563,7 @@
         private System.Windows.Forms.BindingSource cLIENTEBindingSource;
         private Comercial.COMERCIALDataSetTableAdapters.CLIENTETableAdapter cLIENTETableAdapter;
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DateTimePicker dttmDataPedido2;
     }
 }

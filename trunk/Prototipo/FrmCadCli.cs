@@ -86,7 +86,7 @@ namespace Comercial
             string c = ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString;
 
             //Valida CNPJ
-            if (!String.IsNullOrEmpty(txtCnpjCli.Text) && txtCnpjCli.Text.Length == 14)
+            if (!String.IsNullOrEmpty(txtCnpjCli.Text) && txtCnpjCli.Text.Trim().Length == 14)
             {
 
                 int cnpj = valida.ValidaCNPJ(txtCnpjCli.Text);
@@ -122,6 +122,17 @@ namespace Comercial
                 //    MessageBox.Show("Campo(s) obrigatório(s) não preenchido(s).", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 //    return 1;
                 //}
+            }
+
+            // Valida limite de crédito
+           // string va = txtLimCredCli.Te
+            if(!String.IsNullOrEmpty(txtLimCredCli.Text))
+            {
+                double valor = double.Parse(txtLimCredCli.Text,System.Globalization.NumberStyles.Currency);
+                if (valor<=0)
+                {
+                    throw new Exception("valor invalido");
+                }
             }
 
             // Valida email
@@ -258,10 +269,14 @@ namespace Comercial
             {
                 if (chckBxCred.Checked)
                 {
-                
+
                     txtLimCredCli.Enabled = true;
                 }
-                else txtLimCredCli.Enabled = false;
+                else
+                {
+                    txtLimCredCli.Enabled = false;
+                    txtLimCredCli.Text = null;
+                }
             }
         }
 
@@ -338,7 +353,10 @@ namespace Comercial
                 txtBairroCli.Text = x[2];
                 txtEndCli.Text = x[3];
 
-                txtNumCli.Focus();
+                if (!String.IsNullOrEmpty(txtEndCli.Text))
+                    txtEndCli.Focus();
+                else
+                    txtNumCli.Focus();
             }
             else
             {
@@ -351,6 +369,34 @@ namespace Comercial
         {
 
         }
+
+        private void txtCnpjCli_Leave(object sender, EventArgs e)
+        {
+             Validacoes v = new Validacoes();
+            
+            if (!string.IsNullOrEmpty(txtCnpjCli.Text) && txtCnpjCli.Text.Length==14)
+            {
+                if (v.ValidaCNPJ(txtCnpjCli.Text) == 1)
+                {
+                    pictureBox1.Visible = true;
+                    pictureBox2.Visible = false;
+                    txtCnpjCli.Focus();
+                }
+                else
+                {
+                    pictureBox1.Visible = false;
+                    pictureBox2.Visible = true;
+                }
+            }
+            else
+            {
+                pictureBox1.Visible = true;
+                pictureBox2.Visible = false;
+                txtCnpjCli.Focus();
+            }
+        }
+
+        
 
         }
       }
