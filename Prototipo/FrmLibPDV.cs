@@ -843,6 +843,11 @@ namespace Comercial
         }
         #endregion
 
+        private void FrmLibPDV_Load(object sender, EventArgs e)
+        {
+
+        }
+
 
 
 
