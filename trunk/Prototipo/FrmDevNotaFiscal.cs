@@ -72,7 +72,7 @@ namespace Comercial
 
            StringBuilder sqlcommand = new StringBuilder();
 
-           sqlcommand.Append(" SELECT NRNOTAFISCAL, SERIE, DATAEMISSAO, TIPO ");
+           sqlcommand.Append(" SELECT NRNOTAFISCAL, SERIE, DATAEMISSAO, TIPO, STATUS ");
            sqlcommand.Append(" FROM NOTAFISCAL ");
            
            DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
@@ -171,6 +171,7 @@ namespace Comercial
                txtSerie.Text = String.Empty;
                txtTipoNF.Text = String.Empty;
                dtTmPckrDtEmissao.Text = String.Empty;
+               TxtStatus.Text = String.Empty;
                txtBxVlrMercadoria.Text = String.Empty;
             
                dtGrdVwItensNF.Refresh();
@@ -192,6 +193,11 @@ namespace Comercial
        }
 
        #endregion
+
+       private void statusTextBox_TextChanged(object sender, EventArgs e)
+       {
+
+       }
 
 
 

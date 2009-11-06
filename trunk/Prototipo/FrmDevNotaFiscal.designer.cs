@@ -29,10 +29,20 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.Label statusLabel;
             this.tbPgDevNotaFiscal = new System.Windows.Forms.TabPage();
             this.grpBxItensNotFiscal = new System.Windows.Forms.GroupBox();
             this.dtGrdVwItensNF = new System.Windows.Forms.DataGridView();
+            this.clmProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmDescProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmUnidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmQuantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmVlrUnitário = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmVlrTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grpBxTotais = new System.Windows.Forms.GroupBox();
+            this.TxtStatus = new System.Windows.Forms.TextBox();
+            this.nOTAFISCALBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
             this.lblVlrBruto = new System.Windows.Forms.Label();
             this.lblDescontos = new System.Windows.Forms.Label();
             this.lblVlrFrete = new System.Windows.Forms.Label();
@@ -42,9 +52,8 @@
             this.txtBxVlrFrete = new System.Windows.Forms.TextBox();
             this.txtBxVlrMercadoria = new System.Windows.Forms.TextBox();
             this.grpBxInfNotFiscal = new System.Windows.Forms.GroupBox();
+            this.txtNumNF = new Comercial.TextButton();
             this.txtTipoNF = new System.Windows.Forms.TextBox();
-            this.nOTAFISCALBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
             this.lblNumNotFiscal = new System.Windows.Forms.Label();
             this.lblDtEmissao = new System.Windows.Forms.Label();
             this.txtSerie = new System.Windows.Forms.TextBox();
@@ -54,22 +63,27 @@
             this.tbCntrlDevNotFiscal = new System.Windows.Forms.TabControl();
             this.nOTAFISCALTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.NOTAFISCALTableAdapter();
             this.tableAdapterManager = new Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager();
-            this.clmProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmDescProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmUnidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmQuantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmVlrUnitário = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmVlrTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtNumNF = new Comercial.TextButton();
+            statusLabel = new System.Windows.Forms.Label();
             this.tbPgDevNotaFiscal.SuspendLayout();
             this.grpBxItensNotFiscal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGrdVwItensNF)).BeginInit();
             this.grpBxTotais.SuspendLayout();
-            this.grpBxInfNotFiscal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nOTAFISCALBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).BeginInit();
+            this.grpBxInfNotFiscal.SuspendLayout();
             this.tbCntrlDevNotFiscal.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // statusLabel
+            // 
+            statusLabel.AutoSize = true;
+            statusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            statusLabel.ForeColor = System.Drawing.Color.CadetBlue;
+            statusLabel.Location = new System.Drawing.Point(548, 16);
+            statusLabel.Name = "statusLabel";
+            statusLabel.Size = new System.Drawing.Size(40, 13);
+            statusLabel.TabIndex = 25;
+            statusLabel.Text = "Status:";
             // 
             // tbPgDevNotaFiscal
             // 
@@ -117,6 +131,48 @@
             this.dtGrdVwItensNF.Size = new System.Drawing.Size(735, 227);
             this.dtGrdVwItensNF.TabIndex = 0;
             // 
+            // clmProduto
+            // 
+            this.clmProduto.DataPropertyName = "CodProduto";
+            this.clmProduto.HeaderText = "Produto";
+            this.clmProduto.Name = "clmProduto";
+            this.clmProduto.ReadOnly = true;
+            // 
+            // clmDescProd
+            // 
+            this.clmDescProd.DataPropertyName = "Descricao";
+            this.clmDescProd.HeaderText = "Desc. Produto";
+            this.clmDescProd.Name = "clmDescProd";
+            this.clmDescProd.ReadOnly = true;
+            // 
+            // clmUnidade
+            // 
+            this.clmUnidade.DataPropertyName = "CodUnidadeMedida";
+            this.clmUnidade.HeaderText = "Unidade";
+            this.clmUnidade.Name = "clmUnidade";
+            this.clmUnidade.ReadOnly = true;
+            // 
+            // clmQuantidade
+            // 
+            this.clmQuantidade.DataPropertyName = "Quantidade";
+            this.clmQuantidade.HeaderText = "Quantidade";
+            this.clmQuantidade.Name = "clmQuantidade";
+            this.clmQuantidade.ReadOnly = true;
+            // 
+            // clmVlrUnitário
+            // 
+            this.clmVlrUnitário.DataPropertyName = "Valor";
+            this.clmVlrUnitário.HeaderText = "Vlr. Unitário";
+            this.clmVlrUnitário.Name = "clmVlrUnitário";
+            this.clmVlrUnitário.ReadOnly = true;
+            // 
+            // clmVlrTotal
+            // 
+            this.clmVlrTotal.DataPropertyName = "VALORTOTAL";
+            this.clmVlrTotal.HeaderText = "Vlr. Total";
+            this.clmVlrTotal.Name = "clmVlrTotal";
+            this.clmVlrTotal.ReadOnly = true;
+            // 
             // grpBxTotais
             // 
             this.grpBxTotais.Controls.Add(this.lblVlrBruto);
@@ -130,10 +186,29 @@
             this.grpBxTotais.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.grpBxTotais.Location = new System.Drawing.Point(19, 341);
             this.grpBxTotais.Name = "grpBxTotais";
-            this.grpBxTotais.Size = new System.Drawing.Size(738, 136);
+            this.grpBxTotais.Size = new System.Drawing.Size(752, 140);
             this.grpBxTotais.TabIndex = 19;
             this.grpBxTotais.TabStop = false;
             this.grpBxTotais.Text = "Totais";
+            // 
+            // TxtStatus
+            // 
+            this.TxtStatus.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.nOTAFISCALBindingSource, "Status", true));
+            this.TxtStatus.Location = new System.Drawing.Point(551, 32);
+            this.TxtStatus.Name = "TxtStatus";
+            this.TxtStatus.Size = new System.Drawing.Size(61, 20);
+            this.TxtStatus.TabIndex = 26;
+            this.TxtStatus.TextChanged += new System.EventHandler(this.statusTextBox_TextChanged);
+            // 
+            // nOTAFISCALBindingSource
+            // 
+            this.nOTAFISCALBindingSource.DataMember = "NOTAFISCAL";
+            this.nOTAFISCALBindingSource.DataSource = this.cOMERCIALDataSet;
+            // 
+            // cOMERCIALDataSet
+            // 
+            this.cOMERCIALDataSet.DataSetName = "COMERCIALDataSet";
+            this.cOMERCIALDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // lblVlrBruto
             // 
@@ -217,6 +292,8 @@
             // 
             // grpBxInfNotFiscal
             // 
+            this.grpBxInfNotFiscal.Controls.Add(this.TxtStatus);
+            this.grpBxInfNotFiscal.Controls.Add(statusLabel);
             this.grpBxInfNotFiscal.Controls.Add(this.txtNumNF);
             this.grpBxInfNotFiscal.Controls.Add(this.txtTipoNF);
             this.grpBxInfNotFiscal.Controls.Add(this.lblNumNotFiscal);
@@ -233,24 +310,25 @@
             this.grpBxInfNotFiscal.TabStop = false;
             this.grpBxInfNotFiscal.Text = "Informações Nota Fiscal";
             // 
+            // txtNumNF
+            // 
+            this.txtNumNF.getText = "";
+            this.txtNumNF.Image = global::Comercial.Properties.Resources.search1;
+            this.txtNumNF.Location = new System.Drawing.Point(48, 32);
+            this.txtNumNF.Name = "txtNumNF";
+            this.txtNumNF.ShowButton = false;
+            this.txtNumNF.Size = new System.Drawing.Size(210, 25);
+            this.txtNumNF.TabIndex = 17;
+            this.txtNumNF.ButtonClick += new System.EventHandler(this.txtNumNF_ButtonClick);
+            // 
             // txtTipoNF
             // 
             this.txtTipoNF.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.nOTAFISCALBindingSource, "Tipo", true));
-            this.txtTipoNF.Location = new System.Drawing.Point(555, 33);
+            this.txtTipoNF.Location = new System.Drawing.Point(326, 33);
             this.txtTipoNF.Name = "txtTipoNF";
             this.txtTipoNF.ReadOnly = true;
-            this.txtTipoNF.Size = new System.Drawing.Size(121, 20);
+            this.txtTipoNF.Size = new System.Drawing.Size(63, 20);
             this.txtTipoNF.TabIndex = 16;
-            // 
-            // nOTAFISCALBindingSource
-            // 
-            this.nOTAFISCALBindingSource.DataMember = "NOTAFISCAL";
-            this.nOTAFISCALBindingSource.DataSource = this.cOMERCIALDataSet;
-            // 
-            // cOMERCIALDataSet
-            // 
-            this.cOMERCIALDataSet.DataSetName = "COMERCIALDataSet";
-            this.cOMERCIALDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // lblNumNotFiscal
             // 
@@ -278,19 +356,18 @@
             // 
             this.txtSerie.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.nOTAFISCALBindingSource, "Serie", true));
             this.txtSerie.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSerie.Location = new System.Drawing.Point(309, 33);
+            this.txtSerie.Location = new System.Drawing.Point(264, 33);
             this.txtSerie.Name = "txtSerie";
             this.txtSerie.ReadOnly = true;
-            this.txtSerie.Size = new System.Drawing.Size(77, 20);
+            this.txtSerie.Size = new System.Drawing.Size(50, 20);
             this.txtSerie.TabIndex = 5;
-         
             // 
             // lblSerie
             // 
             this.lblSerie.AutoSize = true;
             this.lblSerie.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSerie.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblSerie.Location = new System.Drawing.Point(306, 16);
+            this.lblSerie.Location = new System.Drawing.Point(261, 16);
             this.lblSerie.Name = "lblSerie";
             this.lblSerie.Size = new System.Drawing.Size(34, 13);
             this.lblSerie.TabIndex = 4;
@@ -313,7 +390,7 @@
             this.lblTipo.AutoSize = true;
             this.lblTipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTipo.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblTipo.Location = new System.Drawing.Point(552, 16);
+            this.lblTipo.Location = new System.Drawing.Point(323, 16);
             this.lblTipo.Name = "lblTipo";
             this.lblTipo.Size = new System.Drawing.Size(48, 13);
             this.lblTipo.TabIndex = 2;
@@ -356,59 +433,6 @@
             this.tableAdapterManager.VENDEDORTableAdapter = null;
             this.tableAdapterManager.VIATRANSPORTETableAdapter = null;
             // 
-            // clmProduto
-            // 
-            this.clmProduto.DataPropertyName = "CodProduto";
-            this.clmProduto.HeaderText = "Produto";
-            this.clmProduto.Name = "clmProduto";
-            this.clmProduto.ReadOnly = true;
-            // 
-            // clmDescProd
-            // 
-            this.clmDescProd.DataPropertyName = "Descricao";
-            this.clmDescProd.HeaderText = "Desc. Produto";
-            this.clmDescProd.Name = "clmDescProd";
-            this.clmDescProd.ReadOnly = true;
-            // 
-            // clmUnidade
-            // 
-            this.clmUnidade.DataPropertyName = "CodUnidadeMedida";
-            this.clmUnidade.HeaderText = "Unidade";
-            this.clmUnidade.Name = "clmUnidade";
-            this.clmUnidade.ReadOnly = true;
-            // 
-            // clmQuantidade
-            // 
-            this.clmQuantidade.DataPropertyName = "Quantidade";
-            this.clmQuantidade.HeaderText = "Quantidade";
-            this.clmQuantidade.Name = "clmQuantidade";
-            this.clmQuantidade.ReadOnly = true;
-            // 
-            // clmVlrUnitário
-            // 
-            this.clmVlrUnitário.DataPropertyName = "Valor";
-            this.clmVlrUnitário.HeaderText = "Vlr. Unitário";
-            this.clmVlrUnitário.Name = "clmVlrUnitário";
-            this.clmVlrUnitário.ReadOnly = true;
-            // 
-            // clmVlrTotal
-            // 
-            this.clmVlrTotal.DataPropertyName = "VALORTOTAL";
-            this.clmVlrTotal.HeaderText = "Vlr. Total";
-            this.clmVlrTotal.Name = "clmVlrTotal";
-            this.clmVlrTotal.ReadOnly = true;
-            // 
-            // txtNumNF
-            // 
-            this.txtNumNF.getText = "";
-            this.txtNumNF.Image = global::Comercial.Properties.Resources.search1;
-            this.txtNumNF.Location = new System.Drawing.Point(48, 32);
-            this.txtNumNF.Name = "txtNumNF";
-            this.txtNumNF.ShowButton = false;
-            this.txtNumNF.Size = new System.Drawing.Size(255, 25);
-            this.txtNumNF.TabIndex = 17;
-            this.txtNumNF.ButtonClick += new System.EventHandler(this.txtNumNF_ButtonClick);
-            // 
             // FrmDevNotaFiscal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -426,10 +450,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtGrdVwItensNF)).EndInit();
             this.grpBxTotais.ResumeLayout(false);
             this.grpBxTotais.PerformLayout();
-            this.grpBxInfNotFiscal.ResumeLayout(false);
-            this.grpBxInfNotFiscal.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nOTAFISCALBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).EndInit();
+            this.grpBxInfNotFiscal.ResumeLayout(false);
+            this.grpBxInfNotFiscal.PerformLayout();
             this.tbCntrlDevNotFiscal.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -469,6 +493,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clmQuantidade;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmVlrUnitário;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmVlrTotal;
+        public System.Windows.Forms.TextBox TxtStatus;
 
     }
 }

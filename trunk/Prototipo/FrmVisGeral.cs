@@ -339,6 +339,8 @@ namespace Comercial
                 dtGrdVwVis.Columns["col4"].DataPropertyName = "TIPO";
 
 
+                dtGrdVwVis.Columns.Add("col5", "Status NF");
+                dtGrdVwVis.Columns["col5"].DataPropertyName = "STATUS";
             }
             #endregion
         }
@@ -729,7 +731,7 @@ namespace Comercial
                         SqlConnection conn = new SqlConnection(c);
                         conn.Open();
 
-                        SqlCommand cmd = new SqlCommand(" SELECT NRNOTAFISCAL, SERIE, DATAEMISSAO, TIPO" +
+                        SqlCommand cmd = new SqlCommand(" SELECT NRNOTAFISCAL, SERIE, DATAEMISSAO, TIPO, STATUS" +
                             " FROM NOTAFISCAL WHERE NRNOTAFISCAL LIKE @NRNOTAFISCAL ", conn);
 
                         cmd.Parameters.Add(new SqlParameter("@NRNOTAFISCAL", txtPesquisar.Text + "%"));
@@ -1058,7 +1060,7 @@ namespace Comercial
                 
                 FrmDevNotaFiscal DevNF = (FrmDevNotaFiscal)_parent;
                 
-                                // vamos obter as células selecionadas no DataGridView
+                // pegar as células selecionadas no DataGridView
                 DataGridViewSelectedCellCollection selecionadas = dtGrdVwVis.SelectedCells;
               
 
@@ -1070,6 +1072,8 @@ namespace Comercial
                 DevNF.txtSerie.Text = selecionadas[1].Value.ToString();
                 DevNF.dtTmPckrDtEmissao.Text = selecionadas[2].Value.ToString();
                 DevNF.txtTipoNF.Text = selecionadas[3].Value.ToString();
+                DevNF.TxtStatus.Text = selecionadas[4].Value.ToString();                                              
+                
 
                 //populo o item do pedido passando como parametro a NF selecionada.
                 DevNF.populargrid();
