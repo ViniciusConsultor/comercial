@@ -61,7 +61,6 @@
             this.processosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gerarNotaFiscalToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.devoluçãoDeNFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.liberarPedidoVs2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.faturamentoDoPedidoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.mineraçãoDeDadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -82,9 +81,9 @@
             this.tlStrpBtnLibPed = new System.Windows.Forms.ToolStripButton();
             this.tlStrpBtnMinGer = new System.Windows.Forms.ToolStripButton();
             this.tlStrpBtnConMin = new System.Windows.Forms.ToolStripButton();
+            this.tsbCancelarPedido = new System.Windows.Forms.ToolStripButton();
             this.tlStrpBtnSalvarUsu = new System.Windows.Forms.ToolStripButton();
             this.tsbhomeProcesso = new System.Windows.Forms.ToolStripButton();
-            this.tsbCancelarPedido = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigator1 = new System.Windows.Forms.BindingNavigator(this.components);
             this.btnNovo = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorCountItem = new System.Windows.Forms.ToolStripLabel();
@@ -331,7 +330,6 @@
             this.processosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.gerarNotaFiscalToolStripMenuItem1,
             this.devoluçãoDeNFToolStripMenuItem,
-            this.liberarPedidoVs2ToolStripMenuItem,
             this.faturamentoDoPedidoToolStripMenuItem,
             this.toolStripMenuItem2,
             this.mineraçãoDeDadosToolStripMenuItem});
@@ -352,13 +350,6 @@
             this.devoluçãoDeNFToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
             this.devoluçãoDeNFToolStripMenuItem.Text = "Devolver Nota Fiscal";
             this.devoluçãoDeNFToolStripMenuItem.Click += new System.EventHandler(this.devoluçãoDeNFToolStripMenuItem_Click);
-            // 
-            // liberarPedidoVs2ToolStripMenuItem
-            // 
-            this.liberarPedidoVs2ToolStripMenuItem.Name = "liberarPedidoVs2ToolStripMenuItem";
-            this.liberarPedidoVs2ToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
-            this.liberarPedidoVs2ToolStripMenuItem.Text = "Liberar Pedido Vs2";
-            this.liberarPedidoVs2ToolStripMenuItem.Click += new System.EventHandler(this.liberarPedidoVs2ToolStripMenuItem_Click);
             // 
             // faturamentoDoPedidoToolStripMenuItem
             // 
@@ -561,6 +552,16 @@
             this.tlStrpBtnConMin.Visible = false;
             this.tlStrpBtnConMin.Click += new System.EventHandler(this.tlStrpBtnConMin_Click);
             // 
+            // tsbCancelarPedido
+            // 
+            this.tsbCancelarPedido.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbCancelarPedido.Image = global::Comercial.Properties.Resources.CancelarPed;
+            this.tsbCancelarPedido.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbCancelarPedido.Name = "tsbCancelarPedido";
+            this.tsbCancelarPedido.Size = new System.Drawing.Size(23, 22);
+            this.tsbCancelarPedido.Text = "toolStripButton1";
+            this.tsbCancelarPedido.Click += new System.EventHandler(this.tsbCancelarPedido_Click);
+            // 
             // tlStrpBtnSalvarUsu
             // 
             this.tlStrpBtnSalvarUsu.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -581,16 +582,6 @@
             this.tsbhomeProcesso.Size = new System.Drawing.Size(23, 22);
             this.tsbhomeProcesso.Text = "Voltar para principal";
             this.tsbhomeProcesso.Click += new System.EventHandler(this.tsbhomeProcesso_Click);
-            // 
-            // tsbCancelarPedido
-            // 
-            this.tsbCancelarPedido.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbCancelarPedido.Image = global::Comercial.Properties.Resources.CancelarPed;
-            this.tsbCancelarPedido.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbCancelarPedido.Name = "tsbCancelarPedido";
-            this.tsbCancelarPedido.Size = new System.Drawing.Size(23, 22);
-            this.tsbCancelarPedido.Text = "toolStripButton1";
-            this.tsbCancelarPedido.Click += new System.EventHandler(this.tsbCancelarPedido_Click);
             // 
             // bindingNavigator1
             // 
@@ -617,7 +608,7 @@
             this.bindingNavigatorMoveLastItem,
             this.bindingNavigatorSeparator2,
             this.BtnPrincipal});
-            this.bindingNavigator1.Location = new System.Drawing.Point(0, 49);
+            this.bindingNavigator1.Location = new System.Drawing.Point(0, 24);
             this.bindingNavigator1.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.bindingNavigator1.MoveLastItem = this.bindingNavigatorMoveLastItem;
             this.bindingNavigator1.MoveNextItem = this.bindingNavigatorMoveNextItem;
@@ -883,7 +874,6 @@
         private System.Windows.Forms.ToolStripButton BtnPrincipalCons;
         public System.Windows.Forms.ToolStripButton btnSalvar;
         private System.Windows.Forms.ToolStripMenuItem estoqueToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem liberarPedidoVs2ToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton tlStrpBtnSalvarUsu;
         private System.Windows.Forms.ToolStripButton tsbhomeProcesso;
         private System.Windows.Forms.ToolStripButton tsbCancelarPedido;
