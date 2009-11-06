@@ -1605,6 +1605,8 @@ namespace Comercial
                 return;
             frm.Close();
             bindingNavigator1.Enabled = false;
+            bindingNavigator1.Visible = true;
+            tlStrpProcesso.Visible = false;
         }
 
         private void BtnDevNF_Click(object sender, EventArgs e)

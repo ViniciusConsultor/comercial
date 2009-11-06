@@ -430,9 +430,12 @@ namespace Comercial
 
                 if ((ValorFaturar > ValorLimite))
                 {
+                  
                     throw new Exception("ValidaLimite");
+                   
                 }
 
+                
             }
             catch (Exception ex)
             {
@@ -454,15 +457,22 @@ namespace Comercial
                     if (Convert.ToInt32(item.Cells["ClmQtdeLib"].Value) > SaldoEstoque)
                     {
                         //MessageBox.Show("Saldo em Estoque Indisponivel para o produto!." + "Codigo: " + Convert.ToInt32(item.Cells["ColProd"].Value), "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                      
                         throw new Exception("ValidaEstoque");
+                       
                     }
 
                     if (Convert.ToInt32(item.Cells["ClmQtdeLib"].Value) > Convert.ToInt32(item.Cells["ClmQtde"].Value))
                     {
                         //MessageBox.Show("Quantidade liberada não pode ser superio a quantidade do pedido!." + "Codigo: " + Convert.ToInt32(item.Cells["ColProd"].Value), "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                       
                         throw new Exception("ValidaQtdeLiberada");
+                        
                     }
+
+                    
                 }
+               
             }
             catch (Exception ex)
             {
@@ -524,15 +534,72 @@ namespace Comercial
             {
 
                 //Verifico o limite de crêdito do cliente
-                validalimite();
+                #region ValidaLimiteCredito
+                DataTable dttPedidocli = new DataTable();
+
+                dttPedidocli = ListarValorCliente(txtCodCliente.Text);
+
+                if (dttPedidocli.Rows.Count > 0)
+                {
+                    ValorPedido = Convert.ToDouble(dttPedidocli.Rows[0]["VALOR"]);
+                    ValorFaturar = ValorPedido + Convert.ToDouble(txtBxVlrMercadoria.Text);
+
+                }
+
+                DataTable dttCliente = new DataTable();
+
+                dttCliente = ListarLimiteCliente(txtCodCliente.Text);
+
+                if (dttCliente.Rows.Count > 0)
+                {
+                    ValorLimite = Convert.ToDouble(dttCliente.Rows[0]["LIMITE"]);
+
+                }
+
+                if ((ValorFaturar > ValorLimite))
+                {
+
+                    throw new Exception("ValidaLimite");
+
+                }
+                #endregion
 
                 //Verifico Saldo em estoque do produto selecionado
-                ValidaEstoque();
+                #region ValidaEstoque
+                foreach (DataGridViewRow item in dtgrdvItenspven.Rows)
+                {
+                    int SaldoEstoque = ListarSaldoEstoque(Convert.ToInt32(item.Cells["ColProd"].Value));
+
+                    if (Convert.ToInt32(item.Cells["ClmQtdeLib"].Value) > SaldoEstoque)
+                    {
+
+                        throw new Exception("ValidaEstoque");
+
+                    }
+
+                    if (Convert.ToInt32(item.Cells["ClmQtdeLib"].Value) > Convert.ToInt32(item.Cells["ClmQtde"].Value))
+                    {
+
+                        throw new Exception("ValidaQtdeLiberada");
+
+                    }
+
+                    if (Convert.ToInt32(item.Cells["ClmQtdeLib"].Value) < 0)
+                    {
+
+                        throw new Exception("QuantidadeNegativa");
+
+                    }
+
+
+                }
+                #endregion
+
 
                 //Variavel para o contador dos itens
                 var teste = 0;
 
-                //variavelpara contador, para atualizar situação
+                //variavel para contador, para atualizar situação
                 var situacao = 0;
 
                 //Crio o Datatable

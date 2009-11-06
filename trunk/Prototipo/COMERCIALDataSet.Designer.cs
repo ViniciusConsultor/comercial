@@ -2978,6 +2978,8 @@ namespace Comercial {
             
             private global::System.Data.DataColumn columnITEM;
             
+            private global::System.Data.DataColumn columnQUANTIDADELIB;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public ITEMPEDIDODataTable() {
                 this.TableName = "ITEMPEDIDO";
@@ -3058,6 +3060,13 @@ namespace Comercial {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn QUANTIDADELIBColumn {
+                get {
+                    return this.columnQUANTIDADELIB;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -3086,7 +3095,7 @@ namespace Comercial {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public ITEMPEDIDORow AddITEMPEDIDORow(PEDIDORow parentPEDIDORowByFK_ITEMPEDIDO_PEDIDO, PRODUTORow parentPRODUTORowByFK_ITEMPEDIDO_PRODUTO, int QUANTIDADE, double DESCONTO, double VALOR, double IPI, int ITEM) {
+            public ITEMPEDIDORow AddITEMPEDIDORow(PEDIDORow parentPEDIDORowByFK_ITEMPEDIDO_PEDIDO, PRODUTORow parentPRODUTORowByFK_ITEMPEDIDO_PRODUTO, int QUANTIDADE, double DESCONTO, double VALOR, double IPI, int ITEM, int QUANTIDADELIB) {
                 ITEMPEDIDORow rowITEMPEDIDORow = ((ITEMPEDIDORow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -3095,7 +3104,8 @@ namespace Comercial {
                         DESCONTO,
                         VALOR,
                         IPI,
-                        ITEM};
+                        ITEM,
+                        QUANTIDADELIB};
                 if ((parentPEDIDORowByFK_ITEMPEDIDO_PEDIDO != null)) {
                     columnValuesArray[0] = parentPEDIDORowByFK_ITEMPEDIDO_PEDIDO[0];
                 }
@@ -3135,6 +3145,7 @@ namespace Comercial {
                 this.columnVALOR = base.Columns["VALOR"];
                 this.columnIPI = base.Columns["IPI"];
                 this.columnITEM = base.Columns["ITEM"];
+                this.columnQUANTIDADELIB = base.Columns["QUANTIDADELIB"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3153,6 +3164,8 @@ namespace Comercial {
                 base.Columns.Add(this.columnIPI);
                 this.columnITEM = new global::System.Data.DataColumn("ITEM", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnITEM);
+                this.columnQUANTIDADELIB = new global::System.Data.DataColumn("QUANTIDADELIB", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnQUANTIDADELIB);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnNRPEDIDO,
                                 this.columnCODPRODUTO}, true));
@@ -9231,6 +9244,21 @@ namespace Comercial {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public int QUANTIDADELIB {
+                get {
+                    try {
+                        return ((int)(this[this.tableITEMPEDIDO.QUANTIDADELIBColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'QUANTIDADELIB\' in table \'ITEMPEDIDO\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableITEMPEDIDO.QUANTIDADELIBColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public PEDIDORow PEDIDORow {
                 get {
                     return ((PEDIDORow)(this.GetParentRow(this.Table.ParentRelations["FK_ITEMPEDIDO_PEDIDO"])));
@@ -9278,6 +9306,16 @@ namespace Comercial {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void SetITEMNull() {
                 this[this.tableITEMPEDIDO.ITEMColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsQUANTIDADELIBNull() {
+                return this.IsNull(this.tableITEMPEDIDO.QUANTIDADELIBColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetQUANTIDADELIBNull() {
+                this[this.tableITEMPEDIDO.QUANTIDADELIBColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -15729,14 +15767,17 @@ SELECT Descricao, Quantidade, Desconto, Valor, IPI, CodProduto, CodUnidadeMedida
             tableMapping.ColumnMappings.Add("VALOR", "VALOR");
             tableMapping.ColumnMappings.Add("IPI", "IPI");
             tableMapping.ColumnMappings.Add("ITEM", "ITEM");
+            tableMapping.ColumnMappings.Add("QUANTIDADELIB", "QUANTIDADELIB");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [ITEMPEDIDO] WHERE (([NRPEDIDO] = @Original_NRPEDIDO) AND ([CODPRODUTO] = @Original_CODPRODUTO) AND ([QUANTIDADE] = @Original_QUANTIDADE) AND ((@IsNull_DESCONTO = 1 AND [DESCONTO] IS NULL) OR ([DESCONTO] = @Original_DESCONTO)) AND ([VALOR] = @Original_VALOR) AND ((@IsNull_IPI = 1 AND [IPI] IS NULL) OR ([IPI] = @Original_IPI)) AND ((@IsNull_ITEM = 1 AND [ITEM] IS NULL) OR ([ITEM] = @Original_ITEM)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [ITEMPEDIDO] WHERE (([NRPEDIDO] = @Original_NRPEDIDO) AND ([CODPRODUTO] = @Original_CODPRODUTO) AND ([QUANTIDADE] = @Original_QUANTIDADE) AND ((@IsNull_QUANTIDADELIB = 1 AND [QUANTIDADELIB] IS NULL) OR ([QUANTIDADELIB] = @Original_QUANTIDADELIB)) AND ((@IsNull_DESCONTO = 1 AND [DESCONTO] IS NULL) OR ([DESCONTO] = @Original_DESCONTO)) AND ([VALOR] = @Original_VALOR) AND ((@IsNull_IPI = 1 AND [IPI] IS NULL) OR ([IPI] = @Original_IPI)) AND ((@IsNull_ITEM = 1 AND [ITEM] IS NULL) OR ([ITEM] = @Original_ITEM)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NRPEDIDO", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NRPEDIDO", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CODPRODUTO", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CODPRODUTO", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_QUANTIDADE", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "QUANTIDADE", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_QUANTIDADELIB", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "QUANTIDADELIB", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_QUANTIDADELIB", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "QUANTIDADELIB", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_DESCONTO", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DESCONTO", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DESCONTO", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DESCONTO", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_VALOR", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VALOR", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -15746,24 +15787,26 @@ SELECT Descricao, Quantidade, Desconto, Valor, IPI, CodProduto, CodUnidadeMedida
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ITEM", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ITEM", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [ITEMPEDIDO] ([NRPEDIDO], [CODPRODUTO], [QUANTIDADE], [DESCONTO], [VALOR], [IPI], [ITEM]) VALUES (@NRPEDIDO, @CODPRODUTO, @QUANTIDADE, @DESCONTO, @VALOR, @IPI, @ITEM);
-SELECT NRPEDIDO, CODPRODUTO, QUANTIDADE, DESCONTO, VALOR, IPI, ITEM FROM ITEMPEDIDO WHERE (CODPRODUTO = @CODPRODUTO) AND (NRPEDIDO = @NRPEDIDO)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [ITEMPEDIDO] ([NRPEDIDO], [CODPRODUTO], [QUANTIDADE], [QUANTIDADELIB], [DESCONTO], [VALOR], [IPI], [ITEM]) VALUES (@NRPEDIDO, @CODPRODUTO, @QUANTIDADE, @QUANTIDADELIB, @DESCONTO, @VALOR, @IPI, @ITEM);
+SELECT NRPEDIDO, CODPRODUTO, QUANTIDADE, QUANTIDADELIB, DESCONTO, VALOR, IPI, item FROM ITEMPEDIDO WHERE (CODPRODUTO = @CODPRODUTO) AND (NRPEDIDO = @NRPEDIDO)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NRPEDIDO", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NRPEDIDO", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CODPRODUTO", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CODPRODUTO", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@QUANTIDADE", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "QUANTIDADE", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@QUANTIDADELIB", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "QUANTIDADELIB", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DESCONTO", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DESCONTO", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@VALOR", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VALOR", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IPI", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IPI", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ITEM", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ITEM", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [ITEMPEDIDO] SET [NRPEDIDO] = @NRPEDIDO, [CODPRODUTO] = @CODPRODUTO, [QUANTIDADE] = @QUANTIDADE, [DESCONTO] = @DESCONTO, [VALOR] = @VALOR, [IPI] = @IPI, [ITEM] = @ITEM WHERE (([NRPEDIDO] = @Original_NRPEDIDO) AND ([CODPRODUTO] = @Original_CODPRODUTO) AND ([QUANTIDADE] = @Original_QUANTIDADE) AND ((@IsNull_DESCONTO = 1 AND [DESCONTO] IS NULL) OR ([DESCONTO] = @Original_DESCONTO)) AND ([VALOR] = @Original_VALOR) AND ((@IsNull_IPI = 1 AND [IPI] IS NULL) OR ([IPI] = @Original_IPI)) AND ((@IsNull_ITEM = 1 AND [ITEM] IS NULL) OR ([ITEM] = @Original_ITEM)));
-SELECT NRPEDIDO, CODPRODUTO, QUANTIDADE, DESCONTO, VALOR, IPI, ITEM FROM ITEMPEDIDO WHERE (CODPRODUTO = @CODPRODUTO) AND (NRPEDIDO = @NRPEDIDO)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [ITEMPEDIDO] SET [NRPEDIDO] = @NRPEDIDO, [CODPRODUTO] = @CODPRODUTO, [QUANTIDADE] = @QUANTIDADE, [QUANTIDADELIB] = @QUANTIDADELIB, [DESCONTO] = @DESCONTO, [VALOR] = @VALOR, [IPI] = @IPI, [ITEM] = @ITEM WHERE (([NRPEDIDO] = @Original_NRPEDIDO) AND ([CODPRODUTO] = @Original_CODPRODUTO) AND ([QUANTIDADE] = @Original_QUANTIDADE) AND ((@IsNull_QUANTIDADELIB = 1 AND [QUANTIDADELIB] IS NULL) OR ([QUANTIDADELIB] = @Original_QUANTIDADELIB)) AND ((@IsNull_DESCONTO = 1 AND [DESCONTO] IS NULL) OR ([DESCONTO] = @Original_DESCONTO)) AND ([VALOR] = @Original_VALOR) AND ((@IsNull_IPI = 1 AND [IPI] IS NULL) OR ([IPI] = @Original_IPI)) AND ((@IsNull_ITEM = 1 AND [ITEM] IS NULL) OR ([ITEM] = @Original_ITEM)));
+SELECT NRPEDIDO, CODPRODUTO, QUANTIDADE, QUANTIDADELIB, DESCONTO, VALOR, IPI, item FROM ITEMPEDIDO WHERE (CODPRODUTO = @CODPRODUTO) AND (NRPEDIDO = @NRPEDIDO)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NRPEDIDO", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NRPEDIDO", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CODPRODUTO", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CODPRODUTO", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@QUANTIDADE", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "QUANTIDADE", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@QUANTIDADELIB", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "QUANTIDADELIB", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DESCONTO", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DESCONTO", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@VALOR", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VALOR", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IPI", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IPI", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -15771,6 +15814,8 @@ SELECT NRPEDIDO, CODPRODUTO, QUANTIDADE, DESCONTO, VALOR, IPI, ITEM FROM ITEMPED
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NRPEDIDO", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NRPEDIDO", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CODPRODUTO", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CODPRODUTO", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_QUANTIDADE", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "QUANTIDADE", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_QUANTIDADELIB", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "QUANTIDADELIB", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_QUANTIDADELIB", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "QUANTIDADELIB", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_DESCONTO", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DESCONTO", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DESCONTO", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DESCONTO", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_VALOR", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "VALOR", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -15791,13 +15836,13 @@ SELECT NRPEDIDO, CODPRODUTO, QUANTIDADE, DESCONTO, VALOR, IPI, ITEM FROM ITEMPED
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT NRPEDIDO, CODPRODUTO, QUANTIDADE, DESCONTO, VALOR, IPI, ITEM FROM ITEMPEDI" +
-                "DO";
+            this._commandCollection[0].CommandText = "SELECT NRPEDIDO, CODPRODUTO, QUANTIDADE, QUANTIDADELIB, DESCONTO, VALOR, IPI, ITE" +
+                "M FROM ITEMPEDIDO";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT NRPEDIDO, CODPRODUTO, QUANTIDADE, DESCONTO, VALOR, IPI, ITEM FROM ITEMPEDI" +
-                "DO WHERE (NRPEDIDO = @NumeroPedido)";
+            this._commandCollection[1].CommandText = "SELECT CODPRODUTO, DESCONTO, IPI, NRPEDIDO, QUANTIDADE, QUANTIDADELIB, VALOR, ite" +
+                "m FROM ITEMPEDIDO WHERE (NRPEDIDO = @NumeroPedido)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NumeroPedido", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "NRPEDIDO", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
@@ -15865,35 +15910,37 @@ SELECT NRPEDIDO, CODPRODUTO, QUANTIDADE, DESCONTO, VALOR, IPI, ITEM FROM ITEMPED
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_NRPEDIDO, int Original_CODPRODUTO, int Original_QUANTIDADE, global::System.Nullable<double> Original_DESCONTO, double Original_VALOR, global::System.Nullable<double> Original_IPI, global::System.Nullable<int> Original_ITEM) {
+        public virtual int Delete(int Original_NRPEDIDO, int Original_CODPRODUTO, int Original_QUANTIDADE, global::System.Nullable<int> Original_QUANTIDADELIB, global::System.Nullable<double> Original_DESCONTO, double Original_VALOR, global::System.Nullable<double> Original_IPI, int Original_ITEM) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_NRPEDIDO));
             this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_CODPRODUTO));
             this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_QUANTIDADE));
-            if ((Original_DESCONTO.HasValue == true)) {
+            if ((Original_QUANTIDADELIB.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((double)(Original_DESCONTO.Value));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((int)(Original_QUANTIDADELIB.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            this.Adapter.DeleteCommand.Parameters[5].Value = ((double)(Original_VALOR));
-            if ((Original_IPI.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((double)(Original_IPI.Value));
+            if ((Original_DESCONTO.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((double)(Original_DESCONTO.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[7].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
-            if ((Original_ITEM.HasValue == true)) {
+            this.Adapter.DeleteCommand.Parameters[7].Value = ((double)(Original_VALOR));
+            if ((Original_IPI.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[9].Value = ((int)(Original_ITEM.Value));
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((double)(Original_IPI.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
+            this.Adapter.DeleteCommand.Parameters[10].Value = ((object)(0));
+            this.Adapter.DeleteCommand.Parameters[11].Value = ((int)(Original_ITEM));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -15913,29 +15960,30 @@ SELECT NRPEDIDO, CODPRODUTO, QUANTIDADE, DESCONTO, VALOR, IPI, ITEM FROM ITEMPED
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int NRPEDIDO, int CODPRODUTO, int QUANTIDADE, global::System.Nullable<double> DESCONTO, double VALOR, global::System.Nullable<double> IPI, global::System.Nullable<int> ITEM) {
+        public virtual int Insert(int NRPEDIDO, int CODPRODUTO, int QUANTIDADE, global::System.Nullable<int> QUANTIDADELIB, global::System.Nullable<double> DESCONTO, double VALOR, global::System.Nullable<double> IPI, int ITEM) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((int)(NRPEDIDO));
             this.Adapter.InsertCommand.Parameters[1].Value = ((int)(CODPRODUTO));
             this.Adapter.InsertCommand.Parameters[2].Value = ((int)(QUANTIDADE));
-            if ((DESCONTO.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((double)(DESCONTO.Value));
+            if ((QUANTIDADELIB.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((int)(QUANTIDADELIB.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            this.Adapter.InsertCommand.Parameters[4].Value = ((double)(VALOR));
-            if ((IPI.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[5].Value = ((double)(IPI.Value));
+            if ((DESCONTO.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((double)(DESCONTO.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
+                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((ITEM.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((int)(ITEM.Value));
+            this.Adapter.InsertCommand.Parameters[5].Value = ((double)(VALOR));
+            if ((IPI.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[6].Value = ((double)(IPI.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
+            this.Adapter.InsertCommand.Parameters[7].Value = ((int)(ITEM));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -15955,57 +16003,76 @@ SELECT NRPEDIDO, CODPRODUTO, QUANTIDADE, DESCONTO, VALOR, IPI, ITEM FROM ITEMPED
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int NRPEDIDO, int CODPRODUTO, int QUANTIDADE, global::System.Nullable<double> DESCONTO, double VALOR, global::System.Nullable<double> IPI, global::System.Nullable<int> ITEM, int Original_NRPEDIDO, int Original_CODPRODUTO, int Original_QUANTIDADE, global::System.Nullable<double> Original_DESCONTO, double Original_VALOR, global::System.Nullable<double> Original_IPI, global::System.Nullable<int> Original_ITEM) {
+        public virtual int Update(
+                    int NRPEDIDO, 
+                    int CODPRODUTO, 
+                    int QUANTIDADE, 
+                    global::System.Nullable<int> QUANTIDADELIB, 
+                    global::System.Nullable<double> DESCONTO, 
+                    double VALOR, 
+                    global::System.Nullable<double> IPI, 
+                    int ITEM, 
+                    int Original_NRPEDIDO, 
+                    int Original_CODPRODUTO, 
+                    int Original_QUANTIDADE, 
+                    global::System.Nullable<int> Original_QUANTIDADELIB, 
+                    global::System.Nullable<double> Original_DESCONTO, 
+                    double Original_VALOR, 
+                    global::System.Nullable<double> Original_IPI, 
+                    int Original_ITEM) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(NRPEDIDO));
             this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(CODPRODUTO));
             this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(QUANTIDADE));
-            if ((DESCONTO.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((double)(DESCONTO.Value));
+            if ((QUANTIDADELIB.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(QUANTIDADELIB.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((double)(VALOR));
-            if ((IPI.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((double)(IPI.Value));
+            if ((DESCONTO.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((double)(DESCONTO.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            if ((ITEM.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(ITEM.Value));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((double)(VALOR));
+            if ((IPI.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((double)(IPI.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_NRPEDIDO));
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_CODPRODUTO));
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_QUANTIDADE));
-            if ((Original_DESCONTO.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((double)(Original_DESCONTO.Value));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(ITEM));
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_NRPEDIDO));
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_CODPRODUTO));
+            this.Adapter.UpdateCommand.Parameters[10].Value = ((int)(Original_QUANTIDADE));
+            if ((Original_QUANTIDADELIB.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(Original_QUANTIDADELIB.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[12].Value = ((double)(Original_VALOR));
-            if ((Original_IPI.HasValue == true)) {
+            if ((Original_DESCONTO.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((double)(Original_IPI.Value));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((double)(Original_DESCONTO.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
-            if ((Original_ITEM.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((int)(Original_ITEM.Value));
+            this.Adapter.UpdateCommand.Parameters[15].Value = ((double)(Original_VALOR));
+            if ((Original_IPI.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((double)(Original_IPI.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
             }
+            this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(0));
+            this.Adapter.UpdateCommand.Parameters[19].Value = ((int)(Original_ITEM));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -16025,8 +16092,8 @@ SELECT NRPEDIDO, CODPRODUTO, QUANTIDADE, DESCONTO, VALOR, IPI, ITEM FROM ITEMPED
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int QUANTIDADE, global::System.Nullable<double> DESCONTO, double VALOR, global::System.Nullable<double> IPI, global::System.Nullable<int> ITEM, int Original_NRPEDIDO, int Original_CODPRODUTO, int Original_QUANTIDADE, global::System.Nullable<double> Original_DESCONTO, double Original_VALOR, global::System.Nullable<double> Original_IPI, global::System.Nullable<int> Original_ITEM) {
-            return this.Update(Original_NRPEDIDO, Original_CODPRODUTO, QUANTIDADE, DESCONTO, VALOR, IPI, ITEM, Original_NRPEDIDO, Original_CODPRODUTO, Original_QUANTIDADE, Original_DESCONTO, Original_VALOR, Original_IPI, Original_ITEM);
+        public virtual int Update(int QUANTIDADE, global::System.Nullable<int> QUANTIDADELIB, global::System.Nullable<double> DESCONTO, double VALOR, global::System.Nullable<double> IPI, int ITEM, int Original_NRPEDIDO, int Original_CODPRODUTO, int Original_QUANTIDADE, global::System.Nullable<int> Original_QUANTIDADELIB, global::System.Nullable<double> Original_DESCONTO, double Original_VALOR, global::System.Nullable<double> Original_IPI, int Original_ITEM) {
+            return this.Update(Original_NRPEDIDO, Original_CODPRODUTO, QUANTIDADE, QUANTIDADELIB, DESCONTO, VALOR, IPI, ITEM, Original_NRPEDIDO, Original_CODPRODUTO, Original_QUANTIDADE, Original_QUANTIDADELIB, Original_DESCONTO, Original_VALOR, Original_IPI, Original_ITEM);
         }
     }
     

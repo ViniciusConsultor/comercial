@@ -210,10 +210,11 @@ namespace Comercial
             dttRetorno.Columns.Add("CODPRODUTO", typeof(int));
             dttRetorno.Columns.Add("DESCRICAO", typeof(string));
             dttRetorno.Columns.Add("QUANTIDADE", typeof(int));
-            dttRetorno.Columns.Add("VALOR", typeof(double));
+            dttRetorno.Columns.Add("QUANTIDADELIB", typeof(int));
+            dttRetorno.Columns.Add("VALOR", typeof(float));
             dttRetorno.Columns.Add("IPI", typeof(double));
             dttRetorno.Columns.Add("DESCONTO", typeof(double));
-            dttRetorno.Columns.Add("ValorTotal", typeof(double));
+            dttRetorno.Columns.Add("ValorTotal", typeof(float));
             dttRetorno.Columns.Add("Status", typeof(string));
 
             dttRetorno.AcceptChanges();
@@ -323,6 +324,7 @@ namespace Comercial
                         table.Insert(Convert.ToInt32(CodPed),
                              Convert.ToInt32(dttRetorno.Rows[index]["CODPRODUTO"]),
                                 Convert.ToInt32(dttRetorno.Rows[index]["QUANTIDADE"]),
+                                Convert.ToInt32(dttRetorno.Rows[index]["QUANTIDADELIB"]),
                                 Convert.ToDouble(dttRetorno.Rows[index]["DESCONTO"]),
                                 Convert.ToDouble(dttRetorno.Rows[index]["VALOR"]),
                                 Convert.ToDouble(dttRetorno.Rows[index]["IPI"]),
@@ -344,6 +346,7 @@ namespace Comercial
                             table.Insert(Convert.ToInt32(txtPedido.Text),
                                  Convert.ToInt32(dttRetorno.Rows[index]["CODPRODUTO"]),
                                     Convert.ToInt32(dttRetorno.Rows[index]["QUANTIDADE"]),
+                                    Convert.ToInt32(dttRetorno.Rows[index]["QUANTIDADELIB"]),
                                     Convert.ToDouble(dttRetorno.Rows[index]["DESCONTO"]),
                                     Convert.ToDouble(dttRetorno.Rows[index]["VALOR"]),
                                     Convert.ToDouble(dttRetorno.Rows[index]["IPI"]),
@@ -360,6 +363,7 @@ namespace Comercial
                             tableinsert.Insert(Convert.ToInt32(txtPedido.Text),
                                  Convert.ToInt32(dttRetorno.Rows[index]["CODPRODUTO"]),
                                     Convert.ToInt32(dttRetorno.Rows[index]["QUANTIDADE"]),
+                                    Convert.ToInt32(dttRetorno.Rows[index]["QUANTIDADELIB"]),
                                     Convert.ToDouble(dttRetorno.Rows[index]["DESCONTO"]),
                                     Convert.ToDouble(dttRetorno.Rows[index]["VALOR"]),
                                     Convert.ToDouble(dttRetorno.Rows[index]["IPI"]),
@@ -414,7 +418,7 @@ namespace Comercial
 
             StringBuilder sqlcommand = new StringBuilder();
 
-            sqlcommand.Append(" SELECT ITEM,ITEMPEDIDO.CODPRODUTO,DESCRICAO,QUANTIDADE,DESCONTO,VALOR,ITEMPEDIDO.IPI, (QUANTIDADE *VALOR) as VALORTOTAL ");
+            sqlcommand.Append(" SELECT ITEM,ITEMPEDIDO.CODPRODUTO,DESCRICAO,QUANTIDADE,ISNULL(QUANTIDADELIB,0) as QUANTIDADELIB,DESCONTO,VALOR,ITEMPEDIDO.IPI, (QUANTIDADE *VALOR) as VALORTOTAL ");
             sqlcommand.Append(" FROM ITEMPEDIDO INNER JOIN PRODUTO ON ITEMPEDIDO.CODPRODUTO = PRODUTO.CODPRODUTO ");
             sqlcommand.Append(" WHERE NRPEDIDO = @nrpedido ");
 
@@ -552,6 +556,10 @@ namespace Comercial
                     dttRetorno = ListarItem(numeropedido);
 
                     dttRetorno.Columns.Add("Status", typeof(string));
+                    //dttRetorno.Columns.Add("QUANTIDADELIB", typeof(int));
+
+                    dtgrdvItenspven.Columns["Status"].Visible = false;
+                    
 
                     dtgrdvItenspven.DataSource = dttRetorno;
                 }
@@ -888,13 +896,16 @@ namespace Comercial
                 }
                 if (teste == 0)
                 {
+
+                    txtValorTotal.Text = (String)valortotal.Replace(",", ".");
                     dtRow["CODPRODUTO"] = txtProduto.getText;
                     dtRow["DESCRICAO"] = txtDescprod.Text;
                     dtRow["QUANTIDADE"] = txtQtdItem.Text;
-                    dtRow["VALOR"] = txtPrcUnit.Text;
+                    dtRow["QUANTIDADELIB"] = Convert.ToInt32(0);
+                    dtRow["VALOR"] = Convert.ToDouble(txtPrcUnit.Text);
                     dtRow["IPI"] = txtipi.Text;
                     dtRow["DESCONTO"] = txtDesconto.Text;
-                    dtRow["VALORTOTAL"] = valortotal;
+                    dtRow["VALORTOTAL"] = Convert.ToDouble(valortotal);
                     dttRetorno.Rows.Add(dtRow);
                 }
                 for (int index = 0; index <= dttRetorno.Rows.Count - 1; index++)
@@ -903,6 +914,7 @@ namespace Comercial
                     continue;
                 }
 
+                       
                 dtgrdvItenspven.DataSource = dttRetorno;
 
                 this.Limparitens();
@@ -1018,6 +1030,7 @@ namespace Comercial
                     dtRow["CODPRODUTO"] = txtProduto.getText;
                     dtRow["DESCRICAO"] = txtDescprod.Text;
                     dtRow["QUANTIDADE"] = txtQtdItem.Text;
+                    dtRow["QUANTIDADELIB"] = 0;
                     dtRow["VALOR"] = txtPrcUnit.Text;
                     dtRow["IPI"] = txtipi.Text;
                     dtRow["DESCONTO"] = txtDesconto.Text;
@@ -1093,7 +1106,9 @@ namespace Comercial
         {
             if (!String.IsNullOrEmpty(txtQtdItem.Text) && !String.IsNullOrEmpty(txtPrcUnit.Text))
             {
+                
                 txtValorTotal.Text = Convert.ToString(Convert.ToDouble(txtQtdItem.Text) * Convert.ToDouble(txtPrcUnit.Text));
+
             }
         }
 
