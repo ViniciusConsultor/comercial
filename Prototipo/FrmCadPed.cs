@@ -20,6 +20,7 @@ namespace Comercial
         private FrmPrinc _princ = null;
         public DataTable dttRetorno = new DataTable();
         int statusped = 0;
+        Double valortotal;
         public FrmCadPed(FrmPrinc parent)
         {
             InitializeComponent();
@@ -418,7 +419,8 @@ namespace Comercial
 
             StringBuilder sqlcommand = new StringBuilder();
 
-            sqlcommand.Append(" SELECT ITEM,ITEMPEDIDO.CODPRODUTO,DESCRICAO,QUANTIDADE,ISNULL(QUANTIDADELIB,0) as QUANTIDADELIB,DESCONTO,VALOR,ITEMPEDIDO.IPI, (QUANTIDADE *VALOR) as VALORTOTAL ");
+            sqlcommand.Append(" SELECT ITEM,ITEMPEDIDO.CODPRODUTO,DESCRICAO,QUANTIDADE,ISNULL(QUANTIDADELIB,0) as QUANTIDADELIB,");
+            sqlcommand.Append(" DESCONTO,VALOR,ITEMPEDIDO.IPI, ((QUANTIDADE * VALOR) - QUANTIDADE * VALOR * DESCONTO /100) as VALORTOTAL ");
             sqlcommand.Append(" FROM ITEMPEDIDO INNER JOIN PRODUTO ON ITEMPEDIDO.CODPRODUTO = PRODUTO.CODPRODUTO ");
             sqlcommand.Append(" WHERE NRPEDIDO = @nrpedido ");
 
@@ -556,11 +558,21 @@ namespace Comercial
                     dttRetorno = ListarItem(numeropedido);
 
                     dttRetorno.Columns.Add("Status", typeof(string));
-                    //dttRetorno.Columns.Add("QUANTIDADELIB", typeof(int));
-
-                    dtgrdvItenspven.Columns["Status"].Visible = false;
                     
+                    Double total = 0;
 
+                    for (int index = 0; index < dttRetorno.Rows.Count; index++)
+                    {
+
+                       
+                        total = Convert.ToDouble(total) + Convert.ToDouble(dttRetorno.Rows[index]["VALORTOTAL"]);
+                        
+                        lblValortotal.Text = string.Format("{0:C2}", Convert.ToDouble(total));
+                        
+                    }
+
+                    lblValortotal.Text = Convert.ToString(lblValortotal.Text);
+                   
                     dtgrdvItenspven.DataSource = dttRetorno;
                 }
 
@@ -849,7 +861,7 @@ namespace Comercial
                 }
 
                 //Replace no valor total de "." para ","
-                String valortotal = (String)txtValorTotal.Text.Replace(".", ",");
+                //valortotal = (String)txtValorTotal.Text.Replace(".", ",");
 
                 //Valida o Valor total = 0
                 if (Convert.ToDouble(valortotal) == 0)
@@ -897,7 +909,7 @@ namespace Comercial
                 if (teste == 0)
                 {
 
-                    txtValorTotal.Text = (String)valortotal.Replace(",", ".");
+                    
                     dtRow["CODPRODUTO"] = txtProduto.getText;
                     dtRow["DESCRICAO"] = txtDescprod.Text;
                     dtRow["QUANTIDADE"] = txtQtdItem.Text;
@@ -914,7 +926,7 @@ namespace Comercial
                     continue;
                 }
 
-                       
+
                 dtgrdvItenspven.DataSource = dttRetorno;
 
                 this.Limparitens();
@@ -1106,12 +1118,12 @@ namespace Comercial
         {
             if (!String.IsNullOrEmpty(txtQtdItem.Text) && !String.IsNullOrEmpty(txtPrcUnit.Text))
             {
-                
+
                 txtValorTotal.Text = Convert.ToString(Convert.ToDouble(txtQtdItem.Text) * Convert.ToDouble(txtPrcUnit.Text));
 
             }
         }
 
-      
+
     }
 }
