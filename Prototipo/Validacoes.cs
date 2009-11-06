@@ -173,7 +173,9 @@ namespace Comercial
             else if (ex.Message == "email invalido")
                 MessageBox.Show("Email Inválido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else if (ex.Message == "ie invalida")
-                MessageBox.Show("I.E. Inválida.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("I.E. Inválida", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else if (ex.Message == "valor invalido")
+                MessageBox.Show("Limite de crédito inválido", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else if (ex.Message == "Efetivado")
                 MessageBox.Show("Pedido não pode ser alterado pois já está Efetivado", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else if (ex.Message == "DataInvalida")

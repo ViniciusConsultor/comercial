@@ -198,6 +198,8 @@ namespace Comercial
             if (rdbtnEfetivado.Checked)
             {
                 sql += " and p.situacao ='E'";
+                
+               
             }
 
             if (rdbtnPendente.Checked)
@@ -212,12 +214,31 @@ namespace Comercial
 
 
             //Pesquisa por data
-            if (dttmDataPedido.Checked)
+            if (dttmDataPedido1.Checked && dttmDataPedido2.Checked)
             {
-                string formatData = dttmDataPedido.Value.Year + "-" + dttmDataPedido.Value.Month + "-" + dttmDataPedido.Value.Day;
+                string formatData1=dttmDataPedido1.Value.Year + "-" + dttmDataPedido1.Value.Month + "-" + dttmDataPedido1.Value.Day;
+                string formatData2 = dttmDataPedido2.Value.Year + "-" + dttmDataPedido2.Value.Month + "-" + dttmDataPedido2.Value.Day;
 
-                sql += " and p.dataEmissao= '"+formatData+"'";
+                sql += " and p.dataEmissao between '" + formatData1 + "' and '" + formatData2+ "'";
+
+                RptConCli rpt = new RptConCli();
+                
+                
+            
+            } 
+            else if (dttmDataPedido1.Checked)
+                {
+                    string formatData = dttmDataPedido1.Value.Year + "-" + dttmDataPedido1.Value.Month + "-" + dttmDataPedido1.Value.Day;
+
+                    sql += " and p.dataEmissao= '"+formatData+"'";
+                }
+            else if (dttmDataPedido2.Checked)
+            {
+                string formatData = dttmDataPedido2.Value.Year + "-" + dttmDataPedido2.Value.Month + "-" + dttmDataPedido2.Value.Day;
+
+                sql += " and p.dataEmissao <='" + formatData + "'";
             }
+            
             // Pesquisa por CNPJ Cliente
             if (!string.IsNullOrEmpty(txtCnpjCli.Text))
             {

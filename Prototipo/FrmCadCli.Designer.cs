@@ -32,6 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCadCli));
             this.tbCntrlCadCli = new System.Windows.Forms.TabControl();
             this.tbpCadCli = new System.Windows.Forms.TabPage();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.cmBxRegiaoCli = new System.Windows.Forms.ComboBox();
             this.cLIENTEBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
@@ -92,6 +94,8 @@
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.tbCntrlCadCli.SuspendLayout();
             this.tbpCadCli.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cLIENTEBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rEGIAOBindingSource)).BeginInit();
@@ -114,6 +118,8 @@
             // tbpCadCli
             // 
             this.tbpCadCli.AutoScroll = true;
+            this.tbpCadCli.Controls.Add(this.pictureBox1);
+            this.tbpCadCli.Controls.Add(this.pictureBox2);
             this.tbpCadCli.Controls.Add(this.cmBxRegiaoCli);
             this.tbpCadCli.Controls.Add(this.lblRegiaoCli);
             this.tbpCadCli.Controls.Add(this.txtRazaoSocialCli);
@@ -139,6 +145,28 @@
             this.tbpCadCli.TabIndex = 0;
             this.tbpCadCli.Text = "Cadastro de Clientes";
             this.tbpCadCli.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Comercial.Properties.Resources.errado;
+            this.pictureBox1.Location = new System.Drawing.Point(139, 18);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(24, 24);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 51;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Visible = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::Comercial.Properties.Resources.certo;
+            this.pictureBox2.Location = new System.Drawing.Point(139, 18);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(24, 24);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox2.TabIndex = 55;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Visible = false;
             // 
             // cmBxRegiaoCli
             // 
@@ -217,6 +245,7 @@
             // txtLimCredCli
             // 
             this.txtLimCredCli.BeepOnError = true;
+            this.txtLimCredCli.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             this.txtLimCredCli.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.cLIENTEBindingSource, "LIMITECRED", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, null, "C2"));
             this.txtLimCredCli.Enabled = false;
             this.txtLimCredCli.InsertKeyMode = System.Windows.Forms.InsertKeyMode.Insert;
@@ -357,11 +386,11 @@
             // lblIECliente
             // 
             this.lblIECliente.AutoSize = true;
-            this.lblIECliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIECliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIECliente.ForeColor = System.Drawing.Color.CadetBlue;
             this.lblIECliente.Location = new System.Drawing.Point(232, 3);
             this.lblIECliente.Name = "lblIECliente";
-            this.lblIECliente.Size = new System.Drawing.Size(23, 13);
+            this.lblIECliente.Size = new System.Drawing.Size(20, 13);
             this.lblIECliente.TabIndex = 16;
             this.lblIECliente.Text = "I.E";
             // 
@@ -659,6 +688,7 @@
             this.txtCnpjCli.Size = new System.Drawing.Size(124, 20);
             this.txtCnpjCli.TabIndex = 0;
             this.txtCnpjCli.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            this.txtCnpjCli.Leave += new System.EventHandler(this.txtCnpjCli_Leave);
             // 
             // lblNomeFantasiaCliente
             // 
@@ -744,7 +774,7 @@
             // 
             this.cnpjCliToolStripLabel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.cnpjCliToolStripLabel.Name = "cnpjCliToolStripLabel";
-            this.cnpjCliToolStripLabel.Size = new System.Drawing.Size(42, 22);
+            this.cnpjCliToolStripLabel.Size = new System.Drawing.Size(39, 22);
             this.cnpjCliToolStripLabel.Text = "CNPJ:";
             // 
             // cnpjToolStripTextBox
@@ -755,7 +785,7 @@
             // nomeFantasiaCliToolStripLabel
             // 
             this.nomeFantasiaCliToolStripLabel.Name = "nomeFantasiaCliToolStripLabel";
-            this.nomeFantasiaCliToolStripLabel.Size = new System.Drawing.Size(86, 22);
+            this.nomeFantasiaCliToolStripLabel.Size = new System.Drawing.Size(83, 22);
             this.nomeFantasiaCliToolStripLabel.Text = "Nome Fantasia";
             // 
             // nomeFantasiaToolStripTextBox
@@ -818,6 +848,8 @@
             this.tbCntrlCadCli.ResumeLayout(false);
             this.tbpCadCli.ResumeLayout(false);
             this.tbpCadCli.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cLIENTEBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rEGIAOBindingSource)).EndInit();
@@ -895,5 +927,7 @@
         public System.Windows.Forms.MaskedTextBox txtCnpjCli;
         public System.Windows.Forms.ToolStripTextBox cnpjToolStripTextBox;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        public System.Windows.Forms.PictureBox pictureBox2;
+        public System.Windows.Forms.PictureBox pictureBox1;
     }
 }
