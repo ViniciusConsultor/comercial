@@ -78,7 +78,7 @@
             this.tlStrpProcesso = new System.Windows.Forms.ToolStrip();
             this.tlStrpBtnPesquisar = new System.Windows.Forms.ToolStripButton();
             this.tlStrpBtnGeraNt = new System.Windows.Forms.ToolStripButton();
-            this.tlStrpBtnDevNf = new System.Windows.Forms.ToolStripButton();
+            this.BtnDevNF = new System.Windows.Forms.ToolStripButton();
             this.tlStrpBtnLibPed = new System.Windows.Forms.ToolStripButton();
             this.tlStrpBtnMinGer = new System.Windows.Forms.ToolStripButton();
             this.tlStrpBtnConMin = new System.Windows.Forms.ToolStripButton();
@@ -479,7 +479,7 @@
             this.tlStrpProcesso.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tlStrpBtnPesquisar,
             this.tlStrpBtnGeraNt,
-            this.tlStrpBtnDevNf,
+            this.BtnDevNF,
             this.tlStrpBtnLibPed,
             this.tlStrpBtnMinGer,
             this.tlStrpBtnConMin,
@@ -515,16 +515,16 @@
             this.tlStrpBtnGeraNt.Visible = false;
             this.tlStrpBtnGeraNt.Click += new System.EventHandler(this.tlStrpBtnGeraNt_Click);
             // 
-            // tlStrpBtnDevNf
+            // BtnDevNF
             // 
-            this.tlStrpBtnDevNf.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tlStrpBtnDevNf.Image = ((System.Drawing.Image)(resources.GetObject("tlStrpBtnDevNf.Image")));
-            this.tlStrpBtnDevNf.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tlStrpBtnDevNf.Name = "tlStrpBtnDevNf";
-            this.tlStrpBtnDevNf.Size = new System.Drawing.Size(23, 22);
-            this.tlStrpBtnDevNf.Text = "Devolver Nota Fiscal";
-            this.tlStrpBtnDevNf.Visible = false;
-            this.tlStrpBtnDevNf.Click += new System.EventHandler(this.tlStrpBtnDevNf_Click);
+            this.BtnDevNF.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.BtnDevNF.Image = ((System.Drawing.Image)(resources.GetObject("BtnDevNF.Image")));
+            this.BtnDevNF.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.BtnDevNF.Name = "BtnDevNF";
+            this.BtnDevNF.Size = new System.Drawing.Size(23, 22);
+            this.BtnDevNF.Text = "Devolver Nota Fiscal";
+            this.BtnDevNF.Visible = false;
+        
             // 
             // tlStrpBtnLibPed
             // 
@@ -845,7 +845,7 @@
         private System.Windows.Forms.ToolStrip tlStrpProcesso;
         private System.Windows.Forms.ToolStripButton tlStrpBtnGeraNt;
         private System.Windows.Forms.ToolStripButton tlStrpBtnLibPed;
-        private System.Windows.Forms.ToolStripButton tlStrpBtnDevNf;
+        private System.Windows.Forms.ToolStripButton BtnDevNF;
         private System.Windows.Forms.ToolStripButton tlStrpBtnMinGer;
         private System.Windows.Forms.ToolStripButton tlStrpBtnConMin;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;

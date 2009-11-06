@@ -54,15 +54,14 @@ namespace Comercial
 
        }
 
-    
-
-
        private void FrmDevNotaFiscal_Load(object sender, EventArgs e)
        {
            // TODO: This line of code loads data into the 'cOMERCIALDataSet.NOTAFISCAL' table. You can move, or remove it, as needed.
            this.nOTAFISCALTableAdapter.Fill(this.cOMERCIALDataSet.NOTAFISCAL);
+           
 
        }
+
 
        #region Listar NF
        public DataTable ListaNf()
@@ -85,6 +84,7 @@ namespace Comercial
        }
        #endregion
        
+
        #region Pesquisar NF
        private void txtNumNF_ButtonClick(object sender, EventArgs e)
        {
@@ -105,6 +105,7 @@ namespace Comercial
            }
        }
     # endregion
+
 
        #region Listar item pedido NF
        public DataTable ListarItemNF(int NumNF)
@@ -129,12 +130,11 @@ namespace Comercial
 
        }
        #endregion
+
         
        #region PopularGridNF
        public void populargrid()
        {
-
-           // DataTable dttRetorno = new DataTable();
 
            int NrNotaFiscal;
 
@@ -146,8 +146,6 @@ namespace Comercial
                    NrNotaFiscal = Convert.ToInt32(txtNumNF.getText);
 
                    dttRetorno = ListarItemNF(NrNotaFiscal);
-
-                //   dttRetorno.Columns.Add("Status", typeof(string));
 
                    dtGrdVwItensNF.DataSource = dttRetorno;
                }
@@ -164,15 +162,40 @@ namespace Comercial
        #endregion
 
 
-       private void txtSerie_TextChanged(object sender, EventArgs e)
+       #region LimparCampos
+       public void limparcampos()
+       {
+           try
+           {
+               txtNumNF.Text = String.Empty; ;
+               txtSerie.Text = String.Empty;
+               txtTipoNF.Text = String.Empty;
+               dtTmPckrDtEmissao.Text = String.Empty;
+               txtBxVlrMercadoria.Text = String.Empty;
+            
+               dtGrdVwItensNF.Refresh();
+
+           }
+           catch (Exception ex)
+           {
+
+               throw ex;
+           }
+       }
+       #endregion
+
+
+       #region Devolver NF
+       public void DevolveNF()
        {
 
        }
 
+       #endregion
 
-     
 
-       
-      
+
+
+
     }
 }
