@@ -871,6 +871,7 @@ namespace Comercial
                     Ped.txtDescprod.Text = selecionadas[1].Value.ToString();
                     Ped.txtUM.Text = selecionadas[2].Value.ToString();
                     Ped.txtEstAtual.Text = selecionadas[3].Value.ToString();
+                   // string precounit = string.Format("{0:C2}", Convert.ToDouble(selecionadas[4].Value.ToString()));
                     Ped.txtPrcUnit.Text = selecionadas[4].Value.ToString();
                     Ped.txtipi.Text = selecionadas[5].Value.ToString();
                     Ped.txtDesconto.Text = selecionadas[6].Value.ToString();

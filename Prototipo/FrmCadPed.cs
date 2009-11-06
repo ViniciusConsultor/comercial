@@ -20,7 +20,7 @@ namespace Comercial
         private FrmPrinc _princ = null;
         public DataTable dttRetorno = new DataTable();
         int statusped = 0;
-        Double valortotal;
+        //Double valortotal;
         public FrmCadPed(FrmPrinc parent)
         {
             InitializeComponent();
@@ -861,7 +861,7 @@ namespace Comercial
                 }
 
                 //Replace no valor total de "." para ","
-                //valortotal = (String)txtValorTotal.Text.Replace(".", ",");
+                string valortotal = (String)txtValorTotal.Text.Replace(".", ",");
 
                 //Valida o Valor total = 0
                 if (Convert.ToDouble(valortotal) == 0)
@@ -1119,8 +1119,12 @@ namespace Comercial
             if (!String.IsNullOrEmpty(txtQtdItem.Text) && !String.IsNullOrEmpty(txtPrcUnit.Text))
             {
 
+                //string PrecoUnit = txtPrcUnit.Text.Replace("R$", "").Replace(".", "");
                 txtValorTotal.Text = Convert.ToString(Convert.ToDouble(txtQtdItem.Text) * Convert.ToDouble(txtPrcUnit.Text));
 
+                //txtValorTotal.Text = string.Format("{0:C2}", Convert.ToDouble(valortotal));
+
+            
             }
         }
 
