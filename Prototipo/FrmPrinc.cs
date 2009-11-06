@@ -300,6 +300,8 @@ namespace Comercial
                 Ped.LimparCampos();
                 Ped.dtgrdvItenspven.Refresh();
                 Ped.dttRetorno.Clear();
+                Ped.desabilitacontroles();
+                Ped.lblValortotal.Text = Convert.ToString(0);
             }
         }
         #endregion
@@ -419,6 +421,7 @@ namespace Comercial
                 bindingNavigator1.Visible = false;
                 tlStrpBtnPesquisar.Visible = true;
                 tsbhomeProcesso.Visible = true;
+                tsbCancelarPedido.Visible = true;
 
                 // Util.Interface.ResetControls(filho);
                 //Util.Interface.ChangeControlStatus(filho, false);
@@ -597,7 +600,7 @@ namespace Comercial
                 //Util.Interface.ChangeControlStatus(filho, false);
 
                 tlStrpProcesso.Visible = true;
-               // tlStrpBtnDevNf.Visible = true;
+                // tlStrpBtnDevNf.Visible = true;
                 bindingNavigator1.Visible = false;
                 tlStrpBtnSalvarUsu.Visible = true;
 
@@ -1343,6 +1346,7 @@ namespace Comercial
 
                     //frmPed.limpardttable();
                     frmPed.ValidaControles();
+                    frmPed.desabilitacontroles();
 
                 }
 
@@ -1371,13 +1375,12 @@ namespace Comercial
             if (frm is FrmCadPed)
             {
                 FrmCadPed Ped = (FrmCadPed)frm;
-                Ped.populargrid();
                 Ped.Limparitens();
                 Ped.limpardttable();
                 Ped.txtNomeCliente.Text = Ped.ListarNomeCliente(Ped.txtcodCli.getText);
                 Ped.txtNomeTransportadora.Text = Ped.ListarNomeTransportadora(Ped.txtCodTransportadora.getText);
                 Ped.txtNomeVendedor.Text = Ped.ListarNomeVendedor(Ped.txtCodVendedor.getText);
-
+                Ped.populargrid();
             }
             if (frm is FrmCadVen)
             {
@@ -1614,6 +1617,34 @@ namespace Comercial
 
         }
 
-        
+        private void BtnDevNF_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tsbCancelarPedido_Click(object sender, EventArgs e)
+        {
+
+            Form frm = this.ActiveMdiChild;
+            if (frm == null)
+                return;
+
+            try
+            {
+                if (frm is FrmLibPDV)
+                {
+                    FrmLibPDV frmPedCanc = (FrmLibPDV)frm;
+                    frmPedCanc.CancelarPedido();
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+
     }
 }

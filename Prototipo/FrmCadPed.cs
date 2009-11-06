@@ -1124,6 +1124,32 @@ namespace Comercial
             }
         }
 
+        #region Desabilitacontroles
+        public void desabilitacontroles()
+        {
+            try
+            {
+                txtNomeCliente.Enabled = false;
+                txtNomeTransportadora.Enabled = false;
+                txtNomeVendedor.Enabled = false;
+                txtPedido.Enabled = false;
+                txtPrcUnit.Enabled = false;
+                txtDescprod.Enabled = false;
+                txtDesconto.Enabled = false;
+                txtEstAtual.Enabled = false;
+                txtipi.Enabled = false;
+                txtUM.Enabled = false;
+                txtValorTotal.Enabled = false;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        #endregion
+
 
     }
 }
