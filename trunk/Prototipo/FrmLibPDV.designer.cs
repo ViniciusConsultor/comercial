@@ -63,6 +63,7 @@
             this.lblnumPed = new System.Windows.Forms.Label();
             this.grpBxItPedVen = new System.Windows.Forms.GroupBox();
             this.grpBxTotais = new System.Windows.Forms.GroupBox();
+            this.txtBxVlrFaturado = new System.Windows.Forms.TextBox();
             this.grpSituacaoItens = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -74,6 +75,7 @@
             this.lblVlrFrete = new System.Windows.Forms.Label();
             this.lblVlrMercadoria = new System.Windows.Forms.Label();
             this.txtBxDescontos = new System.Windows.Forms.TextBox();
+            this.txtBxVlrMercadoria = new System.Windows.Forms.TextBox();
             this.pnlItenped = new System.Windows.Forms.Panel();
             this.dtgrdvItenspven = new System.Windows.Forms.DataGridView();
             this.pEDIDOBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -93,8 +95,6 @@
             this.ColTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColVALORFATU = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColStatusItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtBxVlrMercadoria = new System.Windows.Forms.TextBox();
-            this.txtBxVlrFaturado = new System.Windows.Forms.TextBox();
             this.tbCntrlPedVend.SuspendLayout();
             this.tbPgPDV.SuspendLayout();
             this.grpBxPedVenda.SuspendLayout();
@@ -430,6 +430,15 @@
             this.grpBxTotais.TabStop = false;
             this.grpBxTotais.Text = "Totais";
             // 
+            // txtBxVlrFaturado
+            // 
+            this.txtBxVlrFaturado.Enabled = false;
+            this.txtBxVlrFaturado.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBxVlrFaturado.Location = new System.Drawing.Point(752, 15);
+            this.txtBxVlrFaturado.Name = "txtBxVlrFaturado";
+            this.txtBxVlrFaturado.Size = new System.Drawing.Size(83, 20);
+            this.txtBxVlrFaturado.TabIndex = 27;
+            // 
             // grpSituacaoItens
             // 
             this.grpSituacaoItens.Controls.Add(this.label2);
@@ -550,6 +559,15 @@
             this.txtBxDescontos.Name = "txtBxDescontos";
             this.txtBxDescontos.Size = new System.Drawing.Size(83, 20);
             this.txtBxDescontos.TabIndex = 21;
+            // 
+            // txtBxVlrMercadoria
+            // 
+            this.txtBxVlrMercadoria.Enabled = false;
+            this.txtBxVlrMercadoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBxVlrMercadoria.Location = new System.Drawing.Point(752, 71);
+            this.txtBxVlrMercadoria.Name = "txtBxVlrMercadoria";
+            this.txtBxVlrMercadoria.Size = new System.Drawing.Size(83, 20);
+            this.txtBxVlrMercadoria.TabIndex = 18;
             // 
             // pnlItenped
             // 
@@ -673,7 +691,6 @@
             this.ClmItem.DataPropertyName = "ITEM";
             this.ClmItem.HeaderText = "Item";
             this.ClmItem.Name = "ClmItem";
-            this.ClmItem.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.ClmItem.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.ClmItem.Width = 35;
             // 
@@ -683,7 +700,7 @@
             this.ColProd.DataPropertyName = "CODPRODUTO";
             this.ColProd.HeaderText = "Codigo Produto";
             this.ColProd.Name = "ColProd";
-            this.ColProd.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.ColProd.ReadOnly = true;
             this.ColProd.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // ClmDescProd
@@ -691,6 +708,7 @@
             this.ClmDescProd.DataPropertyName = "DESCRICAO";
             this.ClmDescProd.HeaderText = "Descrição Produto";
             this.ClmDescProd.Name = "ClmDescProd";
+            this.ClmDescProd.ReadOnly = true;
             this.ClmDescProd.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.ClmDescProd.Width = 125;
             // 
@@ -717,6 +735,7 @@
             this.ClmPrcUnit.DefaultCellStyle = dataGridViewCellStyle2;
             this.ClmPrcUnit.HeaderText = "Preço Unitário";
             this.ClmPrcUnit.Name = "ClmPrcUnit";
+            this.ClmPrcUnit.ReadOnly = true;
             this.ClmPrcUnit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // ClmIPI
@@ -724,6 +743,7 @@
             this.ClmIPI.DataPropertyName = "IPI";
             this.ClmIPI.HeaderText = "% IPI";
             this.ClmIPI.Name = "ClmIPI";
+            this.ClmIPI.ReadOnly = true;
             this.ClmIPI.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.ClmIPI.Visible = false;
             // 
@@ -732,6 +752,7 @@
             this.ColDesconto.DataPropertyName = "DESCONTO";
             this.ColDesconto.HeaderText = "Desconto";
             this.ColDesconto.Name = "ColDesconto";
+            this.ColDesconto.ReadOnly = true;
             this.ColDesconto.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // ColTotal
@@ -742,6 +763,7 @@
             this.ColTotal.DefaultCellStyle = dataGridViewCellStyle3;
             this.ColTotal.HeaderText = "Valor Total";
             this.ColTotal.Name = "ColTotal";
+            this.ColTotal.ReadOnly = true;
             this.ColTotal.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // ColVALORFATU
@@ -751,7 +773,6 @@
             this.ColVALORFATU.DefaultCellStyle = dataGridViewCellStyle4;
             this.ColVALORFATU.HeaderText = "Valor Faturado";
             this.ColVALORFATU.Name = "ColVALORFATU";
-            this.ColVALORFATU.ReadOnly = true;
             this.ColVALORFATU.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.ColVALORFATU.Visible = false;
             // 
@@ -760,27 +781,9 @@
             this.ColStatusItem.DataPropertyName = "Status";
             this.ColStatusItem.HeaderText = "Status";
             this.ColStatusItem.Name = "ColStatusItem";
+            this.ColStatusItem.ReadOnly = true;
             this.ColStatusItem.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.ColStatusItem.Visible = false;
-            // 
-            // txtBxVlrMercadoria
-            // 
-            this.txtBxVlrMercadoria.Enabled = false;
-            this.txtBxVlrMercadoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBxVlrMercadoria.Location = new System.Drawing.Point(752, 71);
-            this.txtBxVlrMercadoria.Name = "txtBxVlrMercadoria";
-            this.txtBxVlrMercadoria.Size = new System.Drawing.Size(83, 20);
-            this.txtBxVlrMercadoria.TabIndex = 18;
-            this.txtBxVlrMercadoria.Validating += new System.ComponentModel.CancelEventHandler(this.txtBxVlrMercadoria_Validating_1);
-            // 
-            // txtBxVlrFaturado
-            // 
-            this.txtBxVlrFaturado.Enabled = false;
-            this.txtBxVlrFaturado.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBxVlrFaturado.Location = new System.Drawing.Point(752, 15);
-            this.txtBxVlrFaturado.Name = "txtBxVlrFaturado";
-            this.txtBxVlrFaturado.Size = new System.Drawing.Size(83, 20);
-            this.txtBxVlrFaturado.TabIndex = 27;
             // 
             // FrmLibPDV
             // 
@@ -790,7 +793,7 @@
             this.Controls.Add(this.tbCntrlPedVend);
             this.Name = "FrmLibPDV";
             this.Text = "Liberação de Pedido";
-            this.Load += new System.EventHandler(this.FrmLibPDV_Load);
+            
             this.tbCntrlPedVend.ResumeLayout(false);
             this.tbPgPDV.ResumeLayout(false);
             this.grpBxPedVenda.ResumeLayout(false);
@@ -857,6 +860,8 @@
         private System.Windows.Forms.Label lblPendente;
         private System.Windows.Forms.Label lblCancelado;
         private System.Windows.Forms.Label lblEfetivado;
+        public System.Windows.Forms.TextBox txtBxVlrMercadoria;
+        public System.Windows.Forms.TextBox txtBxVlrFaturado;
         private System.Windows.Forms.DataGridViewImageColumn ColStatus;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ColCheck;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmItem;
@@ -870,8 +875,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColTotal;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColVALORFATU;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColStatusItem;
-        public System.Windows.Forms.TextBox txtBxVlrMercadoria;
-        public System.Windows.Forms.TextBox txtBxVlrFaturado;
 
     }
 }

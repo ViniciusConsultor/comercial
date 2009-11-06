@@ -95,6 +95,13 @@ namespace Comercial.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap CancelarPed {
+            get {
+                object obj = ResourceManager.GetObject("CancelarPed", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap certo {
             get {
                 object obj = ResourceManager.GetObject("certo", resourceCulture);
@@ -140,6 +147,13 @@ namespace Comercial.Properties {
         internal static System.Drawing.Bitmap errado {
             get {
                 object obj = ResourceManager.GetObject("errado", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap Excluir {
+            get {
+                object obj = ResourceManager.GetObject("Excluir", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

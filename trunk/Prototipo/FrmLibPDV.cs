@@ -17,6 +17,8 @@ namespace Comercial
         double ValorPedido;
         double ValorLimite;
         double ValorFaturar;
+
+        DataTable dttRetorno = new DataTable();
         Validacoes valida = new Validacoes();
 
         public FrmLibPDV(FrmPrinc parent)
@@ -38,7 +40,7 @@ namespace Comercial
 
             sqlcommand.Append(" SELECT NRPEDIDO, TIPO, ped.CODCLIENTE, CODVENDEDOR,CODCONDICAOPAGAMENTO, CODTRANSPORTADORA, Convert(char(10),DATAEMISSAO,103)as DATAEMISSAO , Convert(char(10),DATAENTREGA,103) as DATAENTREGA ");
             sqlcommand.Append(" FROM PEDIDO ped INNER JOIN CLIENTE cli ON ped.CODCLIENTE = cli.CNPJ ");
-            sqlcommand.Append(" WHERE SITUACAO <> 'C' AND SITUACAO <> 'E' ");
+            sqlcommand.Append(" WHERE SITUACAO <> 'C' ");
 
             DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
 
@@ -166,7 +168,6 @@ namespace Comercial
 
             int numeropedido;
 
-            DataTable dttRetorno = new DataTable();
             try
             {
                 if (txtbtnPedido.Text != String.Empty)
@@ -313,6 +314,27 @@ namespace Comercial
             DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
 
             db.AddInParameter(dbComd, "@QUANTIDADELIB", DbType.Int32, QtdeLib);
+            db.AddInParameter(dbComd, "@NRPEDIDO", DbType.Int32, CodPed);
+            db.AddInParameter(dbComd, "@CODPRODUTO", DbType.Int32, CodProd);
+
+            db.ExecuteScalar(dbComd);
+
+
+        }
+        #endregion
+
+        #region RetornaQuantidadeLiberada
+        public void RetornaQtde(int CodPed, int CodProd)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+
+            StringBuilder sqlcommand = new StringBuilder();
+
+            sqlcommand.Append(" UPDATE ITEMPEDIDO SET QUANTIDADELIB = 0 WHERE NRPEDIDO = @NRPEDIDO AND CODPRODUTO = @CODPRODUTO");
+
+            DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
+
+
             db.AddInParameter(dbComd, "@NRPEDIDO", DbType.Int32, CodPed);
             db.AddInParameter(dbComd, "@CODPRODUTO", DbType.Int32, CodProd);
 
@@ -545,7 +567,8 @@ namespace Comercial
                 if (dttPedidocli.Rows.Count > 0)
                 {
                     ValorPedido = Convert.ToDouble(dttPedidocli.Rows[0]["VALOR"]);
-                    ValorFaturar = ValorPedido + Convert.ToDouble(txtBxVlrMercadoria.Text);
+                    string valormercadoria = txtBxVlrMercadoria.Text.Replace("R$", "").Replace(".", "");
+                    ValorFaturar = ValorPedido + Convert.ToDouble(valormercadoria);
 
                 }
 
@@ -700,7 +723,7 @@ namespace Comercial
                     }
 
                     //mensagem de pedido liberao (Efetivado) Com sucesso
-                    MessageBox.Show("Pedido Liberado.", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Pedido Liberado.", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     //Limpo os controles da tela, preparando para uma nova liberação 
                     limparcampos();
@@ -715,6 +738,52 @@ namespace Comercial
                 valida.tratarSystemExceções(ex);
             }
 
+        }
+        #endregion
+
+        #region Processo Cancelamento
+        public void CancelarPedido()
+        {
+            try
+            {
+                if (MessageBox.Show("Deseja Cancelar o Pedido selecionado?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                   
+                    for (int i = 0; i < dtgrdvItenspven.RowCount; i++)
+                    {
+                        int qdeliberada = Convert.ToInt32(dtgrdvItenspven.Rows[i].Cells["ClmQtdelib"].Value);
+
+                        //verifico saldo atual em estoque
+                        int estoqueatual = ListarSaldoEstoque(Convert.ToInt32(dtgrdvItenspven.Rows[i].Cells["ColProd"].Value));
+
+                        //Pego o saldo atual + qtdeliberada
+                        int atualizaestoque = estoqueatual + qdeliberada;
+
+                        //Retorna a quantidade liberada do itenpedido
+                        RetornaQtde(Convert.ToInt32(txtbtnPedido.Text), Convert.ToInt32(dtgrdvItenspven.Rows[i].Cells["ColProd"].Value));
+
+                        //Atuliza a quantidade atual em estoque
+                        atualizaSaldoEstoque(Convert.ToInt32(dtgrdvItenspven.Rows[i].Cells["ColProd"].Value), atualizaestoque);
+
+                        continue;
+                    }
+
+                    atualizaSituacao("C", Convert.ToInt32(txtbtnPedido.Text));
+
+                    //mensagem de pedido Cancelado Com sucesso
+                    MessageBox.Show("Pedido Cancelado Com Sucesso.", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    //Limpo os controles da tela, preparando para uma novo Cancelamento 
+                    limparcampos();
+                }
+            }
+
+
+            catch (Exception ex)
+            {
+                Validacoes valida = new Validacoes();
+                valida.tratarSystemExceções(ex);
+            }
         }
         #endregion
 
@@ -735,6 +804,7 @@ namespace Comercial
                 txtNomeTransportadora.Text = String.Empty;
                 txtNomeVendedor.Text = String.Empty;
                 dtgrdvItenspven.Refresh();
+                dttRetorno.Clear();
 
             }
             catch (Exception ex)
@@ -773,32 +843,9 @@ namespace Comercial
         }
         #endregion
 
-        private void FrmLibPDV_Load(object sender, EventArgs e)
-        {
-            if (!String.IsNullOrEmpty(txtBxVlrMercadoria.Text))
-            {
-                if (Convert.ToInt32(txtBxVlrMercadoria.Text) > 0)
-                {
-                    txtBxVlrMercadoria.Text = string.Format("{0:C2}", Decimal.Parse(txtBxVlrMercadoria.Text));
 
-                }
-            }
-            
-        }
 
-        private void txtBxVlrMercadoria_Validating(object sender, CancelEventArgs e)
-        {
-            
 
-        }
 
-        private void txtBxVlrMercadoria_Validating_1(object sender, CancelEventArgs e)
-        {
-            if (Convert.ToInt32(txtBxVlrMercadoria.Text) > 0)
-            {
-                txtBxVlrMercadoria.Text = string.Format("{0:C2}", Decimal.Parse(txtBxVlrMercadoria.Text));
-
-            }
-        }
     }
 }

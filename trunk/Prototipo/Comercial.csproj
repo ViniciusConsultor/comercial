@@ -542,8 +542,10 @@
     <Content Include="Img\BolaVermelho.gif" />
     <None Include="Img\certo.png" />
     <None Include="Img\errado.png" />
+    <None Include="Img\CancelarPed.gif" />
     <Content Include="Img\Excluir.png" />
     <Content Include="Resources\BolaVermelho.gif" />
+    <None Include="Resources\Excluir.gif" />
     <None Include="Resources\Excluir.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
