@@ -11,3 +11,11 @@
         }
     }
 }
+
+namespace Comercial.COMERCIALDataSetTableAdapters
+{
+    
+    
+    public partial class ITEMPEDIDOTableAdapter {
+    }
+}
