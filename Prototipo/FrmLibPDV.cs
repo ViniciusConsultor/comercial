@@ -230,7 +230,7 @@ namespace Comercial
 
             StringBuilder sqlcommand = new StringBuilder();
 
-            sqlcommand.Append(" SELECT ISNULL(SUM(QUANTIDADE * VALOR),0) AS VALOR  ");
+            sqlcommand.Append(" SELECT ISNULL(SUM(QUANTIDADELIB * VALOR),0) AS VALOR  ");
             sqlcommand.Append(" FROM PEDIDO p inner join ITEMPEDIDO i on p.NRPEDIDO = i.NRPEDIDO ");
             sqlcommand.Append(" WHERE p.CODCLIENTE = @CODCLIENTE AND P.SITUACAO = 'E' ");
 
@@ -567,7 +567,7 @@ namespace Comercial
                 if (dttPedidocli.Rows.Count > 0)
                 {
                     ValorPedido = Convert.ToDouble(dttPedidocli.Rows[0]["VALOR"]);
-                    string valormercadoria = txtBxVlrMercadoria.Text.Replace("R$", "").Replace(".", "");
+                    string valormercadoria = txtBxVlrFaturado.Text.Replace("R$", "").Replace(".", "");
                     ValorFaturar = ValorPedido + Convert.ToDouble(valormercadoria);
 
                 }

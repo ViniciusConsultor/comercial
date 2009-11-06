@@ -29,10 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmConPDV));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmConPDV));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tbCntrlConPDV = new System.Windows.Forms.TabControl();
             this.tbPgConCli = new System.Windows.Forms.TabPage();
             this.grpSituacao = new System.Windows.Forms.GroupBox();
@@ -47,7 +51,6 @@
             this.rdbProd = new System.Windows.Forms.RadioButton();
             this.rdbped = new System.Windows.Forms.RadioButton();
             this.grpBxCli = new System.Windows.Forms.GroupBox();
-            this.txtCodProd = new Comercial.TextButton();
             this.txtDesc = new System.Windows.Forms.TextBox();
             this.lblNome = new System.Windows.Forms.Label();
             this.lblCodCli = new System.Windows.Forms.Label();
@@ -71,6 +74,7 @@
             this.tableAdapterManager = new Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager();
             this.pEDIDOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.PEDIDOTableAdapter();
             this.pEDIDOBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.txtCodProd = new Comercial.TextButton();
             this.ColStatus = new System.Windows.Forms.DataGridViewImageColumn();
             this.ClmnCodPed = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClmnDtPed = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -105,7 +109,7 @@
             this.tbCntrlConPDV.Location = new System.Drawing.Point(12, 12);
             this.tbCntrlConPDV.Name = "tbCntrlConPDV";
             this.tbCntrlConPDV.SelectedIndex = 0;
-            this.tbCntrlConPDV.Size = new System.Drawing.Size(1145, 464);
+            this.tbCntrlConPDV.Size = new System.Drawing.Size(1000, 464);
             this.tbCntrlConPDV.TabIndex = 1;
             // 
             // tbPgConCli
@@ -119,7 +123,7 @@
             this.tbPgConCli.Location = new System.Drawing.Point(4, 22);
             this.tbPgConCli.Name = "tbPgConCli";
             this.tbPgConCli.Padding = new System.Windows.Forms.Padding(3);
-            this.tbPgConCli.Size = new System.Drawing.Size(1137, 438);
+            this.tbPgConCli.Size = new System.Drawing.Size(992, 438);
             this.tbPgConCli.TabIndex = 0;
             this.tbPgConCli.Text = "Consulta Pedido de Venda - Pedido / Cliente";
             this.tbPgConCli.UseVisualStyleBackColor = true;
@@ -134,7 +138,7 @@
             this.grpSituacao.Controls.Add(this.lblCancelado);
             this.grpSituacao.Controls.Add(this.lblEfetivado);
             this.grpSituacao.ForeColor = System.Drawing.Color.CadetBlue;
-            this.grpSituacao.Location = new System.Drawing.Point(1008, 113);
+            this.grpSituacao.Location = new System.Drawing.Point(858, 113);
             this.grpSituacao.Name = "grpSituacao";
             this.grpSituacao.Size = new System.Drawing.Size(123, 91);
             this.grpSituacao.TabIndex = 5;
@@ -265,17 +269,6 @@
             this.grpBxCli.TabIndex = 9;
             this.grpBxCli.TabStop = false;
             this.grpBxCli.Text = "Dados Produto:";
-            // 
-            // txtCodProd
-            // 
-            this.txtCodProd.getText = "";
-            this.txtCodProd.Image = ((System.Drawing.Image)(resources.GetObject("txtCodProd.Image")));
-            this.txtCodProd.Location = new System.Drawing.Point(15, 35);
-            this.txtCodProd.Name = "txtCodProd";
-            this.txtCodProd.ShowButton = false;
-            this.txtCodProd.Size = new System.Drawing.Size(98, 25);
-            this.txtCodProd.TabIndex = 109;
-            this.txtCodProd.ButtonClick += new System.EventHandler(this.txtCodProd_ButtonClick);
             // 
             // txtDesc
             // 
@@ -484,26 +477,26 @@
             this.ColQtdeLib,
             this.ClmnValPed,
             this.ColValorTotal});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.CadetBlue;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtGrdConPDV.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.CadetBlue;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtGrdConPDV.DefaultCellStyle = dataGridViewCellStyle6;
             this.dtGrdConPDV.Location = new System.Drawing.Point(6, 210);
             this.dtGrdConPDV.Name = "dtGrdConPDV";
             this.dtGrdConPDV.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtGrdConPDV.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dtGrdConPDV.Size = new System.Drawing.Size(1125, 222);
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtGrdConPDV.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            this.dtGrdConPDV.Size = new System.Drawing.Size(975, 222);
             this.dtGrdConPDV.TabIndex = 0;
             // 
             // iTEMPEDIDOBindingSource
@@ -552,6 +545,17 @@
             this.pEDIDOBindingSource.DataMember = "PEDIDO";
             this.pEDIDOBindingSource.DataSource = this.cOMERCIALDataSet;
             // 
+            // txtCodProd
+            // 
+            this.txtCodProd.getText = "";
+            this.txtCodProd.Image = ((System.Drawing.Image)(resources.GetObject("txtCodProd.Image")));
+            this.txtCodProd.Location = new System.Drawing.Point(15, 35);
+            this.txtCodProd.Name = "txtCodProd";
+            this.txtCodProd.ShowButton = false;
+            this.txtCodProd.Size = new System.Drawing.Size(98, 25);
+            this.txtCodProd.TabIndex = 109;
+            this.txtCodProd.ButtonClick += new System.EventHandler(this.txtCodProd_ButtonClick);
+            // 
             // ColStatus
             // 
             this.ColStatus.DataPropertyName = "ImageStatus";
@@ -596,6 +600,9 @@
             // DtEmissão
             // 
             this.DtEmissão.DataPropertyName = "DATAEMISSAO";
+            dataGridViewCellStyle2.Format = "d";
+            dataGridViewCellStyle2.NullValue = null;
+            this.DtEmissão.DefaultCellStyle = dataGridViewCellStyle2;
             this.DtEmissão.HeaderText = "Data Emissão";
             this.DtEmissão.Name = "DtEmissão";
             this.DtEmissão.ReadOnly = true;
@@ -603,6 +610,8 @@
             // ColDtEntrega
             // 
             this.ColDtEntrega.DataPropertyName = "DATAENTREGA";
+            dataGridViewCellStyle3.Format = "d";
+            this.ColDtEntrega.DefaultCellStyle = dataGridViewCellStyle3;
             this.ColDtEntrega.HeaderText = "Data Entrega";
             this.ColDtEntrega.Name = "ColDtEntrega";
             this.ColDtEntrega.ReadOnly = true;
@@ -613,6 +622,7 @@
             this.ColCodProd.HeaderText = "Código Produto";
             this.ColCodProd.Name = "ColCodProd";
             this.ColCodProd.ReadOnly = true;
+            this.ColCodProd.Visible = false;
             // 
             // ColDescricao
             // 
@@ -639,13 +649,20 @@
             // ClmnValPed
             // 
             this.ClmnValPed.DataPropertyName = "VALOR";
+            dataGridViewCellStyle4.Format = "C2";
+            dataGridViewCellStyle4.NullValue = null;
+            this.ClmnValPed.DefaultCellStyle = dataGridViewCellStyle4;
             this.ClmnValPed.HeaderText = "Preço Unitário";
             this.ClmnValPed.Name = "ClmnValPed";
             this.ClmnValPed.ReadOnly = true;
+            this.ClmnValPed.Visible = false;
             // 
             // ColValorTotal
             // 
             this.ColValorTotal.DataPropertyName = "ValorTotal";
+            dataGridViewCellStyle5.Format = "C2";
+            dataGridViewCellStyle5.NullValue = null;
+            this.ColValorTotal.DefaultCellStyle = dataGridViewCellStyle5;
             this.ColValorTotal.HeaderText = "Valor Total";
             this.ColValorTotal.Name = "ColValorTotal";
             this.ColValorTotal.ReadOnly = true;
@@ -654,7 +671,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1169, 482);
+            this.ClientSize = new System.Drawing.Size(1014, 482);
             this.Controls.Add(this.tbCntrlConPDV);
             this.Name = "FrmConPDV";
             this.Text = "Consulta Pedido de Vendas";
