@@ -49,6 +49,7 @@
             this.cmbGrupoProd = new System.Windows.Forms.ComboBox();
             this.gRUPOPRODUTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
+            this.txtCodProd = new Comercial.TextButton();
             this.label2 = new System.Windows.Forms.Label();
             this.txtEstoque = new System.Windows.Forms.TextBox();
             this.txtProdDesc = new System.Windows.Forms.TextBox();
@@ -59,7 +60,6 @@
             this.LblDesc = new System.Windows.Forms.Label();
             this.gRUPOPRODUTOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.GRUPOPRODUTOTableAdapter();
             this.tableAdapterManager = new Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager();
-            this.txtCodProd = new Comercial.TextButton();
             this.tbCntrlConProd.SuspendLayout();
             this.tbPgConProd.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGrdVwConProd)).BeginInit();
@@ -222,6 +222,7 @@
             this.TxtEstMin.Name = "TxtEstMin";
             this.TxtEstMin.Size = new System.Drawing.Size(64, 20);
             this.TxtEstMin.TabIndex = 32;
+            this.TxtEstMin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtEstMin_KeyPress);
             // 
             // cmBxOpEstoqueMin
             // 
@@ -271,6 +272,17 @@
             // 
             this.cOMERCIALDataSet.DataSetName = "COMERCIALDataSet";
             this.cOMERCIALDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // txtCodProd
+            // 
+            this.txtCodProd.getText = "";
+            this.txtCodProd.Image = global::Comercial.Properties.Resources.search1;
+            this.txtCodProd.Location = new System.Drawing.Point(9, 32);
+            this.txtCodProd.Name = "txtCodProd";
+            this.txtCodProd.ShowButton = false;
+            this.txtCodProd.Size = new System.Drawing.Size(45, 25);
+            this.txtCodProd.TabIndex = 28;
+            this.txtCodProd.ButtonClick += new System.EventHandler(this.txtNumPed_ButtonClick);
             // 
             // label2
             // 
@@ -384,17 +396,6 @@
             this.tableAdapterManager.USUARIOTableAdapter = null;
             this.tableAdapterManager.VENDEDORTableAdapter = null;
             this.tableAdapterManager.VIATRANSPORTETableAdapter = null;
-            // 
-            // txtCodProd
-            // 
-            this.txtCodProd.getText = "";
-            this.txtCodProd.Image = global::Comercial.Properties.Resources.search1;
-            this.txtCodProd.Location = new System.Drawing.Point(9, 32);
-            this.txtCodProd.Name = "txtCodProd";
-            this.txtCodProd.ShowButton = false;
-            this.txtCodProd.Size = new System.Drawing.Size(45, 25);
-            this.txtCodProd.TabIndex = 28;
-            this.txtCodProd.ButtonClick += new System.EventHandler(this.txtNumPed_ButtonClick);
             // 
             // FrmConEstProd
             // 

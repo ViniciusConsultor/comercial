@@ -718,7 +718,7 @@ namespace Comercial
             #endregion
 
             #region Processo Devolucao NF Pesquisa
-            if (_parent is FrmLibPDV)
+            if (_parent is FrmDevNotaFiscal)
             {
                 if ((_controle.Name == "txtNumNF"))
                 {
@@ -1055,33 +1055,26 @@ namespace Comercial
             #region Double Click Devolução NF
             if (_controle.Name == "txtNumNF")
             {
+                
                 FrmDevNotaFiscal DevNF = (FrmDevNotaFiscal)_parent;
-                // vamos obter as células selecionadas no DataGridView
+                
+                                // vamos obter as células selecionadas no DataGridView
                 DataGridViewSelectedCellCollection selecionadas = dtGrdVwVis.SelectedCells;
+              
 
                 DataGridViewCell celula = selecionadas[0];
                 int linha = celula.RowIndex;
                 int coluna = celula.ColumnIndex;
 
                 DevNF.txtNumNF.getText = selecionadas[0].Value.ToString();
-
                 DevNF.txtSerie.Text = selecionadas[1].Value.ToString();
                 DevNF.dtTmPckrDtEmissao.Text = selecionadas[2].Value.ToString();
                 DevNF.txtTipoNF.Text = selecionadas[3].Value.ToString();
 
                 //populo o item do pedido passando como parametro a NF selecionada.
                 DevNF.populargrid();
-
-
-                //PedLib.txtNomeCliente.Text = Convert.ToString(PedLib.ListarNomeCliente(PedLib.txtCodCliente.Text));
-                //PedLib.txtNomeTransportadora.Text = Convert.ToString(PedLib.ListarNomeTransportadora(PedLib.txtCodTransportadora.Text));
-                //PedLib.txtNomeVendedor.Text = Convert.ToString(PedLib.ListarNomeVendedor(PedLib.txtCodVendedor.Text));
                 
-                
-                //valido os itens que já foram liberado, travando a celula se o item estiver liberado totalmente
-                //se tiver liberado parcialmente mudo a cor da celula para vermelho
-              //  PedLib.ValidaItemLiberado();
-
+                                
                 this.Close();
                 this.Dispose();
             }

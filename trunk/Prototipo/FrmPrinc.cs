@@ -739,9 +739,9 @@ namespace Comercial
                 filho.Show();
 
                 tlStrpProcesso.Visible = true;
-                tlStrpBtnDevNf.Visible = true;
+                BtnDevNF.Visible = true;
                 bindingNavigator1.Visible = false;
-
+                filho.limparcampos();
                 // Util.Interface.ResetControls(filho);
                 //Util.Interface.ChangeControlStatus(filho, false);
 
@@ -1607,10 +1607,11 @@ namespace Comercial
             bindingNavigator1.Enabled = false;
         }
 
-        private void tlStrpBtnDevNf_Click(object sender, EventArgs e)
+        private void BtnDevNF_Click(object sender, EventArgs e)
         {
 
         }
 
+        
     }
 }
