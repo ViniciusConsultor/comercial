@@ -64,13 +64,14 @@ namespace Comercial
                     desconto = Convert.ToDouble(desconto) + Convert.ToDouble(item.Cells["ColDesconto"].Value);
                     totalfaturado = Convert.ToDouble(totalfaturado) + Convert.ToDouble(item.Cells["ColVALORFATU"].Value);
 
-
+                    txtBxVlrMercadoria.Text = string.Format("{0:C2}", Convert.ToDouble(total));
+                    txtBxVlrFaturado.Text = string.Format("{0:C2}", Convert.ToDouble(totalfaturado));
 
                 }
 
-                txtBxVlrMercadoria.Text = Convert.ToString(total);
+                txtBxVlrMercadoria.Text = Convert.ToString(txtBxVlrMercadoria.Text);
                 txtBxDescontos.Text = Convert.ToString(desconto);
-                txtBxVlrFaturado.Text = Convert.ToString(totalfaturado);
+                txtBxVlrFaturado.Text = Convert.ToString(txtBxVlrFaturado.Text);
             }
             catch (Exception ex)
             {
@@ -199,7 +200,9 @@ namespace Comercial
 
             StringBuilder sqlcommand = new StringBuilder();
 
-            sqlcommand.Append(" SELECT ITEM,ITEMPEDIDO.CODPRODUTO,DESCRICAO,QUANTIDADE, ISNULL(QUANTIDADELIB,0) AS QUANTLIB,DESCONTO,VALOR,ITEMPEDIDO.IPI, (QUANTIDADE *VALOR) as VALORTOTAL,(QUANTIDADELIB * VALOR) as VALORFATU  ");
+            sqlcommand.Append(" SELECT ITEM,ITEMPEDIDO.CODPRODUTO,DESCRICAO,QUANTIDADE, ISNULL(QUANTIDADELIB,0) AS QUANTLIB, ");
+            sqlcommand.Append(" DESCONTO,VALOR,ITEMPEDIDO.IPI, ((QUANTIDADE * VALOR) - QUANTIDADE * VALOR * DESCONTO /100) as VALORTOTAL, ");
+            sqlcommand.Append(" ((QUANTIDADELIB * VALOR) - QUANTIDADELIB * VALOR * DESCONTO /100) as VALORFATU ");
             sqlcommand.Append(" FROM ITEMPEDIDO INNER JOIN PRODUTO ON ITEMPEDIDO.CODPRODUTO = PRODUTO.CODPRODUTO ");
             sqlcommand.Append(" WHERE NRPEDIDO = @nrpedido ");
 
@@ -430,12 +433,12 @@ namespace Comercial
 
                 if ((ValorFaturar > ValorLimite))
                 {
-                  
+
                     throw new Exception("ValidaLimite");
-                   
+
                 }
 
-                
+
             }
             catch (Exception ex)
             {
@@ -457,22 +460,22 @@ namespace Comercial
                     if (Convert.ToInt32(item.Cells["ClmQtdeLib"].Value) > SaldoEstoque)
                     {
                         //MessageBox.Show("Saldo em Estoque Indisponivel para o produto!." + "Codigo: " + Convert.ToInt32(item.Cells["ColProd"].Value), "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                      
+
                         throw new Exception("ValidaEstoque");
-                       
+
                     }
 
                     if (Convert.ToInt32(item.Cells["ClmQtdeLib"].Value) > Convert.ToInt32(item.Cells["ClmQtde"].Value))
                     {
                         //MessageBox.Show("Quantidade liberada não pode ser superio a quantidade do pedido!." + "Codigo: " + Convert.ToInt32(item.Cells["ColProd"].Value), "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                       
+
                         throw new Exception("ValidaQtdeLiberada");
-                        
+
                     }
 
-                    
+
                 }
-               
+
             }
             catch (Exception ex)
             {
@@ -772,7 +775,30 @@ namespace Comercial
 
         private void FrmLibPDV_Load(object sender, EventArgs e)
         {
+            if (!String.IsNullOrEmpty(txtBxVlrMercadoria.Text))
+            {
+                if (Convert.ToInt32(txtBxVlrMercadoria.Text) > 0)
+                {
+                    txtBxVlrMercadoria.Text = string.Format("{0:C2}", Decimal.Parse(txtBxVlrMercadoria.Text));
 
+                }
+            }
+            
+        }
+
+        private void txtBxVlrMercadoria_Validating(object sender, CancelEventArgs e)
+        {
+            
+
+        }
+
+        private void txtBxVlrMercadoria_Validating_1(object sender, CancelEventArgs e)
+        {
+            if (Convert.ToInt32(txtBxVlrMercadoria.Text) > 0)
+            {
+                txtBxVlrMercadoria.Text = string.Format("{0:C2}", Decimal.Parse(txtBxVlrMercadoria.Text));
+
+            }
         }
     }
 }

@@ -30,8 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tbCntrlPedVend = new System.Windows.Forms.TabControl();
             this.tbPgPDV = new System.Windows.Forms.TabPage();
             this.grpBxPedVenda = new System.Windows.Forms.GroupBox();
@@ -71,10 +74,12 @@
             this.lblVlrFrete = new System.Windows.Forms.Label();
             this.lblVlrMercadoria = new System.Windows.Forms.Label();
             this.txtBxDescontos = new System.Windows.Forms.TextBox();
-            this.txtBxVlrFaturado = new System.Windows.Forms.TextBox();
-            this.txtBxVlrMercadoria = new System.Windows.Forms.TextBox();
             this.pnlItenped = new System.Windows.Forms.Panel();
             this.dtgrdvItenspven = new System.Windows.Forms.DataGridView();
+            this.pEDIDOBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
+            this.pEDIDOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.PEDIDOTableAdapter();
+            this.tableAdapterManager = new Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager();
             this.ColStatus = new System.Windows.Forms.DataGridViewImageColumn();
             this.ColCheck = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ClmItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -88,10 +93,8 @@
             this.ColTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColVALORFATU = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColStatusItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pEDIDOBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
-            this.pEDIDOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.PEDIDOTableAdapter();
-            this.tableAdapterManager = new Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager();
+            this.txtBxVlrMercadoria = new System.Windows.Forms.TextBox();
+            this.txtBxVlrFaturado = new System.Windows.Forms.TextBox();
             this.tbCntrlPedVend.SuspendLayout();
             this.tbPgPDV.SuspendLayout();
             this.grpBxPedVenda.SuspendLayout();
@@ -412,12 +415,12 @@
             // 
             // grpBxTotais
             // 
+            this.grpBxTotais.Controls.Add(this.txtBxVlrFaturado);
             this.grpBxTotais.Controls.Add(this.grpSituacaoItens);
             this.grpBxTotais.Controls.Add(this.lblDescontos);
             this.grpBxTotais.Controls.Add(this.lblVlrFrete);
             this.grpBxTotais.Controls.Add(this.lblVlrMercadoria);
             this.grpBxTotais.Controls.Add(this.txtBxDescontos);
-            this.grpBxTotais.Controls.Add(this.txtBxVlrFaturado);
             this.grpBxTotais.Controls.Add(this.txtBxVlrMercadoria);
             this.grpBxTotais.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.grpBxTotais.Location = new System.Drawing.Point(10, 260);
@@ -548,24 +551,6 @@
             this.txtBxDescontos.Size = new System.Drawing.Size(83, 20);
             this.txtBxDescontos.TabIndex = 21;
             // 
-            // txtBxVlrFaturado
-            // 
-            this.txtBxVlrFaturado.Enabled = false;
-            this.txtBxVlrFaturado.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBxVlrFaturado.Location = new System.Drawing.Point(752, 19);
-            this.txtBxVlrFaturado.Name = "txtBxVlrFaturado";
-            this.txtBxVlrFaturado.Size = new System.Drawing.Size(83, 20);
-            this.txtBxVlrFaturado.TabIndex = 19;
-            // 
-            // txtBxVlrMercadoria
-            // 
-            this.txtBxVlrMercadoria.Enabled = false;
-            this.txtBxVlrMercadoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBxVlrMercadoria.Location = new System.Drawing.Point(752, 71);
-            this.txtBxVlrMercadoria.Name = "txtBxVlrMercadoria";
-            this.txtBxVlrMercadoria.Size = new System.Drawing.Size(83, 20);
-            this.txtBxVlrMercadoria.TabIndex = 18;
-            // 
             // pnlItenped
             // 
             this.pnlItenped.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -604,30 +589,67 @@
             this.ColTotal,
             this.ColVALORFATU,
             this.ColStatusItem});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.CadetBlue;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgrdvItenspven.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.CadetBlue;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgrdvItenspven.DefaultCellStyle = dataGridViewCellStyle5;
             this.dtgrdvItenspven.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtgrdvItenspven.GridColor = System.Drawing.Color.WhiteSmoke;
             this.dtgrdvItenspven.Location = new System.Drawing.Point(0, 0);
             this.dtgrdvItenspven.Name = "dtgrdvItenspven";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgrdvItenspven.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgrdvItenspven.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dtgrdvItenspven.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dtgrdvItenspven.Size = new System.Drawing.Size(841, 235);
             this.dtgrdvItenspven.TabIndex = 26;
             this.dtgrdvItenspven.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgrdvItenspven_CellValueChanged);
+            // 
+            // pEDIDOBindingSource
+            // 
+            this.pEDIDOBindingSource.DataMember = "PEDIDO";
+            this.pEDIDOBindingSource.DataSource = this.cOMERCIALDataSet;
+            // 
+            // cOMERCIALDataSet
+            // 
+            this.cOMERCIALDataSet.DataSetName = "COMERCIALDataSet";
+            this.cOMERCIALDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // pEDIDOTableAdapter
+            // 
+            this.pEDIDOTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.ACESSOTableAdapter = null;
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.CLIENTETableAdapter = null;
+            this.tableAdapterManager.CONDICAOPAGAMENTOTableAdapter = null;
+            this.tableAdapterManager.GRUPOPRODUTOTableAdapter = null;
+            this.tableAdapterManager.ICMSTableAdapter = null;
+            this.tableAdapterManager.ItemNotaFiscalTableAdapter = null;
+            this.tableAdapterManager.ITEMPEDIDOTableAdapter = null;
+            this.tableAdapterManager.MODULOTableAdapter = null;
+            this.tableAdapterManager.NOTAFISCALTableAdapter = null;
+            this.tableAdapterManager.PEDIDOTableAdapter = this.pEDIDOTableAdapter;
+            this.tableAdapterManager.PRODUTOTableAdapter = null;
+            this.tableAdapterManager.REGIAOTableAdapter = null;
+            this.tableAdapterManager.TRANSPORTADORATableAdapter = null;
+            this.tableAdapterManager.TRANSPORTADORAVIATableAdapter = null;
+            this.tableAdapterManager.UNIDADEMEDIDATableAdapter = null;
+            this.tableAdapterManager.UpdateOrder = Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.USUARIOTableAdapter = null;
+            this.tableAdapterManager.VENDEDORTableAdapter = null;
+            this.tableAdapterManager.VIATRANSPORTETableAdapter = null;
             // 
             // ColStatus
             // 
@@ -690,6 +712,9 @@
             // ClmPrcUnit
             // 
             this.ClmPrcUnit.DataPropertyName = "VALOR";
+            dataGridViewCellStyle2.Format = "C2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.ClmPrcUnit.DefaultCellStyle = dataGridViewCellStyle2;
             this.ClmPrcUnit.HeaderText = "Preço Unitário";
             this.ClmPrcUnit.Name = "ClmPrcUnit";
             this.ClmPrcUnit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -712,6 +737,9 @@
             // ColTotal
             // 
             this.ColTotal.DataPropertyName = "VALORTOTAL";
+            dataGridViewCellStyle3.Format = "C2";
+            dataGridViewCellStyle3.NullValue = null;
+            this.ColTotal.DefaultCellStyle = dataGridViewCellStyle3;
             this.ColTotal.HeaderText = "Valor Total";
             this.ColTotal.Name = "ColTotal";
             this.ColTotal.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -719,6 +747,8 @@
             // ColVALORFATU
             // 
             this.ColVALORFATU.DataPropertyName = "VALORFATU";
+            dataGridViewCellStyle4.Format = "C2";
+            this.ColVALORFATU.DefaultCellStyle = dataGridViewCellStyle4;
             this.ColVALORFATU.HeaderText = "Valor Faturado";
             this.ColVALORFATU.Name = "ColVALORFATU";
             this.ColVALORFATU.ReadOnly = true;
@@ -733,42 +763,24 @@
             this.ColStatusItem.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.ColStatusItem.Visible = false;
             // 
-            // pEDIDOBindingSource
+            // txtBxVlrMercadoria
             // 
-            this.pEDIDOBindingSource.DataMember = "PEDIDO";
-            this.pEDIDOBindingSource.DataSource = this.cOMERCIALDataSet;
+            this.txtBxVlrMercadoria.Enabled = false;
+            this.txtBxVlrMercadoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBxVlrMercadoria.Location = new System.Drawing.Point(752, 71);
+            this.txtBxVlrMercadoria.Name = "txtBxVlrMercadoria";
+            this.txtBxVlrMercadoria.Size = new System.Drawing.Size(83, 20);
+            this.txtBxVlrMercadoria.TabIndex = 18;
+            this.txtBxVlrMercadoria.Validating += new System.ComponentModel.CancelEventHandler(this.txtBxVlrMercadoria_Validating_1);
             // 
-            // cOMERCIALDataSet
+            // txtBxVlrFaturado
             // 
-            this.cOMERCIALDataSet.DataSetName = "COMERCIALDataSet";
-            this.cOMERCIALDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // pEDIDOTableAdapter
-            // 
-            this.pEDIDOTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.ACESSOTableAdapter = null;
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.CLIENTETableAdapter = null;
-            this.tableAdapterManager.CONDICAOPAGAMENTOTableAdapter = null;
-            this.tableAdapterManager.GRUPOPRODUTOTableAdapter = null;
-            this.tableAdapterManager.ICMSTableAdapter = null;
-            this.tableAdapterManager.ItemNotaFiscalTableAdapter = null;
-            this.tableAdapterManager.ITEMPEDIDOTableAdapter = null;
-            this.tableAdapterManager.MODULOTableAdapter = null;
-            this.tableAdapterManager.NOTAFISCALTableAdapter = null;
-            this.tableAdapterManager.PEDIDOTableAdapter = this.pEDIDOTableAdapter;
-            this.tableAdapterManager.PRODUTOTableAdapter = null;
-            this.tableAdapterManager.REGIAOTableAdapter = null;
-            this.tableAdapterManager.TRANSPORTADORATableAdapter = null;
-            this.tableAdapterManager.TRANSPORTADORAVIATableAdapter = null;
-            this.tableAdapterManager.UNIDADEMEDIDATableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            this.tableAdapterManager.USUARIOTableAdapter = null;
-            this.tableAdapterManager.VENDEDORTableAdapter = null;
-            this.tableAdapterManager.VIATRANSPORTETableAdapter = null;
+            this.txtBxVlrFaturado.Enabled = false;
+            this.txtBxVlrFaturado.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBxVlrFaturado.Location = new System.Drawing.Point(752, 15);
+            this.txtBxVlrFaturado.Name = "txtBxVlrFaturado";
+            this.txtBxVlrFaturado.Size = new System.Drawing.Size(83, 20);
+            this.txtBxVlrFaturado.TabIndex = 27;
             // 
             // FrmLibPDV
             // 
@@ -808,7 +820,6 @@
         private System.Windows.Forms.Label lblVlrFrete;
         private System.Windows.Forms.Label lblVlrMercadoria;
         private System.Windows.Forms.TextBox txtBxDescontos;
-        private System.Windows.Forms.TextBox txtBxVlrFaturado;
         private System.Windows.Forms.Panel pnlItenped;
         public System.Windows.Forms.GroupBox grpBxPedVenda;
         private System.Windows.Forms.GroupBox grpTipoPedido;
@@ -838,7 +849,6 @@
         private Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager tableAdapterManager;
         public System.Windows.Forms.CheckBox chkComplemento;
         public System.Windows.Forms.CheckBox chkNormal;
-        public System.Windows.Forms.TextBox txtBxVlrMercadoria;
         public System.Windows.Forms.TextBox txtbtnPedido;
         private System.Windows.Forms.GroupBox grpSituacaoItens;
         private System.Windows.Forms.Label label2;
@@ -860,6 +870,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColTotal;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColVALORFATU;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColStatusItem;
+        public System.Windows.Forms.TextBox txtBxVlrMercadoria;
+        public System.Windows.Forms.TextBox txtBxVlrFaturado;
 
     }
 }
