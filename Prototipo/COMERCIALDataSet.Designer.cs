@@ -8129,7 +8129,7 @@ namespace Comercial {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public RelProdutoRow AddRelProdutoRow(string GRUPO, string PRODUTO, string DATACADASTRO, string PRECOCUSTO, string PRECOVENDA, string ESTOQUEATUAL, string ESTOQUEMIN, string IPI, string DESCONTO, string CODPROD, string CODGRUPO) {
+            public RelProdutoRow AddRelProdutoRow(string GRUPO, string PRODUTO, System.DateTime DATACADASTRO, double PRECOCUSTO, double PRECOVENDA, string ESTOQUEATUAL, string ESTOQUEMIN, double IPI, double DESCONTO, string CODPROD, string CODGRUPO) {
                 RelProdutoRow rowRelProdutoRow = ((RelProdutoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         GRUPO,
@@ -8181,19 +8181,19 @@ namespace Comercial {
                 base.Columns.Add(this.columnGRUPO);
                 this.columnPRODUTO = new global::System.Data.DataColumn("PRODUTO", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPRODUTO);
-                this.columnDATACADASTRO = new global::System.Data.DataColumn("DATACADASTRO", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnDATACADASTRO = new global::System.Data.DataColumn("DATACADASTRO", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDATACADASTRO);
-                this.columnPRECOCUSTO = new global::System.Data.DataColumn("PRECOCUSTO", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnPRECOCUSTO = new global::System.Data.DataColumn("PRECOCUSTO", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPRECOCUSTO);
-                this.columnPRECOVENDA = new global::System.Data.DataColumn("PRECOVENDA", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnPRECOVENDA = new global::System.Data.DataColumn("PRECOVENDA", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPRECOVENDA);
                 this.columnESTOQUEATUAL = new global::System.Data.DataColumn("ESTOQUEATUAL", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnESTOQUEATUAL);
                 this.columnESTOQUEMIN = new global::System.Data.DataColumn("ESTOQUEMIN", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnESTOQUEMIN);
-                this.columnIPI = new global::System.Data.DataColumn("IPI", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnIPI = new global::System.Data.DataColumn("IPI", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIPI);
-                this.columnDESCONTO = new global::System.Data.DataColumn("DESCONTO", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnDESCONTO = new global::System.Data.DataColumn("DESCONTO", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDESCONTO);
                 this.columnCODPROD = new global::System.Data.DataColumn("CODPROD", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCODPROD);
@@ -11831,10 +11831,10 @@ namespace Comercial {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public string DATACADASTRO {
+            public System.DateTime DATACADASTRO {
                 get {
                     try {
-                        return ((string)(this[this.tableRelProduto.DATACADASTROColumn]));
+                        return ((global::System.DateTime)(this[this.tableRelProduto.DATACADASTROColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'DATACADASTRO\' in table \'RelProduto\' is DBNull.", e);
@@ -11846,10 +11846,10 @@ namespace Comercial {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public string PRECOCUSTO {
+            public double PRECOCUSTO {
                 get {
                     try {
-                        return ((string)(this[this.tableRelProduto.PRECOCUSTOColumn]));
+                        return ((double)(this[this.tableRelProduto.PRECOCUSTOColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'PRECOCUSTO\' in table \'RelProduto\' is DBNull.", e);
@@ -11861,10 +11861,10 @@ namespace Comercial {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public string PRECOVENDA {
+            public double PRECOVENDA {
                 get {
                     try {
-                        return ((string)(this[this.tableRelProduto.PRECOVENDAColumn]));
+                        return ((double)(this[this.tableRelProduto.PRECOVENDAColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'PRECOVENDA\' in table \'RelProduto\' is DBNull.", e);
@@ -11906,10 +11906,10 @@ namespace Comercial {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public string IPI {
+            public double IPI {
                 get {
                     try {
-                        return ((string)(this[this.tableRelProduto.IPIColumn]));
+                        return ((double)(this[this.tableRelProduto.IPIColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'IPI\' in table \'RelProduto\' is DBNull.", e);
@@ -11921,10 +11921,10 @@ namespace Comercial {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public string DESCONTO {
+            public double DESCONTO {
                 get {
                     try {
-                        return ((string)(this[this.tableRelProduto.DESCONTOColumn]));
+                        return ((double)(this[this.tableRelProduto.DESCONTOColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'DESCONTO\' in table \'RelProduto\' is DBNull.", e);
