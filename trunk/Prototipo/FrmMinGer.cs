@@ -255,7 +255,7 @@ FROM [vTargetMail]')
                         "INSERT INTO " + txtnomeEstrutura.Text + " ("+ campos +")"+
                         " openquery(COMERCIAL,'"+sql+"')";
                     cmd.CommandText = insertInto;
-                    cmd.Parameters.Add("t", table);
+                    //cmd.Parameters.Add("t", table);
                     cmd.ExecuteNonQuery();
 
 
