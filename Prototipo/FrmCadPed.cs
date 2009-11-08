@@ -861,7 +861,8 @@ namespace Comercial
                 }
 
                 //Replace no valor total de "." para ","
-                string valortotal = (String)txtValorTotal.Text.Replace(".", ",");
+                string valortotal = (String)txtValorTotal.Text.Replace("R$", "");
+     
 
                 //Valida o Valor total = 0
                 if (Convert.ToDouble(valortotal) == 0)
@@ -874,6 +875,8 @@ namespace Comercial
                 {
                     throw new Exception("valortotalnegativo");
                 }
+
+                txtPrcUnit.Text = (String)txtPrcUnit.Text.Replace("R$", "");
 
                 //Valida o preço unitário = 0
                 if (Convert.ToDouble(txtPrcUnit.Text) == 0)
@@ -1119,10 +1122,10 @@ namespace Comercial
             if (!String.IsNullOrEmpty(txtQtdItem.Text) && !String.IsNullOrEmpty(txtPrcUnit.Text))
             {
 
-                //string PrecoUnit = txtPrcUnit.Text.Replace("R$", "").Replace(".", "");
-                txtValorTotal.Text = Convert.ToString(Convert.ToDouble(txtQtdItem.Text) * Convert.ToDouble(txtPrcUnit.Text));
+                string PrecoUnit = txtPrcUnit.Text.Replace("R$", "").Replace(".", "");
+                string valortotal = Convert.ToString(Convert.ToDouble(txtQtdItem.Text) * Convert.ToDouble(PrecoUnit));
 
-                //txtValorTotal.Text = string.Format("{0:C2}", Convert.ToDouble(valortotal));
+                txtValorTotal.Text = string.Format("{0:C2}", Convert.ToDouble(valortotal));
 
             
             }
