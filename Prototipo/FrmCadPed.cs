@@ -152,13 +152,18 @@ namespace Comercial
             {
                 chkEfetivado.Checked = true;
             }
-            else if (objPedido["SITUACAO"].ToString() == "C")
+            else 
+            {
+                chkEfetivado.Checked = false;
+            }
+
+            if (objPedido["SITUACAO"].ToString() == "C")
             {
                 chkCancelado.Checked = true;
             }
             else
             {
-                chkEfetivado.Checked = false;
+                chkCancelado.Checked = false;  
             }
 
             if (objPedido["SITUACAO"].ToString() == "P")
