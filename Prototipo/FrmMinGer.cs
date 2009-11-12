@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 using Microsoft.AnalysisServices.AdomdClient;
 
 
@@ -16,17 +11,13 @@ namespace Comercial
     public partial class FrmMinGer : Form
     {
         private FrmPrinc _princ = null;
-
-        private string _algoritmo;
         private string opc = "'U','V'";
-
         private string tabela = "";
         private string key = "";
         private string input = "";
         private string predictable = "";
         private string algoritmo = "";
-
-
+        
         #region geraMIning
 
         public void geraMining()
@@ -269,8 +260,7 @@ FROM [vTargetMail]')
         }
 
         #endregion
-
-
+        
         public FrmMinGer(FrmPrinc parent)
         {
             InitializeComponent();
@@ -281,11 +271,6 @@ FROM [vTargetMail]')
         public FrmPrinc getPrinc()
         {
             return _princ;
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -301,49 +286,9 @@ FROM [vTargetMail]')
 
         }
 
-        private void btnExecutar_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dtGrdVwCampos_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void lstBxTabelas_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnExecutar_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void rdBtnCliente_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void rdBtnDia_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void chckBxDia_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void FrmMinGer_Load(object sender, EventArgs e)
         {
 
-
-        }
-
-        private void lstBxProduto_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
         }
 
@@ -389,54 +334,6 @@ FROM [vTargetMail]')
             algoritmo = (string)cmbBxTipoDataMining.SelectedValue;
         }
 
-        private void checkBox32_CheckedChanged(object sender, EventArgs e)
-        {
-
-
-
-        }
-
-        private void checkBox31_CheckedChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void checkBox36_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox30_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox29_CheckedChanged(object sender, EventArgs e)
-        {
-
-
-        }
-
-        private void checkBox28_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox27_CheckedChanged(object sender, EventArgs e)
-        {
-
-
-        }
-
-        private void checkBox26_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox25_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void tabPage2_Enter(object sender, EventArgs e)
         {
             dataGridView2.Rows.Clear();
@@ -464,22 +361,6 @@ FROM [vTargetMail]')
 
             conn.Close();
             conn.Dispose();
-
-        }
-
-        private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
-        {
-
-
-        }
-
-        private void treeView1_BeforeCheck(object sender, TreeViewCancelEventArgs e)
-        {
-
-        }
-
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
 
         }
 
@@ -652,6 +533,5 @@ FROM [vTargetMail]')
                     "Input: " + input + "\n" +
                     "Predictable: " + predictable + "\n";
         }
-
     }
 }

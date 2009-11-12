@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 using System.Configuration;
+using System.Data;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace Comercial
 {
@@ -49,6 +44,7 @@ namespace Comercial
                     //confere senha
                     if (txtConSenha.Text != txtSenha.Text)
                     {
+                        conn.Close();
                         MessageBox.Show("Senha digitada não confere.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return 1;
                     }
@@ -105,7 +101,6 @@ namespace Comercial
 
                         return 0;
                     }
-                    conn.Close();
                 }
                 else
                 {
@@ -123,37 +118,7 @@ namespace Comercial
 
 
         }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox5_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tabPage2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void domainUpDown1_SelectedItemChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void label5_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void txtBtnUsu_ButtonClick(object sender, EventArgs e)
         {
             FrmVisGeral x = new FrmVisGeral(this, (Control)sender);
@@ -220,14 +185,6 @@ namespace Comercial
         private void FrmCadUsu_Shown(object sender, EventArgs e)
         {
             //princ.btnSalvar.Enabled = true;
-        }
-
-        private void uSUARIOBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.uSUARIOBindingSource.EndEdit();
-            this.tableAdapterManager.UpdateAll(this.cOMERCIALDataSet);
-
         }
     }
 }

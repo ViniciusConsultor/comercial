@@ -346,7 +346,7 @@ namespace Comercial
 
                     for (int index = 0; index < dttRetorno.Rows.Count; index++)
                     {
-                        if (dttRetorno.Rows[index]["Status"] == "A")
+                        if ((string)dttRetorno.Rows[index]["Status"] == "A")
                         {
                             COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter();
                             table.Insert(Convert.ToInt32(txtPedido.Text),
@@ -823,7 +823,7 @@ namespace Comercial
 
                         if (MessageBox.Show("Deseja excluir o registro selecionado?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
-                            if (dttRetorno.Rows[e.RowIndex]["status"] == "A")
+                            if ((string)dttRetorno.Rows[e.RowIndex]["status"] == "A")
                             {
                                 dttRetorno.Rows.RemoveAt(e.RowIndex);
                             }
