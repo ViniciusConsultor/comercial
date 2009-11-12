@@ -1630,6 +1630,11 @@ namespace Comercial
             CreateForm(this, typeof(FrmAtuCubo));
         }
 
+        private void cuboDeVendasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CreateForm(this,typeof(FrmVisCuboVen));
+        }
+
 
     }
 }
