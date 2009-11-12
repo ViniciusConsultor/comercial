@@ -244,7 +244,7 @@ FROM [vTargetMail]')
 
                     String insertInto =
                         "INSERT INTO " + txtnomeEstrutura.Text + " ("+ campos +")"+
-                        " openquery(COMERCIAL,'"+sql+"')";
+                        " openquery(COMERCIAL,'" + sql + " order by " + key.Remove(key.IndexOf("("), key.Length - key.IndexOf("(")) + "')";
                     cmd.CommandText = insertInto;
                     //cmd.Parameters.Add("t", table);
                     cmd.ExecuteNonQuery();
@@ -458,7 +458,9 @@ FROM [vTargetMail]')
 
         private void tabPage3_Enter(object sender, EventArgs e)
         {
-
+            input = "";
+            predictable = "";
+            key = "";
             dataGridView1.Rows.Clear();
             string c = ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString;
             SqlConnection conn = new SqlConnection(c);
