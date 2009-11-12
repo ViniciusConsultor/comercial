@@ -24,7 +24,7 @@ namespace Comercial
     {
         private string _princ = null;
         private object _pdv = null;
-                private FrmPrinc _frmprinc;
+        private FrmPrinc _frmprinc;
 
         public FrmRelGeral(string parent, object pdv, FrmPrinc frmprinc)
         {
@@ -202,11 +202,11 @@ namespace Comercial
 
                 if (_princ == "FrmEmiNF")
                 {
-                    CrystalDecisions.CrystalReports.Engine.ReportDocument report = new CrystalDecisions.CrystalReports.Engine.ReportDocument();
-                    report.Load(@"D:\Backup Facu\7 Semestre\TCC 2\TCC 2\Prototipo\Prototipo\RptConNF.rpt");
-                    CrystalDecisions.Shared.ParameterField param;
+                    //CrystalDecisions.CrystalReports.Engine.ReportDocument report = new CrystalDecisions.CrystalReports.Engine.ReportDocument();
+                    //report.Load(@"D:\Backup Facu\7 Semestre\TCC 2\TCC 2\Prototipo\Prototipo\RptConNF.rpt");
+                    //CrystalDecisions.Shared.ParameterField param;
 
-                    crstlRprtVwrRel.ReportSource = report;
+                    //crstlRprtVwrRel.ReportSource = report;
                 }
 
             }
