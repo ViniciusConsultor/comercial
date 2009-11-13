@@ -57,8 +57,7 @@ namespace Comercial
 
        private void FrmDevNotaFiscal_Load(object sender, EventArgs e)
        {
-           // TODO: This line of code loads data into the 'cOMERCIALDataSet.NOTAFISCAL1' table. You can move, or remove it, as needed.
-           this.nOTAFISCAL1TableAdapter.Fill(this.cOMERCIALDataSet.NOTAFISCAL1);
+          
            // TODO: This line of code loads data into the 'cOMERCIALDataSet.NOTAFISCAL' table. You can move, or remove it, as needed.
            this.nOTAFISCALTableAdapter.Fill(this.cOMERCIALDataSet.NOTAFISCAL);
            
