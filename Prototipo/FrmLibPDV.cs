@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using Comercial.COMERCIALDataSetTableAdapters;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using System.Data.Common;
 
@@ -653,7 +654,9 @@ namespace Comercial
                 //se o contador for = a qtde iten liberado dá a mensagem que o pedido já foi efetivado
                 if (teste == dtgrdvItenspven.Rows.Count)
                 {
-                    MessageBox.Show("Pedido já efetvado!.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    DialogResult dr = MessageBox.Show("Pedido já efetvado!. \nDeseja faturar nota fiscal?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if(dr == DialogResult.Yes)
+
                 }
                 //se não continuo a liberação dos itens pendentes
                 else
@@ -847,6 +850,66 @@ namespace Comercial
         {
 
         }
+
+        #region Emissao de Nota Fiscal
+        private void emitirNotaFiscal()
+        {
+            // verificar se pedido jah faturado
+            // trocar status pra S
+
+            DataTable cli = getCliente(txtCodCliente.Text);
+            DataTable trnsp = getTransportadora(txtCodTransportadora.Text);
+            
+            
+
+            NOTAFISCALTableAdapter nf = new NOTAFISCALTableAdapter();
+            //nf.Insert(1,cli.Rows[0]["RAZAOSOCIAL"],"SERIE",DateTime.Now,cli.Rows[0]["IE"],cli.Rows[0]["TELEFONE"],cli.Rows[0]["ENDERECO"],cli.Rows[0]["BAIRRO"],cli.Rows[0]["MUNICIPIO"],"tipo",cli.Rows[0]["CNPJ"],)
+
+        }
+
+        #endregion
+
+        #region Recuperar Cliente
+        public DataTable getCliente(string cnpj)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+
+            DataSet dtsDados = new DataSet();
+
+            StringBuilder sqlcommand = new StringBuilder();
+
+            sqlcommand.Append("SELECT * FROM CLIENTE WHERE CNPJ = @cnpj ");
+            
+            DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
+
+            db.AddInParameter(dbComd, "@cnpj", DbType.String, cnpj);
+
+            dtsDados = db.ExecuteDataSet(dbComd);
+
+            return dtsDados.Tables[0];
+        }
+        #endregion
+
+        #region Recuperar Cliente
+        public DataTable getTransportadora(string cnpj)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+
+            DataSet dtsDados = new DataSet();
+
+            StringBuilder sqlcommand = new StringBuilder();
+
+            sqlcommand.Append("SELECT * FROM TRANSPORTADORA WHERE CNPJ = @cnpj ");
+
+            DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
+
+            db.AddInParameter(dbComd, "@cnpj", DbType.String, cnpj);
+
+            dtsDados = db.ExecuteDataSet(dbComd);
+
+            return dtsDados.Tables[0];
+        }
+        #endregion
 
 
 
