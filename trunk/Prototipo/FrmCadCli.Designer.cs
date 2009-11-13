@@ -92,6 +92,12 @@
             this.consultaToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.txtNum1 = new System.Windows.Forms.TextBox();
+            this.txtNum2 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtResult = new System.Windows.Forms.TextBox();
+            this.btnCalcular = new System.Windows.Forms.Button();
             this.tbCntrlCadCli.SuspendLayout();
             this.tbpCadCli.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -118,6 +124,12 @@
             // tbpCadCli
             // 
             this.tbpCadCli.AutoScroll = true;
+            this.tbpCadCli.Controls.Add(this.btnCalcular);
+            this.tbpCadCli.Controls.Add(this.txtResult);
+            this.tbpCadCli.Controls.Add(this.label2);
+            this.tbpCadCli.Controls.Add(this.label1);
+            this.tbpCadCli.Controls.Add(this.txtNum2);
+            this.tbpCadCli.Controls.Add(this.txtNum1);
             this.tbpCadCli.Controls.Add(this.pictureBox1);
             this.tbpCadCli.Controls.Add(this.pictureBox2);
             this.tbpCadCli.Controls.Add(this.cmBxRegiaoCli);
@@ -774,7 +786,7 @@
             // 
             this.cnpjCliToolStripLabel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.cnpjCliToolStripLabel.Name = "cnpjCliToolStripLabel";
-            this.cnpjCliToolStripLabel.Size = new System.Drawing.Size(39, 22);
+            this.cnpjCliToolStripLabel.Size = new System.Drawing.Size(42, 22);
             this.cnpjCliToolStripLabel.Text = "CNPJ:";
             // 
             // cnpjToolStripTextBox
@@ -785,7 +797,7 @@
             // nomeFantasiaCliToolStripLabel
             // 
             this.nomeFantasiaCliToolStripLabel.Name = "nomeFantasiaCliToolStripLabel";
-            this.nomeFantasiaCliToolStripLabel.Size = new System.Drawing.Size(83, 22);
+            this.nomeFantasiaCliToolStripLabel.Size = new System.Drawing.Size(86, 22);
             this.nomeFantasiaCliToolStripLabel.Text = "Nome Fantasia";
             // 
             // nomeFantasiaToolStripTextBox
@@ -829,6 +841,55 @@
             this.toolStripButton2.Text = "Cancelar";
             this.toolStripButton2.ToolTipText = "Cancelar";
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
+            // 
+            // txtNum1
+            // 
+            this.txtNum1.Location = new System.Drawing.Point(15, 393);
+            this.txtNum1.Name = "txtNum1";
+            this.txtNum1.Size = new System.Drawing.Size(47, 20);
+            this.txtNum1.TabIndex = 56;
+            // 
+            // txtNum2
+            // 
+            this.txtNum2.Location = new System.Drawing.Point(86, 393);
+            this.txtNum2.Name = "txtNum2";
+            this.txtNum2.Size = new System.Drawing.Size(47, 20);
+            this.txtNum2.TabIndex = 57;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(153, 396);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(13, 13);
+            this.label1.TabIndex = 58;
+            this.label1.Text = "=";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(68, 396);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(12, 13);
+            this.label2.TabIndex = 59;
+            this.label2.Text = "x";
+            // 
+            // txtResult
+            // 
+            this.txtResult.Location = new System.Drawing.Point(172, 393);
+            this.txtResult.Name = "txtResult";
+            this.txtResult.Size = new System.Drawing.Size(47, 20);
+            this.txtResult.TabIndex = 60;
+            // 
+            // btnCalcular
+            // 
+            this.btnCalcular.Location = new System.Drawing.Point(232, 390);
+            this.btnCalcular.Name = "btnCalcular";
+            this.btnCalcular.Size = new System.Drawing.Size(75, 23);
+            this.btnCalcular.TabIndex = 61;
+            this.btnCalcular.Text = "Calcular";
+            this.btnCalcular.UseVisualStyleBackColor = true;
+            this.btnCalcular.Click += new System.EventHandler(this.btnCalcular_Click);
             // 
             // FrmCadCli
             // 
@@ -929,5 +990,11 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         public System.Windows.Forms.PictureBox pictureBox2;
         public System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btnCalcular;
+        private System.Windows.Forms.TextBox txtResult;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtNum2;
+        private System.Windows.Forms.TextBox txtNum1;
     }
 }

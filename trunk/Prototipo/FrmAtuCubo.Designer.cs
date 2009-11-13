@@ -30,7 +30,10 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tbPgHistorico = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dtgrdAtuCubo = new System.Windows.Forms.DataGridView();
+            this.NrAtualiacao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbPgAtuCubo = new System.Windows.Forms.TabPage();
             this.grpBxStatus = new System.Windows.Forms.GroupBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -38,25 +41,21 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnAtuCubo = new System.Windows.Forms.Button();
-            this.tbpgVisualizar = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
+            this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
             this.tabControl1.SuspendLayout();
             this.tbPgHistorico.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgrdAtuCubo)).BeginInit();
             this.tbPgAtuCubo.SuspendLayout();
             this.grpBxStatus.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.tbpgVisualizar.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tbPgHistorico);
             this.tabControl1.Controls.Add(this.tbPgAtuCubo);
-            this.tabControl1.Controls.Add(this.tbpgVisualizar);
             this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.Location = new System.Drawing.Point(13, 13);
             this.tabControl1.Multiline = true;
@@ -67,7 +66,7 @@
             // 
             // tbPgHistorico
             // 
-            this.tbPgHistorico.Controls.Add(this.dataGridView1);
+            this.tbPgHistorico.Controls.Add(this.dtgrdAtuCubo);
             this.tbPgHistorico.Location = new System.Drawing.Point(4, 22);
             this.tbPgHistorico.Name = "tbPgHistorico";
             this.tbPgHistorico.Padding = new System.Windows.Forms.Padding(3);
@@ -77,13 +76,41 @@
             this.tbPgHistorico.UseVisualStyleBackColor = true;
             this.tbPgHistorico.Click += new System.EventHandler(this.tbPgHistorico_Click);
             // 
-            // dataGridView1
+            // dtgrdAtuCubo
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(7, 7);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(534, 282);
-            this.dataGridView1.TabIndex = 0;
+            this.dtgrdAtuCubo.AllowUserToDeleteRows = false;
+            this.dtgrdAtuCubo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtgrdAtuCubo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.NrAtualiacao,
+            this.Usuario,
+            this.Data});
+            this.dtgrdAtuCubo.Location = new System.Drawing.Point(7, 7);
+            this.dtgrdAtuCubo.Name = "dtgrdAtuCubo";
+            this.dtgrdAtuCubo.ReadOnly = true;
+            this.dtgrdAtuCubo.Size = new System.Drawing.Size(534, 282);
+            this.dtgrdAtuCubo.TabIndex = 0;
+            // 
+            // NrAtualiacao
+            // 
+            this.NrAtualiacao.DataPropertyName = "NRATUALIZACAO";
+            this.NrAtualiacao.HeaderText = "N° Atualização";
+            this.NrAtualiacao.Name = "NrAtualiacao";
+            this.NrAtualiacao.ReadOnly = true;
+            this.NrAtualiacao.Width = 125;
+            // 
+            // Usuario
+            // 
+            this.Usuario.DataPropertyName = "USUARIO";
+            this.Usuario.HeaderText = "Usuário";
+            this.Usuario.Name = "Usuario";
+            this.Usuario.ReadOnly = true;
+            // 
+            // Data
+            // 
+            this.Data.DataPropertyName = "DATAATUALIZACAO";
+            this.Data.HeaderText = "Data";
+            this.Data.Name = "Data";
+            this.Data.ReadOnly = true;
             // 
             // tbPgAtuCubo
             // 
@@ -161,54 +188,12 @@
             this.btnAtuCubo.TabIndex = 0;
             this.btnAtuCubo.Text = "Atualizar Cubo";
             this.btnAtuCubo.UseVisualStyleBackColor = true;
+            this.btnAtuCubo.Click += new System.EventHandler(this.btnAtuCubo_Click);
             // 
-            // tbpgVisualizar
+            // cOMERCIALDataSet
             // 
-            this.tbpgVisualizar.Controls.Add(this.webBrowser1);
-            this.tbpgVisualizar.Controls.Add(this.button2);
-            this.tbpgVisualizar.Controls.Add(this.button1);
-            this.tbpgVisualizar.Location = new System.Drawing.Point(4, 22);
-            this.tbpgVisualizar.Name = "tbpgVisualizar";
-            this.tbpgVisualizar.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpgVisualizar.Size = new System.Drawing.Size(547, 323);
-            this.tbpgVisualizar.TabIndex = 2;
-            this.tbpgVisualizar.Text = "Visualizar Cubo";
-            this.tbpgVisualizar.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Image = global::Comercial.Properties.Resources.search1;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.Location = new System.Drawing.Point(166, 7);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(92, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Browser";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Image = global::Comercial.Properties.Resources.search1;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button2.Location = new System.Drawing.Point(288, 7);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(92, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Excel";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // webBrowser1
-            // 
-            this.webBrowser1.Location = new System.Drawing.Point(12, 36);
-            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(529, 281);
-            this.webBrowser1.TabIndex = 2;
-            this.webBrowser1.Url = new System.Uri("F:\\Download\\Máximas carlos drummond de andrade amor - Pensador.htm", System.UriKind.Absolute);
-            this.webBrowser1.Visible = false;
+            this.cOMERCIALDataSet.DataSetName = "COMERCIALDataSet";
+            this.cOMERCIALDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // FrmAtuCubo
             // 
@@ -220,15 +205,16 @@
             this.Name = "FrmAtuCubo";
             this.Text = "FrmatuCubo";
             this.Load += new System.EventHandler(this.FrmatuCubo_Load);
+            this.Leave += new System.EventHandler(this.FrmAtuCubo_Leave);
             this.tabControl1.ResumeLayout(false);
             this.tbPgHistorico.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtgrdAtuCubo)).EndInit();
             this.tbPgAtuCubo.ResumeLayout(false);
             this.grpBxStatus.ResumeLayout(false);
             this.grpBxStatus.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.tbpgVisualizar.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -238,16 +224,16 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tbPgHistorico;
         private System.Windows.Forms.TabPage tbPgAtuCubo;
-        private System.Windows.Forms.TabPage tbpgVisualizar;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dtgrdAtuCubo;
         private System.Windows.Forms.Button btnAtuCubo;
         private System.Windows.Forms.GroupBox grpBxStatus;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         public System.Windows.Forms.PictureBox pictureBox1;
         public System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.WebBrowser webBrowser1;
+        private COMERCIALDataSet cOMERCIALDataSet;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NrAtualiacao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Usuario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Data;
     }
 }

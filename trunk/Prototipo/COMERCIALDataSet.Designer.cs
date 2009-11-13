@@ -61,7 +61,7 @@ namespace Comercial {
         
         private VIATRANSPORTEDataTable tableVIATRANSPORTE;
         
-        private NOTAFISCAL1DataTable tableNOTAFISCAL1;
+        private ATUCUBODataTable tableATUCUBO;
         
         private RelPedidoDataTable tableRelPedido;
         
@@ -104,6 +104,8 @@ namespace Comercial {
         private global::System.Data.DataRelation relationFK_VENDEDOR_REGIAO;
         
         private global::System.Data.DataRelation relationFK_VENDEDOR_USUARIO;
+        
+        private global::System.Data.DataRelation relationFK_ATUCUBO_USUARIO;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -185,8 +187,8 @@ namespace Comercial {
                 if ((ds.Tables["VIATRANSPORTE"] != null)) {
                     base.Tables.Add(new VIATRANSPORTEDataTable(ds.Tables["VIATRANSPORTE"]));
                 }
-                if ((ds.Tables["NOTAFISCAL1"] != null)) {
-                    base.Tables.Add(new NOTAFISCAL1DataTable(ds.Tables["NOTAFISCAL1"]));
+                if ((ds.Tables["ATUCUBO"] != null)) {
+                    base.Tables.Add(new ATUCUBODataTable(ds.Tables["ATUCUBO"]));
                 }
                 if ((ds.Tables["RelPedido"] != null)) {
                     base.Tables.Add(new RelPedidoDataTable(ds.Tables["RelPedido"]));
@@ -383,9 +385,9 @@ namespace Comercial {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public NOTAFISCAL1DataTable NOTAFISCAL1 {
+        public ATUCUBODataTable ATUCUBO {
             get {
-                return this.tableNOTAFISCAL1;
+                return this.tableATUCUBO;
             }
         }
         
@@ -538,8 +540,8 @@ namespace Comercial {
                 if ((ds.Tables["VIATRANSPORTE"] != null)) {
                     base.Tables.Add(new VIATRANSPORTEDataTable(ds.Tables["VIATRANSPORTE"]));
                 }
-                if ((ds.Tables["NOTAFISCAL1"] != null)) {
-                    base.Tables.Add(new NOTAFISCAL1DataTable(ds.Tables["NOTAFISCAL1"]));
+                if ((ds.Tables["ATUCUBO"] != null)) {
+                    base.Tables.Add(new ATUCUBODataTable(ds.Tables["ATUCUBO"]));
                 }
                 if ((ds.Tables["RelPedido"] != null)) {
                     base.Tables.Add(new RelPedidoDataTable(ds.Tables["RelPedido"]));
@@ -691,10 +693,10 @@ namespace Comercial {
                     this.tableVIATRANSPORTE.InitVars();
                 }
             }
-            this.tableNOTAFISCAL1 = ((NOTAFISCAL1DataTable)(base.Tables["NOTAFISCAL1"]));
+            this.tableATUCUBO = ((ATUCUBODataTable)(base.Tables["ATUCUBO"]));
             if ((initTable == true)) {
-                if ((this.tableNOTAFISCAL1 != null)) {
-                    this.tableNOTAFISCAL1.InitVars();
+                if ((this.tableATUCUBO != null)) {
+                    this.tableATUCUBO.InitVars();
                 }
             }
             this.tableRelPedido = ((RelPedidoDataTable)(base.Tables["RelPedido"]));
@@ -738,6 +740,7 @@ namespace Comercial {
             this.relationFK_TRANSPORTADORAVIA_VIATRANSPORTE = this.Relations["FK_TRANSPORTADORAVIA_VIATRANSPORTE"];
             this.relationFK_VENDEDOR_REGIAO = this.Relations["FK_VENDEDOR_REGIAO"];
             this.relationFK_VENDEDOR_USUARIO = this.Relations["FK_VENDEDOR_USUARIO"];
+            this.relationFK_ATUCUBO_USUARIO = this.Relations["FK_ATUCUBO_USUARIO"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -783,8 +786,8 @@ namespace Comercial {
             base.Tables.Add(this.tableVENDEDOR);
             this.tableVIATRANSPORTE = new VIATRANSPORTEDataTable();
             base.Tables.Add(this.tableVIATRANSPORTE);
-            this.tableNOTAFISCAL1 = new NOTAFISCAL1DataTable();
-            base.Tables.Add(this.tableNOTAFISCAL1);
+            this.tableATUCUBO = new ATUCUBODataTable();
+            base.Tables.Add(this.tableATUCUBO);
             this.tableRelPedido = new RelPedidoDataTable();
             base.Tables.Add(this.tableRelPedido);
             this.tableRelVendedor = new RelVendedorDataTable();
@@ -861,6 +864,10 @@ namespace Comercial {
                         this.tableUSUARIO.CODUSUARIOColumn}, new global::System.Data.DataColumn[] {
                         this.tableVENDEDOR.CODUSUARIOColumn}, false);
             this.Relations.Add(this.relationFK_VENDEDOR_USUARIO);
+            this.relationFK_ATUCUBO_USUARIO = new global::System.Data.DataRelation("FK_ATUCUBO_USUARIO", new global::System.Data.DataColumn[] {
+                        this.tableUSUARIO.CODUSUARIOColumn}, new global::System.Data.DataColumn[] {
+                        this.tableATUCUBO.CODUSUARIOColumn}, false);
+            this.Relations.Add(this.relationFK_ATUCUBO_USUARIO);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -954,7 +961,7 @@ namespace Comercial {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        private bool ShouldSerializeNOTAFISCAL1() {
+        private bool ShouldSerializeATUCUBO() {
             return false;
         }
         
@@ -1067,7 +1074,7 @@ namespace Comercial {
         
         public delegate void VIATRANSPORTERowChangeEventHandler(object sender, VIATRANSPORTERowChangeEvent e);
         
-        public delegate void NOTAFISCAL1RowChangeEventHandler(object sender, NOTAFISCAL1RowChangeEvent e);
+        public delegate void ATUCUBORowChangeEventHandler(object sender, ATUCUBORowChangeEvent e);
         
         public delegate void RelPedidoRowChangeEventHandler(object sender, RelPedidoRowChangeEvent e);
         
@@ -3616,8 +3623,6 @@ namespace Comercial {
             
             private global::System.Data.DataColumn columnNrPedido;
             
-            private global::System.Data.DataColumn columnStatus;
-            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public NOTAFISCALDataTable() {
                 this.TableName = "NOTAFISCAL";
@@ -3768,13 +3773,6 @@ namespace Comercial {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public global::System.Data.DataColumn StatusColumn {
-                get {
-                    return this.columnStatus;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -3820,8 +3818,7 @@ namespace Comercial {
                         double ValorFrete, 
                         string CodVendedor, 
                         string CodTransportadora, 
-                        int NrPedido, 
-                        string Status) {
+                        int NrPedido) {
                 NOTAFISCALRow rowNOTAFISCALRow = ((NOTAFISCALRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         NrNotaFiscal,
@@ -3840,8 +3837,7 @@ namespace Comercial {
                         ValorFrete,
                         CodVendedor,
                         CodTransportadora,
-                        NrPedido,
-                        Status};
+                        NrPedido};
                 rowNOTAFISCALRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowNOTAFISCALRow);
                 return rowNOTAFISCALRow;
@@ -3884,7 +3880,6 @@ namespace Comercial {
                 this.columnCodVendedor = base.Columns["CodVendedor"];
                 this.columnCodTransportadora = base.Columns["CodTransportadora"];
                 this.columnNrPedido = base.Columns["NrPedido"];
-                this.columnStatus = base.Columns["Status"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3923,8 +3918,6 @@ namespace Comercial {
                 base.Columns.Add(this.columnCodTransportadora);
                 this.columnNrPedido = new global::System.Data.DataColumn("NrPedido", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNrPedido);
-                this.columnStatus = new global::System.Data.DataColumn("Status", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnStatus);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnNrNotaFiscal}, true));
                 this.columnNrNotaFiscal.AllowDBNull = false;
@@ -3941,7 +3934,6 @@ namespace Comercial {
                 this.columnTipoFrete.MaxLength = 100;
                 this.columnCodVendedor.MaxLength = 11;
                 this.columnCodTransportadora.MaxLength = 14;
-                this.columnStatus.MaxLength = 1;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7066,20 +7058,24 @@ namespace Comercial {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class NOTAFISCAL1DataTable : global::System.Data.TypedTableBase<NOTAFISCAL1Row> {
+        public partial class ATUCUBODataTable : global::System.Data.TypedTableBase<ATUCUBORow> {
             
-            private global::System.Data.DataColumn columnStatus;
+            private global::System.Data.DataColumn columnNRATUALIZACAO;
+            
+            private global::System.Data.DataColumn columnCODUSUARIO;
+            
+            private global::System.Data.DataColumn columnDATAATUALIZACAO;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public NOTAFISCAL1DataTable() {
-                this.TableName = "NOTAFISCAL1";
+            public ATUCUBODataTable() {
+                this.TableName = "ATUCUBO";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            internal NOTAFISCAL1DataTable(global::System.Data.DataTable table) {
+            internal ATUCUBODataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -7095,15 +7091,29 @@ namespace Comercial {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            protected NOTAFISCAL1DataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected ATUCUBODataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public global::System.Data.DataColumn StatusColumn {
+            public global::System.Data.DataColumn NRATUALIZACAOColumn {
                 get {
-                    return this.columnStatus;
+                    return this.columnNRATUALIZACAO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn CODUSUARIOColumn {
+                get {
+                    return this.columnCODUSUARIO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn DATAATUALIZACAOColumn {
+                get {
+                    return this.columnDATAATUALIZACAO;
                 }
             }
             
@@ -7116,108 +7126,133 @@ namespace Comercial {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public NOTAFISCAL1Row this[int index] {
+            public ATUCUBORow this[int index] {
                 get {
-                    return ((NOTAFISCAL1Row)(this.Rows[index]));
+                    return ((ATUCUBORow)(this.Rows[index]));
                 }
             }
             
-            public event NOTAFISCAL1RowChangeEventHandler NOTAFISCAL1RowChanging;
+            public event ATUCUBORowChangeEventHandler ATUCUBORowChanging;
             
-            public event NOTAFISCAL1RowChangeEventHandler NOTAFISCAL1RowChanged;
+            public event ATUCUBORowChangeEventHandler ATUCUBORowChanged;
             
-            public event NOTAFISCAL1RowChangeEventHandler NOTAFISCAL1RowDeleting;
+            public event ATUCUBORowChangeEventHandler ATUCUBORowDeleting;
             
-            public event NOTAFISCAL1RowChangeEventHandler NOTAFISCAL1RowDeleted;
+            public event ATUCUBORowChangeEventHandler ATUCUBORowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public void AddNOTAFISCAL1Row(NOTAFISCAL1Row row) {
+            public void AddATUCUBORow(ATUCUBORow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public NOTAFISCAL1Row AddNOTAFISCAL1Row(string Status) {
-                NOTAFISCAL1Row rowNOTAFISCAL1Row = ((NOTAFISCAL1Row)(this.NewRow()));
+            public ATUCUBORow AddATUCUBORow(USUARIORow parentUSUARIORowByFK_ATUCUBO_USUARIO, System.DateTime DATAATUALIZACAO) {
+                ATUCUBORow rowATUCUBORow = ((ATUCUBORow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        Status};
-                rowNOTAFISCAL1Row.ItemArray = columnValuesArray;
-                this.Rows.Add(rowNOTAFISCAL1Row);
-                return rowNOTAFISCAL1Row;
+                        null,
+                        null,
+                        DATAATUALIZACAO};
+                if ((parentUSUARIORowByFK_ATUCUBO_USUARIO != null)) {
+                    columnValuesArray[1] = parentUSUARIORowByFK_ATUCUBO_USUARIO[0];
+                }
+                rowATUCUBORow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowATUCUBORow);
+                return rowATUCUBORow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public ATUCUBORow FindByNRATUALIZACAO(int NRATUALIZACAO) {
+                return ((ATUCUBORow)(this.Rows.Find(new object[] {
+                            NRATUALIZACAO})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public override global::System.Data.DataTable Clone() {
-                NOTAFISCAL1DataTable cln = ((NOTAFISCAL1DataTable)(base.Clone()));
+                ATUCUBODataTable cln = ((ATUCUBODataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new NOTAFISCAL1DataTable();
+                return new ATUCUBODataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             internal void InitVars() {
-                this.columnStatus = base.Columns["Status"];
+                this.columnNRATUALIZACAO = base.Columns["NRATUALIZACAO"];
+                this.columnCODUSUARIO = base.Columns["CODUSUARIO"];
+                this.columnDATAATUALIZACAO = base.Columns["DATAATUALIZACAO"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             private void InitClass() {
-                this.columnStatus = new global::System.Data.DataColumn("Status", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnStatus);
-                this.columnStatus.MaxLength = 1;
+                this.columnNRATUALIZACAO = new global::System.Data.DataColumn("NRATUALIZACAO", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNRATUALIZACAO);
+                this.columnCODUSUARIO = new global::System.Data.DataColumn("CODUSUARIO", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCODUSUARIO);
+                this.columnDATAATUALIZACAO = new global::System.Data.DataColumn("DATAATUALIZACAO", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDATAATUALIZACAO);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnNRATUALIZACAO}, true));
+                this.columnNRATUALIZACAO.AutoIncrement = true;
+                this.columnNRATUALIZACAO.AutoIncrementSeed = -1;
+                this.columnNRATUALIZACAO.AutoIncrementStep = -1;
+                this.columnNRATUALIZACAO.AllowDBNull = false;
+                this.columnNRATUALIZACAO.ReadOnly = true;
+                this.columnNRATUALIZACAO.Unique = true;
+                this.columnCODUSUARIO.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public NOTAFISCAL1Row NewNOTAFISCAL1Row() {
-                return ((NOTAFISCAL1Row)(this.NewRow()));
+            public ATUCUBORow NewATUCUBORow() {
+                return ((ATUCUBORow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new NOTAFISCAL1Row(builder);
+                return new ATUCUBORow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             protected override global::System.Type GetRowType() {
-                return typeof(NOTAFISCAL1Row);
+                return typeof(ATUCUBORow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.NOTAFISCAL1RowChanged != null)) {
-                    this.NOTAFISCAL1RowChanged(this, new NOTAFISCAL1RowChangeEvent(((NOTAFISCAL1Row)(e.Row)), e.Action));
+                if ((this.ATUCUBORowChanged != null)) {
+                    this.ATUCUBORowChanged(this, new ATUCUBORowChangeEvent(((ATUCUBORow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.NOTAFISCAL1RowChanging != null)) {
-                    this.NOTAFISCAL1RowChanging(this, new NOTAFISCAL1RowChangeEvent(((NOTAFISCAL1Row)(e.Row)), e.Action));
+                if ((this.ATUCUBORowChanging != null)) {
+                    this.ATUCUBORowChanging(this, new ATUCUBORowChangeEvent(((ATUCUBORow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.NOTAFISCAL1RowDeleted != null)) {
-                    this.NOTAFISCAL1RowDeleted(this, new NOTAFISCAL1RowChangeEvent(((NOTAFISCAL1Row)(e.Row)), e.Action));
+                if ((this.ATUCUBORowDeleted != null)) {
+                    this.ATUCUBORowDeleted(this, new ATUCUBORowChangeEvent(((ATUCUBORow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.NOTAFISCAL1RowDeleting != null)) {
-                    this.NOTAFISCAL1RowDeleting(this, new NOTAFISCAL1RowChangeEvent(((NOTAFISCAL1Row)(e.Row)), e.Action));
+                if ((this.ATUCUBORowDeleting != null)) {
+                    this.ATUCUBORowDeleting(this, new ATUCUBORowChangeEvent(((ATUCUBORow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public void RemoveNOTAFISCAL1Row(NOTAFISCAL1Row row) {
+            public void RemoveATUCUBORow(ATUCUBORow row) {
                 this.Rows.Remove(row);
             }
             
@@ -7243,7 +7278,7 @@ namespace Comercial {
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "NOTAFISCAL1DataTable";
+                attribute2.FixedValue = "ATUCUBODataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -9913,21 +9948,6 @@ namespace Comercial {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public string Status {
-                get {
-                    try {
-                        return ((string)(this[this.tableNOTAFISCAL.StatusColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Status\' in table \'NOTAFISCAL\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableNOTAFISCAL.StatusColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public bool IsRazaoSocialNull() {
                 return this.IsNull(this.tableNOTAFISCAL.RazaoSocialColumn);
             }
@@ -10085,16 +10105,6 @@ namespace Comercial {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void SetNrPedidoNull() {
                 this[this.tableNOTAFISCAL.NrPedidoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public bool IsStatusNull() {
-                return this.IsNull(this.tableNOTAFISCAL.StatusColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public void SetStatusNull() {
-                this[this.tableNOTAFISCAL.StatusColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -11031,6 +11041,16 @@ namespace Comercial {
                     return ((VENDEDORRow[])(base.GetChildRows(this.Table.ChildRelations["FK_VENDEDOR_USUARIO"])));
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public ATUCUBORow[] GetATUCUBORows() {
+                if ((this.Table.ChildRelations["FK_ATUCUBO_USUARIO"] == null)) {
+                    return new ATUCUBORow[0];
+                }
+                else {
+                    return ((ATUCUBORow[])(base.GetChildRows(this.Table.ChildRelations["FK_ATUCUBO_USUARIO"])));
+                }
+            }
         }
         
         /// <summary>
@@ -11467,39 +11487,69 @@ namespace Comercial {
         ///Represents strongly named DataRow class.
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
-        public partial class NOTAFISCAL1Row : global::System.Data.DataRow {
+        public partial class ATUCUBORow : global::System.Data.DataRow {
             
-            private NOTAFISCAL1DataTable tableNOTAFISCAL1;
+            private ATUCUBODataTable tableATUCUBO;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            internal NOTAFISCAL1Row(global::System.Data.DataRowBuilder rb) : 
+            internal ATUCUBORow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableNOTAFISCAL1 = ((NOTAFISCAL1DataTable)(this.Table));
+                this.tableATUCUBO = ((ATUCUBODataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public string Status {
+            public int NRATUALIZACAO {
+                get {
+                    return ((int)(this[this.tableATUCUBO.NRATUALIZACAOColumn]));
+                }
+                set {
+                    this[this.tableATUCUBO.NRATUALIZACAOColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public int CODUSUARIO {
+                get {
+                    return ((int)(this[this.tableATUCUBO.CODUSUARIOColumn]));
+                }
+                set {
+                    this[this.tableATUCUBO.CODUSUARIOColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.DateTime DATAATUALIZACAO {
                 get {
                     try {
-                        return ((string)(this[this.tableNOTAFISCAL1.StatusColumn]));
+                        return ((global::System.DateTime)(this[this.tableATUCUBO.DATAATUALIZACAOColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Status\' in table \'NOTAFISCAL1\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'DATAATUALIZACAO\' in table \'ATUCUBO\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableNOTAFISCAL1.StatusColumn] = value;
+                    this[this.tableATUCUBO.DATAATUALIZACAOColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public bool IsStatusNull() {
-                return this.IsNull(this.tableNOTAFISCAL1.StatusColumn);
+            public USUARIORow USUARIORow {
+                get {
+                    return ((USUARIORow)(this.GetParentRow(this.Table.ParentRelations["FK_ATUCUBO_USUARIO"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_ATUCUBO_USUARIO"]);
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public void SetStatusNull() {
-                this[this.tableNOTAFISCAL1.StatusColumn] = global::System.Convert.DBNull;
+            public bool IsDATAATUALIZACAONull() {
+                return this.IsNull(this.tableATUCUBO.DATAATUALIZACAOColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetDATAATUALIZACAONull() {
+                this[this.tableATUCUBO.DATAATUALIZACAOColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -13050,20 +13100,20 @@ namespace Comercial {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
-        public class NOTAFISCAL1RowChangeEvent : global::System.EventArgs {
+        public class ATUCUBORowChangeEvent : global::System.EventArgs {
             
-            private NOTAFISCAL1Row eventRow;
+            private ATUCUBORow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public NOTAFISCAL1RowChangeEvent(NOTAFISCAL1Row row, global::System.Data.DataRowAction action) {
+            public ATUCUBORowChangeEvent(ATUCUBORow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public NOTAFISCAL1Row Row {
+            public ATUCUBORow Row {
                 get {
                     return this.eventRow;
                 }
@@ -13780,11 +13830,7 @@ SELECT CNPJ, RAZAOSOCIAL, NOMEFANTASIA, TELEFONE, EMAIL, IE, ENDERECO, BAIRRO, M
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = @"SELECT     APROVADOCRED, AREAATUACAO, ATIVO, BAIRRO, CEP, CNPJ, CODREGIAO, CODUSUARIO, COMPLEMENTO, EMAIL, ENDERECO, FAX, IE, 
-                      LIMITECRED, MUNICIPIO, NOMEFANTASIA, NUM, RAZAOSOCIAL, TELEFONE, UF
-FROM         CLIENTE
-WHERE     (CNPJ = @cnpj) OR
-                      (NOMEFANTASIA LIKE + '%' + @nomefantasia + '%')";
+            this._commandCollection[1].CommandText = @"SELECT APROVADOCRED, AREAATUACAO, ATIVO, BAIRRO, CEP, CNPJ, CODREGIAO, CODUSUARIO, COMPLEMENTO, EMAIL, ENDERECO, FAX, IE, LIMITECRED, MUNICIPIO, NOMEFANTASIA, NUM, RAZAOSOCIAL, TELEFONE, UF FROM CLIENTE WHERE (CNPJ = @cnpj) OR (NOMEFANTASIA LIKE + '%' + @nomefantasia + '%')";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@cnpj", global::System.Data.SqlDbType.VarChar, 14, global::System.Data.ParameterDirection.Input, 0, 0, "CNPJ", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@nomefantasia", global::System.Data.SqlDbType.VarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "NOMEFANTASIA", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -16938,30 +16984,10 @@ SELECT NRPEDIDO, CODPRODUTO, QUANTIDADE, QUANTIDADELIB, DESCONTO, VALOR, IPI, it
             tableMapping.ColumnMappings.Add("CodVendedor", "CodVendedor");
             tableMapping.ColumnMappings.Add("CodTransportadora", "CodTransportadora");
             tableMapping.ColumnMappings.Add("NrPedido", "NrPedido");
-            tableMapping.ColumnMappings.Add("Status", "Status");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[NOTAFISCAL] WHERE (([NrNotaFiscal] = @Original_NrNotaFiscal) A" +
-                "ND ((@IsNull_RazaoSocial = 1 AND [RazaoSocial] IS NULL) OR ([RazaoSocial] = @Ori" +
-                "ginal_RazaoSocial)) AND ((@IsNull_Serie = 1 AND [Serie] IS NULL) OR ([Serie] = @" +
-                "Original_Serie)) AND ((@IsNull_DataEmissao = 1 AND [DataEmissao] IS NULL) OR ([D" +
-                "ataEmissao] = @Original_DataEmissao)) AND ((@IsNull_IE = 1 AND [IE] IS NULL) OR " +
-                "([IE] = @Original_IE)) AND ((@IsNull_Telefone = 1 AND [Telefone] IS NULL) OR ([T" +
-                "elefone] = @Original_Telefone)) AND ((@IsNull_Endereco = 1 AND [Endereco] IS NUL" +
-                "L) OR ([Endereco] = @Original_Endereco)) AND ((@IsNull_Bairro = 1 AND [Bairro] I" +
-                "S NULL) OR ([Bairro] = @Original_Bairro)) AND ((@IsNull_Municipio = 1 AND [Munic" +
-                "ipio] IS NULL) OR ([Municipio] = @Original_Municipio)) AND ((@IsNull_Icms = 1 AN" +
-                "D [Icms] IS NULL) OR ([Icms] = @Original_Icms)) AND ((@IsNull_Tipo = 1 AND [Tipo" +
-                "] IS NULL) OR ([Tipo] = @Original_Tipo)) AND ((@IsNull_CNPJ = 1 AND [CNPJ] IS NU" +
-                "LL) OR ([CNPJ] = @Original_CNPJ)) AND ((@IsNull_TipoFrete = 1 AND [TipoFrete] IS" +
-                " NULL) OR ([TipoFrete] = @Original_TipoFrete)) AND ((@IsNull_ValorFrete = 1 AND " +
-                "[ValorFrete] IS NULL) OR ([ValorFrete] = @Original_ValorFrete)) AND ((@IsNull_Co" +
-                "dVendedor = 1 AND [CodVendedor] IS NULL) OR ([CodVendedor] = @Original_CodVended" +
-                "or)) AND ((@IsNull_CodTransportadora = 1 AND [CodTransportadora] IS NULL) OR ([C" +
-                "odTransportadora] = @Original_CodTransportadora)) AND ((@IsNull_NrPedido = 1 AND" +
-                " [NrPedido] IS NULL) OR ([NrPedido] = @Original_NrPedido)) AND ((@IsNull_Status " +
-                "= 1 AND [Status] IS NULL) OR ([Status] = @Original_Status)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[NOTAFISCAL] WHERE (([NrNotaFiscal] = @Original_NrNotaFiscal) AND ((@IsNull_RazaoSocial = 1 AND [RazaoSocial] IS NULL) OR ([RazaoSocial] = @Original_RazaoSocial)) AND ((@IsNull_Serie = 1 AND [Serie] IS NULL) OR ([Serie] = @Original_Serie)) AND ((@IsNull_DataEmissao = 1 AND [DataEmissao] IS NULL) OR ([DataEmissao] = @Original_DataEmissao)) AND ((@IsNull_IE = 1 AND [IE] IS NULL) OR ([IE] = @Original_IE)) AND ((@IsNull_Telefone = 1 AND [Telefone] IS NULL) OR ([Telefone] = @Original_Telefone)) AND ((@IsNull_Endereco = 1 AND [Endereco] IS NULL) OR ([Endereco] = @Original_Endereco)) AND ((@IsNull_Bairro = 1 AND [Bairro] IS NULL) OR ([Bairro] = @Original_Bairro)) AND ((@IsNull_Municipio = 1 AND [Municipio] IS NULL) OR ([Municipio] = @Original_Municipio)) AND ((@IsNull_Icms = 1 AND [Icms] IS NULL) OR ([Icms] = @Original_Icms)) AND ((@IsNull_Tipo = 1 AND [Tipo] IS NULL) OR ([Tipo] = @Original_Tipo)) AND ((@IsNull_CNPJ = 1 AND [CNPJ] IS NULL) OR ([CNPJ] = @Original_CNPJ)) AND ((@IsNull_TipoFrete = 1 AND [TipoFrete] IS NULL) OR ([TipoFrete] = @Original_TipoFrete)) AND ((@IsNull_ValorFrete = 1 AND [ValorFrete] IS NULL) OR ([ValorFrete] = @Original_ValorFrete)) AND ((@IsNull_CodVendedor = 1 AND [CodVendedor] IS NULL) OR ([CodVendedor] = @Original_CodVendedor)) AND ((@IsNull_CodTransportadora = 1 AND [CodTransportadora] IS NULL) OR ([CodTransportadora] = @Original_CodTransportadora)) AND ((@IsNull_NrPedido = 1 AND [NrPedido] IS NULL) OR ([NrPedido] = @Original_NrPedido)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NrNotaFiscal", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NrNotaFiscal", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_RazaoSocial", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RazaoSocial", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -16996,12 +17022,10 @@ SELECT NRPEDIDO, CODPRODUTO, QUANTIDADE, QUANTIDADELIB, DESCONTO, VALOR, IPI, it
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CodTransportadora", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CodTransportadora", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_NrPedido", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NrPedido", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NrPedido", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NrPedido", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Status", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Status", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Status", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Status", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[NOTAFISCAL] ([NrNotaFiscal], [RazaoSocial], [Serie], [DataEmissao], [IE], [Telefone], [Endereco], [Bairro], [Municipio], [Icms], [Tipo], [CNPJ], [TipoFrete], [ValorFrete], [CodVendedor], [CodTransportadora], [NrPedido], [Status]) VALUES (@NrNotaFiscal, @RazaoSocial, @Serie, @DataEmissao, @IE, @Telefone, @Endereco, @Bairro, @Municipio, @Icms, @Tipo, @CNPJ, @TipoFrete, @ValorFrete, @CodVendedor, @CodTransportadora, @NrPedido, @Status);
-SELECT NrNotaFiscal, RazaoSocial, Serie, DataEmissao, IE, Telefone, Endereco, Bairro, Municipio, Icms, Tipo, CNPJ, TipoFrete, ValorFrete, CodVendedor, CodTransportadora, NrPedido, Status FROM NOTAFISCAL WHERE (NrNotaFiscal = @NrNotaFiscal)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[NOTAFISCAL] ([NrNotaFiscal], [RazaoSocial], [Serie], [DataEmissao], [IE], [Telefone], [Endereco], [Bairro], [Municipio], [Icms], [Tipo], [CNPJ], [TipoFrete], [ValorFrete], [CodVendedor], [CodTransportadora], [NrPedido]) VALUES (@NrNotaFiscal, @RazaoSocial, @Serie, @DataEmissao, @IE, @Telefone, @Endereco, @Bairro, @Municipio, @Icms, @Tipo, @CNPJ, @TipoFrete, @ValorFrete, @CodVendedor, @CodTransportadora, @NrPedido);
+SELECT NrNotaFiscal, RazaoSocial, Serie, DataEmissao, IE, Telefone, Endereco, Bairro, Municipio, Icms, Tipo, CNPJ, TipoFrete, ValorFrete, CodVendedor, CodTransportadora, NrPedido FROM NOTAFISCAL WHERE (NrNotaFiscal = @NrNotaFiscal)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NrNotaFiscal", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NrNotaFiscal", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RazaoSocial", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RazaoSocial", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -17020,7 +17044,6 @@ SELECT NrNotaFiscal, RazaoSocial, Serie, DataEmissao, IE, Telefone, Endereco, Ba
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodVendedor", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CodVendedor", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodTransportadora", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CodTransportadora", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NrPedido", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NrPedido", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Status", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Status", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
             this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[NOTAFISCAL] SET [NrNotaFiscal] = @NrNotaFiscal, [RazaoSocial] = @Ra" +
@@ -17028,30 +17051,28 @@ SELECT NrNotaFiscal, RazaoSocial, Serie, DataEmissao, IE, Telefone, Endereco, Ba
                 "] = @Telefone, [Endereco] = @Endereco, [Bairro] = @Bairro, [Municipio] = @Munici" +
                 "pio, [Icms] = @Icms, [Tipo] = @Tipo, [CNPJ] = @CNPJ, [TipoFrete] = @TipoFrete, [" +
                 "ValorFrete] = @ValorFrete, [CodVendedor] = @CodVendedor, [CodTransportadora] = @" +
-                "CodTransportadora, [NrPedido] = @NrPedido, [Status] = @Status WHERE (([NrNotaFis" +
-                "cal] = @Original_NrNotaFiscal) AND ((@IsNull_RazaoSocial = 1 AND [RazaoSocial] I" +
-                "S NULL) OR ([RazaoSocial] = @Original_RazaoSocial)) AND ((@IsNull_Serie = 1 AND " +
-                "[Serie] IS NULL) OR ([Serie] = @Original_Serie)) AND ((@IsNull_DataEmissao = 1 A" +
-                "ND [DataEmissao] IS NULL) OR ([DataEmissao] = @Original_DataEmissao)) AND ((@IsN" +
-                "ull_IE = 1 AND [IE] IS NULL) OR ([IE] = @Original_IE)) AND ((@IsNull_Telefone = " +
-                "1 AND [Telefone] IS NULL) OR ([Telefone] = @Original_Telefone)) AND ((@IsNull_En" +
-                "dereco = 1 AND [Endereco] IS NULL) OR ([Endereco] = @Original_Endereco)) AND ((@" +
-                "IsNull_Bairro = 1 AND [Bairro] IS NULL) OR ([Bairro] = @Original_Bairro)) AND ((" +
-                "@IsNull_Municipio = 1 AND [Municipio] IS NULL) OR ([Municipio] = @Original_Munic" +
-                "ipio)) AND ((@IsNull_Icms = 1 AND [Icms] IS NULL) OR ([Icms] = @Original_Icms)) " +
-                "AND ((@IsNull_Tipo = 1 AND [Tipo] IS NULL) OR ([Tipo] = @Original_Tipo)) AND ((@" +
-                "IsNull_CNPJ = 1 AND [CNPJ] IS NULL) OR ([CNPJ] = @Original_CNPJ)) AND ((@IsNull_" +
-                "TipoFrete = 1 AND [TipoFrete] IS NULL) OR ([TipoFrete] = @Original_TipoFrete)) A" +
-                "ND ((@IsNull_ValorFrete = 1 AND [ValorFrete] IS NULL) OR ([ValorFrete] = @Origin" +
-                "al_ValorFrete)) AND ((@IsNull_CodVendedor = 1 AND [CodVendedor] IS NULL) OR ([Co" +
-                "dVendedor] = @Original_CodVendedor)) AND ((@IsNull_CodTransportadora = 1 AND [Co" +
-                "dTransportadora] IS NULL) OR ([CodTransportadora] = @Original_CodTransportadora)" +
-                ") AND ((@IsNull_NrPedido = 1 AND [NrPedido] IS NULL) OR ([NrPedido] = @Original_" +
-                "NrPedido)) AND ((@IsNull_Status = 1 AND [Status] IS NULL) OR ([Status] = @Origin" +
-                "al_Status)));\r\nSELECT NrNotaFiscal, RazaoSocial, Serie, DataEmissao, IE, Telefon" +
-                "e, Endereco, Bairro, Municipio, Icms, Tipo, CNPJ, TipoFrete, ValorFrete, CodVend" +
-                "edor, CodTransportadora, NrPedido, Status FROM NOTAFISCAL WHERE (NrNotaFiscal = " +
-                "@NrNotaFiscal)";
+                "CodTransportadora, [NrPedido] = @NrPedido WHERE (([NrNotaFiscal] = @Original_NrN" +
+                "otaFiscal) AND ((@IsNull_RazaoSocial = 1 AND [RazaoSocial] IS NULL) OR ([RazaoSo" +
+                "cial] = @Original_RazaoSocial)) AND ((@IsNull_Serie = 1 AND [Serie] IS NULL) OR " +
+                "([Serie] = @Original_Serie)) AND ((@IsNull_DataEmissao = 1 AND [DataEmissao] IS " +
+                "NULL) OR ([DataEmissao] = @Original_DataEmissao)) AND ((@IsNull_IE = 1 AND [IE] " +
+                "IS NULL) OR ([IE] = @Original_IE)) AND ((@IsNull_Telefone = 1 AND [Telefone] IS " +
+                "NULL) OR ([Telefone] = @Original_Telefone)) AND ((@IsNull_Endereco = 1 AND [Ende" +
+                "reco] IS NULL) OR ([Endereco] = @Original_Endereco)) AND ((@IsNull_Bairro = 1 AN" +
+                "D [Bairro] IS NULL) OR ([Bairro] = @Original_Bairro)) AND ((@IsNull_Municipio = " +
+                "1 AND [Municipio] IS NULL) OR ([Municipio] = @Original_Municipio)) AND ((@IsNull" +
+                "_Icms = 1 AND [Icms] IS NULL) OR ([Icms] = @Original_Icms)) AND ((@IsNull_Tipo =" +
+                " 1 AND [Tipo] IS NULL) OR ([Tipo] = @Original_Tipo)) AND ((@IsNull_CNPJ = 1 AND " +
+                "[CNPJ] IS NULL) OR ([CNPJ] = @Original_CNPJ)) AND ((@IsNull_TipoFrete = 1 AND [T" +
+                "ipoFrete] IS NULL) OR ([TipoFrete] = @Original_TipoFrete)) AND ((@IsNull_ValorFr" +
+                "ete = 1 AND [ValorFrete] IS NULL) OR ([ValorFrete] = @Original_ValorFrete)) AND " +
+                "((@IsNull_CodVendedor = 1 AND [CodVendedor] IS NULL) OR ([CodVendedor] = @Origin" +
+                "al_CodVendedor)) AND ((@IsNull_CodTransportadora = 1 AND [CodTransportadora] IS " +
+                "NULL) OR ([CodTransportadora] = @Original_CodTransportadora)) AND ((@IsNull_NrPe" +
+                "dido = 1 AND [NrPedido] IS NULL) OR ([NrPedido] = @Original_NrPedido)));\r\nSELECT" +
+                " NrNotaFiscal, RazaoSocial, Serie, DataEmissao, IE, Telefone, Endereco, Bairro, " +
+                "Municipio, Icms, Tipo, CNPJ, TipoFrete, ValorFrete, CodVendedor, CodTransportado" +
+                "ra, NrPedido FROM NOTAFISCAL WHERE (NrNotaFiscal = @NrNotaFiscal)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NrNotaFiscal", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NrNotaFiscal", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@RazaoSocial", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RazaoSocial", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -17070,7 +17091,6 @@ SELECT NrNotaFiscal, RazaoSocial, Serie, DataEmissao, IE, Telefone, Endereco, Ba
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodVendedor", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CodVendedor", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CodTransportadora", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CodTransportadora", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NrPedido", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NrPedido", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Status", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Status", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NrNotaFiscal", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NrNotaFiscal", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_RazaoSocial", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RazaoSocial", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_RazaoSocial", global::System.Data.SqlDbType.Char, 0, global::System.Data.ParameterDirection.Input, 0, 0, "RazaoSocial", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -17104,8 +17124,6 @@ SELECT NrNotaFiscal, RazaoSocial, Serie, DataEmissao, IE, Telefone, Endereco, Ba
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CodTransportadora", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CodTransportadora", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_NrPedido", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NrPedido", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NrPedido", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NrPedido", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Status", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Status", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Status", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Status", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -17121,7 +17139,7 @@ SELECT NrNotaFiscal, RazaoSocial, Serie, DataEmissao, IE, Telefone, Endereco, Ba
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT NrNotaFiscal, RazaoSocial, Serie, DataEmissao, IE, Telefone, Endereco, Bai" +
                 "rro, Municipio, Icms, Tipo, CNPJ, TipoFrete, ValorFrete, CodVendedor, CodTranspo" +
-                "rtadora, NrPedido, Status FROM dbo.NOTAFISCAL";
+                "rtadora, NrPedido FROM dbo.NOTAFISCAL";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -17192,8 +17210,7 @@ SELECT NrNotaFiscal, RazaoSocial, Serie, DataEmissao, IE, Telefone, Endereco, Ba
                     global::System.Nullable<double> Original_ValorFrete, 
                     string Original_CodVendedor, 
                     string Original_CodTransportadora, 
-                    global::System.Nullable<int> Original_NrPedido, 
-                    string Original_Status) {
+                    global::System.Nullable<int> Original_NrPedido) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_NrNotaFiscal));
             if ((Original_RazaoSocial == null)) {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
@@ -17323,14 +17340,6 @@ SELECT NrNotaFiscal, RazaoSocial, Serie, DataEmissao, IE, Telefone, Endereco, Ba
                 this.Adapter.DeleteCommand.Parameters[31].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[32].Value = global::System.DBNull.Value;
             }
-            if ((Original_Status == null)) {
-                this.Adapter.DeleteCommand.Parameters[33].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[34].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.DeleteCommand.Parameters[33].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[34].Value = ((string)(Original_Status));
-            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -17367,8 +17376,7 @@ SELECT NrNotaFiscal, RazaoSocial, Serie, DataEmissao, IE, Telefone, Endereco, Ba
                     global::System.Nullable<double> ValorFrete, 
                     string CodVendedor, 
                     string CodTransportadora, 
-                    global::System.Nullable<int> NrPedido, 
-                    string Status) {
+                    global::System.Nullable<int> NrPedido) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((int)(NrNotaFiscal));
             if ((RazaoSocial == null)) {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
@@ -17466,12 +17474,6 @@ SELECT NrNotaFiscal, RazaoSocial, Serie, DataEmissao, IE, Telefone, Endereco, Ba
             else {
                 this.Adapter.InsertCommand.Parameters[16].Value = global::System.DBNull.Value;
             }
-            if ((Status == null)) {
-                this.Adapter.InsertCommand.Parameters[17].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[17].Value = ((string)(Status));
-            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -17509,7 +17511,6 @@ SELECT NrNotaFiscal, RazaoSocial, Serie, DataEmissao, IE, Telefone, Endereco, Ba
                     string CodVendedor, 
                     string CodTransportadora, 
                     global::System.Nullable<int> NrPedido, 
-                    string Status, 
                     int Original_NrNotaFiscal, 
                     string Original_RazaoSocial, 
                     string Original_Serie, 
@@ -17526,8 +17527,7 @@ SELECT NrNotaFiscal, RazaoSocial, Serie, DataEmissao, IE, Telefone, Endereco, Ba
                     global::System.Nullable<double> Original_ValorFrete, 
                     string Original_CodVendedor, 
                     string Original_CodTransportadora, 
-                    global::System.Nullable<int> Original_NrPedido, 
-                    string Original_Status) {
+                    global::System.Nullable<int> Original_NrPedido) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(NrNotaFiscal));
             if ((RazaoSocial == null)) {
                 this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
@@ -17625,148 +17625,134 @@ SELECT NrNotaFiscal, RazaoSocial, Serie, DataEmissao, IE, Telefone, Endereco, Ba
             else {
                 this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
             }
-            if ((Status == null)) {
-                this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((string)(Status));
-            }
-            this.Adapter.UpdateCommand.Parameters[18].Value = ((int)(Original_NrNotaFiscal));
+            this.Adapter.UpdateCommand.Parameters[17].Value = ((int)(Original_NrNotaFiscal));
             if ((Original_RazaoSocial == null)) {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[20].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((string)(Original_RazaoSocial));
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((string)(Original_RazaoSocial));
             }
             if ((Original_Serie == null)) {
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[22].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[21].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[21].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[22].Value = ((string)(Original_Serie));
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((string)(Original_Serie));
             }
             if ((Original_DataEmissao.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[24].Value = ((System.DateTime)(Original_DataEmissao.Value));
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((System.DateTime)(Original_DataEmissao.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[23].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[24].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[23].Value = global::System.DBNull.Value;
             }
             if ((Original_IE == null)) {
-                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[26].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[25].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[25].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[26].Value = ((string)(Original_IE));
+                this.Adapter.UpdateCommand.Parameters[24].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[25].Value = ((string)(Original_IE));
             }
             if ((Original_Telefone == null)) {
-                this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[28].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[27].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[27].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[28].Value = ((string)(Original_Telefone));
+                this.Adapter.UpdateCommand.Parameters[26].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[27].Value = ((string)(Original_Telefone));
             }
             if ((Original_Endereco == null)) {
-                this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[30].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[28].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[29].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[29].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[30].Value = ((string)(Original_Endereco));
+                this.Adapter.UpdateCommand.Parameters[28].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[29].Value = ((string)(Original_Endereco));
             }
             if ((Original_Bairro == null)) {
-                this.Adapter.UpdateCommand.Parameters[31].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[32].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[30].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[31].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[31].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[32].Value = ((string)(Original_Bairro));
+                this.Adapter.UpdateCommand.Parameters[30].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[31].Value = ((string)(Original_Bairro));
             }
             if ((Original_Municipio == null)) {
-                this.Adapter.UpdateCommand.Parameters[33].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[34].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[32].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[33].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[33].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[34].Value = ((string)(Original_Municipio));
+                this.Adapter.UpdateCommand.Parameters[32].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[33].Value = ((string)(Original_Municipio));
             }
             if ((Original_Icms.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[35].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[36].Value = ((double)(Original_Icms.Value));
+                this.Adapter.UpdateCommand.Parameters[34].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[35].Value = ((double)(Original_Icms.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[35].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[36].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[34].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[35].Value = global::System.DBNull.Value;
             }
             if ((Original_Tipo == null)) {
-                this.Adapter.UpdateCommand.Parameters[37].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[38].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[36].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[37].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[37].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[38].Value = ((string)(Original_Tipo));
+                this.Adapter.UpdateCommand.Parameters[36].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[37].Value = ((string)(Original_Tipo));
             }
             if ((Original_CNPJ == null)) {
-                this.Adapter.UpdateCommand.Parameters[39].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[40].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[38].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[39].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[39].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[40].Value = ((string)(Original_CNPJ));
+                this.Adapter.UpdateCommand.Parameters[38].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[39].Value = ((string)(Original_CNPJ));
             }
             if ((Original_TipoFrete == null)) {
-                this.Adapter.UpdateCommand.Parameters[41].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[42].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[40].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[41].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[41].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[42].Value = ((string)(Original_TipoFrete));
+                this.Adapter.UpdateCommand.Parameters[40].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[41].Value = ((string)(Original_TipoFrete));
             }
             if ((Original_ValorFrete.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[43].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[44].Value = ((double)(Original_ValorFrete.Value));
+                this.Adapter.UpdateCommand.Parameters[42].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[43].Value = ((double)(Original_ValorFrete.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[43].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[44].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[42].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[43].Value = global::System.DBNull.Value;
             }
             if ((Original_CodVendedor == null)) {
-                this.Adapter.UpdateCommand.Parameters[45].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[46].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[44].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[45].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[45].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[46].Value = ((string)(Original_CodVendedor));
+                this.Adapter.UpdateCommand.Parameters[44].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[45].Value = ((string)(Original_CodVendedor));
             }
             if ((Original_CodTransportadora == null)) {
-                this.Adapter.UpdateCommand.Parameters[47].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[48].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[46].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[47].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[47].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[48].Value = ((string)(Original_CodTransportadora));
+                this.Adapter.UpdateCommand.Parameters[46].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[47].Value = ((string)(Original_CodTransportadora));
             }
             if ((Original_NrPedido.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[49].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[50].Value = ((int)(Original_NrPedido.Value));
+                this.Adapter.UpdateCommand.Parameters[48].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[49].Value = ((int)(Original_NrPedido.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[49].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[50].Value = global::System.DBNull.Value;
-            }
-            if ((Original_Status == null)) {
-                this.Adapter.UpdateCommand.Parameters[51].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[52].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[51].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[52].Value = ((string)(Original_Status));
+                this.Adapter.UpdateCommand.Parameters[48].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[49].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -17804,7 +17790,6 @@ SELECT NrNotaFiscal, RazaoSocial, Serie, DataEmissao, IE, Telefone, Endereco, Ba
                     string CodVendedor, 
                     string CodTransportadora, 
                     global::System.Nullable<int> NrPedido, 
-                    string Status, 
                     int Original_NrNotaFiscal, 
                     string Original_RazaoSocial, 
                     string Original_Serie, 
@@ -17821,9 +17806,8 @@ SELECT NrNotaFiscal, RazaoSocial, Serie, DataEmissao, IE, Telefone, Endereco, Ba
                     global::System.Nullable<double> Original_ValorFrete, 
                     string Original_CodVendedor, 
                     string Original_CodTransportadora, 
-                    global::System.Nullable<int> Original_NrPedido, 
-                    string Original_Status) {
-            return this.Update(Original_NrNotaFiscal, RazaoSocial, Serie, DataEmissao, IE, Telefone, Endereco, Bairro, Municipio, Icms, Tipo, CNPJ, TipoFrete, ValorFrete, CodVendedor, CodTransportadora, NrPedido, Status, Original_NrNotaFiscal, Original_RazaoSocial, Original_Serie, Original_DataEmissao, Original_IE, Original_Telefone, Original_Endereco, Original_Bairro, Original_Municipio, Original_Icms, Original_Tipo, Original_CNPJ, Original_TipoFrete, Original_ValorFrete, Original_CodVendedor, Original_CodTransportadora, Original_NrPedido, Original_Status);
+                    global::System.Nullable<int> Original_NrPedido) {
+            return this.Update(Original_NrNotaFiscal, RazaoSocial, Serie, DataEmissao, IE, Telefone, Endereco, Bairro, Municipio, Icms, Tipo, CNPJ, TipoFrete, ValorFrete, CodVendedor, CodTransportadora, NrPedido, Original_NrNotaFiscal, Original_RazaoSocial, Original_Serie, Original_DataEmissao, Original_IE, Original_Telefone, Original_Endereco, Original_Bairro, Original_Municipio, Original_Icms, Original_Tipo, Original_CNPJ, Original_TipoFrete, Original_ValorFrete, Original_CodVendedor, Original_CodTransportadora, Original_NrPedido);
         }
     }
     
@@ -22444,7 +22428,7 @@ SELECT CODVIATRANSPORTE, DESCRICAO FROM VIATRANSPORTE WHERE (CODVIATRANSPORTE = 
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class NOTAFISCAL1TableAdapter : global::System.ComponentModel.Component {
+    public partial class ATUCUBOTableAdapter : global::System.ComponentModel.Component {
         
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
         
@@ -22457,7 +22441,7 @@ SELECT CODVIATRANSPORTE, DESCRICAO FROM VIATRANSPORTE WHERE (CODVIATRANSPORTE = 
         private bool _clearBeforeFill;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public NOTAFISCAL1TableAdapter() {
+        public ATUCUBOTableAdapter() {
             this.ClearBeforeFill = true;
         }
         
@@ -22548,9 +22532,41 @@ SELECT CODVIATRANSPORTE, DESCRICAO FROM VIATRANSPORTE WHERE (CODVIATRANSPORTE = 
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "NOTAFISCAL1";
-            tableMapping.ColumnMappings.Add("Status", "Status");
+            tableMapping.DataSetTable = "ATUCUBO";
+            tableMapping.ColumnMappings.Add("NRATUALIZACAO", "NRATUALIZACAO");
+            tableMapping.ColumnMappings.Add("CODUSUARIO", "CODUSUARIO");
+            tableMapping.ColumnMappings.Add("DATAATUALIZACAO", "DATAATUALIZACAO");
             this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[ATUCUBO] WHERE (([NRATUALIZACAO] = @Original_NRATUALIZACAO) AN" +
+                "D ([CODUSUARIO] = @Original_CODUSUARIO) AND ((@IsNull_DATAATUALIZACAO = 1 AND [D" +
+                "ATAATUALIZACAO] IS NULL) OR ([DATAATUALIZACAO] = @Original_DATAATUALIZACAO)))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NRATUALIZACAO", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NRATUALIZACAO", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CODUSUARIO", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CODUSUARIO", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_DATAATUALIZACAO", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DATAATUALIZACAO", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DATAATUALIZACAO", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DATAATUALIZACAO", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[ATUCUBO] ([CODUSUARIO], [DATAATUALIZACAO]) VALUES (@CODUSUARIO" +
+                ", @DATAATUALIZACAO);\r\nSELECT NRATUALIZACAO, CODUSUARIO, DATAATUALIZACAO FROM ATU" +
+                "CUBO WHERE (NRATUALIZACAO = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CODUSUARIO", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CODUSUARIO", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DATAATUALIZACAO", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DATAATUALIZACAO", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[ATUCUBO] SET [CODUSUARIO] = @CODUSUARIO, [DATAATUALIZACAO] = @DATAATUALIZACAO WHERE (([NRATUALIZACAO] = @Original_NRATUALIZACAO) AND ([CODUSUARIO] = @Original_CODUSUARIO) AND ((@IsNull_DATAATUALIZACAO = 1 AND [DATAATUALIZACAO] IS NULL) OR ([DATAATUALIZACAO] = @Original_DATAATUALIZACAO)));
+SELECT NRATUALIZACAO, CODUSUARIO, DATAATUALIZACAO FROM ATUCUBO WHERE (NRATUALIZACAO = @NRATUALIZACAO)";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CODUSUARIO", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CODUSUARIO", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DATAATUALIZACAO", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DATAATUALIZACAO", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NRATUALIZACAO", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NRATUALIZACAO", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_CODUSUARIO", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CODUSUARIO", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_DATAATUALIZACAO", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DATAATUALIZACAO", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_DATAATUALIZACAO", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "DATAATUALIZACAO", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NRATUALIZACAO", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "NRATUALIZACAO", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -22564,14 +22580,14 @@ SELECT CODVIATRANSPORTE, DESCRICAO FROM VIATRANSPORTE WHERE (CODVIATRANSPORTE = 
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Status FROM dbo.NOTAFISCAL";
+            this._commandCollection[0].CommandText = "SELECT NRATUALIZACAO, CODUSUARIO, DATAATUALIZACAO FROM dbo.ATUCUBO";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(COMERCIALDataSet.NOTAFISCAL1DataTable dataTable) {
+        public virtual int Fill(COMERCIALDataSet.ATUCUBODataTable dataTable) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -22583,11 +22599,138 @@ SELECT CODVIATRANSPORTE, DESCRICAO FROM VIATRANSPORTE WHERE (CODVIATRANSPORTE = 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual COMERCIALDataSet.NOTAFISCAL1DataTable GetData() {
+        public virtual COMERCIALDataSet.ATUCUBODataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            COMERCIALDataSet.NOTAFISCAL1DataTable dataTable = new COMERCIALDataSet.NOTAFISCAL1DataTable();
+            COMERCIALDataSet.ATUCUBODataTable dataTable = new COMERCIALDataSet.ATUCUBODataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(COMERCIALDataSet.ATUCUBODataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(COMERCIALDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "ATUCUBO");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(int Original_NRATUALIZACAO, int Original_CODUSUARIO, global::System.Nullable<global::System.DateTime> Original_DATAATUALIZACAO) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_NRATUALIZACAO));
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_CODUSUARIO));
+            if ((Original_DATAATUALIZACAO.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((System.DateTime)(Original_DATAATUALIZACAO.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(int CODUSUARIO, global::System.Nullable<global::System.DateTime> DATAATUALIZACAO) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(CODUSUARIO));
+            if ((DATAATUALIZACAO.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((System.DateTime)(DATAATUALIZACAO.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(int CODUSUARIO, global::System.Nullable<global::System.DateTime> DATAATUALIZACAO, int Original_NRATUALIZACAO, int Original_CODUSUARIO, global::System.Nullable<global::System.DateTime> Original_DATAATUALIZACAO, int NRATUALIZACAO) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(CODUSUARIO));
+            if ((DATAATUALIZACAO.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((System.DateTime)(DATAATUALIZACAO.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Original_NRATUALIZACAO));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_CODUSUARIO));
+            if ((Original_DATAATUALIZACAO.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((System.DateTime)(Original_DATAATUALIZACAO.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(NRATUALIZACAO));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(int CODUSUARIO, global::System.Nullable<global::System.DateTime> DATAATUALIZACAO, int Original_NRATUALIZACAO, int Original_CODUSUARIO, global::System.Nullable<global::System.DateTime> Original_DATAATUALIZACAO) {
+            return this.Update(CODUSUARIO, DATAATUALIZACAO, Original_NRATUALIZACAO, Original_CODUSUARIO, Original_DATAATUALIZACAO, Original_NRATUALIZACAO);
         }
     }
     
@@ -22639,6 +22782,8 @@ SELECT CODVIATRANSPORTE, DESCRICAO FROM VIATRANSPORTE WHERE (CODVIATRANSPORTE = 
         private VENDEDORTableAdapter _vENDEDORTableAdapter;
         
         private VIATRANSPORTETableAdapter _vIATRANSPORTETableAdapter;
+        
+        private ATUCUBOTableAdapter _aTUCUBOTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -22889,6 +23034,19 @@ SELECT CODVIATRANSPORTE, DESCRICAO FROM VIATRANSPORTE WHERE (CODVIATRANSPORTE = 
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" +
+            "", "System.Drawing.Design.UITypeEditor")]
+        public ATUCUBOTableAdapter ATUCUBOTableAdapter {
+            get {
+                return this._aTUCUBOTableAdapter;
+            }
+            set {
+                this._aTUCUBOTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         public bool BackupDataSetBeforeUpdate {
             get {
                 return this._backupDataSetBeforeUpdate;
@@ -22977,6 +23135,10 @@ SELECT CODVIATRANSPORTE, DESCRICAO FROM VIATRANSPORTE WHERE (CODVIATRANSPORTE = 
                             && (this._vIATRANSPORTETableAdapter.Connection != null))) {
                     return this._vIATRANSPORTETableAdapter.Connection;
                 }
+                if (((this._aTUCUBOTableAdapter != null) 
+                            && (this._aTUCUBOTableAdapter.Connection != null))) {
+                    return this._aTUCUBOTableAdapter.Connection;
+                }
                 return null;
             }
             set {
@@ -23041,6 +23203,9 @@ SELECT CODVIATRANSPORTE, DESCRICAO FROM VIATRANSPORTE WHERE (CODVIATRANSPORTE = 
                     count = (count + 1);
                 }
                 if ((this._vIATRANSPORTETableAdapter != null)) {
+                    count = (count + 1);
+                }
+                if ((this._aTUCUBOTableAdapter != null)) {
                     count = (count + 1);
                 }
                 return count;
@@ -23167,6 +23332,15 @@ SELECT CODVIATRANSPORTE, DESCRICAO FROM VIATRANSPORTE WHERE (CODVIATRANSPORTE = 
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._pEDIDOTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._aTUCUBOTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.ATUCUBO.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._aTUCUBOTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -23328,6 +23502,14 @@ SELECT CODVIATRANSPORTE, DESCRICAO FROM VIATRANSPORTE WHERE (CODVIATRANSPORTE = 
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._aTUCUBOTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.ATUCUBO.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._aTUCUBOTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._itemNotaFiscalTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.ItemNotaFiscal.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -23414,6 +23596,14 @@ SELECT CODVIATRANSPORTE, DESCRICAO FROM VIATRANSPORTE WHERE (CODVIATRANSPORTE = 
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._itemNotaFiscalTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._aTUCUBOTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.ATUCUBO.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._aTUCUBOTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -23648,6 +23838,11 @@ SELECT CODVIATRANSPORTE, DESCRICAO FROM VIATRANSPORTE WHERE (CODVIATRANSPORTE = 
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
+            if (((this._aTUCUBOTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._aTUCUBOTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
+                        "tring.");
+            }
             global::System.Data.IDbConnection workConnection = this.Connection;
             if ((workConnection == null)) {
                 throw new global::System.ApplicationException("TableAdapterManager contains no connection information. Set each TableAdapterMana" +
@@ -23842,6 +24037,15 @@ SELECT CODVIATRANSPORTE, DESCRICAO FROM VIATRANSPORTE WHERE (CODVIATRANSPORTE = 
                         adaptersWithAcceptChangesDuringUpdate.Add(this._vIATRANSPORTETableAdapter.Adapter);
                     }
                 }
+                if ((this._aTUCUBOTableAdapter != null)) {
+                    revertConnections.Add(this._aTUCUBOTableAdapter, this._aTUCUBOTableAdapter.Connection);
+                    this._aTUCUBOTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._aTUCUBOTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._aTUCUBOTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._aTUCUBOTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._aTUCUBOTableAdapter.Adapter);
+                    }
+                }
                 // 
                 //---- Perform updates -----------
                 //
@@ -23971,6 +24175,10 @@ SELECT CODVIATRANSPORTE, DESCRICAO FROM VIATRANSPORTE WHERE (CODVIATRANSPORTE = 
                 if ((this._vIATRANSPORTETableAdapter != null)) {
                     this._vIATRANSPORTETableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._vIATRANSPORTETableAdapter]));
                     this._vIATRANSPORTETableAdapter.Transaction = null;
+                }
+                if ((this._aTUCUBOTableAdapter != null)) {
+                    this._aTUCUBOTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._aTUCUBOTableAdapter]));
+                    this._aTUCUBOTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];

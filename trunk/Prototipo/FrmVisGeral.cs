@@ -208,7 +208,7 @@ namespace Comercial
             #endregion
 
             #region Colunas GridViewGeral Cliente
-            if (_parent is frmConCli)
+            if (_parent is FrmConCli)
             {
                 rdBtnCod.Visible = true;
                 rdBtnCod.Text = "CNPJ";
@@ -643,7 +643,7 @@ namespace Comercial
             #endregion
 
             #region FormPesquisa Claudio
-            if (_parent is frmConCli)
+            if (_parent is FrmConCli)
             {
                 string c = ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString;
                 SqlConnection conn = new SqlConnection(c);
@@ -891,9 +891,9 @@ namespace Comercial
             #endregion
 
             #region Double Click Pesquisa Cliente
-            if (_parent is frmConCli)
+            if (_parent is FrmConCli)
             {
-                frmConCli cli = (frmConCli)_parent;
+                FrmConCli cli = (FrmConCli)_parent;
 
                 DataGridViewSelectedCellCollection selecionadas = dtGrdVwVis.SelectedCells;
                 DataGridViewCell celula = selecionadas[0];

@@ -45,7 +45,7 @@ namespace Comercial
                 if (_princ == "FrmConCli")
                 {
                     //Instancio o FormConsulta
-                    frmConCli x = (frmConCli)_pdv;
+                    FrmConCli x = (FrmConCli)_pdv;
                     RptConCli objRptConPDV = new RptConCli();
 
                     //Instancio o Relatorio

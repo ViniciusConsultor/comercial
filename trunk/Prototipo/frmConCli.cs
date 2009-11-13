@@ -11,11 +11,11 @@ using System.Data.SqlClient;
 
 namespace Comercial
 {
-    public partial class frmConCli : Form
+    public partial class FrmConCli : Form
     {
         private FrmPrinc _princ = null;
 
-        public frmConCli(FrmPrinc parent)
+        public FrmConCli(FrmPrinc parent)
         {
             InitializeComponent();
             this.MdiParent = parent;
