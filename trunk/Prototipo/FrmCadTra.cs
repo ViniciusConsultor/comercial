@@ -143,16 +143,16 @@ namespace Comercial
 
                     switch (i)
                     {
-                        case "1": chkAereo.Checked = true;
+                        case "aer": chkAereo.Checked = true;
                             continue;
 
-                        case "2": chkFerroviario.Checked = true;
+                        case "fer": chkFerroviario.Checked = true;
                             continue;
 
-                        case "3": chkMaritimo.Checked = true;
+                        case "mar": chkMaritimo.Checked = true;
                             continue;
 
-                        case "4": chkTerrestre.Checked = true;
+                        case "ter": chkTerrestre.Checked = true;
                             continue;
 
                     }

@@ -59,6 +59,7 @@
             this.txtCodPed = new System.Windows.Forms.TextBox();
             this.cmBxTipoPed = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.rdbtnCancelado = new System.Windows.Forms.RadioButton();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.rdbtnPendente = new System.Windows.Forms.RadioButton();
             this.rdbtnEfetivado = new System.Windows.Forms.RadioButton();
@@ -88,7 +89,6 @@
             this.tableAdapterManager = new Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager();
             this.pEDIDOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.PEDIDOTableAdapter();
             this.pEDIDOBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.rdbtnCancelado = new System.Windows.Forms.RadioButton();
             this.tbCntrlConPDV.SuspendLayout();
             this.tbPgConCli.SuspendLayout();
             this.grpSituacao.SuspendLayout();
@@ -364,6 +364,18 @@
             this.groupBox2.TabIndex = 26;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Situação do Pedido:";
+            // 
+            // rdbtnCancelado
+            // 
+            this.rdbtnCancelado.AutoSize = true;
+            this.rdbtnCancelado.Location = new System.Drawing.Point(180, 18);
+            this.rdbtnCancelado.Name = "rdbtnCancelado";
+            this.rdbtnCancelado.Size = new System.Drawing.Size(76, 17);
+            this.rdbtnCancelado.TabIndex = 4;
+            this.rdbtnCancelado.TabStop = true;
+            this.rdbtnCancelado.Text = "Cancelado";
+            this.rdbtnCancelado.UseVisualStyleBackColor = true;
+            this.rdbtnCancelado.CheckedChanged += new System.EventHandler(this.rdbtnCancelado_CheckedChanged);
             // 
             // checkBox1
             // 
@@ -668,17 +680,6 @@
             // 
             this.pEDIDOBindingSource.DataMember = "PEDIDO";
             this.pEDIDOBindingSource.DataSource = this.cOMERCIALDataSet;
-            // 
-            // rdbtnCancelado
-            // 
-            this.rdbtnCancelado.AutoSize = true;
-            this.rdbtnCancelado.Location = new System.Drawing.Point(180, 18);
-            this.rdbtnCancelado.Name = "rdbtnCancelado";
-            this.rdbtnCancelado.Size = new System.Drawing.Size(76, 17);
-            this.rdbtnCancelado.TabIndex = 4;
-            this.rdbtnCancelado.TabStop = true;
-            this.rdbtnCancelado.Text = "Cancelado";
-            this.rdbtnCancelado.UseVisualStyleBackColor = true;
             // 
             // FrmConPDV
             // 
