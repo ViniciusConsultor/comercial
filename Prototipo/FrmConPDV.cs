@@ -117,6 +117,10 @@ namespace Comercial
                 {
                     sql += " and p.situacao ='P'";
                 }
+                if (rdbtnCancelado.Checked)
+                {
+                    sql += " and p.situacao ='C'";
+                }
 
                 //Pesquisa por data
                 if ((dttmDataPedido.Checked) && (dttmDataPedidoate.Checked))
