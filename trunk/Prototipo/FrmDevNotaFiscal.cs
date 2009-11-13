@@ -18,6 +18,7 @@ namespace Comercial
     {
        private FrmPrinc _princ = null;
 
+      
        public FrmDevNotaFiscal(FrmPrinc parent)
         {
             InitializeComponent();
@@ -56,6 +57,8 @@ namespace Comercial
 
        private void FrmDevNotaFiscal_Load(object sender, EventArgs e)
        {
+           // TODO: This line of code loads data into the 'cOMERCIALDataSet.NOTAFISCAL1' table. You can move, or remove it, as needed.
+           this.nOTAFISCAL1TableAdapter.Fill(this.cOMERCIALDataSet.NOTAFISCAL1);
            // TODO: This line of code loads data into the 'cOMERCIALDataSet.NOTAFISCAL' table. You can move, or remove it, as needed.
            this.nOTAFISCALTableAdapter.Fill(this.cOMERCIALDataSet.NOTAFISCAL);
            
@@ -72,7 +75,7 @@ namespace Comercial
 
            StringBuilder sqlcommand = new StringBuilder();
 
-           sqlcommand.Append(" SELECT NRNOTAFISCAL, SERIE, DATAEMISSAO, TIPO, STATUS ");
+           sqlcommand.Append(" SELECT NRNOTAFISCAL, SERIE, DATAEMISSAO, TIPO, STATUS, NrPedido ");
            sqlcommand.Append(" FROM NOTAFISCAL ");
            
            DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
@@ -185,19 +188,185 @@ namespace Comercial
        }
        #endregion
 
-
-       #region Devolver NF
-       public void DevolveNF()
+       #region AtualizaSituaçãoPedido
+       public void atualizaStatusPedido(string Situacao, int NrPedido)
        {
+           Database db = DatabaseFactory.CreateDatabase();
+
+           StringBuilder sqlcommand = new StringBuilder();
+
+           sqlcommand.Append(" UPDATE PEDIDO SET SITUACAO = @SITUACAO WHERE NRPEDIDO = @NRPEDIDO ");
+
+           DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
+
+           db.AddInParameter(dbComd, "@SITUACAO", DbType.String, Situacao);
+           db.AddInParameter(dbComd, "@NRPEDIDO", DbType.Int32, NrPedido);
+
+
+           db.ExecuteScalar(dbComd);
+
 
        }
-
        #endregion
-
-       private void statusTextBox_TextChanged(object sender, EventArgs e)
+        
+       #region Devolver NF
+       public void DevolverNF()
        {
+           try
+           {
+               if (MessageBox.Show("Deseja Devolver a Nota Fiscal selecionada?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+               {
+
+                   for (int i = 0; i < dtGrdVwItensNF.RowCount; i++)
+                   {
+                       int quantidade = Convert.ToInt32(dtGrdVwItensNF.Rows[i].Cells["clmQuantidade"].Value);
+
+
+                       //verifico saldo atual em estoque
+                       int estoqueatual = ListarSaldoEstoque(Convert.ToInt32(dtGrdVwItensNF.Rows[i].Cells["clmProduto"].Value));
+
+                       //Somo o saldo atual + qtdeliberada
+                       int atualizaestoque = estoqueatual + quantidade;
+
+                      //Atualiza quantidade lib do pedido para 0 pasando como parametro o pedido e o cod do produto
+                       AtualizarQtde(Convert.ToInt32(txtNrPedido.Text), 0, Convert.ToInt32(dtGrdVwItensNF.Rows[i].Cells["clmProduto"].Value));
+                       
+                       //Atuliza a quantidade atual em estoque passando com oparametro produto e a quantida a atualizar
+                       atualizaSaldoEstoque(Convert.ToInt32(dtGrdVwItensNF.Rows[i].Cells["clmProduto"].Value), atualizaestoque);
+
+                       continue;
+                   }
+
+                   //Atualiza Status do Pedido para "P"
+                   atualizaStatusPedido("P", Convert.ToInt32(txtNrPedido.Text));
+
+                   //Atualiza Status da NF para "D"
+                   atualizaStatusNF("D", Convert.ToInt32(txtNumNF.Text));
+
+                   //mensagem de NF devolvida
+                   MessageBox.Show("Nota Fiscal Devolvida Com Sucesso.", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                   //Limpar campos
+                   limparcampos();
+               }
+           }
+
+               
+            catch (Exception ex)
+            {
+                Validacoes valida = new Validacoes();
+                valida.tratarSystemExceções(ex);
+            }
+           
+       }
+       
+
+    
+   #endregion
+
+       #region AtualizarQuantidadeLiberada
+       public void AtualizarQtde(int CodPed, int QtdeLib, int CodProd)
+       {
+           Database db = DatabaseFactory.CreateDatabase();
+
+           StringBuilder sqlcommand = new StringBuilder();
+
+           sqlcommand.Append(" UPDATE ITEMPEDIDO SET QUANTIDADELIB = @QUANTIDADELIB WHERE NRPEDIDO = @NRPEDIDO AND CODPRODUTO = @CODPRODUTO");
+
+           DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
+
+           db.AddInParameter(dbComd, "@QUANTIDADELIB", DbType.Int32, QtdeLib);
+           db.AddInParameter(dbComd, "@NRPEDIDO", DbType.Int32, CodPed);
+           db.AddInParameter(dbComd, "@CODPRODUTO", DbType.Int32, CodProd);
+
+           db.ExecuteScalar(dbComd);
+
 
        }
+       #endregion
+      
+    public int ListarSaldoEstoque(int CodProd)
+       {
+           Database db = DatabaseFactory.CreateDatabase();
+
+           StringBuilder sqlcommand = new StringBuilder();
+
+           sqlcommand.Append(" SELECT ESTOQUEATUAL ");
+           sqlcommand.Append(" FROM PRODUTO  ");
+           sqlcommand.Append(" WHERE CODPRODUTO = @CODPRODUTO ");
+
+           DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
+
+           db.AddInParameter(dbComd, "@CODPRODUTO", DbType.Int32, CodProd);
+
+           int estoque = Convert.ToInt32(db.ExecuteScalar(dbComd));
+
+           return estoque;
+
+       }
+
+
+       public void RetornaQtde(int CodPed, int CodProd)
+       {
+           Database db = DatabaseFactory.CreateDatabase();
+
+           StringBuilder sqlcommand = new StringBuilder();
+
+           sqlcommand.Append(" UPDATE ITEMPEDIDO SET QUANTIDADELIB = 0 WHERE NRPEDIDO = @NRPEDIDO AND CODPRODUTO = @CODPRODUTO");
+
+           DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
+
+
+           db.AddInParameter(dbComd, "@NRPEDIDO", DbType.Int32, CodPed);
+           db.AddInParameter(dbComd, "@CODPRODUTO", DbType.Int32, CodProd);
+
+           db.ExecuteScalar(dbComd);
+
+
+       }
+
+
+       public void atualizaSaldoEstoque(int CodProd, int qtde)
+       {
+           Database db = DatabaseFactory.CreateDatabase();
+
+           StringBuilder sqlcommand = new StringBuilder();
+
+           sqlcommand.Append(" UPDATE PRODUTO SET ESTOQUEATUAL = @ESTOQUEATUAL WHERE CODPRODUTO = @CODPRODUTO ");
+
+           DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
+
+           db.AddInParameter(dbComd, "@ESTOQUEATUAL", DbType.Int32, qtde);
+           db.AddInParameter(dbComd, "@CODPRODUTO", DbType.Int32, CodProd);
+
+
+           db.ExecuteScalar(dbComd);
+
+
+       }
+
+
+       public void atualizaStatusNF(string Situacao, int NrNotaFiscal)
+       {
+           Database db = DatabaseFactory.CreateDatabase();
+
+           StringBuilder sqlcommand = new StringBuilder();
+
+           sqlcommand.Append(" UPDATE NOTAFISCAL SET STATUS = @STATUS WHERE NRNOTAFISCAL = @NRNOTAFISCAL ");
+
+           DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
+
+           db.AddInParameter(dbComd, "@STATUS", DbType.String, Situacao);
+           db.AddInParameter(dbComd, "@NRNOTAFISCAL", DbType.Int32,NrNotaFiscal);
+
+
+           db.ExecuteScalar(dbComd);
+
+
+       }
+
+
+   
 
 
 

@@ -19,3 +19,11 @@ namespace Comercial.COMERCIALDataSetTableAdapters
     public partial class ITEMPEDIDOTableAdapter {
     }
 }
+
+namespace Comercial.COMERCIALDataSetTableAdapters
+{
+    
+    
+    public partial class CLIENTETableAdapter {
+    }
+}
