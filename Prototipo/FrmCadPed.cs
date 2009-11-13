@@ -109,6 +109,9 @@ namespace Comercial
             objPedido["CODVENDEDOR"] = txtCodVendedor.getText;
             objPedido["CODCONDICAOPAGAMENTO"] = txtCondPagto.getText;
             objPedido["CODTRANSPORTADORA"] = txtCodTransportadora.getText;
+            string ValorFrete = txtFrete.Text.Replace("R$", "").Replace(".", "");
+            //txtFrete.Text = string.Format("{0:C2}", Convert.ToDouble(txtFrete.Text));
+            objPedido["VALORFRETE"] = ValorFrete;
 
             if (dtgrdvItenspven.RowCount == 0)
             {
@@ -126,7 +129,8 @@ namespace Comercial
                        Convert.ToString(objPedido["SITUACAO"].ToString()),
                        Convert.ToString(objPedido["CODVENDEDOR"].ToString()),
                        Convert.ToString(objPedido["CODCLIENTE"].ToString()),
-                       Convert.ToString(objPedido["CODTRANSPORTADORA"].ToString()));
+                       Convert.ToString(objPedido["CODTRANSPORTADORA"].ToString()),
+                       Convert.ToDouble(objPedido["VALORFRETE"].ToString()));
 
 
                 this.SalvarPedidoDeta();
@@ -198,6 +202,7 @@ namespace Comercial
             txtCodVendedor.getText = objPedido["CODVENDEDOR"].ToString();
             txtCondPagto.getText = objPedido["CODCONDICAOPAGAMENTO"].ToString();
             txtCodTransportadora.getText = objPedido["CODTRANSPORTADORA"].ToString();
+           // txtFrete.Text = Convert.ToString(objPedido["VALORFRETE"].ToString());
             //dtpEmissao.Value = Convert.ToDateTime(objPedido["DATAEMISSAO"].ToString());
             //dtpEntrega.Value = Convert.ToDateTime(objPedido["DATAENTREGA"].ToString());
 
@@ -792,7 +797,20 @@ namespace Comercial
         {
             try
             {
-                grpBxPedVenda.Enabled = false;
+                txtPedido.Enabled = false;
+                txtNomeCliente.Enabled = false;
+                txtNomeTransportadora.Enabled = false;
+                txtNomeVendedor.Enabled = false;
+                grpBxSitPed.Enabled = false;
+                grpTipoPedido.Enabled = false; 
+                txtcodCli.Enabled = false;
+                txtCodTransportadora.Enabled = false;
+                txtCodVendedor.Enabled = false;
+                txtCondPagto.Enabled = false;
+                dtpEmissao.Enabled = false;
+                txtFrete.Enabled = true;
+                lblFrete.Enabled = true;
+                dtpEntrega.Enabled = true;
 
             }
             catch (Exception ex)
