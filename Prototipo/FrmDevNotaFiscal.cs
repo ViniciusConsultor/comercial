@@ -175,6 +175,8 @@ namespace Comercial
                dtTmPckrDtEmissao.Text = String.Empty;
                TxtStatus.Text = String.Empty;
                txtBxVlrMercadoria.Text = String.Empty;
+               TxtStatus.Text = String.Empty;
+
             
                dtGrdVwItensNF.Refresh();
 

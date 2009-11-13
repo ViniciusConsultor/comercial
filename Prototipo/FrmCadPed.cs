@@ -582,9 +582,18 @@ namespace Comercial
                     }
 
                     string ValorFrete = txtFrete.Text.Replace("R$", "").Replace(".", "");
-                    double Valortotalfrete = Convert.ToDouble(total) + Convert.ToDouble(ValorFrete);
 
-                    lblValortotal.Text = string.Format("{0:C2}", Convert.ToDouble(Valortotalfrete));
+                    if (!String.IsNullOrEmpty(ValorFrete))
+                    {
+                        double Valortotalfrete = Convert.ToDouble(total) + Convert.ToDouble(ValorFrete);
+                        lblValortotal.Text = string.Format("{0:C2}", Convert.ToDouble(Valortotalfrete));
+                    }
+                    else
+                    {
+                        lblValortotal.Text = string.Format("{0:C2}", Convert.ToDouble(total));
+                    }
+                    
+                    
                     
                     //lblValortotal.Text = Convert.ToString(Valortotalfrete);
                    
