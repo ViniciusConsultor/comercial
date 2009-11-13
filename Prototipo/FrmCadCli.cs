@@ -396,6 +396,24 @@ namespace Comercial
             }
         }
 
+        private void btnCalcular_Click(object sender, EventArgs e)
+        {
+            string regiao=cmBxRegiaoCli.Text;
+            if (regiao == "Sorocaba")
+            {
+                double v1 = Convert.ToDouble(txtNum1.Text);
+                double v2 = Convert.ToDouble(txtNum2.Text);
+                double resultado = v1 * v2;
+                txtResult.Text = "" + resultado;
+            }
+            else
+            {
+                txtResult.Text = "";
+                MessageBox.Show("A região não é Sorocaba!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
+            }
+        }
+
         
 
         }

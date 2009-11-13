@@ -142,6 +142,9 @@ namespace Comercial
                     {
                         COMERCIALDataSetTableAdapters.CLIENTETableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.CLIENTETableAdapter();
                         table.Update(_dataset);
+                        FrmCadCli cli = (FrmCadCli)frm;
+                        cli.pictureBox1.Visible = false;
+                        cli.pictureBox2.Visible = false;
                     }
                     if (frm is FrmCadRegiao)
                     {
@@ -517,9 +520,9 @@ namespace Comercial
                 est.pesquisar();
             }
             #region Form's Claudio
-            if (frm is frmConCli)
+            if (frm is FrmConCli)
             {
-                frmConCli cli = (frmConCli)frm;
+                FrmConCli cli = (FrmConCli)frm;
                 cli.pesquisar();
             }
 
@@ -650,9 +653,9 @@ namespace Comercial
                 {
 
 
-                    if (form is frmConCli)
+                    if (form is FrmConCli)
                     {
-                        frmConCli frmcli = (frmConCli)form;
+                        FrmConCli frmcli = (FrmConCli)form;
                         FrmRelGeral filho = new FrmRelGeral("FrmConCli", form, this);
                         filho.Show();
                     }
@@ -1045,7 +1048,7 @@ namespace Comercial
             // Localiza o formulario
             foreach (Form form in this.MdiChildren)
             {
-                if (form is frmConCli)
+                if (form is FrmConCli)
                 {
                     form.WindowState = FormWindowState.Maximized;
                     form.Activate();
@@ -1058,7 +1061,7 @@ namespace Comercial
             // Para criar o formulario 
             if (x == 0 && y == 0)
             {
-                frmConCli filho = new frmConCli(this);
+                FrmConCli filho = new FrmConCli(this);
                 filho.Show();
 
                 tlStrpConsulta.Visible = true;
@@ -1177,7 +1180,7 @@ namespace Comercial
 
         //    }
 
-            // Para criar o formulario 
+        // Para criar o formulario 
         //    if (x == 0 && y == 0)
         //    {
         //        FrmCadTes filho = new FrmCadTes(this);
@@ -1560,7 +1563,7 @@ namespace Comercial
             }
         }
 
-       
+
 
         private void tlStrpBtnSalvarUsu_Click(object sender, EventArgs e)
         {
@@ -1610,7 +1613,7 @@ namespace Comercial
 
         }
 
-        
+
 
         private void tsbCancelarPedido_Click(object sender, EventArgs e)
         {
@@ -1642,14 +1645,51 @@ namespace Comercial
 
         private void atualizarCuboToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CreateForm(this, typeof(FrmAtuCubo));
+            int x = 0, y = 0;
+
+            // Localiza o formulario
+            foreach (Form form in this.MdiChildren)
+            {
+                if (form is FrmAtuCubo)
+                {
+                    form.WindowState = FormWindowState.Maximized;
+                    form.Activate();
+                    x++;
+                }
+                y++;
+
+            }
+
+            // Para criar o formulario 
+            if (x == 0 && y == 0)
+            {
+                FrmAtuCubo filho = new FrmAtuCubo(this);
+                filho.Show();
+
+                tlStrpProcesso.Visible = true;
+                FrmPrinc _princ = new FrmPrinc();
+
+                tsbCancelarPedido.Visible = false;
+
+
+                tlStrpBtnMinGer.Visible = false;
+                bindingNavigator1.Visible = false;
+
+                filho.WindowState = FormWindowState.Maximized;
+            }
+
         }
+
+
+
+
+
 
         private void cuboDeVendasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            CreateForm(this,typeof(FrmVisCuboVen));
+            CreateForm(this, typeof(FrmVisCuboVen));
         }
-
 
     }
 }
+

@@ -171,11 +171,11 @@
     <Compile Include="FrmCadVen.Designer.cs">
       <DependentUpon>FrmCadVen.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmConCli.cs">
+    <Compile Include="FrmConCli.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmConCli.designer.cs">
-      <DependentUpon>frmConCli.cs</DependentUpon>
+    <Compile Include="FrmConCli.designer.cs">
+      <DependentUpon>FrmConCli.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmConMin.cs">
       <SubType>Form</SubType>
@@ -328,8 +328,8 @@
     <EmbeddedResource Include="FrmCadVen.resx">
       <DependentUpon>FrmCadVen.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmConCli.resx">
-      <DependentUpon>frmConCli.cs</DependentUpon>
+    <EmbeddedResource Include="FrmConCli.resx">
+      <DependentUpon>FrmConCli.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmConMin.resx">
