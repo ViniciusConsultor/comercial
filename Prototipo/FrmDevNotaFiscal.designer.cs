@@ -65,7 +65,7 @@
             this.nOTAFISCALBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.nOTAFISCALTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.NOTAFISCALTableAdapter();
             this.tableAdapterManager = new Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager();
-            this.nOTAFISCAL1TableAdapter = new Comercial.COMERCIALDataSetTableAdapters.NOTAFISCAL1TableAdapter();
+            
             this.txtNrPedido = new System.Windows.Forms.TextBox();
             statusLabel = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
@@ -447,7 +447,7 @@
             // 
             // nOTAFISCAL1TableAdapter
             // 
-            this.nOTAFISCAL1TableAdapter.ClearBeforeFill = true;
+            
             // 
             // txtNrPedido
             // 
@@ -488,7 +488,7 @@
             this.grpBxInfNotFiscal.ResumeLayout(false);
             this.grpBxInfNotFiscal.PerformLayout();
             this.tbCntrlDevNotFiscal.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.nOTAFISCAL1BindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nOTAFISCALBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nOTAFISCALBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -531,7 +531,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clmVlrTotal;
         public System.Windows.Forms.TextBox TxtStatus;
         private System.Windows.Forms.BindingSource nOTAFISCAL1BindingSource;
-        private Comercial.COMERCIALDataSetTableAdapters.NOTAFISCAL1TableAdapter nOTAFISCAL1TableAdapter;
+        
         public System.Windows.Forms.TextBox txtNrPedido;
 
     }
