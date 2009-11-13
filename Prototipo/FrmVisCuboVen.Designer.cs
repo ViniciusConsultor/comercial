@@ -83,7 +83,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(774, 478);
+            this.tabPage2.Size = new System.Drawing.Size(853, 501);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Gráfico";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -96,7 +96,7 @@
             this.axChartSpace1.Location = new System.Drawing.Point(3, 3);
             this.axChartSpace1.Name = "axChartSpace1";
             this.axChartSpace1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axChartSpace1.OcxState")));
-            this.axChartSpace1.Size = new System.Drawing.Size(768, 472);
+            this.axChartSpace1.Size = new System.Drawing.Size(847, 495);
             this.axChartSpace1.TabIndex = 0;
             // 
             // FrmVisCuboVen
