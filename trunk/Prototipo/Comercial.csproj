@@ -87,7 +87,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>COMERCIALDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="EmiteNotaFiscal.cs" />
     <Compile Include="FrmAtuCubo.cs">
       <SubType>Form</SubType>
     </Compile>

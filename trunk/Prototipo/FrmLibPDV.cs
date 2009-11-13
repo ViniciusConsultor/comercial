@@ -655,7 +655,7 @@ namespace Comercial
                 if (teste == dtgrdvItenspven.Rows.Count)
                 {
                     DialogResult dr = MessageBox.Show("Pedido já efetvado!. \nDeseja faturar nota fiscal?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if(dr == DialogResult.Yes)
+                 
 
                 }
                 //se não continuo a liberação dos itens pendentes
