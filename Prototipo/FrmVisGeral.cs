@@ -341,6 +341,10 @@ namespace Comercial
 
                 dtGrdVwVis.Columns.Add("col5", "Status NF");
                 dtGrdVwVis.Columns["col5"].DataPropertyName = "STATUS";
+
+
+                dtGrdVwVis.Columns.Add("col6", "Numero Pedido");
+                dtGrdVwVis.Columns["col6"].DataPropertyName = "NrPedido";
             }
             #endregion
         }
@@ -1073,8 +1077,8 @@ namespace Comercial
                 DevNF.txtSerie.Text = selecionadas[1].Value.ToString();
                 DevNF.dtTmPckrDtEmissao.Text = selecionadas[2].Value.ToString();
                 DevNF.txtTipoNF.Text = selecionadas[3].Value.ToString();
-                DevNF.TxtStatus.Text = selecionadas[4].Value.ToString();                                              
-                
+                DevNF.TxtStatus.Text = selecionadas[4].Value.ToString();
+                DevNF.txtNrPedido.Text = selecionadas[5].Value.ToString(); 
 
                 //populo o item do pedido passando como parametro a NF selecionada.
                 DevNF.populargrid();
