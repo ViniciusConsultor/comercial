@@ -577,11 +577,16 @@ namespace Comercial
                        
                         total = Convert.ToDouble(total) + Convert.ToDouble(dttRetorno.Rows[index]["VALORTOTAL"]);
                         
-                        lblValortotal.Text = string.Format("{0:C2}", Convert.ToDouble(total));
+                        lblValortotal.Text = Convert.ToString(total);
                         
                     }
 
-                    lblValortotal.Text = Convert.ToString(lblValortotal.Text);
+                    string ValorFrete = txtFrete.Text.Replace("R$", "").Replace(".", "");
+                    double Valortotalfrete = Convert.ToDouble(total) + Convert.ToDouble(ValorFrete);
+
+                    lblValortotal.Text = string.Format("{0:C2}", Convert.ToDouble(Valortotalfrete));
+                    
+                    //lblValortotal.Text = Convert.ToString(Valortotalfrete);
                    
                     dtgrdvItenspven.DataSource = dttRetorno;
                 }
