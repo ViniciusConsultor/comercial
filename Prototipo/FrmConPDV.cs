@@ -206,6 +206,7 @@ namespace Comercial
 
                 rdbtnEfetivado.Checked = false;
                 rdbtnPendente.Checked = false;
+                rdbtnCancelado.Checked = false;
                 //groupBox2.Enabled = false;
             }
             else rdbtnEfetivado.Checked = true;
@@ -273,6 +274,12 @@ namespace Comercial
             this.iTEMPEDIDOBindingSource.EndEdit();
             this.tableAdapterManager.UpdateAll(this.cOMERCIALDataSet);
 
+        }
+
+        private void rdbtnCancelado_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rdbtnCancelado.Checked == true)
+                checkBox1.Checked = true;
         }
 
 
