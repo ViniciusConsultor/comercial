@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.Label statusLabel;
-            System.Windows.Forms.Label label1;
+            System.Windows.Forms.Label lblStatus;
+            System.Windows.Forms.Label LblNumPedido;
             this.tbPgDevNotaFiscal = new System.Windows.Forms.TabPage();
             this.grpBxItensNotFiscal = new System.Windows.Forms.GroupBox();
             this.dtGrdVwItensNF = new System.Windows.Forms.DataGridView();
@@ -50,7 +50,10 @@
             this.txtBxVlrFrete = new System.Windows.Forms.TextBox();
             this.txtBxVlrMercadoria = new System.Windows.Forms.TextBox();
             this.grpBxInfNotFiscal = new System.Windows.Forms.GroupBox();
-            this.TxtStatus = new System.Windows.Forms.TextBox();
+            this.txtNrPedido = new System.Windows.Forms.TextBox();
+            this.nOTAFISCALBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
+            this.txtStatus = new System.Windows.Forms.TextBox();
             this.txtTipoNF = new System.Windows.Forms.TextBox();
             this.lblNumNotFiscal = new System.Windows.Forms.Label();
             this.lblDtEmissao = new System.Windows.Forms.Label();
@@ -59,40 +62,46 @@
             this.dtTmPckrDtEmissao = new System.Windows.Forms.DateTimePicker();
             this.lblTipo = new System.Windows.Forms.Label();
             this.tbCntrlDevNotFiscal = new System.Windows.Forms.TabControl();
-            this.nOTAFISCAL1BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
-            this.txtNumNF = new Comercial.TextButton();
-            this.nOTAFISCALBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.nOTAFISCALTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.NOTAFISCALTableAdapter();
             this.tableAdapterManager = new Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager();
-            
-            this.txtNrPedido = new System.Windows.Forms.TextBox();
-            statusLabel = new System.Windows.Forms.Label();
-            label1 = new System.Windows.Forms.Label();
+            this.txtNumNF = new Comercial.TextButton();
+            lblStatus = new System.Windows.Forms.Label();
+            LblNumPedido = new System.Windows.Forms.Label();
             this.tbPgDevNotaFiscal.SuspendLayout();
             this.grpBxItensNotFiscal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGrdVwItensNF)).BeginInit();
             this.grpBxTotais.SuspendLayout();
             this.grpBxInfNotFiscal.SuspendLayout();
-            this.tbCntrlDevNotFiscal.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nOTAFISCAL1BindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nOTAFISCALBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).BeginInit();
+            this.tbCntrlDevNotFiscal.SuspendLayout();
             this.SuspendLayout();
             // 
-            // statusLabel
+            // lblStatus
             // 
-            statusLabel.AutoSize = true;
-            statusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            statusLabel.ForeColor = System.Drawing.Color.CadetBlue;
-            statusLabel.Location = new System.Drawing.Point(548, 16);
-            statusLabel.Name = "statusLabel";
-            statusLabel.Size = new System.Drawing.Size(40, 13);
-            statusLabel.TabIndex = 25;
-            statusLabel.Text = "Status:";
+            lblStatus.AutoSize = true;
+            lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            lblStatus.ForeColor = System.Drawing.Color.CadetBlue;
+            lblStatus.Location = new System.Drawing.Point(548, 16);
+            lblStatus.Name = "lblStatus";
+            lblStatus.Size = new System.Drawing.Size(57, 13);
+            lblStatus.TabIndex = 25;
+            lblStatus.Text = "Status NF:";
+            // 
+            // LblNumPedido
+            // 
+            LblNumPedido.AutoSize = true;
+            LblNumPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            LblNumPedido.ForeColor = System.Drawing.Color.CadetBlue;
+            LblNumPedido.Location = new System.Drawing.Point(629, 16);
+            LblNumPedido.Name = "LblNumPedido";
+            LblNumPedido.Size = new System.Drawing.Size(83, 13);
+            LblNumPedido.TabIndex = 28;
+            LblNumPedido.Text = "Número Pedido:";
             // 
             // tbPgDevNotaFiscal
             // 
+            this.tbPgDevNotaFiscal.AutoScroll = true;
             this.tbPgDevNotaFiscal.Controls.Add(this.grpBxItensNotFiscal);
             this.tbPgDevNotaFiscal.Controls.Add(this.grpBxTotais);
             this.tbPgDevNotaFiscal.Controls.Add(this.grpBxInfNotFiscal);
@@ -101,7 +110,7 @@
             this.tbPgDevNotaFiscal.Location = new System.Drawing.Point(4, 22);
             this.tbPgDevNotaFiscal.Name = "tbPgDevNotaFiscal";
             this.tbPgDevNotaFiscal.Padding = new System.Windows.Forms.Padding(3);
-            this.tbPgDevNotaFiscal.Size = new System.Drawing.Size(784, 483);
+            this.tbPgDevNotaFiscal.Size = new System.Drawing.Size(788, 499);
             this.tbPgDevNotaFiscal.TabIndex = 0;
             this.tbPgDevNotaFiscal.Text = "Devolução Nota Fiscal";
             this.tbPgDevNotaFiscal.UseVisualStyleBackColor = true;
@@ -279,10 +288,10 @@
             // 
             // grpBxInfNotFiscal
             // 
-            this.grpBxInfNotFiscal.Controls.Add(label1);
             this.grpBxInfNotFiscal.Controls.Add(this.txtNrPedido);
-            this.grpBxInfNotFiscal.Controls.Add(this.TxtStatus);
-            this.grpBxInfNotFiscal.Controls.Add(statusLabel);
+            this.grpBxInfNotFiscal.Controls.Add(this.txtStatus);
+            this.grpBxInfNotFiscal.Controls.Add(LblNumPedido);
+            this.grpBxInfNotFiscal.Controls.Add(lblStatus);
             this.grpBxInfNotFiscal.Controls.Add(this.txtNumNF);
             this.grpBxInfNotFiscal.Controls.Add(this.txtTipoNF);
             this.grpBxInfNotFiscal.Controls.Add(this.lblNumNotFiscal);
@@ -294,18 +303,38 @@
             this.grpBxInfNotFiscal.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.grpBxInfNotFiscal.Location = new System.Drawing.Point(16, 6);
             this.grpBxInfNotFiscal.Name = "grpBxInfNotFiscal";
-            this.grpBxInfNotFiscal.Size = new System.Drawing.Size(741, 83);
+            this.grpBxInfNotFiscal.Size = new System.Drawing.Size(755, 77);
             this.grpBxInfNotFiscal.TabIndex = 18;
             this.grpBxInfNotFiscal.TabStop = false;
             this.grpBxInfNotFiscal.Text = "Informações Nota Fiscal";
             // 
-            // TxtStatus
+            // txtNrPedido
             // 
-            this.TxtStatus.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.nOTAFISCAL1BindingSource, "Status", true));
-            this.TxtStatus.Location = new System.Drawing.Point(551, 32);
-            this.TxtStatus.Name = "TxtStatus";
-            this.TxtStatus.Size = new System.Drawing.Size(61, 20);
-            this.TxtStatus.TabIndex = 26;
+            this.txtNrPedido.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.nOTAFISCALBindingSource, "NrPedido", true));
+            this.txtNrPedido.Location = new System.Drawing.Point(632, 33);
+            this.txtNrPedido.Name = "txtNrPedido";
+            this.txtNrPedido.ReadOnly = true;
+            this.txtNrPedido.Size = new System.Drawing.Size(80, 20);
+            this.txtNrPedido.TabIndex = 30;
+            // 
+            // nOTAFISCALBindingSource
+            // 
+            this.nOTAFISCALBindingSource.DataMember = "NOTAFISCAL";
+            this.nOTAFISCALBindingSource.DataSource = this.cOMERCIALDataSet;
+            // 
+            // cOMERCIALDataSet
+            // 
+            this.cOMERCIALDataSet.DataSetName = "COMERCIALDataSet";
+            this.cOMERCIALDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // txtStatus
+            // 
+            this.txtStatus.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.nOTAFISCALBindingSource, "Status", true));
+            this.txtStatus.Location = new System.Drawing.Point(546, 33);
+            this.txtStatus.Name = "txtStatus";
+            this.txtStatus.ReadOnly = true;
+            this.txtStatus.Size = new System.Drawing.Size(59, 20);
+            this.txtStatus.TabIndex = 29;
             // 
             // txtTipoNF
             // 
@@ -389,34 +418,8 @@
             this.tbCntrlDevNotFiscal.Location = new System.Drawing.Point(12, 12);
             this.tbCntrlDevNotFiscal.Name = "tbCntrlDevNotFiscal";
             this.tbCntrlDevNotFiscal.SelectedIndex = 0;
-            this.tbCntrlDevNotFiscal.Size = new System.Drawing.Size(792, 509);
+            this.tbCntrlDevNotFiscal.Size = new System.Drawing.Size(796, 525);
             this.tbCntrlDevNotFiscal.TabIndex = 18;
-            // 
-            // nOTAFISCAL1BindingSource
-            // 
-            this.nOTAFISCAL1BindingSource.DataMember = "NOTAFISCAL1";
-            this.nOTAFISCAL1BindingSource.DataSource = this.cOMERCIALDataSet;
-            // 
-            // cOMERCIALDataSet
-            // 
-            this.cOMERCIALDataSet.DataSetName = "COMERCIALDataSet";
-            this.cOMERCIALDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // txtNumNF
-            // 
-            this.txtNumNF.getText = "";
-            this.txtNumNF.Image = global::Comercial.Properties.Resources.search1;
-            this.txtNumNF.Location = new System.Drawing.Point(48, 32);
-            this.txtNumNF.Name = "txtNumNF";
-            this.txtNumNF.ShowButton = false;
-            this.txtNumNF.Size = new System.Drawing.Size(210, 25);
-            this.txtNumNF.TabIndex = 17;
-            this.txtNumNF.ButtonClick += new System.EventHandler(this.txtNumNF_ButtonClick);
-            // 
-            // nOTAFISCALBindingSource
-            // 
-            this.nOTAFISCALBindingSource.DataMember = "NOTAFISCAL";
-            this.nOTAFISCALBindingSource.DataSource = this.cOMERCIALDataSet;
             // 
             // nOTAFISCALTableAdapter
             // 
@@ -425,6 +428,7 @@
             // tableAdapterManager
             // 
             this.tableAdapterManager.ACESSOTableAdapter = null;
+            this.tableAdapterManager.ATUCUBOTableAdapter = null;
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.CLIENTETableAdapter = null;
             this.tableAdapterManager.CONDICAOPAGAMENTOTableAdapter = null;
@@ -445,28 +449,16 @@
             this.tableAdapterManager.VENDEDORTableAdapter = null;
             this.tableAdapterManager.VIATRANSPORTETableAdapter = null;
             // 
-            // nOTAFISCAL1TableAdapter
+            // txtNumNF
             // 
-            
-            // 
-            // txtNrPedido
-            // 
-            this.txtNrPedido.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.nOTAFISCAL1BindingSource, "Status", true));
-            this.txtNrPedido.Location = new System.Drawing.Point(618, 32);
-            this.txtNrPedido.Name = "txtNrPedido";
-            this.txtNrPedido.Size = new System.Drawing.Size(61, 20);
-            this.txtNrPedido.TabIndex = 27;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            label1.ForeColor = System.Drawing.Color.CadetBlue;
-            label1.Location = new System.Drawing.Point(615, 16);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(40, 13);
-            label1.TabIndex = 28;
-            label1.Text = "Status:";
+            this.txtNumNF.getText = "";
+            this.txtNumNF.Image = global::Comercial.Properties.Resources.search1;
+            this.txtNumNF.Location = new System.Drawing.Point(48, 32);
+            this.txtNumNF.Name = "txtNumNF";
+            this.txtNumNF.ShowButton = false;
+            this.txtNumNF.Size = new System.Drawing.Size(210, 25);
+            this.txtNumNF.TabIndex = 17;
+            this.txtNumNF.ButtonClick += new System.EventHandler(this.txtNumNF_ButtonClick);
             // 
             // FrmDevNotaFiscal
             // 
@@ -487,10 +479,9 @@
             this.grpBxTotais.PerformLayout();
             this.grpBxInfNotFiscal.ResumeLayout(false);
             this.grpBxInfNotFiscal.PerformLayout();
-            this.tbCntrlDevNotFiscal.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.nOTAFISCALBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.nOTAFISCALBindingSource)).EndInit();
+            this.tbCntrlDevNotFiscal.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -529,10 +520,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clmQuantidade;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmVlrUnitário;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmVlrTotal;
-        public System.Windows.Forms.TextBox TxtStatus;
-        private System.Windows.Forms.BindingSource nOTAFISCAL1BindingSource;
-        
         public System.Windows.Forms.TextBox txtNrPedido;
+        public System.Windows.Forms.TextBox txtStatus;
 
     }
 }

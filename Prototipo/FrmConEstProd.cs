@@ -81,6 +81,13 @@ namespace Comercial
             }
 
             //Pesquisa por grupo de produto
+            string regiao = cmbGrupoProd.Text;
+            if (regiao == "TODOS")
+            {
+                sql+=   ;
+            }
+            else
+            {
             if (!string.IsNullOrEmpty(cmbGrupoProd.Text))
             {
                 sql += "and GRP.DESCRICAO = '" + cmbGrupoProd.Text + "'";

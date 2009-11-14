@@ -40,7 +40,6 @@
             this.tRANSPORTADORABindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
             this.gpbContatotrans = new System.Windows.Forms.GroupBox();
-            this.txtCepTrans = new Comercial.TextButton();
             this.lblComplemento = new System.Windows.Forms.Label();
             this.cOMPLEMENTOTextBox = new System.Windows.Forms.TextBox();
             this.lblNumero = new System.Windows.Forms.Label();
@@ -69,6 +68,9 @@
             this.tableAdapterManager = new Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager();
             this.tRANSPORTADORAVIABindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tRANSPORTADORAVIATableAdapter = new Comercial.COMERCIALDataSetTableAdapters.TRANSPORTADORAVIATableAdapter();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.txtCepTrans = new Comercial.TextButton();
             this.TbCntCadTra.SuspendLayout();
             this.TbPgCadTra.SuspendLayout();
             this.grpBxViaTrans.SuspendLayout();
@@ -76,6 +78,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).BeginInit();
             this.gpbContatotrans.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tRANSPORTADORAVIABindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // TbCntCadTra
@@ -84,12 +88,14 @@
             this.TbCntCadTra.Location = new System.Drawing.Point(12, 12);
             this.TbCntCadTra.Name = "TbCntCadTra";
             this.TbCntCadTra.SelectedIndex = 0;
-            this.TbCntCadTra.Size = new System.Drawing.Size(565, 322);
+            this.TbCntCadTra.Size = new System.Drawing.Size(596, 346);
             this.TbCntCadTra.TabIndex = 0;
             // 
             // TbPgCadTra
             // 
             this.TbPgCadTra.AutoScroll = true;
+            this.TbPgCadTra.Controls.Add(this.pictureBox1);
+            this.TbPgCadTra.Controls.Add(this.pictureBox2);
             this.TbPgCadTra.Controls.Add(this.grpBxViaTrans);
             this.TbPgCadTra.Controls.Add(this.txtIeCli);
             this.TbPgCadTra.Controls.Add(this.gpbContatotrans);
@@ -103,7 +109,7 @@
             this.TbPgCadTra.Location = new System.Drawing.Point(4, 22);
             this.TbPgCadTra.Name = "TbPgCadTra";
             this.TbPgCadTra.Padding = new System.Windows.Forms.Padding(3);
-            this.TbPgCadTra.Size = new System.Drawing.Size(557, 296);
+            this.TbPgCadTra.Size = new System.Drawing.Size(588, 320);
             this.TbPgCadTra.TabIndex = 0;
             this.TbPgCadTra.Text = "Cadastro Transportadora";
             this.TbPgCadTra.UseVisualStyleBackColor = true;
@@ -165,7 +171,7 @@
             // txtIeCli
             // 
             this.txtIeCli.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tRANSPORTADORABindingSource, "IE", true));
-            this.txtIeCli.Location = new System.Drawing.Point(277, 58);
+            this.txtIeCli.Location = new System.Drawing.Point(182, 99);
             this.txtIeCli.Mask = "999,999,999,99";
             this.txtIeCli.Name = "txtIeCli";
             this.txtIeCli.PromptChar = ' ';
@@ -206,23 +212,12 @@
             this.gpbContatotrans.Controls.Add(this.lblEnderecotrans);
             this.gpbContatotrans.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gpbContatotrans.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.gpbContatotrans.Location = new System.Drawing.Point(6, 106);
+            this.gpbContatotrans.Location = new System.Drawing.Point(6, 136);
             this.gpbContatotrans.Name = "gpbContatotrans";
             this.gpbContatotrans.Size = new System.Drawing.Size(542, 163);
             this.gpbContatotrans.TabIndex = 73;
             this.gpbContatotrans.TabStop = false;
             this.gpbContatotrans.Text = "Contato";
-            // 
-            // txtCepTrans
-            // 
-            this.txtCepTrans.getText = "";
-            this.txtCepTrans.Image = global::Comercial.Properties.Resources.btn_correios;
-            this.txtCepTrans.Location = new System.Drawing.Point(3, 42);
-            this.txtCepTrans.Name = "txtCepTrans";
-            this.txtCepTrans.ShowButton = false;
-            this.txtCepTrans.Size = new System.Drawing.Size(117, 25);
-            this.txtCepTrans.TabIndex = 9;
-            this.txtCepTrans.ButtonClick += new System.EventHandler(this.txtCepTrans_ButtonClick);
             // 
             // lblComplemento
             // 
@@ -434,31 +429,32 @@
             // lblIECliente
             // 
             this.lblIECliente.AutoSize = true;
-            this.lblIECliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIECliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIECliente.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblIECliente.Location = new System.Drawing.Point(274, 42);
+            this.lblIECliente.Location = new System.Drawing.Point(179, 83);
             this.lblIECliente.Name = "lblIECliente";
-            this.lblIECliente.Size = new System.Drawing.Size(23, 13);
+            this.lblIECliente.Size = new System.Drawing.Size(20, 13);
             this.lblIECliente.TabIndex = 74;
             this.lblIECliente.Text = "I.E";
             // 
             // txtCnpjTrans
             // 
             this.txtCnpjTrans.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tRANSPORTADORABindingSource, "CNPJ", true));
-            this.txtCnpjTrans.Location = new System.Drawing.Point(148, 58);
+            this.txtCnpjTrans.Location = new System.Drawing.Point(6, 99);
             this.txtCnpjTrans.Mask = "99,999,999/9999-99";
             this.txtCnpjTrans.Name = "txtCnpjTrans";
             this.txtCnpjTrans.PromptChar = ' ';
             this.txtCnpjTrans.Size = new System.Drawing.Size(123, 20);
             this.txtCnpjTrans.TabIndex = 3;
             this.txtCnpjTrans.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            this.txtCnpjTrans.Leave += new System.EventHandler(this.txtCnpjTrans_Leave);
             // 
             // lblCnpjCliente
             // 
             this.lblCnpjCliente.AutoSize = true;
             this.lblCnpjCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCnpjCliente.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblCnpjCliente.Location = new System.Drawing.Point(151, 42);
+            this.lblCnpjCliente.Location = new System.Drawing.Point(9, 83);
             this.lblCnpjCliente.Name = "lblCnpjCliente";
             this.lblCnpjCliente.Size = new System.Drawing.Size(38, 13);
             this.lblCnpjCliente.TabIndex = 73;
@@ -469,7 +465,7 @@
             this.TxtNomRed.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.tRANSPORTADORABindingSource, "NOMEREDUZIDO", true));
             this.TxtNomRed.Location = new System.Drawing.Point(6, 58);
             this.TxtNomRed.Name = "TxtNomRed";
-            this.TxtNomRed.Size = new System.Drawing.Size(136, 20);
+            this.TxtNomRed.Size = new System.Drawing.Size(402, 20);
             this.TxtNomRed.TabIndex = 2;
             // 
             // TxtNom
@@ -488,9 +484,9 @@
             this.LblNomRed.ForeColor = System.Drawing.Color.CadetBlue;
             this.LblNomRed.Location = new System.Drawing.Point(7, 42);
             this.LblNomRed.Name = "LblNomRed";
-            this.LblNomRed.Size = new System.Drawing.Size(81, 13);
+            this.LblNomRed.Size = new System.Drawing.Size(78, 13);
             this.LblNomRed.TabIndex = 50;
-            this.LblNomRed.Text = "Nome Fantasia:";
+            this.LblNomRed.Text = "Nome Fantasia";
             // 
             // LblNom
             // 
@@ -499,9 +495,9 @@
             this.LblNom.ForeColor = System.Drawing.Color.CadetBlue;
             this.LblNom.Location = new System.Drawing.Point(3, 3);
             this.LblNom.Name = "LblNom";
-            this.LblNom.Size = new System.Drawing.Size(43, 13);
+            this.LblNom.Size = new System.Drawing.Size(82, 13);
             this.LblNom.TabIndex = 1;
-            this.LblNom.Text = "Nome:";
+            this.LblNom.Text = "Razão Social";
             // 
             // tRANSPORTADORATableAdapter
             // 
@@ -510,6 +506,7 @@
             // tableAdapterManager
             // 
             this.tableAdapterManager.ACESSOTableAdapter = null;
+            this.tableAdapterManager.ATUCUBOTableAdapter = null;
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.CLIENTETableAdapter = null;
             this.tableAdapterManager.CONDICAOPAGAMENTOTableAdapter = null;
@@ -539,12 +536,45 @@
             // 
             this.tRANSPORTADORAVIATableAdapter.ClearBeforeFill = true;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Comercial.Properties.Resources.errado;
+            this.pictureBox1.Location = new System.Drawing.Point(135, 95);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(24, 24);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 79;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Visible = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::Comercial.Properties.Resources.certo;
+            this.pictureBox2.Location = new System.Drawing.Point(135, 95);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(24, 24);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox2.TabIndex = 80;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Visible = false;
+            // 
+            // txtCepTrans
+            // 
+            this.txtCepTrans.getText = "";
+            this.txtCepTrans.Image = global::Comercial.Properties.Resources.btn_correios;
+            this.txtCepTrans.Location = new System.Drawing.Point(3, 42);
+            this.txtCepTrans.Name = "txtCepTrans";
+            this.txtCepTrans.ShowButton = false;
+            this.txtCepTrans.Size = new System.Drawing.Size(117, 25);
+            this.txtCepTrans.TabIndex = 9;
+            this.txtCepTrans.ButtonClick += new System.EventHandler(this.txtCepTrans_ButtonClick);
+            // 
             // FrmCadTra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(582, 342);
+            this.ClientSize = new System.Drawing.Size(610, 370);
             this.ControlBox = false;
             this.Controls.Add(this.TbCntCadTra);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -565,6 +595,8 @@
             this.gpbContatotrans.ResumeLayout(false);
             this.gpbContatotrans.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tRANSPORTADORAVIABindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -611,6 +643,8 @@
         private System.Windows.Forms.Label lblNumero;
         private System.Windows.Forms.TextBox NumTrans;
         private TextButton txtCepTrans;
+        public System.Windows.Forms.PictureBox pictureBox1;
+        public System.Windows.Forms.PictureBox pictureBox2;
 
     }
 }
