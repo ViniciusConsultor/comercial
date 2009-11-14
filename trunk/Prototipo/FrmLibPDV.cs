@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -29,7 +31,6 @@ namespace Comercial
             _princ = parent;
         }
 
-
         #region Listar Pedido
         public DataTable ListarPedido()
         {
@@ -39,7 +40,7 @@ namespace Comercial
 
             StringBuilder sqlcommand = new StringBuilder();
 
-            sqlcommand.Append(" SELECT NRPEDIDO, TIPO, ped.CODCLIENTE, CODVENDEDOR,CODCONDICAOPAGAMENTO, CODTRANSPORTADORA, Convert(char(10),DATAEMISSAO,103)as DATAEMISSAO , Convert(char(10),DATAENTREGA,103) as DATAENTREGA ");
+            sqlcommand.Append(" SELECT NRPEDIDO, TIPO, ped.CODCLIENTE, CODVENDEDOR,CODCONDICAOPAGAMENTO, CODTRANSPORTADORA, Convert(char(10),DATAEMISSAO,103)as DATAEMISSAO , Convert(char(10),DATAENTREGA,103) as DATAENTREGA, VALORFRETE ");
             sqlcommand.Append(" FROM PEDIDO ped INNER JOIN CLIENTE cli ON ped.CODCLIENTE = cli.CNPJ ");
             sqlcommand.Append(" WHERE SITUACAO <> 'C' ");
 
@@ -654,9 +655,22 @@ namespace Comercial
                 //se o contador for = a qtde iten liberado dá a mensagem que o pedido já foi efetivado
                 if (teste == dtgrdvItenspven.Rows.Count)
                 {
-                    DialogResult dr = MessageBox.Show("Pedido já efetvado!. \nDeseja faturar nota fiscal?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                 
-
+                    if (isPedidoFaturado(Convert.ToInt32(txtbtnPedido.Text)))
+                    {
+                        MessageBox.Show("Pedido já efetivado e faturado!", "Aviso", MessageBoxButtons.OK,
+                                        MessageBoxIcon.Exclamation);
+                    }
+                    else
+                    {
+                        DialogResult dr = MessageBox.Show("Pedido já efetivado!. \nDeseja faturar nota fiscal?", "Aviso",
+                                                          MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (dr == DialogResult.Yes)
+                        {
+                            //emitirNotaFiscal();
+                            FrmRelGeral filho = new FrmRelGeral("FrmEmiNF", null, null);
+                            filho.Show();
+                        }
+                    }
                 }
                 //se não continuo a liberação dos itens pendentes
                 else
@@ -854,16 +868,22 @@ namespace Comercial
         #region Emissao de Nota Fiscal
         private void emitirNotaFiscal()
         {
-            // verificar se pedido jah faturado
-            // trocar status pra S
-
             DataTable cli = getCliente(txtCodCliente.Text);
-            DataTable trnsp = getTransportadora(txtCodTransportadora.Text);
+          
+            string tipofrete = "D";
+            if(!string.IsNullOrEmpty(txtFrete.Text))
+                tipofrete = "E";
+
+            string valorFrete = txtFrete.Text.Replace("R$", "").Replace(".", "");
             
-            
+            // TODO Calcular
+            double icms = 0;
 
             NOTAFISCALTableAdapter nf = new NOTAFISCALTableAdapter();
-            //nf.Insert(1,cli.Rows[0]["RAZAOSOCIAL"],"SERIE",DateTime.Now,cli.Rows[0]["IE"],cli.Rows[0]["TELEFONE"],cli.Rows[0]["ENDERECO"],cli.Rows[0]["BAIRRO"],cli.Rows[0]["MUNICIPIO"],"tipo",cli.Rows[0]["CNPJ"],)
+            nf.Insert(1, cli.Rows[0]["RAZAOSOCIAL"].ToString(), "SERIE", DateTime.Now, cli.Rows[0]["IE"].ToString(), cli.Rows[0]["TELEFONE"].ToString(),
+                      cli.Rows[0]["ENDERECO"].ToString(), cli.Rows[0]["BAIRRO"].ToString(), cli.Rows[0]["MUNICIPIO"].ToString(), icms, "tipo",
+                      cli.Rows[0]["CNPJ"].ToString(), tipofrete, Convert.ToDouble(valorFrete), txtCodVendedor.Text,
+                      txtCodTransportadora.Text, Convert.ToInt32(txtbtnPedido.Text));
 
         }
 
@@ -890,8 +910,8 @@ namespace Comercial
         }
         #endregion
 
-        #region Recuperar Cliente
-        public DataTable getTransportadora(string cnpj)
+        #region Verificar se pedido já foi faturado
+        public bool isPedidoFaturado(int nrpedido)
         {
             Database db = DatabaseFactory.CreateDatabase();
 
@@ -899,21 +919,37 @@ namespace Comercial
 
             StringBuilder sqlcommand = new StringBuilder();
 
-            sqlcommand.Append("SELECT * FROM TRANSPORTADORA WHERE CNPJ = @cnpj ");
+            sqlcommand.Append("select * from NOTAFISCAL where NrPedido = @nrpedido ");
 
             DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
 
-            db.AddInParameter(dbComd, "@cnpj", DbType.String, cnpj);
+            db.AddInParameter(dbComd, "@nrpedido", DbType.String, nrpedido);
 
             dtsDados = db.ExecuteDataSet(dbComd);
 
-            return dtsDados.Tables[0];
+            if (dtsDados.Tables[0].Rows.Count > 0)
+                return true;
+            return false;
         }
         #endregion
 
+        public string getNota()
+        {
+            string sql = "select g.CODGRUPOPRODUTO CODGRUPO, P.CODPRODUTO CODPROD, g.DESCRICAO GRUPO, p.DESCRICAO PRODUTO, p.DATACADASTRO, p.PRECOCUSTO, " +
+                "p.PRECOVENDA, p.ESTOQUEATUAL, p.ESTOQUEMIN, p.IPI, g.DESCONTO from PRODUTO p inner join " +
+                "GRUPOPRODUTO g on (p.CODGRUPOPRODUTO = g.CODGRUPOPRODUTO) ";
+            
+            string c = ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString;
 
+            SqlConnection conn = new SqlConnection(c);
+            conn.Open();
+            SqlCommand cmd = new SqlCommand(sql, conn);
+            SqlDataReader reader = cmd.ExecuteReader();
 
-
-
+            DataTable table = new DataTable();
+            table.Load(reader);
+            
+            return sql;
+        }
     }
 }

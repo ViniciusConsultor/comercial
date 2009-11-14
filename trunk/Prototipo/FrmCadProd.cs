@@ -45,6 +45,55 @@ namespace Comercial
 
             DataRowView objProduto = (DataRowView)pRODUTOBindingSource.Current;
             objProduto["CODGRUPOPRODUTO"] = txtBtnCodGrp.getText;
+            try
+            {
+                if (Convert.ToDouble(mskedTxtBxPrecoCusto.Text.Replace("R$", "").Replace(".", "")) < 0)
+                {
+                    MessageBox.Show("Preço de Custo Inválido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return 1;
+                }
+            } catch(Exception ex)
+            {
+                MessageBox.Show("Preço de Custo Inválido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 1;
+            }
+
+            try
+            {
+                if (Convert.ToDouble(mskedTxtBxPrecoUnitario.Text.Replace("R$", "").Replace(".", "")) < 0)
+                {
+                    MessageBox.Show("Preço Unitário Inválido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return 1;
+                }
+            } catch(Exception ex)
+            {
+                MessageBox.Show("Preço Unitário Inválido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 1;
+            }
+
+            if (Convert.ToDouble(mskedTxtBxIpi.Text) < 0 || Convert.ToDouble(mskedTxtBxIpi.Text) > 100)
+            {
+                MessageBox.Show("IPI Inválido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 1;
+            }
+
+            if (Convert.ToDouble(mskedTxtBxEstAtual.Text) < 0)
+            {
+                MessageBox.Show("Estoque Atual Inválido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 1;
+            }
+
+            if (Convert.ToDouble(mskedTxtBxEstMinimo.Text) < 0)
+            {
+                MessageBox.Show("Estoque Mínimo Inválido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 1;
+            }
+
+            if (Convert.ToDouble(txtPesoLiquido.Text) < 0)
+            {
+                MessageBox.Show("Peso Liquido Inválido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return 1;
+            }
 
             return 0;
         }

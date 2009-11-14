@@ -15,9 +15,6 @@ using Microsoft.Practices.EnterpriseLibrary.Data;
 using Microsoft.Practices.ObjectBuilder;
 using System.Configuration;
 
-
-
-
 namespace Comercial
 {
     public partial class FrmRelGeral : Form
@@ -202,13 +199,36 @@ namespace Comercial
 
                 if (_princ == "FrmEmiNF")
                 {
-                    //CrystalDecisions.CrystalReports.Engine.ReportDocument report = new CrystalDecisions.CrystalReports.Engine.ReportDocument();
-                    //report.Load(@"D:\Backup Facu\7 Semestre\TCC 2\TCC 2\Prototipo\Prototipo\RptConNF.rpt");
-                    //CrystalDecisions.Shared.ParameterField param;
+                    //Instancio o FormConsulta
+                    FrmLibPDV x = (FrmLibPDV)_pdv;
 
-                    //crstlRprtVwrRel.ReportSource = report;
+                    //Instancio o Relatorio
+                    RptConProd objRptConProd = new RptConProd();
+
+                    //Instancio o Dataset
+                    COMERCIALDataSet oDataset = new COMERCIALDataSet();
+
+                    Microsoft.Practices.EnterpriseLibrary.Data.Database db = DatabaseFactory.CreateDatabase();
+                    //Crio a Conexão
+                    SqlConnection sqlcon = new SqlConnection(ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString);
+
+                    //Abro a conexão
+                    sqlcon.Open();
+
+                    //Recebo a String SQL feita na tela de consulta
+                    string StringConnection = x.getNota();
+
+                    SqlDataAdapter dtAdapter = new SqlDataAdapter(StringConnection, sqlcon);
+
+                    //Localiso o datateble criado no dataset
+                    dtAdapter.Fill(oDataset, "RelProduto");
+
+                    objRptConProd.SetDataSource(oDataset);
+
+                    //atribiu o resultado ao CristalReportView            
+                    crstlRprtVwrRel.DisplayGroupTree = false;
+                    crstlRprtVwrRel.ReportSource = objRptConProd;
                 }
-
             }
             catch (Exception ex)
             {

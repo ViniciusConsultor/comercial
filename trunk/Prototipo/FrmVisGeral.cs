@@ -307,8 +307,9 @@ namespace Comercial
 
                 dtGrdVwVis.Columns.Add("col8", "Data Entrega");
                 dtGrdVwVis.Columns["col8"].DataPropertyName = "DATAENTREGA";
-
-
+                
+                dtGrdVwVis.Columns.Add("col9", "Valor Frete");
+                dtGrdVwVis.Columns["col9"].DataPropertyName = "VALORFRETE";
 
             }
             #endregion
@@ -1042,6 +1043,8 @@ namespace Comercial
                 PedLib.txtCodTransportadora.Text = selecionadas[5].Value.ToString();
                 PedLib.dtpEntrega.Text = selecionadas[7].Value.ToString();
                 PedLib.dtpEmissao.Text = selecionadas[6].Value.ToString();
+                string valorfrete = string.Format("{0:C2}", Convert.ToDouble(selecionadas[8].Value.ToString()));
+                PedLib.txtFrete.Text = valorfrete;
 
                 PedLib.txtNomeCliente.Text = Convert.ToString(PedLib.ListarNomeCliente(PedLib.txtCodCliente.Text));
                 PedLib.txtNomeTransportadora.Text = Convert.ToString(PedLib.ListarNomeTransportadora(PedLib.txtCodTransportadora.Text));
