@@ -879,11 +879,11 @@ namespace Comercial
             // TODO Calcular
             double icms = 0;
 
-            NOTAFISCALTableAdapter nf = new NOTAFISCALTableAdapter();
-            nf.Insert(1, cli.Rows[0]["RAZAOSOCIAL"].ToString(), "SERIE", DateTime.Now, cli.Rows[0]["IE"].ToString(), cli.Rows[0]["TELEFONE"].ToString(),
-                      cli.Rows[0]["ENDERECO"].ToString(), cli.Rows[0]["BAIRRO"].ToString(), cli.Rows[0]["MUNICIPIO"].ToString(), icms, "tipo",
-                      cli.Rows[0]["CNPJ"].ToString(), tipofrete, Convert.ToDouble(valorFrete), txtCodVendedor.Text,
-                      txtCodTransportadora.Text, Convert.ToInt32(txtbtnPedido.Text));
+            //NOTAFISCALTableAdapter nf = new NOTAFISCALTableAdapter();
+            //nf.Insert(1, cli.Rows[0]["RAZAOSOCIAL"].ToString(), "SERIE", DateTime.Now, cli.Rows[0]["IE"].ToString(), cli.Rows[0]["TELEFONE"].ToString(),
+            //          cli.Rows[0]["ENDERECO"].ToString(), cli.Rows[0]["BAIRRO"].ToString(), cli.Rows[0]["MUNICIPIO"].ToString(), icms, "tipo",
+            //          cli.Rows[0]["CNPJ"].ToString(), tipofrete, Convert.ToDouble(valorFrete), txtCodVendedor.Text,
+            //          txtCodTransportadora.Text, Convert.ToInt32(txtbtnPedido.Text));
 
         }
 

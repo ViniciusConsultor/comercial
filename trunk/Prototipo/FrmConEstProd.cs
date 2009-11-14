@@ -82,17 +82,18 @@ namespace Comercial
 
             //Pesquisa por grupo de produto
             string regiao = cmbGrupoProd.Text;
-            if (regiao == "TODOS")
+            if (regiao == "Todos")
             {
-                sql+=   ;
+                sql=  "SELECT CODPRODUTO,DESCRICAO,DATACADASTRO,ESTOQUEMIN,PRECOCUSTO,CODGRUPOPRODUTO,ESTOQUEATUAL " +
+                "FROM PRODUTO ";
             }
             else
             {
-            if (!string.IsNullOrEmpty(cmbGrupoProd.Text))
-            {
-                sql += "and GRP.DESCRICAO = '" + cmbGrupoProd.Text + "'";
+                if (!string.IsNullOrEmpty(cmbGrupoProd.Text))
+                {
+                    sql += "and GRP.DESCRICAO = '" + cmbGrupoProd.Text + "'";
+                }
             }
-
             string c = ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString;
 
             SqlConnection conn = new SqlConnection(c);
@@ -106,6 +107,8 @@ namespace Comercial
             dtGrdVwConProd.DataSource = table;
             return sql;
         }
+    
+    
 
         private void txtCodGrp_ButtonClick(object sender, EventArgs e)
         {
@@ -189,6 +192,8 @@ namespace Comercial
 
 
             cmbGrupoProd.SelectedIndex = -1;
+            
+            
         }
 
         private void txtEstoque_KeyPress(object sender, KeyPressEventArgs e)

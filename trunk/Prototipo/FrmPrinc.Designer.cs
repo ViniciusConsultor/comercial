@@ -553,7 +553,7 @@
             this.BtnDevNF.Size = new System.Drawing.Size(23, 22);
             this.BtnDevNF.Text = "Devolver Nota Fiscal";
             this.BtnDevNF.Visible = false;
-            this.BtnDevNF.Click += new System.EventHandler(this.BtnDevNF_Click_1);
+            
             // 
             // tlStrpBtnLibPed
             // 
