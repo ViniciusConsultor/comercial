@@ -1354,6 +1354,15 @@ namespace Comercial
                         throw new Exception("Efetivado");
 
                     }
+                    if (frmPed.chkCancelado.Checked == true)
+                    {
+                        Util.Interface.ChangeControlStatus(frm, false);
+
+                        novo();
+                        throw new Exception("Cancelado");
+
+                    }
+
 
                     //frmPed.limpardttable();
                     frmPed.ValidaControles();

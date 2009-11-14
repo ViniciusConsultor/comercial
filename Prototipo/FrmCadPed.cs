@@ -156,7 +156,7 @@ namespace Comercial
             {
                 chkEfetivado.Checked = true;
             }
-            else 
+            else
             {
                 chkEfetivado.Checked = false;
             }
@@ -167,7 +167,7 @@ namespace Comercial
             }
             else
             {
-                chkCancelado.Checked = false;  
+                chkCancelado.Checked = false;
             }
 
             if (objPedido["SITUACAO"].ToString() == "P")
@@ -202,7 +202,7 @@ namespace Comercial
             txtCodVendedor.getText = objPedido["CODVENDEDOR"].ToString();
             txtCondPagto.getText = objPedido["CODCONDICAOPAGAMENTO"].ToString();
             txtCodTransportadora.getText = objPedido["CODTRANSPORTADORA"].ToString();
-           // txtFrete.Text = Convert.ToString(objPedido["VALORFRETE"].ToString());
+            // txtFrete.Text = Convert.ToString(objPedido["VALORFRETE"].ToString());
             //dtpEmissao.Value = Convert.ToDateTime(objPedido["DATAEMISSAO"].ToString());
             //dtpEntrega.Value = Convert.ToDateTime(objPedido["DATAENTREGA"].ToString());
 
@@ -351,7 +351,26 @@ namespace Comercial
 
                     for (int index = 0; index < dttRetorno.Rows.Count; index++)
                     {
-                        if ((string)dttRetorno.Rows[index]["Status"] == "A")
+                        if ((string)dttRetorno.Rows[index]["Status"].ToString() == "")
+                        {
+                            if (statusped == 1)
+                            {
+                                Excluiritem(Convert.ToInt32(txtPedido.Text), Convert.ToInt32(dttRetorno.Rows[index]["ITEM"]));
+
+                                COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter tableinsert = new Comercial.COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter();
+                                tableinsert.Insert(Convert.ToInt32(txtPedido.Text),
+                                     Convert.ToInt32(dttRetorno.Rows[index]["CODPRODUTO"]),
+                                        Convert.ToInt32(dttRetorno.Rows[index]["QUANTIDADE"]),
+                                        Convert.ToInt32(dttRetorno.Rows[index]["QUANTIDADELIB"]),
+                                        Convert.ToDouble(dttRetorno.Rows[index]["DESCONTO"]),
+                                        Convert.ToDouble(dttRetorno.Rows[index]["VALOR"]),
+                                        Convert.ToDouble(dttRetorno.Rows[index]["IPI"]),
+                                        Convert.ToInt32(dttRetorno.Rows[index]["ITEM"]));
+
+                                continue;
+                            }
+                        }
+                        if ((string)dttRetorno.Rows[index]["Status"].ToString() == "A")
                         {
                             COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter();
                             table.Insert(Convert.ToInt32(txtPedido.Text),
@@ -366,22 +385,7 @@ namespace Comercial
                             continue;
 
                         }
-                        if (statusped == 1)
-                        {
-                            Excluiritem(Convert.ToInt32(txtPedido.Text), Convert.ToInt32(dttRetorno.Rows[index]["ITEM"]));
 
-                            COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter tableinsert = new Comercial.COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter();
-                            tableinsert.Insert(Convert.ToInt32(txtPedido.Text),
-                                 Convert.ToInt32(dttRetorno.Rows[index]["CODPRODUTO"]),
-                                    Convert.ToInt32(dttRetorno.Rows[index]["QUANTIDADE"]),
-                                    Convert.ToInt32(dttRetorno.Rows[index]["QUANTIDADELIB"]),
-                                    Convert.ToDouble(dttRetorno.Rows[index]["DESCONTO"]),
-                                    Convert.ToDouble(dttRetorno.Rows[index]["VALOR"]),
-                                    Convert.ToDouble(dttRetorno.Rows[index]["IPI"]),
-                                    Convert.ToInt32(dttRetorno.Rows[index]["ITEM"]));
-
-                            continue;
-                        }
                     }
                 }
 
@@ -568,17 +572,17 @@ namespace Comercial
                     dttRetorno = ListarItem(numeropedido);
 
                     dttRetorno.Columns.Add("Status", typeof(string));
-                    
+
                     Double total = 0;
 
                     for (int index = 0; index < dttRetorno.Rows.Count; index++)
                     {
 
-                       
+
                         total = Convert.ToDouble(total) + Convert.ToDouble(dttRetorno.Rows[index]["VALORTOTAL"]);
-                        
+
                         lblValortotal.Text = Convert.ToString(total);
-                        
+
                     }
 
                     string ValorFrete = txtFrete.Text.Replace("R$", "").Replace(".", "");
@@ -592,11 +596,11 @@ namespace Comercial
                     {
                         lblValortotal.Text = string.Format("{0:C2}", Convert.ToDouble(total));
                     }
-                    
-                    
-                    
+
+
+
                     //lblValortotal.Text = Convert.ToString(Valortotalfrete);
-                   
+
                     dtgrdvItenspven.DataSource = dttRetorno;
                 }
 
@@ -816,7 +820,7 @@ namespace Comercial
                 txtNomeTransportadora.Enabled = false;
                 txtNomeVendedor.Enabled = false;
                 grpBxSitPed.Enabled = false;
-                grpTipoPedido.Enabled = false; 
+                grpTipoPedido.Enabled = false;
                 txtcodCli.Enabled = false;
                 txtCodTransportadora.Enabled = false;
                 txtCodVendedor.Enabled = false;
@@ -898,8 +902,8 @@ namespace Comercial
                 }
 
                 //Replace no valor total de "." para ","
-                string valortotal = (String)txtValorTotal.Text.Replace("R$", "");
-     
+                string valortotal = (String)txtValorTotal.Text.Replace(".", "").Replace("R$", "").Replace(",", ".");
+
 
                 //Valida o Valor total = 0
                 if (Convert.ToDouble(valortotal) == 0)
@@ -913,7 +917,7 @@ namespace Comercial
                     throw new Exception("valortotalnegativo");
                 }
 
-                txtPrcUnit.Text = (String)txtPrcUnit.Text.Replace("R$", "");
+                txtPrcUnit.Text = (String)txtPrcUnit.Text.Replace(".", "").Replace("R$", "").Replace(",", ".");
 
                 //Valida o preço unitário = 0
                 if (Convert.ToDouble(txtPrcUnit.Text) == 0)
@@ -949,7 +953,7 @@ namespace Comercial
                 if (teste == 0)
                 {
 
-                    
+
                     dtRow["CODPRODUTO"] = txtProduto.getText;
                     dtRow["DESCRICAO"] = txtDescprod.Text;
                     dtRow["QUANTIDADE"] = txtQtdItem.Text;
@@ -998,7 +1002,7 @@ namespace Comercial
                 }
 
                 //Replace no valor total de "." para ","
-                String valortotal = (String)txtValorTotal.Text.Replace(".", ",");
+                string valortotal = (String)txtValorTotal.Text.Replace(".", "").Replace("R$", "").Replace(",", ".");
 
                 //Valida o Valor total = 0
                 if (Convert.ToDouble(valortotal) == 0)
@@ -1011,6 +1015,8 @@ namespace Comercial
                 {
                     throw new Exception("valortotalnegativo");
                 }
+
+                txtPrcUnit.Text = (String)txtPrcUnit.Text.Replace(".", "").Replace("R$", "").Replace(",", ".");
 
                 //Valida o preço unitário = 0
                 if (Convert.ToDouble(txtPrcUnit.Text) == 0)
@@ -1087,7 +1093,7 @@ namespace Comercial
                     dtRow["IPI"] = txtipi.Text;
                     dtRow["DESCONTO"] = txtDesconto.Text;
                     dtRow["VALORTOTAL"] = valortotal;
-                    dtRow["status"] = "A";
+                    dtRow["Status"] = "A";
                     dttRetorno.Rows.Add(dtRow);
 
 
@@ -1164,7 +1170,7 @@ namespace Comercial
 
                 txtValorTotal.Text = string.Format("{0:C2}", Convert.ToDouble(valortotal));
 
-            
+
             }
         }
 
@@ -1193,6 +1199,8 @@ namespace Comercial
         }
 
         #endregion
+
+       
 
 
     }
