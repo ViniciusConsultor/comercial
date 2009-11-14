@@ -17,7 +17,7 @@ namespace Comercial
     public partial class FrmDevNotaFiscal : Form
     {
        private FrmPrinc _princ = null;
-
+       DataTable dttRetorno = new DataTable();
       
        public FrmDevNotaFiscal(FrmPrinc parent)
         {
@@ -140,8 +140,7 @@ namespace Comercial
 
            int NrNotaFiscal;
 
-           DataTable dttRetorno = new DataTable();
-           try
+          try
            {
                if (txtNumNF.getText != String.Empty)
                {
@@ -169,17 +168,16 @@ namespace Comercial
        {
            try
            {
-               txtNumNF.Text = String.Empty; ;
+               txtNumNF.getText = String.Empty; ;
                txtSerie.Text = String.Empty;
                txtTipoNF.Text = String.Empty;
                dtTmPckrDtEmissao.Text = String.Empty;
-               TxtStatus.Text = String.Empty;
                txtBxVlrMercadoria.Text = String.Empty;
-               TxtStatus.Text = String.Empty;
-
-            
+               txtStatus.Text = String.Empty;
+               txtNrPedido.Text = String.Empty;
                dtGrdVwItensNF.Refresh();
-
+               dttRetorno.Clear();                                         
+               
            }
            catch (Exception ex)
            {
@@ -209,6 +207,7 @@ namespace Comercial
 
        }
        #endregion
+
         
        #region Devolver NF
        public void DevolverNF()
@@ -223,13 +222,13 @@ namespace Comercial
                        int quantidade = Convert.ToInt32(dtGrdVwItensNF.Rows[i].Cells["clmQuantidade"].Value);
 
 
-                       //verifico saldo atual em estoque
+                       //verifica saldo atual em estoque
                        int estoqueatual = ListarSaldoEstoque(Convert.ToInt32(dtGrdVwItensNF.Rows[i].Cells["clmProduto"].Value));
 
-                       //Somo o saldo atual + qtdeliberada
+                       //Soma o saldo atual + qtdeliberada
                        int atualizaestoque = estoqueatual + quantidade;
 
-                      //Atualiza quantidade lib do pedido para 0 pasando como parametro o pedido e o cod do produto
+                      //Atualiza quantidade liberada do pedido para 0 pasando como parametro o pedido e o cod do produto
                        AtualizarQtde(Convert.ToInt32(txtNrPedido.Text), 0, Convert.ToInt32(dtGrdVwItensNF.Rows[i].Cells["clmProduto"].Value));
                        
                        //Atuliza a quantidade atual em estoque passando com oparametro produto e a quantida a atualizar
@@ -242,7 +241,7 @@ namespace Comercial
                    atualizaStatusPedido("P", Convert.ToInt32(txtNrPedido.Text));
 
                    //Atualiza Status da NF para "D"
-                   atualizaStatusNF("D", Convert.ToInt32(txtNumNF.Text));
+                   atualizaStatusNF("D", Convert.ToInt32(txtNumNF.getText));
 
                    //mensagem de NF devolvida
                    MessageBox.Show("Nota Fiscal Devolvida Com Sucesso.", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -264,6 +263,7 @@ namespace Comercial
 
     
    #endregion
+
 
        #region AtualizarQuantidadeLiberada
        public void AtualizarQtde(int CodPed, int QtdeLib, int CodProd)
@@ -347,7 +347,7 @@ namespace Comercial
        }
 
 
-       public void atualizaStatusNF(string Situacao, int NrNotaFiscal)
+       public void atualizaStatusNF(string Status, int NrNotaFiscal)
        {
            Database db = DatabaseFactory.CreateDatabase();
 
@@ -357,7 +357,7 @@ namespace Comercial
 
            DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
 
-           db.AddInParameter(dbComd, "@STATUS", DbType.String, Situacao);
+           db.AddInParameter(dbComd, "@STATUS", DbType.String, Status);
            db.AddInParameter(dbComd, "@NRNOTAFISCAL", DbType.Int32,NrNotaFiscal);
 
 

@@ -18,6 +18,7 @@ namespace Comercial
     public partial class FrmCadTra : Form
     {
         private FrmPrinc _princ = null;
+        Validacoes valida = new Validacoes();
 
         public FrmCadTra(FrmPrinc parent)
         {
@@ -88,34 +89,47 @@ namespace Comercial
         {
 
 
-            String CnpjTrans = (String)txtCnpjTrans.Text.Replace(".", "").Replace("/", "").Replace("-", "");
+            if (!string.IsNullOrEmpty(txtEmailtrans.Text))
+            {
+                Boolean emailOk = valida.ValidaEmail(txtEmailtrans.Text);
+                if (emailOk == false)
+                {
+                    //MessageBox.Show("Email Inválido.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //return 1;
+                    throw new Exception("email invalido");
+                }
 
-            if (chkAereo.Checked)
-            {
-                COMERCIALDataSetTableAdapters.TRANSPORTADORAVIATableAdapter VTrans = new Comercial.COMERCIALDataSetTableAdapters.TRANSPORTADORAVIATableAdapter();
-                VTrans.Insert("aer", CnpjTrans);
-            }
-            if (chkFerroviario.Checked)
-            {
-                COMERCIALDataSetTableAdapters.TRANSPORTADORAVIATableAdapter VTrans = new Comercial.COMERCIALDataSetTableAdapters.TRANSPORTADORAVIATableAdapter();
-                VTrans.Insert("fer", CnpjTrans);
-            }
-            if (chkMaritimo.Checked)
-            {
-                COMERCIALDataSetTableAdapters.TRANSPORTADORAVIATableAdapter VTrans = new Comercial.COMERCIALDataSetTableAdapters.TRANSPORTADORAVIATableAdapter();
-                VTrans.Insert("mar", CnpjTrans);
-            }
-            if (chkTerrestre.Checked)
-            {
-                COMERCIALDataSetTableAdapters.TRANSPORTADORAVIATableAdapter VTrans = new Comercial.COMERCIALDataSetTableAdapters.TRANSPORTADORAVIATableAdapter();
-                VTrans.Insert("ter", CnpjTrans);
-            }
 
-            this.limparcampos();
+                String CnpjTrans = (String)txtCnpjTrans.Text.Replace(".", "").Replace("/", "").Replace("-", "");
+
+                if (chkAereo.Checked)
+                {
+                    COMERCIALDataSetTableAdapters.TRANSPORTADORAVIATableAdapter VTrans = new Comercial.COMERCIALDataSetTableAdapters.TRANSPORTADORAVIATableAdapter();
+                    VTrans.Insert("aer", CnpjTrans);
+                }
+                if (chkFerroviario.Checked)
+                {
+                    COMERCIALDataSetTableAdapters.TRANSPORTADORAVIATableAdapter VTrans = new Comercial.COMERCIALDataSetTableAdapters.TRANSPORTADORAVIATableAdapter();
+                    VTrans.Insert("fer", CnpjTrans);
+                }
+                if (chkMaritimo.Checked)
+                {
+                    COMERCIALDataSetTableAdapters.TRANSPORTADORAVIATableAdapter VTrans = new Comercial.COMERCIALDataSetTableAdapters.TRANSPORTADORAVIATableAdapter();
+                    VTrans.Insert("mar", CnpjTrans);
+                }
+                if (chkTerrestre.Checked)
+                {
+                    COMERCIALDataSetTableAdapters.TRANSPORTADORAVIATableAdapter VTrans = new Comercial.COMERCIALDataSetTableAdapters.TRANSPORTADORAVIATableAdapter();
+                    VTrans.Insert("ter", CnpjTrans);
+                }
+
+                this.limparcampos();
+
+
+
+
+            }
             return 0;
-
-
-
         }
 
         private void tRANSPORTADORABindingSource_PositionChanged(object sender, EventArgs e)
@@ -183,17 +197,17 @@ namespace Comercial
 
             DataRowView x;
             x = (DataRowView)tRANSPORTADORABindingSource.Current;
-            Validacoes valida = new Validacoes();
             int cnpj = valida.ValidaCNPJ(CnpjTrans);
 
             return cnpj;
         }
 
+
+
         private void txtCepTrans_ButtonClick(object sender, EventArgs e)
         {
-            Validacoes v = new Validacoes();
 
-            string cep = v.procuraCEP(txtCepTrans.getText);
+            string cep = valida.procuraCEP(txtCepTrans.getText);
 
             if (cep != "")
             {
@@ -230,6 +244,31 @@ namespace Comercial
         private void TxtNom_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void txtCnpjTrans_Leave(object sender, EventArgs e)
+        {
+
+            if (!string.IsNullOrEmpty(txtCnpjTrans.Text) && txtCnpjTrans.Text.Length == 14)
+            {
+                if (valida.ValidaCNPJ(txtCnpjTrans.Text) == 1)
+                {
+                    pictureBox1.Visible = true;
+                    pictureBox2.Visible = false;
+                    txtCnpjTrans.Focus();
+                }
+                else
+                {
+                    pictureBox1.Visible = false;
+                    pictureBox2.Visible = true;
+                }
+            }
+            else
+            {
+                pictureBox1.Visible = true;
+                pictureBox2.Visible = false;
+                txtCnpjTrans.Focus();
+            }
         }
     }
 
