@@ -45,17 +45,17 @@
             this.label31 = new System.Windows.Forms.Label();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.uNIDADEMEDIDABindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.txtPesoLiquido = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label26 = new System.Windows.Forms.Label();
-            this.maskedTextBox8 = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox9 = new System.Windows.Forms.MaskedTextBox();
+            this.mskedTxtBxEstMinimo = new System.Windows.Forms.MaskedTextBox();
+            this.mskedTxtBxEstAtual = new System.Windows.Forms.MaskedTextBox();
             this.label27 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lblPrecoCusto = new System.Windows.Forms.Label();
             this.lblPrecoVenda = new System.Windows.Forms.Label();
             this.mskedTxtBxPrecoCusto = new System.Windows.Forms.MaskedTextBox();
-            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.mskedTxtBxIpi = new System.Windows.Forms.MaskedTextBox();
             this.mskedTxtBxPrecoUnitario = new System.Windows.Forms.MaskedTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dtmPckrCadastro = new System.Windows.Forms.DateTimePicker();
@@ -231,7 +231,7 @@
             this.groupBox3.Controls.Add(this.label30);
             this.groupBox3.Controls.Add(this.label31);
             this.groupBox3.Controls.Add(this.comboBox3);
-            this.groupBox3.Controls.Add(this.textBox10);
+            this.groupBox3.Controls.Add(this.txtPesoLiquido);
             this.groupBox3.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.groupBox3.Location = new System.Drawing.Point(339, 217);
             this.groupBox3.Name = "groupBox3";
@@ -280,20 +280,20 @@
             this.uNIDADEMEDIDABindingSource.DataMember = "UNIDADEMEDIDA";
             this.uNIDADEMEDIDABindingSource.DataSource = this.cOMERCIALDataSet;
             // 
-            // textBox10
+            // txtPesoLiquido
             // 
-            this.textBox10.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pRODUTOBindingSource, "PESOLIQUIDO", true));
-            this.textBox10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox10.Location = new System.Drawing.Point(161, 39);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(70, 20);
-            this.textBox10.TabIndex = 9;
+            this.txtPesoLiquido.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pRODUTOBindingSource, "PESOLIQUIDO", true));
+            this.txtPesoLiquido.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPesoLiquido.Location = new System.Drawing.Point(161, 39);
+            this.txtPesoLiquido.Name = "txtPesoLiquido";
+            this.txtPesoLiquido.Size = new System.Drawing.Size(70, 20);
+            this.txtPesoLiquido.TabIndex = 9;
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.label26);
-            this.groupBox1.Controls.Add(this.maskedTextBox8);
-            this.groupBox1.Controls.Add(this.maskedTextBox9);
+            this.groupBox1.Controls.Add(this.mskedTxtBxEstMinimo);
+            this.groupBox1.Controls.Add(this.mskedTxtBxEstAtual);
             this.groupBox1.Controls.Add(this.label27);
             this.groupBox1.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.groupBox1.Location = new System.Drawing.Point(9, 217);
@@ -314,23 +314,23 @@
             this.label26.TabIndex = 40;
             this.label26.Text = "Estoque mínimo";
             // 
-            // maskedTextBox8
+            // mskedTxtBxEstMinimo
             // 
-            this.maskedTextBox8.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pRODUTOBindingSource, "ESTOQUEMIN", true));
-            this.maskedTextBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.maskedTextBox8.Location = new System.Drawing.Point(144, 39);
-            this.maskedTextBox8.Name = "maskedTextBox8";
-            this.maskedTextBox8.Size = new System.Drawing.Size(99, 20);
-            this.maskedTextBox8.TabIndex = 7;
+            this.mskedTxtBxEstMinimo.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pRODUTOBindingSource, "ESTOQUEMIN", true));
+            this.mskedTxtBxEstMinimo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mskedTxtBxEstMinimo.Location = new System.Drawing.Point(144, 39);
+            this.mskedTxtBxEstMinimo.Name = "mskedTxtBxEstMinimo";
+            this.mskedTxtBxEstMinimo.Size = new System.Drawing.Size(99, 20);
+            this.mskedTxtBxEstMinimo.TabIndex = 7;
             // 
-            // maskedTextBox9
+            // mskedTxtBxEstAtual
             // 
-            this.maskedTextBox9.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pRODUTOBindingSource, "ESTOQUEATUAL", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, null, "N0"));
-            this.maskedTextBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.maskedTextBox9.Location = new System.Drawing.Point(7, 38);
-            this.maskedTextBox9.Name = "maskedTextBox9";
-            this.maskedTextBox9.Size = new System.Drawing.Size(96, 20);
-            this.maskedTextBox9.TabIndex = 6;
+            this.mskedTxtBxEstAtual.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pRODUTOBindingSource, "ESTOQUEATUAL", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, null, "N0"));
+            this.mskedTxtBxEstAtual.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mskedTxtBxEstAtual.Location = new System.Drawing.Point(7, 38);
+            this.mskedTxtBxEstAtual.Name = "mskedTxtBxEstAtual";
+            this.mskedTxtBxEstAtual.Size = new System.Drawing.Size(96, 20);
+            this.mskedTxtBxEstAtual.TabIndex = 6;
             // 
             // label27
             // 
@@ -348,7 +348,7 @@
             this.groupBox2.Controls.Add(this.lblPrecoCusto);
             this.groupBox2.Controls.Add(this.lblPrecoVenda);
             this.groupBox2.Controls.Add(this.mskedTxtBxPrecoCusto);
-            this.groupBox2.Controls.Add(this.maskedTextBox1);
+            this.groupBox2.Controls.Add(this.mskedTxtBxIpi);
             this.groupBox2.Controls.Add(this.mskedTxtBxPrecoUnitario);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.ForeColor = System.Drawing.Color.CornflowerBlue;
@@ -383,25 +383,25 @@
             // 
             // mskedTxtBxPrecoCusto
             // 
-            this.mskedTxtBxPrecoCusto.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pRODUTOBindingSource, "PRECOCUSTO", true));
+            this.mskedTxtBxPrecoCusto.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pRODUTOBindingSource, "PRECOCUSTO", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C2"));
             this.mskedTxtBxPrecoCusto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mskedTxtBxPrecoCusto.Location = new System.Drawing.Point(146, 32);
             this.mskedTxtBxPrecoCusto.Name = "mskedTxtBxPrecoCusto";
             this.mskedTxtBxPrecoCusto.Size = new System.Drawing.Size(100, 20);
             this.mskedTxtBxPrecoCusto.TabIndex = 4;
             // 
-            // maskedTextBox1
+            // mskedTxtBxIpi
             // 
-            this.maskedTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pRODUTOBindingSource, "IPI", true));
-            this.maskedTextBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.maskedTextBox1.Location = new System.Drawing.Point(268, 32);
-            this.maskedTextBox1.Name = "maskedTextBox1";
-            this.maskedTextBox1.Size = new System.Drawing.Size(55, 20);
-            this.maskedTextBox1.TabIndex = 5;
+            this.mskedTxtBxIpi.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pRODUTOBindingSource, "IPI", true));
+            this.mskedTxtBxIpi.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mskedTxtBxIpi.Location = new System.Drawing.Point(268, 32);
+            this.mskedTxtBxIpi.Name = "mskedTxtBxIpi";
+            this.mskedTxtBxIpi.Size = new System.Drawing.Size(55, 20);
+            this.mskedTxtBxIpi.TabIndex = 5;
             // 
             // mskedTxtBxPrecoUnitario
             // 
-            this.mskedTxtBxPrecoUnitario.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pRODUTOBindingSource, "PRECOVENDA", true));
+            this.mskedTxtBxPrecoUnitario.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pRODUTOBindingSource, "PRECOVENDA", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C2"));
             this.mskedTxtBxPrecoUnitario.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mskedTxtBxPrecoUnitario.Location = new System.Drawing.Point(9, 32);
             this.mskedTxtBxPrecoUnitario.Name = "mskedTxtBxPrecoUnitario";
@@ -889,6 +889,7 @@
             // tableAdapterManager
             // 
             this.tableAdapterManager.ACESSOTableAdapter = null;
+            this.tableAdapterManager.ATUCUBOTableAdapter = null;
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.CLIENTETableAdapter = null;
             this.tableAdapterManager.CONDICAOPAGAMENTOTableAdapter = null;
@@ -999,11 +1000,11 @@
         private System.Windows.Forms.Label lblGrupo;
         private System.Windows.Forms.Label lblDtCadastro;
         private System.Windows.Forms.Label lblDescricao;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox9;
+        private System.Windows.Forms.MaskedTextBox mskedTxtBxEstAtual;
         private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox8;
+        private System.Windows.Forms.MaskedTextBox mskedTxtBxEstMinimo;
         private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
+        private System.Windows.Forms.MaskedTextBox mskedTxtBxIpi;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.MaskedTextBox maskedTextBox2;
         private System.Windows.Forms.Label label2;
@@ -1065,7 +1066,7 @@
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.TextBox txtPesoLiquido;
         public TextButton txtBtnCodGrp;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.GroupBox groupBox4;
