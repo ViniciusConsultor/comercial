@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCadPed));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.BtmTlStrpnlPedVenda = new System.Windows.Forms.ToolStripPanel();
             this.TopToolStripPanel = new System.Windows.Forms.ToolStripPanel();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
@@ -51,15 +52,11 @@
             this.chkEfetivado = new System.Windows.Forms.CheckBox();
             this.dtpEntrega = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtCodTransportadora = new Comercial.TextButton();
             this.dtpEmissao = new System.Windows.Forms.DateTimePicker();
             this.txtNomeTransportadora = new System.Windows.Forms.TextBox();
             this.vENDEDORBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lbldtemi = new System.Windows.Forms.Label();
             this.lblNomeTransportadora = new System.Windows.Forms.Label();
-            this.txtCondPagto = new Comercial.TextButton();
-            this.txtCodVendedor = new Comercial.TextButton();
-            this.txtcodCli = new Comercial.TextButton();
             this.txtNomeVendedor = new System.Windows.Forms.TextBox();
             this.txtNomeCliente = new System.Windows.Forms.TextBox();
             this.cLIENTEBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -72,27 +69,17 @@
             this.lblcodcli = new System.Windows.Forms.Label();
             this.lblnumPed = new System.Windows.Forms.Label();
             this.grpBxItPedVen = new System.Windows.Forms.GroupBox();
+            this.lblValortotal = new System.Windows.Forms.Label();
+            this.lblValortotalPed = new System.Windows.Forms.Label();
             this.txtValorTotal = new System.Windows.Forms.TextBox();
             this.lblTotal = new System.Windows.Forms.Label();
             this.txtQtdItem = new System.Windows.Forms.TextBox();
             this.LblqtdItem = new System.Windows.Forms.Label();
-            this.txtProduto = new Comercial.TextButton();
             this.btnAdditen = new System.Windows.Forms.Button();
             this.lblDesconto = new System.Windows.Forms.Label();
             this.txtDesconto = new System.Windows.Forms.TextBox();
             this.pnlItenped = new System.Windows.Forms.Panel();
             this.dtgrdvItenspven = new System.Windows.Forms.DataGridView();
-            this.Delete = new System.Windows.Forms.DataGridViewImageColumn();
-            this.ClmItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClmDescProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClmQtde = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QUANTIDADELIB = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClmPrcUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClmIPI = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColDesconto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtipi = new System.Windows.Forms.TextBox();
             this.LblIPI = new System.Windows.Forms.Label();
             this.txtPrcUnit = new System.Windows.Forms.TextBox();
@@ -117,8 +104,22 @@
             this.cONDICAOPAGAMENTOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.CONDICAOPAGAMENTOTableAdapter();
             this.iTEMPEDIDOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter();
             this.pRODUTOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.PRODUTOTableAdapter();
-            this.lblValortotalPed = new System.Windows.Forms.Label();
-            this.lblValortotal = new System.Windows.Forms.Label();
+            this.txtCodTransportadora = new Comercial.TextButton();
+            this.txtCondPagto = new Comercial.TextButton();
+            this.txtCodVendedor = new Comercial.TextButton();
+            this.txtcodCli = new Comercial.TextButton();
+            this.txtProduto = new Comercial.TextButton();
+            this.Delete = new System.Windows.Forms.DataGridViewImageColumn();
+            this.ClmItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClmDescProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClmQtde = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QUANTIDADELIB = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClmPrcUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClmIPI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColDesconto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbCntrlPedVend.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.grpBxPedVenda.SuspendLayout();
@@ -363,17 +364,6 @@
             this.label1.TabIndex = 96;
             this.label1.Text = "Data Entrega:";
             // 
-            // txtCodTransportadora
-            // 
-            this.txtCodTransportadora.getText = "";
-            this.txtCodTransportadora.Image = ((System.Drawing.Image)(resources.GetObject("txtCodTransportadora.Image")));
-            this.txtCodTransportadora.Location = new System.Drawing.Point(14, 79);
-            this.txtCodTransportadora.Name = "txtCodTransportadora";
-            this.txtCodTransportadora.ShowButton = false;
-            this.txtCodTransportadora.Size = new System.Drawing.Size(144, 25);
-            this.txtCodTransportadora.TabIndex = 95;
-            this.txtCodTransportadora.ButtonClick += new System.EventHandler(this.txtCodTransportadora_ButtonClick);
-            // 
             // dtpEmissao
             // 
             this.dtpEmissao.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pEDIDOBindingSource, "DATAEMISSAO", true));
@@ -418,39 +408,6 @@
             this.lblNomeTransportadora.Size = new System.Drawing.Size(184, 13);
             this.lblNomeTransportadora.TabIndex = 93;
             this.lblNomeTransportadora.Text = "Nome / Razão Social Transportadora";
-            // 
-            // txtCondPagto
-            // 
-            this.txtCondPagto.getText = "";
-            this.txtCondPagto.Image = ((System.Drawing.Image)(resources.GetObject("txtCondPagto.Image")));
-            this.txtCondPagto.Location = new System.Drawing.Point(358, 78);
-            this.txtCondPagto.Name = "txtCondPagto";
-            this.txtCondPagto.ShowButton = false;
-            this.txtCondPagto.Size = new System.Drawing.Size(71, 25);
-            this.txtCondPagto.TabIndex = 92;
-            this.txtCondPagto.ButtonClick += new System.EventHandler(this.txtCondPagto_ButtonClick);
-            // 
-            // txtCodVendedor
-            // 
-            this.txtCodVendedor.getText = "";
-            this.txtCodVendedor.Image = ((System.Drawing.Image)(resources.GetObject("txtCodVendedor.Image")));
-            this.txtCodVendedor.Location = new System.Drawing.Point(457, 34);
-            this.txtCodVendedor.Name = "txtCodVendedor";
-            this.txtCodVendedor.ShowButton = false;
-            this.txtCodVendedor.Size = new System.Drawing.Size(132, 25);
-            this.txtCodVendedor.TabIndex = 91;
-            this.txtCodVendedor.ButtonClick += new System.EventHandler(this.txtCodVendedor_ButtonClick);
-            // 
-            // txtcodCli
-            // 
-            this.txtcodCli.getText = "";
-            this.txtcodCli.Image = ((System.Drawing.Image)(resources.GetObject("txtcodCli.Image")));
-            this.txtcodCli.Location = new System.Drawing.Point(100, 37);
-            this.txtcodCli.Name = "txtcodCli";
-            this.txtcodCli.ShowButton = false;
-            this.txtcodCli.Size = new System.Drawing.Size(127, 25);
-            this.txtcodCli.TabIndex = 90;
-            this.txtcodCli.ButtonClick += new System.EventHandler(this.txtcodCli_ButtonClick);
             // 
             // txtNomeVendedor
             // 
@@ -592,6 +549,23 @@
             this.grpBxItPedVen.TabStop = false;
             this.grpBxItPedVen.Text = "Itens Pedido Venda";
             // 
+            // lblValortotal
+            // 
+            this.lblValortotal.AutoSize = true;
+            this.lblValortotal.Location = new System.Drawing.Point(800, 319);
+            this.lblValortotal.Name = "lblValortotal";
+            this.lblValortotal.Size = new System.Drawing.Size(0, 13);
+            this.lblValortotal.TabIndex = 114;
+            // 
+            // lblValortotalPed
+            // 
+            this.lblValortotalPed.AutoSize = true;
+            this.lblValortotalPed.Location = new System.Drawing.Point(676, 319);
+            this.lblValortotalPed.Name = "lblValortotalPed";
+            this.lblValortotalPed.Size = new System.Drawing.Size(116, 13);
+            this.lblValortotalPed.TabIndex = 113;
+            this.lblValortotalPed.Text = "Valor Total Pedido:";
+            // 
             // txtValorTotal
             // 
             this.txtValorTotal.Location = new System.Drawing.Point(758, 283);
@@ -628,17 +602,6 @@
             this.LblqtdItem.Size = new System.Drawing.Size(76, 13);
             this.LblqtdItem.TabIndex = 111;
             this.LblqtdItem.Text = "Quantidade:";
-            // 
-            // txtProduto
-            // 
-            this.txtProduto.getText = "";
-            this.txtProduto.Image = ((System.Drawing.Image)(resources.GetObject("txtProduto.Image")));
-            this.txtProduto.Location = new System.Drawing.Point(45, 284);
-            this.txtProduto.Name = "txtProduto";
-            this.txtProduto.ShowButton = false;
-            this.txtProduto.Size = new System.Drawing.Size(84, 25);
-            this.txtProduto.TabIndex = 108;
-            this.txtProduto.ButtonClick += new System.EventHandler(this.txtProduto_ButtonClick);
             // 
             // btnAdditen
             // 
@@ -702,94 +665,6 @@
             this.dtgrdvItenspven.Size = new System.Drawing.Size(867, 235);
             this.dtgrdvItenspven.TabIndex = 25;
             this.dtgrdvItenspven.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgrdvItenspven_CellClick);
-            // 
-            // Delete
-            // 
-            this.Delete.HeaderText = "";
-            this.Delete.Image = ((System.Drawing.Image)(resources.GetObject("Delete.Image")));
-            this.Delete.Name = "Delete";
-            this.Delete.ReadOnly = true;
-            this.Delete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Delete.Width = 25;
-            // 
-            // ClmItem
-            // 
-            this.ClmItem.DataPropertyName = "ITEM";
-            this.ClmItem.HeaderText = "Item";
-            this.ClmItem.Name = "ClmItem";
-            this.ClmItem.ReadOnly = true;
-            this.ClmItem.Width = 35;
-            // 
-            // ColProd
-            // 
-            this.ColProd.DataPropertyName = "CODPRODUTO";
-            this.ColProd.HeaderText = "Codigo Produto";
-            this.ColProd.Name = "ColProd";
-            this.ColProd.ReadOnly = true;
-            // 
-            // ClmDescProd
-            // 
-            this.ClmDescProd.DataPropertyName = "DESCRICAO";
-            this.ClmDescProd.HeaderText = "Descrição Produto";
-            this.ClmDescProd.Name = "ClmDescProd";
-            this.ClmDescProd.ReadOnly = true;
-            this.ClmDescProd.Width = 125;
-            // 
-            // ClmQtde
-            // 
-            this.ClmQtde.DataPropertyName = "QUANTIDADE";
-            this.ClmQtde.HeaderText = "Quantidade";
-            this.ClmQtde.Name = "ClmQtde";
-            this.ClmQtde.ReadOnly = true;
-            // 
-            // QUANTIDADELIB
-            // 
-            this.QUANTIDADELIB.DataPropertyName = "QUANTIDADELIB";
-            this.QUANTIDADELIB.HeaderText = "QtdeLib";
-            this.QUANTIDADELIB.Name = "QUANTIDADELIB";
-            this.QUANTIDADELIB.ReadOnly = true;
-            this.QUANTIDADELIB.Visible = false;
-            // 
-            // ClmPrcUnit
-            // 
-            this.ClmPrcUnit.DataPropertyName = "VALOR";
-            dataGridViewCellStyle1.Format = "C2";
-            dataGridViewCellStyle1.NullValue = null;
-            this.ClmPrcUnit.DefaultCellStyle = dataGridViewCellStyle1;
-            this.ClmPrcUnit.HeaderText = "Preço Unitário";
-            this.ClmPrcUnit.Name = "ClmPrcUnit";
-            this.ClmPrcUnit.ReadOnly = true;
-            // 
-            // ClmIPI
-            // 
-            this.ClmIPI.DataPropertyName = "IPI";
-            this.ClmIPI.HeaderText = "% IPI";
-            this.ClmIPI.Name = "ClmIPI";
-            this.ClmIPI.ReadOnly = true;
-            // 
-            // ColDesconto
-            // 
-            this.ColDesconto.DataPropertyName = "DESCONTO";
-            this.ColDesconto.HeaderText = "Desconto";
-            this.ColDesconto.Name = "ColDesconto";
-            this.ColDesconto.ReadOnly = true;
-            // 
-            // ColTotal
-            // 
-            this.ColTotal.DataPropertyName = "VALORTOTAL";
-            dataGridViewCellStyle2.Format = "C2";
-            dataGridViewCellStyle2.NullValue = null;
-            this.ColTotal.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ColTotal.HeaderText = "Valor Total";
-            this.ColTotal.Name = "ColTotal";
-            this.ColTotal.ReadOnly = true;
-            // 
-            // Status
-            // 
-            this.Status.DataPropertyName = "Status";
-            this.Status.HeaderText = "Status";
-            this.Status.Name = "Status";
-            this.Status.ReadOnly = true;
             // 
             // txtipi
             // 
@@ -926,6 +801,7 @@
             // tableAdapterManager
             // 
             this.tableAdapterManager.ACESSOTableAdapter = null;
+            this.tableAdapterManager.ATUCUBOTableAdapter = null;
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.CLIENTETableAdapter = null;
             this.tableAdapterManager.CONDICAOPAGAMENTOTableAdapter = null;
@@ -970,22 +846,151 @@
             // 
             this.pRODUTOTableAdapter.ClearBeforeFill = true;
             // 
-            // lblValortotalPed
+            // txtCodTransportadora
             // 
-            this.lblValortotalPed.AutoSize = true;
-            this.lblValortotalPed.Location = new System.Drawing.Point(676, 319);
-            this.lblValortotalPed.Name = "lblValortotalPed";
-            this.lblValortotalPed.Size = new System.Drawing.Size(116, 13);
-            this.lblValortotalPed.TabIndex = 113;
-            this.lblValortotalPed.Text = "Valor Total Pedido:";
+            this.txtCodTransportadora.getText = "";
+            this.txtCodTransportadora.Image = ((System.Drawing.Image)(resources.GetObject("txtCodTransportadora.Image")));
+            this.txtCodTransportadora.Location = new System.Drawing.Point(14, 79);
+            this.txtCodTransportadora.Name = "txtCodTransportadora";
+            this.txtCodTransportadora.ShowButton = false;
+            this.txtCodTransportadora.Size = new System.Drawing.Size(144, 25);
+            this.txtCodTransportadora.TabIndex = 95;
+            this.txtCodTransportadora.ButtonClick += new System.EventHandler(this.txtCodTransportadora_ButtonClick);
             // 
-            // lblValortotal
+            // txtCondPagto
             // 
-            this.lblValortotal.AutoSize = true;
-            this.lblValortotal.Location = new System.Drawing.Point(800, 319);
-            this.lblValortotal.Name = "lblValortotal";
-            this.lblValortotal.Size = new System.Drawing.Size(0, 13);
-            this.lblValortotal.TabIndex = 114;
+            this.txtCondPagto.getText = "";
+            this.txtCondPagto.Image = ((System.Drawing.Image)(resources.GetObject("txtCondPagto.Image")));
+            this.txtCondPagto.Location = new System.Drawing.Point(358, 78);
+            this.txtCondPagto.Name = "txtCondPagto";
+            this.txtCondPagto.ShowButton = false;
+            this.txtCondPagto.Size = new System.Drawing.Size(71, 25);
+            this.txtCondPagto.TabIndex = 92;
+            this.txtCondPagto.ButtonClick += new System.EventHandler(this.txtCondPagto_ButtonClick);
+            // 
+            // txtCodVendedor
+            // 
+            this.txtCodVendedor.getText = "";
+            this.txtCodVendedor.Image = ((System.Drawing.Image)(resources.GetObject("txtCodVendedor.Image")));
+            this.txtCodVendedor.Location = new System.Drawing.Point(457, 34);
+            this.txtCodVendedor.Name = "txtCodVendedor";
+            this.txtCodVendedor.ShowButton = false;
+            this.txtCodVendedor.Size = new System.Drawing.Size(132, 25);
+            this.txtCodVendedor.TabIndex = 91;
+            this.txtCodVendedor.ButtonClick += new System.EventHandler(this.txtCodVendedor_ButtonClick);
+            // 
+            // txtcodCli
+            // 
+            this.txtcodCli.getText = "";
+            this.txtcodCli.Image = ((System.Drawing.Image)(resources.GetObject("txtcodCli.Image")));
+            this.txtcodCli.Location = new System.Drawing.Point(100, 37);
+            this.txtcodCli.Name = "txtcodCli";
+            this.txtcodCli.ShowButton = false;
+            this.txtcodCli.Size = new System.Drawing.Size(127, 25);
+            this.txtcodCli.TabIndex = 90;
+            this.txtcodCli.ButtonClick += new System.EventHandler(this.txtcodCli_ButtonClick);
+            // 
+            // txtProduto
+            // 
+            this.txtProduto.getText = "";
+            this.txtProduto.Image = ((System.Drawing.Image)(resources.GetObject("txtProduto.Image")));
+            this.txtProduto.Location = new System.Drawing.Point(45, 284);
+            this.txtProduto.Name = "txtProduto";
+            this.txtProduto.ShowButton = false;
+            this.txtProduto.Size = new System.Drawing.Size(84, 25);
+            this.txtProduto.TabIndex = 108;
+            this.txtProduto.ButtonClick += new System.EventHandler(this.txtProduto_ButtonClick);
+            // 
+            // Delete
+            // 
+            this.Delete.HeaderText = "";
+            this.Delete.Image = ((System.Drawing.Image)(resources.GetObject("Delete.Image")));
+            this.Delete.Name = "Delete";
+            this.Delete.ReadOnly = true;
+            this.Delete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Delete.Width = 25;
+            // 
+            // ClmItem
+            // 
+            this.ClmItem.DataPropertyName = "ITEM";
+            this.ClmItem.HeaderText = "Item";
+            this.ClmItem.Name = "ClmItem";
+            this.ClmItem.ReadOnly = true;
+            this.ClmItem.Width = 35;
+            // 
+            // ColProd
+            // 
+            this.ColProd.DataPropertyName = "CODPRODUTO";
+            this.ColProd.HeaderText = "Codigo Produto";
+            this.ColProd.Name = "ColProd";
+            this.ColProd.ReadOnly = true;
+            // 
+            // ClmDescProd
+            // 
+            this.ClmDescProd.DataPropertyName = "DESCRICAO";
+            this.ClmDescProd.HeaderText = "Descrição Produto";
+            this.ClmDescProd.Name = "ClmDescProd";
+            this.ClmDescProd.ReadOnly = true;
+            this.ClmDescProd.Width = 125;
+            // 
+            // ClmQtde
+            // 
+            this.ClmQtde.DataPropertyName = "QUANTIDADE";
+            this.ClmQtde.HeaderText = "Quantidade";
+            this.ClmQtde.Name = "ClmQtde";
+            this.ClmQtde.ReadOnly = true;
+            // 
+            // QUANTIDADELIB
+            // 
+            this.QUANTIDADELIB.DataPropertyName = "QUANTIDADELIB";
+            this.QUANTIDADELIB.HeaderText = "QtdeLib";
+            this.QUANTIDADELIB.Name = "QUANTIDADELIB";
+            this.QUANTIDADELIB.ReadOnly = true;
+            this.QUANTIDADELIB.Visible = false;
+            // 
+            // ClmPrcUnit
+            // 
+            this.ClmPrcUnit.DataPropertyName = "VALOR";
+            dataGridViewCellStyle1.Format = "C2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.ClmPrcUnit.DefaultCellStyle = dataGridViewCellStyle1;
+            this.ClmPrcUnit.HeaderText = "Preço Unitário";
+            this.ClmPrcUnit.Name = "ClmPrcUnit";
+            this.ClmPrcUnit.ReadOnly = true;
+            // 
+            // ClmIPI
+            // 
+            this.ClmIPI.DataPropertyName = "IPI";
+            dataGridViewCellStyle2.Format = "N2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.ClmIPI.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ClmIPI.HeaderText = "% IPI";
+            this.ClmIPI.Name = "ClmIPI";
+            this.ClmIPI.ReadOnly = true;
+            // 
+            // ColDesconto
+            // 
+            this.ColDesconto.DataPropertyName = "DESCONTO";
+            this.ColDesconto.HeaderText = "Desconto";
+            this.ColDesconto.Name = "ColDesconto";
+            this.ColDesconto.ReadOnly = true;
+            // 
+            // ColTotal
+            // 
+            this.ColTotal.DataPropertyName = "VALORTOTAL";
+            dataGridViewCellStyle3.Format = "C2";
+            dataGridViewCellStyle3.NullValue = null;
+            this.ColTotal.DefaultCellStyle = dataGridViewCellStyle3;
+            this.ColTotal.HeaderText = "Valor Total";
+            this.ColTotal.Name = "ColTotal";
+            this.ColTotal.ReadOnly = true;
+            // 
+            // Status
+            // 
+            this.Status.DataPropertyName = "Status";
+            this.Status.HeaderText = "Status";
+            this.Status.Name = "Status";
+            this.Status.ReadOnly = true;
             // 
             // FrmCadPed
             // 
@@ -1099,6 +1104,8 @@
         private System.Windows.Forms.Label lblFrete;
         public System.Windows.Forms.MaskedTextBox txtFrete;
         public System.Windows.Forms.CheckBox chkCancelado;
+        public System.Windows.Forms.Label lblValortotal;
+        private System.Windows.Forms.Label lblValortotalPed;
         private System.Windows.Forms.DataGridViewImageColumn Delete;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColProd;
@@ -1110,8 +1117,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColDesconto;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColTotal;
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
-        public System.Windows.Forms.Label lblValortotal;
-        private System.Windows.Forms.Label lblValortotalPed;
 
     }
 }
