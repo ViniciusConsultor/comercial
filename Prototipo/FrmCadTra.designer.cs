@@ -29,16 +29,17 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCadTra));
             this.TbCntCadTra = new System.Windows.Forms.TabControl();
             this.TbPgCadTra = new System.Windows.Forms.TabPage();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.grpBxViaTrans = new System.Windows.Forms.GroupBox();
             this.chkTerrestre = new System.Windows.Forms.CheckBox();
             this.chkMaritimo = new System.Windows.Forms.CheckBox();
             this.chkFerroviario = new System.Windows.Forms.CheckBox();
             this.chkAereo = new System.Windows.Forms.CheckBox();
             this.txtIeCli = new System.Windows.Forms.MaskedTextBox();
-            this.tRANSPORTADORABindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
             this.gpbContatotrans = new System.Windows.Forms.GroupBox();
             this.lblComplemento = new System.Windows.Forms.Label();
             this.cOMPLEMENTOTextBox = new System.Windows.Forms.TextBox();
@@ -64,28 +65,37 @@
             this.TxtNom = new System.Windows.Forms.TextBox();
             this.LblNomRed = new System.Windows.Forms.Label();
             this.LblNom = new System.Windows.Forms.Label();
+            this.consultaTransportadoraToolStrip = new System.Windows.Forms.ToolStrip();
+            this.cNPJToolStripLabel = new System.Windows.Forms.ToolStripLabel();
+            this.cNPJToolStripTextBox = new System.Windows.Forms.ToolStripTextBox();
+            this.nomeToolStripLabel = new System.Windows.Forms.ToolStripLabel();
+            this.nomeToolStripTextBox = new System.Windows.Forms.ToolStripTextBox();
+            this.consultaTransportadoraToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.tRANSPORTADORABindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
             this.tRANSPORTADORATableAdapter = new Comercial.COMERCIALDataSetTableAdapters.TRANSPORTADORATableAdapter();
             this.tableAdapterManager = new Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager();
             this.tRANSPORTADORAVIABindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tRANSPORTADORAVIATableAdapter = new Comercial.COMERCIALDataSetTableAdapters.TRANSPORTADORAVIATableAdapter();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.txtCepTrans = new Comercial.TextButton();
             this.TbCntCadTra.SuspendLayout();
             this.TbPgCadTra.SuspendLayout();
-            this.grpBxViaTrans.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tRANSPORTADORABindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).BeginInit();
-            this.gpbContatotrans.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tRANSPORTADORAVIABindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.grpBxViaTrans.SuspendLayout();
+            this.gpbContatotrans.SuspendLayout();
+            this.consultaTransportadoraToolStrip.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tRANSPORTADORABindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tRANSPORTADORAVIABindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // TbCntCadTra
             // 
             this.TbCntCadTra.Controls.Add(this.TbPgCadTra);
-            this.TbCntCadTra.Location = new System.Drawing.Point(12, 12);
+            this.TbCntCadTra.Location = new System.Drawing.Point(12, 32);
             this.TbCntCadTra.Name = "TbCntCadTra";
             this.TbCntCadTra.SelectedIndex = 0;
             this.TbCntCadTra.Size = new System.Drawing.Size(596, 346);
@@ -113,6 +123,28 @@
             this.TbPgCadTra.TabIndex = 0;
             this.TbPgCadTra.Text = "Cadastro Transportadora";
             this.TbPgCadTra.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Comercial.Properties.Resources.errado;
+            this.pictureBox1.Location = new System.Drawing.Point(135, 95);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(24, 24);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 79;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Visible = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::Comercial.Properties.Resources.certo;
+            this.pictureBox2.Location = new System.Drawing.Point(135, 95);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(24, 24);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox2.TabIndex = 80;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Visible = false;
             // 
             // grpBxViaTrans
             // 
@@ -179,17 +211,6 @@
             this.txtIeCli.TabIndex = 4;
             this.txtIeCli.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
-            // tRANSPORTADORABindingSource
-            // 
-            this.tRANSPORTADORABindingSource.DataMember = "TRANSPORTADORA";
-            this.tRANSPORTADORABindingSource.DataSource = this.cOMERCIALDataSet;
-            this.tRANSPORTADORABindingSource.PositionChanged += new System.EventHandler(this.tRANSPORTADORABindingSource_PositionChanged);
-            // 
-            // cOMERCIALDataSet
-            // 
-            this.cOMERCIALDataSet.DataSetName = "COMERCIALDataSet";
-            this.cOMERCIALDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // gpbContatotrans
             // 
             this.gpbContatotrans.Controls.Add(this.txtCepTrans);
@@ -214,7 +235,7 @@
             this.gpbContatotrans.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.gpbContatotrans.Location = new System.Drawing.Point(6, 136);
             this.gpbContatotrans.Name = "gpbContatotrans";
-            this.gpbContatotrans.Size = new System.Drawing.Size(542, 163);
+            this.gpbContatotrans.Size = new System.Drawing.Size(556, 163);
             this.gpbContatotrans.TabIndex = 73;
             this.gpbContatotrans.TabStop = false;
             this.gpbContatotrans.Text = "Contato";
@@ -499,6 +520,86 @@
             this.LblNom.TabIndex = 1;
             this.LblNom.Text = "Razão Social";
             // 
+            // consultaTransportadoraToolStrip
+            // 
+            this.consultaTransportadoraToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cNPJToolStripLabel,
+            this.cNPJToolStripTextBox,
+            this.nomeToolStripLabel,
+            this.nomeToolStripTextBox,
+            this.consultaTransportadoraToolStripButton,
+            this.toolStripButton3,
+            this.toolStripButton2});
+            this.consultaTransportadoraToolStrip.Location = new System.Drawing.Point(0, 0);
+            this.consultaTransportadoraToolStrip.Name = "consultaTransportadoraToolStrip";
+            this.consultaTransportadoraToolStrip.Size = new System.Drawing.Size(628, 25);
+            this.consultaTransportadoraToolStrip.TabIndex = 1;
+            this.consultaTransportadoraToolStrip.Text = "consultaTransportadoraToolStrip";
+            this.consultaTransportadoraToolStrip.Visible = false;
+            // 
+            // cNPJToolStripLabel
+            // 
+            this.cNPJToolStripLabel.Name = "cNPJToolStripLabel";
+            this.cNPJToolStripLabel.Size = new System.Drawing.Size(38, 22);
+            this.cNPJToolStripLabel.Text = "CNPJ:";
+            // 
+            // cNPJToolStripTextBox
+            // 
+            this.cNPJToolStripTextBox.Name = "cNPJToolStripTextBox";
+            this.cNPJToolStripTextBox.Size = new System.Drawing.Size(100, 25);
+            // 
+            // nomeToolStripLabel
+            // 
+            this.nomeToolStripLabel.Name = "nomeToolStripLabel";
+            this.nomeToolStripLabel.Size = new System.Drawing.Size(43, 22);
+            this.nomeToolStripLabel.Text = "Nome:";
+            // 
+            // nomeToolStripTextBox
+            // 
+            this.nomeToolStripTextBox.Name = "nomeToolStripTextBox";
+            this.nomeToolStripTextBox.Size = new System.Drawing.Size(100, 25);
+            // 
+            // consultaTransportadoraToolStripButton
+            // 
+            this.consultaTransportadoraToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.consultaTransportadoraToolStripButton.Image = global::Comercial.Properties.Resources.search1;
+            this.consultaTransportadoraToolStripButton.Name = "consultaTransportadoraToolStripButton";
+            this.consultaTransportadoraToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.consultaTransportadoraToolStripButton.Text = "ConsultaTransportadora";
+            this.consultaTransportadoraToolStripButton.Click += new System.EventHandler(this.consultaTransportadoraToolStripButton_Click);
+            // 
+            // toolStripButton3
+            // 
+            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
+            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton3.Name = "toolStripButton3";
+            this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton3.Text = "Limpar";
+            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton2.Text = "Cancelar";
+            this.toolStripButton2.ToolTipText = "Cancelar";
+            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click_1);
+            // 
+            // tRANSPORTADORABindingSource
+            // 
+            this.tRANSPORTADORABindingSource.DataMember = "TRANSPORTADORA";
+            this.tRANSPORTADORABindingSource.DataSource = this.cOMERCIALDataSet;
+            this.tRANSPORTADORABindingSource.PositionChanged += new System.EventHandler(this.tRANSPORTADORABindingSource_PositionChanged_1);
+            // 
+            // cOMERCIALDataSet
+            // 
+            this.cOMERCIALDataSet.DataSetName = "COMERCIALDataSet";
+            this.cOMERCIALDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // tRANSPORTADORATableAdapter
             // 
             this.tRANSPORTADORATableAdapter.ClearBeforeFill = true;
@@ -536,46 +637,25 @@
             // 
             this.tRANSPORTADORAVIATableAdapter.ClearBeforeFill = true;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Comercial.Properties.Resources.errado;
-            this.pictureBox1.Location = new System.Drawing.Point(135, 95);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(24, 24);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox1.TabIndex = 79;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Visible = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::Comercial.Properties.Resources.certo;
-            this.pictureBox2.Location = new System.Drawing.Point(135, 95);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(24, 24);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox2.TabIndex = 80;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Visible = false;
-            // 
             // txtCepTrans
             // 
             this.txtCepTrans.getText = "";
-            this.txtCepTrans.Image = global::Comercial.Properties.Resources.btn_correios;
-            this.txtCepTrans.Location = new System.Drawing.Point(3, 42);
+            this.txtCepTrans.Image = null;
+            this.txtCepTrans.Location = new System.Drawing.Point(6, 42);
             this.txtCepTrans.Name = "txtCepTrans";
             this.txtCepTrans.ShowButton = false;
             this.txtCepTrans.Size = new System.Drawing.Size(117, 25);
-            this.txtCepTrans.TabIndex = 9;
-            this.txtCepTrans.ButtonClick += new System.EventHandler(this.txtCepTrans_ButtonClick);
+            this.txtCepTrans.TabIndex = 51;
+            this.txtCepTrans.ButtonClick += new System.EventHandler(this.txtCepTrans_ButtonClick_1);
             // 
             // FrmCadTra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(610, 370);
+            this.ClientSize = new System.Drawing.Size(628, 398);
             this.ControlBox = false;
+            this.Controls.Add(this.consultaTransportadoraToolStrip);
             this.Controls.Add(this.TbCntCadTra);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MaximizeBox = false;
@@ -588,16 +668,19 @@
             this.TbCntCadTra.ResumeLayout(false);
             this.TbPgCadTra.ResumeLayout(false);
             this.TbPgCadTra.PerformLayout();
-            this.grpBxViaTrans.ResumeLayout(false);
-            this.grpBxViaTrans.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tRANSPORTADORABindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).EndInit();
-            this.gpbContatotrans.ResumeLayout(false);
-            this.gpbContatotrans.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tRANSPORTADORAVIABindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.grpBxViaTrans.ResumeLayout(false);
+            this.grpBxViaTrans.PerformLayout();
+            this.gpbContatotrans.ResumeLayout(false);
+            this.gpbContatotrans.PerformLayout();
+            this.consultaTransportadoraToolStrip.ResumeLayout(false);
+            this.consultaTransportadoraToolStrip.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tRANSPORTADORABindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tRANSPORTADORAVIABindingSource)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -642,9 +725,17 @@
         private System.Windows.Forms.TextBox cOMPLEMENTOTextBox;
         private System.Windows.Forms.Label lblNumero;
         private System.Windows.Forms.TextBox NumTrans;
-        private TextButton txtCepTrans;
         public System.Windows.Forms.PictureBox pictureBox1;
         public System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.ToolStripLabel cNPJToolStripLabel;
+        private System.Windows.Forms.ToolStripLabel nomeToolStripLabel;
+        public System.Windows.Forms.ToolStripButton toolStripButton3;
+        public System.Windows.Forms.ToolStripButton toolStripButton2;
+        public System.Windows.Forms.ToolStrip consultaTransportadoraToolStrip;
+        public System.Windows.Forms.ToolStripTextBox cNPJToolStripTextBox;
+        public System.Windows.Forms.ToolStripTextBox nomeToolStripTextBox;
+        public System.Windows.Forms.ToolStripButton consultaTransportadoraToolStripButton;
+        private TextButton txtCepTrans;
 
     }
 }
