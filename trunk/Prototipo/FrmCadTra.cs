@@ -36,8 +36,6 @@ namespace Comercial
             //==================================================
         }
 
-
-
         private void tRANSPORTADORABindingNavigatorSaveItem_Click(object sender, EventArgs e)
         {
             this.Validate();
@@ -60,8 +58,6 @@ namespace Comercial
             chkTerrestre.Checked = false;
         }
 
-
-
         public DataTable Listar(String CodTrans)
         {
 
@@ -83,7 +79,6 @@ namespace Comercial
 
 
         }
-
 
         public int salvar()
         {
@@ -132,52 +127,35 @@ namespace Comercial
             return 0;
         }
 
-        private void tRANSPORTADORABindingSource_PositionChanged(object sender, EventArgs e)
+        public int salvarcep()
         {
-            if (tRANSPORTADORAVIABindingSource.Current != null)
+
+
+            try
             {
+
                 DataRowView Trans = (DataRowView)tRANSPORTADORABindingSource.Current;
 
                 DataTable table = new DataTable();
 
-                //txtCepCli.getText = c["CEP"].ToString();
+                Trans["CEP"] = txtCepTrans.getText;
 
-                String Codtrans = Trans["CNPJ"].ToString();
-
-                table = Listar(Codtrans);
-
-                this.limparcampos();
-
-
-                foreach (DataRow item in table.Rows)
-                {
-
-                    string i = Convert.ToString(item.ItemArray[0]);
-
-
-                    switch (i)
-                    {
-                        case "aer": chkAereo.Checked = true;
-                            continue;
-
-                        case "fer": chkFerroviario.Checked = true;
-                            continue;
-
-                        case "mar": chkMaritimo.Checked = true;
-                            continue;
-
-                        case "ter": chkTerrestre.Checked = true;
-                            continue;
-
-                    }
-
-                }
-
-
+                return 0;
 
             }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+
+
+
 
         }
+
+
 
         private void FrmCadTra_Load(object sender, EventArgs e)
         {
@@ -185,9 +163,6 @@ namespace Comercial
             this.tRANSPORTADORAVIATableAdapter.Fill(this.cOMERCIALDataSet.TRANSPORTADORAVIA);
 
         }
-
-
-
 
         public int ValidaCNPJ()
         {
@@ -202,9 +177,7 @@ namespace Comercial
             return cnpj;
         }
 
-
-
-        private void txtCepTrans_ButtonClick(object sender, EventArgs e)
+        private void txtCepTrans_ButtonClick_1(object sender, EventArgs e)
         {
 
             string cep = valida.procuraCEP(txtCepTrans.getText);
@@ -270,6 +243,91 @@ namespace Comercial
                 txtCnpjTrans.Focus();
             }
         }
+
+        private void consultaTransportadoraToolStripButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.tRANSPORTADORATableAdapter.ConsultaTransportadora(this.cOMERCIALDataSet.TRANSPORTADORA, cNPJToolStripTextBox.Text, nomeToolStripTextBox.Text);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void toolStripButton2_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+                this.tRANSPORTADORATableAdapter.Fill(this.cOMERCIALDataSet.TRANSPORTADORA);
+
+                consultaTransportadoraToolStrip.Visible = false;
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+
+            }
+        }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            cNPJToolStripTextBox.Clear();
+            nomeToolStripTextBox.Clear();
+        }
+
+        private void tRANSPORTADORABindingSource_PositionChanged_1(object sender, EventArgs e)
+        {
+            if (tRANSPORTADORAVIABindingSource.Current != null)
+            {
+                DataRowView Trans = (DataRowView)tRANSPORTADORABindingSource.Current;
+
+                if ((Trans != null))
+                {
+
+                    DataTable table = new DataTable();
+
+                    txtCepTrans.getText = Trans["CEP"].ToString();
+
+                    string Codtrans = Trans["CNPJ"].ToString();
+
+                    table = Listar(Codtrans);
+
+                    this.limparcampos();
+
+
+                    foreach (DataRow item in table.Rows)
+                    {
+
+                        string i = Convert.ToString(item.ItemArray[0]);
+
+
+                        switch (i)
+                        {
+                            case "aer": chkAereo.Checked = true;
+                                continue;
+
+                            case "fer": chkFerroviario.Checked = true;
+                                continue;
+
+                            case "mar": chkMaritimo.Checked = true;
+                                continue;
+
+                            case "ter": chkTerrestre.Checked = true;
+                                continue;
+
+                        }
+
+                    }
+
+                }
+
+            }
+        }
+
+
     }
 
 }

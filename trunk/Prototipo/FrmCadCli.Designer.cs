@@ -32,6 +32,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCadCli));
             this.tbCntrlCadCli = new System.Windows.Forms.TabControl();
             this.tbpCadCli = new System.Windows.Forms.TabPage();
+            this.btnCalcular = new System.Windows.Forms.Button();
+            this.txtResult = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtNum2 = new System.Windows.Forms.TextBox();
+            this.txtNum1 = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.cmBxRegiaoCli = new System.Windows.Forms.ComboBox();
@@ -92,12 +98,6 @@
             this.consultaToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.txtNum1 = new System.Windows.Forms.TextBox();
-            this.txtNum2 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtResult = new System.Windows.Forms.TextBox();
-            this.btnCalcular = new System.Windows.Forms.Button();
             this.tbCntrlCadCli.SuspendLayout();
             this.tbpCadCli.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -157,6 +157,55 @@
             this.tbpCadCli.TabIndex = 0;
             this.tbpCadCli.Text = "Cadastro de Clientes";
             this.tbpCadCli.UseVisualStyleBackColor = true;
+            // 
+            // btnCalcular
+            // 
+            this.btnCalcular.Location = new System.Drawing.Point(232, 390);
+            this.btnCalcular.Name = "btnCalcular";
+            this.btnCalcular.Size = new System.Drawing.Size(75, 23);
+            this.btnCalcular.TabIndex = 61;
+            this.btnCalcular.Text = "Calcular";
+            this.btnCalcular.UseVisualStyleBackColor = true;
+            this.btnCalcular.Click += new System.EventHandler(this.btnCalcular_Click);
+            // 
+            // txtResult
+            // 
+            this.txtResult.Location = new System.Drawing.Point(172, 393);
+            this.txtResult.Name = "txtResult";
+            this.txtResult.Size = new System.Drawing.Size(47, 20);
+            this.txtResult.TabIndex = 60;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(68, 396);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(12, 13);
+            this.label2.TabIndex = 59;
+            this.label2.Text = "x";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(153, 396);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(13, 13);
+            this.label1.TabIndex = 58;
+            this.label1.Text = "=";
+            // 
+            // txtNum2
+            // 
+            this.txtNum2.Location = new System.Drawing.Point(86, 393);
+            this.txtNum2.Name = "txtNum2";
+            this.txtNum2.Size = new System.Drawing.Size(47, 20);
+            this.txtNum2.TabIndex = 57;
+            // 
+            // txtNum1
+            // 
+            this.txtNum1.Location = new System.Drawing.Point(15, 393);
+            this.txtNum1.Name = "txtNum1";
+            this.txtNum1.Size = new System.Drawing.Size(47, 20);
+            this.txtNum1.TabIndex = 56;
             // 
             // pictureBox1
             // 
@@ -736,6 +785,7 @@
             // tableAdapterManager
             // 
             this.tableAdapterManager.ACESSOTableAdapter = null;
+            this.tableAdapterManager.ATUCUBOTableAdapter = null;
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.CLIENTETableAdapter = this.cLIENTETableAdapter;
             this.tableAdapterManager.CONDICAOPAGAMENTOTableAdapter = null;
@@ -841,55 +891,6 @@
             this.toolStripButton2.Text = "Cancelar";
             this.toolStripButton2.ToolTipText = "Cancelar";
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
-            // 
-            // txtNum1
-            // 
-            this.txtNum1.Location = new System.Drawing.Point(15, 393);
-            this.txtNum1.Name = "txtNum1";
-            this.txtNum1.Size = new System.Drawing.Size(47, 20);
-            this.txtNum1.TabIndex = 56;
-            // 
-            // txtNum2
-            // 
-            this.txtNum2.Location = new System.Drawing.Point(86, 393);
-            this.txtNum2.Name = "txtNum2";
-            this.txtNum2.Size = new System.Drawing.Size(47, 20);
-            this.txtNum2.TabIndex = 57;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(153, 396);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(13, 13);
-            this.label1.TabIndex = 58;
-            this.label1.Text = "=";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(68, 396);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(12, 13);
-            this.label2.TabIndex = 59;
-            this.label2.Text = "x";
-            // 
-            // txtResult
-            // 
-            this.txtResult.Location = new System.Drawing.Point(172, 393);
-            this.txtResult.Name = "txtResult";
-            this.txtResult.Size = new System.Drawing.Size(47, 20);
-            this.txtResult.TabIndex = 60;
-            // 
-            // btnCalcular
-            // 
-            this.btnCalcular.Location = new System.Drawing.Point(232, 390);
-            this.btnCalcular.Name = "btnCalcular";
-            this.btnCalcular.Size = new System.Drawing.Size(75, 23);
-            this.btnCalcular.TabIndex = 61;
-            this.btnCalcular.Text = "Calcular";
-            this.btnCalcular.UseVisualStyleBackColor = true;
-            this.btnCalcular.Click += new System.EventHandler(this.btnCalcular_Click);
             // 
             // FrmCadCli
             // 

@@ -82,6 +82,16 @@ namespace Comercial
 
                 #endregion
 
+                #region Transportadora
+                if (frm is FrmCadTra)
+                {
+                    FrmCadTra frmTra = (FrmCadTra)frm;
+                    retorno = frmTra.salvarcep();
+                }
+
+                #endregion
+
+
                 if (frm is FrmCadProd && edit == false)
                 {
                     FrmCadProd frmCadProd = (FrmCadProd)frm;
@@ -1452,6 +1462,18 @@ namespace Comercial
                 cli.toolStripButton2.Enabled = true;
                 cli.cnsltTlStrpConsultaCli.Enabled = true;
             }
+
+            #endregion
+
+            #region Transportadora pesquisa
+            if (frm is FrmCadTra)
+            {
+                FrmCadTra tra = (FrmCadTra)frm;
+                tra.consultaTransportadoraToolStrip.Visible = true;
+                tra.cNPJToolStripTextBox.Enabled = true;
+                tra.nomeToolStripTextBox.Enabled = true;
+                tra.consultaTransportadoraToolStrip.Enabled = true;
+             }
 
             #endregion
 
