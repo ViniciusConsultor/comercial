@@ -103,7 +103,7 @@ namespace Comercial
                 objPedido["TIPO"] = "C";
             }
 
-            objPedido["DATAEMISSAO"] = DateTime.Now;
+            objPedido["DATAEMISSAO"] = DateTime.Now.ToString("dd/MM/yyyy");
             objPedido["DATAENTREGA"] = Convert.ToDateTime(dtpEntrega.Value).ToString("dd/MM/yyyy");
             objPedido["CODCLIENTE"] = txtcodCli.getText;
             objPedido["CODVENDEDOR"] = txtCodVendedor.getText;
@@ -902,7 +902,7 @@ namespace Comercial
                 }
 
                 //Replace no valor total de "." para ","
-                string valortotal = (String)txtValorTotal.Text.Replace(".", "").Replace("R$", "").Replace(",", ".");
+                double valortotal = Convert.ToDouble(txtValorTotal.Text.Replace("R$", ""));
 
 
                 //Valida o Valor total = 0
@@ -917,16 +917,16 @@ namespace Comercial
                     throw new Exception("valortotalnegativo");
                 }
 
-                txtPrcUnit.Text = (String)txtPrcUnit.Text.Replace(".", "").Replace("R$", "").Replace(",", ".");
+                double valorunit = Convert.ToDouble(txtPrcUnit.Text.Replace("R$", ""));
 
                 //Valida o preço unitário = 0
-                if (Convert.ToDouble(txtPrcUnit.Text) == 0)
+                if (Convert.ToDouble(valorunit) == 0)
                 {
                     throw new Exception("PrecoUnitario");
                 }
 
                 //valida o preço unitário negativo
-                if (Convert.ToDouble(txtPrcUnit.Text) < 0)
+                if (Convert.ToDouble(valorunit) < 0)
                 {
                     throw new Exception("PrecoUnitarioNegativo");
                 }
@@ -942,11 +942,12 @@ namespace Comercial
                     if (txtProduto.getText == Convert.ToString(item.Cells[2].Value))
                     {
                         txtValorTotal.Text = "";
+
                         txtQtdItem.Text = Convert.ToString(Convert.ToInt32(txtQtdItem.Text) + Convert.ToInt32(item.Cells[4].Value));
-                        txtValorTotal.Text = Convert.ToString(Convert.ToDouble(valortotal) + Convert.ToDouble(item.Cells[8].Value));
+                        txtValorTotal.Text = Convert.ToString(Convert.ToDouble(valortotal) + Convert.ToDouble(item.Cells[9].Value));
 
                         item.Cells[4].Value = txtQtdItem.Text;
-                        item.Cells[8].Value = txtValorTotal.Text;
+                        item.Cells[9].Value = txtValorTotal.Text;
                         teste += 1;
                     }
                 }
@@ -958,7 +959,7 @@ namespace Comercial
                     dtRow["DESCRICAO"] = txtDescprod.Text;
                     dtRow["QUANTIDADE"] = txtQtdItem.Text;
                     dtRow["QUANTIDADELIB"] = Convert.ToInt32(0);
-                    dtRow["VALOR"] = Convert.ToDouble(txtPrcUnit.Text);
+                    dtRow["VALOR"] = Convert.ToDouble(valorunit);
                     dtRow["IPI"] = txtipi.Text;
                     dtRow["DESCONTO"] = txtDesconto.Text;
                     dtRow["VALORTOTAL"] = Convert.ToDouble(valortotal);
@@ -1002,7 +1003,7 @@ namespace Comercial
                 }
 
                 //Replace no valor total de "." para ","
-                string valortotal = (String)txtValorTotal.Text.Replace(".", "").Replace("R$", "").Replace(",", ".");
+                double valortotal = Convert.ToDouble(txtValorTotal.Text.Replace("R$", ""));
 
                 //Valida o Valor total = 0
                 if (Convert.ToDouble(valortotal) == 0)
@@ -1016,16 +1017,16 @@ namespace Comercial
                     throw new Exception("valortotalnegativo");
                 }
 
-                txtPrcUnit.Text = (String)txtPrcUnit.Text.Replace(".", "").Replace("R$", "").Replace(",", ".");
+                double valorunit = Convert.ToDouble(txtPrcUnit.Text.Replace("R$", ""));
 
                 //Valida o preço unitário = 0
-                if (Convert.ToDouble(txtPrcUnit.Text) == 0)
+                if (Convert.ToDouble(valorunit) == 0)
                 {
                     throw new Exception("PrecoUnitario");
                 }
 
                 //valida o preço unitário negativo
-                if (Convert.ToDouble(txtPrcUnit.Text) < 0)
+                if (Convert.ToDouble(valorunit) < 0)
                 {
                     throw new Exception("PrecoUnitarioNegativo");
                 }
@@ -1072,10 +1073,10 @@ namespace Comercial
                     {
                         txtValorTotal.Text = "";
                         txtQtdItem.Text = Convert.ToString(Convert.ToInt32(txtQtdItem.Text) + Convert.ToInt32(item.Cells[4].Value));
-                        txtValorTotal.Text = Convert.ToString(Convert.ToDouble(valortotal) + Convert.ToDouble(item.Cells[8].Value));
+                        txtValorTotal.Text = Convert.ToString(Convert.ToDouble(valortotal) + Convert.ToDouble(item.Cells[9].Value));
 
                         item.Cells[4].Value = txtQtdItem.Text;
-                        item.Cells[8].Value = txtValorTotal.Text;
+                        item.Cells[9].Value = txtValorTotal.Text;
                         dtRow["status"] = "A";
                         teste += 1;
                         statusped += 1;
@@ -1089,10 +1090,10 @@ namespace Comercial
                     dtRow["DESCRICAO"] = txtDescprod.Text;
                     dtRow["QUANTIDADE"] = txtQtdItem.Text;
                     dtRow["QUANTIDADELIB"] = 0;
-                    dtRow["VALOR"] = txtPrcUnit.Text;
-                    dtRow["IPI"] = txtipi.Text;
+                    dtRow["VALOR"] = Convert.ToDouble(valorunit);
+                    dtRow["IPI"] = Convert.ToDouble(txtipi.Text);
                     dtRow["DESCONTO"] = txtDesconto.Text;
-                    dtRow["VALORTOTAL"] = valortotal;
+                    dtRow["VALORTOTAL"] = Convert.ToDouble(valortotal);
                     dtRow["Status"] = "A";
                     dttRetorno.Rows.Add(dtRow);
 
@@ -1162,15 +1163,33 @@ namespace Comercial
 
         private void txtQtdItem_TextChanged(object sender, EventArgs e)
         {
-            if (!String.IsNullOrEmpty(txtQtdItem.Text) && !String.IsNullOrEmpty(txtPrcUnit.Text))
+            try
             {
+                if (!String.IsNullOrEmpty(txtQtdItem.Text) && !String.IsNullOrEmpty(txtPrcUnit.Text))
+            {
+                if (txtQtdItem.Text == "-")
+                {
+                    throw new Exception("QuantidadeNegativa");
+                }
+                else
+                {
+                    string PrecoUnit = txtPrcUnit.Text.Replace("R$", "").Replace(".", "");
+                    string valortotal = Convert.ToString((Convert.ToDouble(txtQtdItem.Text) * Convert.ToDouble(PrecoUnit)) - Convert.ToDouble(txtQtdItem.Text) * Convert.ToDouble(PrecoUnit) * Convert.ToDouble(txtDesconto.Text) / 100);
 
-                string PrecoUnit = txtPrcUnit.Text.Replace("R$", "").Replace(".", "");
-                string valortotal = Convert.ToString(Convert.ToDouble(txtQtdItem.Text) * Convert.ToDouble(PrecoUnit));
+                    txtValorTotal.Text = string.Format("{0:C2}", Convert.ToDouble(valortotal));
+                }
+                
 
-                txtValorTotal.Text = string.Format("{0:C2}", Convert.ToDouble(valortotal));
+                
 
 
+            }
+            }
+            catch (Exception ex)
+            {
+                
+                Validacoes valida = new Validacoes();
+                valida.tratarSystemExceções(ex);
             }
         }
 

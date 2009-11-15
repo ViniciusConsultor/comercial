@@ -98,9 +98,19 @@ namespace Comercial
                 {
                     FrmCadPed frmPed = (FrmCadPed)frm;
 
-                    if (frmPed.dtpEntrega.Value < frmPed.dtpEmissao.Value)
+                    string DataEmissão = frmPed.dtpEmissao.Value.ToShortDateString();
+                    string DataSistema = DateTime.Now.ToShortDateString();
+                    string DataEntrega = frmPed.dtpEntrega.Value.ToShortDateString();
+
+                    if (Convert.ToDateTime(DataEntrega) < Convert.ToDateTime(DataEmissão))
                     {
                         throw new Exception("DataInvalida");
+                    }
+
+
+                    if (Convert.ToDateTime(DataEmissão) < Convert.ToDateTime(DataSistema))
+                    {
+                        throw new Exception("DataSistema");
                     }
                     retorno = frmPed.SalvarPedidoCab();
 

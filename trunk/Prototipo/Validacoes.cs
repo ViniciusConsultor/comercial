@@ -182,6 +182,8 @@ namespace Comercial
                 MessageBox.Show("Pedido não pode ser alterado pois está Cancelado", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else if (ex.Message == "DataInvalida")
                 MessageBox.Show("Data de entrega não pode ser inferior a data de emissão", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else if (ex.Message == "DataSistema")
+                MessageBox.Show("Data de Emissão não pode ser inferior a data do sistema", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else if (ex.Message == "Quantidade")
                 MessageBox.Show("Quantidade não pode ser 0!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else if (ex.Message == "valortotal")
