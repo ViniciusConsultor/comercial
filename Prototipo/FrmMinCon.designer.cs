@@ -28,20 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMinCon));
             this.tbCntrlMinCon = new System.Windows.Forms.TabControl();
             this.tbPgResultado = new System.Windows.Forms.TabPage();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.cOMERCIALDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
+            this.modeloBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.modeloTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.modeloTableAdapter();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.axChartSpace1 = new AxOWC11.AxChartSpace();
+            this.axChartSpace2 = new AxOWC11.AxChartSpace();
             this.tbCntrlMinCon.SuspendLayout();
             this.tbPgResultado.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.modeloBindingSource)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.axChartSpace1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.axChartSpace2)).BeginInit();
             this.SuspendLayout();
             // 
             // tbCntrlMinCon
@@ -51,141 +58,119 @@
             this.tbCntrlMinCon.Location = new System.Drawing.Point(12, 12);
             this.tbCntrlMinCon.Name = "tbCntrlMinCon";
             this.tbCntrlMinCon.SelectedIndex = 0;
-            this.tbCntrlMinCon.Size = new System.Drawing.Size(335, 265);
+            this.tbCntrlMinCon.Size = new System.Drawing.Size(1068, 706);
             this.tbCntrlMinCon.TabIndex = 0;
             // 
             // tbPgResultado
             // 
-            this.tbPgResultado.Controls.Add(this.groupBox1);
+            this.tbPgResultado.Controls.Add(this.panel1);
             this.tbPgResultado.Controls.Add(this.comboBox1);
             this.tbPgResultado.Controls.Add(this.label2);
             this.tbPgResultado.Location = new System.Drawing.Point(4, 22);
             this.tbPgResultado.Name = "tbPgResultado";
             this.tbPgResultado.Padding = new System.Windows.Forms.Padding(3);
-            this.tbPgResultado.Size = new System.Drawing.Size(327, 239);
+            this.tbPgResultado.Size = new System.Drawing.Size(1060, 680);
             this.tbPgResultado.TabIndex = 1;
             this.tbPgResultado.Text = "Resultado";
             this.tbPgResultado.UseVisualStyleBackColor = true;
             // 
             // comboBox1
             // 
+            this.comboBox1.DataSource = this.modeloBindingSource;
+            this.comboBox1.DisplayMember = "estrutura";
             this.comboBox1.ForeColor = System.Drawing.Color.Black;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Mineração - 04/04/2009",
-            "Mineração - 20/01/2008"});
-            this.comboBox1.Location = new System.Drawing.Point(18, 32);
+            this.comboBox1.Location = new System.Drawing.Point(87, 11);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(196, 21);
             this.comboBox1.TabIndex = 2;
+            this.comboBox1.ValueMember = "estrutura";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.CadetBlue;
-            this.label2.Location = new System.Drawing.Point(15, 15);
+            this.label2.Location = new System.Drawing.Point(15, 11);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(66, 13);
             this.label2.TabIndex = 1;
             this.label2.Text = "Mineração";
             // 
-            // groupBox1
+            // cOMERCIALDataSetBindingSource
             // 
-            this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.groupBox1.Location = new System.Drawing.Point(18, 91);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(268, 116);
-            this.groupBox1.TabIndex = 3;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Descrição";
+            this.cOMERCIALDataSetBindingSource.DataSource = this.cOMERCIALDataSet;
+            this.cOMERCIALDataSetBindingSource.Position = 0;
             // 
-            // label1
+            // cOMERCIALDataSet
             // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.CadetBlue;
-            this.label1.Location = new System.Drawing.Point(15, 25);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(106, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Data de geração:";
+            this.cOMERCIALDataSet.DataSetName = "COMERCIALDataSet";
+            this.cOMERCIALDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // label3
+            // modeloBindingSource
             // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.Color.CadetBlue;
-            this.label3.Location = new System.Drawing.Point(15, 56);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(62, 13);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Estrutura:";
+            this.modeloBindingSource.DataMember = "modelo";
+            this.modeloBindingSource.DataSource = this.cOMERCIALDataSetBindingSource;
             // 
-            // label4
+            // modeloTableAdapter
             // 
-            this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.Color.CadetBlue;
-            this.label4.Location = new System.Drawing.Point(15, 89);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(54, 13);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Usuário:";
+            this.modeloTableAdapter.ClearBeforeFill = true;
             // 
-            // label5
+            // panel1
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.CadetBlue;
-            this.label5.Location = new System.Drawing.Point(127, 25);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(65, 13);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "04/04/2009";
+            this.panel1.Controls.Add(this.axChartSpace2);
+            this.panel1.Controls.Add(this.axChartSpace1);
+            this.panel1.Enabled = false;
+            this.panel1.Location = new System.Drawing.Point(18, 38);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1021, 626);
+            this.panel1.TabIndex = 3;
             // 
-            // label6
+            // axChartSpace1
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.CadetBlue;
-            this.label6.Location = new System.Drawing.Point(83, 56);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(93, 13);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "Árvore de decisão";
+            this.axChartSpace1.DataSource = null;
+            this.axChartSpace1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.axChartSpace1.Enabled = true;
+            this.axChartSpace1.Location = new System.Drawing.Point(0, 0);
+            this.axChartSpace1.Name = "axChartSpace1";
+            this.axChartSpace1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axChartSpace1.OcxState")));
+            this.axChartSpace1.Size = new System.Drawing.Size(1021, 292);
+            this.axChartSpace1.TabIndex = 1;
             // 
-            // label7
+            // axChartSpace2
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.CadetBlue;
-            this.label7.Location = new System.Drawing.Point(75, 89);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(71, 13);
-            this.label7.TabIndex = 7;
-            this.label7.Text = "rafael.moreno";
+            this.axChartSpace2.DataSource = null;
+            this.axChartSpace2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.axChartSpace2.Enabled = true;
+            this.axChartSpace2.Location = new System.Drawing.Point(0, 292);
+            this.axChartSpace2.Name = "axChartSpace2";
+            this.axChartSpace2.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axChartSpace2.OcxState")));
+            this.axChartSpace2.Size = new System.Drawing.Size(1021, 292);
+            this.axChartSpace2.TabIndex = 2;
             // 
             // FrmMinCon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(902, 488);
+            this.ClientSize = new System.Drawing.Size(1118, 730);
             this.Controls.Add(this.tbCntrlMinCon);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmMinCon";
             this.ShowIcon = false;
             this.Text = "Consulta Data Mining";
+            this.Load += new System.EventHandler(this.FrmMinCon_Load);
+            this.Shown += new System.EventHandler(this.FrmMinCon_Shown);
             this.Leave += new System.EventHandler(this.FrmMinCon_Leave);
             this.tbCntrlMinCon.ResumeLayout(false);
             this.tbPgResultado.ResumeLayout(false);
             this.tbPgResultado.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.modeloBindingSource)).EndInit();
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.axChartSpace1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.axChartSpace2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -196,13 +181,13 @@
         private System.Windows.Forms.TabPage tbPgResultado;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.BindingSource cOMERCIALDataSetBindingSource;
+        private COMERCIALDataSet cOMERCIALDataSet;
+        private System.Windows.Forms.BindingSource modeloBindingSource;
+        private Comercial.COMERCIALDataSetTableAdapters.modeloTableAdapter modeloTableAdapter;
+        private System.Windows.Forms.Panel panel1;
+        private AxOWC11.AxChartSpace axChartSpace2;
+        private AxOWC11.AxChartSpace axChartSpace1;
 
     }
 }
