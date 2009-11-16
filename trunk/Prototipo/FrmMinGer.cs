@@ -251,6 +251,24 @@ FROM [vTargetMail]')
 
 
                 }
+
+                //SALVANDO MODELO GERADO
+
+                SqlConnection conex = new SqlConnection(ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString);
+                SqlCommand comand = new SqlCommand();
+                comand.Connection = conex;
+                conex.Open();
+
+                comand.CommandText = "insert into modelo(estrutura,datacriacao,algoritmo) values (@nome,@dt,@algoritmo)";
+                comand.Parameters.Add(new SqlParameter("@nome", txtnomeEstrutura.Text));
+                comand.Parameters.Add(new SqlParameter("@dt", DateTime.Now.ToString("yyyy-MM-dd")));
+                comand.Parameters.Add(new SqlParameter("@algoritmo", cmbBxTipoDataMining.Text));
+
+                comand.ExecuteNonQuery();
+
+                conex.Close();
+                conex.Dispose();
+
             }
             catch (Exception ex)
             {

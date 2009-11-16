@@ -74,7 +74,7 @@
             this.axPivotTable1.Location = new System.Drawing.Point(3, 3);
             this.axPivotTable1.Name = "axPivotTable1";
             this.axPivotTable1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axPivotTable1.OcxState")));
-            this.axPivotTable1.Size = new System.Drawing.Size(502, 235);
+            this.axPivotTable1.Size = new System.Drawing.Size(734, 235);
             this.axPivotTable1.TabIndex = 0;
             // 
             // tabPage2

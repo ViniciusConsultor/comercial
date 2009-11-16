@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Configuration;
+using Microsoft.AnalysisServices.AdomdClient;
 
 namespace Comercial
 {
@@ -30,6 +32,19 @@ namespace Comercial
             {
                 x.Visible = false;
             }
+        }
+
+        private void FrmMinCon_Shown(object sender, EventArgs e)
+        {
+
+
+        }
+
+        private void FrmMinCon_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'cOMERCIALDataSet.modelo' table. You can move, or remove it, as needed.
+            this.modeloTableAdapter.Fill(this.cOMERCIALDataSet.modelo);
+
         }
     }
 }

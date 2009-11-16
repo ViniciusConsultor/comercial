@@ -63,6 +63,10 @@ namespace Comercial {
         
         private ATUCUBODataTable tableATUCUBO;
         
+        private modeloDataTable tablemodelo;
+        
+        private modeloCampoDataTable tablemodeloCampo;
+        
         private RelPedidoDataTable tableRelPedido;
         
         private RelVendedorDataTable tableRelVendedor;
@@ -106,6 +110,8 @@ namespace Comercial {
         private global::System.Data.DataRelation relationFK_VENDEDOR_USUARIO;
         
         private global::System.Data.DataRelation relationFK_ATUCUBO_USUARIO;
+        
+        private global::System.Data.DataRelation relationFK_modelo_modeloCampo;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -189,6 +195,12 @@ namespace Comercial {
                 }
                 if ((ds.Tables["ATUCUBO"] != null)) {
                     base.Tables.Add(new ATUCUBODataTable(ds.Tables["ATUCUBO"]));
+                }
+                if ((ds.Tables["modelo"] != null)) {
+                    base.Tables.Add(new modeloDataTable(ds.Tables["modelo"]));
+                }
+                if ((ds.Tables["modeloCampo"] != null)) {
+                    base.Tables.Add(new modeloCampoDataTable(ds.Tables["modeloCampo"]));
                 }
                 if ((ds.Tables["RelPedido"] != null)) {
                     base.Tables.Add(new RelPedidoDataTable(ds.Tables["RelPedido"]));
@@ -394,6 +406,24 @@ namespace Comercial {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public modeloDataTable modelo {
+            get {
+                return this.tablemodelo;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public modeloCampoDataTable modeloCampo {
+            get {
+                return this.tablemodeloCampo;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
         public RelPedidoDataTable RelPedido {
             get {
                 return this.tableRelPedido;
@@ -542,6 +572,12 @@ namespace Comercial {
                 }
                 if ((ds.Tables["ATUCUBO"] != null)) {
                     base.Tables.Add(new ATUCUBODataTable(ds.Tables["ATUCUBO"]));
+                }
+                if ((ds.Tables["modelo"] != null)) {
+                    base.Tables.Add(new modeloDataTable(ds.Tables["modelo"]));
+                }
+                if ((ds.Tables["modeloCampo"] != null)) {
+                    base.Tables.Add(new modeloCampoDataTable(ds.Tables["modeloCampo"]));
                 }
                 if ((ds.Tables["RelPedido"] != null)) {
                     base.Tables.Add(new RelPedidoDataTable(ds.Tables["RelPedido"]));
@@ -699,6 +735,18 @@ namespace Comercial {
                     this.tableATUCUBO.InitVars();
                 }
             }
+            this.tablemodelo = ((modeloDataTable)(base.Tables["modelo"]));
+            if ((initTable == true)) {
+                if ((this.tablemodelo != null)) {
+                    this.tablemodelo.InitVars();
+                }
+            }
+            this.tablemodeloCampo = ((modeloCampoDataTable)(base.Tables["modeloCampo"]));
+            if ((initTable == true)) {
+                if ((this.tablemodeloCampo != null)) {
+                    this.tablemodeloCampo.InitVars();
+                }
+            }
             this.tableRelPedido = ((RelPedidoDataTable)(base.Tables["RelPedido"]));
             if ((initTable == true)) {
                 if ((this.tableRelPedido != null)) {
@@ -741,6 +789,7 @@ namespace Comercial {
             this.relationFK_VENDEDOR_REGIAO = this.Relations["FK_VENDEDOR_REGIAO"];
             this.relationFK_VENDEDOR_USUARIO = this.Relations["FK_VENDEDOR_USUARIO"];
             this.relationFK_ATUCUBO_USUARIO = this.Relations["FK_ATUCUBO_USUARIO"];
+            this.relationFK_modelo_modeloCampo = this.Relations["FK_modelo_modeloCampo"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -788,6 +837,10 @@ namespace Comercial {
             base.Tables.Add(this.tableVIATRANSPORTE);
             this.tableATUCUBO = new ATUCUBODataTable();
             base.Tables.Add(this.tableATUCUBO);
+            this.tablemodelo = new modeloDataTable();
+            base.Tables.Add(this.tablemodelo);
+            this.tablemodeloCampo = new modeloCampoDataTable();
+            base.Tables.Add(this.tablemodeloCampo);
             this.tableRelPedido = new RelPedidoDataTable();
             base.Tables.Add(this.tableRelPedido);
             this.tableRelVendedor = new RelVendedorDataTable();
@@ -868,6 +921,10 @@ namespace Comercial {
                         this.tableUSUARIO.CODUSUARIOColumn}, new global::System.Data.DataColumn[] {
                         this.tableATUCUBO.CODUSUARIOColumn}, false);
             this.Relations.Add(this.relationFK_ATUCUBO_USUARIO);
+            this.relationFK_modelo_modeloCampo = new global::System.Data.DataRelation("FK_modelo_modeloCampo", new global::System.Data.DataColumn[] {
+                        this.tablemodelo.idColumn}, new global::System.Data.DataColumn[] {
+                        this.tablemodeloCampo.idModeloColumn}, false);
+            this.Relations.Add(this.relationFK_modelo_modeloCampo);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -962,6 +1019,16 @@ namespace Comercial {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         private bool ShouldSerializeATUCUBO() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private bool ShouldSerializemodelo() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private bool ShouldSerializemodeloCampo() {
             return false;
         }
         
@@ -1075,6 +1142,10 @@ namespace Comercial {
         public delegate void VIATRANSPORTERowChangeEventHandler(object sender, VIATRANSPORTERowChangeEvent e);
         
         public delegate void ATUCUBORowChangeEventHandler(object sender, ATUCUBORowChangeEvent e);
+        
+        public delegate void modeloRowChangeEventHandler(object sender, modeloRowChangeEvent e);
+        
+        public delegate void modeloCampoRowChangeEventHandler(object sender, modeloCampoRowChangeEvent e);
         
         public delegate void RelPedidoRowChangeEventHandler(object sender, RelPedidoRowChangeEvent e);
         
@@ -7340,6 +7411,551 @@ namespace Comercial {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class modeloDataTable : global::System.Data.TypedTableBase<modeloRow> {
+            
+            private global::System.Data.DataColumn columnid;
+            
+            private global::System.Data.DataColumn columnestrutura;
+            
+            private global::System.Data.DataColumn columndataCriacao;
+            
+            private global::System.Data.DataColumn columnalgoritmo;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public modeloDataTable() {
+                this.TableName = "modelo";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal modeloDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected modeloDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn idColumn {
+                get {
+                    return this.columnid;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn estruturaColumn {
+                get {
+                    return this.columnestrutura;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn dataCriacaoColumn {
+                get {
+                    return this.columndataCriacao;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn algoritmoColumn {
+                get {
+                    return this.columnalgoritmo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public modeloRow this[int index] {
+                get {
+                    return ((modeloRow)(this.Rows[index]));
+                }
+            }
+            
+            public event modeloRowChangeEventHandler modeloRowChanging;
+            
+            public event modeloRowChangeEventHandler modeloRowChanged;
+            
+            public event modeloRowChangeEventHandler modeloRowDeleting;
+            
+            public event modeloRowChangeEventHandler modeloRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void AddmodeloRow(modeloRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public modeloRow AddmodeloRow(string estrutura, System.DateTime dataCriacao, string algoritmo) {
+                modeloRow rowmodeloRow = ((modeloRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        estrutura,
+                        dataCriacao,
+                        algoritmo};
+                rowmodeloRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowmodeloRow);
+                return rowmodeloRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public modeloRow FindByid(int id) {
+                return ((modeloRow)(this.Rows.Find(new object[] {
+                            id})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public override global::System.Data.DataTable Clone() {
+                modeloDataTable cln = ((modeloDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new modeloDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal void InitVars() {
+                this.columnid = base.Columns["id"];
+                this.columnestrutura = base.Columns["estrutura"];
+                this.columndataCriacao = base.Columns["dataCriacao"];
+                this.columnalgoritmo = base.Columns["algoritmo"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            private void InitClass() {
+                this.columnid = new global::System.Data.DataColumn("id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnid);
+                this.columnestrutura = new global::System.Data.DataColumn("estrutura", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnestrutura);
+                this.columndataCriacao = new global::System.Data.DataColumn("dataCriacao", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndataCriacao);
+                this.columnalgoritmo = new global::System.Data.DataColumn("algoritmo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnalgoritmo);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnid}, true));
+                this.columnid.AutoIncrement = true;
+                this.columnid.AutoIncrementSeed = -1;
+                this.columnid.AutoIncrementStep = -1;
+                this.columnid.AllowDBNull = false;
+                this.columnid.ReadOnly = true;
+                this.columnid.Unique = true;
+                this.columnestrutura.AllowDBNull = false;
+                this.columnestrutura.MaxLength = 100;
+                this.columnalgoritmo.MaxLength = 50;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public modeloRow NewmodeloRow() {
+                return ((modeloRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new modeloRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Type GetRowType() {
+                return typeof(modeloRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.modeloRowChanged != null)) {
+                    this.modeloRowChanged(this, new modeloRowChangeEvent(((modeloRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.modeloRowChanging != null)) {
+                    this.modeloRowChanging(this, new modeloRowChangeEvent(((modeloRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.modeloRowDeleted != null)) {
+                    this.modeloRowDeleted(this, new modeloRowChangeEvent(((modeloRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.modeloRowDeleting != null)) {
+                    this.modeloRowDeleting(this, new modeloRowChangeEvent(((modeloRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void RemovemodeloRow(modeloRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                COMERCIALDataSet ds = new COMERCIALDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "modeloDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class modeloCampoDataTable : global::System.Data.TypedTableBase<modeloCampoRow> {
+            
+            private global::System.Data.DataColumn columnidModelo;
+            
+            private global::System.Data.DataColumn columncampo;
+            
+            private global::System.Data.DataColumn columntipo;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public modeloCampoDataTable() {
+                this.TableName = "modeloCampo";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal modeloCampoDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected modeloCampoDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn idModeloColumn {
+                get {
+                    return this.columnidModelo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn campoColumn {
+                get {
+                    return this.columncampo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn tipoColumn {
+                get {
+                    return this.columntipo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public modeloCampoRow this[int index] {
+                get {
+                    return ((modeloCampoRow)(this.Rows[index]));
+                }
+            }
+            
+            public event modeloCampoRowChangeEventHandler modeloCampoRowChanging;
+            
+            public event modeloCampoRowChangeEventHandler modeloCampoRowChanged;
+            
+            public event modeloCampoRowChangeEventHandler modeloCampoRowDeleting;
+            
+            public event modeloCampoRowChangeEventHandler modeloCampoRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void AddmodeloCampoRow(modeloCampoRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public modeloCampoRow AddmodeloCampoRow(modeloRow parentmodeloRowByFK_modelo_modeloCampo, string campo, string tipo) {
+                modeloCampoRow rowmodeloCampoRow = ((modeloCampoRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        campo,
+                        tipo};
+                if ((parentmodeloRowByFK_modelo_modeloCampo != null)) {
+                    columnValuesArray[0] = parentmodeloRowByFK_modelo_modeloCampo[0];
+                }
+                rowmodeloCampoRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowmodeloCampoRow);
+                return rowmodeloCampoRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public modeloCampoRow FindByidModelocampo(int idModelo, string campo) {
+                return ((modeloCampoRow)(this.Rows.Find(new object[] {
+                            idModelo,
+                            campo})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public override global::System.Data.DataTable Clone() {
+                modeloCampoDataTable cln = ((modeloCampoDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new modeloCampoDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal void InitVars() {
+                this.columnidModelo = base.Columns["idModelo"];
+                this.columncampo = base.Columns["campo"];
+                this.columntipo = base.Columns["tipo"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            private void InitClass() {
+                this.columnidModelo = new global::System.Data.DataColumn("idModelo", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnidModelo);
+                this.columncampo = new global::System.Data.DataColumn("campo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncampo);
+                this.columntipo = new global::System.Data.DataColumn("tipo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntipo);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnidModelo,
+                                this.columncampo}, true));
+                this.columnidModelo.AllowDBNull = false;
+                this.columncampo.AllowDBNull = false;
+                this.columncampo.MaxLength = 100;
+                this.columntipo.MaxLength = 30;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public modeloCampoRow NewmodeloCampoRow() {
+                return ((modeloCampoRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new modeloCampoRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Type GetRowType() {
+                return typeof(modeloCampoRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.modeloCampoRowChanged != null)) {
+                    this.modeloCampoRowChanged(this, new modeloCampoRowChangeEvent(((modeloCampoRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.modeloCampoRowChanging != null)) {
+                    this.modeloCampoRowChanging(this, new modeloCampoRowChangeEvent(((modeloCampoRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.modeloCampoRowDeleted != null)) {
+                    this.modeloCampoRowDeleted(this, new modeloCampoRowChangeEvent(((modeloCampoRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.modeloCampoRowDeleting != null)) {
+                    this.modeloCampoRowDeleting(this, new modeloCampoRowChangeEvent(((modeloCampoRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void RemovemodeloCampoRow(modeloCampoRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                COMERCIALDataSet ds = new COMERCIALDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "modeloCampoDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class RelPedidoDataTable : global::System.Data.TypedTableBase<RelPedidoRow> {
             
             private global::System.Data.DataColumn columnNRPEDIDO;
@@ -11597,6 +12213,171 @@ namespace Comercial {
         ///Represents strongly named DataRow class.
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        public partial class modeloRow : global::System.Data.DataRow {
+            
+            private modeloDataTable tablemodelo;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal modeloRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tablemodelo = ((modeloDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public int id {
+                get {
+                    return ((int)(this[this.tablemodelo.idColumn]));
+                }
+                set {
+                    this[this.tablemodelo.idColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string estrutura {
+                get {
+                    return ((string)(this[this.tablemodelo.estruturaColumn]));
+                }
+                set {
+                    this[this.tablemodelo.estruturaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.DateTime dataCriacao {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tablemodelo.dataCriacaoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'dataCriacao\' in table \'modelo\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablemodelo.dataCriacaoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string algoritmo {
+                get {
+                    try {
+                        return ((string)(this[this.tablemodelo.algoritmoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'algoritmo\' in table \'modelo\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablemodelo.algoritmoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsdataCriacaoNull() {
+                return this.IsNull(this.tablemodelo.dataCriacaoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetdataCriacaoNull() {
+                this[this.tablemodelo.dataCriacaoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsalgoritmoNull() {
+                return this.IsNull(this.tablemodelo.algoritmoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetalgoritmoNull() {
+                this[this.tablemodelo.algoritmoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public modeloCampoRow[] GetmodeloCampoRows() {
+                if ((this.Table.ChildRelations["FK_modelo_modeloCampo"] == null)) {
+                    return new modeloCampoRow[0];
+                }
+                else {
+                    return ((modeloCampoRow[])(base.GetChildRows(this.Table.ChildRelations["FK_modelo_modeloCampo"])));
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        public partial class modeloCampoRow : global::System.Data.DataRow {
+            
+            private modeloCampoDataTable tablemodeloCampo;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal modeloCampoRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tablemodeloCampo = ((modeloCampoDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public int idModelo {
+                get {
+                    return ((int)(this[this.tablemodeloCampo.idModeloColumn]));
+                }
+                set {
+                    this[this.tablemodeloCampo.idModeloColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string campo {
+                get {
+                    return ((string)(this[this.tablemodeloCampo.campoColumn]));
+                }
+                set {
+                    this[this.tablemodeloCampo.campoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string tipo {
+                get {
+                    try {
+                        return ((string)(this[this.tablemodeloCampo.tipoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'tipo\' in table \'modeloCampo\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablemodeloCampo.tipoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public modeloRow modeloRow {
+                get {
+                    return ((modeloRow)(this.GetParentRow(this.Table.ParentRelations["FK_modelo_modeloCampo"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_modelo_modeloCampo"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IstipoNull() {
+                return this.IsNull(this.tablemodeloCampo.tipoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SettipoNull() {
+                this[this.tablemodeloCampo.tipoColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
         public partial class RelPedidoRow : global::System.Data.DataRow {
             
             private RelPedidoDataTable tableRelPedido;
@@ -13154,6 +13935,68 @@ namespace Comercial {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public ATUCUBORow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        public class modeloRowChangeEvent : global::System.EventArgs {
+            
+            private modeloRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public modeloRowChangeEvent(modeloRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public modeloRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        public class modeloCampoRowChangeEvent : global::System.EventArgs {
+            
+            private modeloCampoRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public modeloCampoRowChangeEvent(modeloCampoRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public modeloCampoRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -22869,6 +23712,713 @@ SELECT NRATUALIZACAO, CODUSUARIO, DATAATUALIZACAO FROM ATUCUBO WHERE (NRATUALIZA
     }
     
     /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class modeloTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public modeloTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "modelo";
+            tableMapping.ColumnMappings.Add("id", "id");
+            tableMapping.ColumnMappings.Add("estrutura", "estrutura");
+            tableMapping.ColumnMappings.Add("dataCriacao", "dataCriacao");
+            tableMapping.ColumnMappings.Add("algoritmo", "algoritmo");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[modelo] WHERE (([id] = @Original_id) AND ([estrutura] = @Original_estrutura) AND ((@IsNull_dataCriacao = 1 AND [dataCriacao] IS NULL) OR ([dataCriacao] = @Original_dataCriacao)) AND ((@IsNull_algoritmo = 1 AND [algoritmo] IS NULL) OR ([algoritmo] = @Original_algoritmo)))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_estrutura", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "estrutura", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_dataCriacao", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dataCriacao", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_dataCriacao", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dataCriacao", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_algoritmo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "algoritmo", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_algoritmo", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "algoritmo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[modelo] ([estrutura], [dataCriacao], [algoritmo]) VALUES (@est" +
+                "rutura, @dataCriacao, @algoritmo);\r\nSELECT id, estrutura, dataCriacao, algoritmo" +
+                " FROM modelo WHERE (id = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@estrutura", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "estrutura", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dataCriacao", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dataCriacao", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@algoritmo", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "algoritmo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[modelo] SET [estrutura] = @estrutura, [dataCriacao] = @dataCriacao, [algoritmo] = @algoritmo WHERE (([id] = @Original_id) AND ([estrutura] = @Original_estrutura) AND ((@IsNull_dataCriacao = 1 AND [dataCriacao] IS NULL) OR ([dataCriacao] = @Original_dataCriacao)) AND ((@IsNull_algoritmo = 1 AND [algoritmo] IS NULL) OR ([algoritmo] = @Original_algoritmo)));
+SELECT id, estrutura, dataCriacao, algoritmo FROM modelo WHERE (id = @id)";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@estrutura", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "estrutura", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@dataCriacao", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dataCriacao", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@algoritmo", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "algoritmo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_estrutura", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "estrutura", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_dataCriacao", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dataCriacao", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_dataCriacao", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "dataCriacao", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_algoritmo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "algoritmo", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_algoritmo", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "algoritmo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::Comercial.Properties.Settings.Default.COMERCIALConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT id, estrutura, dataCriacao, algoritmo FROM dbo.modelo";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(COMERCIALDataSet.modeloDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual COMERCIALDataSet.modeloDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            COMERCIALDataSet.modeloDataTable dataTable = new COMERCIALDataSet.modeloDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(COMERCIALDataSet.modeloDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(COMERCIALDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "modelo");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(int Original_id, string Original_estrutura, global::System.Nullable<global::System.DateTime> Original_dataCriacao, string Original_algoritmo) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_id));
+            if ((Original_estrutura == null)) {
+                throw new global::System.ArgumentNullException("Original_estrutura");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_estrutura));
+            }
+            if ((Original_dataCriacao.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((System.DateTime)(Original_dataCriacao.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            if ((Original_algoritmo == null)) {
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((string)(Original_algoritmo));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(string estrutura, global::System.Nullable<global::System.DateTime> dataCriacao, string algoritmo) {
+            if ((estrutura == null)) {
+                throw new global::System.ArgumentNullException("estrutura");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(estrutura));
+            }
+            if ((dataCriacao.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((System.DateTime)(dataCriacao.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((algoritmo == null)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(algoritmo));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(string estrutura, global::System.Nullable<global::System.DateTime> dataCriacao, string algoritmo, int Original_id, string Original_estrutura, global::System.Nullable<global::System.DateTime> Original_dataCriacao, string Original_algoritmo, int id) {
+            if ((estrutura == null)) {
+                throw new global::System.ArgumentNullException("estrutura");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(estrutura));
+            }
+            if ((dataCriacao.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((System.DateTime)(dataCriacao.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((algoritmo == null)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(algoritmo));
+            }
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_id));
+            if ((Original_estrutura == null)) {
+                throw new global::System.ArgumentNullException("Original_estrutura");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Original_estrutura));
+            }
+            if ((Original_dataCriacao.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((System.DateTime)(Original_dataCriacao.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            if ((Original_algoritmo == null)) {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_algoritmo));
+            }
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(id));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(string estrutura, global::System.Nullable<global::System.DateTime> dataCriacao, string algoritmo, int Original_id, string Original_estrutura, global::System.Nullable<global::System.DateTime> Original_dataCriacao, string Original_algoritmo) {
+            return this.Update(estrutura, dataCriacao, algoritmo, Original_id, Original_estrutura, Original_dataCriacao, Original_algoritmo, Original_id);
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class modeloCampoTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public modeloCampoTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "modeloCampo";
+            tableMapping.ColumnMappings.Add("idModelo", "idModelo");
+            tableMapping.ColumnMappings.Add("campo", "campo");
+            tableMapping.ColumnMappings.Add("tipo", "tipo");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[modeloCampo] WHERE (([idModelo] = @Original_idModelo) AND ([ca" +
+                "mpo] = @Original_campo) AND ((@IsNull_tipo = 1 AND [tipo] IS NULL) OR ([tipo] = " +
+                "@Original_tipo)))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_idModelo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "idModelo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_campo", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "campo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_tipo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tipo", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_tipo", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tipo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[modeloCampo] ([idModelo], [campo], [tipo]) VALUES (@idModelo, " +
+                "@campo, @tipo);\r\nSELECT idModelo, campo, tipo FROM modeloCampo WHERE (campo = @c" +
+                "ampo) AND (idModelo = @idModelo)";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idModelo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "idModelo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@campo", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "campo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tipo", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tipo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[modeloCampo] SET [idModelo] = @idModelo, [campo] = @campo, [tipo] = @tipo WHERE (([idModelo] = @Original_idModelo) AND ([campo] = @Original_campo) AND ((@IsNull_tipo = 1 AND [tipo] IS NULL) OR ([tipo] = @Original_tipo)));
+SELECT idModelo, campo, tipo FROM modeloCampo WHERE (campo = @campo) AND (idModelo = @idModelo)";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idModelo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "idModelo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@campo", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "campo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tipo", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tipo", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_idModelo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "idModelo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_campo", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "campo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_tipo", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tipo", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_tipo", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tipo", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::Comercial.Properties.Settings.Default.COMERCIALConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT idModelo, campo, tipo FROM dbo.modeloCampo";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(COMERCIALDataSet.modeloCampoDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual COMERCIALDataSet.modeloCampoDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            COMERCIALDataSet.modeloCampoDataTable dataTable = new COMERCIALDataSet.modeloCampoDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(COMERCIALDataSet.modeloCampoDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(COMERCIALDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "modeloCampo");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(int Original_idModelo, string Original_campo, string Original_tipo) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_idModelo));
+            if ((Original_campo == null)) {
+                throw new global::System.ArgumentNullException("Original_campo");
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[1].Value = ((string)(Original_campo));
+            }
+            if ((Original_tipo == null)) {
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Original_tipo));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(int idModelo, string campo, string tipo) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(idModelo));
+            if ((campo == null)) {
+                throw new global::System.ArgumentNullException("campo");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(campo));
+            }
+            if ((tipo == null)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(tipo));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(int idModelo, string campo, string tipo, int Original_idModelo, string Original_campo, string Original_tipo) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(idModelo));
+            if ((campo == null)) {
+                throw new global::System.ArgumentNullException("campo");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(campo));
+            }
+            if ((tipo == null)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(tipo));
+            }
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_idModelo));
+            if ((Original_campo == null)) {
+                throw new global::System.ArgumentNullException("Original_campo");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Original_campo));
+            }
+            if ((Original_tipo == null)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_tipo));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(string tipo, int Original_idModelo, string Original_campo, string Original_tipo) {
+            return this.Update(Original_idModelo, Original_campo, tipo, Original_idModelo, Original_campo, Original_tipo);
+        }
+    }
+    
+    /// <summary>
     ///TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
     ///</summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
@@ -22918,6 +24468,10 @@ SELECT NRATUALIZACAO, CODUSUARIO, DATAATUALIZACAO FROM ATUCUBO WHERE (NRATUALIZA
         private VIATRANSPORTETableAdapter _vIATRANSPORTETableAdapter;
         
         private ATUCUBOTableAdapter _aTUCUBOTableAdapter;
+        
+        private modeloTableAdapter _modeloTableAdapter;
+        
+        private modeloCampoTableAdapter _modeloCampoTableAdapter;
         
         private bool _backupDataSetBeforeUpdate;
         
@@ -23181,6 +24735,32 @@ SELECT NRATUALIZACAO, CODUSUARIO, DATAATUALIZACAO FROM ATUCUBO WHERE (NRATUALIZA
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" +
+            "", "System.Drawing.Design.UITypeEditor")]
+        public modeloTableAdapter modeloTableAdapter {
+            get {
+                return this._modeloTableAdapter;
+            }
+            set {
+                this._modeloTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=8.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" +
+            "", "System.Drawing.Design.UITypeEditor")]
+        public modeloCampoTableAdapter modeloCampoTableAdapter {
+            get {
+                return this._modeloCampoTableAdapter;
+            }
+            set {
+                this._modeloCampoTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         public bool BackupDataSetBeforeUpdate {
             get {
                 return this._backupDataSetBeforeUpdate;
@@ -23273,6 +24853,14 @@ SELECT NRATUALIZACAO, CODUSUARIO, DATAATUALIZACAO FROM ATUCUBO WHERE (NRATUALIZA
                             && (this._aTUCUBOTableAdapter.Connection != null))) {
                     return this._aTUCUBOTableAdapter.Connection;
                 }
+                if (((this._modeloTableAdapter != null) 
+                            && (this._modeloTableAdapter.Connection != null))) {
+                    return this._modeloTableAdapter.Connection;
+                }
+                if (((this._modeloCampoTableAdapter != null) 
+                            && (this._modeloCampoTableAdapter.Connection != null))) {
+                    return this._modeloCampoTableAdapter.Connection;
+                }
                 return null;
             }
             set {
@@ -23340,6 +24928,12 @@ SELECT NRATUALIZACAO, CODUSUARIO, DATAATUALIZACAO FROM ATUCUBO WHERE (NRATUALIZA
                     count = (count + 1);
                 }
                 if ((this._aTUCUBOTableAdapter != null)) {
+                    count = (count + 1);
+                }
+                if ((this._modeloTableAdapter != null)) {
+                    count = (count + 1);
+                }
+                if ((this._modeloCampoTableAdapter != null)) {
                     count = (count + 1);
                 }
                 return count;
@@ -23442,21 +25036,30 @@ SELECT NRATUALIZACAO, CODUSUARIO, DATAATUALIZACAO FROM ATUCUBO WHERE (NRATUALIZA
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._nOTAFISCALTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.NOTAFISCAL.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._nOTAFISCALTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._mODULOTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.MODULO.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._mODULOTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._modeloTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.modelo.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._modeloTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._nOTAFISCALTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.NOTAFISCAL.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._nOTAFISCALTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -23469,12 +25072,30 @@ SELECT NRATUALIZACAO, CODUSUARIO, DATAATUALIZACAO FROM ATUCUBO WHERE (NRATUALIZA
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._modeloCampoTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.modeloCampo.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._modeloCampoTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._aTUCUBOTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.ATUCUBO.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._aTUCUBOTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._iTEMPEDIDOTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.ITEMPEDIDO.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._iTEMPEDIDOTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -23493,15 +25114,6 @@ SELECT NRATUALIZACAO, CODUSUARIO, DATAATUALIZACAO FROM ATUCUBO WHERE (NRATUALIZA
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._iCMSTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._iTEMPEDIDOTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.ITEMPEDIDO.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._iTEMPEDIDOTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -23612,19 +25224,27 @@ SELECT NRATUALIZACAO, CODUSUARIO, DATAATUALIZACAO FROM ATUCUBO WHERE (NRATUALIZA
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._nOTAFISCALTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.NOTAFISCAL.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._nOTAFISCALTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._mODULOTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.MODULO.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._mODULOTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._modeloTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.modelo.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._modeloTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._nOTAFISCALTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.NOTAFISCAL.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._nOTAFISCALTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -23636,11 +25256,27 @@ SELECT NRATUALIZACAO, CODUSUARIO, DATAATUALIZACAO FROM ATUCUBO WHERE (NRATUALIZA
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._modeloCampoTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.modeloCampo.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._modeloCampoTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._aTUCUBOTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.ATUCUBO.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._aTUCUBOTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._iTEMPEDIDOTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.ITEMPEDIDO.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._iTEMPEDIDOTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -23657,14 +25293,6 @@ SELECT NRATUALIZACAO, CODUSUARIO, DATAATUALIZACAO FROM ATUCUBO WHERE (NRATUALIZA
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._iCMSTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._iTEMPEDIDOTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.ITEMPEDIDO.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._iTEMPEDIDOTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -23709,14 +25337,6 @@ SELECT NRATUALIZACAO, CODUSUARIO, DATAATUALIZACAO FROM ATUCUBO WHERE (NRATUALIZA
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._iTEMPEDIDOTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.ITEMPEDIDO.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._iTEMPEDIDOTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._iCMSTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.ICMS.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -23733,11 +25353,27 @@ SELECT NRATUALIZACAO, CODUSUARIO, DATAATUALIZACAO FROM ATUCUBO WHERE (NRATUALIZA
                     allChangedRows.AddRange(deletedRows);
                 }
             }
+            if ((this._iTEMPEDIDOTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.ITEMPEDIDO.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._iTEMPEDIDOTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._aTUCUBOTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.ATUCUBO.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._aTUCUBOTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._modeloCampoTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.modeloCampo.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._modeloCampoTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -23749,19 +25385,27 @@ SELECT NRATUALIZACAO, CODUSUARIO, DATAATUALIZACAO FROM ATUCUBO WHERE (NRATUALIZA
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._mODULOTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.MODULO.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._mODULOTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._nOTAFISCALTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.NOTAFISCAL.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._nOTAFISCALTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._modeloTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.modelo.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._modeloTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._mODULOTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.MODULO.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._mODULOTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -23977,6 +25621,16 @@ SELECT NRATUALIZACAO, CODUSUARIO, DATAATUALIZACAO FROM ATUCUBO WHERE (NRATUALIZA
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
+            if (((this._modeloTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._modeloTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
+                        "tring.");
+            }
+            if (((this._modeloCampoTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._modeloCampoTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
+                        "tring.");
+            }
             global::System.Data.IDbConnection workConnection = this.Connection;
             if ((workConnection == null)) {
                 throw new global::System.ApplicationException("TableAdapterManager contains no connection information. Set each TableAdapterMana" +
@@ -24180,6 +25834,24 @@ SELECT NRATUALIZACAO, CODUSUARIO, DATAATUALIZACAO FROM ATUCUBO WHERE (NRATUALIZA
                         adaptersWithAcceptChangesDuringUpdate.Add(this._aTUCUBOTableAdapter.Adapter);
                     }
                 }
+                if ((this._modeloTableAdapter != null)) {
+                    revertConnections.Add(this._modeloTableAdapter, this._modeloTableAdapter.Connection);
+                    this._modeloTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._modeloTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._modeloTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._modeloTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._modeloTableAdapter.Adapter);
+                    }
+                }
+                if ((this._modeloCampoTableAdapter != null)) {
+                    revertConnections.Add(this._modeloCampoTableAdapter, this._modeloCampoTableAdapter.Connection);
+                    this._modeloCampoTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._modeloCampoTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._modeloCampoTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._modeloCampoTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._modeloCampoTableAdapter.Adapter);
+                    }
+                }
                 // 
                 //---- Perform updates -----------
                 //
@@ -24313,6 +25985,14 @@ SELECT NRATUALIZACAO, CODUSUARIO, DATAATUALIZACAO FROM ATUCUBO WHERE (NRATUALIZA
                 if ((this._aTUCUBOTableAdapter != null)) {
                     this._aTUCUBOTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._aTUCUBOTableAdapter]));
                     this._aTUCUBOTableAdapter.Transaction = null;
+                }
+                if ((this._modeloTableAdapter != null)) {
+                    this._modeloTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._modeloTableAdapter]));
+                    this._modeloTableAdapter.Transaction = null;
+                }
+                if ((this._modeloCampoTableAdapter != null)) {
+                    this._modeloCampoTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._modeloCampoTableAdapter]));
+                    this._modeloCampoTableAdapter.Transaction = null;
                 }
                 if ((0 < adaptersWithAcceptChangesDuringUpdate.Count)) {
                     global::System.Data.Common.DataAdapter[] adapters = new System.Data.Common.DataAdapter[adaptersWithAcceptChangesDuringUpdate.Count];
