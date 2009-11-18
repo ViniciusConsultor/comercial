@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tbPgHistorico = new System.Windows.Forms.TabPage();
             this.dtgrdAtuCubo = new System.Windows.Forms.DataGridView();
@@ -42,6 +43,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnAtuCubo = new System.Windows.Forms.Button();
             this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
+            this.aTUCUBOBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.aTUCUBOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.ATUCUBOTableAdapter();
+            this.tableAdapterManager = new Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager();
             this.tabControl1.SuspendLayout();
             this.tbPgHistorico.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgrdAtuCubo)).BeginInit();
@@ -50,6 +54,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.aTUCUBOBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -142,7 +147,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Comercial.Properties.Resources.certo;
-            this.pictureBox1.Location = new System.Drawing.Point(40, 79);
+            this.pictureBox1.Location = new System.Drawing.Point(44, 79);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(24, 24);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -153,7 +158,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = global::Comercial.Properties.Resources.certo;
-            this.pictureBox2.Location = new System.Drawing.Point(40, 40);
+            this.pictureBox2.Location = new System.Drawing.Point(42, 42);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(24, 24);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -195,6 +200,39 @@
             this.cOMERCIALDataSet.DataSetName = "COMERCIALDataSet";
             this.cOMERCIALDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
+            // aTUCUBOBindingSource
+            // 
+            this.aTUCUBOBindingSource.DataMember = "ATUCUBO";
+            this.aTUCUBOBindingSource.DataSource = this.cOMERCIALDataSet;
+            // 
+            // aTUCUBOTableAdapter
+            // 
+            this.aTUCUBOTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.ACESSOTableAdapter = null;
+            this.tableAdapterManager.ATUCUBOTableAdapter = this.aTUCUBOTableAdapter;
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.CLIENTETableAdapter = null;
+            this.tableAdapterManager.CONDICAOPAGAMENTOTableAdapter = null;
+            this.tableAdapterManager.GRUPOPRODUTOTableAdapter = null;
+            this.tableAdapterManager.ICMSTableAdapter = null;
+            this.tableAdapterManager.ItemNotaFiscalTableAdapter = null;
+            this.tableAdapterManager.ITEMPEDIDOTableAdapter = null;
+            this.tableAdapterManager.MODULOTableAdapter = null;
+            this.tableAdapterManager.NOTAFISCALTableAdapter = null;
+            this.tableAdapterManager.PEDIDOTableAdapter = null;
+            this.tableAdapterManager.PRODUTOTableAdapter = null;
+            this.tableAdapterManager.REGIAOTableAdapter = null;
+            this.tableAdapterManager.TRANSPORTADORATableAdapter = null;
+            this.tableAdapterManager.TRANSPORTADORAVIATableAdapter = null;
+            this.tableAdapterManager.UNIDADEMEDIDATableAdapter = null;
+            this.tableAdapterManager.UpdateOrder = Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.USUARIOTableAdapter = null;
+            this.tableAdapterManager.VENDEDORTableAdapter = null;
+            this.tableAdapterManager.VIATRANSPORTETableAdapter = null;
+            // 
             // FrmAtuCubo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -215,6 +253,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.aTUCUBOBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -235,5 +274,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NrAtualiacao;
         private System.Windows.Forms.DataGridViewTextBoxColumn Usuario;
         private System.Windows.Forms.DataGridViewTextBoxColumn Data;
+        private System.Windows.Forms.BindingSource aTUCUBOBindingSource;
+        private Comercial.COMERCIALDataSetTableAdapters.ATUCUBOTableAdapter aTUCUBOTableAdapter;
+        private Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager tableAdapterManager;
     }
 }

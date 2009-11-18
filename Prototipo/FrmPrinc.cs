@@ -15,6 +15,7 @@ namespace Comercial
     {
         private COMERCIALDataSet _dataset;
         public bool edit;
+        public int usuarioLogado;
         Validacoes valida = new Validacoes();
 
         public void setdataSet(COMERCIALDataSet data)
@@ -1707,7 +1708,7 @@ namespace Comercial
                 filho.Show();
 
                 tlStrpProcesso.Visible = true;
-                FrmPrinc _princ = new FrmPrinc();
+                
 
                 tsbCancelarPedido.Visible = false;
 
