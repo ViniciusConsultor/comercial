@@ -8,6 +8,8 @@ using System.Text;
 using System.Windows.Forms;
 using System.Configuration;
 using System.Data.SqlClient;
+using Microsoft.AnalysisServices.AdomdClient;
+using System.IO;
 
 namespace Comercial
 {
@@ -29,7 +31,18 @@ namespace Comercial
 
         private void FrmatuCubo_Load(object sender, EventArgs e)
         {
-            string sql = "select atu.NRATUALIZACAO,usu.USUARIO,atu.DATAATUALIZACAO from ATUCUBO atu, USUARIO usu where atu.CODUSUARIO=usu.CODUSUARIO order by atu.DATAATUALIZACAO desc ";
+            // TODO: This line of code loads data into the 'cOMERCIALDataSet.ATUCUBO' table. You can move, or remove it, as needed.
+            this.aTUCUBOTableAdapter.Fill(this.cOMERCIALDataSet.ATUCUBO);
+            // TODO: This line of code loads data into the 'cOMERCIALDataSet.ATUCUBO' table. You can move, or remove it, as needed.
+            this.aTUCUBOTableAdapter.Fill(this.cOMERCIALDataSet.ATUCUBO);
+
+            preencheGrid();
+
+        }
+
+        private void preencheGrid()
+        {
+            string sql = "select atu.NRATUALIZACAO,usu.USUARIO,atu.DATAATUALIZACAO from ATUCUBO atu, USUARIO usu where atu.CODUSUARIO=usu.CODUSUARIO order by atu.DATAATUALIZACAO desc,NRATUALIZACAO desc ";
             string c = ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString;
 
             SqlConnection conn = new SqlConnection(c);
@@ -43,34 +56,114 @@ namespace Comercial
 
             dtgrdAtuCubo.DataSource = table;
             conn.Close();
-
-
-            
-
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+
 
         }
 
         private void FrmAtuCubo_Leave(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btnAtuCubo_Click(object sender, EventArgs e)
         {
-            string sql = "select atu.NRATUALIZACAO,usu.USUARIO,atu.DATAATUALIZACAO from ATUCUBO atu, USUARIO usu where atu.CODUSUARIO=usu.CODUSUARIO order by atu.DATAATUALIZACAO desc ";
-            string c = ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString;
+            try
+            {
+                string linha = "";
+                //Abrir o arquivo
 
-            SqlConnection conn = new SqlConnection(c);
-            conn.Open();
-            SqlCommand cmd = new SqlCommand(sql, conn);
-            SqlDataReader reader = cmd.ExecuteReader();
+                linha += "<Batch xmlns=\"http://schemas.microsoft.com/analysisservices/2003/engine\"> " +
+                         "<Parallel> " +
+                         "<Process xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:ddl2=\"http://schemas.microsoft.com/analysisservices/2003/engine/2\" xmlns:ddl2_2=\"http://schemas.microsoft.com/analysisservices/2003/engine/2/2\" xmlns:ddl100_100=\"http://schemas.microsoft.com/analysisservices/2008/engine/100/100\">  " +
+                         "<Object> " +
+                         "<DatabaseID>Comercial_Mart</DatabaseID> " +
+                         "<DimensionID>Regiao</DimensionID> " +
+                         "</Object> " +
+                         "<Type>ProcessUpdate</Type> " +
+                         "<WriteBackTableCreation>UseExisting</WriteBackTableCreation> " +
+                         "</Process> " +
+                         "<Process xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:ddl2=\"http://schemas.microsoft.com/analysisservices/2003/engine/2\" xmlns:ddl2_2=\"http://schemas.microsoft.com/analysisservices/2003/engine/2/2\" xmlns:ddl100_100=\"http://schemas.microsoft.com/analysisservices/2008/engine/100/100\"> " +
+                         "<Object> " +
+                         "<DatabaseID>Comercial_Mart</DatabaseID> " +
+                         "<CubeID>Vendas_Regiao_Produto</CubeID> " +
+                         "</Object> " +
+                         "<Type>ProcessFull</Type> " +
+                         "<WriteBackTableCreation>UseExisting</WriteBackTableCreation> " +
+                         "</Process> " +
+                         "<Process xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:ddl2=\"http://schemas.microsoft.com/analysisservices/2003/engine/2\" xmlns:ddl2_2=\"http://schemas.microsoft.com/analysisservices/2003/engine/2/2\" xmlns:ddl100_100=\"http://schemas.microsoft.com/analysisservices/2008/engine/100/100\"> " +
+                         "<Object> " +
+                         "<DatabaseID>Comercial_Mart</DatabaseID> " +
+                         "<DimensionID>Produto</DimensionID> " +
+                         "</Object> " +
+                         "<Type>ProcessUpdate</Type> " +
+                         "<WriteBackTableCreation>UseExisting</WriteBackTableCreation> " +
+                         "</Process> " +
+                         "<Process xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:ddl2=\"http://schemas.microsoft.com/analysisservices/2003/engine/2\" xmlns:ddl2_2=\"http://schemas.microsoft.com/analysisservices/2003/engine/2/2\" xmlns:ddl100_100=\"http://schemas.microsoft.com/analysisservices/2008/engine/100/100\"> " +
+                         "<Object> " +
+                         "<DatabaseID>Comercial_Mart</DatabaseID> " +
+                         "<DimensionID>Data</DimensionID> " +
+                         "</Object> " +
+                         "<Type>ProcessUpdate</Type> " +
+                         "<WriteBackTableCreation>UseExisting</WriteBackTableCreation> " +
+                         "</Process> " +
+                         "</Parallel> " +
+                         "</Batch>";
+                //FileInfo x = new FileInfo(@"E:\Faculdade\Tcc_google\Prototipo\atucubo.txt");
 
-            
+                // StreamReader valor = x.OpenText();
+
+                //while (valor.ReadLine() != null)
+                // {
+                // linha += valor.ReadLine();
+
+                //}
+
+                string c = ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString_analysis"].ConnectionString;
+
+                AdomdConnection conn = new AdomdConnection(c);
+                conn.Open();
+                AdomdCommand cmd = new AdomdCommand(linha, conn);
+                cmd.Execute();
+                conn.Close();
+
+               
+ 
+                COMERCIALDataSetTableAdapters.ATUCUBOTableAdapter atu = new Comercial.COMERCIALDataSetTableAdapters.ATUCUBOTableAdapter();
+                DateTime data = Convert.ToDateTime(DateTime.Now.Year + "-" + DateTime.Now.Month + "-" + DateTime.Now.Day);
+                atu.Insert(_princ.usuarioLogado, data);
+
+                preencheGrid();
+
+                pictureBox1.Visible = true;
+                pictureBox2.Visible = true;
+
+
+            }
+            catch(Exception ex)
+            {
+                pictureBox1.Visible = false;
+                pictureBox1.Visible = false;
+            }
         }
+
+        private void aTUCUBOBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.aTUCUBOBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.cOMERCIALDataSet);
+
         }
- }
+
+        private void aTUCUBOBindingNavigatorSaveItem_Click_1(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.aTUCUBOBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.cOMERCIALDataSet);
+
+        }
+    }
+}

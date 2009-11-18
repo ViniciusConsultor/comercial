@@ -47,6 +47,7 @@ namespace Comercial
 
             SqlDataReader reader = cmd.ExecuteReader();
             reader.Read();
+            int codUsuario = (int) reader.GetValue(0);
 
             // verifica se é valido
             if (reader.HasRows)
@@ -59,9 +60,10 @@ namespace Comercial
                 else
                 {
                     //verifica se é privilegiado
+                    FrmPrinc princ = new FrmPrinc();
                     if(reader["PRIVILEGIADO"].ToString() == "S")
                     {
-                        FrmPrinc princ = new FrmPrinc();
+                        
                         princ.Show();
                         this.Hide();
                     }
@@ -69,10 +71,11 @@ namespace Comercial
                     {
                         // *** ARRUMAR verifica regras ***
                         //========================================
-                        FrmPrinc princ = new FrmPrinc();
+                        
                         princ.Show();
                         this.Hide();
                     }
+                    princ.usuarioLogado = codUsuario;
                 }
                
             }
