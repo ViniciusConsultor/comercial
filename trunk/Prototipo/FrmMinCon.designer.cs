@@ -179,7 +179,7 @@
             this.chartHist.Location = new System.Drawing.Point(0, 0);
             this.chartHist.Name = "chartHist";
             this.chartHist.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("chartHist.OcxState")));
-            this.chartHist.Size = new System.Drawing.Size(866, 271);
+            this.chartHist.Size = new System.Drawing.Size(866, 258);
             this.chartHist.TabIndex = 0;
             // 
             // chartPrev
@@ -187,10 +187,10 @@
             this.chartPrev.DataSource = null;
             this.chartPrev.Dock = System.Windows.Forms.DockStyle.Top;
             this.chartPrev.Enabled = true;
-            this.chartPrev.Location = new System.Drawing.Point(0, 271);
+            this.chartPrev.Location = new System.Drawing.Point(0, 258);
             this.chartPrev.Name = "chartPrev";
             this.chartPrev.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("chartPrev.OcxState")));
-            this.chartPrev.Size = new System.Drawing.Size(866, 322);
+            this.chartPrev.Size = new System.Drawing.Size(866, 320);
             this.chartPrev.TabIndex = 1;
             // 
             // FrmMinCon
