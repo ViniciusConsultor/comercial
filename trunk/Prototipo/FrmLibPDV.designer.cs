@@ -38,7 +38,11 @@
             this.tbCntrlPedVend = new System.Windows.Forms.TabControl();
             this.tbPgPDV = new System.Windows.Forms.TabPage();
             this.grpBxPedVenda = new System.Windows.Forms.GroupBox();
+            this.txtFrete = new System.Windows.Forms.MaskedTextBox();
+            this.pEDIDOBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
             this.txtbtnPedido = new System.Windows.Forms.TextBox();
+            this.lblFrete = new System.Windows.Forms.Label();
             this.txtCondPagto = new System.Windows.Forms.TextBox();
             this.txtCodTransportadora = new System.Windows.Forms.TextBox();
             this.txtCodVendedor = new System.Windows.Forms.TextBox();
@@ -91,23 +95,22 @@
             this.ColTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColVALORFATU = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColStatusItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pEDIDOBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
             this.pEDIDOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.PEDIDOTableAdapter();
             this.tableAdapterManager = new Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager();
-            this.txtFrete = new System.Windows.Forms.MaskedTextBox();
-            this.lblFrete = new System.Windows.Forms.Label();
+            this.nOTAFISCALBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.nOTAFISCALTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.NOTAFISCALTableAdapter();
             this.tbCntrlPedVend.SuspendLayout();
             this.tbPgPDV.SuspendLayout();
             this.grpBxPedVenda.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pEDIDOBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).BeginInit();
             this.grpTipoPedido.SuspendLayout();
             this.grpBxItPedVen.SuspendLayout();
             this.grpBxTotais.SuspendLayout();
             this.grpSituacaoItens.SuspendLayout();
             this.pnlItenped.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgrdvItenspven)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pEDIDOBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nOTAFISCALBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tbCntrlPedVend
@@ -165,10 +168,36 @@
             this.grpBxPedVenda.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.grpBxPedVenda.Location = new System.Drawing.Point(11, 7);
             this.grpBxPedVenda.Name = "grpBxPedVenda";
-            this.grpBxPedVenda.Size = new System.Drawing.Size(858, 116);
+            this.grpBxPedVenda.Size = new System.Drawing.Size(858, 130);
             this.grpBxPedVenda.TabIndex = 102;
             this.grpBxPedVenda.TabStop = false;
             this.grpBxPedVenda.Text = "Pedido Venda";
+            // 
+            // txtFrete
+            // 
+            this.txtFrete.BeepOnError = true;
+            this.txtFrete.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            this.txtFrete.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pEDIDOBindingSource, "VALORFRETE", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, null, "C2"));
+            this.txtFrete.Enabled = false;
+            this.txtFrete.InsertKeyMode = System.Windows.Forms.InsertKeyMode.Insert;
+            this.txtFrete.Location = new System.Drawing.Point(451, 77);
+            this.txtFrete.Name = "txtFrete";
+            this.txtFrete.PromptChar = ' ';
+            this.txtFrete.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtFrete.Size = new System.Drawing.Size(69, 20);
+            this.txtFrete.TabIndex = 121;
+            this.txtFrete.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtFrete.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            // 
+            // pEDIDOBindingSource
+            // 
+            this.pEDIDOBindingSource.DataMember = "PEDIDO";
+            this.pEDIDOBindingSource.DataSource = this.cOMERCIALDataSet;
+            // 
+            // cOMERCIALDataSet
+            // 
+            this.cOMERCIALDataSet.DataSetName = "COMERCIALDataSet";
+            this.cOMERCIALDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // txtbtnPedido
             // 
@@ -177,6 +206,17 @@
             this.txtbtnPedido.Name = "txtbtnPedido";
             this.txtbtnPedido.Size = new System.Drawing.Size(84, 20);
             this.txtbtnPedido.TabIndex = 103;
+            // 
+            // lblFrete
+            // 
+            this.lblFrete.AutoSize = true;
+            this.lblFrete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFrete.ForeColor = System.Drawing.Color.CadetBlue;
+            this.lblFrete.Location = new System.Drawing.Point(449, 62);
+            this.lblFrete.Name = "lblFrete";
+            this.lblFrete.Size = new System.Drawing.Size(64, 13);
+            this.lblFrete.TabIndex = 120;
+            this.lblFrete.Text = "Valor Frete :";
             // 
             // txtCondPagto
             // 
@@ -752,16 +792,6 @@
             this.ColStatusItem.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.ColStatusItem.Visible = false;
             // 
-            // pEDIDOBindingSource
-            // 
-            this.pEDIDOBindingSource.DataMember = "PEDIDO";
-            this.pEDIDOBindingSource.DataSource = this.cOMERCIALDataSet;
-            // 
-            // cOMERCIALDataSet
-            // 
-            this.cOMERCIALDataSet.DataSetName = "COMERCIALDataSet";
-            this.cOMERCIALDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // pEDIDOTableAdapter
             // 
             this.pEDIDOTableAdapter.ClearBeforeFill = true;
@@ -777,6 +807,8 @@
             this.tableAdapterManager.ICMSTableAdapter = null;
             this.tableAdapterManager.ItemNotaFiscalTableAdapter = null;
             this.tableAdapterManager.ITEMPEDIDOTableAdapter = null;
+            this.tableAdapterManager.modeloCampoTableAdapter = null;
+            this.tableAdapterManager.modeloTableAdapter = null;
             this.tableAdapterManager.MODULOTableAdapter = null;
             this.tableAdapterManager.NOTAFISCALTableAdapter = null;
             this.tableAdapterManager.PEDIDOTableAdapter = this.pEDIDOTableAdapter;
@@ -790,32 +822,14 @@
             this.tableAdapterManager.VENDEDORTableAdapter = null;
             this.tableAdapterManager.VIATRANSPORTETableAdapter = null;
             // 
-            // txtFrete
+            // nOTAFISCALBindingSource
             // 
-            this.txtFrete.BeepOnError = true;
-            this.txtFrete.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
-            this.txtFrete.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pEDIDOBindingSource, "VALORFRETE", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, null, "C2"));
-            this.txtFrete.Enabled = false;
-            this.txtFrete.InsertKeyMode = System.Windows.Forms.InsertKeyMode.Insert;
-            this.txtFrete.Location = new System.Drawing.Point(451, 77);
-            this.txtFrete.Name = "txtFrete";
-            this.txtFrete.PromptChar = ' ';
-            this.txtFrete.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtFrete.Size = new System.Drawing.Size(69, 20);
-            this.txtFrete.TabIndex = 121;
-            this.txtFrete.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtFrete.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            this.nOTAFISCALBindingSource.DataMember = "NOTAFISCAL";
+            this.nOTAFISCALBindingSource.DataSource = this.cOMERCIALDataSet;
             // 
-            // lblFrete
+            // nOTAFISCALTableAdapter
             // 
-            this.lblFrete.AutoSize = true;
-            this.lblFrete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFrete.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblFrete.Location = new System.Drawing.Point(449, 62);
-            this.lblFrete.Name = "lblFrete";
-            this.lblFrete.Size = new System.Drawing.Size(64, 13);
-            this.lblFrete.TabIndex = 120;
-            this.lblFrete.Text = "Valor Frete :";
+            this.nOTAFISCALTableAdapter.ClearBeforeFill = true;
             // 
             // FrmLibPDV
             // 
@@ -830,6 +844,8 @@
             this.tbPgPDV.ResumeLayout(false);
             this.grpBxPedVenda.ResumeLayout(false);
             this.grpBxPedVenda.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pEDIDOBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).EndInit();
             this.grpTipoPedido.ResumeLayout(false);
             this.grpTipoPedido.PerformLayout();
             this.grpBxItPedVen.ResumeLayout(false);
@@ -839,8 +855,7 @@
             this.grpSituacaoItens.PerformLayout();
             this.pnlItenped.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtgrdvItenspven)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pEDIDOBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nOTAFISCALBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -909,6 +924,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColStatusItem;
         public System.Windows.Forms.MaskedTextBox txtFrete;
         private System.Windows.Forms.Label lblFrete;
+        private System.Windows.Forms.BindingSource nOTAFISCALBindingSource;
+        private Comercial.COMERCIALDataSetTableAdapters.NOTAFISCALTableAdapter nOTAFISCALTableAdapter;
 
     }
 }
