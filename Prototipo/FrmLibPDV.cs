@@ -40,8 +40,8 @@ namespace Comercial
 
             StringBuilder sqlcommand = new StringBuilder();
 
-            sqlcommand.Append(" SELECT NRPEDIDO, TIPO, ped.CODCLIENTE, CODVENDEDOR,CODCONDICAOPAGAMENTO, CODTRANSPORTADORA, Convert(char(10),DATAEMISSAO,103)as DATAEMISSAO , Convert(char(10),DATAENTREGA,103) as DATAENTREGA, VALORFRETE ");
-            sqlcommand.Append(" FROM PEDIDO ped INNER JOIN CLIENTE cli ON ped.CODCLIENTE = cli.CNPJ ");
+            sqlcommand.Append(" SELECT NRPEDIDO, TIPO, ped.CODcliENTE, CODVENDEDOR,CODCONDICAOPAGAMENTO, CODTRANSPORTADORA, Convert(char(10),DATAEMISSAO,103)as DATAEMISSAO , Convert(char(10),DATAENTREGA,103) as DATAENTREGA, VALORFRETE ");
+            sqlcommand.Append(" FROM PEDIDO ped INNER JOIN cliENTE cli ON ped.CODcliENTE = cli.CNPJ ");
             sqlcommand.Append(" WHERE SITUACAO <> 'C' ");
 
             DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
@@ -100,7 +100,7 @@ namespace Comercial
 
             StringBuilder sqlcommand = new StringBuilder();
 
-            sqlcommand.Append("select top 1 Razaosocial from CLIENTE inner join PEDIDO on CNPJ= CODCLIENTE WHERE CNPJ=@CNPJ ");
+            sqlcommand.Append("select top 1 Razaosocial from cliENTE inner join PEDIDO on CNPJ= CODcliENTE WHERE CNPJ=@CNPJ ");
 
             DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
 
@@ -234,12 +234,12 @@ namespace Comercial
 
             sqlcommand.Append(" SELECT ISNULL(SUM(QUANTIDADELIB * VALOR),0) AS VALOR  ");
             sqlcommand.Append(" FROM PEDIDO p inner join ITEMPEDIDO i on p.NRPEDIDO = i.NRPEDIDO ");
-            sqlcommand.Append(" WHERE p.CODCLIENTE = @CODCLIENTE AND P.SITUACAO = 'E' ");
+            sqlcommand.Append(" WHERE p.CODcliENTE = @CODcliENTE AND P.SITUACAO = 'E' ");
 
 
             DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
 
-            db.AddInParameter(dbComd, "@CODCLIENTE", DbType.String, CodCli);
+            db.AddInParameter(dbComd, "@CODcliENTE", DbType.String, CodCli);
 
             dtsDados = db.ExecuteDataSet(dbComd);
 
@@ -261,13 +261,13 @@ namespace Comercial
             StringBuilder sqlcommand = new StringBuilder();
 
             sqlcommand.Append(" SELECT ISNULL(SUM(C.LIMITECRED),0) AS LIMITE ");
-            sqlcommand.Append(" FROM CLIENTE C  ");
-            sqlcommand.Append(" WHERE C.CNPJ = @CODCLIENTE ");
+            sqlcommand.Append(" FROM cliENTE C  ");
+            sqlcommand.Append(" WHERE C.CNPJ = @CODcliENTE ");
 
 
             DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
 
-            db.AddInParameter(dbComd, "@CODCLIENTE", DbType.String, CodCli);
+            db.AddInParameter(dbComd, "@CODcliENTE", DbType.String, CodCli);
 
             dtsDados = db.ExecuteDataSet(dbComd);
 
@@ -862,6 +862,8 @@ namespace Comercial
 
         private void FrmLibPDV_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'cOMERCIALDataSet.NOTAFISCAL' table. You can move, or remove it, as needed.
+            this.nOTAFISCALTableAdapter.Fill(this.cOMERCIALDataSet.NOTAFISCAL);
 
         }
 
@@ -879,11 +881,13 @@ namespace Comercial
             // TODO Calcular
             double icms = 0;
 
-            //NOTAFISCALTableAdapter nf = new NOTAFISCALTableAdapter();
-            //nf.Insert(1, cli.Rows[0]["RAZAOSOCIAL"].ToString(), "SERIE", DateTime.Now, cli.Rows[0]["IE"].ToString(), cli.Rows[0]["TELEFONE"].ToString(),
-            //          cli.Rows[0]["ENDERECO"].ToString(), cli.Rows[0]["BAIRRO"].ToString(), cli.Rows[0]["MUNICIPIO"].ToString(), icms, "tipo",
-            //          cli.Rows[0]["CNPJ"].ToString(), tipofrete, Convert.ToDouble(valorFrete), txtCodVendedor.Text,
-            //          txtCodTransportadora.Text, Convert.ToInt32(txtbtnPedido.Text));
+            NOTAFISCALTableAdapter nf = new NOTAFISCALTableAdapter();
+            nf.Insert(1, cli.Rows[0]["RAZAOSOCIAL"].ToString(), "TODO-SERIE", DateTime.Now, cli.Rows[0]["IE"].ToString(), cli.Rows[0]["TELEFONE"].ToString(),
+                      cli.Rows[0]["ENDERECO"].ToString(), cli.Rows[0]["BAIRRO"].ToString(), cli.Rows[0]["MUNICIPIO"].ToString(), icms, "TIPO",
+                      cli.Rows[0]["CNPJ"].ToString(), tipofrete, Convert.ToDouble(valorFrete), txtCodVendedor.Text,
+                      txtCodTransportadora.Text, Convert.ToInt32(txtbtnPedido.Text), "TODO-STATUS");
+
+            
 
         }
 
@@ -898,7 +902,7 @@ namespace Comercial
 
             StringBuilder sqlcommand = new StringBuilder();
 
-            sqlcommand.Append("SELECT * FROM CLIENTE WHERE CNPJ = @cnpj ");
+            sqlcommand.Append("SELECT * FROM cliENTE WHERE CNPJ = @cnpj ");
             
             DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
 
