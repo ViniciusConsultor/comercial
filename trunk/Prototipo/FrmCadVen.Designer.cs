@@ -588,7 +588,7 @@
             // 
             // txtComissao
             // 
-            this.txtComissao.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vENDEDORBindingSource, "COMISSAO", true));
+            this.txtComissao.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.vENDEDORBindingSource, "COMISSAO", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
             this.txtComissao.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtComissao.Location = new System.Drawing.Point(269, 58);
             this.txtComissao.Name = "txtComissao";
@@ -677,6 +677,7 @@
             // tableAdapterManager
             // 
             this.tableAdapterManager.ACESSOTableAdapter = null;
+            this.tableAdapterManager.ATUCUBOTableAdapter = null;
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.CLIENTETableAdapter = null;
             this.tableAdapterManager.CONDICAOPAGAMENTOTableAdapter = null;
@@ -684,6 +685,8 @@
             this.tableAdapterManager.ICMSTableAdapter = null;
             this.tableAdapterManager.ItemNotaFiscalTableAdapter = null;
             this.tableAdapterManager.ITEMPEDIDOTableAdapter = null;
+            this.tableAdapterManager.modeloCampoTableAdapter = null;
+            this.tableAdapterManager.modeloTableAdapter = null;
             this.tableAdapterManager.MODULOTableAdapter = null;
             this.tableAdapterManager.NOTAFISCALTableAdapter = null;
             this.tableAdapterManager.PEDIDOTableAdapter = null;
@@ -721,7 +724,7 @@
             // cpfToolStripLabel
             // 
             this.cpfToolStripLabel.Name = "cpfToolStripLabel";
-            this.cpfToolStripLabel.Size = new System.Drawing.Size(31, 22);
+            this.cpfToolStripLabel.Size = new System.Drawing.Size(30, 22);
             this.cpfToolStripLabel.Text = "CPF:";
             // 
             // cpfToolStripTextBox
@@ -733,7 +736,7 @@
             // nomeToolStripLabel
             // 
             this.nomeToolStripLabel.Name = "nomeToolStripLabel";
-            this.nomeToolStripLabel.Size = new System.Drawing.Size(43, 22);
+            this.nomeToolStripLabel.Size = new System.Drawing.Size(38, 22);
             this.nomeToolStripLabel.Text = "Nome:";
             // 
             // nomeToolStripTextBox

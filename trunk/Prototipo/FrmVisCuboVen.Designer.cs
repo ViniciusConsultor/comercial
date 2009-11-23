@@ -31,14 +31,14 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmVisCuboVen));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.axPivotTable1 = new AxOWC11.AxPivotTable();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.axChartSpace1 = new AxOWC11.AxChartSpace();
-            this.axPivotTable1 = new AxOWC11.AxPivotTable();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.axPivotTable1)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axChartSpace1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.axPivotTable1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -66,6 +66,17 @@
             this.tabPage1.Text = "Tabela";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // axPivotTable1
+            // 
+            this.axPivotTable1.DataSource = null;
+            this.axPivotTable1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.axPivotTable1.Enabled = true;
+            this.axPivotTable1.Location = new System.Drawing.Point(3, 3);
+            this.axPivotTable1.Name = "axPivotTable1";
+            this.axPivotTable1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axPivotTable1.OcxState")));
+            this.axPivotTable1.Size = new System.Drawing.Size(502, 217);
+            this.axPivotTable1.TabIndex = 0;
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.axChartSpace1);
@@ -88,17 +99,6 @@
             this.axChartSpace1.Size = new System.Drawing.Size(847, 495);
             this.axChartSpace1.TabIndex = 0;
             // 
-            // axPivotTable1
-            // 
-            this.axPivotTable1.DataSource = null;
-            this.axPivotTable1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.axPivotTable1.Enabled = true;
-            this.axPivotTable1.Location = new System.Drawing.Point(3, 3);
-            this.axPivotTable1.Name = "axPivotTable1";
-            this.axPivotTable1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axPivotTable1.OcxState")));
-            this.axPivotTable1.Size = new System.Drawing.Size(502, 217);
-            this.axPivotTable1.TabIndex = 0;
-            // 
             // FrmVisCuboVen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -111,9 +111,9 @@
             this.Shown += new System.EventHandler(this.FrmVisCuboVen_Shown);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.axPivotTable1)).EndInit();
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.axChartSpace1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.axPivotTable1)).EndInit();
             this.ResumeLayout(false);
 
         }
