@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.prgrsBrCarrega = new System.Windows.Forms.ProgressBar();
             this.tbCntrlMining = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -54,9 +54,9 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Descrição = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Key = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Input = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Predictable = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Chave = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Inp = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Pre = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.lblTexto = new System.Windows.Forms.Label();
@@ -118,6 +118,7 @@
             this.txtnomeEstrutura.Name = "txtnomeEstrutura";
             this.txtnomeEstrutura.Size = new System.Drawing.Size(274, 20);
             this.txtnomeEstrutura.TabIndex = 13;
+            this.txtnomeEstrutura.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtnomeEstrutura_KeyPress);
             // 
             // label7
             // 
@@ -253,14 +254,14 @@
             this.dataGridView2.Location = new System.Drawing.Point(3, 16);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.InactiveCaption;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.InactiveCaption;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView2.Size = new System.Drawing.Size(471, 280);
             this.dataGridView2.TabIndex = 1;
             this.dataGridView2.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellValueChanged);
@@ -338,20 +339,20 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Descrição,
-            this.Key,
-            this.Input,
-            this.Predictable});
+            this.Chave,
+            this.Inp,
+            this.Pre});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(3, 16);
             this.dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.InactiveCaption;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.InactiveCaption;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.Size = new System.Drawing.Size(613, 289);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellEnter);
@@ -362,23 +363,21 @@
             this.Descrição.Name = "Descrição";
             this.Descrição.Width = 180;
             // 
-            // Key
+            // Chave
             // 
-            this.Key.HeaderText = "Key";
-            this.Key.Name = "Key";
-            this.Key.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Chave.HeaderText = "Key";
+            this.Chave.Name = "Chave";
             // 
-            // Input
+            // Inp
             // 
-            this.Input.HeaderText = "Input";
-            this.Input.Name = "Input";
-            this.Input.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Inp.HeaderText = "Input";
+            this.Inp.Name = "Inp";
+            this.Inp.Visible = false;
             // 
-            // Predictable
+            // Pre
             // 
-            this.Predictable.HeaderText = "Predictable";
-            this.Predictable.Name = "Predictable";
-            this.Predictable.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Pre.HeaderText = "Predictable";
+            this.Pre.Name = "Pre";
             // 
             // tabPage4
             // 
@@ -434,6 +433,7 @@
             this.ShowIcon = false;
             this.Text = "Gerar Modelo de Data Mining";
             this.Load += new System.EventHandler(this.FrmMinGer_Load);
+            this.Shown += new System.EventHandler(this.FrmMinGer_Shown);
             this.Leave += new System.EventHandler(this.FrmMinGer_Leave);
             this.tbCntrlMining.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -478,14 +478,14 @@
         private System.Windows.Forms.CheckBox chckBxTable;
         private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Descrição;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Key;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Input;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Predictable;
         private System.Windows.Forms.TextBox txtnomeEstrutura;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.RichTextBox richTextBox2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descrição;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Chave;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Inp;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Pre;
 
     }
 }

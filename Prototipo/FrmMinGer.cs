@@ -17,7 +17,7 @@ namespace Comercial
         private string input = "";
         private string predictable = "";
         private string algoritmo = "";
-        
+
         #region geraMIning
 
         public void geraMining()
@@ -243,32 +243,73 @@ FROM [vTargetMail]')
                      */
 
                     String insertInto =
-                        "INSERT INTO " + txtnomeEstrutura.Text + " ("+ campos +")"+
+                        "INSERT INTO " + txtnomeEstrutura.Text + " (" + campos + ")" +
                         " openquery(COMERCIAL,'" + sql + " order by " + key.Remove(key.IndexOf("("), key.Length - key.IndexOf("(")) + "')";
                     cmd.CommandText = insertInto;
                     //cmd.Parameters.Add("t", table);
                     cmd.ExecuteNonQuery();
 
 
+
+
+                    //SALVANDO MODELO GERADO
+
+                    SqlConnection conex = new SqlConnection(ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString);
+                    SqlCommand comand = new SqlCommand();
+                    comand.Connection = conex;
+                    conex.Open();
+
+                    comand.CommandText = "insert into modelo(estrutura,datacriacao,algoritmo) values (@nome,@dt,@algoritmo)";
+                    comand.Parameters.Add(new SqlParameter("@nome", txtnomeEstrutura.Text));
+                    comand.Parameters.Add(new SqlParameter("@dt", DateTime.Now.ToString("yyyy-MM-dd")));
+                    comand.Parameters.Add(new SqlParameter("@algoritmo", cmbBxTipoDataMining.Text));
+
+                    comand.ExecuteNonQuery();
+
+                    conex.Close();
+                    //conex.Dispose();
+
+                    string[] modCampo = campos.Split(',');
+
+           
+                    comand.Dispose();
+                    conex.Open();
+
+                    comand.Connection = conex;
+                    comand.CommandText = "select max(id) from modelo";
+                    SqlDataReader r = comand.ExecuteReader();
+                    r.Read();
+                    int cod = Convert.ToInt32(r[0].ToString());
+
+                    //SALVANDO CAMPO KEY
+                    comand.Dispose();
+                    conex.Close();
+                    conex.Open();
+                    comand.Connection = conex;
+                    comand.CommandText = "insert into modeloCampo(idModelo,campo,tipo) values(@idModelo,@campo,@tipo) ";
+
+                    if (!string.IsNullOrEmpty(key))
+                    {
+                        comand.Parameters.Add(new SqlParameter("@idModelo", cod));
+                        comand.Parameters.Add(new SqlParameter("@campo", modCampo[0]));
+                        comand.Parameters.Add(new SqlParameter("@tipo", "Key"));
+                        comand.ExecuteNonQuery();
+                    }
+
+                    comand.Dispose();
+                    conex.Close();
+                    conex.Open();
+                    comand.Connection = conex;
+                    comand.CommandText = "insert into modeloCampo(idModelo,campo,tipo) values(@idModelox,@campox,@tipox) ";
+
+                    if (!string.IsNullOrEmpty(predictable))
+                    {
+                        comand.Parameters.Add(new SqlParameter("@idModelox", cod));
+                        comand.Parameters.Add(new SqlParameter("@campox", modCampo[1]));
+                        comand.Parameters.Add(new SqlParameter("@tipox", "predictable"));
+                        comand.ExecuteNonQuery();
+                    }
                 }
-
-                //SALVANDO MODELO GERADO
-
-                SqlConnection conex = new SqlConnection(ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString);
-                SqlCommand comand = new SqlCommand();
-                comand.Connection = conex;
-                conex.Open();
-
-                comand.CommandText = "insert into modelo(estrutura,datacriacao,algoritmo) values (@nome,@dt,@algoritmo)";
-                comand.Parameters.Add(new SqlParameter("@nome", txtnomeEstrutura.Text));
-                comand.Parameters.Add(new SqlParameter("@dt", DateTime.Now.ToString("yyyy-MM-dd")));
-                comand.Parameters.Add(new SqlParameter("@algoritmo", cmbBxTipoDataMining.Text));
-
-                comand.ExecuteNonQuery();
-
-                conex.Close();
-                conex.Dispose();
-
             }
             catch (Exception ex)
             {
@@ -278,7 +319,7 @@ FROM [vTargetMail]')
         }
 
         #endregion
-        
+
         public FrmMinGer(FrmPrinc parent)
         {
             InitializeComponent();
@@ -354,6 +395,10 @@ FROM [vTargetMail]')
 
         private void tabPage2_Enter(object sender, EventArgs e)
         {
+            input = "";
+            predictable = "";
+            key = "";
+            tabela = "";
             dataGridView2.Rows.Clear();
 
             string c = ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString;
@@ -552,6 +597,20 @@ FROM [vTargetMail]')
                     "Key: " + key + "\n" +
                     "Input: " + input + "\n" +
                     "Predictable: " + predictable + "\n";
+        }
+
+        private void txtnomeEstrutura_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == ' ')
+            {
+                e.KeyChar = '_';
+            }
+        }
+
+        private void FrmMinGer_Shown(object sender, EventArgs e)
+        {
+            _princ.tlStrpBtnMinGer.Visible = true;
+            _princ.tsbhomeProcesso.Visible = true;
         }
     }
 }
