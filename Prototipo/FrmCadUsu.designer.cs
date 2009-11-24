@@ -396,6 +396,7 @@
             // tableAdapterManager
             // 
             this.tableAdapterManager.ACESSOTableAdapter = null;
+            this.tableAdapterManager.ATUCUBOTableAdapter = null;
             this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
             this.tableAdapterManager.CLIENTETableAdapter = null;
             this.tableAdapterManager.CONDICAOPAGAMENTOTableAdapter = null;
@@ -403,6 +404,8 @@
             this.tableAdapterManager.ICMSTableAdapter = null;
             this.tableAdapterManager.ItemNotaFiscalTableAdapter = null;
             this.tableAdapterManager.ITEMPEDIDOTableAdapter = null;
+            this.tableAdapterManager.modeloCampoTableAdapter = null;
+            this.tableAdapterManager.modeloTableAdapter = null;
             this.tableAdapterManager.MODULOTableAdapter = null;
             this.tableAdapterManager.NOTAFISCALTableAdapter = null;
             this.tableAdapterManager.PEDIDOTableAdapter = null;
@@ -426,6 +429,7 @@
             this.Text = "Controle de usuários";
             this.Load += new System.EventHandler(this.FrmCadUsu_Load);
             this.Shown += new System.EventHandler(this.FrmCadUsu_Shown);
+            this.Leave += new System.EventHandler(this.FrmCadUsu_Leave);
             this.tabPage1.ResumeLayout(false);
             this.grpBxMenu.ResumeLayout(false);
             this.grpBxInfor.ResumeLayout(false);

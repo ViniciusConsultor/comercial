@@ -66,9 +66,12 @@
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.mineraçãoDeDadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gerarModeloToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
             this.consultarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.visualizaçãoDosCubosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cuboDeVendasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
+            this.atualizaCubosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ajudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ajudaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.sobreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -106,9 +109,6 @@
             this.bindingNavigatorMoveLastItem = new System.Windows.Forms.ToolStripButton();
             this.bindingNavigatorSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.BtnPrincipal = new System.Windows.Forms.ToolStripButton();
-            this.atualizaCubosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip1.SuspendLayout();
             this.tlStrpConsulta.SuspendLayout();
             this.tlStrpProcesso.SuspendLayout();
@@ -391,14 +391,19 @@
             // gerarModeloToolStripMenuItem
             // 
             this.gerarModeloToolStripMenuItem.Name = "gerarModeloToolStripMenuItem";
-            this.gerarModeloToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.gerarModeloToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.gerarModeloToolStripMenuItem.Text = "Gerar modelo";
             this.gerarModeloToolStripMenuItem.Click += new System.EventHandler(this.gerarModeloToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(143, 6);
             // 
             // consultarToolStripMenuItem
             // 
             this.consultarToolStripMenuItem.Name = "consultarToolStripMenuItem";
-            this.consultarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.consultarToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.consultarToolStripMenuItem.Text = "Consultar";
             this.consultarToolStripMenuItem.Click += new System.EventHandler(this.consultarToolStripMenuItem_Click);
             // 
@@ -418,6 +423,18 @@
             this.cuboDeVendasToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.cuboDeVendasToolStripMenuItem.Text = "Cubo de vendas";
             this.cuboDeVendasToolStripMenuItem.Click += new System.EventHandler(this.cuboDeVendasToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem5
+            // 
+            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(156, 6);
+            // 
+            // atualizaCubosToolStripMenuItem
+            // 
+            this.atualizaCubosToolStripMenuItem.Name = "atualizaCubosToolStripMenuItem";
+            this.atualizaCubosToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
+            this.atualizaCubosToolStripMenuItem.Text = "Atualiza cubos";
+            this.atualizaCubosToolStripMenuItem.Click += new System.EventHandler(this.atualizaCubosToolStripMenuItem_Click);
             // 
             // ajudaToolStripMenuItem
             // 
@@ -641,7 +658,7 @@
             this.bindingNavigatorMoveLastItem,
             this.bindingNavigatorSeparator2,
             this.BtnPrincipal});
-            this.bindingNavigator1.Location = new System.Drawing.Point(0, 24);
+            this.bindingNavigator1.Location = new System.Drawing.Point(0, 49);
             this.bindingNavigator1.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.bindingNavigator1.MoveLastItem = this.bindingNavigatorMoveLastItem;
             this.bindingNavigator1.MoveNextItem = this.bindingNavigatorMoveNextItem;
@@ -804,31 +821,14 @@
             this.BtnPrincipal.Text = "Voltar para principal";
             this.BtnPrincipal.Click += new System.EventHandler(this.BtnPrincipal_Click);
             // 
-            // atualizaCubosToolStripMenuItem
-            // 
-            this.atualizaCubosToolStripMenuItem.Name = "atualizaCubosToolStripMenuItem";
-            this.atualizaCubosToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
-            this.atualizaCubosToolStripMenuItem.Text = "Atualiza cubos";
-            this.atualizaCubosToolStripMenuItem.Click += new System.EventHandler(this.atualizaCubosToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem4
-            // 
-            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(149, 6);
-            // 
-            // toolStripMenuItem5
-            // 
-            this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(156, 6);
-            // 
             // FrmPrinc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(694, 354);
             this.Controls.Add(this.bindingNavigator1);
-            this.Controls.Add(this.tlStrpProcesso);
             this.Controls.Add(this.tlStrpConsulta);
+            this.Controls.Add(this.tlStrpProcesso);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
@@ -895,7 +895,6 @@
         private System.Windows.Forms.ToolStrip tlStrpConsulta;
         private System.Windows.Forms.ToolStripButton tlStrpBtnConsultar;
         private System.Windows.Forms.ToolStripButton tlStrpBtnImprimir;
-        private System.Windows.Forms.ToolStrip tlStrpProcesso;
         private System.Windows.Forms.ToolStripButton tlStrpBtnGeraNt;
         private System.Windows.Forms.ToolStripButton tlStrpBtnLibPed;
         private System.Windows.Forms.ToolStripButton BtnDevNF;
@@ -933,6 +932,7 @@
         private System.Windows.Forms.ToolStripMenuItem atualizaCubosToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem5;
+        public System.Windows.Forms.ToolStrip tlStrpProcesso;
 
 
 
