@@ -184,7 +184,13 @@ namespace Comercial
 
         private void FrmCadUsu_Shown(object sender, EventArgs e)
         {
-            //princ.btnSalvar.Enabled = true;
+            princ.tsbhomeProcesso.Visible = true;
+        }
+
+        private void FrmCadUsu_Leave(object sender, EventArgs e)
+        {
+            princ.tlStrpProcesso.Visible = false;
+            princ.bindingNavigator1.Visible = true;
         }
     }
 }
