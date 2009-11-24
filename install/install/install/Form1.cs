@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.IO;
-
+using Microsoft.AnalysisServices.AdomdClient;
 
 namespace install
 {
@@ -27,11 +27,11 @@ namespace install
         private void button1_Click(object sender, EventArgs e)
         {
 
-            //Executar script de create no BD
+            //Executar script de create das tabelas no BD
 
             string sqlConnectionString = "Data Source=" + txtServer.Text + ";Initial Catalog=Master;Persist Security Info=True;User ID=" + txtUsu.Text + ";Password=" + txtSenha.Text;
 
-            FileInfo file = new FileInfo("script/create.sql");
+            FileInfo file = new FileInfo("script/create_insert_massa.sql");
             string script = file.OpenText().ReadToEnd();
             SqlConnection conn = new SqlConnection(sqlConnectionString);
 
@@ -42,6 +42,31 @@ namespace install
             conn.Open();
             x.ExecuteNonQuery();
 
+            //  -----------------------------------------------
+
+            //Executar script de create das view's no BD
+
+            FileInfo file1 = new FileInfo("script/script view's.sql");
+            string script1 = file1.OpenText().ReadToEnd();
+            x.Connection = conn;
+            x.CommandText = script1;
+            x.ExecuteNonQuery();
+
+            //------------------------------------------------------
+
+            //Executar script de create dos cubos no BD
+
+            string conexAnalysis = "Provider=MSOLAP.4;Integrated Security=SSPI;Persist Security Info=True;Initial Catalog=COMERCIAL_MART;Data Source="+textBox1.Text;
+            AdomdConnection connAnalysis = new AdomdConnection(conexAnalysis);
+
+            FileInfo file2 = new FileInfo("script/Create_Comercial_mart.xmla");
+            string script2 = file2.OpenText().ReadToEnd();
+
+            AdomdCommand com = new AdomdCommand();
+            com.Connection = connAnalysis;
+            com.CommandText = script2;
+            connAnalysis.Open();
+            com.ExecuteNonQuery();
         }
     }
 }
