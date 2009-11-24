@@ -25,76 +25,107 @@ namespace Comercial
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
-            /* VERIFICAR SE USUARIO E SENHA É VALIDO
-             * 
-             * VERIFICA SE USUARIO ESTA BLOQUEADO
-             * 
-             * VERIFICA SE USUARIO É PRIVILEGIADO, SENAO VERIFICA PERMISSOES.
-             */
+            
+         /*   Configuration conf = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
+            conf.ConnectionStrings.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString = "Outro Valor";
+            conf.Save();
 
-            try
+            */
+
+            Configuration conf = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
+            string con = conf.ConnectionStrings.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString;
+
+            if (con == "Data Source=#local#;Initial Catalog=COMERCIAL;Persist Security Info=True;User ID=comercial;Password=123*abc")
             {
-             string c = ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString;
 
+                FrmConf frmConf = new FrmConf();
+                frmConf.ShowDialog();
+                
+                Configuration conf1 = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
+                conf1.ConnectionStrings.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString =
+                    "Data Source="+frmConf.textBox1.Text+";Initial Catalog=COMERCIAL;Persist Security Info=True;User ID=comercial;Password=123*abc";
+                conf1.Save();
 
-            SqlConnection conn = new SqlConnection(c);
-            conn.Open();
+                Configuration conf2 = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
+                conf2.ConnectionStrings.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString_Analysis"].ConnectionString =
+                    "Provider=MSOLAP.4;Integrated Security=SSPI;Persist Security Info=True;Initial Catalog=COMERCIAL_MART;Data Source="+frmConf.textBox2.Text;
+                conf2.Save();
 
-            SqlCommand cmd = new SqlCommand("select * from usuario where usuario = @usu AND SENHA = @SENHA", conn);
-
-            cmd.Parameters.Add(new SqlParameter("@usu",txtusu.Text));
-            cmd.Parameters.Add(new SqlParameter("@SENHA", txtsenha.Text));
-
-            SqlDataReader reader = cmd.ExecuteReader();
-            reader.Read();
-            int codUsuario = (int) reader.GetValue(0);
-
-            // verifica se é valido
-            if (reader.HasRows)
-            {
-                //Verifica se nao esta bloqueado
-                if(reader["BLOQUEADO"].ToString() == "S")
-                {
-                    MessageBox.Show("Usuário bloqueado, contate o administrador.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else
-                {
-                    //verifica se é privilegiado
-                    FrmPrinc princ = new FrmPrinc();
-                    if(reader["PRIVILEGIADO"].ToString() == "S")
-                    {
-                        
-                        princ.Show();
-                        this.Hide();
-                    }
-                    else
-                    {
-                        // *** ARRUMAR verifica regras ***
-                        //========================================
-                        
-                        princ.Show();
-                        this.Hide();
-                    }
-                    princ.usuarioLogado = codUsuario;
-                }
-               
+                Application.Exit();
             }
             else
             {
-                MessageBox.Show("Usuário ou senha inválido", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-            }
-            }
-            catch (Exception ex)
-            {
-                Validacoes valida = new Validacoes();
-                valida.tratarSystemExceções(ex);
-                
+                /* VERIFICAR SE USUARIO E SENHA É VALIDO
+                 * 
+                 * VERIFICA SE USUARIO ESTA BLOQUEADO
+                 * 
+                 * VERIFICA SE USUARIO É PRIVILEGIADO, SENAO VERIFICA PERMISSOES.
+                 */
+
+                try
+                {
+                    string c = ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString;
+
+
+                    SqlConnection conn = new SqlConnection(c);
+                    conn.Open();
+
+                    SqlCommand cmd = new SqlCommand("select * from usuario where usuario = @usu AND SENHA = @SENHA", conn);
+
+                    cmd.Parameters.Add(new SqlParameter("@usu", txtusu.Text));
+                    cmd.Parameters.Add(new SqlParameter("@SENHA", txtsenha.Text));
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    reader.Read();
+                    int codUsuario = (int)reader.GetValue(0);
+
+                    // verifica se é valido
+                    if (reader.HasRows)
+                    {
+                        //Verifica se nao esta bloqueado
+                        if (reader["BLOQUEADO"].ToString() == "S")
+                        {
+                            MessageBox.Show("Usuário bloqueado, contate o administrador.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            //verifica se é privilegiado
+                            FrmPrinc princ = new FrmPrinc();
+                            if (reader["PRIVILEGIADO"].ToString() == "S")
+                            {
+
+                                princ.Show();
+                                this.Hide();
+                            }
+                            else
+                            {
+                                // *** ARRUMAR verifica regras ***
+                                //========================================
+
+                                princ.Show();
+                                this.Hide();
+                            }
+                            princ.usuarioLogado = codUsuario;
+                        }
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Usuário ou senha inválido", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Validacoes valida = new Validacoes();
+                    valida.tratarSystemExceções(ex);
+
+                }
             }
 
-                   
-               
-            
+
+
         }
     }
 }
