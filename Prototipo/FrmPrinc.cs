@@ -1686,6 +1686,22 @@ namespace Comercial
 
         private void atualizarCuboToolStripMenuItem_Click(object sender, EventArgs e)
         {
+           
+
+        }
+
+
+
+
+
+
+        private void cuboDeVendasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CreateForm(this, typeof(FrmVisCuboVen));
+        }
+
+        private void atualizaCubosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
             int x = 0, y = 0;
 
             // Localiza o formulario
@@ -1708,7 +1724,7 @@ namespace Comercial
                 filho.Show();
 
                 tlStrpProcesso.Visible = true;
-                
+
 
                 tsbCancelarPedido.Visible = false;
 
@@ -1718,17 +1734,6 @@ namespace Comercial
 
                 filho.WindowState = FormWindowState.Maximized;
             }
-
-        }
-
-
-
-
-
-
-        private void cuboDeVendasToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            CreateForm(this, typeof(FrmVisCuboVen));
         }
 
     }

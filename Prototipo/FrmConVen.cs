@@ -50,21 +50,23 @@ namespace Comercial
             }
 
             // pesquisa por situacao pedido
-            if (rdBtnEfetivo.Checked)
+            if (checkBox1.Checked)
             {
-                sql += "and p.situacao = 'E' ";
-            }
+                if (rdBtnEfetivo.Checked)
+                {
+                    sql += "and p.situacao = 'E' ";
+                }
 
-            if (rdBtnPendente.Checked)
-            {
-                sql += "and p.situacao = 'P' ";
-            }
+                if (rdBtnPendente.Checked)
+                {
+                    sql += "and p.situacao = 'P' ";
+                }
 
-            if (rdBtnCancelado.Checked)
-            {
-                sql += "and p.situacao = 'C' ";
+                if (rdBtnCancelado.Checked)
+                {
+                    sql += "and p.situacao = 'C' ";
+                }
             }
-
 
             //Pesquisa por quant.
             if (!string.IsNullOrEmpty(txtQuant.Text))
