@@ -1,0 +1,11 @@
+---------------------------
+Pré-Requisitos:
+---------------------------
+- Windows xp, vista, seven;
+- Sql Server 2008 Services Pack 1;
+- Analysis Services 2008;
+- Integration Services 2008;
+- Framework .Net 3.5;
+- OWC11;
+
+**********************************************
