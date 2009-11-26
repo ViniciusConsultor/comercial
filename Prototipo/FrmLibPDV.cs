@@ -925,7 +925,8 @@ namespace Comercial
             foreach (DataRow s in itens.Rows)
             {
                 ItemNotaFiscalTableAdapter item = new ItemNotaFiscalTableAdapter();
-
+                item.Insert(s["DESCRICAO"].ToString(), Convert.ToInt32(s["QUANTIDADE"]), Convert.ToDouble(s["DESCONTO"]), Convert.ToDouble(s["VALOR"]), Convert.ToDouble(s["IPI"]),
+                            Convert.ToInt32(s["CODPRODUTO"]), s["CODUNIDADEMEDIDA"].ToString(), nrNotaFiscal);
             }
         }
 
