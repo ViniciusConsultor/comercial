@@ -29,20 +29,18 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tbCntrlPedVend = new System.Windows.Forms.TabControl();
             this.tbPgPDV = new System.Windows.Forms.TabPage();
             this.grpBxPedVenda = new System.Windows.Forms.GroupBox();
-            this.txtFrete = new System.Windows.Forms.MaskedTextBox();
             this.pEDIDOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
             this.txtbtnPedido = new System.Windows.Forms.TextBox();
-            this.lblFrete = new System.Windows.Forms.Label();
             this.txtCondPagto = new System.Windows.Forms.TextBox();
             this.txtCodTransportadora = new System.Windows.Forms.TextBox();
             this.txtCodVendedor = new System.Windows.Forms.TextBox();
@@ -79,9 +77,19 @@
             this.lblVlrFrete = new System.Windows.Forms.Label();
             this.lblVlrMercadoria = new System.Windows.Forms.Label();
             this.txtBxDescontos = new System.Windows.Forms.TextBox();
-            this.txtBxVlrMercadoria = new System.Windows.Forms.TextBox();
+            this.txtBxVlrPedido = new System.Windows.Forms.TextBox();
             this.pnlItenped = new System.Windows.Forms.Panel();
             this.dtgrdvItenspven = new System.Windows.Forms.DataGridView();
+            this.pEDIDOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.PEDIDOTableAdapter();
+            this.tableAdapterManager = new Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager();
+            this.nOTAFISCALBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.nOTAFISCALTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.NOTAFISCALTableAdapter();
+            this.lblIPI = new System.Windows.Forms.Label();
+            this.txtIPI = new System.Windows.Forms.TextBox();
+            this.lblICMS = new System.Windows.Forms.Label();
+            this.txtICMS = new System.Windows.Forms.TextBox();
+            this.txtFrete = new System.Windows.Forms.MaskedTextBox();
+            this.lblFrete = new System.Windows.Forms.Label();
             this.ColStatus = new System.Windows.Forms.DataGridViewImageColumn();
             this.ColCheck = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ClmItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -95,10 +103,6 @@
             this.ColTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColVALORFATU = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColStatusItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pEDIDOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.PEDIDOTableAdapter();
-            this.tableAdapterManager = new Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager();
-            this.nOTAFISCALBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.nOTAFISCALTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.NOTAFISCALTableAdapter();
             this.tbCntrlPedVend.SuspendLayout();
             this.tbPgPDV.SuspendLayout();
             this.grpBxPedVenda.SuspendLayout();
@@ -120,7 +124,7 @@
             this.tbCntrlPedVend.Location = new System.Drawing.Point(12, 12);
             this.tbCntrlPedVend.Name = "tbCntrlPedVend";
             this.tbCntrlPedVend.SelectedIndex = 0;
-            this.tbCntrlPedVend.Size = new System.Drawing.Size(885, 545);
+            this.tbCntrlPedVend.Size = new System.Drawing.Size(885, 623);
             this.tbCntrlPedVend.TabIndex = 2001;
             // 
             // tbPgPDV
@@ -134,16 +138,14 @@
             this.tbPgPDV.Location = new System.Drawing.Point(4, 22);
             this.tbPgPDV.Name = "tbPgPDV";
             this.tbPgPDV.Padding = new System.Windows.Forms.Padding(3);
-            this.tbPgPDV.Size = new System.Drawing.Size(877, 519);
+            this.tbPgPDV.Size = new System.Drawing.Size(877, 597);
             this.tbPgPDV.TabIndex = 0;
             this.tbPgPDV.Text = "Pedidos de Vendas";
             this.tbPgPDV.UseVisualStyleBackColor = true;
             // 
             // grpBxPedVenda
             // 
-            this.grpBxPedVenda.Controls.Add(this.txtFrete);
             this.grpBxPedVenda.Controls.Add(this.txtbtnPedido);
-            this.grpBxPedVenda.Controls.Add(this.lblFrete);
             this.grpBxPedVenda.Controls.Add(this.txtCondPagto);
             this.grpBxPedVenda.Controls.Add(this.txtCodTransportadora);
             this.grpBxPedVenda.Controls.Add(this.txtCodVendedor);
@@ -168,26 +170,10 @@
             this.grpBxPedVenda.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.grpBxPedVenda.Location = new System.Drawing.Point(11, 7);
             this.grpBxPedVenda.Name = "grpBxPedVenda";
-            this.grpBxPedVenda.Size = new System.Drawing.Size(858, 130);
+            this.grpBxPedVenda.Size = new System.Drawing.Size(858, 116);
             this.grpBxPedVenda.TabIndex = 102;
             this.grpBxPedVenda.TabStop = false;
             this.grpBxPedVenda.Text = "Pedido Venda";
-            // 
-            // txtFrete
-            // 
-            this.txtFrete.BeepOnError = true;
-            this.txtFrete.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
-            this.txtFrete.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pEDIDOBindingSource, "VALORFRETE", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, null, "C2"));
-            this.txtFrete.Enabled = false;
-            this.txtFrete.InsertKeyMode = System.Windows.Forms.InsertKeyMode.Insert;
-            this.txtFrete.Location = new System.Drawing.Point(451, 77);
-            this.txtFrete.Name = "txtFrete";
-            this.txtFrete.PromptChar = ' ';
-            this.txtFrete.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txtFrete.Size = new System.Drawing.Size(69, 20);
-            this.txtFrete.TabIndex = 121;
-            this.txtFrete.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtFrete.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
             // pEDIDOBindingSource
             // 
@@ -207,23 +193,12 @@
             this.txtbtnPedido.Size = new System.Drawing.Size(84, 20);
             this.txtbtnPedido.TabIndex = 103;
             // 
-            // lblFrete
-            // 
-            this.lblFrete.AutoSize = true;
-            this.lblFrete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFrete.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblFrete.Location = new System.Drawing.Point(449, 62);
-            this.lblFrete.Name = "lblFrete";
-            this.lblFrete.Size = new System.Drawing.Size(64, 13);
-            this.lblFrete.TabIndex = 120;
-            this.lblFrete.Text = "Valor Frete :";
-            // 
             // txtCondPagto
             // 
             this.txtCondPagto.Enabled = false;
             this.txtCondPagto.Location = new System.Drawing.Point(358, 77);
             this.txtCondPagto.Name = "txtCondPagto";
-            this.txtCondPagto.Size = new System.Drawing.Size(83, 20);
+            this.txtCondPagto.Size = new System.Drawing.Size(86, 20);
             this.txtCondPagto.TabIndex = 102;
             // 
             // txtCodTransportadora
@@ -256,9 +231,9 @@
             this.grpTipoPedido.Controls.Add(this.chkNormal);
             this.grpTipoPedido.Enabled = false;
             this.grpTipoPedido.ForeColor = System.Drawing.Color.CadetBlue;
-            this.grpTipoPedido.Location = new System.Drawing.Point(526, 60);
+            this.grpTipoPedido.Location = new System.Drawing.Point(457, 60);
             this.grpTipoPedido.Name = "grpTipoPedido";
-            this.grpTipoPedido.Size = new System.Drawing.Size(108, 50);
+            this.grpTipoPedido.Size = new System.Drawing.Size(177, 39);
             this.grpTipoPedido.TabIndex = 90;
             this.grpTipoPedido.TabStop = false;
             this.grpTipoPedido.Text = "Tipo Pedido";
@@ -266,7 +241,7 @@
             // chkComplemento
             // 
             this.chkComplemento.AutoSize = true;
-            this.chkComplemento.Location = new System.Drawing.Point(7, 31);
+            this.chkComplemento.Location = new System.Drawing.Point(73, 16);
             this.chkComplemento.Name = "chkComplemento";
             this.chkComplemento.Size = new System.Drawing.Size(98, 17);
             this.chkComplemento.TabIndex = 1;
@@ -358,7 +333,7 @@
             this.txtNomeCliente.Enabled = false;
             this.txtNomeCliente.Location = new System.Drawing.Point(233, 36);
             this.txtNomeCliente.Name = "txtNomeCliente";
-            this.txtNomeCliente.Size = new System.Drawing.Size(219, 20);
+            this.txtNomeCliente.Size = new System.Drawing.Size(211, 20);
             this.txtNomeCliente.TabIndex = 82;
             // 
             // lbltpfre
@@ -452,24 +427,30 @@
             this.grpBxItPedVen.ForeColor = System.Drawing.Color.CadetBlue;
             this.grpBxItPedVen.Location = new System.Drawing.Point(11, 129);
             this.grpBxItPedVen.Name = "grpBxItPedVen";
-            this.grpBxItPedVen.Size = new System.Drawing.Size(858, 379);
+            this.grpBxItPedVen.Size = new System.Drawing.Size(858, 462);
             this.grpBxItPedVen.TabIndex = 16;
             this.grpBxItPedVen.TabStop = false;
             this.grpBxItPedVen.Text = "Itens Pedido Venda";
             // 
             // grpBxTotais
             // 
+            this.grpBxTotais.Controls.Add(this.txtFrete);
+            this.grpBxTotais.Controls.Add(this.lblFrete);
+            this.grpBxTotais.Controls.Add(this.lblICMS);
+            this.grpBxTotais.Controls.Add(this.txtICMS);
+            this.grpBxTotais.Controls.Add(this.lblIPI);
+            this.grpBxTotais.Controls.Add(this.txtIPI);
             this.grpBxTotais.Controls.Add(this.txtBxVlrFaturado);
             this.grpBxTotais.Controls.Add(this.grpSituacaoItens);
             this.grpBxTotais.Controls.Add(this.lblDescontos);
             this.grpBxTotais.Controls.Add(this.lblVlrFrete);
             this.grpBxTotais.Controls.Add(this.lblVlrMercadoria);
             this.grpBxTotais.Controls.Add(this.txtBxDescontos);
-            this.grpBxTotais.Controls.Add(this.txtBxVlrMercadoria);
+            this.grpBxTotais.Controls.Add(this.txtBxVlrPedido);
             this.grpBxTotais.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.grpBxTotais.Location = new System.Drawing.Point(10, 260);
             this.grpBxTotais.Name = "grpBxTotais";
-            this.grpBxTotais.Size = new System.Drawing.Size(841, 102);
+            this.grpBxTotais.Size = new System.Drawing.Size(841, 183);
             this.grpBxTotais.TabIndex = 101;
             this.grpBxTotais.TabStop = false;
             this.grpBxTotais.Text = "Totais";
@@ -478,7 +459,7 @@
             // 
             this.txtBxVlrFaturado.Enabled = false;
             this.txtBxVlrFaturado.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBxVlrFaturado.Location = new System.Drawing.Point(752, 15);
+            this.txtBxVlrFaturado.Location = new System.Drawing.Point(752, 19);
             this.txtBxVlrFaturado.Name = "txtBxVlrFaturado";
             this.txtBxVlrFaturado.Size = new System.Drawing.Size(83, 20);
             this.txtBxVlrFaturado.TabIndex = 27;
@@ -565,7 +546,7 @@
             this.lblDescontos.Enabled = false;
             this.lblDescontos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDescontos.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblDescontos.Location = new System.Drawing.Point(674, 48);
+            this.lblDescontos.Location = new System.Drawing.Point(674, 51);
             this.lblDescontos.Name = "lblDescontos";
             this.lblDescontos.Size = new System.Drawing.Size(61, 13);
             this.lblDescontos.TabIndex = 24;
@@ -577,7 +558,7 @@
             this.lblVlrFrete.Enabled = false;
             this.lblVlrFrete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVlrFrete.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblVlrFrete.Location = new System.Drawing.Point(656, 19);
+            this.lblVlrFrete.Location = new System.Drawing.Point(656, 23);
             this.lblVlrFrete.Name = "lblVlrFrete";
             this.lblVlrFrete.Size = new System.Drawing.Size(79, 13);
             this.lblVlrFrete.TabIndex = 23;
@@ -589,29 +570,29 @@
             this.lblVlrMercadoria.Enabled = false;
             this.lblVlrMercadoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVlrMercadoria.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblVlrMercadoria.Location = new System.Drawing.Point(665, 74);
+            this.lblVlrMercadoria.Location = new System.Drawing.Point(638, 154);
             this.lblVlrMercadoria.Name = "lblVlrMercadoria";
-            this.lblVlrMercadoria.Size = new System.Drawing.Size(70, 13);
+            this.lblVlrMercadoria.Size = new System.Drawing.Size(97, 13);
             this.lblVlrMercadoria.TabIndex = 22;
-            this.lblVlrMercadoria.Text = "Valor Pedido:";
+            this.lblVlrMercadoria.Text = "Valor Total Pedido:";
             // 
             // txtBxDescontos
             // 
             this.txtBxDescontos.Enabled = false;
             this.txtBxDescontos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBxDescontos.Location = new System.Drawing.Point(752, 45);
+            this.txtBxDescontos.Location = new System.Drawing.Point(752, 48);
             this.txtBxDescontos.Name = "txtBxDescontos";
             this.txtBxDescontos.Size = new System.Drawing.Size(83, 20);
             this.txtBxDescontos.TabIndex = 21;
             // 
-            // txtBxVlrMercadoria
+            // txtBxVlrPedido
             // 
-            this.txtBxVlrMercadoria.Enabled = false;
-            this.txtBxVlrMercadoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBxVlrMercadoria.Location = new System.Drawing.Point(752, 71);
-            this.txtBxVlrMercadoria.Name = "txtBxVlrMercadoria";
-            this.txtBxVlrMercadoria.Size = new System.Drawing.Size(83, 20);
-            this.txtBxVlrMercadoria.TabIndex = 18;
+            this.txtBxVlrPedido.Enabled = false;
+            this.txtBxVlrPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBxVlrPedido.Location = new System.Drawing.Point(752, 151);
+            this.txtBxVlrPedido.Name = "txtBxVlrPedido";
+            this.txtBxVlrPedido.Size = new System.Drawing.Size(83, 20);
+            this.txtBxVlrPedido.TabIndex = 18;
             // 
             // pnlItenped
             // 
@@ -628,14 +609,14 @@
             this.dtgrdvItenspven.AllowUserToDeleteRows = false;
             this.dtgrdvItenspven.AllowUserToResizeColumns = false;
             this.dtgrdvItenspven.AllowUserToResizeRows = false;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgrdvItenspven.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgrdvItenspven.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dtgrdvItenspven.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgrdvItenspven.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColStatus,
@@ -651,30 +632,138 @@
             this.ColTotal,
             this.ColVALORFATU,
             this.ColStatusItem});
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle17.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.CadetBlue;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dtgrdvItenspven.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.CadetBlue;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dtgrdvItenspven.DefaultCellStyle = dataGridViewCellStyle5;
             this.dtgrdvItenspven.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtgrdvItenspven.GridColor = System.Drawing.Color.WhiteSmoke;
             this.dtgrdvItenspven.Location = new System.Drawing.Point(0, 0);
             this.dtgrdvItenspven.Name = "dtgrdvItenspven";
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dtgrdvItenspven.RowHeadersDefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtgrdvItenspven.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dtgrdvItenspven.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dtgrdvItenspven.Size = new System.Drawing.Size(841, 235);
             this.dtgrdvItenspven.TabIndex = 26;
             this.dtgrdvItenspven.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgrdvItenspven_CellValueChanged);
+            // 
+            // pEDIDOTableAdapter
+            // 
+            this.pEDIDOTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.ACESSOTableAdapter = null;
+            this.tableAdapterManager.ATUCUBOTableAdapter = null;
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.CLIENTETableAdapter = null;
+            this.tableAdapterManager.CONDICAOPAGAMENTOTableAdapter = null;
+            this.tableAdapterManager.GRUPOPRODUTOTableAdapter = null;
+            this.tableAdapterManager.ICMSTableAdapter = null;
+            this.tableAdapterManager.ItemNotaFiscalTableAdapter = null;
+            this.tableAdapterManager.ITEMPEDIDOTableAdapter = null;
+            this.tableAdapterManager.modeloCampoTableAdapter = null;
+            this.tableAdapterManager.modeloTableAdapter = null;
+            this.tableAdapterManager.MODULOTableAdapter = null;
+            this.tableAdapterManager.NOTAFISCALTableAdapter = null;
+            this.tableAdapterManager.PEDIDOTableAdapter = this.pEDIDOTableAdapter;
+            this.tableAdapterManager.PRODUTOTableAdapter = null;
+            this.tableAdapterManager.REGIAOTableAdapter = null;
+            this.tableAdapterManager.TRANSPORTADORATableAdapter = null;
+            this.tableAdapterManager.TRANSPORTADORAVIATableAdapter = null;
+            this.tableAdapterManager.UNIDADEMEDIDATableAdapter = null;
+            this.tableAdapterManager.UpdateOrder = Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.USUARIOTableAdapter = null;
+            this.tableAdapterManager.VENDEDORTableAdapter = null;
+            this.tableAdapterManager.VIATRANSPORTETableAdapter = null;
+            // 
+            // nOTAFISCALBindingSource
+            // 
+            this.nOTAFISCALBindingSource.DataMember = "NOTAFISCAL";
+            this.nOTAFISCALBindingSource.DataSource = this.cOMERCIALDataSet;
+            // 
+            // nOTAFISCALTableAdapter
+            // 
+            this.nOTAFISCALTableAdapter.ClearBeforeFill = true;
+            // 
+            // lblIPI
+            // 
+            this.lblIPI.AutoSize = true;
+            this.lblIPI.Enabled = false;
+            this.lblIPI.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIPI.ForeColor = System.Drawing.Color.CadetBlue;
+            this.lblIPI.Location = new System.Drawing.Point(712, 76);
+            this.lblIPI.Name = "lblIPI";
+            this.lblIPI.Size = new System.Drawing.Size(23, 13);
+            this.lblIPI.TabIndex = 29;
+            this.lblIPI.Text = "IPI:";
+            // 
+            // txtIPI
+            // 
+            this.txtIPI.Enabled = false;
+            this.txtIPI.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIPI.Location = new System.Drawing.Point(752, 73);
+            this.txtIPI.Name = "txtIPI";
+            this.txtIPI.Size = new System.Drawing.Size(83, 20);
+            this.txtIPI.TabIndex = 28;
+            // 
+            // lblICMS
+            // 
+            this.lblICMS.AutoSize = true;
+            this.lblICMS.Enabled = false;
+            this.lblICMS.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblICMS.ForeColor = System.Drawing.Color.CadetBlue;
+            this.lblICMS.Location = new System.Drawing.Point(699, 102);
+            this.lblICMS.Name = "lblICMS";
+            this.lblICMS.Size = new System.Drawing.Size(36, 13);
+            this.lblICMS.TabIndex = 31;
+            this.lblICMS.Text = "ICMS:";
+            // 
+            // txtICMS
+            // 
+            this.txtICMS.Enabled = false;
+            this.txtICMS.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtICMS.Location = new System.Drawing.Point(752, 99);
+            this.txtICMS.Name = "txtICMS";
+            this.txtICMS.Size = new System.Drawing.Size(83, 20);
+            this.txtICMS.TabIndex = 30;
+            // 
+            // txtFrete
+            // 
+            this.txtFrete.BeepOnError = true;
+            this.txtFrete.CutCopyMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            this.txtFrete.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.pEDIDOBindingSource, "VALORFRETE", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, null, "C2"));
+            this.txtFrete.Enabled = false;
+            this.txtFrete.InsertKeyMode = System.Windows.Forms.InsertKeyMode.Insert;
+            this.txtFrete.Location = new System.Drawing.Point(752, 125);
+            this.txtFrete.Name = "txtFrete";
+            this.txtFrete.PromptChar = ' ';
+            this.txtFrete.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txtFrete.Size = new System.Drawing.Size(83, 20);
+            this.txtFrete.TabIndex = 123;
+            this.txtFrete.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtFrete.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            // 
+            // lblFrete
+            // 
+            this.lblFrete.AutoSize = true;
+            this.lblFrete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFrete.ForeColor = System.Drawing.Color.CadetBlue;
+            this.lblFrete.Location = new System.Drawing.Point(671, 128);
+            this.lblFrete.Name = "lblFrete";
+            this.lblFrete.Size = new System.Drawing.Size(61, 13);
+            this.lblFrete.TabIndex = 122;
+            this.lblFrete.Text = "Valor Frete:";
             // 
             // ColStatus
             // 
@@ -737,9 +826,9 @@
             // ClmPrcUnit
             // 
             this.ClmPrcUnit.DataPropertyName = "VALOR";
-            dataGridViewCellStyle14.Format = "C2";
-            dataGridViewCellStyle14.NullValue = null;
-            this.ClmPrcUnit.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle2.Format = "C2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.ClmPrcUnit.DefaultCellStyle = dataGridViewCellStyle2;
             this.ClmPrcUnit.HeaderText = "Preço Unitário";
             this.ClmPrcUnit.Name = "ClmPrcUnit";
             this.ClmPrcUnit.ReadOnly = true;
@@ -752,7 +841,6 @@
             this.ClmIPI.Name = "ClmIPI";
             this.ClmIPI.ReadOnly = true;
             this.ClmIPI.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ClmIPI.Visible = false;
             // 
             // ColDesconto
             // 
@@ -765,9 +853,9 @@
             // ColTotal
             // 
             this.ColTotal.DataPropertyName = "VALORTOTAL";
-            dataGridViewCellStyle15.Format = "C2";
-            dataGridViewCellStyle15.NullValue = null;
-            this.ColTotal.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle3.Format = "C2";
+            dataGridViewCellStyle3.NullValue = null;
+            this.ColTotal.DefaultCellStyle = dataGridViewCellStyle3;
             this.ColTotal.HeaderText = "Valor Total";
             this.ColTotal.Name = "ColTotal";
             this.ColTotal.ReadOnly = true;
@@ -776,8 +864,8 @@
             // ColVALORFATU
             // 
             this.ColVALORFATU.DataPropertyName = "VALORFATU";
-            dataGridViewCellStyle16.Format = "C2";
-            this.ColVALORFATU.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle4.Format = "C2";
+            this.ColVALORFATU.DefaultCellStyle = dataGridViewCellStyle4;
             this.ColVALORFATU.HeaderText = "Valor Faturado";
             this.ColVALORFATU.Name = "ColVALORFATU";
             this.ColVALORFATU.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
@@ -792,50 +880,11 @@
             this.ColStatusItem.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.ColStatusItem.Visible = false;
             // 
-            // pEDIDOTableAdapter
-            // 
-            this.pEDIDOTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.ACESSOTableAdapter = null;
-            this.tableAdapterManager.ATUCUBOTableAdapter = null;
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.CLIENTETableAdapter = null;
-            this.tableAdapterManager.CONDICAOPAGAMENTOTableAdapter = null;
-            this.tableAdapterManager.GRUPOPRODUTOTableAdapter = null;
-            this.tableAdapterManager.ICMSTableAdapter = null;
-            this.tableAdapterManager.ItemNotaFiscalTableAdapter = null;
-            this.tableAdapterManager.ITEMPEDIDOTableAdapter = null;
-            this.tableAdapterManager.modeloCampoTableAdapter = null;
-            this.tableAdapterManager.modeloTableAdapter = null;
-            this.tableAdapterManager.MODULOTableAdapter = null;
-            this.tableAdapterManager.NOTAFISCALTableAdapter = null;
-            this.tableAdapterManager.PEDIDOTableAdapter = this.pEDIDOTableAdapter;
-            this.tableAdapterManager.PRODUTOTableAdapter = null;
-            this.tableAdapterManager.REGIAOTableAdapter = null;
-            this.tableAdapterManager.TRANSPORTADORATableAdapter = null;
-            this.tableAdapterManager.TRANSPORTADORAVIATableAdapter = null;
-            this.tableAdapterManager.UNIDADEMEDIDATableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            this.tableAdapterManager.USUARIOTableAdapter = null;
-            this.tableAdapterManager.VENDEDORTableAdapter = null;
-            this.tableAdapterManager.VIATRANSPORTETableAdapter = null;
-            // 
-            // nOTAFISCALBindingSource
-            // 
-            this.nOTAFISCALBindingSource.DataMember = "NOTAFISCAL";
-            this.nOTAFISCALBindingSource.DataSource = this.cOMERCIALDataSet;
-            // 
-            // nOTAFISCALTableAdapter
-            // 
-            this.nOTAFISCALTableAdapter.ClearBeforeFill = true;
-            // 
             // FrmLibPDV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(905, 567);
+            this.ClientSize = new System.Drawing.Size(905, 639);
             this.Controls.Add(this.tbCntrlPedVend);
             this.Name = "FrmLibPDV";
             this.Text = "Liberação de Pedido";
@@ -907,8 +956,16 @@
         private System.Windows.Forms.Label lblPendente;
         private System.Windows.Forms.Label lblCancelado;
         private System.Windows.Forms.Label lblEfetivado;
-        public System.Windows.Forms.TextBox txtBxVlrMercadoria;
+        public System.Windows.Forms.TextBox txtBxVlrPedido;
         public System.Windows.Forms.TextBox txtBxVlrFaturado;
+        private System.Windows.Forms.BindingSource nOTAFISCALBindingSource;
+        private Comercial.COMERCIALDataSetTableAdapters.NOTAFISCALTableAdapter nOTAFISCALTableAdapter;
+        private System.Windows.Forms.Label lblICMS;
+        private System.Windows.Forms.TextBox txtICMS;
+        private System.Windows.Forms.Label lblIPI;
+        private System.Windows.Forms.TextBox txtIPI;
+        public System.Windows.Forms.MaskedTextBox txtFrete;
+        private System.Windows.Forms.Label lblFrete;
         private System.Windows.Forms.DataGridViewImageColumn ColStatus;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ColCheck;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmItem;
@@ -922,10 +979,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColTotal;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColVALORFATU;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColStatusItem;
-        public System.Windows.Forms.MaskedTextBox txtFrete;
-        private System.Windows.Forms.Label lblFrete;
-        private System.Windows.Forms.BindingSource nOTAFISCALBindingSource;
-        private Comercial.COMERCIALDataSetTableAdapters.NOTAFISCALTableAdapter nOTAFISCALTableAdapter;
 
     }
 }
