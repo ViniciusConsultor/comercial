@@ -602,6 +602,12 @@ FROM [vTargetMail]')
 
         private void tabPage4_Enter(object sender, EventArgs e)
         {
+            if (key == predictable)
+            {
+                MessageBox.Show("Campo key igual predictable.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                tbCntrlMining.SelectedTab = tabPage3;
+            }
+
             foreach (DataGridViewRow d in dataGridView1.Rows)
             {
                 if (Convert.ToBoolean(d.Cells[2].Value) == true)
