@@ -1633,24 +1633,6 @@ namespace Comercial
 
         private void BtnDevNF_Click(object sender, EventArgs e)
         {
-            Form frm = this.ActiveMdiChild;
-            if (frm == null)
-                return;
-
-            try
-            {
-                if (frm is FrmDevNotaFiscal)
-                {
-                    FrmDevNotaFiscal frmDevNF = (FrmDevNotaFiscal)frm;
-                    frmDevNF.DevolverNF();
-                }
-
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
 
         }
 
@@ -1733,6 +1715,29 @@ namespace Comercial
                 bindingNavigator1.Visible = false;
 
                 filho.WindowState = FormWindowState.Maximized;
+            }
+        }
+
+        private void BtnDevNF_Click_1(object sender, EventArgs e)
+        {
+
+            Form frm = this.ActiveMdiChild;
+            if (frm == null)
+                return;
+
+            try
+            {
+                if (frm is FrmDevNotaFiscal)
+                {
+                    FrmDevNotaFiscal frmDevNF = (FrmDevNotaFiscal)frm;
+                    frmDevNF.DevolverNF();
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
             }
         }
 
