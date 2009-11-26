@@ -154,11 +154,10 @@
             // 
             // cmbBxTipoDataMining
             // 
+            this.cmbBxTipoDataMining.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbBxTipoDataMining.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbBxTipoDataMining.FormattingEnabled = true;
             this.cmbBxTipoDataMining.Items.AddRange(new object[] {
-            "Árvore de decisão",
-            "Agrupamento",
             "MTS (Microsoft Time Serial)"});
             this.cmbBxTipoDataMining.Location = new System.Drawing.Point(19, 32);
             this.cmbBxTipoDataMining.Name = "cmbBxTipoDataMining";

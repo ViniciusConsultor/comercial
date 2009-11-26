@@ -26,14 +26,6 @@ namespace Comercial
             {
                 // valida os dados...
 
-                if (string.IsNullOrEmpty(txtnomeEstrutura.Text))
-                {
-                    MessageBox.Show("Nome da estrutura inválida.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    tbCntrlMining.SelectedTab = tabPage1;
-                    txtnomeEstrutura.Focus();
-                    return;
-                }
-
                 if (string.IsNullOrEmpty(cmbBxTipoDataMining.Text))
                 {
                     MessageBox.Show("Tipo da estrutura não selecionado.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -41,6 +33,14 @@ namespace Comercial
                     cmbBxTipoDataMining.Focus();
                     return;
                 }
+
+                if (string.IsNullOrEmpty(txtnomeEstrutura.Text))
+                {
+                    MessageBox.Show("Nome da estrutura inválida.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    tbCntrlMining.SelectedTab = tabPage1;
+                    txtnomeEstrutura.Focus();
+                    return;
+                }               
 
                 if (string.IsNullOrEmpty(tabela))
                 {
@@ -53,6 +53,14 @@ namespace Comercial
                 if (string.IsNullOrEmpty(key))
                 {
                     MessageBox.Show("Campo chave obrigatório.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    tbCntrlMining.SelectedTab = tabPage3;
+                    // dataGridView2.Focus();
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(predictable))
+                {
+                    MessageBox.Show("Campo predictable obrigatório.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     tbCntrlMining.SelectedTab = tabPage3;
                     // dataGridView2.Focus();
                     return;
@@ -309,7 +317,8 @@ FROM [vTargetMail]')
                         comand.Parameters.Add(new SqlParameter("@tipox", "predictable"));
                         comand.ExecuteNonQuery();
                     }
-                }
+                }                              
+
             }
             catch (Exception ex)
             {
@@ -337,6 +346,7 @@ FROM [vTargetMail]')
             if (prgrsBrCarrega.Value == 100)
             {
                 tmrTempo.Enabled = false;
+                MessageBox.Show("Processo executado com sucesso", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
@@ -571,6 +581,22 @@ FROM [vTargetMail]')
                 //dv.Cells[1].Value = true;
                 key = (string)dv.Cells[0].Value;
             }
+
+            if (e.ColumnIndex == 3)
+            {
+
+                foreach (DataGridViewRow d in dataGridView1.Rows)
+                {
+                    if (d != dv)
+                    {
+                        d.Cells[3].Value = false;
+                    }
+                }
+
+                //dv.Cells[1].Value = true;
+                predictable = (string)dv.Cells[0].Value;
+            }
+
 
         }
 
