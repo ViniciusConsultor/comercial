@@ -173,7 +173,6 @@ namespace Comercial
                txtTipoNF.Text = String.Empty;
                dtTmPckrDtEmissao.Text = String.Empty;
                txtBxVlrMercadoria.Text = String.Empty;
-               txtStatus.Text = String.Empty;
                txtNrPedido.Text = String.Empty;
                dtGrdVwItensNF.Refresh();
                dttRetorno.Clear();                                         
@@ -240,8 +239,8 @@ namespace Comercial
                    //Atualiza Status do Pedido para "P"
                    atualizaStatusPedido("P", Convert.ToInt32(txtNrPedido.Text));
 
-                   //Atualiza Status da NF para "D"
-                   atualizaStatusNF("D", Convert.ToInt32(txtNumNF.getText));
+                   //Atualiza Tipo da NF para "E"
+                   atualizaStatusNF("E", Convert.ToInt32(txtNumNF.getText));
 
                    //mensagem de NF devolvida
                    MessageBox.Show("Nota Fiscal Devolvida Com Sucesso.", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -353,11 +352,11 @@ namespace Comercial
 
            StringBuilder sqlcommand = new StringBuilder();
 
-           sqlcommand.Append(" UPDATE NOTAFISCAL SET STATUS = @STATUS WHERE NRNOTAFISCAL = @NRNOTAFISCAL ");
+           sqlcommand.Append(" UPDATE NOTAFISCAL SET TIPO = @TIPO WHERE NRNOTAFISCAL = @NRNOTAFISCAL ");
 
            DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
 
-           db.AddInParameter(dbComd, "@STATUS", DbType.String, Status);
+           db.AddInParameter(dbComd, "@TIPO", DbType.String, Status);
            db.AddInParameter(dbComd, "@NRNOTAFISCAL", DbType.Int32,NrNotaFiscal);
 
 
