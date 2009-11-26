@@ -9350,6 +9350,18 @@ namespace Comercial {
             
             private global::System.Data.DataColumn columnCodTransportadora;
             
+            private global::System.Data.DataColumn columnDescricaoTransp;
+            
+            private global::System.Data.DataColumn columnUfTrans;
+            
+            private global::System.Data.DataColumn columnCnpjTrans;
+            
+            private global::System.Data.DataColumn columnEnderecoTrans;
+            
+            private global::System.Data.DataColumn columnMunicipioTrans;
+            
+            private global::System.Data.DataColumn columnIeTrans;
+            
             private global::System.Data.DataColumn columnNrPedido;
             
             private global::System.Data.DataColumn columnDescricao;
@@ -9509,6 +9521,48 @@ namespace Comercial {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn DescricaoTranspColumn {
+                get {
+                    return this.columnDescricaoTransp;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn UfTransColumn {
+                get {
+                    return this.columnUfTrans;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn CnpjTransColumn {
+                get {
+                    return this.columnCnpjTrans;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn EnderecoTransColumn {
+                get {
+                    return this.columnEnderecoTrans;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn MunicipioTransColumn {
+                get {
+                    return this.columnMunicipioTrans;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn IeTransColumn {
+                get {
+                    return this.columnIeTrans;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public global::System.Data.DataColumn NrPedidoColumn {
                 get {
                     return this.columnNrPedido;
@@ -9608,8 +9662,14 @@ namespace Comercial {
                         string CNPJ, 
                         string TipoFrete, 
                         double ValorFrete, 
-                        int CodVendedor, 
-                        int CodTransportadora, 
+                        string CodVendedor, 
+                        string CodTransportadora, 
+                        string DescricaoTransp, 
+                        string UfTrans, 
+                        string CnpjTrans, 
+                        string EnderecoTrans, 
+                        string MunicipioTrans, 
+                        string IeTrans, 
                         int NrPedido, 
                         string Descricao, 
                         int Quantidade, 
@@ -9636,6 +9696,12 @@ namespace Comercial {
                         ValorFrete,
                         CodVendedor,
                         CodTransportadora,
+                        DescricaoTransp,
+                        UfTrans,
+                        CnpjTrans,
+                        EnderecoTrans,
+                        MunicipioTrans,
+                        IeTrans,
                         NrPedido,
                         Descricao,
                         Quantidade,
@@ -9679,6 +9745,12 @@ namespace Comercial {
                 this.columnValorFrete = base.Columns["ValorFrete"];
                 this.columnCodVendedor = base.Columns["CodVendedor"];
                 this.columnCodTransportadora = base.Columns["CodTransportadora"];
+                this.columnDescricaoTransp = base.Columns["DescricaoTransp"];
+                this.columnUfTrans = base.Columns["UfTrans"];
+                this.columnCnpjTrans = base.Columns["CnpjTrans"];
+                this.columnEnderecoTrans = base.Columns["EnderecoTrans"];
+                this.columnMunicipioTrans = base.Columns["MunicipioTrans"];
+                this.columnIeTrans = base.Columns["IeTrans"];
                 this.columnNrPedido = base.Columns["NrPedido"];
                 this.columnDescricao = base.Columns["Descricao"];
                 this.columnQuantidade = base.Columns["Quantidade"];
@@ -9719,10 +9791,22 @@ namespace Comercial {
                 base.Columns.Add(this.columnTipoFrete);
                 this.columnValorFrete = new global::System.Data.DataColumn("ValorFrete", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnValorFrete);
-                this.columnCodVendedor = new global::System.Data.DataColumn("CodVendedor", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnCodVendedor = new global::System.Data.DataColumn("CodVendedor", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCodVendedor);
-                this.columnCodTransportadora = new global::System.Data.DataColumn("CodTransportadora", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnCodTransportadora = new global::System.Data.DataColumn("CodTransportadora", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCodTransportadora);
+                this.columnDescricaoTransp = new global::System.Data.DataColumn("DescricaoTransp", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDescricaoTransp);
+                this.columnUfTrans = new global::System.Data.DataColumn("UfTrans", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUfTrans);
+                this.columnCnpjTrans = new global::System.Data.DataColumn("CnpjTrans", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCnpjTrans);
+                this.columnEnderecoTrans = new global::System.Data.DataColumn("EnderecoTrans", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEnderecoTrans);
+                this.columnMunicipioTrans = new global::System.Data.DataColumn("MunicipioTrans", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMunicipioTrans);
+                this.columnIeTrans = new global::System.Data.DataColumn("IeTrans", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIeTrans);
                 this.columnNrPedido = new global::System.Data.DataColumn("NrPedido", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNrPedido);
                 this.columnDescricao = new global::System.Data.DataColumn("Descricao", typeof(string), null, global::System.Data.MappingType.Element);
@@ -14171,10 +14255,10 @@ namespace Comercial {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public int CodVendedor {
+            public string CodVendedor {
                 get {
                     try {
-                        return ((int)(this[this.tableRelNotaFiscal.CodVendedorColumn]));
+                        return ((string)(this[this.tableRelNotaFiscal.CodVendedorColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'CodVendedor\' in table \'RelNotaFiscal\' is DBNull.", e);
@@ -14186,10 +14270,10 @@ namespace Comercial {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public int CodTransportadora {
+            public string CodTransportadora {
                 get {
                     try {
-                        return ((int)(this[this.tableRelNotaFiscal.CodTransportadoraColumn]));
+                        return ((string)(this[this.tableRelNotaFiscal.CodTransportadoraColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'CodTransportadora\' in table \'RelNotaFiscal\' is DBNull.", e);
@@ -14197,6 +14281,96 @@ namespace Comercial {
                 }
                 set {
                     this[this.tableRelNotaFiscal.CodTransportadoraColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string DescricaoTransp {
+                get {
+                    try {
+                        return ((string)(this[this.tableRelNotaFiscal.DescricaoTranspColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DescricaoTransp\' in table \'RelNotaFiscal\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRelNotaFiscal.DescricaoTranspColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string UfTrans {
+                get {
+                    try {
+                        return ((string)(this[this.tableRelNotaFiscal.UfTransColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'UfTrans\' in table \'RelNotaFiscal\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRelNotaFiscal.UfTransColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string CnpjTrans {
+                get {
+                    try {
+                        return ((string)(this[this.tableRelNotaFiscal.CnpjTransColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CnpjTrans\' in table \'RelNotaFiscal\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRelNotaFiscal.CnpjTransColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string EnderecoTrans {
+                get {
+                    try {
+                        return ((string)(this[this.tableRelNotaFiscal.EnderecoTransColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'EnderecoTrans\' in table \'RelNotaFiscal\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRelNotaFiscal.EnderecoTransColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string MunicipioTrans {
+                get {
+                    try {
+                        return ((string)(this[this.tableRelNotaFiscal.MunicipioTransColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'MunicipioTrans\' in table \'RelNotaFiscal\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRelNotaFiscal.MunicipioTransColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string IeTrans {
+                get {
+                    try {
+                        return ((string)(this[this.tableRelNotaFiscal.IeTransColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'IeTrans\' in table \'RelNotaFiscal\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRelNotaFiscal.IeTransColumn] = value;
                 }
             }
             
@@ -14478,6 +14652,66 @@ namespace Comercial {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void SetCodTransportadoraNull() {
                 this[this.tableRelNotaFiscal.CodTransportadoraColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsDescricaoTranspNull() {
+                return this.IsNull(this.tableRelNotaFiscal.DescricaoTranspColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetDescricaoTranspNull() {
+                this[this.tableRelNotaFiscal.DescricaoTranspColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsUfTransNull() {
+                return this.IsNull(this.tableRelNotaFiscal.UfTransColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetUfTransNull() {
+                this[this.tableRelNotaFiscal.UfTransColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsCnpjTransNull() {
+                return this.IsNull(this.tableRelNotaFiscal.CnpjTransColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetCnpjTransNull() {
+                this[this.tableRelNotaFiscal.CnpjTransColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsEnderecoTransNull() {
+                return this.IsNull(this.tableRelNotaFiscal.EnderecoTransColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetEnderecoTransNull() {
+                this[this.tableRelNotaFiscal.EnderecoTransColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsMunicipioTransNull() {
+                return this.IsNull(this.tableRelNotaFiscal.MunicipioTransColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetMunicipioTransNull() {
+                this[this.tableRelNotaFiscal.MunicipioTransColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsIeTransNull() {
+                return this.IsNull(this.tableRelNotaFiscal.IeTransColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetIeTransNull() {
+                this[this.tableRelNotaFiscal.IeTransColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

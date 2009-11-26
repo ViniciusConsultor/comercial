@@ -203,7 +203,7 @@ namespace Comercial
                     FrmLibPDV x = (FrmLibPDV)_pdv;
 
                     //Instancio o Relatorio
-                    RptConProd objRptConProd = new RptConProd();
+                    RptConNF objRptConNF = new RptConNF();
 
                     //Instancio o Dataset
                     COMERCIALDataSet oDataset = new COMERCIALDataSet();
@@ -215,19 +215,20 @@ namespace Comercial
                     //Abro a conexão
                     sqlcon.Open();
 
-                    //Recebo a String SQL feita na tela de consulta
-                    string StringConnection = x.getNota();
 
-                    SqlDataAdapter dtAdapter = new SqlDataAdapter(StringConnection, sqlcon);
+                    string sql = string.Format("SELECT nf.*, itnf.*,tra.NOME as DescricaoTransp, tra.UF as UfTrans, tra.CNPJ as CnpjTrans, tra.ENDERECO as EnderecoTrans, tra.MUNICIPIO as MunicipioTrans, tra.IE as IeTrans FROM NOTAFISCAL nf INNER JOIN ItemNotaFiscal itnf ON nf.NrNotaFiscal = itnf.NrNotaFiscal INNER JOIN TRANSPORTADORA tra ON nf.CodTransportadora = tra.CNPJ WHERE nf.NrPedido = {0}", x.txtbtnPedido.Text);
+
+
+                    SqlDataAdapter dtAdapter = new SqlDataAdapter(sql, sqlcon);
 
                     //Localiso o datateble criado no dataset
-                    dtAdapter.Fill(oDataset, "RelProduto");
+                    dtAdapter.Fill(oDataset, "RelNotaFiscal");
 
-                    objRptConProd.SetDataSource(oDataset);
+                    objRptConNF.SetDataSource(oDataset);
 
                     //atribiu o resultado ao CristalReportView            
                     crstlRprtVwrRel.DisplayGroupTree = false;
-                    crstlRprtVwrRel.ReportSource = objRptConProd;
+                    crstlRprtVwrRel.ReportSource = objRptConNF;
                 }
             }
             catch (Exception ex)
