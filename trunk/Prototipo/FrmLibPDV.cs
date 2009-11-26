@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Comercial.COMERCIALDataSetTableAdapters;
@@ -227,10 +223,6 @@ namespace Comercial
             dtsDados = db.ExecuteDataSet(dbComd);
 
             return dtsDados.Tables[0];
-
-
-
-
         }
         #endregion
 
@@ -255,10 +247,6 @@ namespace Comercial
             dtsDados = db.ExecuteDataSet(dbComd);
 
             return dtsDados.Tables[0];
-
-
-
-
         }
         #endregion
 
@@ -283,10 +271,6 @@ namespace Comercial
             dtsDados = db.ExecuteDataSet(dbComd);
 
             return dtsDados.Tables[0];
-
-
-
-
         }
         #endregion
 
@@ -414,8 +398,6 @@ namespace Comercial
 
 
             db.ExecuteScalar(dbComd);
-
-
         }
         #endregion
 
@@ -468,12 +450,8 @@ namespace Comercial
 
                 if ((ValorFaturar > ValorLimite))
                 {
-
                     throw new Exception("ValidaLimite");
-
                 }
-
-
             }
             catch (Exception ex)
             {
@@ -507,19 +485,13 @@ namespace Comercial
                         throw new Exception("ValidaQtdeLiberada");
 
                     }
-
-
                 }
-
             }
             catch (Exception ex)
             {
-
                 Validacoes valida = new Validacoes();
                 valida.tratarSystemExceções(ex);
             }
-
-
         }
         #endregion
 
@@ -554,8 +526,6 @@ namespace Comercial
                         dtgrdvItenspven.Rows[i].Cells["ColStatus"].Value = Comercial.Properties.Resources.BolaVermelho;
                     }
                 }
-
-
             }
             catch (Exception ex)
             {
@@ -625,12 +595,8 @@ namespace Comercial
 
                     if (Convert.ToInt32(item.Cells["ClmQtdeLib"].Value) < 0)
                     {
-
                         throw new Exception("QuantidadeNegativa");
-
                     }
-
-
                 }
                 #endregion
 
@@ -659,8 +625,6 @@ namespace Comercial
                     {
                         teste += 1;
                     }
-
-
                 }
 
                 //se o contador for = a qtde iten liberado dá a mensagem que o pedido já foi efetivado
@@ -677,24 +641,15 @@ namespace Comercial
                                                           MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (dr == DialogResult.Yes)
                         {
-                            //if (!todosItensLiberados())
-                            //{
-                            //    MessageBox.Show("Existem itens pendentes. \nNão foi possivel a emissão da nota!", "Aviso", MessageBoxButtons.OK,
-                            //            MessageBoxIcon.Exclamation);
-                            //}
-                            //else
-                            //{
-                                emitirNotaFiscal();
-                                FrmRelGeral filho = new FrmRelGeral("FrmEmiNF", null, null);
-                                filho.Show();
-                            //}
+                           emitirNotaFiscal();
+                           FrmRelGeral filho = new FrmRelGeral("FrmEmiNF", null, null);
+                           filho.Show();
                         }
                     }
                 }
                 //se não continuo a liberação dos itens pendentes
                 else
                 {
-
                     //For para verificar os itens liberados, pego os itens checkado e que a quantidade liberada seja menor que a quantidade solicitada
                     for (int i = 0; i < dtgrdvItenspven.RowCount; i++)
                     {
@@ -763,17 +718,13 @@ namespace Comercial
 
                     //Limpo os controles da tela, preparando para uma nova liberação 
                     limparcampos();
-
                 }
-
-
             }
             catch (Exception ex)
             {
                 Validacoes valida = new Validacoes();
                 valida.tratarSystemExceções(ex);
             }
-
         }
         #endregion
 
