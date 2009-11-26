@@ -75,6 +75,8 @@ namespace Comercial {
         
         private RelProdutoDataTable tableRelProduto;
         
+        private RelNotaFiscalDataTable tableRelNotaFiscal;
+        
         private global::System.Data.DataRelation relationFK_ACESSO_MODULO;
         
         private global::System.Data.DataRelation relationFK_ACESSO_USUARIO;
@@ -213,6 +215,9 @@ namespace Comercial {
                 }
                 if ((ds.Tables["RelProduto"] != null)) {
                     base.Tables.Add(new RelProdutoDataTable(ds.Tables["RelProduto"]));
+                }
+                if ((ds.Tables["RelNotaFiscal"] != null)) {
+                    base.Tables.Add(new RelNotaFiscalDataTable(ds.Tables["RelNotaFiscal"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -458,6 +463,15 @@ namespace Comercial {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public RelNotaFiscalDataTable RelNotaFiscal {
+            get {
+                return this.tableRelNotaFiscal;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.BrowsableAttribute(true)]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public override global::System.Data.SchemaSerializationMode SchemaSerializationMode {
@@ -590,6 +604,9 @@ namespace Comercial {
                 }
                 if ((ds.Tables["RelProduto"] != null)) {
                     base.Tables.Add(new RelProdutoDataTable(ds.Tables["RelProduto"]));
+                }
+                if ((ds.Tables["RelNotaFiscal"] != null)) {
+                    base.Tables.Add(new RelNotaFiscalDataTable(ds.Tables["RelNotaFiscal"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -771,6 +788,12 @@ namespace Comercial {
                     this.tableRelProduto.InitVars();
                 }
             }
+            this.tableRelNotaFiscal = ((RelNotaFiscalDataTable)(base.Tables["RelNotaFiscal"]));
+            if ((initTable == true)) {
+                if ((this.tableRelNotaFiscal != null)) {
+                    this.tableRelNotaFiscal.InitVars();
+                }
+            }
             this.relationFK_ACESSO_MODULO = this.Relations["FK_ACESSO_MODULO"];
             this.relationFK_ACESSO_USUARIO = this.Relations["FK_ACESSO_USUARIO"];
             this.relationFK_CLIENTE_REGIAO = this.Relations["FK_CLIENTE_REGIAO"];
@@ -849,6 +872,8 @@ namespace Comercial {
             base.Tables.Add(this.tableRelEstoque);
             this.tableRelProduto = new RelProdutoDataTable();
             base.Tables.Add(this.tableRelProduto);
+            this.tableRelNotaFiscal = new RelNotaFiscalDataTable();
+            base.Tables.Add(this.tableRelNotaFiscal);
             this.relationFK_ACESSO_MODULO = new global::System.Data.DataRelation("FK_ACESSO_MODULO", new global::System.Data.DataColumn[] {
                         this.tableMODULO.CODMODULOColumn}, new global::System.Data.DataColumn[] {
                         this.tableACESSO.CODMODULOColumn}, false);
@@ -1053,6 +1078,11 @@ namespace Comercial {
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        private bool ShouldSerializeRelNotaFiscal() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         private void SchemaChanged(object sender, global::System.ComponentModel.CollectionChangeEventArgs e) {
             if ((e.Action == global::System.ComponentModel.CollectionChangeAction.Remove)) {
                 this.InitVars();
@@ -1154,6 +1184,8 @@ namespace Comercial {
         public delegate void RelEstoqueRowChangeEventHandler(object sender, RelEstoqueRowChangeEvent e);
         
         public delegate void RelProdutoRowChangeEventHandler(object sender, RelProdutoRowChangeEvent e);
+        
+        public delegate void RelNotaFiscalRowChangeEventHandler(object sender, RelNotaFiscalRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -9279,6 +9311,562 @@ namespace Comercial {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class RelNotaFiscalDataTable : global::System.Data.TypedTableBase<RelNotaFiscalRow> {
+            
+            private global::System.Data.DataColumn columnNrNotaFiscal;
+            
+            private global::System.Data.DataColumn columnRazaoSocial;
+            
+            private global::System.Data.DataColumn columnSerie;
+            
+            private global::System.Data.DataColumn columnDataEmissao;
+            
+            private global::System.Data.DataColumn columnIE;
+            
+            private global::System.Data.DataColumn columnTelefone;
+            
+            private global::System.Data.DataColumn columnEndereco;
+            
+            private global::System.Data.DataColumn columnBairro;
+            
+            private global::System.Data.DataColumn columnMunicipio;
+            
+            private global::System.Data.DataColumn columnICMS;
+            
+            private global::System.Data.DataColumn columnTipo;
+            
+            private global::System.Data.DataColumn columnCNPJ;
+            
+            private global::System.Data.DataColumn columnTipoFrete;
+            
+            private global::System.Data.DataColumn columnValorFrete;
+            
+            private global::System.Data.DataColumn columnCodVendedor;
+            
+            private global::System.Data.DataColumn columnCodTransportadora;
+            
+            private global::System.Data.DataColumn columnNrPedido;
+            
+            private global::System.Data.DataColumn columnDescricao;
+            
+            private global::System.Data.DataColumn columnQuantidade;
+            
+            private global::System.Data.DataColumn columnDesconto;
+            
+            private global::System.Data.DataColumn columnValor;
+            
+            private global::System.Data.DataColumn columnIPI;
+            
+            private global::System.Data.DataColumn columnCodProduto;
+            
+            private global::System.Data.DataColumn columnCodIUnidadeMedida;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public RelNotaFiscalDataTable() {
+                this.TableName = "RelNotaFiscal";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal RelNotaFiscalDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected RelNotaFiscalDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn NrNotaFiscalColumn {
+                get {
+                    return this.columnNrNotaFiscal;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn RazaoSocialColumn {
+                get {
+                    return this.columnRazaoSocial;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn SerieColumn {
+                get {
+                    return this.columnSerie;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn DataEmissaoColumn {
+                get {
+                    return this.columnDataEmissao;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn IEColumn {
+                get {
+                    return this.columnIE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn TelefoneColumn {
+                get {
+                    return this.columnTelefone;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn EnderecoColumn {
+                get {
+                    return this.columnEndereco;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn BairroColumn {
+                get {
+                    return this.columnBairro;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn MunicipioColumn {
+                get {
+                    return this.columnMunicipio;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn ICMSColumn {
+                get {
+                    return this.columnICMS;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn TipoColumn {
+                get {
+                    return this.columnTipo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn CNPJColumn {
+                get {
+                    return this.columnCNPJ;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn TipoFreteColumn {
+                get {
+                    return this.columnTipoFrete;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn ValorFreteColumn {
+                get {
+                    return this.columnValorFrete;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn CodVendedorColumn {
+                get {
+                    return this.columnCodVendedor;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn CodTransportadoraColumn {
+                get {
+                    return this.columnCodTransportadora;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn NrPedidoColumn {
+                get {
+                    return this.columnNrPedido;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn DescricaoColumn {
+                get {
+                    return this.columnDescricao;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn QuantidadeColumn {
+                get {
+                    return this.columnQuantidade;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn DescontoColumn {
+                get {
+                    return this.columnDesconto;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn ValorColumn {
+                get {
+                    return this.columnValor;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn IPIColumn {
+                get {
+                    return this.columnIPI;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn CodProdutoColumn {
+                get {
+                    return this.columnCodProduto;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn CodIUnidadeMedidaColumn {
+                get {
+                    return this.columnCodIUnidadeMedida;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public RelNotaFiscalRow this[int index] {
+                get {
+                    return ((RelNotaFiscalRow)(this.Rows[index]));
+                }
+            }
+            
+            public event RelNotaFiscalRowChangeEventHandler RelNotaFiscalRowChanging;
+            
+            public event RelNotaFiscalRowChangeEventHandler RelNotaFiscalRowChanged;
+            
+            public event RelNotaFiscalRowChangeEventHandler RelNotaFiscalRowDeleting;
+            
+            public event RelNotaFiscalRowChangeEventHandler RelNotaFiscalRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void AddRelNotaFiscalRow(RelNotaFiscalRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public RelNotaFiscalRow AddRelNotaFiscalRow(
+                        string NrNotaFiscal, 
+                        string RazaoSocial, 
+                        string Serie, 
+                        System.DateTime DataEmissao, 
+                        string IE, 
+                        string Telefone, 
+                        string Endereco, 
+                        string Bairro, 
+                        string Municipio, 
+                        double ICMS, 
+                        string Tipo, 
+                        string CNPJ, 
+                        string TipoFrete, 
+                        double ValorFrete, 
+                        int CodVendedor, 
+                        int CodTransportadora, 
+                        int NrPedido, 
+                        string Descricao, 
+                        int Quantidade, 
+                        double Desconto, 
+                        double Valor, 
+                        double IPI, 
+                        int CodProduto, 
+                        int CodIUnidadeMedida) {
+                RelNotaFiscalRow rowRelNotaFiscalRow = ((RelNotaFiscalRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        NrNotaFiscal,
+                        RazaoSocial,
+                        Serie,
+                        DataEmissao,
+                        IE,
+                        Telefone,
+                        Endereco,
+                        Bairro,
+                        Municipio,
+                        ICMS,
+                        Tipo,
+                        CNPJ,
+                        TipoFrete,
+                        ValorFrete,
+                        CodVendedor,
+                        CodTransportadora,
+                        NrPedido,
+                        Descricao,
+                        Quantidade,
+                        Desconto,
+                        Valor,
+                        IPI,
+                        CodProduto,
+                        CodIUnidadeMedida};
+                rowRelNotaFiscalRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowRelNotaFiscalRow);
+                return rowRelNotaFiscalRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public override global::System.Data.DataTable Clone() {
+                RelNotaFiscalDataTable cln = ((RelNotaFiscalDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new RelNotaFiscalDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal void InitVars() {
+                this.columnNrNotaFiscal = base.Columns["NrNotaFiscal"];
+                this.columnRazaoSocial = base.Columns["RazaoSocial"];
+                this.columnSerie = base.Columns["Serie"];
+                this.columnDataEmissao = base.Columns["DataEmissao"];
+                this.columnIE = base.Columns["IE"];
+                this.columnTelefone = base.Columns["Telefone"];
+                this.columnEndereco = base.Columns["Endereco"];
+                this.columnBairro = base.Columns["Bairro"];
+                this.columnMunicipio = base.Columns["Municipio"];
+                this.columnICMS = base.Columns["ICMS"];
+                this.columnTipo = base.Columns["Tipo"];
+                this.columnCNPJ = base.Columns["CNPJ"];
+                this.columnTipoFrete = base.Columns["TipoFrete"];
+                this.columnValorFrete = base.Columns["ValorFrete"];
+                this.columnCodVendedor = base.Columns["CodVendedor"];
+                this.columnCodTransportadora = base.Columns["CodTransportadora"];
+                this.columnNrPedido = base.Columns["NrPedido"];
+                this.columnDescricao = base.Columns["Descricao"];
+                this.columnQuantidade = base.Columns["Quantidade"];
+                this.columnDesconto = base.Columns["Desconto"];
+                this.columnValor = base.Columns["Valor"];
+                this.columnIPI = base.Columns["IPI"];
+                this.columnCodProduto = base.Columns["CodProduto"];
+                this.columnCodIUnidadeMedida = base.Columns["CodIUnidadeMedida"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            private void InitClass() {
+                this.columnNrNotaFiscal = new global::System.Data.DataColumn("NrNotaFiscal", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNrNotaFiscal);
+                this.columnRazaoSocial = new global::System.Data.DataColumn("RazaoSocial", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRazaoSocial);
+                this.columnSerie = new global::System.Data.DataColumn("Serie", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSerie);
+                this.columnDataEmissao = new global::System.Data.DataColumn("DataEmissao", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDataEmissao);
+                this.columnIE = new global::System.Data.DataColumn("IE", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIE);
+                this.columnTelefone = new global::System.Data.DataColumn("Telefone", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTelefone);
+                this.columnEndereco = new global::System.Data.DataColumn("Endereco", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEndereco);
+                this.columnBairro = new global::System.Data.DataColumn("Bairro", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBairro);
+                this.columnMunicipio = new global::System.Data.DataColumn("Municipio", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMunicipio);
+                this.columnICMS = new global::System.Data.DataColumn("ICMS", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnICMS);
+                this.columnTipo = new global::System.Data.DataColumn("Tipo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTipo);
+                this.columnCNPJ = new global::System.Data.DataColumn("CNPJ", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCNPJ);
+                this.columnTipoFrete = new global::System.Data.DataColumn("TipoFrete", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTipoFrete);
+                this.columnValorFrete = new global::System.Data.DataColumn("ValorFrete", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnValorFrete);
+                this.columnCodVendedor = new global::System.Data.DataColumn("CodVendedor", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCodVendedor);
+                this.columnCodTransportadora = new global::System.Data.DataColumn("CodTransportadora", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCodTransportadora);
+                this.columnNrPedido = new global::System.Data.DataColumn("NrPedido", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNrPedido);
+                this.columnDescricao = new global::System.Data.DataColumn("Descricao", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDescricao);
+                this.columnQuantidade = new global::System.Data.DataColumn("Quantidade", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnQuantidade);
+                this.columnDesconto = new global::System.Data.DataColumn("Desconto", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDesconto);
+                this.columnValor = new global::System.Data.DataColumn("Valor", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnValor);
+                this.columnIPI = new global::System.Data.DataColumn("IPI", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIPI);
+                this.columnCodProduto = new global::System.Data.DataColumn("CodProduto", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCodProduto);
+                this.columnCodIUnidadeMedida = new global::System.Data.DataColumn("CodIUnidadeMedida", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCodIUnidadeMedida);
+                this.columnNrNotaFiscal.Caption = "NRPEDIDO";
+                this.columnRazaoSocial.Caption = "TIPO";
+                this.columnSerie.Caption = "SITUACAO";
+                this.columnDataEmissao.Caption = "RAZAOSOCIAL";
+                this.columnIE.Caption = "DATAEMISSAO";
+                this.columnTelefone.Caption = "DATAENTREGA";
+                this.columnEndereco.Caption = "CODPRODUTO";
+                this.columnBairro.Caption = "DESCRICAO";
+                this.columnMunicipio.Caption = "QUANTIDADE";
+                this.columnICMS.Caption = "VALOR";
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public RelNotaFiscalRow NewRelNotaFiscalRow() {
+                return ((RelNotaFiscalRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new RelNotaFiscalRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override global::System.Type GetRowType() {
+                return typeof(RelNotaFiscalRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.RelNotaFiscalRowChanged != null)) {
+                    this.RelNotaFiscalRowChanged(this, new RelNotaFiscalRowChangeEvent(((RelNotaFiscalRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.RelNotaFiscalRowChanging != null)) {
+                    this.RelNotaFiscalRowChanging(this, new RelNotaFiscalRowChangeEvent(((RelNotaFiscalRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.RelNotaFiscalRowDeleted != null)) {
+                    this.RelNotaFiscalRowDeleted(this, new RelNotaFiscalRowChangeEvent(((RelNotaFiscalRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.RelNotaFiscalRowDeleting != null)) {
+                    this.RelNotaFiscalRowDeleting(this, new RelNotaFiscalRowChangeEvent(((RelNotaFiscalRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void RemoveRelNotaFiscalRow(RelNotaFiscalRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                COMERCIALDataSet ds = new COMERCIALDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "RelNotaFiscalDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
@@ -13359,6 +13947,621 @@ namespace Comercial {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        public partial class RelNotaFiscalRow : global::System.Data.DataRow {
+            
+            private RelNotaFiscalDataTable tableRelNotaFiscal;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            internal RelNotaFiscalRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableRelNotaFiscal = ((RelNotaFiscalDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string NrNotaFiscal {
+                get {
+                    try {
+                        return ((string)(this[this.tableRelNotaFiscal.NrNotaFiscalColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'NrNotaFiscal\' in table \'RelNotaFiscal\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRelNotaFiscal.NrNotaFiscalColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string RazaoSocial {
+                get {
+                    try {
+                        return ((string)(this[this.tableRelNotaFiscal.RazaoSocialColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'RazaoSocial\' in table \'RelNotaFiscal\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRelNotaFiscal.RazaoSocialColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string Serie {
+                get {
+                    try {
+                        return ((string)(this[this.tableRelNotaFiscal.SerieColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Serie\' in table \'RelNotaFiscal\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRelNotaFiscal.SerieColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public System.DateTime DataEmissao {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableRelNotaFiscal.DataEmissaoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DataEmissao\' in table \'RelNotaFiscal\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRelNotaFiscal.DataEmissaoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string IE {
+                get {
+                    try {
+                        return ((string)(this[this.tableRelNotaFiscal.IEColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'IE\' in table \'RelNotaFiscal\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRelNotaFiscal.IEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string Telefone {
+                get {
+                    try {
+                        return ((string)(this[this.tableRelNotaFiscal.TelefoneColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Telefone\' in table \'RelNotaFiscal\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRelNotaFiscal.TelefoneColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string Endereco {
+                get {
+                    try {
+                        return ((string)(this[this.tableRelNotaFiscal.EnderecoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Endereco\' in table \'RelNotaFiscal\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRelNotaFiscal.EnderecoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string Bairro {
+                get {
+                    try {
+                        return ((string)(this[this.tableRelNotaFiscal.BairroColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Bairro\' in table \'RelNotaFiscal\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRelNotaFiscal.BairroColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string Municipio {
+                get {
+                    try {
+                        return ((string)(this[this.tableRelNotaFiscal.MunicipioColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Municipio\' in table \'RelNotaFiscal\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRelNotaFiscal.MunicipioColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public double ICMS {
+                get {
+                    try {
+                        return ((double)(this[this.tableRelNotaFiscal.ICMSColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ICMS\' in table \'RelNotaFiscal\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRelNotaFiscal.ICMSColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string Tipo {
+                get {
+                    try {
+                        return ((string)(this[this.tableRelNotaFiscal.TipoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Tipo\' in table \'RelNotaFiscal\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRelNotaFiscal.TipoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string CNPJ {
+                get {
+                    try {
+                        return ((string)(this[this.tableRelNotaFiscal.CNPJColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CNPJ\' in table \'RelNotaFiscal\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRelNotaFiscal.CNPJColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string TipoFrete {
+                get {
+                    try {
+                        return ((string)(this[this.tableRelNotaFiscal.TipoFreteColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TipoFrete\' in table \'RelNotaFiscal\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRelNotaFiscal.TipoFreteColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public double ValorFrete {
+                get {
+                    try {
+                        return ((double)(this[this.tableRelNotaFiscal.ValorFreteColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ValorFrete\' in table \'RelNotaFiscal\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRelNotaFiscal.ValorFreteColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public int CodVendedor {
+                get {
+                    try {
+                        return ((int)(this[this.tableRelNotaFiscal.CodVendedorColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CodVendedor\' in table \'RelNotaFiscal\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRelNotaFiscal.CodVendedorColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public int CodTransportadora {
+                get {
+                    try {
+                        return ((int)(this[this.tableRelNotaFiscal.CodTransportadoraColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CodTransportadora\' in table \'RelNotaFiscal\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRelNotaFiscal.CodTransportadoraColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public int NrPedido {
+                get {
+                    try {
+                        return ((int)(this[this.tableRelNotaFiscal.NrPedidoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'NrPedido\' in table \'RelNotaFiscal\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRelNotaFiscal.NrPedidoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string Descricao {
+                get {
+                    try {
+                        return ((string)(this[this.tableRelNotaFiscal.DescricaoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Descricao\' in table \'RelNotaFiscal\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRelNotaFiscal.DescricaoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public int Quantidade {
+                get {
+                    try {
+                        return ((int)(this[this.tableRelNotaFiscal.QuantidadeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Quantidade\' in table \'RelNotaFiscal\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRelNotaFiscal.QuantidadeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public double Desconto {
+                get {
+                    try {
+                        return ((double)(this[this.tableRelNotaFiscal.DescontoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Desconto\' in table \'RelNotaFiscal\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRelNotaFiscal.DescontoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public double Valor {
+                get {
+                    try {
+                        return ((double)(this[this.tableRelNotaFiscal.ValorColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Valor\' in table \'RelNotaFiscal\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRelNotaFiscal.ValorColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public double IPI {
+                get {
+                    try {
+                        return ((double)(this[this.tableRelNotaFiscal.IPIColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'IPI\' in table \'RelNotaFiscal\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRelNotaFiscal.IPIColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public int CodProduto {
+                get {
+                    try {
+                        return ((int)(this[this.tableRelNotaFiscal.CodProdutoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CodProduto\' in table \'RelNotaFiscal\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRelNotaFiscal.CodProdutoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public int CodIUnidadeMedida {
+                get {
+                    try {
+                        return ((int)(this[this.tableRelNotaFiscal.CodIUnidadeMedidaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'CodIUnidadeMedida\' in table \'RelNotaFiscal\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRelNotaFiscal.CodIUnidadeMedidaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsNrNotaFiscalNull() {
+                return this.IsNull(this.tableRelNotaFiscal.NrNotaFiscalColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetNrNotaFiscalNull() {
+                this[this.tableRelNotaFiscal.NrNotaFiscalColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsRazaoSocialNull() {
+                return this.IsNull(this.tableRelNotaFiscal.RazaoSocialColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetRazaoSocialNull() {
+                this[this.tableRelNotaFiscal.RazaoSocialColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsSerieNull() {
+                return this.IsNull(this.tableRelNotaFiscal.SerieColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetSerieNull() {
+                this[this.tableRelNotaFiscal.SerieColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsDataEmissaoNull() {
+                return this.IsNull(this.tableRelNotaFiscal.DataEmissaoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetDataEmissaoNull() {
+                this[this.tableRelNotaFiscal.DataEmissaoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsIENull() {
+                return this.IsNull(this.tableRelNotaFiscal.IEColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetIENull() {
+                this[this.tableRelNotaFiscal.IEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsTelefoneNull() {
+                return this.IsNull(this.tableRelNotaFiscal.TelefoneColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetTelefoneNull() {
+                this[this.tableRelNotaFiscal.TelefoneColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsEnderecoNull() {
+                return this.IsNull(this.tableRelNotaFiscal.EnderecoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetEnderecoNull() {
+                this[this.tableRelNotaFiscal.EnderecoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsBairroNull() {
+                return this.IsNull(this.tableRelNotaFiscal.BairroColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetBairroNull() {
+                this[this.tableRelNotaFiscal.BairroColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsMunicipioNull() {
+                return this.IsNull(this.tableRelNotaFiscal.MunicipioColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetMunicipioNull() {
+                this[this.tableRelNotaFiscal.MunicipioColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsICMSNull() {
+                return this.IsNull(this.tableRelNotaFiscal.ICMSColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetICMSNull() {
+                this[this.tableRelNotaFiscal.ICMSColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsTipoNull() {
+                return this.IsNull(this.tableRelNotaFiscal.TipoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetTipoNull() {
+                this[this.tableRelNotaFiscal.TipoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsCNPJNull() {
+                return this.IsNull(this.tableRelNotaFiscal.CNPJColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetCNPJNull() {
+                this[this.tableRelNotaFiscal.CNPJColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsTipoFreteNull() {
+                return this.IsNull(this.tableRelNotaFiscal.TipoFreteColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetTipoFreteNull() {
+                this[this.tableRelNotaFiscal.TipoFreteColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsValorFreteNull() {
+                return this.IsNull(this.tableRelNotaFiscal.ValorFreteColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetValorFreteNull() {
+                this[this.tableRelNotaFiscal.ValorFreteColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsCodVendedorNull() {
+                return this.IsNull(this.tableRelNotaFiscal.CodVendedorColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetCodVendedorNull() {
+                this[this.tableRelNotaFiscal.CodVendedorColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsCodTransportadoraNull() {
+                return this.IsNull(this.tableRelNotaFiscal.CodTransportadoraColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetCodTransportadoraNull() {
+                this[this.tableRelNotaFiscal.CodTransportadoraColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsNrPedidoNull() {
+                return this.IsNull(this.tableRelNotaFiscal.NrPedidoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetNrPedidoNull() {
+                this[this.tableRelNotaFiscal.NrPedidoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsDescricaoNull() {
+                return this.IsNull(this.tableRelNotaFiscal.DescricaoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetDescricaoNull() {
+                this[this.tableRelNotaFiscal.DescricaoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsQuantidadeNull() {
+                return this.IsNull(this.tableRelNotaFiscal.QuantidadeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetQuantidadeNull() {
+                this[this.tableRelNotaFiscal.QuantidadeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsDescontoNull() {
+                return this.IsNull(this.tableRelNotaFiscal.DescontoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetDescontoNull() {
+                this[this.tableRelNotaFiscal.DescontoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsValorNull() {
+                return this.IsNull(this.tableRelNotaFiscal.ValorColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetValorNull() {
+                this[this.tableRelNotaFiscal.ValorColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsIPINull() {
+                return this.IsNull(this.tableRelNotaFiscal.IPIColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetIPINull() {
+                this[this.tableRelNotaFiscal.IPIColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsCodProdutoNull() {
+                return this.IsNull(this.tableRelNotaFiscal.CodProdutoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetCodProdutoNull() {
+                this[this.tableRelNotaFiscal.CodProdutoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsCodIUnidadeMedidaNull() {
+                return this.IsNull(this.tableRelNotaFiscal.CodIUnidadeMedidaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetCodIUnidadeMedidaNull() {
+                this[this.tableRelNotaFiscal.CodIUnidadeMedidaColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
@@ -14120,6 +15323,37 @@ namespace Comercial {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public RelProdutoRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "2.0.0.0")]
+        public class RelNotaFiscalRowChangeEvent : global::System.EventArgs {
+            
+            private RelNotaFiscalRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public RelNotaFiscalRowChangeEvent(RelNotaFiscalRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public RelNotaFiscalRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -24981,12 +26215,12 @@ SELECT Descricao, Quantidade, Desconto, Valor, IPI, CodProduto, CodUnidadeMedida
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._vENDEDORTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.VENDEDOR.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._uNIDADEMEDIDATableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.UNIDADEMEDIDA.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._vENDEDORTableAdapter.Update(updatedRows));
+                    result = (result + this._uNIDADEMEDIDATableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -24999,12 +26233,12 @@ SELECT Descricao, Quantidade, Desconto, Valor, IPI, CodProduto, CodUnidadeMedida
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._uNIDADEMEDIDATableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.UNIDADEMEDIDA.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._vENDEDORTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.VENDEDOR.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._uNIDADEMEDIDATableAdapter.Update(updatedRows));
+                    result = (result + this._vENDEDORTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -25035,15 +26269,6 @@ SELECT Descricao, Quantidade, Desconto, Valor, IPI, CodProduto, CodUnidadeMedida
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._vIATRANSPORTETableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.VIATRANSPORTE.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._vIATRANSPORTETableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._modeloTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.modelo.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -25053,12 +26278,12 @@ SELECT Descricao, Quantidade, Desconto, Valor, IPI, CodProduto, CodUnidadeMedida
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._mODULOTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.MODULO.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._vIATRANSPORTETableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.VIATRANSPORTE.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._mODULOTableAdapter.Update(updatedRows));
+                    result = (result + this._vIATRANSPORTETableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -25068,6 +26293,15 @@ SELECT Descricao, Quantidade, Desconto, Valor, IPI, CodProduto, CodUnidadeMedida
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._nOTAFISCALTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._mODULOTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.MODULO.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._mODULOTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -25098,21 +26332,21 @@ SELECT Descricao, Quantidade, Desconto, Valor, IPI, CodProduto, CodUnidadeMedida
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._modeloCampoTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.modeloCampo.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._modeloCampoTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._itemNotaFiscalTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.ItemNotaFiscal.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._itemNotaFiscalTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._modeloCampoTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.modeloCampo.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._modeloCampoTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -25177,11 +26411,11 @@ SELECT Descricao, Quantidade, Desconto, Valor, IPI, CodProduto, CodUnidadeMedida
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._vENDEDORTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.VENDEDOR.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._uNIDADEMEDIDATableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.UNIDADEMEDIDA.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._vENDEDORTableAdapter.Update(addedRows));
+                    result = (result + this._uNIDADEMEDIDATableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -25193,11 +26427,11 @@ SELECT Descricao, Quantidade, Desconto, Valor, IPI, CodProduto, CodUnidadeMedida
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._uNIDADEMEDIDATableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.UNIDADEMEDIDA.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._vENDEDORTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.VENDEDOR.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._uNIDADEMEDIDATableAdapter.Update(addedRows));
+                    result = (result + this._vENDEDORTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -25225,14 +26459,6 @@ SELECT Descricao, Quantidade, Desconto, Valor, IPI, CodProduto, CodUnidadeMedida
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._vIATRANSPORTETableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.VIATRANSPORTE.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._vIATRANSPORTETableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._modeloTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.modelo.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -25241,11 +26467,11 @@ SELECT Descricao, Quantidade, Desconto, Valor, IPI, CodProduto, CodUnidadeMedida
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._mODULOTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.MODULO.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._vIATRANSPORTETableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.VIATRANSPORTE.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._mODULOTableAdapter.Update(addedRows));
+                    result = (result + this._vIATRANSPORTETableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -25254,6 +26480,14 @@ SELECT Descricao, Quantidade, Desconto, Valor, IPI, CodProduto, CodUnidadeMedida
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._nOTAFISCALTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._mODULOTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.MODULO.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._mODULOTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -25281,19 +26515,19 @@ SELECT Descricao, Quantidade, Desconto, Valor, IPI, CodProduto, CodUnidadeMedida
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._modeloCampoTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.modeloCampo.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._modeloCampoTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._itemNotaFiscalTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.ItemNotaFiscal.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._itemNotaFiscalTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._modeloCampoTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.modeloCampo.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._modeloCampoTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -25370,19 +26604,19 @@ SELECT Descricao, Quantidade, Desconto, Valor, IPI, CodProduto, CodUnidadeMedida
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._itemNotaFiscalTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.ItemNotaFiscal.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._itemNotaFiscalTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._modeloCampoTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.modeloCampo.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._modeloCampoTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._itemNotaFiscalTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.ItemNotaFiscal.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._itemNotaFiscalTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -25410,14 +26644,6 @@ SELECT Descricao, Quantidade, Desconto, Valor, IPI, CodProduto, CodUnidadeMedida
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._nOTAFISCALTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.NOTAFISCAL.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._nOTAFISCALTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._mODULOTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.MODULO.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -25426,11 +26652,11 @@ SELECT Descricao, Quantidade, Desconto, Valor, IPI, CodProduto, CodUnidadeMedida
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._modeloTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.modelo.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._nOTAFISCALTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.NOTAFISCAL.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._modeloTableAdapter.Update(deletedRows));
+                    result = (result + this._nOTAFISCALTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -25439,6 +26665,14 @@ SELECT Descricao, Quantidade, Desconto, Valor, IPI, CodProduto, CodUnidadeMedida
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._vIATRANSPORTETableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._modeloTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.modelo.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._modeloTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -25466,11 +26700,11 @@ SELECT Descricao, Quantidade, Desconto, Valor, IPI, CodProduto, CodUnidadeMedida
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._uNIDADEMEDIDATableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.UNIDADEMEDIDA.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._vENDEDORTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.VENDEDOR.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._uNIDADEMEDIDATableAdapter.Update(deletedRows));
+                    result = (result + this._vENDEDORTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -25482,11 +26716,11 @@ SELECT Descricao, Quantidade, Desconto, Valor, IPI, CodProduto, CodUnidadeMedida
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._vENDEDORTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.VENDEDOR.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._uNIDADEMEDIDATableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.UNIDADEMEDIDA.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._vENDEDORTableAdapter.Update(deletedRows));
+                    result = (result + this._uNIDADEMEDIDATableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
