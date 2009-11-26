@@ -677,9 +677,17 @@ namespace Comercial
                                                           MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (dr == DialogResult.Yes)
                         {
-                            emitirNotaFiscal();
-                            FrmRelGeral filho = new FrmRelGeral("FrmEmiNF", null, null);
-                            filho.Show();
+                            //if (!todosItensLiberados())
+                            //{
+                            //    MessageBox.Show("Existem itens pendentes. \nNão foi possivel a emissão da nota!", "Aviso", MessageBoxButtons.OK,
+                            //            MessageBoxIcon.Exclamation);
+                            //}
+                            //else
+                            //{
+                                emitirNotaFiscal();
+                                FrmRelGeral filho = new FrmRelGeral("FrmEmiNF", null, null);
+                                filho.Show();
+                            //}
                         }
                     }
                 }
@@ -873,6 +881,8 @@ namespace Comercial
 
         private void FrmLibPDV_Load(object sender, EventArgs e)
         {
+            // TODO: This line of code loads data into the 'cOMERCIALDataSet.ItemNotaFiscal' table. You can move, or remove it, as needed.
+            this.itemNotaFiscalTableAdapter.Fill(this.cOMERCIALDataSet.ItemNotaFiscal);
             // TODO: This line of code loads data into the 'cOMERCIALDataSet.NOTAFISCAL' table. You can move, or remove it, as needed.
             this.nOTAFISCALTableAdapter.Fill(this.cOMERCIALDataSet.NOTAFISCAL);
 
@@ -910,6 +920,13 @@ namespace Comercial
                 telefone, endereco, bairro, municipio, icms, tipo,
                 cnpf, tipofrete, valorFrete, codVendedor, codTransportadora,
                 nrPedido , valorNota);
+
+            DataTable itens = getItensPedido(nrPedido);
+            foreach (DataRow s in itens.Rows)
+            {
+                ItemNotaFiscalTableAdapter item = new ItemNotaFiscalTableAdapter();
+
+            }
         }
 
         #endregion
@@ -1017,5 +1034,51 @@ namespace Comercial
             
             return sql;
         }
+
+        #region Verifica se todos os itens foram liberados
+        public bool todosItensLiberados()
+        {
+            try
+            {
+                for (int i = 0; i < dtgrdvItenspven.RowCount; i++)
+                {
+                    if (!((int) dtgrdvItenspven.Rows[i].Cells["ClmQtdeLib"].Value ==
+                        (int) dtgrdvItenspven.Rows[i].Cells["ClmQtde"].Value))
+                    {
+                        return false;
+                    }
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+        #endregion
+
+        #region Listar item pedido
+        public DataTable getItensPedido(int CodPed)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+
+            DataSet dtsDados = new DataSet();
+
+            StringBuilder sqlcommand = new StringBuilder();
+
+            sqlcommand.Append(" SELECT ITEMPEDIDO.CODPRODUTO as CODPRODUTO,DESCRICAO,QUANTIDADE, DESCONTO,VALOR, ");
+            sqlcommand.Append(" ITEMPEDIDO.IPI as IPI, CODUNIDADEMEDIDA FROM ITEMPEDIDO INNER JOIN PRODUTO ON ");
+            sqlcommand.Append(" ITEMPEDIDO.CODPRODUTO = PRODUTO.CODPRODUTO WHERE NRPEDIDO = @nrpedido ");
+           
+            DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
+
+            db.AddInParameter(dbComd, "@nrpedido", DbType.String, CodPed);
+
+            dtsDados = db.ExecuteDataSet(dbComd);
+
+            return dtsDados.Tables[0];
+        }
+        #endregion
     }
 }

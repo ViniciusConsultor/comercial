@@ -34,8 +34,9 @@ namespace Comercial
 
             Configuration conf = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath);
             string con = conf.ConnectionStrings.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString;
+            string[] x = con.Split(';');
 
-            if (con == "Data Source=#local#;Initial Catalog=COMERCIAL;Persist Security Info=True;User ID=comercial;Password=123*abc")
+            if (x[0] == "Data Source=#local#")
             {
 
                 FrmConf frmConf = new FrmConf();
