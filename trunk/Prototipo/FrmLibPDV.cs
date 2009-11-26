@@ -61,20 +61,31 @@ namespace Comercial
                 Double total = 0;
                 Double totalfaturado = 0;
                 Double desconto = 0;
+                Double ipi = 0;
 
                 foreach (DataGridViewRow item in dtgrdvItenspven.Rows)
                 {
                     total = Convert.ToDouble(total) + Convert.ToDouble(item.Cells["ColTotal"].Value);
-                    desconto = Convert.ToDouble(desconto) + Convert.ToDouble(item.Cells["ColDesconto"].Value);
+                    //desconto = Convert.ToDouble(desconto) + Convert.ToDouble(item.Cells["ColDesconto"].Value);
+                    desconto += (Convert.ToDouble(item.Cells["ColDesconto"].Value)/100) *
+                                (Convert.ToDouble(item.Cells["ClmPrcUnit"].Value) * 
+                                Convert.ToDouble(item.Cells["ClmQtdeLib"].Value));
                     totalfaturado = Convert.ToDouble(totalfaturado) + Convert.ToDouble(item.Cells["ColVALORFATU"].Value);
+                    ipi += (Convert.ToDouble(item.Cells["ClmIPI"].Value) / 100) *
+                                (Convert.ToDouble(item.Cells["ClmPrcUnit"].Value) *
+                                Convert.ToDouble(item.Cells["ClmQtdeLib"].Value));
 
-                    txtBxVlrMercadoria.Text = string.Format("{0:C2}", Convert.ToDouble(total));
+                    txtIPI.Text = string.Format("{0:C2}", Convert.ToDouble(ipi));
+                    txtBxVlrPedido.Text = string.Format("{0:C2}", Convert.ToDouble(total));
                     txtBxVlrFaturado.Text = string.Format("{0:C2}", Convert.ToDouble(totalfaturado));
-
+                    txtBxDescontos.Text = string.Format("{0:C2}", Convert.ToDouble(desconto));
                 }
+                double icms = (getValorICMS("SP") / 100) *Convert.ToDouble(totalfaturado);
 
-                txtBxVlrMercadoria.Text = Convert.ToString(txtBxVlrMercadoria.Text);
-                txtBxDescontos.Text = Convert.ToString(desconto);
+                txtICMS.Text = string.Format("{0:C2}",icms);
+                txtIPI.Text = Convert.ToString(txtIPI.Text);
+                txtBxVlrPedido.Text = string.Format("{0:C2}", totalfaturado + ipi + icms + Convert.ToDouble(txtFrete.Text.Replace("R$", "")));
+                txtBxDescontos.Text = Convert.ToString(txtBxDescontos.Text);
                 txtBxVlrFaturado.Text = Convert.ToString(txtBxVlrFaturado.Text);
             }
             catch (Exception ex)
@@ -441,7 +452,7 @@ namespace Comercial
                 if (dttPedidocli.Rows.Count > 0)
                 {
                     ValorPedido = Convert.ToDouble(dttPedidocli.Rows[0]["VALOR"]);
-                    ValorFaturar = ValorPedido + Convert.ToDouble(txtBxVlrMercadoria.Text);
+                    ValorFaturar = ValorPedido + Convert.ToDouble(txtBxVlrPedido.Text);
 
                 }
 
@@ -662,11 +673,11 @@ namespace Comercial
                     }
                     else
                     {
-                        DialogResult dr = MessageBox.Show("Pedido já efetivado!. \nDeseja faturar nota fiscal?", "Aviso",
+                        DialogResult dr = MessageBox.Show("Pedido já efetivado! \nDeseja faturar nota fiscal?", "Aviso",
                                                           MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (dr == DialogResult.Yes)
                         {
-                            //emitirNotaFiscal();
+                            emitirNotaFiscal();
                             FrmRelGeral filho = new FrmRelGeral("FrmEmiNF", null, null);
                             filho.Show();
                         }
@@ -812,7 +823,7 @@ namespace Comercial
                 txtbtnPedido.Text = String.Empty; ;
                 txtBxDescontos.Text = String.Empty;
                 txtBxVlrFaturado.Text = String.Empty;
-                txtBxVlrMercadoria.Text = String.Empty;
+                txtBxVlrPedido.Text = String.Empty;
                 txtCodCliente.Text = String.Empty;
                 txtCodTransportadora.Text = String.Empty;
                 txtCodVendedor.Text = String.Empty;
@@ -876,19 +887,29 @@ namespace Comercial
             if(!string.IsNullOrEmpty(txtFrete.Text))
                 tipofrete = "E";
 
-            string valorFrete = txtFrete.Text.Replace("R$", "").Replace(".", "");
-            
-            // TODO Calcular
-            double icms = 0;
+            double icms = getValorICMS("SP"); // Fixo
+            int nrNotaFiscal = getNumeroNota(); 
+            string serie = "0"; 
+            string tipo = "S";
+            string razaoSocial = cli.Rows[0]["RAZAOSOCIAL"].ToString();
+            DateTime dtEmissao = DateTime.Now;
+            string ie = cli.Rows[0]["IE"].ToString();
+            string telefone = cli.Rows[0]["TELEFONE"].ToString();
+            string endereco = cli.Rows[0]["ENDERECO"].ToString();
+            string bairro = cli.Rows[0]["BAIRRO"].ToString();
+            string cnpf = cli.Rows[0]["CNPJ"].ToString();
+            string municipio = cli.Rows[0]["MUNICIPIO"].ToString();
+            string codVendedor = txtCodVendedor.Text;
+            string codTransportadora = txtCodTransportadora.Text;
+            int nrPedido = Convert.ToInt32(txtbtnPedido.Text);
+            double valorFrete = Convert.ToDouble(txtFrete.Text.Replace("R$", ""));
+            double valorNota = Convert.ToDouble(txtBxVlrPedido.Text.Replace("R$", ""));
 
             NOTAFISCALTableAdapter nf = new NOTAFISCALTableAdapter();
-            nf.Insert(1, cli.Rows[0]["RAZAOSOCIAL"].ToString(), "TODO-SERIE", DateTime.Now, cli.Rows[0]["IE"].ToString(), cli.Rows[0]["TELEFONE"].ToString(),
-                      cli.Rows[0]["ENDERECO"].ToString(), cli.Rows[0]["BAIRRO"].ToString(), cli.Rows[0]["MUNICIPIO"].ToString(), icms, "TIPO",
-                      cli.Rows[0]["CNPJ"].ToString(), tipofrete, Convert.ToDouble(valorFrete), txtCodVendedor.Text,
-                      txtCodTransportadora.Text, Convert.ToInt32(txtbtnPedido.Text), "TODO-STATUS");
-
-            
-
+            nf.Insert(nrNotaFiscal, razaoSocial, serie, dtEmissao, ie, 
+                telefone, endereco, bairro, municipio, icms, tipo,
+                cnpf, tipofrete, valorFrete, codVendedor, codTransportadora,
+                nrPedido , valorNota);
         }
 
         #endregion
@@ -934,6 +955,47 @@ namespace Comercial
             if (dtsDados.Tables[0].Rows.Count > 0)
                 return true;
             return false;
+        }
+        #endregion
+
+        #region Pegar Proximo número da nota
+        public int getNumeroNota()
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+
+            DataSet dtsDados = new DataSet();
+
+            StringBuilder sqlcommand = new StringBuilder();
+
+            sqlcommand.Append("select max(NrNotaFiscal) as MAX from NOTAFISCAL ");
+
+            DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
+            
+            dtsDados = db.ExecuteDataSet(dbComd);
+            if (dtsDados.Tables[0].Rows[0]["MAX"].ToString() == "")
+                return 1;
+            return (Convert.ToInt32(dtsDados.Tables[0].Rows[0]["MAX"].ToString())) + 1;
+        }
+        #endregion
+
+        #region Pegar valor ICMS
+        public double getValorICMS(string uf)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+
+            DataSet dtsDados = new DataSet();
+
+            StringBuilder sqlcommand = new StringBuilder();
+
+            sqlcommand.Append("select aliquota from ICMS where uf = @uf ");
+
+            DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
+
+            db.AddInParameter(dbComd, "@uf", DbType.String, uf);
+
+            dtsDados = db.ExecuteDataSet(dbComd);
+
+            return ((double)dtsDados.Tables[0].Rows[0]["aliquota"]);
         }
         #endregion
 
