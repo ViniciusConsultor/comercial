@@ -859,15 +859,17 @@ namespace Comercial
 
                         if (MessageBox.Show("Deseja excluir o registro selecionado?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
-                            if ((string)dttRetorno.Rows[e.RowIndex]["status"] == "A")
+                            if ((string)dttRetorno.Rows[e.RowIndex]["status"].ToString() == "A")
                             {
                                 dttRetorno.Rows.RemoveAt(e.RowIndex);
                             }
                             else
                             {
-                                Excluiritem(Convert.ToInt32(txtPedido.Text), Convert.ToInt32(dtgrdvItenspven.Rows[e.RowIndex].Cells[1].Value));
 
+                             
+                                Excluiritem(Convert.ToInt32(txtPedido.Text), Convert.ToInt32(dtgrdvItenspven.Rows[e.RowIndex].Cells[1].Value));
                                 this.populargrid();
+                               
                             }
                         }
                     }
@@ -948,6 +950,7 @@ namespace Comercial
 
                         item.Cells[4].Value = txtQtdItem.Text;
                         item.Cells[9].Value = txtValorTotal.Text;
+                        dtRow["status"] = "A";
                         teste += 1;
                     }
                 }
@@ -963,6 +966,7 @@ namespace Comercial
                     dtRow["IPI"] = txtipi.Text;
                     dtRow["DESCONTO"] = txtDesconto.Text;
                     dtRow["VALORTOTAL"] = Convert.ToDouble(valortotal);
+                    dtRow["status"] = "A";
                     dttRetorno.Rows.Add(dtRow);
                 }
                 for (int index = 0; index <= dttRetorno.Rows.Count - 1; index++)
