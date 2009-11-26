@@ -642,7 +642,7 @@ namespace Comercial
                         if (dr == DialogResult.Yes)
                         {
                            emitirNotaFiscal();
-                           FrmRelGeral filho = new FrmRelGeral("FrmEmiNF", null, null);
+                           FrmRelGeral filho = new FrmRelGeral("FrmEmiNF", this, null);
                            filho.Show();
                         }
                     }
