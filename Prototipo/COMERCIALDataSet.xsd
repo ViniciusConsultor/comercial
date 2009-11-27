@@ -2640,6 +2640,7 @@ SELECT Descricao, Quantidade, Desconto, Valor, IPI, CodProduto, CodUnidadeMedida
               <xs:element name="IPI" msprop:Generator_UserColumnName="IPI" msprop:Generator_ColumnVarNameInTable="columnIPI" msprop:Generator_ColumnPropNameInRow="IPI" msprop:Generator_ColumnPropNameInTable="IPIColumn" type="xs:double" minOccurs="0" />
               <xs:element name="CodProduto" msprop:Generator_UserColumnName="CodProduto" msprop:Generator_ColumnVarNameInTable="columnCodProduto" msprop:Generator_ColumnPropNameInRow="CodProduto" msprop:Generator_ColumnPropNameInTable="CodProdutoColumn" type="xs:int" minOccurs="0" />
               <xs:element name="CodIUnidadeMedida" msprop:Generator_UserColumnName="CodIUnidadeMedida" msprop:Generator_ColumnVarNameInTable="columnCodIUnidadeMedida" msprop:Generator_ColumnPropNameInRow="CodIUnidadeMedida" msprop:Generator_ColumnPropNameInTable="CodIUnidadeMedidaColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="ValorNota" msprop:Generator_UserColumnName="ValorNota" msprop:Generator_ColumnPropNameInRow="ValorNota" msprop:Generator_ColumnVarNameInTable="columnValorNota" msprop:Generator_ColumnPropNameInTable="ValorNotaColumn" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
