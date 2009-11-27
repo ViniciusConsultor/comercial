@@ -54,18 +54,10 @@
                 this.TxtVlrFre = new System.Windows.Forms.TextBox();
                 this.TxtVlrMer = new System.Windows.Forms.TextBox();
                 this.GrpBxItens = new System.Windows.Forms.GroupBox();
-                this.DtGrdVwItensNotFis = new System.Windows.Forms.DataGridView();
-                this.clmFoiAlterado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-                this.clmProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-                this.clmDescProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-                this.clmUnidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-                this.clmQuantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-                this.clmVlrUnitário = new System.Windows.Forms.DataGridViewTextBoxColumn();
-                this.clmVlrTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+                this.dtGrdVwItensNF = new System.Windows.Forms.DataGridView();
                 this.GrpBxInfNotFis = new System.Windows.Forms.GroupBox();
                 this.LlblNumNotFis = new System.Windows.Forms.Label();
                 this.LblUfOrigem = new System.Windows.Forms.Label();
-                this.TxtNumNotFis = new System.Windows.Forms.TextBox();
                 this.LblDtEmissao = new System.Windows.Forms.Label();
                 this.TxtSerie = new System.Windows.Forms.TextBox();
                 this.CmbBxUf = new System.Windows.Forms.ComboBox();
@@ -74,11 +66,18 @@
                 this.DtTmPckrDtEmissao = new System.Windows.Forms.DateTimePicker();
                 this.LblForncedor = new System.Windows.Forms.Label();
                 this.TbCntEmiNF = new System.Windows.Forms.TabControl();
+                this.clmProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+                this.clmDescProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+                this.clmUnidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+                this.clmQuantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+                this.clmVlrUnitário = new System.Windows.Forms.DataGridViewTextBoxColumn();
+                this.clmVlrTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+                this.txtNumNF = new Comercial.TextButton();
                 this.TbPgNotFis.SuspendLayout();
                 this.GrpBxDest.SuspendLayout();
                 this.GrpBxTot.SuspendLayout();
                 this.GrpBxItens.SuspendLayout();
-                ((System.ComponentModel.ISupportInitialize)(this.DtGrdVwItensNotFis)).BeginInit();
+                ((System.ComponentModel.ISupportInitialize)(this.dtGrdVwItensNF)).BeginInit();
                 this.GrpBxInfNotFis.SuspendLayout();
                 this.TbCntEmiNF.SuspendLayout();
                 this.SuspendLayout();
@@ -360,7 +359,7 @@
                 // 
                 // GrpBxItens
                 // 
-                this.GrpBxItens.Controls.Add(this.DtGrdVwItensNotFis);
+                this.GrpBxItens.Controls.Add(this.dtGrdVwItensNF);
                 this.GrpBxItens.ForeColor = System.Drawing.Color.CornflowerBlue;
                 this.GrpBxItens.Location = new System.Drawing.Point(9, 206);
                 this.GrpBxItens.Name = "GrpBxItens";
@@ -369,66 +368,27 @@
                 this.GrpBxItens.TabStop = false;
                 this.GrpBxItens.Text = "Itens Nota Fiscal";
                 // 
-                // DtGrdVwItensNotFis
+                // dtGrdVwItensNF
                 // 
-                this.DtGrdVwItensNotFis.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-                this.DtGrdVwItensNotFis.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.clmFoiAlterado,
+                this.dtGrdVwItensNF.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+                this.dtGrdVwItensNF.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.clmProduto,
             this.clmDescProd,
             this.clmUnidade,
             this.clmQuantidade,
             this.clmVlrUnitário,
             this.clmVlrTotal});
-                this.DtGrdVwItensNotFis.Dock = System.Windows.Forms.DockStyle.Fill;
-                this.DtGrdVwItensNotFis.Location = new System.Drawing.Point(3, 16);
-                this.DtGrdVwItensNotFis.Name = "DtGrdVwItensNotFis";
-                this.DtGrdVwItensNotFis.Size = new System.Drawing.Size(748, 112);
-                this.DtGrdVwItensNotFis.TabIndex = 1;
-                // 
-                // clmFoiAlterado
-                // 
-                this.clmFoiAlterado.HeaderText = "";
-                this.clmFoiAlterado.Name = "clmFoiAlterado";
-                this.clmFoiAlterado.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-                this.clmFoiAlterado.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-                this.clmFoiAlterado.Width = 50;
-                // 
-                // clmProduto
-                // 
-                this.clmProduto.HeaderText = "Produto";
-                this.clmProduto.Name = "clmProduto";
-                // 
-                // clmDescProd
-                // 
-                this.clmDescProd.HeaderText = "Desc. Produto";
-                this.clmDescProd.Name = "clmDescProd";
-                // 
-                // clmUnidade
-                // 
-                this.clmUnidade.HeaderText = "Unidade";
-                this.clmUnidade.Name = "clmUnidade";
-                // 
-                // clmQuantidade
-                // 
-                this.clmQuantidade.HeaderText = "Quantidade";
-                this.clmQuantidade.Name = "clmQuantidade";
-                // 
-                // clmVlrUnitário
-                // 
-                this.clmVlrUnitário.HeaderText = "Vlr. Unitário";
-                this.clmVlrUnitário.Name = "clmVlrUnitário";
-                // 
-                // clmVlrTotal
-                // 
-                this.clmVlrTotal.HeaderText = "Vlr. Total";
-                this.clmVlrTotal.Name = "clmVlrTotal";
+                this.dtGrdVwItensNF.Dock = System.Windows.Forms.DockStyle.Fill;
+                this.dtGrdVwItensNF.Location = new System.Drawing.Point(3, 16);
+                this.dtGrdVwItensNF.Name = "dtGrdVwItensNF";
+                this.dtGrdVwItensNF.Size = new System.Drawing.Size(748, 112);
+                this.dtGrdVwItensNF.TabIndex = 1;
                 // 
                 // GrpBxInfNotFis
                 // 
+                this.GrpBxInfNotFis.Controls.Add(this.txtNumNF);
                 this.GrpBxInfNotFis.Controls.Add(this.LlblNumNotFis);
                 this.GrpBxInfNotFis.Controls.Add(this.LblUfOrigem);
-                this.GrpBxInfNotFis.Controls.Add(this.TxtNumNotFis);
                 this.GrpBxInfNotFis.Controls.Add(this.LblDtEmissao);
                 this.GrpBxInfNotFis.Controls.Add(this.TxtSerie);
                 this.GrpBxInfNotFis.Controls.Add(this.CmbBxUf);
@@ -467,14 +427,6 @@
                 this.LblUfOrigem.Size = new System.Drawing.Size(60, 13);
                 this.LblUfOrigem.TabIndex = 23;
                 this.LblUfOrigem.Text = "UF Origem:";
-                // 
-                // TxtNumNotFis
-                // 
-                this.TxtNumNotFis.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                this.TxtNumNotFis.Location = new System.Drawing.Point(24, 33);
-                this.TxtNumNotFis.Name = "TxtNumNotFis";
-                this.TxtNumNotFis.Size = new System.Drawing.Size(244, 20);
-                this.TxtNumNotFis.TabIndex = 22;
                 // 
                 // LblDtEmissao
                 // 
@@ -553,6 +505,47 @@
                 this.TbCntEmiNF.Size = new System.Drawing.Size(805, 499);
                 this.TbCntEmiNF.TabIndex = 0;
                 // 
+                // clmProduto
+                // 
+                this.clmProduto.HeaderText = "Produto";
+                this.clmProduto.Name = "clmProduto";
+                // 
+                // clmDescProd
+                // 
+                this.clmDescProd.HeaderText = "Desc. Produto";
+                this.clmDescProd.Name = "clmDescProd";
+                // 
+                // clmUnidade
+                // 
+                this.clmUnidade.HeaderText = "Unidade";
+                this.clmUnidade.Name = "clmUnidade";
+                // 
+                // clmQuantidade
+                // 
+                this.clmQuantidade.HeaderText = "Quantidade";
+                this.clmQuantidade.Name = "clmQuantidade";
+                // 
+                // clmVlrUnitário
+                // 
+                this.clmVlrUnitário.HeaderText = "Vlr. Unitário";
+                this.clmVlrUnitário.Name = "clmVlrUnitário";
+                // 
+                // clmVlrTotal
+                // 
+                this.clmVlrTotal.HeaderText = "Vlr. Total";
+                this.clmVlrTotal.Name = "clmVlrTotal";
+                // 
+                // txtNumNF
+                // 
+                this.txtNumNF.getText = "";
+                this.txtNumNF.Image = global::Comercial.Properties.Resources.search1;
+                this.txtNumNF.Location = new System.Drawing.Point(24, 31);
+                this.txtNumNF.Name = "txtNumNF";
+                this.txtNumNF.ShowButton = false;
+                this.txtNumNF.Size = new System.Drawing.Size(245, 25);
+                this.txtNumNF.TabIndex = 28;
+                this.txtNumNF.ButtonClick += new System.EventHandler(this.txtNumNF_ButtonClick);
+                // 
                 // FrmEmiNotFis
                 // 
                 this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -573,7 +566,7 @@
                 this.GrpBxTot.ResumeLayout(false);
                 this.GrpBxTot.PerformLayout();
                 this.GrpBxItens.ResumeLayout(false);
-                ((System.ComponentModel.ISupportInitialize)(this.DtGrdVwItensNotFis)).EndInit();
+                ((System.ComponentModel.ISupportInitialize)(this.dtGrdVwItensNF)).EndInit();
                 this.GrpBxInfNotFis.ResumeLayout(false);
                 this.GrpBxInfNotFis.PerformLayout();
                 this.TbCntEmiNF.ResumeLayout(false);
@@ -588,7 +581,6 @@
         private System.Windows.Forms.GroupBox GrpBxInfNotFis;
         private System.Windows.Forms.Label LlblNumNotFis;
         private System.Windows.Forms.Label LblUfOrigem;
-        private System.Windows.Forms.TextBox TxtNumNotFis;
         private System.Windows.Forms.Label LblDtEmissao;
         private System.Windows.Forms.TextBox TxtSerie;
         private System.Windows.Forms.ComboBox CmbBxUf;
@@ -597,14 +589,7 @@
         private System.Windows.Forms.DateTimePicker DtTmPckrDtEmissao;
         private System.Windows.Forms.Label LblForncedor;
         private System.Windows.Forms.GroupBox GrpBxItens;
-        private System.Windows.Forms.DataGridView DtGrdVwItensNotFis;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn clmFoiAlterado;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmProduto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmDescProd;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmUnidade;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmQuantidade;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmVlrUnitário;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmVlrTotal;
+        private System.Windows.Forms.DataGridView dtGrdVwItensNF;
         private System.Windows.Forms.GroupBox GrpBxTot;
         private System.Windows.Forms.Label LblVlrFre;
         private System.Windows.Forms.Label LblVlrMer;
@@ -629,5 +614,12 @@
         private System.Windows.Forms.Label LblMunCli;
         private System.Windows.Forms.MaskedTextBox TxtTelCli;
         private System.Windows.Forms.Label LblTelCli;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmProduto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmDescProd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmUnidade;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmQuantidade;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmVlrUnitário;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmVlrTotal;
+        public TextButton txtNumNF;
         }
     }
