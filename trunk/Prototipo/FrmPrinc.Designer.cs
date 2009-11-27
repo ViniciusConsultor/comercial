@@ -357,6 +357,7 @@
             this.gerarNotaFiscalToolStripMenuItem1.Name = "gerarNotaFiscalToolStripMenuItem1";
             this.gerarNotaFiscalToolStripMenuItem1.Size = new System.Drawing.Size(172, 22);
             this.gerarNotaFiscalToolStripMenuItem1.Text = "Gerar Nota Fiscal";
+            this.gerarNotaFiscalToolStripMenuItem1.Visible = false;
             this.gerarNotaFiscalToolStripMenuItem1.Click += new System.EventHandler(this.gerarNotaFiscalToolStripMenuItem1_Click);
             // 
             // devoluçãoDeNFToolStripMenuItem
@@ -659,7 +660,7 @@
             this.bindingNavigatorMoveLastItem,
             this.bindingNavigatorSeparator2,
             this.BtnPrincipal});
-            this.bindingNavigator1.Location = new System.Drawing.Point(0, 49);
+            this.bindingNavigator1.Location = new System.Drawing.Point(0, 24);
             this.bindingNavigator1.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.bindingNavigator1.MoveLastItem = this.bindingNavigatorMoveLastItem;
             this.bindingNavigator1.MoveNextItem = this.bindingNavigatorMoveNextItem;
