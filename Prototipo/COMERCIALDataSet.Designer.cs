@@ -9338,6 +9338,8 @@ namespace Comercial {
             
             private global::System.Data.DataColumn columnICMS;
             
+            private global::System.Data.DataColumn columnvaloricms;
+            
             private global::System.Data.DataColumn columnTipo;
             
             private global::System.Data.DataColumn columnCNPJ;
@@ -9373,6 +9375,8 @@ namespace Comercial {
             private global::System.Data.DataColumn columnValor;
             
             private global::System.Data.DataColumn columnIPI;
+            
+            private global::System.Data.DataColumn columnvalorIPI;
             
             private global::System.Data.DataColumn columnCodProduto;
             
@@ -9477,6 +9481,13 @@ namespace Comercial {
             public global::System.Data.DataColumn ICMSColumn {
                 get {
                     return this.columnICMS;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn valoricmsColumn {
+                get {
+                    return this.columnvaloricms;
                 }
             }
             
@@ -9607,6 +9618,13 @@ namespace Comercial {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn valorIPIColumn {
+                get {
+                    return this.columnvalorIPI;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public global::System.Data.DataColumn CodProdutoColumn {
                 get {
                     return this.columnCodProduto;
@@ -9667,6 +9685,7 @@ namespace Comercial {
                         string Bairro, 
                         string Municipio, 
                         double ICMS, 
+                        double valoricms, 
                         string Tipo, 
                         string CNPJ, 
                         string TipoFrete, 
@@ -9685,6 +9704,7 @@ namespace Comercial {
                         double Desconto, 
                         double Valor, 
                         double IPI, 
+                        double valorIPI, 
                         int CodProduto, 
                         int CodIUnidadeMedida, 
                         string ValorNota) {
@@ -9700,6 +9720,7 @@ namespace Comercial {
                         Bairro,
                         Municipio,
                         ICMS,
+                        valoricms,
                         Tipo,
                         CNPJ,
                         TipoFrete,
@@ -9718,6 +9739,7 @@ namespace Comercial {
                         Desconto,
                         Valor,
                         IPI,
+                        valorIPI,
                         CodProduto,
                         CodIUnidadeMedida,
                         ValorNota};
@@ -9750,6 +9772,7 @@ namespace Comercial {
                 this.columnBairro = base.Columns["Bairro"];
                 this.columnMunicipio = base.Columns["Municipio"];
                 this.columnICMS = base.Columns["ICMS"];
+                this.columnvaloricms = base.Columns["valoricms"];
                 this.columnTipo = base.Columns["Tipo"];
                 this.columnCNPJ = base.Columns["CNPJ"];
                 this.columnTipoFrete = base.Columns["TipoFrete"];
@@ -9768,6 +9791,7 @@ namespace Comercial {
                 this.columnDesconto = base.Columns["Desconto"];
                 this.columnValor = base.Columns["Valor"];
                 this.columnIPI = base.Columns["IPI"];
+                this.columnvalorIPI = base.Columns["valorIPI"];
                 this.columnCodProduto = base.Columns["CodProduto"];
                 this.columnCodIUnidadeMedida = base.Columns["CodIUnidadeMedida"];
                 this.columnValorNota = base.Columns["ValorNota"];
@@ -9795,6 +9819,8 @@ namespace Comercial {
                 base.Columns.Add(this.columnMunicipio);
                 this.columnICMS = new global::System.Data.DataColumn("ICMS", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnICMS);
+                this.columnvaloricms = new global::System.Data.DataColumn("valoricms", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnvaloricms);
                 this.columnTipo = new global::System.Data.DataColumn("Tipo", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTipo);
                 this.columnCNPJ = new global::System.Data.DataColumn("CNPJ", typeof(string), null, global::System.Data.MappingType.Element);
@@ -9831,6 +9857,8 @@ namespace Comercial {
                 base.Columns.Add(this.columnValor);
                 this.columnIPI = new global::System.Data.DataColumn("IPI", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIPI);
+                this.columnvalorIPI = new global::System.Data.DataColumn("valorIPI", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnvalorIPI);
                 this.columnCodProduto = new global::System.Data.DataColumn("CodProduto", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCodProduto);
                 this.columnCodIUnidadeMedida = new global::System.Data.DataColumn("CodIUnidadeMedida", typeof(int), null, global::System.Data.MappingType.Element);
@@ -14209,6 +14237,21 @@ namespace Comercial {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public double valoricms {
+                get {
+                    try {
+                        return ((double)(this[this.tableRelNotaFiscal.valoricmsColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'valoricms\' in table \'RelNotaFiscal\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRelNotaFiscal.valoricmsColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public string Tipo {
                 get {
                     try {
@@ -14479,6 +14522,21 @@ namespace Comercial {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public double valorIPI {
+                get {
+                    try {
+                        return ((double)(this[this.tableRelNotaFiscal.valorIPIColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'valorIPI\' in table \'RelNotaFiscal\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRelNotaFiscal.valorIPIColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public int CodProduto {
                 get {
                     try {
@@ -14621,6 +14679,16 @@ namespace Comercial {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void SetICMSNull() {
                 this[this.tableRelNotaFiscal.ICMSColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsvaloricmsNull() {
+                return this.IsNull(this.tableRelNotaFiscal.valoricmsColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetvaloricmsNull() {
+                this[this.tableRelNotaFiscal.valoricmsColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -14801,6 +14869,16 @@ namespace Comercial {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void SetIPINull() {
                 this[this.tableRelNotaFiscal.IPIColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsvalorIPINull() {
+                return this.IsNull(this.tableRelNotaFiscal.valorIPIColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetvalorIPINull() {
+                this[this.tableRelNotaFiscal.valorIPIColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
