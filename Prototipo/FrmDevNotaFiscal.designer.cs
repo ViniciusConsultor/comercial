@@ -40,16 +40,16 @@
             this.clmVlrUnitário = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmVlrTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grpBxTotais = new System.Windows.Forms.GroupBox();
-            this.lblVlrBruto = new System.Windows.Forms.Label();
             this.lblDescontos = new System.Windows.Forms.Label();
             this.lblVlrFrete = new System.Windows.Forms.Label();
             this.lblVlrMercadoria = new System.Windows.Forms.Label();
-            this.txtBxDescontos = new System.Windows.Forms.TextBox();
-            this.txtBxVlrBruto = new System.Windows.Forms.TextBox();
+            this.txtBxicms = new System.Windows.Forms.TextBox();
             this.txtBxVlrFrete = new System.Windows.Forms.TextBox();
-            this.txtBxVlrMercadoria = new System.Windows.Forms.TextBox();
+            this.txtBxVlrNota = new System.Windows.Forms.TextBox();
             this.grpBxInfNotFiscal = new System.Windows.Forms.GroupBox();
             this.txtNrPedido = new System.Windows.Forms.TextBox();
+            this.nOTAFISCALBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
             this.txtTipoNF = new System.Windows.Forms.TextBox();
             this.lblNumNotFiscal = new System.Windows.Forms.Label();
             this.lblDtEmissao = new System.Windows.Forms.Label();
@@ -58,8 +58,6 @@
             this.dtTmPckrDtEmissao = new System.Windows.Forms.DateTimePicker();
             this.lblTipo = new System.Windows.Forms.Label();
             this.tbCntrlDevNotFiscal = new System.Windows.Forms.TabControl();
-            this.nOTAFISCALBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
             this.nOTAFISCALTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.NOTAFISCALTableAdapter();
             this.tableAdapterManager = new Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager();
             this.txtNumNF = new Comercial.TextButton();
@@ -69,9 +67,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtGrdVwItensNF)).BeginInit();
             this.grpBxTotais.SuspendLayout();
             this.grpBxInfNotFiscal.SuspendLayout();
-            this.tbCntrlDevNotFiscal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nOTAFISCALBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).BeginInit();
+            this.tbCntrlDevNotFiscal.SuspendLayout();
             this.SuspendLayout();
             // 
             // LblNumPedido
@@ -96,7 +94,7 @@
             this.tbPgDevNotaFiscal.Location = new System.Drawing.Point(4, 22);
             this.tbPgDevNotaFiscal.Name = "tbPgDevNotaFiscal";
             this.tbPgDevNotaFiscal.Padding = new System.Windows.Forms.Padding(3);
-            this.tbPgDevNotaFiscal.Size = new System.Drawing.Size(788, 499);
+            this.tbPgDevNotaFiscal.Size = new System.Drawing.Size(780, 489);
             this.tbPgDevNotaFiscal.TabIndex = 0;
             this.tbPgDevNotaFiscal.Text = "Devolução Nota Fiscal";
             this.tbPgDevNotaFiscal.UseVisualStyleBackColor = true;
@@ -176,32 +174,19 @@
             // 
             // grpBxTotais
             // 
-            this.grpBxTotais.Controls.Add(this.lblVlrBruto);
             this.grpBxTotais.Controls.Add(this.lblDescontos);
             this.grpBxTotais.Controls.Add(this.lblVlrFrete);
             this.grpBxTotais.Controls.Add(this.lblVlrMercadoria);
-            this.grpBxTotais.Controls.Add(this.txtBxDescontos);
-            this.grpBxTotais.Controls.Add(this.txtBxVlrBruto);
+            this.grpBxTotais.Controls.Add(this.txtBxicms);
             this.grpBxTotais.Controls.Add(this.txtBxVlrFrete);
-            this.grpBxTotais.Controls.Add(this.txtBxVlrMercadoria);
+            this.grpBxTotais.Controls.Add(this.txtBxVlrNota);
             this.grpBxTotais.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.grpBxTotais.Location = new System.Drawing.Point(19, 341);
             this.grpBxTotais.Name = "grpBxTotais";
-            this.grpBxTotais.Size = new System.Drawing.Size(752, 140);
+            this.grpBxTotais.Size = new System.Drawing.Size(738, 116);
             this.grpBxTotais.TabIndex = 19;
             this.grpBxTotais.TabStop = false;
             this.grpBxTotais.Text = "Totais";
-            // 
-            // lblVlrBruto
-            // 
-            this.lblVlrBruto.AutoSize = true;
-            this.lblVlrBruto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVlrBruto.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblVlrBruto.Location = new System.Drawing.Point(587, 103);
-            this.lblVlrBruto.Name = "lblVlrBruto";
-            this.lblVlrBruto.Size = new System.Drawing.Size(53, 13);
-            this.lblVlrBruto.TabIndex = 25;
-            this.lblVlrBruto.Text = "Vlr. Bruto:";
             // 
             // lblDescontos
             // 
@@ -210,20 +195,20 @@
             this.lblDescontos.ForeColor = System.Drawing.Color.CadetBlue;
             this.lblDescontos.Location = new System.Drawing.Point(579, 77);
             this.lblDescontos.Name = "lblDescontos";
-            this.lblDescontos.Size = new System.Drawing.Size(61, 13);
+            this.lblDescontos.Size = new System.Drawing.Size(36, 13);
             this.lblDescontos.TabIndex = 24;
-            this.lblDescontos.Text = "Descontos:";
+            this.lblDescontos.Text = "ICMS:";
             // 
             // lblVlrFrete
             // 
             this.lblVlrFrete.AutoSize = true;
             this.lblVlrFrete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVlrFrete.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblVlrFrete.Location = new System.Drawing.Point(588, 51);
+            this.lblVlrFrete.Location = new System.Drawing.Point(567, 51);
             this.lblVlrFrete.Name = "lblVlrFrete";
-            this.lblVlrFrete.Size = new System.Drawing.Size(52, 13);
+            this.lblVlrFrete.Size = new System.Drawing.Size(61, 13);
             this.lblVlrFrete.TabIndex = 23;
-            this.lblVlrFrete.Text = "Vlr. Frete:";
+            this.lblVlrFrete.Text = "Valor Frete:";
             // 
             // lblVlrMercadoria
             // 
@@ -232,45 +217,40 @@
             this.lblVlrMercadoria.ForeColor = System.Drawing.Color.CadetBlue;
             this.lblVlrMercadoria.Location = new System.Drawing.Point(562, 22);
             this.lblVlrMercadoria.Name = "lblVlrMercadoria";
-            this.lblVlrMercadoria.Size = new System.Drawing.Size(81, 13);
+            this.lblVlrMercadoria.Size = new System.Drawing.Size(60, 13);
             this.lblVlrMercadoria.TabIndex = 22;
-            this.lblVlrMercadoria.Text = "Vlr. Mercadoria:";
+            this.lblVlrMercadoria.Text = "Valor Nota:";
+            this.lblVlrMercadoria.Click += new System.EventHandler(this.lblVlrMercadoria_Click);
             // 
-            // txtBxDescontos
+            // txtBxicms
             // 
-            this.txtBxDescontos.Enabled = false;
-            this.txtBxDescontos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBxDescontos.Location = new System.Drawing.Point(649, 74);
-            this.txtBxDescontos.Name = "txtBxDescontos";
-            this.txtBxDescontos.Size = new System.Drawing.Size(83, 20);
-            this.txtBxDescontos.TabIndex = 21;
-            // 
-            // txtBxVlrBruto
-            // 
-            this.txtBxVlrBruto.Enabled = false;
-            this.txtBxVlrBruto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBxVlrBruto.Location = new System.Drawing.Point(649, 100);
-            this.txtBxVlrBruto.Name = "txtBxVlrBruto";
-            this.txtBxVlrBruto.Size = new System.Drawing.Size(83, 20);
-            this.txtBxVlrBruto.TabIndex = 20;
+            this.txtBxicms.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.nOTAFISCALBindingSource, "Icms", true));
+            this.txtBxicms.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBxicms.Location = new System.Drawing.Point(649, 74);
+            this.txtBxicms.Name = "txtBxicms";
+            this.txtBxicms.ReadOnly = true;
+            this.txtBxicms.Size = new System.Drawing.Size(83, 20);
+            this.txtBxicms.TabIndex = 21;
             // 
             // txtBxVlrFrete
             // 
-            this.txtBxVlrFrete.Enabled = false;
+            this.txtBxVlrFrete.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.nOTAFISCALBindingSource, "ValorFrete", true));
             this.txtBxVlrFrete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBxVlrFrete.Location = new System.Drawing.Point(649, 48);
             this.txtBxVlrFrete.Name = "txtBxVlrFrete";
+            this.txtBxVlrFrete.ReadOnly = true;
             this.txtBxVlrFrete.Size = new System.Drawing.Size(83, 20);
             this.txtBxVlrFrete.TabIndex = 19;
             // 
-            // txtBxVlrMercadoria
+            // txtBxVlrNota
             // 
-            this.txtBxVlrMercadoria.Enabled = false;
-            this.txtBxVlrMercadoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBxVlrMercadoria.Location = new System.Drawing.Point(649, 19);
-            this.txtBxVlrMercadoria.Name = "txtBxVlrMercadoria";
-            this.txtBxVlrMercadoria.Size = new System.Drawing.Size(83, 20);
-            this.txtBxVlrMercadoria.TabIndex = 18;
+            this.txtBxVlrNota.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.nOTAFISCALBindingSource, "ValorNota", true));
+            this.txtBxVlrNota.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBxVlrNota.Location = new System.Drawing.Point(649, 19);
+            this.txtBxVlrNota.Name = "txtBxVlrNota";
+            this.txtBxVlrNota.ReadOnly = true;
+            this.txtBxVlrNota.Size = new System.Drawing.Size(83, 20);
+            this.txtBxVlrNota.TabIndex = 18;
             // 
             // grpBxInfNotFiscal
             // 
@@ -300,6 +280,16 @@
             this.txtNrPedido.ReadOnly = true;
             this.txtNrPedido.Size = new System.Drawing.Size(80, 20);
             this.txtNrPedido.TabIndex = 30;
+            // 
+            // nOTAFISCALBindingSource
+            // 
+            this.nOTAFISCALBindingSource.DataMember = "NOTAFISCAL";
+            this.nOTAFISCALBindingSource.DataSource = this.cOMERCIALDataSet;
+            // 
+            // cOMERCIALDataSet
+            // 
+            this.cOMERCIALDataSet.DataSetName = "COMERCIALDataSet";
+            this.cOMERCIALDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // txtTipoNF
             // 
@@ -383,18 +373,8 @@
             this.tbCntrlDevNotFiscal.Location = new System.Drawing.Point(12, 12);
             this.tbCntrlDevNotFiscal.Name = "tbCntrlDevNotFiscal";
             this.tbCntrlDevNotFiscal.SelectedIndex = 0;
-            this.tbCntrlDevNotFiscal.Size = new System.Drawing.Size(796, 525);
+            this.tbCntrlDevNotFiscal.Size = new System.Drawing.Size(788, 515);
             this.tbCntrlDevNotFiscal.TabIndex = 18;
-            // 
-            // nOTAFISCALBindingSource
-            // 
-            this.nOTAFISCALBindingSource.DataMember = "NOTAFISCAL";
-            this.nOTAFISCALBindingSource.DataSource = this.cOMERCIALDataSet;
-            // 
-            // cOMERCIALDataSet
-            // 
-            this.cOMERCIALDataSet.DataSetName = "COMERCIALDataSet";
-            this.cOMERCIALDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // nOTAFISCALTableAdapter
             // 
@@ -442,7 +422,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(935, 560);
+            this.ClientSize = new System.Drawing.Size(813, 535);
             this.Controls.Add(this.tbCntrlDevNotFiscal);
             this.Name = "FrmDevNotaFiscal";
             this.ShowIcon = false;
@@ -456,9 +436,9 @@
             this.grpBxTotais.PerformLayout();
             this.grpBxInfNotFiscal.ResumeLayout(false);
             this.grpBxInfNotFiscal.PerformLayout();
-            this.tbCntrlDevNotFiscal.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.nOTAFISCALBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).EndInit();
+            this.tbCntrlDevNotFiscal.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -475,14 +455,9 @@
         private System.Windows.Forms.GroupBox grpBxTotais;
         private System.Windows.Forms.GroupBox grpBxInfNotFiscal;
         private System.Windows.Forms.DataGridView dtGrdVwItensNF;
-        private System.Windows.Forms.TextBox txtBxVlrMercadoria;
-        private System.Windows.Forms.Label lblVlrBruto;
         private System.Windows.Forms.Label lblDescontos;
         private System.Windows.Forms.Label lblVlrFrete;
         private System.Windows.Forms.Label lblVlrMercadoria;
-        private System.Windows.Forms.TextBox txtBxDescontos;
-        private System.Windows.Forms.TextBox txtBxVlrBruto;
-        private System.Windows.Forms.TextBox txtBxVlrFrete;
         private COMERCIALDataSet cOMERCIALDataSet;
         private System.Windows.Forms.BindingSource nOTAFISCALBindingSource;
         private Comercial.COMERCIALDataSetTableAdapters.NOTAFISCALTableAdapter nOTAFISCALTableAdapter;
@@ -498,6 +473,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clmVlrUnitário;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmVlrTotal;
         public System.Windows.Forms.TextBox txtNrPedido;
+        public System.Windows.Forms.TextBox txtBxVlrNota;
+        public System.Windows.Forms.TextBox txtBxicms;
+        public System.Windows.Forms.TextBox txtBxVlrFrete;
 
     }
 }
