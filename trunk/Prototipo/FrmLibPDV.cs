@@ -64,7 +64,7 @@ namespace Comercial
                     total = Convert.ToDouble(total) + Convert.ToDouble(item.Cells["ColTotal"].Value);
                     //desconto = Convert.ToDouble(desconto) + Convert.ToDouble(item.Cells["ColDesconto"].Value);
                     desconto += (Convert.ToDouble(item.Cells["ColDesconto"].Value)/100) *
-                                (Convert.ToDouble(item.Cells["ClmPrcUnit"].Value) * 
+                                (Convert.ToDouble(item.Cells["ClmPrcUnit"].Value) *
                                 Convert.ToDouble(item.Cells["ClmQtdeLib"].Value));
                     totalfaturado = Convert.ToDouble(totalfaturado) + Convert.ToDouble(item.Cells["ColVALORFATU"].Value);
                     ipi += (Convert.ToDouble(item.Cells["ClmIPI"].Value) / 100) *
