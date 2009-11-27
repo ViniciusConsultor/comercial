@@ -9378,6 +9378,8 @@ namespace Comercial {
             
             private global::System.Data.DataColumn columnCodIUnidadeMedida;
             
+            private global::System.Data.DataColumn columnValorNota;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public RelNotaFiscalDataTable() {
                 this.TableName = "RelNotaFiscal";
@@ -9619,6 +9621,13 @@ namespace Comercial {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn ValorNotaColumn {
+                get {
+                    return this.columnValorNota;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -9677,7 +9686,8 @@ namespace Comercial {
                         double Valor, 
                         double IPI, 
                         int CodProduto, 
-                        int CodIUnidadeMedida) {
+                        int CodIUnidadeMedida, 
+                        string ValorNota) {
                 RelNotaFiscalRow rowRelNotaFiscalRow = ((RelNotaFiscalRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         NrNotaFiscal,
@@ -9709,7 +9719,8 @@ namespace Comercial {
                         Valor,
                         IPI,
                         CodProduto,
-                        CodIUnidadeMedida};
+                        CodIUnidadeMedida,
+                        ValorNota};
                 rowRelNotaFiscalRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowRelNotaFiscalRow);
                 return rowRelNotaFiscalRow;
@@ -9759,6 +9770,7 @@ namespace Comercial {
                 this.columnIPI = base.Columns["IPI"];
                 this.columnCodProduto = base.Columns["CodProduto"];
                 this.columnCodIUnidadeMedida = base.Columns["CodIUnidadeMedida"];
+                this.columnValorNota = base.Columns["ValorNota"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9823,6 +9835,8 @@ namespace Comercial {
                 base.Columns.Add(this.columnCodProduto);
                 this.columnCodIUnidadeMedida = new global::System.Data.DataColumn("CodIUnidadeMedida", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCodIUnidadeMedida);
+                this.columnValorNota = new global::System.Data.DataColumn("ValorNota", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnValorNota);
                 this.columnNrNotaFiscal.Caption = "NRPEDIDO";
                 this.columnRazaoSocial.Caption = "TIPO";
                 this.columnSerie.Caption = "SITUACAO";
@@ -14495,6 +14509,21 @@ namespace Comercial {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string ValorNota {
+                get {
+                    try {
+                        return ((string)(this[this.tableRelNotaFiscal.ValorNotaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ValorNota\' in table \'RelNotaFiscal\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRelNotaFiscal.ValorNotaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public bool IsNrNotaFiscalNull() {
                 return this.IsNull(this.tableRelNotaFiscal.NrNotaFiscalColumn);
             }
@@ -14792,6 +14821,16 @@ namespace Comercial {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void SetCodIUnidadeMedidaNull() {
                 this[this.tableRelNotaFiscal.CodIUnidadeMedidaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsValorNotaNull() {
+                return this.IsNull(this.tableRelNotaFiscal.ValorNotaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetValorNotaNull() {
+                this[this.tableRelNotaFiscal.ValorNotaColumn] = global::System.Convert.DBNull;
             }
         }
         
