@@ -339,13 +339,18 @@ namespace Comercial
                 dtGrdVwVis.Columns.Add("col4", "Tipo");
                 dtGrdVwVis.Columns["col4"].DataPropertyName = "TIPO";
 
+                dtGrdVwVis.Columns.Add("col5", "Numero Pedido");
+                dtGrdVwVis.Columns["col5"].DataPropertyName = "NrPedido";
 
-                dtGrdVwVis.Columns.Add("col5", "Status NF");
-                dtGrdVwVis.Columns["col5"].DataPropertyName = "STATUS";
+               dtGrdVwVis.Columns.Add("col6", "Valor Nota");
+               dtGrdVwVis.Columns["col6"].DataPropertyName = "ValorNota";
 
+               dtGrdVwVis.Columns.Add("col7", "Valor Frete");
+               dtGrdVwVis.Columns["col7"].DataPropertyName = "Valor Frete";
 
-                dtGrdVwVis.Columns.Add("col6", "Numero Pedido");
-                dtGrdVwVis.Columns["col6"].DataPropertyName = "NrPedido";
+               dtGrdVwVis.Columns.Add("col8", "ICMS");
+               dtGrdVwVis.Columns["col8"].DataPropertyName = "ICMS";
+
             }
             #endregion
         }
@@ -1080,7 +1085,11 @@ namespace Comercial
                 DevNF.txtSerie.Text = selecionadas[2].Value.ToString();
                 DevNF.dtTmPckrDtEmissao.Text = selecionadas[3].Value.ToString();
                 DevNF.txtTipoNF.Text = selecionadas[4].Value.ToString();
-                DevNF.txtNrPedido.Text = selecionadas[5].Value.ToString(); 
+                DevNF.txtNrPedido.Text = selecionadas[5].Value.ToString();
+                DevNF.txtBxVlrNota.Text = selecionadas[6].Value.ToString();
+                DevNF.txtBxVlrFrete.Text=selecionadas[7].Value.ToString();
+                DevNF.txtBxicms.Text=selecionadas[8].Value.ToString();
+              
 
                 //populo o item do pedido passando como parametro a NF selecionada.
                 DevNF.populargrid();

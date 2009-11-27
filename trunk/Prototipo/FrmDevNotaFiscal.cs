@@ -74,7 +74,7 @@ namespace Comercial
 
            StringBuilder sqlcommand = new StringBuilder();
 
-           sqlcommand.Append(" SELECT NRNOTAFISCAL, SERIE, DATAEMISSAO, TIPO, NrPedido ");
+           sqlcommand.Append(" SELECT NRNOTAFISCAL, SERIE, DATAEMISSAO, TIPO, NrPedido, VALORNOTA, VALORFRETE, ICMS ");
            sqlcommand.Append(" FROM NOTAFISCAL ");
            
            DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
@@ -172,9 +172,13 @@ namespace Comercial
                txtSerie.Text = String.Empty;
                txtTipoNF.Text = String.Empty;
                dtTmPckrDtEmissao.Text = String.Empty;
-               txtBxVlrMercadoria.Text = String.Empty;
+               txtBxVlrNota.Text = String.Empty;
                txtNrPedido.Text = String.Empty;
+               txtBxVlrNota.Text = String.Empty;
+               txtBxVlrFrete.Text = String.Empty;
+               txtBxicms.Text = String.Empty;
                dtGrdVwItensNF.Refresh();
+
                dttRetorno.Clear();                                         
                
            }
@@ -185,6 +189,7 @@ namespace Comercial
            }
        }
        #endregion
+
 
        #region AtualizaSituaçãoPedido
        public void atualizaStatusPedido(string Situacao, int NrPedido)
@@ -362,6 +367,11 @@ namespace Comercial
 
            db.ExecuteScalar(dbComd);
 
+
+       }
+
+       private void lblVlrMercadoria_Click(object sender, EventArgs e)
+       {
 
        }
 
