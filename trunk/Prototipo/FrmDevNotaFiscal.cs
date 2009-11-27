@@ -239,7 +239,7 @@ namespace Comercial
                    //Atualiza Status do Pedido para "P"
                    atualizaStatusPedido("P", Convert.ToInt32(txtNrPedido.Text));
 
-                   //Atualiza Tipo da NF para "E"
+                   //Atualiza Tipo da NF para "E" ...
                    atualizaStatusNF("E", Convert.ToInt32(txtNumNF.getText));
 
                    //mensagem de NF devolvida
