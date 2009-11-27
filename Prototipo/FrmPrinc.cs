@@ -1720,7 +1720,7 @@ namespace Comercial
 
         private void BtnDevNF_Click_1(object sender, EventArgs e)
         {
-
+            // Devolucao NF
             Form frm = this.ActiveMdiChild;
             if (frm == null)
                 return;
