@@ -216,8 +216,20 @@ namespace Comercial
                     sqlcon.Open();
 
 
-                    string sql = string.Format("SELECT nf.*, ((nf.icms * itnf.valor)/100) as valoricms , itnf.*,((itnf.IPI * itnf.valor)/100) as valorIPI,tra.NOME as DescricaoTransp, tra.UF as UfTrans, tra.CNPJ as CnpjTrans, tra.ENDERECO as EnderecoTrans, tra.MUNICIPIO as MunicipioTrans, tra.IE as IeTrans FROM NOTAFISCAL nf INNER JOIN ItemNotaFiscal itnf ON nf.NrNotaFiscal = itnf.NrNotaFiscal INNER JOIN TRANSPORTADORA tra ON nf.CodTransportadora = tra.CNPJ WHERE nf.NrPedido = {0}", x.txtbtnPedido.Text);
-
+                    string sql = string.Format("SELECT nf.*, ((nf.icms * itnf.valor)/100) as valoricms , itnf.*,((itnf.IPI * itnf.valor)/100) as valorIPI,tra.NOME as DescricaoTransp, "+
+                        " tra.UF as UfTrans, tra.CNPJ as CnpjTrans, tra.ENDERECO as EnderecoTrans, tra.MUNICIPIO as MunicipioTrans, tra.IE as IeTrans, "+
+                        " ( "+
+                        " select SUM((n.icms * i.valor)/100) "+
+                        " from NOTAFISCAL n inner join ItemNotaFiscal i on n.NrNotaFiscal = i.NrNotaFiscal "+
+                        " where n.NrNotaFiscal = nf.nrNotaFiscal "+
+                        " )total_ICMS, "+
+                        " ( "+
+                        " 	select SUM((i.IPI * i.valor)/100) "+
+                        " from NOTAFISCAL n inner join ItemNotaFiscal i on n.NrNotaFiscal = i.NrNotaFiscal "+
+                        " where n.NrNotaFiscal = nf.nrNotaFiscal "+
+                        " )total_IPI "+
+                        " FROM NOTAFISCAL nf INNER JOIN ItemNotaFiscal itnf ON nf.NrNotaFiscal = itnf.NrNotaFiscal " +
+                        " 					INNER JOIN TRANSPORTADORA tra ON nf.CodTransportadora = tra.CNPJ WHERE nf.NrPedido = {0}", x.txtbtnPedido.Text);
 
                     SqlDataAdapter dtAdapter = new SqlDataAdapter(sql, sqlcon);
 
