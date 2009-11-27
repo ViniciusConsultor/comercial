@@ -346,7 +346,7 @@ namespace Comercial
                dtGrdVwVis.Columns["col6"].DataPropertyName = "ValorNota";
 
                dtGrdVwVis.Columns.Add("col7", "Valor Frete");
-               dtGrdVwVis.Columns["col7"].DataPropertyName = "Valor Frete";
+               dtGrdVwVis.Columns["col7"].DataPropertyName = "ValorFrete";
 
                dtGrdVwVis.Columns.Add("col8", "ICMS");
                dtGrdVwVis.Columns["col8"].DataPropertyName = "ICMS";
@@ -1081,14 +1081,14 @@ namespace Comercial
                 int linha = celula.RowIndex;
                 int coluna = celula.ColumnIndex;
 
-                DevNF.txtNumNF.getText = selecionadas[1].Value.ToString();
-                DevNF.txtSerie.Text = selecionadas[2].Value.ToString();
-                DevNF.dtTmPckrDtEmissao.Text = selecionadas[3].Value.ToString();
-                DevNF.txtTipoNF.Text = selecionadas[4].Value.ToString();
-                DevNF.txtNrPedido.Text = selecionadas[5].Value.ToString();
-                DevNF.txtBxVlrNota.Text = selecionadas[6].Value.ToString();
-                DevNF.txtBxVlrFrete.Text=selecionadas[7].Value.ToString();
-                DevNF.txtBxicms.Text=selecionadas[8].Value.ToString();
+                DevNF.txtNumNF.getText = selecionadas[0].Value.ToString();
+                DevNF.txtSerie.Text = selecionadas[1].Value.ToString();
+                DevNF.dtTmPckrDtEmissao.Text = selecionadas[2].Value.ToString();
+                DevNF.txtTipoNF.Text = selecionadas[3].Value.ToString();
+                DevNF.txtNrPedido.Text = selecionadas[4].Value.ToString();
+                DevNF.txtBxVlrNota.Text = selecionadas[5].Value.ToString();
+                DevNF.txtBxVlrFrete.Text=selecionadas[6].Value.ToString();
+                DevNF.txtBxicms.Text=selecionadas[7].Value.ToString();
               
 
                 //populo o item do pedido passando como parametro a NF selecionada.
