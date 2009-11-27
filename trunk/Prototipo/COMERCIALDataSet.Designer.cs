@@ -9382,6 +9382,10 @@ namespace Comercial {
             
             private global::System.Data.DataColumn columnCodIUnidadeMedida;
             
+            private global::System.Data.DataColumn columntotal_IPI;
+            
+            private global::System.Data.DataColumn columntotal_ICMS;
+            
             private global::System.Data.DataColumn columnValorNota;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9639,6 +9643,20 @@ namespace Comercial {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn total_IPIColumn {
+                get {
+                    return this.columntotal_IPI;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn total_ICMSColumn {
+                get {
+                    return this.columntotal_ICMS;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public global::System.Data.DataColumn ValorNotaColumn {
                 get {
                     return this.columnValorNota;
@@ -9707,6 +9725,8 @@ namespace Comercial {
                         double valorIPI, 
                         int CodProduto, 
                         int CodIUnidadeMedida, 
+                        string total_IPI, 
+                        string total_ICMS, 
                         string ValorNota) {
                 RelNotaFiscalRow rowRelNotaFiscalRow = ((RelNotaFiscalRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
@@ -9742,6 +9762,8 @@ namespace Comercial {
                         valorIPI,
                         CodProduto,
                         CodIUnidadeMedida,
+                        total_IPI,
+                        total_ICMS,
                         ValorNota};
                 rowRelNotaFiscalRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowRelNotaFiscalRow);
@@ -9794,6 +9816,8 @@ namespace Comercial {
                 this.columnvalorIPI = base.Columns["valorIPI"];
                 this.columnCodProduto = base.Columns["CodProduto"];
                 this.columnCodIUnidadeMedida = base.Columns["CodIUnidadeMedida"];
+                this.columntotal_IPI = base.Columns["total_IPI"];
+                this.columntotal_ICMS = base.Columns["total_ICMS"];
                 this.columnValorNota = base.Columns["ValorNota"];
             }
             
@@ -9863,6 +9887,10 @@ namespace Comercial {
                 base.Columns.Add(this.columnCodProduto);
                 this.columnCodIUnidadeMedida = new global::System.Data.DataColumn("CodIUnidadeMedida", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCodIUnidadeMedida);
+                this.columntotal_IPI = new global::System.Data.DataColumn("total_IPI", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntotal_IPI);
+                this.columntotal_ICMS = new global::System.Data.DataColumn("total_ICMS", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntotal_ICMS);
                 this.columnValorNota = new global::System.Data.DataColumn("ValorNota", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnValorNota);
                 this.columnNrNotaFiscal.Caption = "NRPEDIDO";
@@ -14567,6 +14595,36 @@ namespace Comercial {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string total_IPI {
+                get {
+                    try {
+                        return ((string)(this[this.tableRelNotaFiscal.total_IPIColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'total_IPI\' in table \'RelNotaFiscal\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRelNotaFiscal.total_IPIColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public string total_ICMS {
+                get {
+                    try {
+                        return ((string)(this[this.tableRelNotaFiscal.total_ICMSColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'total_ICMS\' in table \'RelNotaFiscal\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableRelNotaFiscal.total_ICMSColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public string ValorNota {
                 get {
                     try {
@@ -14899,6 +14957,26 @@ namespace Comercial {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void SetCodIUnidadeMedidaNull() {
                 this[this.tableRelNotaFiscal.CodIUnidadeMedidaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool Istotal_IPINull() {
+                return this.IsNull(this.tableRelNotaFiscal.total_IPIColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void Settotal_IPINull() {
+                this[this.tableRelNotaFiscal.total_IPIColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool Istotal_ICMSNull() {
+                return this.IsNull(this.tableRelNotaFiscal.total_ICMSColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void Settotal_ICMSNull() {
+                this[this.tableRelNotaFiscal.total_ICMSColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -24908,10 +24986,9 @@ SELECT NrNotaFiscal, RazaoSocial, Serie, DataEmissao, IE, Telefone, Endereco, Ba
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        NrNotaFiscal, RazaoSocial, Serie, DataEmissao, IE, Telefone, Endere" +
-                "co, Bairro, Municipio, Icms, Tipo, CNPJ, TipoFrete, ValorFrete, CodVendedor, \r\n " +
-                "                        CodTransportadora, NrPedido, ValorNota\r\nFROM            " +
-                "NOTAFISCAL";
+            this._commandCollection[0].CommandText = "SELECT NrNotaFiscal, RazaoSocial, Serie, DataEmissao, IE, Telefone, Endereco, Bai" +
+                "rro, Municipio, Icms, Tipo, CNPJ, TipoFrete, ValorFrete, CodVendedor, CodTranspo" +
+                "rtadora, NrPedido, ValorNota FROM NOTAFISCAL";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         

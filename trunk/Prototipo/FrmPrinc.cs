@@ -748,6 +748,13 @@ namespace Comercial
 
                 frmlibPed.PesquisaPedido();
             }
+            
+            if (form is FrmEmiNotFis)
+            {
+                FrmEmiNotFis frmlibPed = (FrmEmiNotFis)form;
+
+                frmlibPed.PesquisaPedido();
+            }
         }
 
         private void devoluçãoDeNFToolStripMenuItem_Click(object sender, EventArgs e)

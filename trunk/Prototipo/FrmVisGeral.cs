@@ -307,7 +307,7 @@ namespace Comercial
 
                 dtGrdVwVis.Columns.Add("col8", "Data Entrega");
                 dtGrdVwVis.Columns["col8"].DataPropertyName = "DATAENTREGA";
-                
+
                 dtGrdVwVis.Columns.Add("col9", "Valor Frete");
                 dtGrdVwVis.Columns["col9"].DataPropertyName = "VALORFRETE";
 
@@ -342,14 +342,14 @@ namespace Comercial
                 dtGrdVwVis.Columns.Add("col5", "Numero Pedido");
                 dtGrdVwVis.Columns["col5"].DataPropertyName = "NrPedido";
 
-               dtGrdVwVis.Columns.Add("col6", "Valor Nota");
-               dtGrdVwVis.Columns["col6"].DataPropertyName = "ValorNota";
+                dtGrdVwVis.Columns.Add("col6", "Valor Nota");
+                dtGrdVwVis.Columns["col6"].DataPropertyName = "ValorNota";
 
-               dtGrdVwVis.Columns.Add("col7", "Valor Frete");
-               dtGrdVwVis.Columns["col7"].DataPropertyName = "ValorFrete";
+                dtGrdVwVis.Columns.Add("col7", "Valor Frete");
+                dtGrdVwVis.Columns["col7"].DataPropertyName = "ValorFrete";
 
-               dtGrdVwVis.Columns.Add("col8", "ICMS");
-               dtGrdVwVis.Columns["col8"].DataPropertyName = "ICMS";
+                dtGrdVwVis.Columns.Add("col8", "ICMS");
+                dtGrdVwVis.Columns["col8"].DataPropertyName = "ICMS";
 
             }
             #endregion
@@ -724,7 +724,52 @@ namespace Comercial
 
                         dtGrdVwVis.DataSource = table;
                     }
+                }
+            }
 
+            else if (_parent is FrmEmiNotFis)
+            {
+                if ((_controle.Name == "txtbtnPedido"))
+                {
+                    if (rdBtnCod.Checked == true)
+                    {
+                        string c = ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString;
+
+                        SqlConnection conn = new SqlConnection(c);
+                        conn.Open();
+
+                        SqlCommand cmd = new SqlCommand("SELECT NRPEDIDO, TIPO, ped.CODCLIENTE, CODVENDEDOR,CODCONDICAOPAGAMENTO, CODTRANSPORTADORA, Convert(char(10),DATAEMISSAO,103)as DATAEMISSAO , Convert(char(10),DATAENTREGA,103) as DATAENTREGA " +
+                            " FROM PEDIDO ped INNER JOIN CLIENTE cli ON ped.CODCLIENTE = cli.CNPJ " +
+                            "WHERE SITUACAO <> 'C' AND SITUACAO <> 'E' AND NRPEDIDO = @NRPEDIDO ", conn);
+
+                        cmd.Parameters.Add(new SqlParameter("@NRPEDIDO", txtPesquisar.Text));
+
+                        SqlDataReader reader = cmd.ExecuteReader();
+                        DataTable table = new DataTable();
+                        table.Load(reader);
+
+                        dtGrdVwVis.DataSource = table;
+                    }
+
+                    if (rdBtnNome.Checked == true)
+                    {
+                        string c = ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString;
+
+                        SqlConnection conn = new SqlConnection(c);
+                        conn.Open();
+
+                        SqlCommand cmd = new SqlCommand("SELECT NRPEDIDO, TIPO, ped.CODCLIENTE, CODVENDEDOR,CODCONDICAOPAGAMENTO, CODTRANSPORTADORA, Convert(char(10),DATAEMISSAO,103)as DATAEMISSAO , Convert(char(10),DATAENTREGA,103) as DATAENTREGA " +
+                            " FROM PEDIDO ped INNER JOIN CLIENTE cli ON ped.CODCLIENTE = cli.CNPJ " +
+                            "WHERE SITUACAO <> 'C' AND SITUACAO <> 'E'  AND CODCLIENTE LIKE @CODCLIENTE ", conn);
+
+                        cmd.Parameters.Add(new SqlParameter("@CODCLIENTE", txtPesquisar.Text + "%"));
+
+                        SqlDataReader reader = cmd.ExecuteReader();
+                        DataTable table = new DataTable();
+                        table.Load(reader);
+
+                        dtGrdVwVis.DataSource = table;
+                    }
                 }
             }
             #endregion
@@ -763,6 +808,7 @@ namespace Comercial
         private void dtGrdVwVis_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             #region Double Click Pesquisa Usuario
+
             if (_parent is FrmCadUsu)
             {
                 FrmCadUsu usu = (FrmCadUsu)_parent;
@@ -780,14 +826,17 @@ namespace Comercial
                 this.Close();
                 this.Dispose();
             }
+
             #endregion
 
             #region Double Click Pesquisa Pedido
+
             if (_parent is FrmCadPed)
             {
                 FrmCadPed Ped = (FrmCadPed)_parent;
 
                 #region Double Click Pesquisa Cliente
+
                 if (_controle.Name == "txtcodCli")
                 {
                     // vamos obter as células selecionadas no DataGridView
@@ -804,9 +853,11 @@ namespace Comercial
                     this.Close();
                     this.Dispose();
                 }
+
                 #endregion
 
                 #region Double Click Pesquisa Vendedor
+
                 if (_controle.Name == "txtCodVendedor")
                 {
                     // vamos obter as células selecionadas no DataGridView
@@ -827,6 +878,7 @@ namespace Comercial
                 #endregion
 
                 #region Double Click Pesquisa Condição Pagto
+
                 if (_controle.Name == "txtCondPagto")
                 {
                     // vamos obter as células selecionadas no DataGridView
@@ -847,6 +899,7 @@ namespace Comercial
                 #endregion
 
                 #region Double Click Pesquisa Transportadora
+
                 if (_controle.Name == "txtCodTransportadora")
                 {
                     // vamos obter as células selecionadas no DataGridView
@@ -867,6 +920,7 @@ namespace Comercial
                 #endregion
 
                 #region Double Click Pesquisa Produto
+
                 if (_controle.Name == "txtProduto")
                 {
                     // vamos obter as células selecionadas no DataGridView
@@ -897,6 +951,7 @@ namespace Comercial
             #endregion
 
             #region Double Click Pesquisa Cliente
+
             if (_parent is FrmConCli)
             {
                 FrmConCli cli = (FrmConCli)_parent;
@@ -918,6 +973,7 @@ namespace Comercial
             #region Double Click Consulta Produto
 
             #region Produto
+
             if ((_parent is FrmCadProd))
             {
                 if (_controle.Name == "txtBtnCodGrp")
@@ -935,9 +991,11 @@ namespace Comercial
                     this.Dispose();
                 }
             }
+
             #endregion
 
             #region Produto
+
             if ((_parent is FrmConPDV) || (_parent is FrmConEstProd) || (_parent is FrmConProd))
             {
                 if (_controle.Name == "txtBtnCodGrp")
@@ -956,6 +1014,7 @@ namespace Comercial
                 }
 
                 #region Double Click Consulta Produto
+
                 if (_controle.Name == "txtCodProd")
                 {
                     FrmConEstProd ConPed = (FrmConEstProd)_parent;
@@ -1010,12 +1069,70 @@ namespace Comercial
             #endregion
 
             }
+
             #endregion
 
             #region Double Click Processo Pedido
-            if (_controle.Name == "txtbtnPedido")
+
+            if (_parent is FrmLibPDV)
             {
-                FrmLibPDV PedLib = (FrmLibPDV)_parent;
+                if (_controle.Name == "txtbtnPedido")
+                {
+                    FrmLibPDV PedLib = (FrmLibPDV)_parent;
+                    // vamos obter as células selecionadas no DataGridView
+                    DataGridViewSelectedCellCollection selecionadas = dtGrdVwVis.SelectedCells;
+
+                    DataGridViewCell celula = selecionadas[0];
+                    int linha = celula.RowIndex;
+                    int coluna = celula.ColumnIndex;
+
+                    PedLib.txtbtnPedido.Text = selecionadas[0].Value.ToString();
+
+                    if (selecionadas[1].Value.ToString() == "N")
+                    {
+                        PedLib.chkNormal.Checked = true;
+                    }
+                    else
+                    {
+                        PedLib.chkNormal.Checked = false;
+                    }
+
+                    if (selecionadas[1].Value.ToString() == "C")
+                    {
+                        PedLib.chkComplemento.Checked = true;
+                    }
+                    else
+                    {
+                        PedLib.chkComplemento.Checked = false;
+                    }
+                    PedLib.txtCodCliente.Text = selecionadas[2].Value.ToString();
+                    PedLib.txtCodVendedor.Text = selecionadas[3].Value.ToString();
+                    PedLib.txtCondPagto.Text = selecionadas[4].Value.ToString();
+                    PedLib.txtCodTransportadora.Text = selecionadas[5].Value.ToString();
+                    PedLib.dtpEntrega.Text = selecionadas[7].Value.ToString();
+                    PedLib.dtpEmissao.Text = selecionadas[6].Value.ToString();
+                    string valorfrete = string.Format("{0:C2}", Convert.ToDouble(selecionadas[8].Value.ToString()));
+                    PedLib.txtFrete.Text = valorfrete;
+
+                    PedLib.txtNomeCliente.Text = Convert.ToString(PedLib.ListarNomeCliente(PedLib.txtCodCliente.Text));
+                    PedLib.txtNomeTransportadora.Text =
+                        Convert.ToString(PedLib.ListarNomeTransportadora(PedLib.txtCodTransportadora.Text));
+                    PedLib.txtNomeVendedor.Text = Convert.ToString(PedLib.ListarNomeVendedor(PedLib.txtCodVendedor.Text));
+                    //populo o item do pedido passando como parametro o pedido selecionado.
+                    PedLib.populargrid();
+                    //somo as colunas do grid
+                    PedLib.SomarColunas();
+                    //valido os itens que já foram liberado, travando a celula se o item estiver liberado totalmente
+                    //se tiver liberado parcialmente mudo a cor da celula para vermelho
+                    PedLib.ValidaItemLiberado();
+
+                    this.Close();
+                    this.Dispose();
+                }
+            }
+            else if (_parent is FrmEmiNotFis)
+            {
+                FrmEmiNotFis PedLib = (FrmEmiNotFis)_parent;
                 // vamos obter as células selecionadas no DataGridView
                 DataGridViewSelectedCellCollection selecionadas = dtGrdVwVis.SelectedCells;
 
@@ -1052,7 +1169,8 @@ namespace Comercial
                 PedLib.txtFrete.Text = valorfrete;
 
                 PedLib.txtNomeCliente.Text = Convert.ToString(PedLib.ListarNomeCliente(PedLib.txtCodCliente.Text));
-                PedLib.txtNomeTransportadora.Text = Convert.ToString(PedLib.ListarNomeTransportadora(PedLib.txtCodTransportadora.Text));
+                PedLib.txtNomeTransportadora.Text =
+                    Convert.ToString(PedLib.ListarNomeTransportadora(PedLib.txtCodTransportadora.Text));
                 PedLib.txtNomeVendedor.Text = Convert.ToString(PedLib.ListarNomeVendedor(PedLib.txtCodVendedor.Text));
                 //populo o item do pedido passando como parametro o pedido selecionado.
                 PedLib.populargrid();
@@ -1065,6 +1183,7 @@ namespace Comercial
                 this.Close();
                 this.Dispose();
             }
+
             #endregion
 
             #region Double Click Devolução NF
@@ -1072,36 +1191,7 @@ namespace Comercial
             {
                 if ((_parent is FrmDevNotaFiscal))
                 {
-                    FrmDevNotaFiscal DevNF = (FrmDevNotaFiscal) _parent;
-
-                    // pegar as células selecionadas no DataGridView
-                    DataGridViewSelectedCellCollection selecionadas = dtGrdVwVis.SelectedCells;
-
-
-                    DataGridViewCell celula = selecionadas[0];
-                    int linha = celula.RowIndex;
-                    int coluna = celula.ColumnIndex;
-
-                    DevNF.txtNumNF.getText = selecionadas[0].Value.ToString();
-                    DevNF.txtSerie.Text = selecionadas[1].Value.ToString();
-                    DevNF.dtTmPckrDtEmissao.Text = selecionadas[2].Value.ToString();
-                    DevNF.txtTipoNF.Text = selecionadas[3].Value.ToString();
-                    DevNF.txtNrPedido.Text = selecionadas[4].Value.ToString();
-                    DevNF.txtBxVlrNota.Text = selecionadas[5].Value.ToString();
-                    DevNF.txtBxVlrFrete.Text = selecionadas[6].Value.ToString();
-                    DevNF.txtBxicms.Text = selecionadas[7].Value.ToString();
-
-
-                    //populo o item do pedido passando como parametro a NF selecionada.
-                    DevNF.populargrid();
-
-
-                    this.Close();
-                    this.Dispose();
-                } 
-                else if(_parent is FrmEmiNotFis)
-                {
-                    FrmEmiNotFis DevNF = (FrmEmiNotFis)_parent;
+                    FrmDevNotaFiscal DevNF = (FrmDevNotaFiscal)_parent;
 
                     // pegar as células selecionadas no DataGridView
                     DataGridViewSelectedCellCollection selecionadas = dtGrdVwVis.SelectedCells;
