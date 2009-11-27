@@ -1070,33 +1070,64 @@ namespace Comercial
             #region Double Click Devolução NF
             if (_controle.Name == "txtNumNF")
             {
-                
-                FrmDevNotaFiscal DevNF = (FrmDevNotaFiscal)_parent;
-                
-                // pegar as células selecionadas no DataGridView
-                DataGridViewSelectedCellCollection selecionadas = dtGrdVwVis.SelectedCells;
-              
+                if ((_parent is FrmDevNotaFiscal))
+                {
+                    FrmDevNotaFiscal DevNF = (FrmDevNotaFiscal) _parent;
 
-                DataGridViewCell celula = selecionadas[0];
-                int linha = celula.RowIndex;
-                int coluna = celula.ColumnIndex;
+                    // pegar as células selecionadas no DataGridView
+                    DataGridViewSelectedCellCollection selecionadas = dtGrdVwVis.SelectedCells;
 
-                DevNF.txtNumNF.getText = selecionadas[0].Value.ToString();
-                DevNF.txtSerie.Text = selecionadas[1].Value.ToString();
-                DevNF.dtTmPckrDtEmissao.Text = selecionadas[2].Value.ToString();
-                DevNF.txtTipoNF.Text = selecionadas[3].Value.ToString();
-                DevNF.txtNrPedido.Text = selecionadas[4].Value.ToString();
-                DevNF.txtBxVlrNota.Text = selecionadas[5].Value.ToString();
-                DevNF.txtBxVlrFrete.Text=selecionadas[6].Value.ToString();
-                DevNF.txtBxicms.Text=selecionadas[7].Value.ToString();
-              
 
-                //populo o item do pedido passando como parametro a NF selecionada.
-                DevNF.populargrid();
-                
-                                
-                this.Close();
-                this.Dispose();
+                    DataGridViewCell celula = selecionadas[0];
+                    int linha = celula.RowIndex;
+                    int coluna = celula.ColumnIndex;
+
+                    DevNF.txtNumNF.getText = selecionadas[0].Value.ToString();
+                    DevNF.txtSerie.Text = selecionadas[1].Value.ToString();
+                    DevNF.dtTmPckrDtEmissao.Text = selecionadas[2].Value.ToString();
+                    DevNF.txtTipoNF.Text = selecionadas[3].Value.ToString();
+                    DevNF.txtNrPedido.Text = selecionadas[4].Value.ToString();
+                    DevNF.txtBxVlrNota.Text = selecionadas[5].Value.ToString();
+                    DevNF.txtBxVlrFrete.Text = selecionadas[6].Value.ToString();
+                    DevNF.txtBxicms.Text = selecionadas[7].Value.ToString();
+
+
+                    //populo o item do pedido passando como parametro a NF selecionada.
+                    DevNF.populargrid();
+
+
+                    this.Close();
+                    this.Dispose();
+                } 
+                else if(_parent is FrmEmiNotFis)
+                {
+                    FrmEmiNotFis DevNF = (FrmEmiNotFis)_parent;
+
+                    // pegar as células selecionadas no DataGridView
+                    DataGridViewSelectedCellCollection selecionadas = dtGrdVwVis.SelectedCells;
+
+
+                    DataGridViewCell celula = selecionadas[0];
+                    int linha = celula.RowIndex;
+                    int coluna = celula.ColumnIndex;
+
+                    DevNF.txtNumNF.getText = selecionadas[0].Value.ToString();
+                    DevNF.txtSerie.Text = selecionadas[1].Value.ToString();
+                    DevNF.dtTmPckrDtEmissao.Text = selecionadas[2].Value.ToString();
+                    DevNF.txtTipoNF.Text = selecionadas[3].Value.ToString();
+                    DevNF.txtNrPedido.Text = selecionadas[4].Value.ToString();
+                    DevNF.txtBxVlrNota.Text = selecionadas[5].Value.ToString();
+                    DevNF.txtBxVlrFrete.Text = selecionadas[6].Value.ToString();
+                    DevNF.txtBxicms.Text = selecionadas[7].Value.ToString();
+
+
+                    //populo o item do pedido passando como parametro a NF selecionada.
+                    DevNF.populargrid();
+
+
+                    this.Close();
+                    this.Dispose();
+                }
             }
             #endregion
         }

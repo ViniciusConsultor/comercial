@@ -28,43 +28,13 @@
         /// </summary>
         private void InitializeComponent()
             {
+                System.Windows.Forms.Label LblNumPedido;
                 this.TbPgNotFis = new System.Windows.Forms.TabPage();
-                this.GrpBxDest = new System.Windows.Forms.GroupBox();
-                this.TxtTelCli = new System.Windows.Forms.MaskedTextBox();
-                this.LblTelCli = new System.Windows.Forms.Label();
-                this.TxtMunCli = new System.Windows.Forms.TextBox();
-                this.LblMunCli = new System.Windows.Forms.Label();
-                this.TxtBaiCli = new System.Windows.Forms.TextBox();
-                this.LblBaiCli = new System.Windows.Forms.Label();
-                this.TxtEndCli = new System.Windows.Forms.TextBox();
-                this.LblEndCli = new System.Windows.Forms.Label();
-                this.TxtIeCli = new System.Windows.Forms.MaskedTextBox();
-                this.TxtCnpCli = new System.Windows.Forms.MaskedTextBox();
-                this.LblIECli = new System.Windows.Forms.Label();
-                this.LblCnpCli = new System.Windows.Forms.Label();
-                this.TxtNomCli = new System.Windows.Forms.TextBox();
-                this.LblNomCli = new System.Windows.Forms.Label();
                 this.GrpBxTot = new System.Windows.Forms.GroupBox();
-                this.LblVlrBru = new System.Windows.Forms.Label();
-                this.LblDes = new System.Windows.Forms.Label();
-                this.TxtBxDes = new System.Windows.Forms.TextBox();
-                this.TxtBxVlrBru = new System.Windows.Forms.TextBox();
-                this.LblVlrFre = new System.Windows.Forms.Label();
-                this.LblVlrMer = new System.Windows.Forms.Label();
-                this.TxtVlrFre = new System.Windows.Forms.TextBox();
-                this.TxtVlrMer = new System.Windows.Forms.TextBox();
                 this.GrpBxItens = new System.Windows.Forms.GroupBox();
                 this.dtGrdVwItensNF = new System.Windows.Forms.DataGridView();
                 this.GrpBxInfNotFis = new System.Windows.Forms.GroupBox();
                 this.LlblNumNotFis = new System.Windows.Forms.Label();
-                this.LblUfOrigem = new System.Windows.Forms.Label();
-                this.LblDtEmissao = new System.Windows.Forms.Label();
-                this.TxtSerie = new System.Windows.Forms.TextBox();
-                this.CmbBxUf = new System.Windows.Forms.ComboBox();
-                this.LblSerie = new System.Windows.Forms.Label();
-                this.CmbBxFornecedor = new System.Windows.Forms.ComboBox();
-                this.DtTmPckrDtEmissao = new System.Windows.Forms.DateTimePicker();
-                this.LblForncedor = new System.Windows.Forms.Label();
                 this.TbCntEmiNF = new System.Windows.Forms.TabControl();
                 this.clmProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
                 this.clmDescProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -73,8 +43,21 @@
                 this.clmVlrUnitário = new System.Windows.Forms.DataGridViewTextBoxColumn();
                 this.clmVlrTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
                 this.txtNumNF = new Comercial.TextButton();
+                this.txtNrPedido = new System.Windows.Forms.TextBox();
+                this.txtTipoNF = new System.Windows.Forms.TextBox();
+                this.lblDtEmissao = new System.Windows.Forms.Label();
+                this.txtSerie = new System.Windows.Forms.TextBox();
+                this.lblSerie = new System.Windows.Forms.Label();
+                this.lblTipo = new System.Windows.Forms.Label();
+                this.dtTmPckrDtEmissao = new System.Windows.Forms.DateTimePicker();
+                this.lblDescontos = new System.Windows.Forms.Label();
+                this.lblVlrFrete = new System.Windows.Forms.Label();
+                this.lblVlrMercadoria = new System.Windows.Forms.Label();
+                this.txtBxicms = new System.Windows.Forms.TextBox();
+                this.txtBxVlrFrete = new System.Windows.Forms.TextBox();
+                this.txtBxVlrNota = new System.Windows.Forms.TextBox();
+                LblNumPedido = new System.Windows.Forms.Label();
                 this.TbPgNotFis.SuspendLayout();
-                this.GrpBxDest.SuspendLayout();
                 this.GrpBxTot.SuspendLayout();
                 this.GrpBxItens.SuspendLayout();
                 ((System.ComponentModel.ISupportInitialize)(this.dtGrdVwItensNF)).BeginInit();
@@ -84,7 +67,6 @@
                 // 
                 // TbPgNotFis
                 // 
-                this.TbPgNotFis.Controls.Add(this.GrpBxDest);
                 this.TbPgNotFis.Controls.Add(this.GrpBxTot);
                 this.TbPgNotFis.Controls.Add(this.GrpBxItens);
                 this.TbPgNotFis.Controls.Add(this.GrpBxInfNotFis);
@@ -97,273 +79,29 @@
                 this.TbPgNotFis.Text = "Emissão Nota Fiscal";
                 this.TbPgNotFis.UseVisualStyleBackColor = true;
                 // 
-                // GrpBxDest
-                // 
-                this.GrpBxDest.Controls.Add(this.TxtTelCli);
-                this.GrpBxDest.Controls.Add(this.LblTelCli);
-                this.GrpBxDest.Controls.Add(this.TxtMunCli);
-                this.GrpBxDest.Controls.Add(this.LblMunCli);
-                this.GrpBxDest.Controls.Add(this.TxtBaiCli);
-                this.GrpBxDest.Controls.Add(this.LblBaiCli);
-                this.GrpBxDest.Controls.Add(this.TxtEndCli);
-                this.GrpBxDest.Controls.Add(this.LblEndCli);
-                this.GrpBxDest.Controls.Add(this.TxtIeCli);
-                this.GrpBxDest.Controls.Add(this.TxtCnpCli);
-                this.GrpBxDest.Controls.Add(this.LblIECli);
-                this.GrpBxDest.Controls.Add(this.LblCnpCli);
-                this.GrpBxDest.Controls.Add(this.TxtNomCli);
-                this.GrpBxDest.Controls.Add(this.LblNomCli);
-                this.GrpBxDest.ForeColor = System.Drawing.Color.CornflowerBlue;
-                this.GrpBxDest.Location = new System.Drawing.Point(4, 77);
-                this.GrpBxDest.Name = "GrpBxDest";
-                this.GrpBxDest.Size = new System.Drawing.Size(756, 123);
-                this.GrpBxDest.TabIndex = 4;
-                this.GrpBxDest.TabStop = false;
-                this.GrpBxDest.Text = "Destinatário ";
-                this.GrpBxDest.Enter += new System.EventHandler(this.groupBox1_Enter_1);
-                // 
-                // TxtTelCli
-                // 
-                this.TxtTelCli.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                this.TxtTelCli.Location = new System.Drawing.Point(572, 32);
-                this.TxtTelCli.Mask = "(99) 9999-9999";
-                this.TxtTelCli.Name = "TxtTelCli";
-                this.TxtTelCli.PromptChar = ' ';
-                this.TxtTelCli.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-                this.TxtTelCli.Size = new System.Drawing.Size(89, 20);
-                this.TxtTelCli.TabIndex = 70;
-                this.TxtTelCli.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-                // 
-                // LblTelCli
-                // 
-                this.LblTelCli.AutoSize = true;
-                this.LblTelCli.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                this.LblTelCli.ForeColor = System.Drawing.Color.CadetBlue;
-                this.LblTelCli.Location = new System.Drawing.Point(569, 16);
-                this.LblTelCli.Name = "LblTelCli";
-                this.LblTelCli.Size = new System.Drawing.Size(49, 13);
-                this.LblTelCli.TabIndex = 71;
-                this.LblTelCli.Text = "Telefone";
-                // 
-                // TxtMunCli
-                // 
-                this.TxtMunCli.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-                this.TxtMunCli.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                this.TxtMunCli.Location = new System.Drawing.Point(572, 71);
-                this.TxtMunCli.Name = "TxtMunCli";
-                this.TxtMunCli.Size = new System.Drawing.Size(160, 20);
-                this.TxtMunCli.TabIndex = 68;
-                // 
-                // LblMunCli
-                // 
-                this.LblMunCli.AutoSize = true;
-                this.LblMunCli.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                this.LblMunCli.ForeColor = System.Drawing.Color.CadetBlue;
-                this.LblMunCli.Location = new System.Drawing.Point(569, 56);
-                this.LblMunCli.Name = "LblMunCli";
-                this.LblMunCli.Size = new System.Drawing.Size(52, 13);
-                this.LblMunCli.TabIndex = 69;
-                this.LblMunCli.Text = "Municípo";
-                // 
-                // TxtBaiCli
-                // 
-                this.TxtBaiCli.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-                this.TxtBaiCli.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                this.TxtBaiCli.Location = new System.Drawing.Point(386, 72);
-                this.TxtBaiCli.Name = "TxtBaiCli";
-                this.TxtBaiCli.Size = new System.Drawing.Size(158, 20);
-                this.TxtBaiCli.TabIndex = 66;
-                // 
-                // LblBaiCli
-                // 
-                this.LblBaiCli.AutoSize = true;
-                this.LblBaiCli.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                this.LblBaiCli.ForeColor = System.Drawing.Color.CadetBlue;
-                this.LblBaiCli.Location = new System.Drawing.Point(383, 56);
-                this.LblBaiCli.Name = "LblBaiCli";
-                this.LblBaiCli.Size = new System.Drawing.Size(34, 13);
-                this.LblBaiCli.TabIndex = 67;
-                this.LblBaiCli.Text = "Bairro";
-                // 
-                // TxtEndCli
-                // 
-                this.TxtEndCli.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-                this.TxtEndCli.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                this.TxtEndCli.Location = new System.Drawing.Point(20, 72);
-                this.TxtEndCli.Name = "TxtEndCli";
-                this.TxtEndCli.Size = new System.Drawing.Size(355, 20);
-                this.TxtEndCli.TabIndex = 64;
-                // 
-                // LblEndCli
-                // 
-                this.LblEndCli.AutoSize = true;
-                this.LblEndCli.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                this.LblEndCli.ForeColor = System.Drawing.Color.CadetBlue;
-                this.LblEndCli.Location = new System.Drawing.Point(20, 56);
-                this.LblEndCli.Name = "LblEndCli";
-                this.LblEndCli.Size = new System.Drawing.Size(61, 13);
-                this.LblEndCli.TabIndex = 65;
-                this.LblEndCli.Text = "Endereço";
-                // 
-                // TxtIeCli
-                // 
-                this.TxtIeCli.Location = new System.Drawing.Point(385, 32);
-                this.TxtIeCli.Mask = "999,999,999,999";
-                this.TxtIeCli.Name = "TxtIeCli";
-                this.TxtIeCli.PromptChar = ' ';
-                this.TxtIeCli.Size = new System.Drawing.Size(179, 20);
-                this.TxtIeCli.TabIndex = 63;
-                // 
-                // TxtCnpCli
-                // 
-                this.TxtCnpCli.Location = new System.Drawing.Point(252, 32);
-                this.TxtCnpCli.Mask = "99,999,999/9999-99";
-                this.TxtCnpCli.Name = "TxtCnpCli";
-                this.TxtCnpCli.PromptChar = ' ';
-                this.TxtCnpCli.Size = new System.Drawing.Size(123, 20);
-                this.TxtCnpCli.TabIndex = 62;
-                // 
-                // LblIECli
-                // 
-                this.LblIECli.AutoSize = true;
-                this.LblIECli.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                this.LblIECli.ForeColor = System.Drawing.Color.CadetBlue;
-                this.LblIECli.Location = new System.Drawing.Point(383, 16);
-                this.LblIECli.Name = "LblIECli";
-                this.LblIECli.Size = new System.Drawing.Size(20, 13);
-                this.LblIECli.TabIndex = 61;
-                this.LblIECli.Text = "I.E";
-                // 
-                // LblCnpCli
-                // 
-                this.LblCnpCli.AutoSize = true;
-                this.LblCnpCli.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                this.LblCnpCli.ForeColor = System.Drawing.Color.CadetBlue;
-                this.LblCnpCli.Location = new System.Drawing.Point(255, 16);
-                this.LblCnpCli.Name = "LblCnpCli";
-                this.LblCnpCli.Size = new System.Drawing.Size(34, 13);
-                this.LblCnpCli.TabIndex = 60;
-                this.LblCnpCli.Text = "CNPJ";
-                // 
-                // TxtNomCli
-                // 
-                this.TxtNomCli.Location = new System.Drawing.Point(23, 33);
-                this.TxtNomCli.Name = "TxtNomCli";
-                this.TxtNomCli.Size = new System.Drawing.Size(219, 20);
-                this.TxtNomCli.TabIndex = 58;
-                // 
-                // LblNomCli
-                // 
-                this.LblNomCli.AutoSize = true;
-                this.LblNomCli.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                this.LblNomCli.ForeColor = System.Drawing.Color.CadetBlue;
-                this.LblNomCli.Location = new System.Drawing.Point(20, 16);
-                this.LblNomCli.Name = "LblNomCli";
-                this.LblNomCli.Size = new System.Drawing.Size(147, 13);
-                this.LblNomCli.TabIndex = 59;
-                this.LblNomCli.Text = "Nome / Razão Social Cliente:";
-                // 
                 // GrpBxTot
                 // 
-                this.GrpBxTot.Controls.Add(this.LblVlrBru);
-                this.GrpBxTot.Controls.Add(this.LblDes);
-                this.GrpBxTot.Controls.Add(this.TxtBxDes);
-                this.GrpBxTot.Controls.Add(this.TxtBxVlrBru);
-                this.GrpBxTot.Controls.Add(this.LblVlrFre);
-                this.GrpBxTot.Controls.Add(this.LblVlrMer);
-                this.GrpBxTot.Controls.Add(this.TxtVlrFre);
-                this.GrpBxTot.Controls.Add(this.TxtVlrMer);
+                this.GrpBxTot.Controls.Add(this.lblDescontos);
+                this.GrpBxTot.Controls.Add(this.lblVlrFrete);
+                this.GrpBxTot.Controls.Add(this.lblVlrMercadoria);
+                this.GrpBxTot.Controls.Add(this.txtBxicms);
+                this.GrpBxTot.Controls.Add(this.txtBxVlrFrete);
+                this.GrpBxTot.Controls.Add(this.txtBxVlrNota);
                 this.GrpBxTot.ForeColor = System.Drawing.Color.CornflowerBlue;
-                this.GrpBxTot.Location = new System.Drawing.Point(15, 343);
+                this.GrpBxTot.Location = new System.Drawing.Point(3, 343);
                 this.GrpBxTot.Name = "GrpBxTot";
-                this.GrpBxTot.Size = new System.Drawing.Size(748, 88);
+                this.GrpBxTot.Size = new System.Drawing.Size(757, 117);
                 this.GrpBxTot.TabIndex = 2;
                 this.GrpBxTot.TabStop = false;
                 this.GrpBxTot.Text = "Totais";
-                // 
-                // LblVlrBru
-                // 
-                this.LblVlrBru.AutoSize = true;
-                this.LblVlrBru.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                this.LblVlrBru.ForeColor = System.Drawing.Color.CadetBlue;
-                this.LblVlrBru.Location = new System.Drawing.Point(252, 48);
-                this.LblVlrBru.Name = "LblVlrBru";
-                this.LblVlrBru.Size = new System.Drawing.Size(53, 13);
-                this.LblVlrBru.TabIndex = 31;
-                this.LblVlrBru.Text = "Vlr. Bruto:";
-                // 
-                // LblDes
-                // 
-                this.LblDes.AutoSize = true;
-                this.LblDes.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                this.LblDes.ForeColor = System.Drawing.Color.CadetBlue;
-                this.LblDes.Location = new System.Drawing.Point(244, 22);
-                this.LblDes.Name = "LblDes";
-                this.LblDes.Size = new System.Drawing.Size(61, 13);
-                this.LblDes.TabIndex = 30;
-                this.LblDes.Text = "Descontos:";
-                // 
-                // TxtBxDes
-                // 
-                this.TxtBxDes.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                this.TxtBxDes.Location = new System.Drawing.Point(311, 22);
-                this.TxtBxDes.Name = "TxtBxDes";
-                this.TxtBxDes.Size = new System.Drawing.Size(83, 20);
-                this.TxtBxDes.TabIndex = 29;
-                // 
-                // TxtBxVlrBru
-                // 
-                this.TxtBxVlrBru.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                this.TxtBxVlrBru.Location = new System.Drawing.Point(311, 51);
-                this.TxtBxVlrBru.Name = "TxtBxVlrBru";
-                this.TxtBxVlrBru.Size = new System.Drawing.Size(83, 20);
-                this.TxtBxVlrBru.TabIndex = 28;
-                // 
-                // LblVlrFre
-                // 
-                this.LblVlrFre.AutoSize = true;
-                this.LblVlrFre.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                this.LblVlrFre.ForeColor = System.Drawing.Color.CadetBlue;
-                this.LblVlrFre.Location = new System.Drawing.Point(39, 51);
-                this.LblVlrFre.Name = "LblVlrFre";
-                this.LblVlrFre.Size = new System.Drawing.Size(52, 13);
-                this.LblVlrFre.TabIndex = 27;
-                this.LblVlrFre.Text = "Vlr. Frete:";
-                // 
-                // LblVlrMer
-                // 
-                this.LblVlrMer.AutoSize = true;
-                this.LblVlrMer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                this.LblVlrMer.ForeColor = System.Drawing.Color.CadetBlue;
-                this.LblVlrMer.Location = new System.Drawing.Point(13, 22);
-                this.LblVlrMer.Name = "LblVlrMer";
-                this.LblVlrMer.Size = new System.Drawing.Size(81, 13);
-                this.LblVlrMer.TabIndex = 26;
-                this.LblVlrMer.Text = "Vlr. Mercadoria:";
-                // 
-                // TxtVlrFre
-                // 
-                this.TxtVlrFre.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                this.TxtVlrFre.Location = new System.Drawing.Point(100, 48);
-                this.TxtVlrFre.Name = "TxtVlrFre";
-                this.TxtVlrFre.Size = new System.Drawing.Size(83, 20);
-                this.TxtVlrFre.TabIndex = 25;
-                // 
-                // TxtVlrMer
-                // 
-                this.TxtVlrMer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                this.TxtVlrMer.Location = new System.Drawing.Point(100, 19);
-                this.TxtVlrMer.Name = "TxtVlrMer";
-                this.TxtVlrMer.Size = new System.Drawing.Size(83, 20);
-                this.TxtVlrMer.TabIndex = 24;
                 // 
                 // GrpBxItens
                 // 
                 this.GrpBxItens.Controls.Add(this.dtGrdVwItensNF);
                 this.GrpBxItens.ForeColor = System.Drawing.Color.CornflowerBlue;
-                this.GrpBxItens.Location = new System.Drawing.Point(9, 206);
+                this.GrpBxItens.Location = new System.Drawing.Point(3, 77);
                 this.GrpBxItens.Name = "GrpBxItens";
-                this.GrpBxItens.Size = new System.Drawing.Size(754, 131);
+                this.GrpBxItens.Size = new System.Drawing.Size(757, 260);
                 this.GrpBxItens.TabIndex = 1;
                 this.GrpBxItens.TabStop = false;
                 this.GrpBxItens.Text = "Itens Nota Fiscal";
@@ -381,21 +119,21 @@
                 this.dtGrdVwItensNF.Dock = System.Windows.Forms.DockStyle.Fill;
                 this.dtGrdVwItensNF.Location = new System.Drawing.Point(3, 16);
                 this.dtGrdVwItensNF.Name = "dtGrdVwItensNF";
-                this.dtGrdVwItensNF.Size = new System.Drawing.Size(748, 112);
+                this.dtGrdVwItensNF.Size = new System.Drawing.Size(751, 241);
                 this.dtGrdVwItensNF.TabIndex = 1;
                 // 
                 // GrpBxInfNotFis
                 // 
+                this.GrpBxInfNotFis.Controls.Add(this.dtTmPckrDtEmissao);
+                this.GrpBxInfNotFis.Controls.Add(this.txtNrPedido);
+                this.GrpBxInfNotFis.Controls.Add(LblNumPedido);
+                this.GrpBxInfNotFis.Controls.Add(this.txtTipoNF);
+                this.GrpBxInfNotFis.Controls.Add(this.lblDtEmissao);
+                this.GrpBxInfNotFis.Controls.Add(this.txtSerie);
+                this.GrpBxInfNotFis.Controls.Add(this.lblSerie);
+                this.GrpBxInfNotFis.Controls.Add(this.lblTipo);
                 this.GrpBxInfNotFis.Controls.Add(this.txtNumNF);
                 this.GrpBxInfNotFis.Controls.Add(this.LlblNumNotFis);
-                this.GrpBxInfNotFis.Controls.Add(this.LblUfOrigem);
-                this.GrpBxInfNotFis.Controls.Add(this.LblDtEmissao);
-                this.GrpBxInfNotFis.Controls.Add(this.TxtSerie);
-                this.GrpBxInfNotFis.Controls.Add(this.CmbBxUf);
-                this.GrpBxInfNotFis.Controls.Add(this.LblSerie);
-                this.GrpBxInfNotFis.Controls.Add(this.CmbBxFornecedor);
-                this.GrpBxInfNotFis.Controls.Add(this.DtTmPckrDtEmissao);
-                this.GrpBxInfNotFis.Controls.Add(this.LblForncedor);
                 this.GrpBxInfNotFis.ForeColor = System.Drawing.Color.CornflowerBlue;
                 this.GrpBxInfNotFis.Location = new System.Drawing.Point(3, 6);
                 this.GrpBxInfNotFis.Name = "GrpBxInfNotFis";
@@ -416,85 +154,6 @@
                 this.LlblNumNotFis.TabIndex = 24;
                 this.LlblNumNotFis.Text = "Número da NF:";
                 this.LlblNumNotFis.Click += new System.EventHandler(this.lblNumNotFiscal_Click);
-                // 
-                // LblUfOrigem
-                // 
-                this.LblUfOrigem.AutoSize = true;
-                this.LblUfOrigem.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                this.LblUfOrigem.ForeColor = System.Drawing.Color.CadetBlue;
-                this.LblUfOrigem.Location = new System.Drawing.Point(612, 16);
-                this.LblUfOrigem.Name = "LblUfOrigem";
-                this.LblUfOrigem.Size = new System.Drawing.Size(60, 13);
-                this.LblUfOrigem.TabIndex = 23;
-                this.LblUfOrigem.Text = "UF Origem:";
-                // 
-                // LblDtEmissao
-                // 
-                this.LblDtEmissao.AutoSize = true;
-                this.LblDtEmissao.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                this.LblDtEmissao.ForeColor = System.Drawing.Color.CadetBlue;
-                this.LblDtEmissao.Location = new System.Drawing.Point(348, 16);
-                this.LblDtEmissao.Name = "LblDtEmissao";
-                this.LblDtEmissao.Size = new System.Drawing.Size(66, 13);
-                this.LblDtEmissao.TabIndex = 21;
-                this.LblDtEmissao.Text = "Dt. Emissão:";
-                // 
-                // TxtSerie
-                // 
-                this.TxtSerie.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                this.TxtSerie.Location = new System.Drawing.Point(283, 33);
-                this.TxtSerie.Name = "TxtSerie";
-                this.TxtSerie.Size = new System.Drawing.Size(56, 20);
-                this.TxtSerie.TabIndex = 20;
-                // 
-                // CmbBxUf
-                // 
-                this.CmbBxUf.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                this.CmbBxUf.FormattingEnabled = true;
-                this.CmbBxUf.Location = new System.Drawing.Point(610, 31);
-                this.CmbBxUf.Name = "CmbBxUf";
-                this.CmbBxUf.Size = new System.Drawing.Size(56, 21);
-                this.CmbBxUf.TabIndex = 27;
-                // 
-                // LblSerie
-                // 
-                this.LblSerie.AutoSize = true;
-                this.LblSerie.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                this.LblSerie.ForeColor = System.Drawing.Color.CadetBlue;
-                this.LblSerie.Location = new System.Drawing.Point(280, 16);
-                this.LblSerie.Name = "LblSerie";
-                this.LblSerie.Size = new System.Drawing.Size(34, 13);
-                this.LblSerie.TabIndex = 19;
-                this.LblSerie.Text = "Série:";
-                // 
-                // CmbBxFornecedor
-                // 
-                this.CmbBxFornecedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                this.CmbBxFornecedor.FormattingEnabled = true;
-                this.CmbBxFornecedor.Location = new System.Drawing.Point(474, 32);
-                this.CmbBxFornecedor.Name = "CmbBxFornecedor";
-                this.CmbBxFornecedor.Size = new System.Drawing.Size(121, 21);
-                this.CmbBxFornecedor.TabIndex = 26;
-                // 
-                // DtTmPckrDtEmissao
-                // 
-                this.DtTmPckrDtEmissao.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                this.DtTmPckrDtEmissao.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-                this.DtTmPckrDtEmissao.Location = new System.Drawing.Point(351, 32);
-                this.DtTmPckrDtEmissao.Name = "DtTmPckrDtEmissao";
-                this.DtTmPckrDtEmissao.Size = new System.Drawing.Size(107, 20);
-                this.DtTmPckrDtEmissao.TabIndex = 25;
-                // 
-                // LblForncedor
-                // 
-                this.LblForncedor.AutoSize = true;
-                this.LblForncedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                this.LblForncedor.ForeColor = System.Drawing.Color.CadetBlue;
-                this.LblForncedor.Location = new System.Drawing.Point(471, 16);
-                this.LblForncedor.Name = "LblForncedor";
-                this.LblForncedor.Size = new System.Drawing.Size(64, 13);
-                this.LblForncedor.TabIndex = 18;
-                this.LblForncedor.Text = "Fornecedor:";
                 // 
                 // TbCntEmiNF
                 // 
@@ -546,6 +205,143 @@
                 this.txtNumNF.TabIndex = 28;
                 this.txtNumNF.ButtonClick += new System.EventHandler(this.txtNumNF_ButtonClick);
                 // 
+                // txtNrPedido
+                // 
+                this.txtNrPedido.Location = new System.Drawing.Point(598, 31);
+                this.txtNrPedido.Name = "txtNrPedido";
+                this.txtNrPedido.ReadOnly = true;
+                this.txtNrPedido.Size = new System.Drawing.Size(80, 20);
+                this.txtNrPedido.TabIndex = 38;
+                // 
+                // LblNumPedido
+                // 
+                LblNumPedido.AutoSize = true;
+                LblNumPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+                LblNumPedido.ForeColor = System.Drawing.Color.CadetBlue;
+                LblNumPedido.Location = new System.Drawing.Point(595, 14);
+                LblNumPedido.Name = "LblNumPedido";
+                LblNumPedido.Size = new System.Drawing.Size(83, 13);
+                LblNumPedido.TabIndex = 37;
+                LblNumPedido.Text = "Número Pedido:";
+                // 
+                // txtTipoNF
+                // 
+                this.txtTipoNF.Location = new System.Drawing.Point(373, 30);
+                this.txtTipoNF.Name = "txtTipoNF";
+                this.txtTipoNF.ReadOnly = true;
+                this.txtTipoNF.Size = new System.Drawing.Size(63, 20);
+                this.txtTipoNF.TabIndex = 36;
+                // 
+                // lblDtEmissao
+                // 
+                this.lblDtEmissao.AutoSize = true;
+                this.lblDtEmissao.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                this.lblDtEmissao.ForeColor = System.Drawing.Color.CadetBlue;
+                this.lblDtEmissao.Location = new System.Drawing.Point(449, 14);
+                this.lblDtEmissao.Name = "lblDtEmissao";
+                this.lblDtEmissao.Size = new System.Drawing.Size(66, 13);
+                this.lblDtEmissao.TabIndex = 34;
+                this.lblDtEmissao.Text = "Dt. Emissão:";
+                // 
+                // txtSerie
+                // 
+                this.txtSerie.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                this.txtSerie.Location = new System.Drawing.Point(311, 30);
+                this.txtSerie.Name = "txtSerie";
+                this.txtSerie.ReadOnly = true;
+                this.txtSerie.Size = new System.Drawing.Size(50, 20);
+                this.txtSerie.TabIndex = 33;
+                // 
+                // lblSerie
+                // 
+                this.lblSerie.AutoSize = true;
+                this.lblSerie.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                this.lblSerie.ForeColor = System.Drawing.Color.CadetBlue;
+                this.lblSerie.Location = new System.Drawing.Point(308, 14);
+                this.lblSerie.Name = "lblSerie";
+                this.lblSerie.Size = new System.Drawing.Size(34, 13);
+                this.lblSerie.TabIndex = 32;
+                this.lblSerie.Text = "Série:";
+                // 
+                // lblTipo
+                // 
+                this.lblTipo.AutoSize = true;
+                this.lblTipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                this.lblTipo.ForeColor = System.Drawing.Color.CadetBlue;
+                this.lblTipo.Location = new System.Drawing.Point(370, 14);
+                this.lblTipo.Name = "lblTipo";
+                this.lblTipo.Size = new System.Drawing.Size(48, 13);
+                this.lblTipo.TabIndex = 31;
+                this.lblTipo.Text = "Tipo NF:";
+                // 
+                // dtTmPckrDtEmissao
+                // 
+                this.dtTmPckrDtEmissao.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+                this.dtTmPckrDtEmissao.Location = new System.Drawing.Point(452, 31);
+                this.dtTmPckrDtEmissao.Name = "dtTmPckrDtEmissao";
+                this.dtTmPckrDtEmissao.Size = new System.Drawing.Size(123, 20);
+                this.dtTmPckrDtEmissao.TabIndex = 39;
+                // 
+                // lblDescontos
+                // 
+                this.lblDescontos.AutoSize = true;
+                this.lblDescontos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                this.lblDescontos.ForeColor = System.Drawing.Color.CadetBlue;
+                this.lblDescontos.Location = new System.Drawing.Point(577, 81);
+                this.lblDescontos.Name = "lblDescontos";
+                this.lblDescontos.Size = new System.Drawing.Size(36, 13);
+                this.lblDescontos.TabIndex = 30;
+                this.lblDescontos.Text = "ICMS:";
+                // 
+                // lblVlrFrete
+                // 
+                this.lblVlrFrete.AutoSize = true;
+                this.lblVlrFrete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                this.lblVlrFrete.ForeColor = System.Drawing.Color.CadetBlue;
+                this.lblVlrFrete.Location = new System.Drawing.Point(565, 55);
+                this.lblVlrFrete.Name = "lblVlrFrete";
+                this.lblVlrFrete.Size = new System.Drawing.Size(61, 13);
+                this.lblVlrFrete.TabIndex = 29;
+                this.lblVlrFrete.Text = "Valor Frete:";
+                // 
+                // lblVlrMercadoria
+                // 
+                this.lblVlrMercadoria.AutoSize = true;
+                this.lblVlrMercadoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                this.lblVlrMercadoria.ForeColor = System.Drawing.Color.CadetBlue;
+                this.lblVlrMercadoria.Location = new System.Drawing.Point(560, 26);
+                this.lblVlrMercadoria.Name = "lblVlrMercadoria";
+                this.lblVlrMercadoria.Size = new System.Drawing.Size(60, 13);
+                this.lblVlrMercadoria.TabIndex = 28;
+                this.lblVlrMercadoria.Text = "Valor Nota:";
+                // 
+                // txtBxicms
+                // 
+                this.txtBxicms.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                this.txtBxicms.Location = new System.Drawing.Point(647, 78);
+                this.txtBxicms.Name = "txtBxicms";
+                this.txtBxicms.ReadOnly = true;
+                this.txtBxicms.Size = new System.Drawing.Size(83, 20);
+                this.txtBxicms.TabIndex = 27;
+                // 
+                // txtBxVlrFrete
+                // 
+                this.txtBxVlrFrete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                this.txtBxVlrFrete.Location = new System.Drawing.Point(647, 52);
+                this.txtBxVlrFrete.Name = "txtBxVlrFrete";
+                this.txtBxVlrFrete.ReadOnly = true;
+                this.txtBxVlrFrete.Size = new System.Drawing.Size(83, 20);
+                this.txtBxVlrFrete.TabIndex = 26;
+                // 
+                // txtBxVlrNota
+                // 
+                this.txtBxVlrNota.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                this.txtBxVlrNota.Location = new System.Drawing.Point(647, 23);
+                this.txtBxVlrNota.Name = "txtBxVlrNota";
+                this.txtBxVlrNota.ReadOnly = true;
+                this.txtBxVlrNota.Size = new System.Drawing.Size(83, 20);
+                this.txtBxVlrNota.TabIndex = 25;
+                // 
                 // FrmEmiNotFis
                 // 
                 this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -561,8 +357,6 @@
                 this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
                 this.Leave += new System.EventHandler(this.FrmEmiNotFis_Leave);
                 this.TbPgNotFis.ResumeLayout(false);
-                this.GrpBxDest.ResumeLayout(false);
-                this.GrpBxDest.PerformLayout();
                 this.GrpBxTot.ResumeLayout(false);
                 this.GrpBxTot.PerformLayout();
                 this.GrpBxItens.ResumeLayout(false);
@@ -580,40 +374,9 @@
         private System.Windows.Forms.TabControl TbCntEmiNF;
         private System.Windows.Forms.GroupBox GrpBxInfNotFis;
         private System.Windows.Forms.Label LlblNumNotFis;
-        private System.Windows.Forms.Label LblUfOrigem;
-        private System.Windows.Forms.Label LblDtEmissao;
-        private System.Windows.Forms.TextBox TxtSerie;
-        private System.Windows.Forms.ComboBox CmbBxUf;
-        private System.Windows.Forms.Label LblSerie;
-        private System.Windows.Forms.ComboBox CmbBxFornecedor;
-        private System.Windows.Forms.DateTimePicker DtTmPckrDtEmissao;
-        private System.Windows.Forms.Label LblForncedor;
         private System.Windows.Forms.GroupBox GrpBxItens;
         private System.Windows.Forms.DataGridView dtGrdVwItensNF;
         private System.Windows.Forms.GroupBox GrpBxTot;
-        private System.Windows.Forms.Label LblVlrFre;
-        private System.Windows.Forms.Label LblVlrMer;
-        private System.Windows.Forms.TextBox TxtVlrFre;
-        private System.Windows.Forms.TextBox TxtVlrMer;
-        private System.Windows.Forms.Label LblVlrBru;
-        private System.Windows.Forms.Label LblDes;
-        private System.Windows.Forms.TextBox TxtBxDes;
-        private System.Windows.Forms.TextBox TxtBxVlrBru;
-        private System.Windows.Forms.GroupBox GrpBxDest;
-        private System.Windows.Forms.TextBox TxtNomCli;
-        private System.Windows.Forms.Label LblNomCli;
-        private System.Windows.Forms.MaskedTextBox TxtIeCli;
-        private System.Windows.Forms.MaskedTextBox TxtCnpCli;
-        private System.Windows.Forms.Label LblIECli;
-        private System.Windows.Forms.Label LblCnpCli;
-        private System.Windows.Forms.TextBox TxtEndCli;
-        private System.Windows.Forms.Label LblEndCli;
-        private System.Windows.Forms.TextBox TxtBaiCli;
-        private System.Windows.Forms.Label LblBaiCli;
-        private System.Windows.Forms.TextBox TxtMunCli;
-        private System.Windows.Forms.Label LblMunCli;
-        private System.Windows.Forms.MaskedTextBox TxtTelCli;
-        private System.Windows.Forms.Label LblTelCli;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmProduto;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmDescProd;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmUnidade;
@@ -621,5 +384,18 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn clmVlrUnitário;
         private System.Windows.Forms.DataGridViewTextBoxColumn clmVlrTotal;
         public TextButton txtNumNF;
+        private System.Windows.Forms.DateTimePicker dtTmPckrDtEmissao;
+        public System.Windows.Forms.TextBox txtNrPedido;
+        public System.Windows.Forms.TextBox txtTipoNF;
+        private System.Windows.Forms.Label lblDtEmissao;
+        public System.Windows.Forms.TextBox txtSerie;
+        private System.Windows.Forms.Label lblSerie;
+        private System.Windows.Forms.Label lblTipo;
+        private System.Windows.Forms.Label lblDescontos;
+        private System.Windows.Forms.Label lblVlrFrete;
+        private System.Windows.Forms.Label lblVlrMercadoria;
+        public System.Windows.Forms.TextBox txtBxicms;
+        public System.Windows.Forms.TextBox txtBxVlrFrete;
+        public System.Windows.Forms.TextBox txtBxVlrNota;
         }
     }
