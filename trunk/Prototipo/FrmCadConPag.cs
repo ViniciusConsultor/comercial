@@ -120,5 +120,38 @@ namespace Comercial
             }
 
         }
+
+        private void consultaCondicaoToolStripButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.cONDICAOPAGAMENTOTableAdapter.ConsultaCondicao(this.cOMERCIALDataSet.CONDICAOPAGAMENTO, dESCRICAOToolStripTextBox.Text);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            dESCRICAOToolStripTextBox.Clear();
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.cONDICAOPAGAMENTOTableAdapter.Fill(this.cOMERCIALDataSet.CONDICAOPAGAMENTO);
+
+                consultaCondicaoToolStrip.Visible = false;
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+
+            }
+        }
     }
 }

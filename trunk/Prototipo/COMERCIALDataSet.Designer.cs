@@ -17244,12 +17244,18 @@ SELECT CODCONDICAOPAGAMENTO, DESCRICAO, QTDEVEZES, ENTRADA FROM CONDICAOPAGAMENT
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT CODCONDICAOPAGAMENTO, DESCRICAO, QTDEVEZES, ENTRADA FROM dbo.CONDICAOPAGAM" +
                 "ENTO";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "SELECT CODCONDICAOPAGAMENTO, DESCRICAO, QTDEVEZES, ENTRADA FROM CONDICAOPAGAMENTO" +
+                "\r\nWHERE DESCRICAO LIKE + \'%\' + @DESCRICAO + \'%\'";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DESCRICAO", global::System.Data.SqlDbType.VarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "DESCRICAO", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -17272,6 +17278,24 @@ SELECT CODCONDICAOPAGAMENTO, DESCRICAO, QTDEVEZES, ENTRADA FROM CONDICAOPAGAMENT
             COMERCIALDataSet.CONDICAOPAGAMENTODataTable dataTable = new COMERCIALDataSet.CONDICAOPAGAMENTODataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int ConsultaCondicao(COMERCIALDataSet.CONDICAOPAGAMENTODataTable dataTable, string DESCRICAO) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((DESCRICAO == null)) {
+                throw new global::System.ArgumentNullException("DESCRICAO");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(DESCRICAO));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -17581,11 +17605,17 @@ SELECT CODGRUPOPRODUTO, DESCRICAO, DESCONTO FROM GRUPOPRODUTO WHERE (CODGRUPOPRO
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT CODGRUPOPRODUTO, DESCRICAO, DESCONTO FROM dbo.GRUPOPRODUTO";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "SELECT CODGRUPOPRODUTO, DESCRICAO, DESCONTO FROM GRUPOPRODUTO\r\nWHERE DESCRICAO LI" +
+                "KE + \'%\' + @DESCRICAO + \'%\'";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DESCRICAO", global::System.Data.SqlDbType.VarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "DESCRICAO", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -17608,6 +17638,24 @@ SELECT CODGRUPOPRODUTO, DESCRICAO, DESCONTO FROM GRUPOPRODUTO WHERE (CODGRUPOPRO
             COMERCIALDataSet.GRUPOPRODUTODataTable dataTable = new COMERCIALDataSet.GRUPOPRODUTODataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int ConsultaGroProduto(COMERCIALDataSet.GRUPOPRODUTODataTable dataTable, string DESCRICAO) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((DESCRICAO == null)) {
+                throw new global::System.ArgumentNullException("DESCRICAO");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(DESCRICAO));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -20157,11 +20205,17 @@ SELECT CODPRODUTO, DESCRICAO, DATACADASTRO, PRECOCUSTO, PESOLIQUIDO, CODGRUPOPRO
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT CODREGIAO, DESCRICAO FROM dbo.REGIAO";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "SELECT CODREGIAO, DESCRICAO FROM REGIAO\r\nWHERE DESCRICAO LIKE + \'%\' +@DESCRICAO +" +
+                " \'%\' \r\n";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DESCRICAO", global::System.Data.SqlDbType.VarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "DESCRICAO", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -20184,6 +20238,24 @@ SELECT CODPRODUTO, DESCRICAO, DATACADASTRO, PRECOCUSTO, PESOLIQUIDO, CODGRUPOPRO
             COMERCIALDataSet.REGIAODataTable dataTable = new COMERCIALDataSet.REGIAODataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int ConsultaRegiao(COMERCIALDataSet.REGIAODataTable dataTable, string DESCRICAO) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((DESCRICAO == null)) {
+                throw new global::System.ArgumentNullException("DESCRICAO");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(DESCRICAO));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -21520,11 +21592,19 @@ SELECT CODUNIDADEMEDIDA, DESCRICAO FROM UNIDADEMEDIDA WHERE (CODUNIDADEMEDIDA = 
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT CODUNIDADEMEDIDA, DESCRICAO FROM dbo.UNIDADEMEDIDA";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "SELECT CODUNIDADEMEDIDA, DESCRICAO\r\n FROM UNIDADEMEDIDA\r\n WHERE (CODUNIDADEMEDIDA" +
+                "  LIKE + \'%\' + @CODUNIDADEMEDIDA + \'%\') OR\r\n (DESCRICAO LIKE + \'%\' + @DESCRICAO " +
+                "+ \'%\')";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CODUNIDADEMEDIDA", global::System.Data.SqlDbType.VarChar, 3, global::System.Data.ParameterDirection.Input, 0, 0, "CODUNIDADEMEDIDA", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@DESCRICAO", global::System.Data.SqlDbType.VarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "DESCRICAO", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -21547,6 +21627,30 @@ SELECT CODUNIDADEMEDIDA, DESCRICAO FROM UNIDADEMEDIDA WHERE (CODUNIDADEMEDIDA = 
             COMERCIALDataSet.UNIDADEMEDIDADataTable dataTable = new COMERCIALDataSet.UNIDADEMEDIDADataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int consultaunidade(COMERCIALDataSet.UNIDADEMEDIDADataTable dataTable, string CODUNIDADEMEDIDA, string DESCRICAO) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((CODUNIDADEMEDIDA == null)) {
+                throw new global::System.ArgumentNullException("CODUNIDADEMEDIDA");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(CODUNIDADEMEDIDA));
+            }
+            if ((DESCRICAO == null)) {
+                throw new global::System.ArgumentNullException("DESCRICAO");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(DESCRICAO));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

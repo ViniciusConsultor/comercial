@@ -40,7 +40,10 @@
             this.chkFerroviario = new System.Windows.Forms.CheckBox();
             this.chkAereo = new System.Windows.Forms.CheckBox();
             this.txtIeCli = new System.Windows.Forms.MaskedTextBox();
+            this.tRANSPORTADORABindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
             this.gpbContatotrans = new System.Windows.Forms.GroupBox();
+            this.txtCepTrans = new Comercial.TextButton();
             this.lblComplemento = new System.Windows.Forms.Label();
             this.cOMPLEMENTOTextBox = new System.Windows.Forms.TextBox();
             this.lblNumero = new System.Windows.Forms.Label();
@@ -73,22 +76,19 @@
             this.consultaTransportadoraToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.tRANSPORTADORABindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
             this.tRANSPORTADORATableAdapter = new Comercial.COMERCIALDataSetTableAdapters.TRANSPORTADORATableAdapter();
             this.tableAdapterManager = new Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager();
             this.tRANSPORTADORAVIABindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tRANSPORTADORAVIATableAdapter = new Comercial.COMERCIALDataSetTableAdapters.TRANSPORTADORAVIATableAdapter();
-            this.txtCepTrans = new Comercial.TextButton();
             this.TbCntCadTra.SuspendLayout();
             this.TbPgCadTra.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.grpBxViaTrans.SuspendLayout();
-            this.gpbContatotrans.SuspendLayout();
-            this.consultaTransportadoraToolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tRANSPORTADORABindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).BeginInit();
+            this.gpbContatotrans.SuspendLayout();
+            this.consultaTransportadoraToolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tRANSPORTADORAVIABindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -211,6 +211,17 @@
             this.txtIeCli.TabIndex = 4;
             this.txtIeCli.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
+            // tRANSPORTADORABindingSource
+            // 
+            this.tRANSPORTADORABindingSource.DataMember = "TRANSPORTADORA";
+            this.tRANSPORTADORABindingSource.DataSource = this.cOMERCIALDataSet;
+            this.tRANSPORTADORABindingSource.PositionChanged += new System.EventHandler(this.tRANSPORTADORABindingSource_PositionChanged_1);
+            // 
+            // cOMERCIALDataSet
+            // 
+            this.cOMERCIALDataSet.DataSetName = "COMERCIALDataSet";
+            this.cOMERCIALDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // gpbContatotrans
             // 
             this.gpbContatotrans.Controls.Add(this.txtCepTrans);
@@ -239,6 +250,17 @@
             this.gpbContatotrans.TabIndex = 73;
             this.gpbContatotrans.TabStop = false;
             this.gpbContatotrans.Text = "Contato";
+            // 
+            // txtCepTrans
+            // 
+            this.txtCepTrans.getText = "";
+            this.txtCepTrans.Image = null;
+            this.txtCepTrans.Location = new System.Drawing.Point(6, 42);
+            this.txtCepTrans.Name = "txtCepTrans";
+            this.txtCepTrans.ShowButton = false;
+            this.txtCepTrans.Size = new System.Drawing.Size(117, 25);
+            this.txtCepTrans.TabIndex = 51;
+            this.txtCepTrans.ButtonClick += new System.EventHandler(this.txtCepTrans_ButtonClick_1);
             // 
             // lblComplemento
             // 
@@ -589,17 +611,6 @@
             this.toolStripButton2.ToolTipText = "Cancelar";
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click_1);
             // 
-            // tRANSPORTADORABindingSource
-            // 
-            this.tRANSPORTADORABindingSource.DataMember = "TRANSPORTADORA";
-            this.tRANSPORTADORABindingSource.DataSource = this.cOMERCIALDataSet;
-            this.tRANSPORTADORABindingSource.PositionChanged += new System.EventHandler(this.tRANSPORTADORABindingSource_PositionChanged_1);
-            // 
-            // cOMERCIALDataSet
-            // 
-            this.cOMERCIALDataSet.DataSetName = "COMERCIALDataSet";
-            this.cOMERCIALDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // tRANSPORTADORATableAdapter
             // 
             this.tRANSPORTADORATableAdapter.ClearBeforeFill = true;
@@ -615,6 +626,8 @@
             this.tableAdapterManager.ICMSTableAdapter = null;
             this.tableAdapterManager.ItemNotaFiscalTableAdapter = null;
             this.tableAdapterManager.ITEMPEDIDOTableAdapter = null;
+            this.tableAdapterManager.modeloCampoTableAdapter = null;
+            this.tableAdapterManager.modeloTableAdapter = null;
             this.tableAdapterManager.MODULOTableAdapter = null;
             this.tableAdapterManager.NOTAFISCALTableAdapter = null;
             this.tableAdapterManager.PEDIDOTableAdapter = null;
@@ -636,17 +649,6 @@
             // tRANSPORTADORAVIATableAdapter
             // 
             this.tRANSPORTADORAVIATableAdapter.ClearBeforeFill = true;
-            // 
-            // txtCepTrans
-            // 
-            this.txtCepTrans.getText = "";
-            this.txtCepTrans.Image = null;
-            this.txtCepTrans.Location = new System.Drawing.Point(6, 42);
-            this.txtCepTrans.Name = "txtCepTrans";
-            this.txtCepTrans.ShowButton = false;
-            this.txtCepTrans.Size = new System.Drawing.Size(117, 25);
-            this.txtCepTrans.TabIndex = 51;
-            this.txtCepTrans.ButtonClick += new System.EventHandler(this.txtCepTrans_ButtonClick_1);
             // 
             // FrmCadTra
             // 
@@ -672,12 +674,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.grpBxViaTrans.ResumeLayout(false);
             this.grpBxViaTrans.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tRANSPORTADORABindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).EndInit();
             this.gpbContatotrans.ResumeLayout(false);
             this.gpbContatotrans.PerformLayout();
             this.consultaTransportadoraToolStrip.ResumeLayout(false);
             this.consultaTransportadoraToolStrip.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tRANSPORTADORABindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tRANSPORTADORAVIABindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

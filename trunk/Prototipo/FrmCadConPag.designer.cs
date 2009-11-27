@@ -29,22 +29,30 @@
         private void InitializeComponent()
             {
                 this.components = new System.ComponentModel.Container();
+                System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCadConPag));
                 this.tabPage2 = new System.Windows.Forms.TabPage();
                 this.chkEntrada = new System.Windows.Forms.CheckBox();
                 this.lblCodigo = new System.Windows.Forms.Label();
-                this.cONDICAOPAGAMENTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
-                this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
                 this.TxtDiaDes = new System.Windows.Forms.TextBox();
                 this.TxtDes = new System.Windows.Forms.TextBox();
                 this.LblDiaPCo = new System.Windows.Forms.Label();
                 this.LblDes = new System.Windows.Forms.Label();
                 this.TbCntConPag = new System.Windows.Forms.TabControl();
+                this.consultaCondicaoToolStrip = new System.Windows.Forms.ToolStrip();
+                this.dESCRICAOToolStripLabel = new System.Windows.Forms.ToolStripLabel();
+                this.dESCRICAOToolStripTextBox = new System.Windows.Forms.ToolStripTextBox();
+                this.consultaCondicaoToolStripButton = new System.Windows.Forms.ToolStripButton();
+                this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+                this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+                this.cONDICAOPAGAMENTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
+                this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
                 this.cONDICAOPAGAMENTOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.CONDICAOPAGAMENTOTableAdapter();
                 this.tableAdapterManager = new Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager();
                 this.tabPage2.SuspendLayout();
+                this.TbCntConPag.SuspendLayout();
+                this.consultaCondicaoToolStrip.SuspendLayout();
                 ((System.ComponentModel.ISupportInitialize)(this.cONDICAOPAGAMENTOBindingSource)).BeginInit();
                 ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).BeginInit();
-                this.TbCntConPag.SuspendLayout();
                 this.SuspendLayout();
                 // 
                 // tabPage2
@@ -84,17 +92,6 @@
                 this.lblCodigo.Size = new System.Drawing.Size(43, 13);
                 this.lblCodigo.TabIndex = 47;
                 this.lblCodigo.Text = "Código:";
-                // 
-                // cONDICAOPAGAMENTOBindingSource
-                // 
-                this.cONDICAOPAGAMENTOBindingSource.DataMember = "CONDICAOPAGAMENTO";
-                this.cONDICAOPAGAMENTOBindingSource.DataSource = this.cOMERCIALDataSet;
-                this.cONDICAOPAGAMENTOBindingSource.PositionChanged += new System.EventHandler(this.cONDICAOPAGAMENTOBindingSource_PositionChanged);
-                // 
-                // cOMERCIALDataSet
-                // 
-                this.cOMERCIALDataSet.DataSetName = "COMERCIALDataSet";
-                this.cOMERCIALDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
                 // 
                 // TxtDiaDes
                 // 
@@ -139,11 +136,78 @@
                 // 
                 this.TbCntConPag.Controls.Add(this.tabPage2);
                 this.TbCntConPag.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                this.TbCntConPag.Location = new System.Drawing.Point(12, 12);
+                this.TbCntConPag.Location = new System.Drawing.Point(12, 32);
                 this.TbCntConPag.Name = "TbCntConPag";
                 this.TbCntConPag.SelectedIndex = 0;
                 this.TbCntConPag.Size = new System.Drawing.Size(549, 100);
                 this.TbCntConPag.TabIndex = 0;
+                // 
+                // consultaCondicaoToolStrip
+                // 
+                this.consultaCondicaoToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.dESCRICAOToolStripLabel,
+            this.dESCRICAOToolStripTextBox,
+            this.consultaCondicaoToolStripButton,
+            this.toolStripButton3,
+            this.toolStripButton2});
+                this.consultaCondicaoToolStrip.Location = new System.Drawing.Point(0, 0);
+                this.consultaCondicaoToolStrip.Name = "consultaCondicaoToolStrip";
+                this.consultaCondicaoToolStrip.Size = new System.Drawing.Size(581, 25);
+                this.consultaCondicaoToolStrip.TabIndex = 1;
+                this.consultaCondicaoToolStrip.Text = "consultaCondicaoToolStrip";
+                this.consultaCondicaoToolStrip.Visible = false;
+                // 
+                // dESCRICAOToolStripLabel
+                // 
+                this.dESCRICAOToolStripLabel.Name = "dESCRICAOToolStripLabel";
+                this.dESCRICAOToolStripLabel.Size = new System.Drawing.Size(61, 22);
+                this.dESCRICAOToolStripLabel.Text = "Descrição:";
+                // 
+                // dESCRICAOToolStripTextBox
+                // 
+                this.dESCRICAOToolStripTextBox.Name = "dESCRICAOToolStripTextBox";
+                this.dESCRICAOToolStripTextBox.Size = new System.Drawing.Size(100, 25);
+                // 
+                // consultaCondicaoToolStripButton
+                // 
+                this.consultaCondicaoToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+                this.consultaCondicaoToolStripButton.Image = global::Comercial.Properties.Resources.search1;
+                this.consultaCondicaoToolStripButton.Name = "consultaCondicaoToolStripButton";
+                this.consultaCondicaoToolStripButton.Size = new System.Drawing.Size(23, 22);
+                this.consultaCondicaoToolStripButton.Text = "ConsultaCondicao";
+                this.consultaCondicaoToolStripButton.Click += new System.EventHandler(this.consultaCondicaoToolStripButton_Click);
+                // 
+                // toolStripButton3
+                // 
+                this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+                this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
+                this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+                this.toolStripButton3.Name = "toolStripButton3";
+                this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
+                this.toolStripButton3.Text = "Limpar";
+                this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
+                // 
+                // toolStripButton2
+                // 
+                this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+                this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+                this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+                this.toolStripButton2.Name = "toolStripButton2";
+                this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
+                this.toolStripButton2.Text = "Cancelar";
+                this.toolStripButton2.ToolTipText = "Cancelar";
+                this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
+                // 
+                // cONDICAOPAGAMENTOBindingSource
+                // 
+                this.cONDICAOPAGAMENTOBindingSource.DataMember = "CONDICAOPAGAMENTO";
+                this.cONDICAOPAGAMENTOBindingSource.DataSource = this.cOMERCIALDataSet;
+                this.cONDICAOPAGAMENTOBindingSource.PositionChanged += new System.EventHandler(this.cONDICAOPAGAMENTOBindingSource_PositionChanged);
+                // 
+                // cOMERCIALDataSet
+                // 
+                this.cOMERCIALDataSet.DataSetName = "COMERCIALDataSet";
+                this.cOMERCIALDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
                 // 
                 // cONDICAOPAGAMENTOTableAdapter
                 // 
@@ -152,6 +216,7 @@
                 // tableAdapterManager
                 // 
                 this.tableAdapterManager.ACESSOTableAdapter = null;
+                this.tableAdapterManager.ATUCUBOTableAdapter = null;
                 this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
                 this.tableAdapterManager.CLIENTETableAdapter = null;
                 this.tableAdapterManager.CONDICAOPAGAMENTOTableAdapter = this.cONDICAOPAGAMENTOTableAdapter;
@@ -159,6 +224,8 @@
                 this.tableAdapterManager.ICMSTableAdapter = null;
                 this.tableAdapterManager.ItemNotaFiscalTableAdapter = null;
                 this.tableAdapterManager.ITEMPEDIDOTableAdapter = null;
+                this.tableAdapterManager.modeloCampoTableAdapter = null;
+                this.tableAdapterManager.modeloTableAdapter = null;
                 this.tableAdapterManager.MODULOTableAdapter = null;
                 this.tableAdapterManager.NOTAFISCALTableAdapter = null;
                 this.tableAdapterManager.PEDIDOTableAdapter = null;
@@ -177,7 +244,8 @@
                 this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
                 this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
                 this.BackColor = System.Drawing.Color.WhiteSmoke;
-                this.ClientSize = new System.Drawing.Size(573, 124);
+                this.ClientSize = new System.Drawing.Size(581, 152);
+                this.Controls.Add(this.consultaCondicaoToolStrip);
                 this.Controls.Add(this.TbCntConPag);
                 this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
                 this.ForeColor = System.Drawing.Color.CadetBlue;
@@ -191,10 +259,13 @@
                 this.Shown += new System.EventHandler(this.FrmCadConPag_Shown);
                 this.tabPage2.ResumeLayout(false);
                 this.tabPage2.PerformLayout();
+                this.TbCntConPag.ResumeLayout(false);
+                this.consultaCondicaoToolStrip.ResumeLayout(false);
+                this.consultaCondicaoToolStrip.PerformLayout();
                 ((System.ComponentModel.ISupportInitialize)(this.cONDICAOPAGAMENTOBindingSource)).EndInit();
                 ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).EndInit();
-                this.TbCntConPag.ResumeLayout(false);
                 this.ResumeLayout(false);
+                this.PerformLayout();
 
             }
 
@@ -212,6 +283,12 @@
         private Comercial.COMERCIALDataSetTableAdapters.CONDICAOPAGAMENTOTableAdapter cONDICAOPAGAMENTOTableAdapter;
         private Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.CheckBox chkEntrada;
+        private System.Windows.Forms.ToolStripButton consultaCondicaoToolStripButton;
+        public System.Windows.Forms.ToolStrip consultaCondicaoToolStrip;
+        public System.Windows.Forms.ToolStripLabel dESCRICAOToolStripLabel;
+        public System.Windows.Forms.ToolStripTextBox dESCRICAOToolStripTextBox;
+        public System.Windows.Forms.ToolStripButton toolStripButton3;
+        public System.Windows.Forms.ToolStripButton toolStripButton2;
 
 
         }
