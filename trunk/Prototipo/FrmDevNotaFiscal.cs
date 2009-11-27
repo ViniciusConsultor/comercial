@@ -74,7 +74,7 @@ namespace Comercial
 
            StringBuilder sqlcommand = new StringBuilder();
 
-           sqlcommand.Append(" SELECT NRNOTAFISCAL, SERIE, DATAEMISSAO, TIPO, STATUS, NrPedido ");
+           sqlcommand.Append(" SELECT NRNOTAFISCAL, SERIE, DATAEMISSAO, TIPO, NrPedido ");
            sqlcommand.Append(" FROM NOTAFISCAL ");
            
            DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
