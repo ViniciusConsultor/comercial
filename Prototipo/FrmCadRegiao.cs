@@ -37,5 +37,39 @@ namespace Comercial
             this.tableAdapterManager.UpdateAll(this.cOMERCIALDataSet);
 
         }
+
+        private void consultaRegiaoToolStripButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                    this.rEGIAOTableAdapter.ConsultaRegiao(this.cOMERCIALDataSet.REGIAO, dESCRICAOToolStripTextBox.Text);
+
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            dESCRICAOToolStripTextBox.Clear();
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.rEGIAOTableAdapter.Fill(this.cOMERCIALDataSet.REGIAO);
+
+                consultaRegiaoToolStrip.Visible = false;
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+
+            }
+        }
         }
     }

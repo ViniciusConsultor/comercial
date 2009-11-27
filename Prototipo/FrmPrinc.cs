@@ -1478,7 +1478,51 @@ namespace Comercial
 
             #endregion
 
+            #region Grupo de Produto
+            if (frm is FrmCadGrpProd)
+            {
+                FrmCadGrpProd grp = (FrmCadGrpProd)frm;
+                grp.consultaGroProdutoToolStrip.Visible = true;
+                //grp.cODGRUPOPRODUTOToolStripTextBox.Enabled = true;
+                grp.dESCRICAOToolStripTextBox.Enabled = true;
+                grp.consultaGroProdutoToolStrip.Enabled = true;
+            }
 
+            #endregion
+
+            #region Condicao Pagto
+            if (frm is FrmCadConPag)
+            {
+                FrmCadConPag cond = (FrmCadConPag)frm;
+                cond.consultaCondicaoToolStrip.Visible = true;
+                cond.dESCRICAOToolStripTextBox.Enabled = true;
+                cond.consultaCondicaoToolStrip.Enabled = true;
+            }
+
+            #endregion
+
+            #region Regiao
+            if (frm is FrmCadRegiao)
+            {
+                FrmCadRegiao Regiao = (FrmCadRegiao)frm;
+                Regiao.consultaRegiaoToolStrip.Visible = true;
+                Regiao.dESCRICAOToolStripTextBox.Enabled = true;
+                Regiao.consultaRegiaoToolStrip.Enabled = true;
+            }
+
+            #endregion
+
+            #region Regiao
+            if (frm is FrmCadUniMed)
+            {
+                FrmCadUniMed unid = (FrmCadUniMed)frm;
+                unid.consultaunidadeToolStrip.Visible = true;
+                unid.cODUNIDADEMEDIDAToolStripTextBox.Enabled = true;
+                unid.dESCRICAOToolStripTextBox.Enabled = true;
+                unid.consultaunidadeToolStrip.Enabled = true;
+            }
+
+            #endregion
         }
 
         private void FrmPrinc_Load(object sender, EventArgs e)

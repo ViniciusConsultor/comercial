@@ -44,9 +44,64 @@ namespace Comercial
         {
             // TODO: This line of code loads data into the 'cOMERCIALDataSet.GRUPOPRODUTO' table. You can move, or remove it, as needed.
             this.gRUPOPRODUTOTableAdapter.Fill(this.cOMERCIALDataSet.GRUPOPRODUTO);
-          
+
+        }
+
+        //     private void toolStripButton4_Click(object sender, EventArgs e)
+        //{
+        //    cODGRUPOPRODUTOToolStripTextBox.Clear();
+        //    dESCRICAOToolStripTextBox1.Clear();
+        //}
+
+        private void toolStripButton5_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.gRUPOPRODUTOTableAdapter.Fill(this.cOMERCIALDataSet.GRUPOPRODUTO);
+
+                //consultaGrpToolStrip.Visible = false;
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+
+            }
         }
 
        
+        private void consultaGroProdutoToolStripButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.gRUPOPRODUTOTableAdapter.ConsultaGroProduto(this.cOMERCIALDataSet.GRUPOPRODUTO, dESCRICAOToolStripTextBox.Text);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            dESCRICAOToolStripTextBox.Clear();
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.gRUPOPRODUTOTableAdapter.Fill(this.cOMERCIALDataSet.GRUPOPRODUTO);
+
+                consultaGroProdutoToolStrip.Visible = false;
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+
+            }
+        }
+
+
     }
 }
