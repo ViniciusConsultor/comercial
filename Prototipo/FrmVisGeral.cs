@@ -1076,11 +1076,11 @@ namespace Comercial
                 int linha = celula.RowIndex;
                 int coluna = celula.ColumnIndex;
 
-                DevNF.txtNumNF.getText = selecionadas[0].Value.ToString();
-                DevNF.txtSerie.Text = selecionadas[1].Value.ToString();
-                DevNF.dtTmPckrDtEmissao.Text = selecionadas[2].Value.ToString();
-                DevNF.txtTipoNF.Text = selecionadas[3].Value.ToString();
-                DevNF.txtNrPedido.Text = selecionadas[4].Value.ToString(); 
+                DevNF.txtNumNF.getText = selecionadas[1].Value.ToString();
+                DevNF.txtSerie.Text = selecionadas[2].Value.ToString();
+                DevNF.dtTmPckrDtEmissao.Text = selecionadas[3].Value.ToString();
+                DevNF.txtTipoNF.Text = selecionadas[4].Value.ToString();
+                DevNF.txtNrPedido.Text = selecionadas[5].Value.ToString(); 
 
                 //populo o item do pedido passando como parametro a NF selecionada.
                 DevNF.populargrid();
