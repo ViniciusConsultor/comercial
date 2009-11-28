@@ -58,11 +58,11 @@ namespace Comercial
                 Double totalfaturado = 0;
                 Double desconto = 0;
                 Double ipi = 0;
+                double icms = 0;
 
                 foreach (DataGridViewRow item in dtgrdvItenspven.Rows)
                 {
                     total = Convert.ToDouble(total) + Convert.ToDouble(item.Cells["ColTotal"].Value);
-                    //desconto = Convert.ToDouble(desconto) + Convert.ToDouble(item.Cells["ColDesconto"].Value);
                     desconto += (Convert.ToDouble(item.Cells["ColDesconto"].Value)/100) *
                                 (Convert.ToDouble(item.Cells["ClmPrcUnit"].Value) *
                                 Convert.ToDouble(item.Cells["ClmQtdeLib"].Value));
@@ -75,9 +75,9 @@ namespace Comercial
                     txtBxVlrPedido.Text = string.Format("{0:C2}", Convert.ToDouble(total));
                     txtBxVlrFaturado.Text = string.Format("{0:C2}", Convert.ToDouble(totalfaturado));
                     txtBxDescontos.Text = string.Format("{0:C2}", Convert.ToDouble(desconto));
+                    icms += (getValorICMS("SP") / 100) * Convert.ToDouble(item.Cells["ClmPrcUnit"].Value) * Convert.ToDouble(item.Cells["ClmQtdeLib"].Value);
                 }
-                double icms = (getValorICMS("SP") / 100) *Convert.ToDouble(totalfaturado);
-
+                
                 txtICMS.Text = string.Format("{0:C2}",icms);
                 txtIPI.Text = Convert.ToString(txtIPI.Text);
                 txtBxVlrPedido.Text = string.Format("{0:C2}", totalfaturado + ipi + icms + Convert.ToDouble(txtFrete.Text.Replace("R$", "")));
