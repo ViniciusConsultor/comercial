@@ -216,15 +216,15 @@ namespace Comercial
                     sqlcon.Open();
 
 
-                    string sql = string.Format("SELECT nf.*, ((nf.icms * itnf.valor)/100) as valoricms , itnf.*,((itnf.IPI * itnf.valor)/100) as valorIPI,tra.NOME as DescricaoTransp, "+
+                    string sql = string.Format("SELECT nf.*, ((nf.icms * itnf.valor)/100)*itnf.Quantidade as valoricms , itnf.*,((itnf.IPI * itnf.valor)/100)*itnf.Quantidade as valorIPI,tra.NOME as DescricaoTransp, " +
                         " tra.UF as UfTrans, tra.CNPJ as CnpjTrans, tra.ENDERECO as EnderecoTrans, tra.MUNICIPIO as MunicipioTrans, tra.IE as IeTrans, "+
                         " ( "+
-                        " select SUM((n.icms * i.valor)/100) "+
+                        " select SUM(((n.icms * i.valor)/100)*i.Quantidade) " +
                         " from NOTAFISCAL n inner join ItemNotaFiscal i on n.NrNotaFiscal = i.NrNotaFiscal "+
                         " where n.NrNotaFiscal = nf.nrNotaFiscal "+
                         " )total_ICMS, "+
                         " ( "+
-                        " 	select SUM((i.IPI * i.valor)/100) "+
+                        " 	select SUM(((i.IPI * i.valor)/100)*i.Quantidade) " +
                         " from NOTAFISCAL n inner join ItemNotaFiscal i on n.NrNotaFiscal = i.NrNotaFiscal "+
                         " where n.NrNotaFiscal = nf.nrNotaFiscal "+
                         " )total_IPI "+
