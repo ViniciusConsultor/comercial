@@ -8,3 +8,9 @@ C:\Users\rafael.moreno\Desktop\install\install\install\obj\Debug\install.exe
 C:\Users\rafael.moreno\Desktop\install\install\install\obj\Debug\install.pdb
 D:\Pessoal\Comercial\install\install\install\obj\Debug\install.exe
 D:\Pessoal\Comercial\install\install\install\obj\Debug\install.pdb
+D:\Pessoal\Comercial\install\install\install\bin\Debug\install.exe
+D:\Pessoal\Comercial\install\install\install\bin\Debug\install.pdb
+D:\Pessoal\Comercial\install\install\install\obj\Debug\ResolveAssemblyReference.cache
+D:\Pessoal\Comercial\install\install\install\obj\Debug\install.Form1.resources
+D:\Pessoal\Comercial\install\install\install\obj\Debug\install.Properties.Resources.resources
+D:\Pessoal\Comercial\install\install\install\obj\Debug\install.csproj.GenerateResource.Cache

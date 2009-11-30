@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.IO;
 using Microsoft.AnalysisServices.AdomdClient;
+using System.Diagnostics;
 
 namespace install
 {
@@ -26,8 +27,39 @@ namespace install
 
         private void button1_Click(object sender, EventArgs e)
         {
+            try
+            {
+                /* CRIANDO BASE SQL SERVER */
+                string script = Application.StartupPath + "\\script\\create.sql";
+                string bat = Application.StartupPath + "\\script\\exec.bat" + " ";
+                string arg = txtServer.Text + " " + txtUsu.Text + " " + txtSenha.Text + " " + script;
+                Process.Start(bat, arg);
 
-            //Executar script de create das tabelas no BD
+                /* CRIANDO BASE ANALYSIS SERVICES */
+
+
+                //Executar script de create dos cubos no BD
+
+                string conexAnalysis = "Provider=MSOLAP.4;Integrated Security=SSPI;Persist Security Info=True;Initial Catalog=;Data Source=" + textBox1.Text;
+                AdomdConnection connAnalysis = new AdomdConnection(conexAnalysis);
+
+                FileInfo file2 = new FileInfo("script/Create_Comercial_mart.xmla");
+                string script2 = file2.OpenText().ReadToEnd();
+
+                AdomdCommand com = new AdomdCommand();
+                com.Connection = connAnalysis;
+                com.CommandText = script2;
+                connAnalysis.Open();
+                com.ExecuteNonQuery();
+
+                MessageBox.Show("Executado com sucesso", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao executar", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
+            /*  //Executar script de create das tabelas no BD
 
             string sqlConnectionString = "Data Source=" + txtServer.Text + ";Initial Catalog=Master;Persist Security Info=True;User ID=" + txtUsu.Text + ";Password=" + txtSenha.Text;
 
@@ -67,6 +99,7 @@ namespace install
             com.CommandText = script2;
             connAnalysis.Open();
             com.ExecuteNonQuery();
+           * */
         }
     }
 }
