@@ -101,8 +101,9 @@ namespace Comercial
                             }
                             else
                             {
-                                // *** ARRUMAR verifica regras ***
-                                //========================================
+                                princ.PermissoesUsuárioToolStripMenuItem.Enabled = false;
+                                princ.mineraçãoDeDadosToolStripMenuItem.Enabled = false;
+                                princ.atualizaCubosToolStripMenuItem.Enabled = false;
 
                                 princ.Show();
                                 this.Hide();

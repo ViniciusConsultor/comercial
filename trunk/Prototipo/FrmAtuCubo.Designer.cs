@@ -46,6 +46,9 @@
             this.aTUCUBOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.aTUCUBOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.ATUCUBOTableAdapter();
             this.tableAdapterManager = new Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager();
+            this.lblTexto = new System.Windows.Forms.Label();
+            this.prgrsBrCarrega = new System.Windows.Forms.ProgressBar();
+            this.tmrTempo = new System.Windows.Forms.Timer(this.components);
             this.tabControl1.SuspendLayout();
             this.tbPgHistorico.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtgrdAtuCubo)).BeginInit();
@@ -131,6 +134,8 @@
             // 
             // grpBxStatus
             // 
+            this.grpBxStatus.Controls.Add(this.lblTexto);
+            this.grpBxStatus.Controls.Add(this.prgrsBrCarrega);
             this.grpBxStatus.Controls.Add(this.pictureBox1);
             this.grpBxStatus.Controls.Add(this.pictureBox2);
             this.grpBxStatus.Controls.Add(this.label2);
@@ -220,6 +225,8 @@
             this.tableAdapterManager.ICMSTableAdapter = null;
             this.tableAdapterManager.ItemNotaFiscalTableAdapter = null;
             this.tableAdapterManager.ITEMPEDIDOTableAdapter = null;
+            this.tableAdapterManager.modeloCampoTableAdapter = null;
+            this.tableAdapterManager.modeloTableAdapter = null;
             this.tableAdapterManager.MODULOTableAdapter = null;
             this.tableAdapterManager.NOTAFISCALTableAdapter = null;
             this.tableAdapterManager.PEDIDOTableAdapter = null;
@@ -232,6 +239,34 @@
             this.tableAdapterManager.USUARIOTableAdapter = null;
             this.tableAdapterManager.VENDEDORTableAdapter = null;
             this.tableAdapterManager.VIATRANSPORTETableAdapter = null;
+            // 
+            // lblTexto
+            // 
+            this.lblTexto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTexto.AutoSize = true;
+            this.lblTexto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTexto.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.lblTexto.Location = new System.Drawing.Point(16, 158);
+            this.lblTexto.Name = "lblTexto";
+            this.lblTexto.Size = new System.Drawing.Size(66, 13);
+            this.lblTexto.TabIndex = 59;
+            this.lblTexto.Text = "Aguarde...";
+            this.lblTexto.Visible = false;
+            this.lblTexto.Click += new System.EventHandler(this.lblTexto_Click);
+            // 
+            // prgrsBrCarrega
+            // 
+            this.prgrsBrCarrega.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.prgrsBrCarrega.Location = new System.Drawing.Point(88, 152);
+            this.prgrsBrCarrega.Name = "prgrsBrCarrega";
+            this.prgrsBrCarrega.Size = new System.Drawing.Size(237, 23);
+            this.prgrsBrCarrega.TabIndex = 58;
+            this.prgrsBrCarrega.Visible = false;
+            this.prgrsBrCarrega.Click += new System.EventHandler(this.prgrsBrCarrega_Click);
+            // 
+            // tmrTempo
+            // 
+            this.tmrTempo.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // FrmAtuCubo
             // 
@@ -277,5 +312,8 @@
         private System.Windows.Forms.BindingSource aTUCUBOBindingSource;
         private Comercial.COMERCIALDataSetTableAdapters.ATUCUBOTableAdapter aTUCUBOTableAdapter;
         private Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager tableAdapterManager;
+        private System.Windows.Forms.Label lblTexto;
+        private System.Windows.Forms.ProgressBar prgrsBrCarrega;
+        private System.Windows.Forms.Timer tmrTempo;
     }
 }

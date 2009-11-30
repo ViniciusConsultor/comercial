@@ -74,6 +74,11 @@ namespace Comercial
             try
             {
                 string linha = "";
+                lblTexto.Visible = true;
+                prgrsBrCarrega.Value = 0;
+                prgrsBrCarrega.Visible = true;
+                tmrTempo.Enabled = true;
+
                 //Abrir o arquivo
 
                 linha += "<Batch xmlns=\"http://schemas.microsoft.com/analysisservices/2003/engine\"> " +
@@ -130,14 +135,18 @@ namespace Comercial
                 cmd.Execute();
                 conn.Close();
 
-               
- 
+
+
                 COMERCIALDataSetTableAdapters.ATUCUBOTableAdapter atu = new Comercial.COMERCIALDataSetTableAdapters.ATUCUBOTableAdapter();
                 DateTime data = Convert.ToDateTime(DateTime.Now.Year + "-" + DateTime.Now.Month + "-" + DateTime.Now.Day);
                 atu.Insert(_princ.usuarioLogado, data);
 
                 preencheGrid();
 
+                prgrsBrCarrega.Value = 100;
+                tmrTempo.Enabled = false;
+                lblTexto.Visible = false;
+                MessageBox.Show("Processo executado com sucesso", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 pictureBox1.Visible = true;
                 pictureBox2.Visible = true;
 
@@ -145,6 +154,10 @@ namespace Comercial
             }
             catch(Exception ex)
             {
+                tmrTempo.Enabled = false;
+                lblTexto.Visible = false;
+                prgrsBrCarrega.Visible = false;
+                MessageBox.Show("Houve um problema na execução da atualização!\nConsulte o DBA.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 pictureBox1.Visible = false;
                 pictureBox1.Visible = false;
             }
@@ -164,6 +177,31 @@ namespace Comercial
             this.aTUCUBOBindingSource.EndEdit();
             this.tableAdapterManager.UpdateAll(this.cOMERCIALDataSet);
 
+        }
+
+        private void lblTexto_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void prgrsBrCarrega_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if (prgrsBrCarrega.Value == 100)
+            {
+                
+
+                prgrsBrCarrega.Visible = false;
+
+            }
+            else
+            {
+                prgrsBrCarrega.Value += 1;
+            }
         }
     }
 }
