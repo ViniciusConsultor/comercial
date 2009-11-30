@@ -214,11 +214,11 @@
     <Compile Include="FrmConVen.Designer.cs">
       <DependentUpon>FrmConVen.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmCadUsu.cs">
+    <Compile Include="FrmPermissoesUsu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmCadUsu.designer.cs">
-      <DependentUpon>FrmCadUsu.cs</DependentUpon>
+    <Compile Include="FrmPermissoesUsu.designer.cs">
+      <DependentUpon>FrmPermissoesUsu.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmDevNotaFiscal.cs">
       <SubType>Form</SubType>
@@ -364,8 +364,8 @@
       <DependentUpon>FrmConVen.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmCadUsu.resx">
-      <DependentUpon>FrmCadUsu.cs</DependentUpon>
+    <EmbeddedResource Include="FrmPermissoesUsu.resx">
+      <DependentUpon>FrmPermissoesUsu.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmDevNotaFiscal.resx">
