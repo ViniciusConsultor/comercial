@@ -101,7 +101,7 @@ namespace Comercial
                             }
                             else
                             {
-                                princ.PermissoesUsuárioToolStripMenuItem.Enabled = false;
+                                princ.PermissoesUsuarioToolStripMenuItem.Enabled = false;
                                 princ.mineraçãoDeDadosToolStripMenuItem.Enabled = false;
                                 princ.atualizaCubosToolStripMenuItem.Enabled = false;
 

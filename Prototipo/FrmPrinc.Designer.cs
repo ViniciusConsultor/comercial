@@ -32,7 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrinc));
             this.arquivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.controleDeUsuáriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.criarUsuárioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.PermissoesUsuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.alterarSenhaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.backupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.utilitáriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -131,23 +131,23 @@
             // controleDeUsuáriosToolStripMenuItem
             // 
             this.controleDeUsuáriosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.criarUsuárioToolStripMenuItem,
+            this.PermissoesUsuarioToolStripMenuItem,
             this.alterarSenhaToolStripMenuItem});
             this.controleDeUsuáriosToolStripMenuItem.Name = "controleDeUsuáriosToolStripMenuItem";
             this.controleDeUsuáriosToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.controleDeUsuáriosToolStripMenuItem.Text = "Controle de usuário";
             // 
-            // criarUsuárioToolStripMenuItem
+            // PermissoesUsuarioToolStripMenuItem
             // 
-            this.criarUsuárioToolStripMenuItem.Name = "criarUsuárioToolStripMenuItem";
-            this.criarUsuárioToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
-            this.criarUsuárioToolStripMenuItem.Text = "Criar usuário";
-            this.criarUsuárioToolStripMenuItem.Click += new System.EventHandler(this.criarUsuárioToolStripMenuItem_Click);
+            this.PermissoesUsuarioToolStripMenuItem.Name = "PermissoesUsuarioToolStripMenuItem";
+            this.PermissoesUsuarioToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.PermissoesUsuarioToolStripMenuItem.Text = "Permissões";
+            this.PermissoesUsuarioToolStripMenuItem.Click += new System.EventHandler(this.criarUsuárioToolStripMenuItem_Click);
             // 
             // alterarSenhaToolStripMenuItem
             // 
             this.alterarSenhaToolStripMenuItem.Name = "alterarSenhaToolStripMenuItem";
-            this.alterarSenhaToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.alterarSenhaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.alterarSenhaToolStripMenuItem.Text = "Alterar senha";
             this.alterarSenhaToolStripMenuItem.Click += new System.EventHandler(this.alterarSenhaToolStripMenuItem_Click);
             // 
@@ -214,28 +214,28 @@
             // clientesToolStripMenuItem
             // 
             this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.clientesToolStripMenuItem.Text = "Cliente";
             this.clientesToolStripMenuItem.Click += new System.EventHandler(this.clientesToolStripMenuItem_Click);
             // 
             // produtosToolStripMenuItem
             // 
             this.produtosToolStripMenuItem.Name = "produtosToolStripMenuItem";
-            this.produtosToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.produtosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.produtosToolStripMenuItem.Text = "Produto";
             this.produtosToolStripMenuItem.Click += new System.EventHandler(this.produtosToolStripMenuItem_Click);
             // 
             // pedidosToolStripMenuItem
             // 
             this.pedidosToolStripMenuItem.Name = "pedidosToolStripMenuItem";
-            this.pedidosToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.pedidosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.pedidosToolStripMenuItem.Text = "Pedido";
             this.pedidosToolStripMenuItem.Click += new System.EventHandler(this.pedidosToolStripMenuItem_Click);
             // 
             // vendedoresToolStripMenuItem
             // 
             this.vendedoresToolStripMenuItem.Name = "vendedoresToolStripMenuItem";
-            this.vendedoresToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.vendedoresToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.vendedoresToolStripMenuItem.Text = "Vendedor";
             this.vendedoresToolStripMenuItem.Click += new System.EventHandler(this.vendedoresToolStripMenuItem_Click);
             // 
@@ -249,7 +249,7 @@
             this.toolStripMenuItem3,
             this.bancosToolStripMenuItem});
             this.ajustesToolStripMenuItem.Name = "ajustesToolStripMenuItem";
-            this.ajustesToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.ajustesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.ajustesToolStripMenuItem.Text = "Ajustes";
             // 
             // unidadeDeMedidaToolStripMenuItem
@@ -392,19 +392,19 @@
             // gerarModeloToolStripMenuItem
             // 
             this.gerarModeloToolStripMenuItem.Name = "gerarModeloToolStripMenuItem";
-            this.gerarModeloToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.gerarModeloToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.gerarModeloToolStripMenuItem.Text = "Gerar modelo";
             this.gerarModeloToolStripMenuItem.Click += new System.EventHandler(this.gerarModeloToolStripMenuItem_Click);
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(143, 6);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(149, 6);
             // 
             // consultarToolStripMenuItem
             // 
             this.consultarToolStripMenuItem.Name = "consultarToolStripMenuItem";
-            this.consultarToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.consultarToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.consultarToolStripMenuItem.Text = "Consultar";
             this.consultarToolStripMenuItem.Click += new System.EventHandler(this.consultarToolStripMenuItem_Click);
             // 
@@ -858,7 +858,6 @@
 
         private System.Windows.Forms.ToolStripMenuItem arquivoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem controleDeUsuáriosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem criarUsuárioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem alterarSenhaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem backupToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem utilitáriosToolStripMenuItem;
@@ -887,7 +886,6 @@
         private System.Windows.Forms.ToolStripMenuItem devoluçãoDeNFToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem faturamentoDoPedidoToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem mineraçãoDeDadosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem gerarModeloToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem consultarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ajudaToolStripMenuItem;
@@ -930,11 +928,13 @@
         public System.Windows.Forms.ToolStripButton tlStrpBtnConMin;
         public System.Windows.Forms.ToolStripButton tlStrpBtnMinGer;
         public System.Windows.Forms.ToolStripButton tsbhomeProcesso;
-        private System.Windows.Forms.ToolStripMenuItem atualizaCubosToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem4;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem5;
         public System.Windows.Forms.ToolStrip tlStrpProcesso;
         public System.Windows.Forms.ToolStripButton tlStrpBtnPesquisar;
+        public System.Windows.Forms.ToolStripMenuItem PermissoesUsuarioToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem mineraçãoDeDadosToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem atualizaCubosToolStripMenuItem;
 
 
 

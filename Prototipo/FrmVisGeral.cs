@@ -19,7 +19,7 @@ namespace Comercial
             _controle = controle;
 
             #region Colunas GridViewGeral Usuario
-            if (_parent is FrmCadUsu)
+            if (_parent is FrmAltSen || _parent is FrmPermissoesUsu)
             {
                 rdBtnCod.Visible = false;
                 rdBtnNome.Text = "Usuário";
@@ -358,8 +358,8 @@ namespace Comercial
         #region Botão Pesquisar
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
-            #region FormPesquisa Usuario
-            if (_parent is FrmCadUsu)
+            #region FormPesquisa Alterar Senha
+            if (_parent is FrmAltSen)
             {
 
                 string c = ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString;
@@ -376,6 +376,35 @@ namespace Comercial
                 table.Load(reader);
 
                 dtGrdVwVis.DataSource = table;
+                //dtGrdVwVis.Columns[1].Visible = false;
+                //dtGrdVwVis.Columns[2].Visible = false;
+
+
+
+            }
+
+            #endregion
+
+            #region FormPesquisa Permissoes
+            if (_parent is FrmPermissoesUsu)
+            {
+
+                string c = ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString;
+
+                SqlConnection conn = new SqlConnection(c);
+                conn.Open();
+
+                SqlCommand cmd = new SqlCommand("select usuario, privilegiado, bloqueado from usuario where usuario like @usu ", conn);
+
+                cmd.Parameters.Add(new SqlParameter("@usu", txtPesquisar.Text + "%"));
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                DataTable table = new DataTable();
+                table.Load(reader);
+
+                dtGrdVwVis.DataSource = table;
+                dtGrdVwVis.Columns[3].Visible = false;
+                dtGrdVwVis.Columns[2].Visible = false;
 
 
             }
@@ -807,11 +836,30 @@ namespace Comercial
         #region Double Click
         private void dtGrdVwVis_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            #region Double Click Pesquisa Usuario
-
-            if (_parent is FrmCadUsu)
+            #region Double Click Alterar Senha
+            if (_parent is FrmAltSen)
             {
-                FrmCadUsu usu = (FrmCadUsu)_parent;
+                FrmAltSen sen = (FrmAltSen)_parent;
+
+                // vamos obter as células selecionadas no DataGridView
+                DataGridViewSelectedCellCollection selecionadas = dtGrdVwVis.SelectedCells;
+
+                DataGridViewCell celula = selecionadas[1];
+                int linha = celula.RowIndex;
+                int coluna = celula.ColumnIndex;
+
+
+                sen.txtUsu.getText = celula.Value.ToString();
+
+                this.Close();
+                this.Dispose();
+            }
+            #endregion
+
+            #region Double Click Permissão Usuario
+            if (_parent is FrmPermissoesUsu)
+            {
+                FrmPermissoesUsu usu = (FrmPermissoesUsu)_parent;
 
                 // vamos obter as células selecionadas no DataGridView
                 DataGridViewSelectedCellCollection selecionadas = dtGrdVwVis.SelectedCells;
@@ -822,11 +870,23 @@ namespace Comercial
 
 
                 usu.txtUsu.getText = celula.Value.ToString();
+                celula = selecionadas[2];
+                if (celula.Value.ToString() == "S")
+                {
+                    usu.chckBxPriv.Checked = true;
+                }
+                else usu.chckBxPriv.Checked = false;
+
+                celula = selecionadas[3];
+                if (celula.Value.ToString() == "S")
+                {
+                    usu.chckBxUsublq.Checked = true;
+                }
+                else usu.chckBxUsublq.Checked = false;
 
                 this.Close();
                 this.Dispose();
             }
-
             #endregion
 
             #region Double Click Pesquisa Pedido
