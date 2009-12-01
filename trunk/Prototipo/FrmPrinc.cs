@@ -99,9 +99,9 @@ namespace Comercial
                     retorno = frmCadProd.salvar();
                 }
 
-                if (frm is FrmCadUsu && edit == false)
+                if (frm is FrmPermissoesUsu && edit == false)
                 {
-                    FrmCadUsu frmCadven = (FrmCadUsu)frm;
+                    FrmPermissoesUsu frmCadven = (FrmPermissoesUsu)frm;
                     retorno = frmCadven.salvar();
                 }
 
@@ -208,7 +208,7 @@ namespace Comercial
                     cancelEdicao();
 
 
-                    if (frm is FrmCadUsu)
+                    if (frm is FrmPermissoesUsu)
                     {
 
                         COMERCIALDataSetTableAdapters.USUARIOTableAdapter table = new Comercial.COMERCIALDataSetTableAdapters.USUARIOTableAdapter();
@@ -611,7 +611,7 @@ namespace Comercial
             // Localiza o formulario
             foreach (Form form in this.MdiChildren)
             {
-                if (form is FrmCadUsu)
+                if (form is FrmPermissoesUsu)
                 {
                     form.WindowState = FormWindowState.Maximized;
                     form.Activate();
@@ -624,7 +624,7 @@ namespace Comercial
             // Para criar o formulario 
             if (x == 0 && y == 0)
             {
-                FrmCadUsu filho = new FrmCadUsu(this);
+                FrmPermissoesUsu filho = new FrmPermissoesUsu(this);
                 filho.Show();
 
 
@@ -1031,8 +1031,14 @@ namespace Comercial
                 FrmAltSen filho = new FrmAltSen(this);
                 filho.Show();
 
-                Util.Interface.ResetControls(filho);
-                Util.Interface.ChangeControlStatus(filho, false);
+
+                // Util.Interface.ResetControls(filho);
+                //Util.Interface.ChangeControlStatus(filho, false);
+
+                tlStrpProcesso.Visible = true;
+                // tlStrpBtnDevNf.Visible = true;
+                bindingNavigator1.Visible = false;
+                tlStrpBtnSalvarUsu.Visible = true;
 
                 filho.WindowState = FormWindowState.Maximized;
             }
@@ -1660,10 +1666,19 @@ namespace Comercial
         private void tlStrpBtnSalvarUsu_Click(object sender, EventArgs e)
         {
             Form frm = this.ActiveMdiChild;
-            if (frm is FrmCadUsu)
+            if (frm is FrmAltSen)
             {
-                FrmCadUsu frmusu = (FrmCadUsu)frm;
-                if (frmusu.salvar() != 1)
+                FrmAltSen frmsen = (FrmAltSen)frm;
+                if (frmsen.salvar() != 1)
+                {
+                    MessageBox.Show("Registro alterado com sucesso.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Util.Interface.ResetControls(frm);
+                }
+            }
+            if (frm is FrmPermissoesUsu)
+            {
+                FrmPermissoesUsu usu = (FrmPermissoesUsu)frm;
+                if (usu.salvar() != 1)
                 {
                     MessageBox.Show("Registro alterado com sucesso.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Util.Interface.ResetControls(frm);
