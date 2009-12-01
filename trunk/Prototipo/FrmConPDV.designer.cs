@@ -70,6 +70,12 @@
             this.lblCod = new System.Windows.Forms.Label();
             this.lblTipoPed = new System.Windows.Forms.Label();
             this.dtGrdConPDV = new System.Windows.Forms.DataGridView();
+            this.iTEMPEDIDOBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
+            this.iTEMPEDIDOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter();
+            this.tableAdapterManager = new Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager();
+            this.pEDIDOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.PEDIDOTableAdapter();
+            this.pEDIDOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ColStatus = new System.Windows.Forms.DataGridViewImageColumn();
             this.ClmnCodPed = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClmnDtPed = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -83,12 +89,8 @@
             this.ColQtdeLib = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClmnValPed = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColValorTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.iTEMPEDIDOBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
-            this.iTEMPEDIDOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.ITEMPEDIDOTableAdapter();
-            this.tableAdapterManager = new Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager();
-            this.pEDIDOTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.PEDIDOTableAdapter();
-            this.pEDIDOBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ColVALORFRETE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColDesconto = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tbCntrlConPDV.SuspendLayout();
             this.tbPgConCli.SuspendLayout();
             this.grpSituacao.SuspendLayout();
@@ -501,7 +503,9 @@
             this.ColQuantidade,
             this.ColQtdeLib,
             this.ClmnValPed,
-            this.ColValorTotal});
+            this.ColValorTotal,
+            this.ColVALORFRETE,
+            this.ColDesconto});
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -523,6 +527,55 @@
             this.dtGrdConPDV.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dtGrdConPDV.Size = new System.Drawing.Size(975, 222);
             this.dtGrdConPDV.TabIndex = 0;
+            // 
+            // iTEMPEDIDOBindingSource
+            // 
+            this.iTEMPEDIDOBindingSource.DataMember = "ITEMPEDIDO";
+            this.iTEMPEDIDOBindingSource.DataSource = this.cOMERCIALDataSet;
+            // 
+            // cOMERCIALDataSet
+            // 
+            this.cOMERCIALDataSet.DataSetName = "COMERCIALDataSet";
+            this.cOMERCIALDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // iTEMPEDIDOTableAdapter
+            // 
+            this.iTEMPEDIDOTableAdapter.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager
+            // 
+            this.tableAdapterManager.ACESSOTableAdapter = null;
+            this.tableAdapterManager.ATUCUBOTableAdapter = null;
+            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager.CLIENTETableAdapter = null;
+            this.tableAdapterManager.CONDICAOPAGAMENTOTableAdapter = null;
+            this.tableAdapterManager.GRUPOPRODUTOTableAdapter = null;
+            this.tableAdapterManager.ICMSTableAdapter = null;
+            this.tableAdapterManager.ItemNotaFiscalTableAdapter = null;
+            this.tableAdapterManager.ITEMPEDIDOTableAdapter = this.iTEMPEDIDOTableAdapter;
+            this.tableAdapterManager.modeloCampoTableAdapter = null;
+            this.tableAdapterManager.modeloTableAdapter = null;
+            this.tableAdapterManager.MODULOTableAdapter = null;
+            this.tableAdapterManager.NOTAFISCALTableAdapter = null;
+            this.tableAdapterManager.PEDIDOTableAdapter = this.pEDIDOTableAdapter;
+            this.tableAdapterManager.PRODUTOTableAdapter = null;
+            this.tableAdapterManager.REGIAOTableAdapter = null;
+            this.tableAdapterManager.TRANSPORTADORATableAdapter = null;
+            this.tableAdapterManager.TRANSPORTADORAVIATableAdapter = null;
+            this.tableAdapterManager.UNIDADEMEDIDATableAdapter = null;
+            this.tableAdapterManager.UpdateOrder = Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager.USUARIOTableAdapter = null;
+            this.tableAdapterManager.VENDEDORTableAdapter = null;
+            this.tableAdapterManager.VIATRANSPORTETableAdapter = null;
+            // 
+            // pEDIDOTableAdapter
+            // 
+            this.pEDIDOTableAdapter.ClearBeforeFill = true;
+            // 
+            // pEDIDOBindingSource
+            // 
+            this.pEDIDOBindingSource.DataMember = "PEDIDO";
+            this.pEDIDOBindingSource.DataSource = this.cOMERCIALDataSet;
             // 
             // ColStatus
             // 
@@ -635,51 +688,21 @@
             this.ColValorTotal.Name = "ColValorTotal";
             this.ColValorTotal.ReadOnly = true;
             // 
-            // iTEMPEDIDOBindingSource
+            // ColVALORFRETE
             // 
-            this.iTEMPEDIDOBindingSource.DataMember = "ITEMPEDIDO";
-            this.iTEMPEDIDOBindingSource.DataSource = this.cOMERCIALDataSet;
+            this.ColVALORFRETE.DataPropertyName = "VALORFRETE";
+            this.ColVALORFRETE.HeaderText = "Valor Frete";
+            this.ColVALORFRETE.Name = "ColVALORFRETE";
+            this.ColVALORFRETE.ReadOnly = true;
+            this.ColVALORFRETE.Visible = false;
             // 
-            // cOMERCIALDataSet
+            // ColDesconto
             // 
-            this.cOMERCIALDataSet.DataSetName = "COMERCIALDataSet";
-            this.cOMERCIALDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // iTEMPEDIDOTableAdapter
-            // 
-            this.iTEMPEDIDOTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.ACESSOTableAdapter = null;
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.CLIENTETableAdapter = null;
-            this.tableAdapterManager.CONDICAOPAGAMENTOTableAdapter = null;
-            this.tableAdapterManager.GRUPOPRODUTOTableAdapter = null;
-            this.tableAdapterManager.ICMSTableAdapter = null;
-            this.tableAdapterManager.ItemNotaFiscalTableAdapter = null;
-            this.tableAdapterManager.ITEMPEDIDOTableAdapter = this.iTEMPEDIDOTableAdapter;
-            this.tableAdapterManager.MODULOTableAdapter = null;
-            this.tableAdapterManager.NOTAFISCALTableAdapter = null;
-            this.tableAdapterManager.PEDIDOTableAdapter = this.pEDIDOTableAdapter;
-            this.tableAdapterManager.PRODUTOTableAdapter = null;
-            this.tableAdapterManager.REGIAOTableAdapter = null;
-            this.tableAdapterManager.TRANSPORTADORATableAdapter = null;
-            this.tableAdapterManager.TRANSPORTADORAVIATableAdapter = null;
-            this.tableAdapterManager.UNIDADEMEDIDATableAdapter = null;
-            this.tableAdapterManager.UpdateOrder = Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            this.tableAdapterManager.USUARIOTableAdapter = null;
-            this.tableAdapterManager.VENDEDORTableAdapter = null;
-            this.tableAdapterManager.VIATRANSPORTETableAdapter = null;
-            // 
-            // pEDIDOTableAdapter
-            // 
-            this.pEDIDOTableAdapter.ClearBeforeFill = true;
-            // 
-            // pEDIDOBindingSource
-            // 
-            this.pEDIDOBindingSource.DataMember = "PEDIDO";
-            this.pEDIDOBindingSource.DataSource = this.cOMERCIALDataSet;
+            this.ColDesconto.DataPropertyName = "DESCONTO";
+            this.ColDesconto.HeaderText = "Desconto";
+            this.ColDesconto.Name = "ColDesconto";
+            this.ColDesconto.ReadOnly = true;
+            this.ColDesconto.Visible = false;
             // 
             // FrmConPDV
             // 
@@ -752,6 +775,7 @@
         private System.Windows.Forms.Label lblteztoPendente;
         private System.Windows.Forms.Label lblCancelado;
         private System.Windows.Forms.Label lblEfetivado;
+        private System.Windows.Forms.RadioButton rdbtnCancelado;
         private System.Windows.Forms.DataGridViewImageColumn ColStatus;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmnCodPed;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmnDtPed;
@@ -765,6 +789,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColQtdeLib;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClmnValPed;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColValorTotal;
-        private System.Windows.Forms.RadioButton rdbtnCancelado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColVALORFRETE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColDesconto;
     }
 }
