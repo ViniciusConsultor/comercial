@@ -1139,6 +1139,7 @@ namespace Comercial
                 if (_controle.Name == "txtbtnPedido")
                 {
                     FrmLibPDV PedLib = (FrmLibPDV)_parent;
+                    PedLib.limparcampos();
                     // vamos obter as células selecionadas no DataGridView
                     DataGridViewSelectedCellCollection selecionadas = dtGrdVwVis.SelectedCells;
 
