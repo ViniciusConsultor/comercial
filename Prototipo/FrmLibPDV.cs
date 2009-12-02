@@ -80,7 +80,7 @@ namespace Comercial
                 
                 txtICMS.Text = string.Format("{0:C2}",icms);
                 txtIPI.Text = Convert.ToString(txtIPI.Text);
-                txtBxVlrPedido.Text = string.Format("{0:C2}", totalfaturado + ipi + icms + Convert.ToDouble(txtFrete.Text.Replace("R$", "")));
+                txtBxVlrPedido.Text = string.Format("{0:C2}", total + ipi + icms + Convert.ToDouble(txtFrete.Text.Replace("R$", "")));
                 txtBxDescontos.Text = Convert.ToString(txtBxDescontos.Text);
                 txtBxVlrFaturado.Text = Convert.ToString(txtBxVlrFaturado.Text);
             }
@@ -792,6 +792,9 @@ namespace Comercial
                 txtNomeVendedor.Text = String.Empty;
                 dtgrdvItenspven.Refresh();
                 dttRetorno.Clear();
+                txtIPI.Text = String.Empty;
+                txtICMS.Text = String.Empty;
+                txtFrete.Text = String.Empty;
 
             }
             catch (Exception ex)
