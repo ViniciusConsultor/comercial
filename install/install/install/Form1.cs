@@ -32,7 +32,7 @@ namespace install
                 /* CRIANDO BASE SQL SERVER */
                 string script = Application.StartupPath + "\\script\\create.sql";
                 string bat = Application.StartupPath + "\\script\\exec.bat" + " ";
-                string arg = txtServer.Text + " " + txtUsu.Text + " " + txtSenha.Text + " " + script;
+                string arg = "\""+ txtServer.Text+"\""+ " " + txtUsu.Text + " " + txtSenha.Text + " " + script;
                 Process.Start(bat, arg);
 
                 /* CRIANDO BASE ANALYSIS SERVICES */
