@@ -92,6 +92,14 @@ namespace Comercial
 
                 #endregion
 
+                #region CondicaoPagamento
+                if (frm is FrmCadConPag)
+                {
+                    FrmCadConPag frmCon = (FrmCadConPag)frm;
+                    retorno = frmCon.Salvar();
+                }
+
+                #endregion
 
                 if (frm is FrmCadProd && edit == false)
                 {

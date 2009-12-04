@@ -22,3 +22,5 @@ E:\Faculdade\Tcc_google\install\install\install\obj\Debug\ResolveAssemblyReferen
 E:\Faculdade\Tcc_google\install\install\install\obj\Debug\install.Form1.resources
 E:\Faculdade\Tcc_google\install\install\install\obj\Debug\install.Properties.Resources.resources
 E:\Faculdade\Tcc_google\install\install\install\obj\Debug\install.csproj.GenerateResource.Cache
+C:\Users\06029098\Desktop\Tcc_google\install\install\install\obj\Debug\install.exe
+C:\Users\06029098\Desktop\Tcc_google\install\install\install\obj\Debug\install.pdb
