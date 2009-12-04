@@ -1,0 +1,55 @@
+[OPTIONS]
+Language=0x409 English (United States)
+Default Font=Arial,8,0
+TITLE=Comercial
+Full-text search=Yes
+Display compile notes=YES
+Display compile progress=YES
+Compatibility=1.1
+Auto Index=Yes
+Default Window=Main
+Compiled file=comercial.chm
+Error Log file=comercial.log
+Contents file=comercial.hhc
+Index File=comercial.hhk
+Default Topic=ToolsTechComercial.html
+
+[FILES]
+ToolsTechComercial.html
+ControledeUsuario.html
+Utilitarios.html
+Cliente_cad.html
+Produto_cad.html
+Pedido_cad.html
+Vendedor_Cad.html
+Ajustes.html
+Cliente.html
+Produto.html
+Pedido.html
+Vendedor.html
+Estoque.html
+DevolverNotaFiscal.html
+LiberarPedido.html
+GerarModelo.html
+Consultar.html
+Cubodevendas.html
+AtualizaCubos.html
+
+
+
+
+[WINDOWS]
+Main="Comercial","comercial.hhc","comercial.hhk","ToolsTechComercial.html","ToolsTechComercial.html",,,,,0x61520,200,0x384e,[50,50,450,450],0x307e,,,,,,0
+Popup="Popup","comercial.hhc","comercial.hhk","ToolsTechComercial.html","ToolsTechComercial.html", ,,,,0x00061520,200, 0x0000384E,[50,50,450,450],0x307e,0x8,,,,,0
+
+
+[MAP]
+#include comercial.h
+
+
+
+[TEXT POPUPS]
+CSHelp.txt
+
+ 
+
