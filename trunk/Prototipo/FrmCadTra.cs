@@ -83,7 +83,6 @@ namespace Comercial
         public int salvar()
         {
 
-
             if (!string.IsNullOrEmpty(txtEmailtrans.Text))
             {
                 Boolean emailOk = valida.ValidaEmail(txtEmailtrans.Text);
@@ -117,6 +116,7 @@ namespace Comercial
                     COMERCIALDataSetTableAdapters.TRANSPORTADORAVIATableAdapter VTrans = new Comercial.COMERCIALDataSetTableAdapters.TRANSPORTADORAVIATableAdapter();
                     VTrans.Insert("ter", CnpjTrans);
                 }
+
 
                 this.limparcampos();
 
