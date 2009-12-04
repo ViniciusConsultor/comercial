@@ -14,3 +14,11 @@ D:\Pessoal\Comercial\install\install\install\obj\Debug\ResolveAssemblyReference.
 D:\Pessoal\Comercial\install\install\install\obj\Debug\install.Form1.resources
 D:\Pessoal\Comercial\install\install\install\obj\Debug\install.Properties.Resources.resources
 D:\Pessoal\Comercial\install\install\install\obj\Debug\install.csproj.GenerateResource.Cache
+E:\Faculdade\Tcc_google\install\install\install\obj\Debug\install.exe
+E:\Faculdade\Tcc_google\install\install\install\obj\Debug\install.pdb
+E:\Faculdade\Tcc_google\install\install\install\bin\Debug\install.exe
+E:\Faculdade\Tcc_google\install\install\install\bin\Debug\install.pdb
+E:\Faculdade\Tcc_google\install\install\install\obj\Debug\ResolveAssemblyReference.cache
+E:\Faculdade\Tcc_google\install\install\install\obj\Debug\install.Form1.resources
+E:\Faculdade\Tcc_google\install\install\install\obj\Debug\install.Properties.Resources.resources
+E:\Faculdade\Tcc_google\install\install\install\obj\Debug\install.csproj.GenerateResource.Cache
