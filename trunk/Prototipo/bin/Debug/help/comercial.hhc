@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<!-- Sitemap 1.0 -->
+</HEAD><BODY>
+<OBJECT type="text/site properties">
+<param name="ExWindow Styles" value="0x800225">
+<param name="Window Styles" value="0x800225">
+</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Tools Tech Comercial">	<PARAM name="Local" value="ToolsTechComercial.html">	<PARAM name="ImageNumber" value="1">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<param name="Name" value="Arquivo">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Controle de Usuário">	<PARAM name="Local" value="ControledeUsuario.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Utilitários">	<PARAM name="Local" value="Utilitarios.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<param name="Name" value="Cadastro">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Cadastro Cliente">	<PARAM name="Local" value="Cliente_cad.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Cadastro Produto">	<PARAM name="Local" value="Produto_cad.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Cadastro Pedido">	<PARAM name="Local" value="Pedido_cad.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Cadastro Vendedor">	<PARAM name="Local" value="Vendedor_Cad.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Ajustes">	<PARAM name="Local" value="Ajustes.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<param name="Name" value="Consulta">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Cliente">	<PARAM name="Local" value="Cliente.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Produto">	<PARAM name="Local" value="Produto.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Pedido">	<PARAM name="Local" value="Pedido.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Vendedor">	<PARAM name="Local" value="Vendedor.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Estoque">	<PARAM name="Local" value="Estoque.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<param name="Name" value="Processos">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Devolver Nota Fiscal">	<PARAM name="Local" value="DevolverNotaFiscal.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Liberar Pedido">	<PARAM name="Local" value="LiberarPedido.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<param name="Name" value="Mineração de Dados">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Gerar Modelo">	<PARAM name="Local" value="GerarModelo.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Consultar">	<PARAM name="Local" value="Consultar.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+</UL>
+<LI>	<OBJECT type="text/sitemap">	<param name="Name" value="Cubos">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<UL>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Cubo de vendas">	<PARAM name="Local" value="Cubodevendas.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+<LI>	<OBJECT type="text/sitemap">	<PARAM name="Name" value="Atualiza Cubos">	<PARAM name="Local" value="AtualizaCubos.html">	<PARAM name="ImageNumber" value="0">	</OBJECT>
+</UL>
+</UL>
+</UL>
+
+</BODY></HTML>

@@ -1,0 +1,20 @@
+#define ToolsTechComercial 10
+#define ControledeUsuario 30
+#define Utilitarios 50
+#define Cliente_cad 70
+#define Produto_cad 80
+#define Pedido_cad 90
+#define Vendedor_Cad 100
+#define Ajustes 110
+#define Cliente 180
+#define Produto 190
+#define Pedido 200
+#define Vendedor 210
+#define Estoque 220
+#define DevolverNotaFiscal 240
+#define LiberarPedido 250
+#define GerarModelo 270
+#define Consultar 280
+#define Cubodevendas 300
+#define AtualizaCubos 310
+

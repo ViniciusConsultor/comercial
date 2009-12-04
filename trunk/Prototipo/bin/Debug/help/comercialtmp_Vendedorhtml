@@ -1,0 +1,55 @@
+<div align="left"><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101">Para realizar o cadastro de Vendedor, selecione no menu Cadastro a op&ccedil;&atilde;o &quot;Vendedor&quot;. A tela 
+de cadastro de Vendedor ser&aacute; aberta.</span></font></div>
+<div align="left"><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101"><br />
+</span></font></div>
+<div align="left"><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101">Deve-se preencher todos os campos em negrito que s&atilde;o os campos obrigat&oacute;rios.</span></font></div>
+<div align="left"><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101">Os campos que n&atilde;o est&atilde;o em negrito s&atilde;o opcionais</span></font></div>
+<div align="left"><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101">Ao preencher todos os campos, clicar no bot&atilde;o Salvar.</span></font></div>
+<div align="left"><font face="Times New Roman" color="#010101"><span style=" font-size:12pt; font-family:Times New Roman; color:#010101">&nbsp;</span></font></div>
+<div align="left"><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101">Barra de bot&otilde;es do Cadastro:</span></font></div>
+<div align="left"><img src="comercial1.PNG" border=0 alt="graphic"/></div>
+<div align="left"><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101"><br />
+</span></font></div>
+<div align="left"><font face="Arial" color="#010101"><span style=" font-size:12pt; font-family:Arial; color:#010101">&nbsp;<img src="comercial2.PNG" border=0 alt="graphic"/></span></font><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101"> Bot&atilde;o &eacute; o Pesquisar , ele 
+mostra a op&ccedil;&atilde;o realizar um consulta simples entre os clientes j&aacute; 
+cadastrados.</span></font></div>
+<div align="left"><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101"><br />
+</span></font></div>
+<div align="left"><img src="comercial3.PNG" border=0 alt="graphic"/><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101"> Bot&atilde;o Incluir, ao clicar nesse bot&atilde;o &eacute; habilitado a cadastro para inclus&atilde;o de um novo 
+registro.</span></font></div>
+<div align="left"><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101"><br />
+</span></font></div>
+<div align="left"><img src="comercial4.PNG" border=0 alt="graphic"/><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101"> Bot&atilde;o Salvar, ao preencher todos os campos clicar nesse bot&atilde;o para realizar a grava&ccedil;&atilde;o do 
+registro no Banco de Dados.</span></font></div>
+<div align="left"><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101"><br />
+</span></font></div>
+<div align="left"><img src="comercial5.PNG" border=0 alt="graphic"/><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101"> Bot&atilde;o Cancelar, ao clicar nesse bot&atilde;o &eacute; cancelada qualquer a&ccedil;&atilde;o que tenha sido iniciada</span></font></div>
+<div align="left"><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101"><br />
+</span></font></div>
+<div align="left"><img src="comercial6.PNG" border=0 alt="graphic"/><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101"> Bot&atilde;o Editar, ao clicar nesse bot&atilde;o &eacute; habilitada a edi&ccedil;&atilde;o dos campos do registro que est&aacute; 
+sendo exibido na tela.</span></font></div>
+<div align="left"><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101"><br />
+</span></font></div>
+<div align="left"><img src="comercial7.PNG" border=0 alt="graphic"/><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101"> Bot&atilde;o Deletar, ao clicar nesse bot&atilde;o &eacute; exclu&iacute;do o registro que est&aacute; sendo exibido na tela.</span></font></div>
+<div align="left"><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101"><br />
+</span></font></div>
+<div align="left"><img src="comercial8.PNG" border=0 alt="graphic"/><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101"> Bot&atilde;o Navega&ccedil;&atilde;o para Direita, nesses bot&otilde;es &eacute; feita a navega&ccedil;&atilde;o dos registros em 
+sentido ao primeiro registro gravado.</span></font></div>
+<div align="left"><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101"><br />
+</span></font></div>
+<div align="left"><img src="comercial9.PNG" border=0 alt="graphic"/><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101"> Bot&atilde;o Navega&ccedil;&atilde;o para Esquerda, nesses bot&otilde;es &eacute; feita a navega&ccedil;&atilde;o dos registros em 
+sentido ao &uacute;ltimo registro gravado.</span></font></div>
+<div align="left"><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101"><br />
+</span></font></div>
+<div align="left"><img src="comercial10.PNG" border=0 alt="graphic"/><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101"> Bot&atilde;o Voltar para tela Incial.</span></font></div>
+<div align="left"><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101"><br />
+</span></font></div>
+<div align="left"><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101"><br />
+</span></font></div>
+<div align="left"><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101"><br />
+</span></font></div>
+<div align="left"><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101"><br />
+</span></font></div>
+<div align="left"><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101"><br />
+</span></font></div>
+<div align="left">&nbsp;&nbsp;</div>

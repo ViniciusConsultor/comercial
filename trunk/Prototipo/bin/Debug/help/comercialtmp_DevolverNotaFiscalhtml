@@ -1,0 +1,18 @@
+<div align="left"><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101"><b>Processo Devolver Nota Fisca</b>l &eacute; o processo que ir&aacute; reverter a sa&iacute;da feita de uma Nota Fiscal 
+da empresa.</span></font></div>
+<div align="left"><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101"><br />
+</span></font></div>
+<div align="left"><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101">A Nota Fiscal &eacute; emitida no momento de libera&ccedil;&atilde;o do pedido e seu status no sistema fica como <b>S</b> 
+- Sa&iacute;da. </span></font></div>
+<div align="left"><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101"><br />
+</span></font></div>
+<div align="left"><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101">Por in&uacute;meros motivos &eacute; preciso que a Nota Fiscal seja devolvida ou re-impressa, para isso, deve 
+ser feito o processo de Devolver a Nota Fiscal para que ela retorne ao status <b>D </b>- Devolvida e 
+possa ser feita a libera&ccedil;&atilde;o novamente.</span></font></div>
+<div align="left"><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101"><br />
+</span></font></div>
+<div align="left"><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101">Para devolver a Nota Fiscal, deve ser feita a busca no Nota Fiscal que ser&aacute; devolvida atr&aacute;ves do 
+campo N&uacute;mero da Nota Fiscal. Ser&aacute; aberta uma tela para consulta e busca da Nota Fiscal.</span></font></div>
+<div align="left"><font face="Arial" color="#010101" size="2"><span style=" font-size:10pt; font-family:Arial; color:#010101">Verificar se todos campos e os itens est&atilde;o corretos, se sim, deve-se clicar no bot&atilde;o<b> Devolver 
+Nota Fiscal</b>: <img src="comercial1.PNG" border=0 alt="graphic"/></span></font></div>
+<div align="left">&nbsp;&nbsp;</div>

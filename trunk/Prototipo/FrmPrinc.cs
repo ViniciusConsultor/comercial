@@ -8,6 +8,7 @@ using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Diagnostics;
 
 namespace Comercial
 {
@@ -1818,6 +1819,14 @@ namespace Comercial
         private void sairToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void ajudaToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Process p = new Process();
+            p.StartInfo.FileName = Application.StartupPath + "\\help\\comercial.chm";
+            p.Start();
+
         }
 
     }
