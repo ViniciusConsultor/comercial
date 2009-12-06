@@ -63,7 +63,7 @@ namespace Comercial
                 foreach (DataGridViewRow item in dtgrdvItenspven.Rows)
                 {
                     total = Convert.ToDouble(total) + Convert.ToDouble(item.Cells["ColTotal"].Value);
-                    desconto += (Convert.ToDouble(item.Cells["ColDesconto"].Value)/100) *
+                    desconto += (Convert.ToDouble(item.Cells["ColDesconto"].Value) / 100) *
                                 (Convert.ToDouble(item.Cells["ClmPrcUnit"].Value) *
                                 Convert.ToDouble(item.Cells["ClmQtdeLib"].Value));
                     totalfaturado = Convert.ToDouble(totalfaturado) + Convert.ToDouble(item.Cells["ColVALORFATU"].Value);
@@ -77,8 +77,8 @@ namespace Comercial
                     txtBxDescontos.Text = string.Format("{0:C2}", Convert.ToDouble(desconto));
                     icms += (getValorICMS("SP") / 100) * Convert.ToDouble(item.Cells["ClmPrcUnit"].Value) * Convert.ToDouble(item.Cells["ClmQtdeLib"].Value);
                 }
-                
-                txtICMS.Text = string.Format("{0:C2}",icms);
+
+                txtICMS.Text = string.Format("{0:C2}", icms);
                 txtIPI.Text = Convert.ToString(txtIPI.Text);
                 txtBxVlrPedido.Text = string.Format("{0:C2}", total + ipi + icms + Convert.ToDouble(txtFrete.Text.Replace("R$", "")));
                 txtBxDescontos.Text = Convert.ToString(txtBxDescontos.Text);
@@ -237,7 +237,7 @@ namespace Comercial
 
             sqlcommand.Append(" SELECT ISNULL(SUM(QUANTIDADELIB * VALOR),0) AS VALOR  ");
             sqlcommand.Append(" FROM PEDIDO p inner join ITEMPEDIDO i on p.NRPEDIDO = i.NRPEDIDO ");
-            sqlcommand.Append(" WHERE p.CODcliENTE = @CODcliENTE AND P.SITUACAO = 'E' ");
+            sqlcommand.Append(" WHERE p.CODcliENTE = @CODcliENTE AND P.SITUACAO <> 'C' ");
 
 
             DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
@@ -541,66 +541,6 @@ namespace Comercial
             try
             {
 
-                //Verifico o limite de crêdito do cliente
-                #region ValidaLimiteCredito
-                DataTable dttPedidocli = new DataTable();
-
-                dttPedidocli = ListarValorCliente(txtCodCliente.Text);
-
-                if (dttPedidocli.Rows.Count > 0)
-                {
-                    ValorPedido = Convert.ToDouble(dttPedidocli.Rows[0]["VALOR"]);
-                    string valormercadoria = txtBxVlrFaturado.Text.Replace("R$", "").Replace(".", "");
-                    ValorFaturar = ValorPedido + Convert.ToDouble(valormercadoria);
-
-                }
-
-                DataTable dttCliente = new DataTable();
-
-                dttCliente = ListarLimiteCliente(txtCodCliente.Text);
-
-                if (dttCliente.Rows.Count > 0)
-                {
-                    ValorLimite = Convert.ToDouble(dttCliente.Rows[0]["LIMITE"]);
-
-                }
-
-                if ((ValorFaturar > ValorLimite))
-                {
-
-                    throw new Exception("ValidaLimite");
-
-                }
-                #endregion
-
-                //Verifico Saldo em estoque do produto selecionado
-                #region ValidaEstoque
-                foreach (DataGridViewRow item in dtgrdvItenspven.Rows)
-                {
-                    int SaldoEstoque = ListarSaldoEstoque(Convert.ToInt32(item.Cells["ColProd"].Value));
-
-                    if (Convert.ToInt32(item.Cells["ClmQtdeLib"].Value) > SaldoEstoque)
-                    {
-
-                        throw new Exception("ValidaEstoque");
-
-                    }
-
-                    if (Convert.ToInt32(item.Cells["ClmQtdeLib"].Value) > Convert.ToInt32(item.Cells["ClmQtde"].Value))
-                    {
-
-                        throw new Exception("ValidaQtdeLiberada");
-
-                    }
-
-                    if (Convert.ToInt32(item.Cells["ClmQtdeLib"].Value) < 0)
-                    {
-                        throw new Exception("QuantidadeNegativa");
-                    }
-                }
-                #endregion
-
-
                 //Variavel para o contador dos itens
                 var teste = 0;
 
@@ -641,15 +581,75 @@ namespace Comercial
                                                           MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (dr == DialogResult.Yes)
                         {
-                           emitirNotaFiscal();
-                           FrmRelGeral filho = new FrmRelGeral("FrmEmiNF", this, null);
-                           filho.Show();
+                            emitirNotaFiscal();
+                            FrmRelGeral filho = new FrmRelGeral("FrmEmiNF", this, null);
+                            filho.Show();
                         }
                     }
                 }
                 //se não continuo a liberação dos itens pendentes
                 else
                 {
+
+                    //Verifico o limite de crêdito do cliente
+                    #region ValidaLimiteCredito
+                    DataTable dttPedidocli = new DataTable();
+
+                    dttPedidocli = ListarValorCliente(txtCodCliente.Text);
+
+                    if (dttPedidocli.Rows.Count > 0)
+                    {
+                        ValorPedido = Convert.ToDouble(dttPedidocli.Rows[0]["VALOR"]);
+                        string valormercadoria = txtBxVlrFaturado.Text.Replace("R$", "").Replace(".", "");
+                        ValorFaturar = ValorPedido + Convert.ToDouble(valormercadoria);
+
+                    }
+
+                    DataTable dttCliente = new DataTable();
+
+                    dttCliente = ListarLimiteCliente(txtCodCliente.Text);
+
+                    if (dttCliente.Rows.Count > 0)
+                    {
+                        ValorLimite = Convert.ToDouble(dttCliente.Rows[0]["LIMITE"]);
+
+                    }
+
+                    if ((ValorFaturar > ValorLimite))
+                    {
+
+                        throw new Exception("ValidaLimite");
+
+                    }
+                    #endregion
+                    
+                    //Verifico Saldo em estoque do produto selecionado
+                    #region ValidaEstoque
+                    foreach (DataGridViewRow item in dtgrdvItenspven.Rows)
+                    {
+                        int SaldoEstoque = ListarSaldoEstoque(Convert.ToInt32(item.Cells["ColProd"].Value));
+
+                        if (Convert.ToInt32(item.Cells["ClmQtdeLib"].Value) > SaldoEstoque)
+                        {
+
+                            throw new Exception("ValidaEstoque");
+
+                        }
+
+                        if (Convert.ToInt32(item.Cells["ClmQtdeLib"].Value) > Convert.ToInt32(item.Cells["ClmQtde"].Value))
+                        {
+
+                            throw new Exception("ValidaQtdeLiberada");
+
+                        }
+
+                        if (Convert.ToInt32(item.Cells["ClmQtdeLib"].Value) < 0)
+                        {
+                            throw new Exception("QuantidadeNegativa");
+                        }
+                    }
+                    #endregion
+
                     //For para verificar os itens liberados, pego os itens checkado e que a quantidade liberada seja menor que a quantidade solicitada
                     for (int i = 0; i < dtgrdvItenspven.RowCount; i++)
                     {
@@ -735,7 +735,7 @@ namespace Comercial
             {
                 if (MessageBox.Show("Deseja Cancelar o Pedido selecionado?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                   
+
                     for (int i = 0; i < dtgrdvItenspven.RowCount; i++)
                     {
                         int qdeliberada = Convert.ToInt32(dtgrdvItenspven.Rows[i].Cells["ClmQtdelib"].Value);
@@ -810,8 +810,12 @@ namespace Comercial
         {
             try
             {
+                double valorfaturado = 0;
+                double desconto = 0;
+                double totalfaturado = 0;
                 foreach (DataGridViewRow item in dtgrdvItenspven.Rows)
                 {
+
                     int Quantidade = Convert.ToInt32(item.Cells["ClmQtdeLib"].Value);
                     if (Quantidade == 0)
                     {
@@ -820,9 +824,23 @@ namespace Comercial
                     else
                     {
                         item.Cells["ColCheck"].Value = true;
+
+                        desconto += (Convert.ToDouble(item.Cells["ColDesconto"].Value) / 100) *
+                                (Convert.ToDouble(item.Cells["ClmPrcUnit"].Value) *
+                                Convert.ToDouble(item.Cells["ClmQtdeLib"].Value));
+                        item.Cells["ColVALORFATU"].Value = Convert.ToDouble((Quantidade * Convert.ToDouble(item.Cells["ClmPrcUnit"].Value) - desconto));
+
+                        totalfaturado = Convert.ToDouble(totalfaturado) + Convert.ToDouble(item.Cells["ColVALORFATU"].Value);
+
+                        txtBxVlrFaturado.Text = string.Format("{0:C2}", totalfaturado); 
+
+                        //valorfaturado = Convert.ToDouble(Quantidade * Convert.ToDouble(item.Cells["ClmPrcUnit"].Value));
+                        ////double totalfaturado = Convert.ToDouble(totalfaturado) + valorfaturado;
+                        ////valorfaturado.txtBxVlrPedido.Text = string.Format("{0:C2}", total + ipi + icms + Convert.ToDouble(txtFrete.Text.Replace("R$", "")));
+                        //txtBxVlrFaturado.Text = Convert.ToString(Convert.ToDouble(txtBxVlrFaturado.Text.Replace("R$", "")) + valorfaturado);
                     }
 
-
+                    
                 }
             }
             catch (Exception)
@@ -846,14 +864,14 @@ namespace Comercial
         private void emitirNotaFiscal()
         {
             DataTable cli = getCliente(txtCodCliente.Text);
-          
+
             string tipofrete = "D";
-            if(!string.IsNullOrEmpty(txtFrete.Text))
+            if (!string.IsNullOrEmpty(txtFrete.Text))
                 tipofrete = "E";
 
             double icms = getValorICMS("SP"); // Fixo
-            int nrNotaFiscal = getNumeroNota(); 
-            string serie = "0"; 
+            int nrNotaFiscal = getNumeroNota();
+            string serie = "0";
             string tipo = "S";
             string razaoSocial = cli.Rows[0]["RAZAOSOCIAL"].ToString();
             DateTime dtEmissao = DateTime.Now;
@@ -870,10 +888,10 @@ namespace Comercial
             double valorNota = Convert.ToDouble(txtBxVlrPedido.Text.Replace("R$", ""));
 
             NOTAFISCALTableAdapter nf = new NOTAFISCALTableAdapter();
-            nf.Insert(nrNotaFiscal, razaoSocial, serie, dtEmissao, ie, 
+            nf.Insert(nrNotaFiscal, razaoSocial, serie, dtEmissao, ie,
                 telefone, endereco, bairro, municipio, icms, tipo,
                 cnpf, tipofrete, valorFrete, codVendedor, codTransportadora,
-                nrPedido , valorNota);
+                nrPedido, valorNota);
 
             DataTable itens = getItensPedido(nrPedido);
             foreach (DataRow s in itens.Rows)
@@ -896,7 +914,7 @@ namespace Comercial
             StringBuilder sqlcommand = new StringBuilder();
 
             sqlcommand.Append("SELECT * FROM cliENTE WHERE CNPJ = @cnpj ");
-            
+
             DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
 
             db.AddInParameter(dbComd, "@cnpj", DbType.String, cnpj);
@@ -942,7 +960,7 @@ namespace Comercial
             sqlcommand.Append("select max(NrNotaFiscal) as MAX from NOTAFISCAL ");
 
             DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
-            
+
             dtsDados = db.ExecuteDataSet(dbComd);
             if (dtsDados.Tables[0].Rows[0]["MAX"].ToString() == "")
                 return 1;
@@ -976,7 +994,7 @@ namespace Comercial
             string sql = "select g.CODGRUPOPRODUTO CODGRUPO, P.CODPRODUTO CODPROD, g.DESCRICAO GRUPO, p.DESCRICAO PRODUTO, p.DATACADASTRO, p.PRECOCUSTO, " +
                 "p.PRECOVENDA, p.ESTOQUEATUAL, p.ESTOQUEMIN, p.IPI, g.DESCONTO from PRODUTO p inner join " +
                 "GRUPOPRODUTO g on (p.CODGRUPOPRODUTO = g.CODGRUPOPRODUTO) ";
-            
+
             string c = ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString;
 
             SqlConnection conn = new SqlConnection(c);
@@ -986,7 +1004,7 @@ namespace Comercial
 
             DataTable table = new DataTable();
             table.Load(reader);
-            
+
             return sql;
         }
 
@@ -997,8 +1015,8 @@ namespace Comercial
             {
                 for (int i = 0; i < dtgrdvItenspven.RowCount; i++)
                 {
-                    if (!((int) dtgrdvItenspven.Rows[i].Cells["ClmQtdeLib"].Value ==
-                        (int) dtgrdvItenspven.Rows[i].Cells["ClmQtde"].Value))
+                    if (!((int)dtgrdvItenspven.Rows[i].Cells["ClmQtdeLib"].Value ==
+                        (int)dtgrdvItenspven.Rows[i].Cells["ClmQtde"].Value))
                     {
                         return false;
                     }
@@ -1025,7 +1043,7 @@ namespace Comercial
             sqlcommand.Append(" SELECT ITEMPEDIDO.CODPRODUTO as CODPRODUTO,DESCRICAO,QUANTIDADE, DESCONTO,VALOR, ");
             sqlcommand.Append(" ITEMPEDIDO.IPI as IPI, CODUNIDADEMEDIDA FROM ITEMPEDIDO INNER JOIN PRODUTO ON ");
             sqlcommand.Append(" ITEMPEDIDO.CODPRODUTO = PRODUTO.CODPRODUTO WHERE NRPEDIDO = @nrpedido ");
-           
+
             DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
 
             db.AddInParameter(dbComd, "@nrpedido", DbType.String, CodPed);
