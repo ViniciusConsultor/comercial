@@ -882,6 +882,7 @@
             this.ColVALORFATU.HeaderText = "Valor Faturado";
             this.ColVALORFATU.Name = "ColVALORFATU";
             this.ColVALORFATU.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColVALORFATU.Visible = false;
             // 
             // ColStatusItem
             // 
