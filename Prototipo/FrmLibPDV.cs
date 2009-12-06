@@ -27,6 +27,15 @@ namespace Comercial
             _princ = parent;
         }
 
+        private void FrmLibPDV_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'cOMERCIALDataSet.ItemNotaFiscal' table. You can move, or remove it, as needed.
+            this.itemNotaFiscalTableAdapter.Fill(this.cOMERCIALDataSet.ItemNotaFiscal);
+            // TODO: This line of code loads data into the 'cOMERCIALDataSet.NOTAFISCAL' table. You can move, or remove it, as needed.
+            this.nOTAFISCALTableAdapter.Fill(this.cOMERCIALDataSet.NOTAFISCAL);
+
+        }
+
         #region Listar Pedido
         public DataTable ListarPedido()
         {
@@ -851,15 +860,6 @@ namespace Comercial
         }
         #endregion
 
-        private void FrmLibPDV_Load(object sender, EventArgs e)
-        {
-            // TODO: This line of code loads data into the 'cOMERCIALDataSet.ItemNotaFiscal' table. You can move, or remove it, as needed.
-            this.itemNotaFiscalTableAdapter.Fill(this.cOMERCIALDataSet.ItemNotaFiscal);
-            // TODO: This line of code loads data into the 'cOMERCIALDataSet.NOTAFISCAL' table. You can move, or remove it, as needed.
-            this.nOTAFISCALTableAdapter.Fill(this.cOMERCIALDataSet.NOTAFISCAL);
-
-        }
-
         #region Emissao de Nota Fiscal
         private void emitirNotaFiscal()
         {
@@ -989,6 +989,7 @@ namespace Comercial
         }
         #endregion
 
+        #region GetNota
         public string getNota()
         {
             string sql = "select g.CODGRUPOPRODUTO CODGRUPO, P.CODPRODUTO CODPROD, g.DESCRICAO GRUPO, p.DESCRICAO PRODUTO, p.DATACADASTRO, p.PRECOCUSTO, " +
@@ -1007,6 +1008,7 @@ namespace Comercial
 
             return sql;
         }
+        #endregion
 
         #region Verifica se todos os itens foram liberados
         public bool todosItensLiberados()
