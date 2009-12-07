@@ -25,11 +25,26 @@ namespace Comercial
 
         public string pesquisar()
         {
-            string sql = "select v.nome, v.cpf ,p.nrpedido, p.dataemissao dtemissao, " +
-                 "( select isnull(SUM(i.VALOR),0) from ITEMPEDIDO i where i.NRPEDIDO = p.NRPEDIDO " +
-                 ") valorpedido,comissao, (COMISSAO/100 * (select isnull(SUM(i.VALOR),0) from ITEMPEDIDO i " +
-                 "where i.NRPEDIDO = p.NRPEDIDO)) valorcomissao " +
-                            "from vendedor as v, pedido as p where p.codvendedor = v.cpf ";
+            string sql =
+
+               " select  v.nome, v.cpf ,p.nrpedido, p.dataemissao dtemissao, " +
+                    "ISNULL(CAST( SUM(X.valorcomdesconto) AS MONEY),0) valorpedido, " +
+                    "V.COMISSAO, " +
+                    "ISNULL((SUM(X.valorcomdesconto)) * (V.COMISSAO/100),0) valorcomissao " +
+                " from " +
+                "( " +
+                    "select p.NRPEDIDO, CODPRODUTO, I.QUANTIDADE, I.VALOR, I.DESCONTO, SUM(comissao) comissao, " +
+                        "isnull(SUM(i.VALOR * i.quantidade),0) valorpedido, " +
+                        "(isnull(SUM(i.VALOR * i.quantidade),0)) - (isnull(SUM(i.VALOR * i.quantidade),0) * DESCONTO/100) valorcomdesconto, " +
+                        "((isnull(SUM(i.VALOR * i.quantidade),0)) - (isnull(SUM(i.VALOR * i.quantidade),0) * DESCONTO/100)) * SUM(comissao)/100 valorcomissao " +
+                        "from PEDIDO P LEFT JOIN ITEMPEDIDO I ON P.NRPEDIDO = I.NRPEDIDO " +
+                                        "INNER JOIN VENDEDOR V ON V.CPF = P.CODVENDEDOR " +
+                        "group by p.NRPEDIDO,I.CODPRODUTO, I.QUANTIDADE, I.VALOR, I.DESCONTO " +
+                 ") x inner join PEDIDO p on p.nrpedido = x.nrpedido,vendedor as v " +
+                " where p.codvendedor = v.cpf ";
+
+
+
 
             // pesquisa por nome
             if (!string.IsNullOrEmpty(txtNome.Text))
@@ -103,6 +118,8 @@ namespace Comercial
             }
 
             string c = ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString"].ConnectionString;
+
+            sql += " GROUP BY v.nome, v.cpf ,p.nrpedido, p.dataemissao, V.COMISSAO ";
 
             SqlConnection conn = new SqlConnection(c);
             conn.Open();
