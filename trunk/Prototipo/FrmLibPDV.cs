@@ -634,27 +634,40 @@ namespace Comercial
                     
                     //Verifico Saldo em estoque do produto selecionado
                     #region ValidaEstoque
+
+                    string statusitem = "";
+
                     foreach (DataGridViewRow item in dtgrdvItenspven.Rows)
                     {
+                        //Verifico o saldo disponivel para liberação
+                        int saldolib = SaldoLiberar(Convert.ToInt32(txtbtnPedido.Text), Convert.ToInt32(item.Cells["ColProd"].Value));
                         int SaldoEstoque = ListarSaldoEstoque(Convert.ToInt32(item.Cells["ColProd"].Value));
+                        int QtdeLiberada = Convert.ToInt32(item.Cells["ClmQtdeLib"].Value);
+                        
+                        //verifico a quantidade liberada - saldodisponivel para liberacao
+                        int qdelib = QtdeLiberada - saldolib;
 
-                        if (Convert.ToInt32(item.Cells["ClmQtdeLib"].Value) > SaldoEstoque)
+                        if (saldolib != Convert.ToInt32(item.Cells["ClmQtde"].Value))
                         {
 
-                            throw new Exception("ValidaEstoque");
+                            if (qdelib > SaldoEstoque)
+                            {
 
-                        }
+                                throw new Exception("ValidaEstoque");
 
-                        if (Convert.ToInt32(item.Cells["ClmQtdeLib"].Value) > Convert.ToInt32(item.Cells["ClmQtde"].Value))
-                        {
+                            }
 
-                            throw new Exception("ValidaQtdeLiberada");
+                            if (Convert.ToInt32(item.Cells["ClmQtdeLib"].Value) > Convert.ToInt32(item.Cells["ClmQtde"].Value))
+                            {
 
-                        }
+                                throw new Exception("ValidaQtdeLiberada");
 
-                        if (Convert.ToInt32(item.Cells["ClmQtdeLib"].Value) < 0)
-                        {
-                            throw new Exception("QuantidadeNegativa");
+                            }
+
+                            if (Convert.ToInt32(item.Cells["ClmQtdeLib"].Value) < 0)
+                            {
+                                throw new Exception("QuantidadeNegativa");
+                            }
                         }
                     }
                     #endregion
@@ -897,7 +910,7 @@ namespace Comercial
             foreach (DataRow s in itens.Rows)
             {
                 ItemNotaFiscalTableAdapter item = new ItemNotaFiscalTableAdapter();
-                item.Insert(s["DESCRICAO"].ToString(), Convert.ToInt32(s["QUANTIDADE"]), Convert.ToDouble(s["DESCONTO"]), Convert.ToDouble(s["VALOR"]), Convert.ToDouble(s["IPI"]),
+                item.Insert(s["DESCRICAO"].ToString(), Convert.ToInt32(s["QUANTIDADE"]), 0,Convert.ToDouble(s["DESCONTO"]), Convert.ToDouble(s["VALOR"]), Convert.ToDouble(s["IPI"]),
                             Convert.ToInt32(s["CODPRODUTO"]), s["CODUNIDADEMEDIDA"].ToString(), nrNotaFiscal);
             }
         }

@@ -16,367 +16,469 @@ namespace Comercial
 {
     public partial class FrmDevNotaFiscal : Form
     {
-       private FrmPrinc _princ = null;
-       DataTable dttRetorno = new DataTable();
-      
-       public FrmDevNotaFiscal(FrmPrinc parent)
+        private FrmPrinc _princ = null;
+        DataTable dttRetorno = new DataTable();
+
+        public FrmDevNotaFiscal(FrmPrinc parent)
         {
             InitializeComponent();
             this.MdiParent = parent;
             _princ = parent;
         }
 
-       private void FrmDevNotaFiscal_Leave(object sender, EventArgs e)
-       {
-           Control[] z = _princ.Controls.Find("bindingNavigator1", true);
-           ToolStrip strip = (ToolStrip)z[0];
+        private void FrmDevNotaFiscal_Leave(object sender, EventArgs e)
+        {
+            Control[] z = _princ.Controls.Find("bindingNavigator1", true);
+            ToolStrip strip = (ToolStrip)z[0];
 
-           strip.Visible = true;
+            strip.Visible = true;
 
-           Control[] y = _princ.Controls.Find("tlStrpProcesso", true);
-           ToolStrip strip2 = (ToolStrip)y[0];
+            Control[] y = _princ.Controls.Find("tlStrpProcesso", true);
+            ToolStrip strip2 = (ToolStrip)y[0];
 
-           strip2.Visible = false;
-           foreach (ToolStripButton x in strip2.Items)
-           {
-               x.Visible = false;
-           }
-           foreach (ToolStripButton x in strip2.Items)
-           {
-               x.Visible = false;
-           }
-       }
+            strip2.Visible = false;
+            foreach (ToolStripButton x in strip2.Items)
+            {
+                x.Visible = false;
+            }
+            foreach (ToolStripButton x in strip2.Items)
+            {
+                x.Visible = false;
+            }
+        }
 
-       private void nOTAFISCALBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-       {
-           this.Validate();
-           this.nOTAFISCALBindingSource.EndEdit();
-           this.tableAdapterManager.UpdateAll(this.cOMERCIALDataSet);
+        private void nOTAFISCALBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.nOTAFISCALBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.cOMERCIALDataSet);
 
-       }
+        }
 
-       private void FrmDevNotaFiscal_Load(object sender, EventArgs e)
-       {
-          
-           // TODO: This line of code loads data into the 'cOMERCIALDataSet.NOTAFISCAL' table. You can move, or remove it, as needed.
-           this.nOTAFISCALTableAdapter.Fill(this.cOMERCIALDataSet.NOTAFISCAL);
-           
+        private void FrmDevNotaFiscal_Load(object sender, EventArgs e)
+        {
 
-       }
+            // TODO: This line of code loads data into the 'cOMERCIALDataSet.NOTAFISCAL' table. You can move, or remove it, as needed.
+            this.nOTAFISCALTableAdapter.Fill(this.cOMERCIALDataSet.NOTAFISCAL);
 
 
-       #region Listar NF
-       public DataTable ListaNf()
-       {
-           Database db = DatabaseFactory.CreateDatabase();
+        }
 
-           DataSet dtsDados = new DataSet();
+        #region Listar NF
+        public DataTable ListaNf()
+        {
+            Database db = DatabaseFactory.CreateDatabase();
 
-           StringBuilder sqlcommand = new StringBuilder();
+            DataSet dtsDados = new DataSet();
 
-           sqlcommand.Append(" SELECT NRNOTAFISCAL, SERIE, DATAEMISSAO, TIPO, NrPedido, VALORNOTA, VALORFRETE, ICMS ");
-           sqlcommand.Append(" FROM NOTAFISCAL ");
-           
-           DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
+            StringBuilder sqlcommand = new StringBuilder();
 
-           dtsDados = db.ExecuteDataSet(dbComd);
+            sqlcommand.Append(" SELECT NRNOTAFISCAL, SERIE, DATAEMISSAO, TIPO, NrPedido, VALORNOTA, VALORFRETE, ICMS ");
+            sqlcommand.Append(" FROM NOTAFISCAL ");
 
-           return dtsDados.Tables[0];
+            DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
 
-       }
-       #endregion
-       
+            dtsDados = db.ExecuteDataSet(dbComd);
 
-       #region Pesquisar NF
-       private void txtNumNF_ButtonClick(object sender, EventArgs e)
-       {
+            return dtsDados.Tables[0];
 
-           try
-           {
+        }
+        #endregion
 
-               FrmVisGeral x = new FrmVisGeral(this, txtNumNF);
-               x.dtGrdVwVis.DataSource = ListaNf();
-               x.Text = "Pesquisa Nota Fiscal";
+        #region Pesquisar NF
+        private void txtNumNF_ButtonClick(object sender, EventArgs e)
+        {
 
-               x.ShowDialog();
-           }
-           catch (Exception ex)
-           {
+            try
+            {
 
-               throw ex;
-           }
-       }
-    # endregion
+                FrmVisGeral x = new FrmVisGeral(this, txtNumNF);
+                x.dtGrdVwVis.DataSource = ListaNf();
+                x.Text = "Pesquisa Nota Fiscal";
 
+                x.ShowDialog();
+            }
+            catch (Exception ex)
+            {
 
-       #region Listar item pedido NF
-       public DataTable ListarItemNF(int NumNF)
-       {
-           Database db = DatabaseFactory.CreateDatabase();
+                throw ex;
+            }
+        }
+        # endregion
 
-           DataSet dtsDados = new DataSet();
+        #region Listar item pedido NF
+        public DataTable ListarItemNF(int NumNF)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
 
-           StringBuilder sqlcommand = new StringBuilder();
+            DataSet dtsDados = new DataSet();
 
-           sqlcommand.Append(" SELECT CodProduto, Descricao, CodUnidadeMedida, Quantidade, Valor, (QUANTIDADE * VALOR) AS VALORTOTAL ");
-           sqlcommand.Append(" FROM ITEMNOTAFISCAL ");
+            StringBuilder sqlcommand = new StringBuilder();
 
-           DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
+            sqlcommand.Append(" SELECT CodProduto, Descricao, CodUnidadeMedida, Quantidade, QuantidadeDev, Valor, (QUANTIDADE * VALOR) AS VALORTOTAL ");
+            sqlcommand.Append(" FROM ITEMNOTAFISCAL WHERE NrNotaFiscal = @NrNotaFiscal  ");
 
-           db.AddInParameter(dbComd, "@NrNotaFiscal ", DbType.Int32, NumNF);
+            DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
 
-           dtsDados = db.ExecuteDataSet(dbComd);
+            db.AddInParameter(dbComd, "@NrNotaFiscal ", DbType.Int32, NumNF);
 
-           return dtsDados.Tables[0];
+            dtsDados = db.ExecuteDataSet(dbComd);
 
+            return dtsDados.Tables[0];
 
-       }
-       #endregion
 
-        
-       #region PopularGridNF
-       public void populargrid()
-       {
+        }
+        #endregion
 
-           int NrNotaFiscal;
+        #region PopularGridNF
+        public void populargrid()
+        {
 
-          try
-           {
-               if (txtNumNF.getText != String.Empty)
-               {
-                   NrNotaFiscal = Convert.ToInt32(txtNumNF.getText);
+            int NrNotaFiscal;
 
-                   dttRetorno = ListarItemNF(NrNotaFiscal);
+            try
+            {
+                if (txtNumNF.getText != String.Empty)
+                {
+                    NrNotaFiscal = Convert.ToInt32(txtNumNF.getText);
 
-                   dtGrdVwItensNF.DataSource = dttRetorno;
-               }
+                    dttRetorno = ListarItemNF(NrNotaFiscal);
 
+                    dtGrdVwItensNF.DataSource = dttRetorno;
 
-           }
-           catch (Exception)
-           {
+                }
 
-               throw;
-           }
-       }
+                ValidaItemLiberado();
 
-       #endregion
+            }
+            catch (Exception)
+            {
 
+                throw;
+            }
+        }
 
-       #region LimparCampos
-       public void limparcampos()
-       {
-           try
-           {
-               txtNumNF.getText = String.Empty; ;
-               txtSerie.Text = String.Empty;
-               txtTipoNF.Text = String.Empty;
-               dtTmPckrDtEmissao.Text = String.Empty;
-               txtBxVlrNota.Text = String.Empty;
-               txtNrPedido.Text = String.Empty;
-               txtBxVlrNota.Text = String.Empty;
-               txtBxVlrFrete.Text = String.Empty;
-               txtBxicms.Text = String.Empty;
-               dtGrdVwItensNF.Refresh();
+        #endregion
 
-               dttRetorno.Clear();                                         
-               
-           }
-           catch (Exception ex)
-           {
+        #region LimparCampos
+        public void limparcampos()
+        {
+            try
+            {
+                txtNumNF.getText = String.Empty; ;
+                txtSerie.Text = String.Empty;
+                txtTipoNF.Text = String.Empty;
+                dtTmPckrDtEmissao.Text = String.Empty;
+                txtBxVlrNota.Text = String.Empty;
+                txtNrPedido.Text = String.Empty;
+                txtBxVlrNota.Text = String.Empty;
+                txtBxVlrFrete.Text = String.Empty;
+                txtBxicms.Text = String.Empty;
+                dtGrdVwItensNF.Refresh();
+                dttRetorno.Clear();
+                dtGrdVwItensNF.DataSource = dttRetorno;
+            }
+            catch (Exception ex)
+            {
 
-               throw ex;
-           }
-       }
-       #endregion
+                throw ex;
+            }
+        }
+        #endregion
 
+        #region AtualizaSituaçãoPedido
+        public void atualizaStatusPedido(string Situacao, int NrPedido)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
 
-       #region AtualizaSituaçãoPedido
-       public void atualizaStatusPedido(string Situacao, int NrPedido)
-       {
-           Database db = DatabaseFactory.CreateDatabase();
+            StringBuilder sqlcommand = new StringBuilder();
 
-           StringBuilder sqlcommand = new StringBuilder();
+            sqlcommand.Append(" UPDATE PEDIDO SET SITUACAO = @SITUACAO WHERE NRPEDIDO = @NRPEDIDO ");
 
-           sqlcommand.Append(" UPDATE PEDIDO SET SITUACAO = @SITUACAO WHERE NRPEDIDO = @NRPEDIDO ");
+            DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
 
-           DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
+            db.AddInParameter(dbComd, "@SITUACAO", DbType.String, Situacao);
+            db.AddInParameter(dbComd, "@NRPEDIDO", DbType.Int32, NrPedido);
 
-           db.AddInParameter(dbComd, "@SITUACAO", DbType.String, Situacao);
-           db.AddInParameter(dbComd, "@NRPEDIDO", DbType.Int32, NrPedido);
 
+            db.ExecuteScalar(dbComd);
 
-           db.ExecuteScalar(dbComd);
 
+        }
+        #endregion
 
-       }
-       #endregion
+        #region Devolver NF
+        public void DevolverNF()
+        {
+            try
+            {
+                if (MessageBox.Show("Deseja Devolver a Nota Fiscal selecionada?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
 
-        
-       #region Devolver NF
-       public void DevolverNF()
-       {
-           try
-           {
-               if (MessageBox.Show("Deseja Devolver a Nota Fiscal selecionada?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-               {
+                    for (   int i = 0; i < dtGrdVwItensNF.RowCount; i++)
+                    {
+                        //Verificoquantidade liberada do pedido - a quantidade devolvida
+                        int saldoDevolvido = SaldoLiberado(Convert.ToInt32(txtNumNF.getText), Convert.ToInt32(dtGrdVwItensNF.Rows[i].Cells["clmProduto"].Value));
 
-                   for (int i = 0; i < dtGrdVwItensNF.RowCount; i++)
-                   {
-                       int quantidade = Convert.ToInt32(dtGrdVwItensNF.Rows[i].Cells["clmQuantidade"].Value);
+                        //verifico se o iten liberado é < que a quantidade já liberada
+                        if (Convert.ToInt32(dtGrdVwItensNF.Rows[i].Cells["clmQuantidadeDev"].Value) < saldoDevolvido)
+                        {
+                            throw new Exception("ItenLibMenor");
+                        }
+                        else
+                        {
 
+                            int quantidade = Convert.ToInt32(dtGrdVwItensNF.Rows[i].Cells["clmQuantidadeDev"].Value);
+                            int codProduto = Convert.ToInt32(dtGrdVwItensNF.Rows[i].Cells["clmProduto"].Value);
 
-                       //verifica saldo atual em estoque
-                       int estoqueatual = ListarSaldoEstoque(Convert.ToInt32(dtGrdVwItensNF.Rows[i].Cells["clmProduto"].Value));
+                            //verifica saldo atual em estoque
+                            int estoqueatual = ListarSaldoEstoque(Convert.ToInt32(dtGrdVwItensNF.Rows[i].Cells["clmProduto"].Value));
 
-                       //Soma o saldo atual + qtdeliberada
-                       int atualizaestoque = estoqueatual + quantidade;
+                            //subtraio a quantidade liberada de pedido menos a quantidade devolvida
+                            int saldo = quantidade - saldoDevolvido;
 
-                      //Atualiza quantidade liberada do pedido para 0 pasando como parametro o pedido e o cod do produto
-                       AtualizarQtde(Convert.ToInt32(txtNrPedido.Text), 0, Convert.ToInt32(dtGrdVwItensNF.Rows[i].Cells["clmProduto"].Value));
-                       
-                       //Atuliza a quantidade atual em estoque passando com oparametro produto e a quantida a atualizar
-                       atualizaSaldoEstoque(Convert.ToInt32(dtGrdVwItensNF.Rows[i].Cells["clmProduto"].Value), atualizaestoque);
+                            //Soma o saldo atual + qtdeliberada
+                            int atualizaestoque = estoqueatual + saldo;
+                                    
+                            ////Atualiza quantidade liberada do pedido pasando como parametro o pedido e o cod do produto
+                            // AtualizarQtde(Convert.ToInt32(txtNrPedido.Text), saldo, Convert.ToInt32(dtGrdVwItensNF.Rows[i].Cells["clmProduto"].Value));
 
-                       continue;
-                   }
+                            //Atuliza a quantidade atual em estoque passando com oparametro produto e a quantida a atualizar
+                            atualizaSaldoEstoque(Convert.ToInt32(dtGrdVwItensNF.Rows[i].Cells["clmProduto"].Value), atualizaestoque);
 
-                   //Atualiza Status do Pedido para "P"
-                   atualizaStatusPedido("P", Convert.ToInt32(txtNrPedido.Text));
+                            //Atualiza Item Nota Fiscal com a quantidade devolvida...
+                            atualizaItemNF(Convert.ToInt32(txtNumNF.getText), quantidade, codProduto);
+                        }
+                    }
 
-                   //Atualiza Tipo da NF para "E" ...
-                   atualizaStatusNF("E", Convert.ToInt32(txtNumNF.getText));
+                    int situacao = 0;
+                    for (int j = 0; j < dtGrdVwItensNF.RowCount; j++)
+                    {
 
-                   //mensagem de NF devolvida
-                   MessageBox.Show("Nota Fiscal Devolvida Com Sucesso.", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //Pego a quantidade liberada do pedido por item
+                        int qtdedev = Convert.ToInt32(dtGrdVwItensNF.Rows[j].Cells["clmQuantidadeDev"].Value);
 
-                   //Limpar campos
-                   limparcampos();
-               }
-           }
+                        //atribuo a lista de itens ao datatable
+                        dttRetorno = ListarItemNF(Convert.ToInt32(txtNumNF.getText));
 
-               
+                        //verifico se é = a quantidade do datatable incrememnto meu contador
+                        if (qtdedev == Convert.ToInt32(dttRetorno.Rows[j]["QUANTIDADE"]))
+                        {
+                            situacao += 1;
+                        }
+
+                    }
+
+                    //se o contador for = a qtde iten liberado Atualiza a situação pedido para Efetivado
+                    if (situacao == dtGrdVwItensNF.Rows.Count)
+                    {
+                        //Atualiza Tipo da NF para "E" ...
+                        atualizaStatusNF("D", Convert.ToInt32(txtNumNF.getText));
+                    }
+
+
+                    ////Atualiza Status do Pedido para "P"
+                    //atualizaStatusPedido("P", Convert.ToInt32(txtNrPedido.Text));
+
+                    //mensagem de NF devolvida
+                    MessageBox.Show("Nota Fiscal Devolvida Com Sucesso.", "Informação", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    //Limpar campos
+                    limparcampos();
+                }
+            }
+
+
             catch (Exception ex)
             {
                 Validacoes valida = new Validacoes();
                 valida.tratarSystemExceções(ex);
             }
-           
-       }
-       
 
-    
-   #endregion
+        }
 
 
-       #region AtualizarQuantidadeLiberada
-       public void AtualizarQtde(int CodPed, int QtdeLib, int CodProd)
-       {
-           Database db = DatabaseFactory.CreateDatabase();
 
-           StringBuilder sqlcommand = new StringBuilder();
+        #endregion
 
-           sqlcommand.Append(" UPDATE ITEMPEDIDO SET QUANTIDADELIB = @QUANTIDADELIB WHERE NRPEDIDO = @NRPEDIDO AND CODPRODUTO = @CODPRODUTO");
+        #region AtualizarQuantidadeLiberada
+        public void AtualizarQtde(int CodPed, int QtdeLib, int CodProd)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
 
-           DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
+            StringBuilder sqlcommand = new StringBuilder();
 
-           db.AddInParameter(dbComd, "@QUANTIDADELIB", DbType.Int32, QtdeLib);
-           db.AddInParameter(dbComd, "@NRPEDIDO", DbType.Int32, CodPed);
-           db.AddInParameter(dbComd, "@CODPRODUTO", DbType.Int32, CodProd);
+            sqlcommand.Append(" UPDATE ITEMPEDIDO SET QUANTIDADELIB = @QUANTIDADELIB WHERE NRPEDIDO = @NRPEDIDO AND CODPRODUTO = @CODPRODUTO");
 
-           db.ExecuteScalar(dbComd);
+            DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
 
+            db.AddInParameter(dbComd, "@QUANTIDADELIB", DbType.Int32, QtdeLib);
+            db.AddInParameter(dbComd, "@NRPEDIDO", DbType.Int32, CodPed);
+            db.AddInParameter(dbComd, "@CODPRODUTO", DbType.Int32, CodProd);
 
-       }
-       #endregion
-      
-    public int ListarSaldoEstoque(int CodProd)
-       {
-           Database db = DatabaseFactory.CreateDatabase();
-
-           StringBuilder sqlcommand = new StringBuilder();
-
-           sqlcommand.Append(" SELECT ESTOQUEATUAL ");
-           sqlcommand.Append(" FROM PRODUTO  ");
-           sqlcommand.Append(" WHERE CODPRODUTO = @CODPRODUTO ");
-
-           DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
-
-           db.AddInParameter(dbComd, "@CODPRODUTO", DbType.Int32, CodProd);
-
-           int estoque = Convert.ToInt32(db.ExecuteScalar(dbComd));
-
-           return estoque;
-
-       }
+            db.ExecuteScalar(dbComd);
 
 
-       public void RetornaQtde(int CodPed, int CodProd)
-       {
-           Database db = DatabaseFactory.CreateDatabase();
+        }
+        #endregion
 
-           StringBuilder sqlcommand = new StringBuilder();
-
-           sqlcommand.Append(" UPDATE ITEMPEDIDO SET QUANTIDADELIB = 0 WHERE NRPEDIDO = @NRPEDIDO AND CODPRODUTO = @CODPRODUTO");
-
-           DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
-
-
-           db.AddInParameter(dbComd, "@NRPEDIDO", DbType.Int32, CodPed);
-           db.AddInParameter(dbComd, "@CODPRODUTO", DbType.Int32, CodProd);
-
-           db.ExecuteScalar(dbComd);
+        #region ValidaItemLiberados
+        public void ValidaItemLiberado()
+        {
+            try
+            {
+                for (int i = 0; i < dtGrdVwItensNF.RowCount; i++)
+                {
+                    int QuantidadeDev = Convert.ToInt32(dtGrdVwItensNF.Rows[i].Cells["clmQuantidadeDev"].Value);
+                    int Quantidade = Convert.ToInt32(dtGrdVwItensNF.Rows[i].Cells["clmQuantidade"].Value);
 
 
-       }
+                    if ((int)dtGrdVwItensNF.Rows[i].Cells["clmQuantidadeDev"].Value == (int)dtGrdVwItensNF.Rows[i].Cells["clmQuantidade"].Value)
+                    {
+                        dtGrdVwItensNF.Rows[i].ReadOnly = true;
+                    }
+                    else if ((QuantidadeDev != 0) && (QuantidadeDev != Quantidade))
+                    {
+                        dtGrdVwItensNF.Rows[i].Cells["clmQuantidadeDev"].ReadOnly = false;
+                    }
+                    else if ((QuantidadeDev == 0))
+                    {
+                        dtGrdVwItensNF.Rows[i].Cells["clmQuantidadeDev"].ReadOnly = false;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+        #endregion
+
+        #region Saldo a Liberar
+        public int SaldoLiberado(int CodNf, int CodProd)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+
+            StringBuilder sqlcommand = new StringBuilder();
+
+            sqlcommand.Append(" SELECT QuantidadeDev AS QuantidadeDev  FROM ItemNotaFiscal WHERE CODPRODUTO = @CODPRODUTO AND NRNOTAFISCAL = @NRNOTAFISCAL ");
+
+            DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
+
+            db.AddInParameter(dbComd, "@NRNOTAFISCAL", DbType.Int32, CodNf);
+            db.AddInParameter(dbComd, "@CODPRODUTO", DbType.Int32, CodProd);
+
+            int saldo = Convert.ToInt32(db.ExecuteScalar(dbComd));
+
+            return saldo;
+        }
+        #endregion
+
+        public int ListarSaldoEstoque(int CodProd)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+
+            StringBuilder sqlcommand = new StringBuilder();
+
+            sqlcommand.Append(" SELECT ESTOQUEATUAL ");
+            sqlcommand.Append(" FROM PRODUTO  ");
+            sqlcommand.Append(" WHERE CODPRODUTO = @CODPRODUTO ");
+
+            DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
+
+            db.AddInParameter(dbComd, "@CODPRODUTO", DbType.Int32, CodProd);
+
+            int estoque = Convert.ToInt32(db.ExecuteScalar(dbComd));
+
+            return estoque;
+
+        }
+
+        public void RetornaQtde(int CodPed, int CodProd)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+
+            StringBuilder sqlcommand = new StringBuilder();
+
+            sqlcommand.Append(" UPDATE ITEMPEDIDO SET QUANTIDADELIB = 0 WHERE NRPEDIDO = @NRPEDIDO AND CODPRODUTO = @CODPRODUTO");
+
+            DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
 
 
-       public void atualizaSaldoEstoque(int CodProd, int qtde)
-       {
-           Database db = DatabaseFactory.CreateDatabase();
+            db.AddInParameter(dbComd, "@NRPEDIDO", DbType.Int32, CodPed);
+            db.AddInParameter(dbComd, "@CODPRODUTO", DbType.Int32, CodProd);
 
-           StringBuilder sqlcommand = new StringBuilder();
-
-           sqlcommand.Append(" UPDATE PRODUTO SET ESTOQUEATUAL = @ESTOQUEATUAL WHERE CODPRODUTO = @CODPRODUTO ");
-
-           DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
-
-           db.AddInParameter(dbComd, "@ESTOQUEATUAL", DbType.Int32, qtde);
-           db.AddInParameter(dbComd, "@CODPRODUTO", DbType.Int32, CodProd);
+            db.ExecuteScalar(dbComd);
 
 
-           db.ExecuteScalar(dbComd);
+        }
+
+        public void atualizaSaldoEstoque(int CodProd, int qtde)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+
+            StringBuilder sqlcommand = new StringBuilder();
+
+            sqlcommand.Append(" UPDATE PRODUTO SET ESTOQUEATUAL = @ESTOQUEATUAL WHERE CODPRODUTO = @CODPRODUTO ");
+
+            DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
+
+            db.AddInParameter(dbComd, "@ESTOQUEATUAL", DbType.Int32, qtde);
+            db.AddInParameter(dbComd, "@CODPRODUTO", DbType.Int32, CodProd);
 
 
-       }
+            db.ExecuteScalar(dbComd);
 
 
-       public void atualizaStatusNF(string Status, int NrNotaFiscal)
-       {
-           Database db = DatabaseFactory.CreateDatabase();
+        }
 
-           StringBuilder sqlcommand = new StringBuilder();
+        public void atualizaStatusNF(string Status, int NrNotaFiscal)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
 
-           sqlcommand.Append(" UPDATE NOTAFISCAL SET TIPO = @TIPO WHERE NRNOTAFISCAL = @NRNOTAFISCAL ");
+            StringBuilder sqlcommand = new StringBuilder();
 
-           DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
+            sqlcommand.Append(" UPDATE NOTAFISCAL SET TIPO = @TIPO WHERE NRNOTAFISCAL = @NRNOTAFISCAL ");
 
-           db.AddInParameter(dbComd, "@TIPO", DbType.String, Status);
-           db.AddInParameter(dbComd, "@NRNOTAFISCAL", DbType.Int32,NrNotaFiscal);
+            DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
 
-
-           db.ExecuteScalar(dbComd);
-
-
-       }
-
-       private void lblVlrMercadoria_Click(object sender, EventArgs e)
-       {
-
-       }
+            db.AddInParameter(dbComd, "@TIPO", DbType.String, Status);
+            db.AddInParameter(dbComd, "@NRNOTAFISCAL", DbType.Int32, NrNotaFiscal);
 
 
-   
+            db.ExecuteScalar(dbComd);
+
+
+        }
+
+        public void atualizaItemNF(int NrNotaFiscal, int QuantidadeDev, int codProduto)
+        {
+            Database db = DatabaseFactory.CreateDatabase();
+
+            StringBuilder sqlcommand = new StringBuilder();
+
+            sqlcommand.Append(" UPDATE ITEMNOTAFISCAL SET QuantidadeDev = @QuantidadeDev  WHERE NRNOTAFISCAL = @NRNOTAFISCAL AND CODPRODUTO = @CODPRODUTO ");
+
+            DbCommand dbComd = db.GetSqlStringCommand(sqlcommand.ToString());
+
+            db.AddInParameter(dbComd, "@CODPRODUTO", DbType.Int32, codProduto);
+            db.AddInParameter(dbComd, "@NRNOTAFISCAL", DbType.Int32, NrNotaFiscal);
+            db.AddInParameter(dbComd, "@QuantidadeDev", DbType.Int32, QuantidadeDev);
+
+
+            db.ExecuteScalar(dbComd);
+
+
+        }
+
+        private void lblVlrMercadoria_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+
 
 
 

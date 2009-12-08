@@ -32,9 +32,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tbCntrlPedVend = new System.Windows.Forms.TabControl();
             this.tbPgPDV = new System.Windows.Forms.TabPage();
             this.grpBxPedVenda = new System.Windows.Forms.GroupBox();
@@ -92,19 +92,19 @@
             this.nOTAFISCALTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.NOTAFISCALTableAdapter();
             this.itemNotaFiscalBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.itemNotaFiscalTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.ItemNotaFiscalTableAdapter();
-            this.ColStatus = new System.Windows.Forms.DataGridViewImageColumn();
-            this.ColCheck = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ClmItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClmDescProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClmQtde = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClmQtdeLib = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClmPrcUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ClmIPI = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColDesconto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColVALORFATU = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColStatusItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColVALORFATU = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColDesconto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClmIPI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClmPrcUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClmQtdeLib = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClmQtde = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClmDescProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ClmItem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColCheck = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColStatus = new System.Windows.Forms.DataGridViewImageColumn();
             this.tbCntrlPedVend.SuspendLayout();
             this.tbPgPDV.SuspendLayout();
             this.grpBxPedVenda.SuspendLayout();
@@ -778,90 +778,24 @@
             // 
             this.itemNotaFiscalTableAdapter.ClearBeforeFill = true;
             // 
-            // ColStatus
+            // ColStatusItem
             // 
-            this.ColStatus.HeaderText = "";
-            this.ColStatus.Name = "ColStatus";
-            this.ColStatus.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColStatus.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ColStatus.Width = 28;
+            this.ColStatusItem.DataPropertyName = "Status";
+            this.ColStatusItem.HeaderText = "Status";
+            this.ColStatusItem.Name = "ColStatusItem";
+            this.ColStatusItem.ReadOnly = true;
+            this.ColStatusItem.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColStatusItem.Visible = false;
             // 
-            // ColCheck
+            // ColVALORFATU
             // 
-            this.ColCheck.FalseValue = "";
-            this.ColCheck.HeaderText = "";
-            this.ColCheck.Name = "ColCheck";
-            this.ColCheck.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColCheck.TrueValue = "";
-            this.ColCheck.Width = 25;
-            // 
-            // ClmItem
-            // 
-            this.ClmItem.DataPropertyName = "ITEM";
-            this.ClmItem.HeaderText = "Item";
-            this.ClmItem.Name = "ClmItem";
-            this.ClmItem.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ClmItem.Width = 35;
-            // 
-            // ColProd
-            // 
-            this.ColProd.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.ColProd.DataPropertyName = "CODPRODUTO";
-            this.ColProd.HeaderText = "Codigo Produto";
-            this.ColProd.Name = "ColProd";
-            this.ColProd.ReadOnly = true;
-            this.ColProd.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // ClmDescProd
-            // 
-            this.ClmDescProd.DataPropertyName = "DESCRICAO";
-            this.ClmDescProd.HeaderText = "Descrição Produto";
-            this.ClmDescProd.Name = "ClmDescProd";
-            this.ClmDescProd.ReadOnly = true;
-            this.ClmDescProd.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ClmDescProd.Width = 125;
-            // 
-            // ClmQtde
-            // 
-            this.ClmQtde.DataPropertyName = "QUANTIDADE";
-            this.ClmQtde.HeaderText = "Quantidade";
-            this.ClmQtde.Name = "ClmQtde";
-            this.ClmQtde.ReadOnly = true;
-            this.ClmQtde.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // ClmQtdeLib
-            // 
-            this.ClmQtdeLib.DataPropertyName = "QUANTLIB";
-            this.ClmQtdeLib.HeaderText = "Quantidade Liberada";
-            this.ClmQtdeLib.Name = "ClmQtdeLib";
-            this.ClmQtdeLib.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // ClmPrcUnit
-            // 
-            this.ClmPrcUnit.DataPropertyName = "VALOR";
-            dataGridViewCellStyle2.Format = "C2";
-            dataGridViewCellStyle2.NullValue = null;
-            this.ClmPrcUnit.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ClmPrcUnit.HeaderText = "Preço Unitário";
-            this.ClmPrcUnit.Name = "ClmPrcUnit";
-            this.ClmPrcUnit.ReadOnly = true;
-            this.ClmPrcUnit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // ClmIPI
-            // 
-            this.ClmIPI.DataPropertyName = "IPI";
-            this.ClmIPI.HeaderText = "% IPI";
-            this.ClmIPI.Name = "ClmIPI";
-            this.ClmIPI.ReadOnly = true;
-            this.ClmIPI.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // ColDesconto
-            // 
-            this.ColDesconto.DataPropertyName = "DESCONTO";
-            this.ColDesconto.HeaderText = "% Desconto";
-            this.ColDesconto.Name = "ColDesconto";
-            this.ColDesconto.ReadOnly = true;
-            this.ColDesconto.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColVALORFATU.DataPropertyName = "VALORFATU";
+            dataGridViewCellStyle4.Format = "C2";
+            this.ColVALORFATU.DefaultCellStyle = dataGridViewCellStyle4;
+            this.ColVALORFATU.HeaderText = "Valor Faturado";
+            this.ColVALORFATU.Name = "ColVALORFATU";
+            this.ColVALORFATU.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ColVALORFATU.Visible = false;
             // 
             // ColTotal
             // 
@@ -874,24 +808,90 @@
             this.ColTotal.ReadOnly = true;
             this.ColTotal.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // ColVALORFATU
+            // ColDesconto
             // 
-            this.ColVALORFATU.DataPropertyName = "VALORFATU";
-            dataGridViewCellStyle4.Format = "C2";
-            this.ColVALORFATU.DefaultCellStyle = dataGridViewCellStyle4;
-            this.ColVALORFATU.HeaderText = "Valor Faturado";
-            this.ColVALORFATU.Name = "ColVALORFATU";
-            this.ColVALORFATU.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ColVALORFATU.Visible = false;
+            this.ColDesconto.DataPropertyName = "DESCONTO";
+            this.ColDesconto.HeaderText = "% Desconto";
+            this.ColDesconto.Name = "ColDesconto";
+            this.ColDesconto.ReadOnly = true;
+            this.ColDesconto.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // ColStatusItem
+            // ClmIPI
             // 
-            this.ColStatusItem.DataPropertyName = "Status";
-            this.ColStatusItem.HeaderText = "Status";
-            this.ColStatusItem.Name = "ColStatusItem";
-            this.ColStatusItem.ReadOnly = true;
-            this.ColStatusItem.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.ColStatusItem.Visible = false;
+            this.ClmIPI.DataPropertyName = "IPI";
+            this.ClmIPI.HeaderText = "% IPI";
+            this.ClmIPI.Name = "ClmIPI";
+            this.ClmIPI.ReadOnly = true;
+            this.ClmIPI.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // ClmPrcUnit
+            // 
+            this.ClmPrcUnit.DataPropertyName = "VALOR";
+            dataGridViewCellStyle2.Format = "C2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.ClmPrcUnit.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ClmPrcUnit.HeaderText = "Preço Unitário";
+            this.ClmPrcUnit.Name = "ClmPrcUnit";
+            this.ClmPrcUnit.ReadOnly = true;
+            this.ClmPrcUnit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // ClmQtdeLib
+            // 
+            this.ClmQtdeLib.DataPropertyName = "QUANTLIB";
+            this.ClmQtdeLib.HeaderText = "Quantidade Liberada";
+            this.ClmQtdeLib.Name = "ClmQtdeLib";
+            this.ClmQtdeLib.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // ClmQtde
+            // 
+            this.ClmQtde.DataPropertyName = "QUANTIDADE";
+            this.ClmQtde.HeaderText = "Quantidade";
+            this.ClmQtde.Name = "ClmQtde";
+            this.ClmQtde.ReadOnly = true;
+            this.ClmQtde.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // ClmDescProd
+            // 
+            this.ClmDescProd.DataPropertyName = "DESCRICAO";
+            this.ClmDescProd.HeaderText = "Descrição Produto";
+            this.ClmDescProd.Name = "ClmDescProd";
+            this.ClmDescProd.ReadOnly = true;
+            this.ClmDescProd.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ClmDescProd.Width = 125;
+            // 
+            // ColProd
+            // 
+            this.ColProd.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.ColProd.DataPropertyName = "CODPRODUTO";
+            this.ColProd.HeaderText = "Codigo Produto";
+            this.ColProd.Name = "ColProd";
+            this.ColProd.ReadOnly = true;
+            this.ColProd.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // ClmItem
+            // 
+            this.ClmItem.DataPropertyName = "ITEM";
+            this.ClmItem.HeaderText = "Item";
+            this.ClmItem.Name = "ClmItem";
+            this.ClmItem.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.ClmItem.Width = 35;
+            // 
+            // ColCheck
+            // 
+            this.ColCheck.FalseValue = "";
+            this.ColCheck.HeaderText = "";
+            this.ColCheck.Name = "ColCheck";
+            this.ColCheck.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColCheck.TrueValue = "";
+            this.ColCheck.Width = 25;
+            // 
+            // ColStatus
+            // 
+            this.ColStatus.HeaderText = "";
+            this.ColStatus.Name = "ColStatus";
+            this.ColStatus.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColStatus.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ColStatus.Width = 28;
             // 
             // FrmLibPDV
             // 
