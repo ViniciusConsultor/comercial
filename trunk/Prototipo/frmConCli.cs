@@ -173,7 +173,16 @@ namespace Comercial
 
         public string pesquisar()
         {
-            string sql = "select p.CODCLIENTE,c.NOMEFANTASIA,p.NRPEDIDO,p.DATAEMISSAO,SUM(VALOR) valor from PEDIDO p, ITEMPEDIDO ip , CLIENTE c where p.NRPEDIDO=ip.NRPEDIDO and p.codCliente=c.cnpj ";
+            string sql = "select p.CODCLIENTE,c.NOMEFANTASIA,p.NRPEDIDO,p.DATAEMISSAO, isnull (cast(sum(x.valorcomdesconto)as MONEY),0)VALOR" +
+" from(" +
+        "select p.NRPEDIDO, CODPRODUTO, I.QUANTIDADE, I.VALOR, I.DESCONTO," +
+                        " isnull(SUM(i.VALOR * i.quantidade),0) valorpedido," +
+                        "(isnull(SUM(i.VALOR * i.quantidade),0)) - (isnull(SUM(i.VALOR * i.quantidade),0) * DESCONTO/100)" + "valorcomdesconto" +
+                        " from PEDIDO P LEFT JOIN ITEMPEDIDO I ON P.NRPEDIDO = I.NRPEDIDO" +
+                                        " INNER JOIN VENDEDOR V ON V.CPF = P.CODVENDEDOR" +
+                        " group by p.NRPEDIDO,I.CODPRODUTO, I.QUANTIDADE, I.VALOR, I.DESCONTO)" +
+                        " x inner join PEDIDO p on p.nrpedido=x.nrpedido,cliente as c" +
+                        " where p.codcliente=c.cnpj";
             string groupBy = " group by p.NRPEDIDO,  p.DATAEMISSAO,p.CODCLIENTE,c.NomeFantasia ";
             
             // pesquisa por nrPedido

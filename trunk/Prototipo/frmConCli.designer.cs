@@ -29,14 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmConCli));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmConCli));
             this.tbCntrlConCli = new System.Windows.Forms.TabControl();
             this.tbPgConCli = new System.Windows.Forms.TabPage();
             this.grpBxFiltro = new System.Windows.Forms.GroupBox();
             this.grpBxPedido = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dttmDataPedido2 = new System.Windows.Forms.DateTimePicker();
             this.txtNumPed = new System.Windows.Forms.TextBox();
             this.dttmDataPedido1 = new System.Windows.Forms.DateTimePicker();
             this.lblDataPed = new System.Windows.Forms.Label();
@@ -49,7 +51,6 @@
             this.cmBxTipoPed = new System.Windows.Forms.ComboBox();
             this.lblTipoPed = new System.Windows.Forms.Label();
             this.grpBxCli = new System.Windows.Forms.GroupBox();
-            this.txtCnpjCli = new Comercial.TextButton();
             this.cmbAreaAtuCli = new System.Windows.Forms.ComboBox();
             this.lblCNPJ = new System.Windows.Forms.Label();
             this.lblArea = new System.Windows.Forms.Label();
@@ -58,16 +59,15 @@
             this.txtNomeFantasiaCli = new System.Windows.Forms.TextBox();
             this.lblNome = new System.Windows.Forms.Label();
             this.dtgrdConCli = new System.Windows.Forms.DataGridView();
+            this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
+            this.cLIENTEBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cLIENTETableAdapter = new Comercial.COMERCIALDataSetTableAdapters.CLIENTETableAdapter();
+            this.txtCnpjCli = new Comercial.TextButton();
             this.CNPJCli = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NomeFantasiaCli = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClmnCodPed = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClmnDtPed = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClmnValPed = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
-            this.cLIENTEBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.cLIENTETableAdapter = new Comercial.COMERCIALDataSetTableAdapters.CLIENTETableAdapter();
-            this.dttmDataPedido2 = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
             this.tbCntrlConCli.SuspendLayout();
             this.tbPgConCli.SuspendLayout();
             this.grpBxFiltro.SuspendLayout();
@@ -134,6 +134,27 @@
             this.grpBxPedido.TabIndex = 8;
             this.grpBxPedido.TabStop = false;
             this.grpBxPedido.Text = "Dados Pedido";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.CadetBlue;
+            this.label1.Location = new System.Drawing.Point(133, 136);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(26, 13);
+            this.label1.TabIndex = 27;
+            this.label1.Text = "Até:";
+            // 
+            // dttmDataPedido2
+            // 
+            this.dttmDataPedido2.Checked = false;
+            this.dttmDataPedido2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dttmDataPedido2.Location = new System.Drawing.Point(165, 132);
+            this.dttmDataPedido2.Name = "dttmDataPedido2";
+            this.dttmDataPedido2.ShowCheckBox = true;
+            this.dttmDataPedido2.Size = new System.Drawing.Size(115, 20);
+            this.dttmDataPedido2.TabIndex = 23;
             // 
             // txtNumPed
             // 
@@ -278,17 +299,6 @@
             this.grpBxCli.TabStop = false;
             this.grpBxCli.Text = "Dados Cliente:";
             // 
-            // txtCnpjCli
-            // 
-            this.txtCnpjCli.getText = "";
-            this.txtCnpjCli.Image = ((System.Drawing.Image)(resources.GetObject("txtCnpjCli.Image")));
-            this.txtCnpjCli.Location = new System.Drawing.Point(17, 32);
-            this.txtCnpjCli.Name = "txtCnpjCli";
-            this.txtCnpjCli.ShowButton = false;
-            this.txtCnpjCli.Size = new System.Drawing.Size(148, 25);
-            this.txtCnpjCli.TabIndex = 91;
-            this.txtCnpjCli.ButtonClick += new System.EventHandler(this.txtCnpjCli_ButtonClick);
-            // 
             // cmbAreaAtuCli
             // 
             this.cmbAreaAtuCli.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
@@ -425,6 +435,31 @@
             this.dtgrdConCli.Size = new System.Drawing.Size(813, 243);
             this.dtgrdConCli.TabIndex = 0;
             // 
+            // cOMERCIALDataSet
+            // 
+            this.cOMERCIALDataSet.DataSetName = "COMERCIALDataSet";
+            this.cOMERCIALDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // cLIENTEBindingSource
+            // 
+            this.cLIENTEBindingSource.DataMember = "CLIENTE";
+            this.cLIENTEBindingSource.DataSource = this.cOMERCIALDataSet;
+            // 
+            // cLIENTETableAdapter
+            // 
+            this.cLIENTETableAdapter.ClearBeforeFill = true;
+            // 
+            // txtCnpjCli
+            // 
+            this.txtCnpjCli.getText = "";
+            this.txtCnpjCli.Image = ((System.Drawing.Image)(resources.GetObject("txtCnpjCli.Image")));
+            this.txtCnpjCli.Location = new System.Drawing.Point(17, 32);
+            this.txtCnpjCli.Name = "txtCnpjCli";
+            this.txtCnpjCli.ShowButton = false;
+            this.txtCnpjCli.Size = new System.Drawing.Size(148, 25);
+            this.txtCnpjCli.TabIndex = 91;
+            this.txtCnpjCli.ButtonClick += new System.EventHandler(this.txtCnpjCli_ButtonClick);
+            // 
             // CNPJCli
             // 
             this.CNPJCli.DataPropertyName = "CodCliente";
@@ -463,42 +498,7 @@
             this.ClmnValPed.ReadOnly = true;
             this.ClmnValPed.Width = 160;
             // 
-            // cOMERCIALDataSet
-            // 
-            this.cOMERCIALDataSet.DataSetName = "COMERCIALDataSet";
-            this.cOMERCIALDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // cLIENTEBindingSource
-            // 
-            this.cLIENTEBindingSource.DataMember = "CLIENTE";
-            this.cLIENTEBindingSource.DataSource = this.cOMERCIALDataSet;
-            // 
-            // cLIENTETableAdapter
-            // 
-            this.cLIENTETableAdapter.ClearBeforeFill = true;
-            // 
-            // dttmDataPedido2
-            // 
-            this.dttmDataPedido2.Checked = false;
-            this.dttmDataPedido2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dttmDataPedido2.Location = new System.Drawing.Point(165, 132);
-            this.dttmDataPedido2.Name = "dttmDataPedido2";
-            this.dttmDataPedido2.ShowCheckBox = true;
-            this.dttmDataPedido2.Size = new System.Drawing.Size(115, 20);
-            this.dttmDataPedido2.TabIndex = 23;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.CadetBlue;
-            this.label1.Location = new System.Drawing.Point(133, 136);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(26, 13);
-            this.label1.TabIndex = 27;
-            this.label1.Text = "Até:";
-            // 
-            // frmConCli
+            // FrmConCli
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -508,7 +508,7 @@
             this.Controls.Add(this.tbCntrlConCli);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmConCli";
+            this.Name = "FrmConCli";
             this.Text = "Consulta de Clientes";
             this.Load += new System.EventHandler(this.frmConCli_Load);
             this.Leave += new System.EventHandler(this.frmConCli_Leave);
@@ -549,11 +549,6 @@
         private System.Windows.Forms.Label lblRazao;
         private System.Windows.Forms.Label lblArea;
         private System.Windows.Forms.Label lblCNPJ;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CNPJCli;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NomeFantasiaCli;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ClmnCodPed;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ClmnDtPed;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ClmnValPed;
         public TextButton txtCnpjCli;
         public System.Windows.Forms.TextBox txtNomeFantasiaCli;
         public System.Windows.Forms.TextBox txtRazaoSocialCli;
@@ -565,5 +560,10 @@
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dttmDataPedido2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CNPJCli;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NomeFantasiaCli;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClmnCodPed;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClmnDtPed;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ClmnValPed;
     }
 }
