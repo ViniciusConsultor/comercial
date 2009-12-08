@@ -30,26 +30,22 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label LblNumPedido;
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tbPgDevNotaFiscal = new System.Windows.Forms.TabPage();
             this.grpBxItensNotFiscal = new System.Windows.Forms.GroupBox();
             this.dtGrdVwItensNF = new System.Windows.Forms.DataGridView();
-            this.clmProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmDescProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmUnidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmQuantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmVlrUnitário = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmVlrTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grpBxTotais = new System.Windows.Forms.GroupBox();
             this.lblDescontos = new System.Windows.Forms.Label();
             this.lblVlrFrete = new System.Windows.Forms.Label();
             this.lblVlrMercadoria = new System.Windows.Forms.Label();
             this.txtBxicms = new System.Windows.Forms.TextBox();
+            this.nOTAFISCALBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
             this.txtBxVlrFrete = new System.Windows.Forms.TextBox();
             this.txtBxVlrNota = new System.Windows.Forms.TextBox();
             this.grpBxInfNotFiscal = new System.Windows.Forms.GroupBox();
             this.txtNrPedido = new System.Windows.Forms.TextBox();
-            this.nOTAFISCALBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.cOMERCIALDataSet = new Comercial.COMERCIALDataSet();
             this.txtTipoNF = new System.Windows.Forms.TextBox();
             this.lblNumNotFiscal = new System.Windows.Forms.Label();
             this.lblDtEmissao = new System.Windows.Forms.Label();
@@ -60,15 +56,22 @@
             this.tbCntrlDevNotFiscal = new System.Windows.Forms.TabControl();
             this.nOTAFISCALTableAdapter = new Comercial.COMERCIALDataSetTableAdapters.NOTAFISCALTableAdapter();
             this.tableAdapterManager = new Comercial.COMERCIALDataSetTableAdapters.TableAdapterManager();
+            this.clmProduto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmDescProd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmUnidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmQuantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmQuantidadeDev = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmVlrUnitário = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmVlrTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtNumNF = new Comercial.TextButton();
             LblNumPedido = new System.Windows.Forms.Label();
             this.tbPgDevNotaFiscal.SuspendLayout();
             this.grpBxItensNotFiscal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGrdVwItensNF)).BeginInit();
             this.grpBxTotais.SuspendLayout();
-            this.grpBxInfNotFiscal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nOTAFISCALBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).BeginInit();
+            this.grpBxInfNotFiscal.SuspendLayout();
             this.tbCntrlDevNotFiscal.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -121,56 +124,14 @@
             this.clmDescProd,
             this.clmUnidade,
             this.clmQuantidade,
+            this.clmQuantidadeDev,
             this.clmVlrUnitário,
             this.clmVlrTotal});
             this.dtGrdVwItensNF.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dtGrdVwItensNF.Location = new System.Drawing.Point(3, 16);
             this.dtGrdVwItensNF.Name = "dtGrdVwItensNF";
-            this.dtGrdVwItensNF.ReadOnly = true;
             this.dtGrdVwItensNF.Size = new System.Drawing.Size(735, 227);
             this.dtGrdVwItensNF.TabIndex = 0;
-            // 
-            // clmProduto
-            // 
-            this.clmProduto.DataPropertyName = "CodProduto";
-            this.clmProduto.HeaderText = "Produto";
-            this.clmProduto.Name = "clmProduto";
-            this.clmProduto.ReadOnly = true;
-            // 
-            // clmDescProd
-            // 
-            this.clmDescProd.DataPropertyName = "Descricao";
-            this.clmDescProd.HeaderText = "Desc. Produto";
-            this.clmDescProd.Name = "clmDescProd";
-            this.clmDescProd.ReadOnly = true;
-            // 
-            // clmUnidade
-            // 
-            this.clmUnidade.DataPropertyName = "CodUnidadeMedida";
-            this.clmUnidade.HeaderText = "Unidade";
-            this.clmUnidade.Name = "clmUnidade";
-            this.clmUnidade.ReadOnly = true;
-            // 
-            // clmQuantidade
-            // 
-            this.clmQuantidade.DataPropertyName = "Quantidade";
-            this.clmQuantidade.HeaderText = "Quantidade";
-            this.clmQuantidade.Name = "clmQuantidade";
-            this.clmQuantidade.ReadOnly = true;
-            // 
-            // clmVlrUnitário
-            // 
-            this.clmVlrUnitário.DataPropertyName = "Valor";
-            this.clmVlrUnitário.HeaderText = "Vlr. Unitário";
-            this.clmVlrUnitário.Name = "clmVlrUnitário";
-            this.clmVlrUnitário.ReadOnly = true;
-            // 
-            // clmVlrTotal
-            // 
-            this.clmVlrTotal.DataPropertyName = "VALORTOTAL";
-            this.clmVlrTotal.HeaderText = "Vlr. Total";
-            this.clmVlrTotal.Name = "clmVlrTotal";
-            this.clmVlrTotal.ReadOnly = true;
             // 
             // grpBxTotais
             // 
@@ -224,7 +185,7 @@
             // 
             // txtBxicms
             // 
-            this.txtBxicms.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.nOTAFISCALBindingSource, "Icms", true));
+            this.txtBxicms.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.nOTAFISCALBindingSource, "Icms", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
             this.txtBxicms.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBxicms.Location = new System.Drawing.Point(649, 74);
             this.txtBxicms.Name = "txtBxicms";
@@ -232,9 +193,19 @@
             this.txtBxicms.Size = new System.Drawing.Size(83, 20);
             this.txtBxicms.TabIndex = 21;
             // 
+            // nOTAFISCALBindingSource
+            // 
+            this.nOTAFISCALBindingSource.DataMember = "NOTAFISCAL";
+            this.nOTAFISCALBindingSource.DataSource = this.cOMERCIALDataSet;
+            // 
+            // cOMERCIALDataSet
+            // 
+            this.cOMERCIALDataSet.DataSetName = "COMERCIALDataSet";
+            this.cOMERCIALDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // txtBxVlrFrete
             // 
-            this.txtBxVlrFrete.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.nOTAFISCALBindingSource, "ValorFrete", true));
+            this.txtBxVlrFrete.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.nOTAFISCALBindingSource, "ValorFrete", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "C2"));
             this.txtBxVlrFrete.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBxVlrFrete.Location = new System.Drawing.Point(649, 48);
             this.txtBxVlrFrete.Name = "txtBxVlrFrete";
@@ -244,7 +215,7 @@
             // 
             // txtBxVlrNota
             // 
-            this.txtBxVlrNota.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.nOTAFISCALBindingSource, "ValorNota", true));
+            this.txtBxVlrNota.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.nOTAFISCALBindingSource, "ValorNota", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, null, "C2"));
             this.txtBxVlrNota.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBxVlrNota.Location = new System.Drawing.Point(649, 19);
             this.txtBxVlrNota.Name = "txtBxVlrNota";
@@ -280,16 +251,6 @@
             this.txtNrPedido.ReadOnly = true;
             this.txtNrPedido.Size = new System.Drawing.Size(80, 20);
             this.txtNrPedido.TabIndex = 30;
-            // 
-            // nOTAFISCALBindingSource
-            // 
-            this.nOTAFISCALBindingSource.DataMember = "NOTAFISCAL";
-            this.nOTAFISCALBindingSource.DataSource = this.cOMERCIALDataSet;
-            // 
-            // cOMERCIALDataSet
-            // 
-            this.cOMERCIALDataSet.DataSetName = "COMERCIALDataSet";
-            this.cOMERCIALDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // txtTipoNF
             // 
@@ -406,6 +367,59 @@
             this.tableAdapterManager.VENDEDORTableAdapter = null;
             this.tableAdapterManager.VIATRANSPORTETableAdapter = null;
             // 
+            // clmProduto
+            // 
+            this.clmProduto.DataPropertyName = "CodProduto";
+            this.clmProduto.HeaderText = "Produto";
+            this.clmProduto.Name = "clmProduto";
+            this.clmProduto.ReadOnly = true;
+            // 
+            // clmDescProd
+            // 
+            this.clmDescProd.DataPropertyName = "Descricao";
+            this.clmDescProd.HeaderText = "Desc. Produto";
+            this.clmDescProd.Name = "clmDescProd";
+            this.clmDescProd.ReadOnly = true;
+            // 
+            // clmUnidade
+            // 
+            this.clmUnidade.DataPropertyName = "CodUnidadeMedida";
+            this.clmUnidade.HeaderText = "Unidade";
+            this.clmUnidade.Name = "clmUnidade";
+            this.clmUnidade.ReadOnly = true;
+            // 
+            // clmQuantidade
+            // 
+            this.clmQuantidade.DataPropertyName = "Quantidade";
+            this.clmQuantidade.HeaderText = "Quantidade";
+            this.clmQuantidade.Name = "clmQuantidade";
+            this.clmQuantidade.ReadOnly = true;
+            // 
+            // clmQuantidadeDev
+            // 
+            this.clmQuantidadeDev.DataPropertyName = "QuantidadeDev";
+            this.clmQuantidadeDev.HeaderText = "Quantidade Devolvida";
+            this.clmQuantidadeDev.Name = "clmQuantidadeDev";
+            // 
+            // clmVlrUnitário
+            // 
+            this.clmVlrUnitário.DataPropertyName = "Valor";
+            dataGridViewCellStyle3.Format = "C2";
+            dataGridViewCellStyle3.NullValue = null;
+            this.clmVlrUnitário.DefaultCellStyle = dataGridViewCellStyle3;
+            this.clmVlrUnitário.HeaderText = "Vlr. Unitário";
+            this.clmVlrUnitário.Name = "clmVlrUnitário";
+            this.clmVlrUnitário.ReadOnly = true;
+            // 
+            // clmVlrTotal
+            // 
+            this.clmVlrTotal.DataPropertyName = "VALORTOTAL";
+            dataGridViewCellStyle4.Format = "C2";
+            this.clmVlrTotal.DefaultCellStyle = dataGridViewCellStyle4;
+            this.clmVlrTotal.HeaderText = "Vlr. Total";
+            this.clmVlrTotal.Name = "clmVlrTotal";
+            this.clmVlrTotal.ReadOnly = true;
+            // 
             // txtNumNF
             // 
             this.txtNumNF.getText = "";
@@ -434,10 +448,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtGrdVwItensNF)).EndInit();
             this.grpBxTotais.ResumeLayout(false);
             this.grpBxTotais.PerformLayout();
-            this.grpBxInfNotFiscal.ResumeLayout(false);
-            this.grpBxInfNotFiscal.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nOTAFISCALBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cOMERCIALDataSet)).EndInit();
+            this.grpBxInfNotFiscal.ResumeLayout(false);
+            this.grpBxInfNotFiscal.PerformLayout();
             this.tbCntrlDevNotFiscal.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -466,16 +480,17 @@
         public System.Windows.Forms.TextBox txtSerie;
         public System.Windows.Forms.DateTimePicker dtTmPckrDtEmissao;
         public System.Windows.Forms.TextBox txtTipoNF;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmProduto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmDescProd;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmUnidade;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmQuantidade;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmVlrUnitário;
-        private System.Windows.Forms.DataGridViewTextBoxColumn clmVlrTotal;
         public System.Windows.Forms.TextBox txtNrPedido;
         public System.Windows.Forms.TextBox txtBxVlrNota;
         public System.Windows.Forms.TextBox txtBxicms;
         public System.Windows.Forms.TextBox txtBxVlrFrete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmProduto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmDescProd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmUnidade;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmQuantidade;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmQuantidadeDev;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmVlrUnitário;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clmVlrTotal;
 
     }
 }

@@ -7674,6 +7674,8 @@ namespace Comercial {
             
             private global::System.Data.DataColumn columnNrNotaFiscal;
             
+            private global::System.Data.DataColumn columnQuantidadeDev;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public ItemNotaFiscalDataTable() {
                 this.TableName = "ItemNotaFiscal";
@@ -7761,6 +7763,13 @@ namespace Comercial {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public global::System.Data.DataColumn QuantidadeDevColumn {
+                get {
+                    return this.columnQuantidadeDev;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -7789,7 +7798,7 @@ namespace Comercial {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            public ItemNotaFiscalRow AddItemNotaFiscalRow(string Descricao, int Quantidade, double Desconto, double Valor, double IPI, int CodProduto, string CodUnidadeMedida, NOTAFISCALRow parentNOTAFISCALRowByFK_ItemNotaFiscal_NOTA_FISCAL) {
+            public ItemNotaFiscalRow AddItemNotaFiscalRow(string Descricao, int Quantidade, double Desconto, double Valor, double IPI, int CodProduto, string CodUnidadeMedida, NOTAFISCALRow parentNOTAFISCALRowByFK_ItemNotaFiscal_NOTA_FISCAL, int QuantidadeDev) {
                 ItemNotaFiscalRow rowItemNotaFiscalRow = ((ItemNotaFiscalRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Descricao,
@@ -7799,7 +7808,8 @@ namespace Comercial {
                         IPI,
                         CodProduto,
                         CodUnidadeMedida,
-                        null};
+                        null,
+                        QuantidadeDev};
                 if ((parentNOTAFISCALRowByFK_ItemNotaFiscal_NOTA_FISCAL != null)) {
                     columnValuesArray[7] = parentNOTAFISCALRowByFK_ItemNotaFiscal_NOTA_FISCAL[0];
                 }
@@ -7837,6 +7847,7 @@ namespace Comercial {
                 this.columnCodProduto = base.Columns["CodProduto"];
                 this.columnCodUnidadeMedida = base.Columns["CodUnidadeMedida"];
                 this.columnNrNotaFiscal = base.Columns["NrNotaFiscal"];
+                this.columnQuantidadeDev = base.Columns["QuantidadeDev"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7857,6 +7868,8 @@ namespace Comercial {
                 base.Columns.Add(this.columnCodUnidadeMedida);
                 this.columnNrNotaFiscal = new global::System.Data.DataColumn("NrNotaFiscal", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNrNotaFiscal);
+                this.columnQuantidadeDev = new global::System.Data.DataColumn("QuantidadeDev", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnQuantidadeDev);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnCodProduto,
                                 this.columnNrNotaFiscal}, true));
@@ -13045,6 +13058,21 @@ namespace Comercial {
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public int QuantidadeDev {
+                get {
+                    try {
+                        return ((int)(this[this.tableItemNotaFiscal.QuantidadeDevColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'QuantidadeDev\' in table \'ItemNotaFiscal\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableItemNotaFiscal.QuantidadeDevColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public NOTAFISCALRow NOTAFISCALRow {
                 get {
                     return ((NOTAFISCALRow)(this.GetParentRow(this.Table.ParentRelations["FK_ItemNotaFiscal_NOTA_FISCAL"])));
@@ -13112,6 +13140,16 @@ namespace Comercial {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             public void SetCodUnidadeMedidaNull() {
                 this[this.tableItemNotaFiscal.CodUnidadeMedidaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public bool IsQuantidadeDevNull() {
+                return this.IsNull(this.tableItemNotaFiscal.QuantidadeDevColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            public void SetQuantidadeDevNull() {
+                this[this.tableItemNotaFiscal.QuantidadeDevColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -25817,15 +25855,18 @@ SELECT NrNotaFiscal, RazaoSocial, Serie, DataEmissao, IE, Telefone, Endereco, Ba
             tableMapping.ColumnMappings.Add("CodProduto", "CodProduto");
             tableMapping.ColumnMappings.Add("CodUnidadeMedida", "CodUnidadeMedida");
             tableMapping.ColumnMappings.Add("NrNotaFiscal", "NrNotaFiscal");
+            tableMapping.ColumnMappings.Add("QuantidadeDev", "QuantidadeDev");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [ItemNotaFiscal] WHERE (((@IsNull_Descricao = 1 AND [Descricao] IS NULL) OR ([Descricao] = @Original_Descricao)) AND ((@IsNull_Quantidade = 1 AND [Quantidade] IS NULL) OR ([Quantidade] = @Original_Quantidade)) AND ((@IsNull_Desconto = 1 AND [Desconto] IS NULL) OR ([Desconto] = @Original_Desconto)) AND ((@IsNull_Valor = 1 AND [Valor] IS NULL) OR ([Valor] = @Original_Valor)) AND ((@IsNull_IPI = 1 AND [IPI] IS NULL) OR ([IPI] = @Original_IPI)) AND ([CodProduto] = @Original_CodProduto) AND ((@IsNull_CodUnidadeMedida = 1 AND [CodUnidadeMedida] IS NULL) OR ([CodUnidadeMedida] = @Original_CodUnidadeMedida)) AND ([NrNotaFiscal] = @Original_NrNotaFiscal))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [ItemNotaFiscal] WHERE (((@IsNull_Descricao = 1 AND [Descricao] IS NULL) OR ([Descricao] = @Original_Descricao)) AND ((@IsNull_Quantidade = 1 AND [Quantidade] IS NULL) OR ([Quantidade] = @Original_Quantidade)) AND ((@IsNull_QuantidadeDev = 1 AND [QuantidadeDev] IS NULL) OR ([QuantidadeDev] = @Original_QuantidadeDev)) AND ((@IsNull_Desconto = 1 AND [Desconto] IS NULL) OR ([Desconto] = @Original_Desconto)) AND ((@IsNull_Valor = 1 AND [Valor] IS NULL) OR ([Valor] = @Original_Valor)) AND ((@IsNull_IPI = 1 AND [IPI] IS NULL) OR ([IPI] = @Original_IPI)) AND ([CodProduto] = @Original_CodProduto) AND ((@IsNull_CodUnidadeMedida = 1 AND [CodUnidadeMedida] IS NULL) OR ([CodUnidadeMedida] = @Original_CodUnidadeMedida)) AND ([NrNotaFiscal] = @Original_NrNotaFiscal))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Descricao", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Descricao", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Descricao", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Descricao", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Quantidade", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Quantidade", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Quantidade", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Quantidade", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_QuantidadeDev", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "QuantidadeDev", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_QuantidadeDev", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "QuantidadeDev", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Desconto", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Desconto", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Desconto", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Desconto", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Valor", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Valor", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -25838,11 +25879,12 @@ SELECT NrNotaFiscal, RazaoSocial, Serie, DataEmissao, IE, Telefone, Endereco, Ba
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NrNotaFiscal", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NrNotaFiscal", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [ItemNotaFiscal] ([Descricao], [Quantidade], [Desconto], [Valor], [IPI], [CodProduto], [CodUnidadeMedida], [NrNotaFiscal]) VALUES (@Descricao, @Quantidade, @Desconto, @Valor, @IPI, @CodProduto, @CodUnidadeMedida, @NrNotaFiscal);
-SELECT Descricao, Quantidade, Desconto, Valor, IPI, CodProduto, CodUnidadeMedida, NrNotaFiscal FROM ItemNotaFiscal WHERE (CodProduto = @CodProduto) AND (NrNotaFiscal = @NrNotaFiscal)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [ItemNotaFiscal] ([Descricao], [Quantidade], [QuantidadeDev], [Desconto], [Valor], [IPI], [CodProduto], [CodUnidadeMedida], [NrNotaFiscal]) VALUES (@Descricao, @Quantidade, @QuantidadeDev, @Desconto, @Valor, @IPI, @CodProduto, @CodUnidadeMedida, @NrNotaFiscal);
+SELECT Descricao, Quantidade, QuantidadeDev, Desconto, Valor, IPI, CodProduto, CodUnidadeMedida, NrNotaFiscal FROM ItemNotaFiscal WHERE (CodProduto = @CodProduto) AND (NrNotaFiscal = @NrNotaFiscal)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Descricao", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Descricao", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Quantidade", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Quantidade", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@QuantidadeDev", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "QuantidadeDev", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Desconto", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Desconto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Valor", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Valor", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IPI", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IPI", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -25851,11 +25893,12 @@ SELECT Descricao, Quantidade, Desconto, Valor, IPI, CodProduto, CodUnidadeMedida
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NrNotaFiscal", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NrNotaFiscal", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [ItemNotaFiscal] SET [Descricao] = @Descricao, [Quantidade] = @Quantidade, [Desconto] = @Desconto, [Valor] = @Valor, [IPI] = @IPI, [CodProduto] = @CodProduto, [CodUnidadeMedida] = @CodUnidadeMedida, [NrNotaFiscal] = @NrNotaFiscal WHERE (((@IsNull_Descricao = 1 AND [Descricao] IS NULL) OR ([Descricao] = @Original_Descricao)) AND ((@IsNull_Quantidade = 1 AND [Quantidade] IS NULL) OR ([Quantidade] = @Original_Quantidade)) AND ((@IsNull_Desconto = 1 AND [Desconto] IS NULL) OR ([Desconto] = @Original_Desconto)) AND ((@IsNull_Valor = 1 AND [Valor] IS NULL) OR ([Valor] = @Original_Valor)) AND ((@IsNull_IPI = 1 AND [IPI] IS NULL) OR ([IPI] = @Original_IPI)) AND ([CodProduto] = @Original_CodProduto) AND ((@IsNull_CodUnidadeMedida = 1 AND [CodUnidadeMedida] IS NULL) OR ([CodUnidadeMedida] = @Original_CodUnidadeMedida)) AND ([NrNotaFiscal] = @Original_NrNotaFiscal));
-SELECT Descricao, Quantidade, Desconto, Valor, IPI, CodProduto, CodUnidadeMedida, NrNotaFiscal FROM ItemNotaFiscal WHERE (CodProduto = @CodProduto) AND (NrNotaFiscal = @NrNotaFiscal)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [ItemNotaFiscal] SET [Descricao] = @Descricao, [Quantidade] = @Quantidade, [QuantidadeDev] = @QuantidadeDev, [Desconto] = @Desconto, [Valor] = @Valor, [IPI] = @IPI, [CodProduto] = @CodProduto, [CodUnidadeMedida] = @CodUnidadeMedida, [NrNotaFiscal] = @NrNotaFiscal WHERE (((@IsNull_Descricao = 1 AND [Descricao] IS NULL) OR ([Descricao] = @Original_Descricao)) AND ((@IsNull_Quantidade = 1 AND [Quantidade] IS NULL) OR ([Quantidade] = @Original_Quantidade)) AND ((@IsNull_QuantidadeDev = 1 AND [QuantidadeDev] IS NULL) OR ([QuantidadeDev] = @Original_QuantidadeDev)) AND ((@IsNull_Desconto = 1 AND [Desconto] IS NULL) OR ([Desconto] = @Original_Desconto)) AND ((@IsNull_Valor = 1 AND [Valor] IS NULL) OR ([Valor] = @Original_Valor)) AND ((@IsNull_IPI = 1 AND [IPI] IS NULL) OR ([IPI] = @Original_IPI)) AND ([CodProduto] = @Original_CodProduto) AND ((@IsNull_CodUnidadeMedida = 1 AND [CodUnidadeMedida] IS NULL) OR ([CodUnidadeMedida] = @Original_CodUnidadeMedida)) AND ([NrNotaFiscal] = @Original_NrNotaFiscal));
+SELECT Descricao, Quantidade, QuantidadeDev, Desconto, Valor, IPI, CodProduto, CodUnidadeMedida, NrNotaFiscal FROM ItemNotaFiscal WHERE (CodProduto = @CodProduto) AND (NrNotaFiscal = @NrNotaFiscal)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Descricao", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Descricao", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Quantidade", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Quantidade", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@QuantidadeDev", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "QuantidadeDev", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Desconto", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Desconto", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Valor", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Valor", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IPI", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "IPI", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -25866,6 +25909,8 @@ SELECT Descricao, Quantidade, Desconto, Valor, IPI, CodProduto, CodUnidadeMedida
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Descricao", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Descricao", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Quantidade", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Quantidade", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Quantidade", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Quantidade", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_QuantidadeDev", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "QuantidadeDev", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_QuantidadeDev", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "QuantidadeDev", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Desconto", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Desconto", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Desconto", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Desconto", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Valor", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Valor", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -25889,8 +25934,8 @@ SELECT Descricao, Quantidade, Desconto, Valor, IPI, CodProduto, CodUnidadeMedida
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT        Descricao, Quantidade, Desconto, Valor, IPI, CodProduto, CodUnidade" +
-                "Medida, NrNotaFiscal\r\nFROM            ItemNotaFiscal";
+            this._commandCollection[0].CommandText = "SELECT        Descricao, Quantidade,QuantidadeDev,  Desconto, Valor, IPI, CodProd" +
+                "uto, CodUnidadeMedida, NrNotaFiscal\r\nFROM            ItemNotaFiscal";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -25944,7 +25989,7 @@ SELECT Descricao, Quantidade, Desconto, Valor, IPI, CodProduto, CodUnidadeMedida
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(string Original_Descricao, global::System.Nullable<int> Original_Quantidade, global::System.Nullable<double> Original_Desconto, global::System.Nullable<double> Original_Valor, global::System.Nullable<double> Original_IPI, int Original_CodProduto, string Original_CodUnidadeMedida, int Original_NrNotaFiscal) {
+        public virtual int Delete(string Original_Descricao, global::System.Nullable<int> Original_Quantidade, global::System.Nullable<int> Original_QuantidadeDev, global::System.Nullable<double> Original_Desconto, global::System.Nullable<double> Original_Valor, global::System.Nullable<double> Original_IPI, int Original_CodProduto, string Original_CodUnidadeMedida, int Original_NrNotaFiscal) {
             if ((Original_Descricao == null)) {
                 this.Adapter.DeleteCommand.Parameters[0].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[1].Value = global::System.DBNull.Value;
@@ -25961,40 +26006,48 @@ SELECT Descricao, Quantidade, Desconto, Valor, IPI, CodProduto, CodUnidadeMedida
                 this.Adapter.DeleteCommand.Parameters[2].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            if ((Original_Desconto.HasValue == true)) {
+            if ((Original_QuantidadeDev.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[5].Value = ((double)(Original_Desconto.Value));
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((int)(Original_QuantidadeDev.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
-            if ((Original_Valor.HasValue == true)) {
+            if ((Original_Desconto.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((double)(Original_Valor.Value));
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((double)(Original_Desconto.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
-            if ((Original_IPI.HasValue == true)) {
+            if ((Original_Valor.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[9].Value = ((double)(Original_IPI.Value));
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((double)(Original_Valor.Value));
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
-            this.Adapter.DeleteCommand.Parameters[10].Value = ((int)(Original_CodProduto));
-            if ((Original_CodUnidadeMedida == null)) {
-                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[12].Value = global::System.DBNull.Value;
+            if ((Original_IPI.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((double)(Original_IPI.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[12].Value = ((string)(Original_CodUnidadeMedida));
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[11].Value = global::System.DBNull.Value;
             }
-            this.Adapter.DeleteCommand.Parameters[13].Value = ((int)(Original_NrNotaFiscal));
+            this.Adapter.DeleteCommand.Parameters[12].Value = ((int)(Original_CodProduto));
+            if ((Original_CodUnidadeMedida == null)) {
+                this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[14].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[13].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[14].Value = ((string)(Original_CodUnidadeMedida));
+            }
+            this.Adapter.DeleteCommand.Parameters[15].Value = ((int)(Original_NrNotaFiscal));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -26014,7 +26067,7 @@ SELECT Descricao, Quantidade, Desconto, Valor, IPI, CodProduto, CodUnidadeMedida
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string Descricao, global::System.Nullable<int> Quantidade, global::System.Nullable<double> Desconto, global::System.Nullable<double> Valor, global::System.Nullable<double> IPI, int CodProduto, string CodUnidadeMedida, int NrNotaFiscal) {
+        public virtual int Insert(string Descricao, global::System.Nullable<int> Quantidade, global::System.Nullable<int> QuantidadeDev, global::System.Nullable<double> Desconto, global::System.Nullable<double> Valor, global::System.Nullable<double> IPI, int CodProduto, string CodUnidadeMedida, int NrNotaFiscal) {
             if ((Descricao == null)) {
                 this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -26027,32 +26080,38 @@ SELECT Descricao, Quantidade, Desconto, Valor, IPI, CodProduto, CodUnidadeMedida
             else {
                 this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            if ((Desconto.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((double)(Desconto.Value));
+            if ((QuantidadeDev.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((int)(QuantidadeDev.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            if ((Valor.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((double)(Valor.Value));
+            if ((Desconto.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((double)(Desconto.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            if ((IPI.HasValue == true)) {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((double)(IPI.Value));
+            if ((Valor.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((double)(Valor.Value));
             }
             else {
                 this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            this.Adapter.InsertCommand.Parameters[5].Value = ((int)(CodProduto));
-            if ((CodUnidadeMedida == null)) {
-                this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
+            if ((IPI.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((double)(IPI.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[6].Value = ((string)(CodUnidadeMedida));
+                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
-            this.Adapter.InsertCommand.Parameters[7].Value = ((int)(NrNotaFiscal));
+            this.Adapter.InsertCommand.Parameters[6].Value = ((int)(CodProduto));
+            if ((CodUnidadeMedida == null)) {
+                this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(CodUnidadeMedida));
+            }
+            this.Adapter.InsertCommand.Parameters[8].Value = ((int)(NrNotaFiscal));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -26075,6 +26134,7 @@ SELECT Descricao, Quantidade, Desconto, Valor, IPI, CodProduto, CodUnidadeMedida
         public virtual int Update(
                     string Descricao, 
                     global::System.Nullable<int> Quantidade, 
+                    global::System.Nullable<int> QuantidadeDev, 
                     global::System.Nullable<double> Desconto, 
                     global::System.Nullable<double> Valor, 
                     global::System.Nullable<double> IPI, 
@@ -26083,6 +26143,7 @@ SELECT Descricao, Quantidade, Desconto, Valor, IPI, CodProduto, CodUnidadeMedida
                     int NrNotaFiscal, 
                     string Original_Descricao, 
                     global::System.Nullable<int> Original_Quantidade, 
+                    global::System.Nullable<int> Original_QuantidadeDev, 
                     global::System.Nullable<double> Original_Desconto, 
                     global::System.Nullable<double> Original_Valor, 
                     global::System.Nullable<double> Original_IPI, 
@@ -26101,82 +26162,96 @@ SELECT Descricao, Quantidade, Desconto, Valor, IPI, CodProduto, CodUnidadeMedida
             else {
                 this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            if ((Desconto.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((double)(Desconto.Value));
+            if ((QuantidadeDev.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(QuantidadeDev.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
-            if ((Valor.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((double)(Valor.Value));
+            if ((Desconto.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((double)(Desconto.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
             }
-            if ((IPI.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((double)(IPI.Value));
+            if ((Valor.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((double)(Valor.Value));
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(CodProduto));
+            if ((IPI.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((double)(IPI.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(CodProduto));
             if ((CodUnidadeMedida == null)) {
-                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(CodUnidadeMedida));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(CodUnidadeMedida));
             }
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(NrNotaFiscal));
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(NrNotaFiscal));
             if ((Original_Descricao == null)) {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_Descricao));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_Descricao));
             }
             if ((Original_Quantidade.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(Original_Quantidade.Value));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(Original_Quantidade.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
+            }
+            if ((Original_QuantidadeDev.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((int)(Original_QuantidadeDev.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
             if ((Original_Desconto.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((double)(Original_Desconto.Value));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((double)(Original_Desconto.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
             }
             if ((Original_Valor.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((double)(Original_Valor.Value));
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((double)(Original_Valor.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
             }
             if ((Original_IPI.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[17].Value = ((double)(Original_IPI.Value));
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((double)(Original_IPI.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
-            }
-            this.Adapter.UpdateCommand.Parameters[18].Value = ((int)(Original_CodProduto));
-            if ((Original_CodUnidadeMedida == null)) {
                 this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[20].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[20].Value = ((string)(Original_CodUnidadeMedida));
+            this.Adapter.UpdateCommand.Parameters[21].Value = ((int)(Original_CodProduto));
+            if ((Original_CodUnidadeMedida == null)) {
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[23].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[21].Value = ((int)(Original_NrNotaFiscal));
+            else {
+                this.Adapter.UpdateCommand.Parameters[22].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[23].Value = ((string)(Original_CodUnidadeMedida));
+            }
+            this.Adapter.UpdateCommand.Parameters[24].Value = ((int)(Original_NrNotaFiscal));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -26196,8 +26271,24 @@ SELECT Descricao, Quantidade, Desconto, Valor, IPI, CodProduto, CodUnidadeMedida
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Descricao, global::System.Nullable<int> Quantidade, global::System.Nullable<double> Desconto, global::System.Nullable<double> Valor, global::System.Nullable<double> IPI, string CodUnidadeMedida, string Original_Descricao, global::System.Nullable<int> Original_Quantidade, global::System.Nullable<double> Original_Desconto, global::System.Nullable<double> Original_Valor, global::System.Nullable<double> Original_IPI, int Original_CodProduto, string Original_CodUnidadeMedida, int Original_NrNotaFiscal) {
-            return this.Update(Descricao, Quantidade, Desconto, Valor, IPI, Original_CodProduto, CodUnidadeMedida, Original_NrNotaFiscal, Original_Descricao, Original_Quantidade, Original_Desconto, Original_Valor, Original_IPI, Original_CodProduto, Original_CodUnidadeMedida, Original_NrNotaFiscal);
+        public virtual int Update(
+                    string Descricao, 
+                    global::System.Nullable<int> Quantidade, 
+                    global::System.Nullable<int> QuantidadeDev, 
+                    global::System.Nullable<double> Desconto, 
+                    global::System.Nullable<double> Valor, 
+                    global::System.Nullable<double> IPI, 
+                    string CodUnidadeMedida, 
+                    string Original_Descricao, 
+                    global::System.Nullable<int> Original_Quantidade, 
+                    global::System.Nullable<int> Original_QuantidadeDev, 
+                    global::System.Nullable<double> Original_Desconto, 
+                    global::System.Nullable<double> Original_Valor, 
+                    global::System.Nullable<double> Original_IPI, 
+                    int Original_CodProduto, 
+                    string Original_CodUnidadeMedida, 
+                    int Original_NrNotaFiscal) {
+            return this.Update(Descricao, Quantidade, QuantidadeDev, Desconto, Valor, IPI, Original_CodProduto, CodUnidadeMedida, Original_NrNotaFiscal, Original_Descricao, Original_Quantidade, Original_QuantidadeDev, Original_Desconto, Original_Valor, Original_IPI, Original_CodProduto, Original_CodUnidadeMedida, Original_NrNotaFiscal);
         }
     }
     

@@ -27,3 +27,11 @@ namespace Comercial.COMERCIALDataSetTableAdapters
     public partial class CLIENTETableAdapter {
     }
 }
+
+namespace Comercial.COMERCIALDataSetTableAdapters
+{
+    
+    
+    public partial class ItemNotaFiscalTableAdapter {
+    }
+}
