@@ -815,7 +815,7 @@ namespace Comercial
                         SqlConnection conn = new SqlConnection(c);
                         conn.Open();
 
-                        SqlCommand cmd = new SqlCommand(" SELECT NRNOTAFISCAL, SERIE, DATAEMISSAO, TIPO, STATUS" +
+                        SqlCommand cmd = new SqlCommand(" SELECT NRNOTAFISCAL, SERIE, DATAEMISSAO, TIPO" +
                             " FROM NOTAFISCAL WHERE NRNOTAFISCAL LIKE @NRNOTAFISCAL ", conn);
 
                         cmd.Parameters.Add(new SqlParameter("@NRNOTAFISCAL", txtPesquisar.Text + "%"));
