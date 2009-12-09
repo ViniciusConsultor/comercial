@@ -215,40 +215,57 @@ namespace Comercial
                 if (MessageBox.Show("Deseja Devolver a Nota Fiscal selecionada?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
 
-                    for (   int i = 0; i < dtGrdVwItensNF.RowCount; i++)
+                    for (int i = 0; i < dtGrdVwItensNF.RowCount; i++)
                     {
                         //Verificoquantidade liberada do pedido - a quantidade devolvida
                         int saldoDevolvido = SaldoLiberado(Convert.ToInt32(txtNumNF.getText), Convert.ToInt32(dtGrdVwItensNF.Rows[i].Cells["clmProduto"].Value));
+                        int quantidade = Convert.ToInt32(dtGrdVwItensNF.Rows[i].Cells["clmQuantidadeDev"].Value);
 
-                        //verifico se o iten liberado é < que a quantidade já liberada
-                        if (Convert.ToInt32(dtGrdVwItensNF.Rows[i].Cells["clmQuantidadeDev"].Value) < saldoDevolvido)
+                        //verifica saldo atual em estoque
+                        int estoqueatual = ListarSaldoEstoque(Convert.ToInt32(dtGrdVwItensNF.Rows[i].Cells["clmProduto"].Value));
+
+                        if (saldoDevolvido != Convert.ToInt32(dtGrdVwItensNF.Rows[i].Cells["clmQuantidade"].Value))
                         {
-                            throw new Exception("ItenLibMenor");
+
+                            if (quantidade > estoqueatual)
+                            {
+
+                                throw new Exception("ValidaEstoque");
+
+                            }
+
+                            if (Convert.ToInt32(dtGrdVwItensNF.Rows[i].Cells["clmQuantidadeDev"].Value) > Convert.ToInt32(dtGrdVwItensNF.Rows[i].Cells["clmQuantidade"].Value))
+                            {
+
+                                throw new Exception("ValidaQtdeLiberada");
+
+                            }
+
+                            if (Convert.ToInt32(dtGrdVwItensNF.Rows[i].Cells["clmQuantidadeDev"].Value) < 0)
+                            {
+                                throw new Exception("QuantidadeNegativa");
+                            }
                         }
-                        else
-                        {
 
-                            int quantidade = Convert.ToInt32(dtGrdVwItensNF.Rows[i].Cells["clmQuantidadeDev"].Value);
-                            int codProduto = Convert.ToInt32(dtGrdVwItensNF.Rows[i].Cells["clmProduto"].Value);
 
-                            //verifica saldo atual em estoque
-                            int estoqueatual = ListarSaldoEstoque(Convert.ToInt32(dtGrdVwItensNF.Rows[i].Cells["clmProduto"].Value));
+                        int codProduto = Convert.ToInt32(dtGrdVwItensNF.Rows[i].Cells["clmProduto"].Value);
+                        
+                        //subtraio a quantidade liberada de pedido menos a quantidade devolvida
+                        int saldo = quantidade - saldoDevolvido;
 
-                            //subtraio a quantidade liberada de pedido menos a quantidade devolvida
-                            int saldo = quantidade - saldoDevolvido;
+                        //Soma o saldo atual + qtdeliberada
+                        int atualizaestoque = estoqueatual + saldo;
 
-                            //Soma o saldo atual + qtdeliberada
-                            int atualizaestoque = estoqueatual + saldo;
-                                    
-                            ////Atualiza quantidade liberada do pedido pasando como parametro o pedido e o cod do produto
-                            // AtualizarQtde(Convert.ToInt32(txtNrPedido.Text), saldo, Convert.ToInt32(dtGrdVwItensNF.Rows[i].Cells["clmProduto"].Value));
+                        ////Atualiza quantidade liberada do pedido pasando como parametro o pedido e o cod do produto
+                        // AtualizarQtde(Convert.ToInt32(txtNrPedido.Text), saldo, Convert.ToInt32(dtGrdVwItensNF.Rows[i].Cells["clmProduto"].Value));
 
-                            //Atuliza a quantidade atual em estoque passando com oparametro produto e a quantida a atualizar
-                            atualizaSaldoEstoque(Convert.ToInt32(dtGrdVwItensNF.Rows[i].Cells["clmProduto"].Value), atualizaestoque);
+                        //Atuliza a quantidade atual em estoque passando com oparametro produto e a quantida a atualizar
+                        atualizaSaldoEstoque(Convert.ToInt32(dtGrdVwItensNF.Rows[i].Cells["clmProduto"].Value), atualizaestoque);
 
-                            //Atualiza Item Nota Fiscal com a quantidade devolvida...
-                            atualizaItemNF(Convert.ToInt32(txtNumNF.getText), quantidade, codProduto);
-                        }
+                        //Atualiza Item Nota Fiscal com a quantidade devolvida...
+                        atualizaItemNF(Convert.ToInt32(txtNumNF.getText), quantidade, codProduto);
+
+
                     }
 
                     int situacao = 0;

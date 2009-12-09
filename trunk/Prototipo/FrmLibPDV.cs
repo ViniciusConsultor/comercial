@@ -569,6 +569,11 @@ namespace Comercial
                     //atribuo a lista de itens ao datatable
                     dttRetorno = ListarItem(Convert.ToInt32(txtbtnPedido.Text));
 
+                    if (Convert.ToInt32(dtgrdvItenspven.Rows[i].Cells["ClmQtdeLib"].Value) < 0)
+                    {
+                        throw new Exception("QuantidadeNegativa");
+                    }
+
                     //verifico se o saldo = a quantidade do datatable se for = incremento o contador
                     if (saldolib == Convert.ToInt32(dttRetorno.Rows[i]["QUANTIDADE"]))
                     {
@@ -606,6 +611,9 @@ namespace Comercial
 
                     dttPedidocli = ListarValorCliente(txtCodCliente.Text);
                     string valormercadoria = "";
+
+                    
+
                     if (dttPedidocli.Rows.Count > 0)
                     {
                         ValorPedido = Convert.ToDouble(dttPedidocli.Rows[0]["VALOR"]);
@@ -634,8 +642,6 @@ namespace Comercial
                     
                     //Verifico Saldo em estoque do produto selecionado
                     #region ValidaEstoque
-
-                    string statusitem = "";
 
                     foreach (DataGridViewRow item in dtgrdvItenspven.Rows)
                     {
