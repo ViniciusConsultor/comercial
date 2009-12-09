@@ -605,11 +605,11 @@ namespace Comercial
                     DataTable dttPedidocli = new DataTable();
 
                     dttPedidocli = ListarValorCliente(txtCodCliente.Text);
-
+                    string valormercadoria = "";
                     if (dttPedidocli.Rows.Count > 0)
                     {
                         ValorPedido = Convert.ToDouble(dttPedidocli.Rows[0]["VALOR"]);
-                        string valormercadoria = txtBxVlrFaturado.Text.Replace("R$", "").Replace(".", "");
+                        valormercadoria = txtBxVlrFaturado.Text.Replace("R$", "").Replace(".", "");
                         ValorFaturar = ValorPedido + Convert.ToDouble(valormercadoria);
 
                     }
@@ -624,7 +624,7 @@ namespace Comercial
 
                     }
 
-                    if ((ValorFaturar > ValorLimite))
+                    if (Convert.ToDouble(valormercadoria) > ValorLimite)
                     {
 
                         throw new Exception("ValidaLimite");
