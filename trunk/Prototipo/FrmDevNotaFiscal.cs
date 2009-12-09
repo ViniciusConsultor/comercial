@@ -228,13 +228,7 @@ namespace Comercial
 
                         if (saldoDevolvido != Convert.ToInt32(dtGrdVwItensNF.Rows[i].Cells["clmQuantidade"].Value))
                         {
-                            //verifico quantidade devolvida é maior que o saldo em estoque
-                            if (quantidade > estoqueatual)
-                            {
-                                throw new Exception("ValidaEstoque");
-
-                            }
-
+                            
                             //verifico quantidade devolvida é maior que a quantidade faturada na nota fiscal
                             if (Convert.ToInt32(dtGrdVwItensNF.Rows[i].Cells["clmQuantidadeDev"].Value) > Convert.ToInt32(dtGrdVwItensNF.Rows[i].Cells["clmQuantidade"].Value))
                             {
