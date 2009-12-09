@@ -217,7 +217,7 @@ namespace Comercial
 
                     for (int i = 0; i < dtGrdVwItensNF.RowCount; i++)
                     {
-                        //Verificoquantidade liberada do pedido - a quantidade devolvida
+                        //Verifico quantidade liberada do pedido - a quantidade devolvida
                         int saldoDevolvido = SaldoLiberado(Convert.ToInt32(txtNumNF.getText), Convert.ToInt32(dtGrdVwItensNF.Rows[i].Cells["clmProduto"].Value));
                         int quantidade = Convert.ToInt32(dtGrdVwItensNF.Rows[i].Cells["clmQuantidadeDev"].Value);
 
@@ -226,7 +226,7 @@ namespace Comercial
 
                         if (saldoDevolvido != Convert.ToInt32(dtGrdVwItensNF.Rows[i].Cells["clmQuantidade"].Value))
                         {
-
+                            //verifico quantidade devolvida é maior que o saldo em estoque
                             if (quantidade > estoqueatual)
                             {
 
@@ -234,6 +234,7 @@ namespace Comercial
 
                             }
 
+                            //verifico quantidade devolvida é maior que a quantidade faturada na nota fiscal
                             if (Convert.ToInt32(dtGrdVwItensNF.Rows[i].Cells["clmQuantidadeDev"].Value) > Convert.ToInt32(dtGrdVwItensNF.Rows[i].Cells["clmQuantidade"].Value))
                             {
 
@@ -247,10 +248,10 @@ namespace Comercial
                             }
                         }
 
-
+                        //pego o codigo do produto
                         int codProduto = Convert.ToInt32(dtGrdVwItensNF.Rows[i].Cells["clmProduto"].Value);
                         
-                        //subtraio a quantidade liberada de pedido menos a quantidade devolvida
+                        //subtraio a quantidade devolvida da NF menos a quantidade devolvida no bando de dados
                         int saldo = quantidade - saldoDevolvido;
 
                         //Soma o saldo atual + qtdeliberada
