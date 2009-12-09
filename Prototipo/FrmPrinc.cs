@@ -100,6 +100,11 @@ namespace Comercial
                     retorno = frmCon.Salvar();
                 }
 
+                if (frm is FrmCadUniMed)
+                {
+                    FrmCadUniMed frmCon = (FrmCadUniMed)frm;
+                    retorno = frmCon.Salvar();
+                }
                 #endregion
 
                 if (frm is FrmCadProd && edit == false)
