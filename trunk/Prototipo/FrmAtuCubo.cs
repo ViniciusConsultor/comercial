@@ -81,59 +81,59 @@ namespace Comercial
 
                 //Abrir o arquivo
 
-                //linha += "<Batch xmlns=\"http://schemas.microsoft.com/analysisservices/2003/engine\"> " +
-                //         "<Parallel> " +
-                //         "<Process xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:ddl2=\"http://schemas.microsoft.com/analysisservices/2003/engine/2\" xmlns:ddl2_2=\"http://schemas.microsoft.com/analysisservices/2003/engine/2/2\" xmlns:ddl100_100=\"http://schemas.microsoft.com/analysisservices/2008/engine/100/100\">  " +
-                //         "<Object> " +
-                //         "<DatabaseID>Comercial_Mart</DatabaseID> " +
-                //         "<DimensionID>Regiao</DimensionID> " +
-                //         "</Object> " +
-                //         "<Type>ProcessUpdate</Type> " +
-                //         "<WriteBackTableCreation>UseExisting</WriteBackTableCreation> " +
-                //         "</Process> " +
-                //         "<Process xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:ddl2=\"http://schemas.microsoft.com/analysisservices/2003/engine/2\" xmlns:ddl2_2=\"http://schemas.microsoft.com/analysisservices/2003/engine/2/2\" xmlns:ddl100_100=\"http://schemas.microsoft.com/analysisservices/2008/engine/100/100\"> " +
-                //         "<Object> " +
-                //         "<DatabaseID>Comercial_Mart</DatabaseID> " +
-                //         "<CubeID>Vendas_Regiao_Produto</CubeID> " +
-                //         "</Object> " +
-                //         "<Type>ProcessFull</Type> " +
-                //         "<WriteBackTableCreation>UseExisting</WriteBackTableCreation> " +
-                //         "</Process> " +
-                //         "<Process xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:ddl2=\"http://schemas.microsoft.com/analysisservices/2003/engine/2\" xmlns:ddl2_2=\"http://schemas.microsoft.com/analysisservices/2003/engine/2/2\" xmlns:ddl100_100=\"http://schemas.microsoft.com/analysisservices/2008/engine/100/100\"> " +
-                //         "<Object> " +
-                //         "<DatabaseID>Comercial_Mart</DatabaseID> " +
-                //         "<DimensionID>Produto</DimensionID> " +
-                //         "</Object> " +
-                //         "<Type>ProcessUpdate</Type> " +
-                //         "<WriteBackTableCreation>UseExisting</WriteBackTableCreation> " +
-                //         "</Process> " +
-                //         "<Process xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:ddl2=\"http://schemas.microsoft.com/analysisservices/2003/engine/2\" xmlns:ddl2_2=\"http://schemas.microsoft.com/analysisservices/2003/engine/2/2\" xmlns:ddl100_100=\"http://schemas.microsoft.com/analysisservices/2008/engine/100/100\"> " +
-                //         "<Object> " +
-                //         "<DatabaseID>Comercial_Mart</DatabaseID> " +
-                //         "<DimensionID>Data</DimensionID> " +
-                //         "</Object> " +
-                //         "<Type>ProcessUpdate</Type> " +
-                //         "<WriteBackTableCreation>UseExisting</WriteBackTableCreation> " +
-                //         "</Process> " +
-                //         "</Parallel> " +
-                //         "</Batch>";
-                ////FileInfo x = new FileInfo(@"E:\Faculdade\Tcc_google\Prototipo\atucubo.txt");
+                linha += "<Batch xmlns=\"http://schemas.microsoft.com/analysisservices/2003/engine\"> " +
+                         "<Parallel> " +
+                         "<Process xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:ddl2=\"http://schemas.microsoft.com/analysisservices/2003/engine/2\" xmlns:ddl2_2=\"http://schemas.microsoft.com/analysisservices/2003/engine/2/2\" xmlns:ddl100_100=\"http://schemas.microsoft.com/analysisservices/2008/engine/100/100\">  " +
+                         "<Object> " +
+                         "<DatabaseID>Comercial_Mart</DatabaseID> " +
+                         "<DimensionID>Regiao</DimensionID> " +
+                         "</Object> " +
+                         "<Type>ProcessUpdate</Type> " +
+                         "<WriteBackTableCreation>UseExisting</WriteBackTableCreation> " +
+                         "</Process> " +
+                         "<Process xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:ddl2=\"http://schemas.microsoft.com/analysisservices/2003/engine/2\" xmlns:ddl2_2=\"http://schemas.microsoft.com/analysisservices/2003/engine/2/2\" xmlns:ddl100_100=\"http://schemas.microsoft.com/analysisservices/2008/engine/100/100\"> " +
+                         "<Object> " +
+                         "<DatabaseID>Comercial_Mart</DatabaseID> " +
+                         "<CubeID>Vendas_Regiao_Produto</CubeID> " +
+                         "</Object> " +
+                         "<Type>ProcessFull</Type> " +
+                         "<WriteBackTableCreation>UseExisting</WriteBackTableCreation> " +
+                         "</Process> " +
+                         "<Process xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:ddl2=\"http://schemas.microsoft.com/analysisservices/2003/engine/2\" xmlns:ddl2_2=\"http://schemas.microsoft.com/analysisservices/2003/engine/2/2\" xmlns:ddl100_100=\"http://schemas.microsoft.com/analysisservices/2008/engine/100/100\"> " +
+                         "<Object> " +
+                         "<DatabaseID>Comercial_Mart</DatabaseID> " +
+                         "<DimensionID>Produto</DimensionID> " +
+                         "</Object> " +
+                         "<Type>ProcessUpdate</Type> " +
+                         "<WriteBackTableCreation>UseExisting</WriteBackTableCreation> " +
+                         "</Process> " +
+                         "<Process xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:ddl2=\"http://schemas.microsoft.com/analysisservices/2003/engine/2\" xmlns:ddl2_2=\"http://schemas.microsoft.com/analysisservices/2003/engine/2/2\" xmlns:ddl100_100=\"http://schemas.microsoft.com/analysisservices/2008/engine/100/100\"> " +
+                         "<Object> " +
+                         "<DatabaseID>Comercial_Mart</DatabaseID> " +
+                         "<DimensionID>Data</DimensionID> " +
+                         "</Object> " +
+                         "<Type>ProcessUpdate</Type> " +
+                         "<WriteBackTableCreation>UseExisting</WriteBackTableCreation> " +
+                         "</Process> " +
+                         "</Parallel> " +
+                         "</Batch>";
+                //FileInfo x = new FileInfo(@"E:\Faculdade\Tcc_google\Prototipo\atucubo.txt");
 
-                //// StreamReader valor = x.OpenText();
+                // StreamReader valor = x.OpenText();
 
-                ////while (valor.ReadLine() != null)
-                //// {
-                //// linha += valor.ReadLine();
+                //while (valor.ReadLine() != null)
+                // {
+                // linha += valor.ReadLine();
 
-                ////}
+                //}
 
-                //string c = ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString_analysis"].ConnectionString;
+                string c = ConfigurationManager.ConnectionStrings["Comercial.Properties.Settings.COMERCIALConnectionString_analysis"].ConnectionString;
 
-                //AdomdConnection conn = new AdomdConnection(c);
-                //conn.Open();
-                //AdomdCommand cmd = new AdomdCommand(linha, conn);
-                //cmd.Execute();
-                //conn.Close();
+                AdomdConnection conn = new AdomdConnection(c);
+                conn.Open();
+                AdomdCommand cmd = new AdomdCommand(linha, conn);
+                cmd.Execute();
+                conn.Close();
 
 
 
