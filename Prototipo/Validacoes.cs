@@ -204,6 +204,8 @@ namespace Comercial
                 MessageBox.Show("Quantidade liberada não pode ser superior a quantidade do pedido!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             else if (ex.Message == "ItenLibMenor")
                 MessageBox.Show("A quantidade liberada é inválida \nJá existe quantidade liberada anteriormente!.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            else if (ex.Message == "QuantidadeZerada")
+                MessageBox.Show("Quantidade Liberada não pode ser igual a zero!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             else MessageBox.Show("Erro desconhecido.\nContate o administrador do sistema", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }

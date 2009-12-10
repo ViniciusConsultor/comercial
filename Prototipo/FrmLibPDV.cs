@@ -674,6 +674,10 @@ namespace Comercial
                             {
                                 throw new Exception("QuantidadeNegativa");
                             }
+                            if (Convert.ToInt32(item.Cells["ClmQtdeLib"].Value)== 0)
+                            {
+                                throw new Exception("QuantidadeZerada");
+                            }
                         }
                     }
                     #endregion
