@@ -612,7 +612,7 @@ namespace Comercial
                     dttPedidocli = ListarValorCliente(txtCodCliente.Text);
                     string valormercadoria = "";
 
-                    
+
 
                     if (dttPedidocli.Rows.Count > 0)
                     {
@@ -639,7 +639,7 @@ namespace Comercial
 
                     }
                     #endregion
-                    
+
                     //Verifico Saldo em estoque do produto selecionado
                     #region ValidaEstoque
 
@@ -649,7 +649,7 @@ namespace Comercial
                         int saldolib = SaldoLiberar(Convert.ToInt32(txtbtnPedido.Text), Convert.ToInt32(item.Cells["ColProd"].Value));
                         int SaldoEstoque = ListarSaldoEstoque(Convert.ToInt32(item.Cells["ColProd"].Value));
                         int QtdeLiberada = Convert.ToInt32(item.Cells["ClmQtdeLib"].Value);
-                        
+
                         //verifico a quantidade liberada - saldodisponivel para liberacao
                         int qdelib = QtdeLiberada - saldolib;
 
@@ -843,13 +843,13 @@ namespace Comercial
                 double totalfaturado = 0;
                 foreach (DataGridViewRow item in dtgrdvItenspven.Rows)
                 {
-
                     int Quantidade = Convert.ToInt32(item.Cells["ClmQtdeLib"].Value);
+                             
                     if (Quantidade == 0)
                     {
                         item.Cells["ColCheck"].Value = false;
                     }
-                    else
+                    else if (int.TryParse(item.Cells["ClmQtdeLib"].Value.ToString(), out Quantidade))
                     {
                         item.Cells["ColCheck"].Value = true;
 
@@ -860,7 +860,7 @@ namespace Comercial
 
                         totalfaturado = Convert.ToDouble(totalfaturado) + Convert.ToDouble(item.Cells["ColVALORFATU"].Value);
 
-                        txtBxVlrFaturado.Text = string.Format("{0:C2}", totalfaturado); 
+                        txtBxVlrFaturado.Text = string.Format("{0:C2}", totalfaturado);
 
                         //valorfaturado = Convert.ToDouble(Quantidade * Convert.ToDouble(item.Cells["ClmPrcUnit"].Value));
                         ////double totalfaturado = Convert.ToDouble(totalfaturado) + valorfaturado;
@@ -868,7 +868,7 @@ namespace Comercial
                         //txtBxVlrFaturado.Text = Convert.ToString(Convert.ToDouble(txtBxVlrFaturado.Text.Replace("R$", "")) + valorfaturado);
                     }
 
-                    
+
                 }
             }
             catch (Exception)
@@ -916,7 +916,7 @@ namespace Comercial
             foreach (DataRow s in itens.Rows)
             {
                 ItemNotaFiscalTableAdapter item = new ItemNotaFiscalTableAdapter();
-                item.Insert(s["DESCRICAO"].ToString(), Convert.ToInt32(s["QUANTIDADE"]), 0,Convert.ToDouble(s["DESCONTO"]), Convert.ToDouble(s["VALOR"]), Convert.ToDouble(s["IPI"]),
+                item.Insert(s["DESCRICAO"].ToString(), Convert.ToInt32(s["QUANTIDADE"]), 0, Convert.ToDouble(s["DESCONTO"]), Convert.ToDouble(s["VALOR"]), Convert.ToDouble(s["IPI"]),
                             Convert.ToInt32(s["CODPRODUTO"]), s["CODUNIDADEMEDIDA"].ToString(), nrNotaFiscal);
             }
         }
