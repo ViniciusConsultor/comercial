@@ -254,7 +254,7 @@
             // txtCepTrans
             // 
             this.txtCepTrans.getText = "";
-            this.txtCepTrans.Image = null;
+            this.txtCepTrans.Image = global::Comercial.Properties.Resources.search1;
             this.txtCepTrans.Location = new System.Drawing.Point(6, 42);
             this.txtCepTrans.Name = "txtCepTrans";
             this.txtCepTrans.ShowButton = false;
